@@ -13,14 +13,19 @@ LIBS = -lm -framework OPENGL `~/.brew/bin/pkg-config --static --libs glfw3` \
 	`~/.brew/bin/pkg-config --static --libs glm` \
 	`~/.brew/bin/pkg-config --static --libs libpng`
 SRC = \
-	main.cpp
+	main.cpp \
+	Core/Window.cpp \
+	Core/Time.cpp \
+	Core/SceneManager.cpp \
+	Core/AScene.cpp \
+	Core/GameObject.cpp \
+	Core/Component/Component.cpp \
 
 
+DIR = Core Core/Component
 
-DIR =
 
-
-CFLAGS = -Ofast -march=native -flto -I ~/.brew/include
+CFLAGS = -Ofast -march=native -flto -I ~/.brew/include -std=c++11 -Wc++11-extensions
 
 
 
@@ -73,7 +78,7 @@ fclean: clean
 	$(RMDIR) dep
 ffclean: fclean
 	$(addprefix $(MAKE) fclean -C , $(addsuffix ;, $(LIB_DIR)))
-run:
+run: all
 	./$(NAME)
 ar: all run
 re: fclean all
