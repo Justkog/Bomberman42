@@ -1,4 +1,5 @@
 #include "Core/GameObject.hpp"
+#include "Core/Component/Component.hpp"
 
 namespace BeerEngine
 {

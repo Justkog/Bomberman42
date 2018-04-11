@@ -8,10 +8,10 @@ MAKE = make --no-print-directory
 
 NAME = Bomberman
 LIB_NAME =
-LIBS = -lm -framework OPENGL `~/.brew/bin/pkg-config --static --libs glfw3` \
-	`~/.brew/bin/pkg-config --static --libs glew` \
-	`~/.brew/bin/pkg-config --static --libs glm` \
-	`~/.brew/bin/pkg-config --static --libs libpng`
+LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
+	`pkg-config --static --libs glew` \
+	`pkg-config --static --libs glm` \
+	`pkg-config --static --libs libpng`
 SRC = \
 	main.cpp \
 	Core/Window.cpp \
@@ -20,12 +20,17 @@ SRC = \
 	Core/AScene.cpp \
 	Core/GameObject.cpp \
 	Core/Component/Component.cpp \
+	Core/Graphics/Mesh.cpp \
+	Core/Graphics/ShaderProgram.cpp
+
+DIR = Core Core/Component Core/Graphics
 
 
-DIR = Core Core/Component
-
-
-CFLAGS = -Ofast -march=native -flto -I ~/.brew/include -std=c++11 -Wc++11-extensions
+CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
+	`pkg-config glfw3 --cflags-only-I` \
+	`pkg-config glew --cflags-only-I` \
+	`pkg-config glm --cflags-only-I` \
+	`pkg-config libpng --cflags-only-I`
 
 
 

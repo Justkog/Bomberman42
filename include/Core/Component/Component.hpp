@@ -1,5 +1,5 @@
-#ifndef BE_CORE_TIMER_HPP
-#define BE_CORE_TIMER_HPP 1
+#ifndef BE_CORE_COMPONENT_HPP
+#define BE_CORE_COMPONENT_HPP 1
 
 namespace BeerEngine
 {

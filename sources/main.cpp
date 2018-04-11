@@ -3,6 +3,8 @@
 #include "Core/Time.hpp"
 #include "Core/AScene.hpp"
 #include "Core/SceneManager.hpp"
+#include "Core/Graphics/Mesh.hpp"
+#include "Core/Graphics/ShaderProgram.hpp"
 
 void updateThread(BeerEngine::Window *window)
 {
@@ -46,6 +48,43 @@ int main(void)
 
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
+
+    // > TEST
+    BeerEngine::Graphics::Mesh mesh(1);
+    const glm::vec3 vertPos[] = {
+		glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3(1.0f, 0.0f, 0.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f)
+	};
+    mesh.add(0, GL_FLOAT, 3, (void *)vertPos, 3);
+
+    BeerEngine::Graphics::ShaderProgram shader(2);
+    shader.load(0, GL_VERTEX_SHADER, 
+		"#version 330 core\n"
+		"layout(location = 0) in vec3 vertexPosition;"
+		"void main()"
+		"{"
+		"   gl_Position = vec4(vertexPosition, 1);"
+		"}"
+    );
+    shader.load(1, GL_FRAGMENT_SHADER,
+		"#version 330 core\n"
+		"out vec4 outColor;"
+        "uniform vec3 color;"
+		"void main()"
+		"{"
+		"    outColor = vec4(color, 1.0);"
+		"}"
+    );
+    shader.compile();
+    // ! TEST
+
+    // depth-testing
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    // CullFace
+    glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
     while (!glfwWindowShouldClose(window->getWindow()))
     {
         window->clear();
@@ -55,6 +94,12 @@ int main(void)
             scene->renderUpdate();
             scene->render();
         }
+    // > TEST
+        shader.bind();
+        shader.uniform3f("color", 1.0f, 0.0f, 0.0f);
+        mesh.render();
+        shader.unbind();
+    // ! TEST
         window->swapBuffer();
     }
     delete window;
