@@ -12,9 +12,7 @@ namespace BeerEngine
 
 		MeshBuilder::~MeshBuilder()
 		{
-			vertices.clear();
-			normals.clear();
-			uvs.clear();
+			clear();
 		}
 
 		MeshBuilder		&MeshBuilder::addVertice(glm::vec3 vertice)
@@ -32,6 +30,14 @@ namespace BeerEngine
 		MeshBuilder		&MeshBuilder::addUV(glm::vec2 uv)
 		{
 			uvs.push_back(uv);
+			return (*this);
+		}
+
+		MeshBuilder		&MeshBuilder::clear(void)
+		{
+			vertices.clear();
+			normals.clear();
+			uvs.clear();
 			return (*this);
 		}
 

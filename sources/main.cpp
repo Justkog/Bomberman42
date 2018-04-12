@@ -6,6 +6,7 @@
 #include "Core/Graphics/Mesh.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/Graphics/Graphics.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Transform.hpp"
 
@@ -52,25 +53,16 @@ int main(void)
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
 
-    // > TEST
-    // BeerEngine::Graphics::Mesh mesh(1);
-    // const glm::vec3 vertPos[] = {
-	// 	glm::vec3(0.0f, 0.0f, 0.0f),
-	// 	glm::vec3(1.0f, 0.0f, 0.0f),
-	// 	glm::vec3(0.0f, 1.0f, 0.0f),
-	// 	glm::vec3(0.0f, 1.0f, 0.0f),
-	// 	glm::vec3(1.0f, 0.0f, 0.0f),
-	// 	glm::vec3(1.0f, 1.0f, 0.0f)
-	// };
-    // mesh.add(0, GL_FLOAT, 3, (void *)vertPos, 6);
+    BeerEngine::Graphics::Graphics::Load();
 
+    // > TEST
     BeerEngine::Graphics::MeshBuilder meshBuilder;
     meshBuilder.addVertice(glm::vec3(0.0f, 0.0f, 0.0f))
-    .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
-    .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
-    .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
-    .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
-    .addVertice(glm::vec3(1.0f, 1.0f, 0.0f));
+        .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
+        .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
+        .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
+        .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
+        .addVertice(glm::vec3(1.0f, 1.0f, 0.0f));
     BeerEngine::Graphics::Mesh *mesh = meshBuilder.build();
 
     BeerEngine::Graphics::ShaderProgram shader(2);
@@ -82,11 +74,13 @@ int main(void)
 	);
     shader.compile();
     glm::quat viewRotate = glm::quat(glm::vec3(0.0f, glm::radians(0.0f), 0.0f));
-    glm::mat4 viewMat = glm::translate(glm::toMat4(viewRotate), glm::vec3(0.0f, 0.0f, 0.0f));
+    glm::mat4 viewMat = glm::translate(glm::toMat4(viewRotate), glm::vec3(0.0f, -0.5f, 0.0f));
     BeerEngine::Transform modelTransform;
-    modelTransform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.f), 0.0f));
-    modelTransform.position = glm::vec3(-0.5, -0.5, 4.0f);
+    modelTransform.pivot = glm::vec3(0.5f, 0.5f, 0.0f);
+    modelTransform.rotation = glm::quat(glm::vec3(glm::radians(45.f), glm::radians(45.f), 0.0f));
+    modelTransform.position = glm::vec3(0.0f, 0.0, 4.0f);
     glm::mat4 modelMat = modelTransform.getMat4();
+    glm::mat4 identityMat = glm::translate(glm::vec3(0.0f, 0.0f, -4.0f));
     // ! TEST
 
     // depth-testing
@@ -109,12 +103,16 @@ int main(void)
         shader.uniformMat("projection", window->getProjection3D());
         shader.uniformMat("view", viewMat);
         shader.uniformMat("model", modelMat);
-        shader.uniform3f("color", 1.0f, 0.0f, 0.0f);
+        shader.uniform3f("color", 0.75f, 0.0f, 0.0f);
         mesh->render();
+        shader.uniformMat("model", identityMat);
+        shader.uniform3f("color", 0.75f, 0.75f, 0.75f);
+        BeerEngine::Graphics::Graphics::plane->render();
         shader.unbind();
     // ! TEST
         window->swapBuffer();
     }
+    BeerEngine::Graphics::Graphics::UnLoad();
     delete window;
     return (0);
 }

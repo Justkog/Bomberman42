@@ -22,7 +22,7 @@ namespace BeerEngine
 			MeshBuilder		&addVertice(glm::vec3 vertice);
 			MeshBuilder		&addNormal(glm::vec3 normal);
 			MeshBuilder		&addUV(glm::vec2 uv);
-
+			MeshBuilder		&clear(void);
 			Mesh			*build(void);
 		};
 	}

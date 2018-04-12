@@ -24,6 +24,7 @@ SRC = \
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
+	Core/Graphics/Graphics.cpp \
 	Core/IO/FileUtils.cpp
 
 DIR = Core Core/Component Core/Graphics Core/IO Game
