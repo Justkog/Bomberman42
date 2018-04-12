@@ -8,6 +8,7 @@ namespace BeerEngine
     class Transform
 	{
 	public:
+		Transform	*parent;
 		glm::vec3	pivot;
 		glm::vec3	position;
 		glm::quat	rotation;

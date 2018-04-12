@@ -19,7 +19,11 @@
 #include <glm/gtx/quaternion.hpp>
 
 
+#include <cstdlib>
 #include <iostream>
+#include <ctime>
+#include <cmath>
 #include <string>
+#include <sstream>
 
 #endif

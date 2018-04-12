@@ -10,6 +10,8 @@
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Transform.hpp"
 
+static int     frameCount = 0;
+
 void updateThread(BeerEngine::Window *window)
 {
     static const double fixedUpdateTime = 1.0 / 60.0;
@@ -35,10 +37,14 @@ void updateThread(BeerEngine::Window *window)
             scene->update();
         if (timer >= 1.0)
         {
-            #ifdef BE_DEBUG
-            std::cout << "Fixed Update Number: " << fixeUpdateNumber << std::endl;
-            #endif
+            // #ifdef BE_DEBUG
+            // std::cout << "Fixed Update Number: " << fixeUpdateNumber << std::endl;
+            // std::cout << "FPS: " << frameCount << std::endl;
+            // #endif
+            std::cout << "FPS: " << frameCount << " - UPS: " << fixeUpdateNumber << std::endl;
+
             fixeUpdateNumber = 0;
+            frameCount = 0;
             timer -= 1.0;
         }
     }
@@ -47,6 +53,7 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
+    std::srand(std::time(nullptr));
     BeerEngine::Window *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     BeerEngine::AScene  *scene;
 
@@ -56,15 +63,6 @@ int main(void)
     BeerEngine::Graphics::Graphics::Load();
 
     // > TEST
-    BeerEngine::Graphics::MeshBuilder meshBuilder;
-    meshBuilder.addVertice(glm::vec3(0.0f, 0.0f, 0.0f))
-        .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
-        .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
-        .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
-        .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
-        .addVertice(glm::vec3(1.0f, 1.0f, 0.0f));
-    BeerEngine::Graphics::Mesh *mesh = meshBuilder.build();
-
     BeerEngine::Graphics::ShaderProgram shader(2);
     shader.load(0, GL_VERTEX_SHADER,
         BeerEngine::IO::FileUtils::LoadFile("shaders/basic.vs").c_str()
@@ -73,14 +71,21 @@ int main(void)
         BeerEngine::IO::FileUtils::LoadFile("shaders/basic.fs").c_str()
 	);
     shader.compile();
-    glm::quat viewRotate = glm::quat(glm::vec3(0.0f, glm::radians(0.0f), 0.0f));
-    glm::mat4 viewMat = glm::translate(glm::toMat4(viewRotate), glm::vec3(0.0f, -0.5f, 0.0f));
-    BeerEngine::Transform modelTransform;
-    modelTransform.pivot = glm::vec3(0.5f, 0.5f, 0.0f);
-    modelTransform.rotation = glm::quat(glm::vec3(glm::radians(45.f), glm::radians(45.f), 0.0f));
-    modelTransform.position = glm::vec3(0.0f, 0.0, 4.0f);
-    glm::mat4 modelMat = modelTransform.getMat4();
-    glm::mat4 identityMat = glm::translate(glm::vec3(0.0f, 0.0f, -4.0f));
+    glm::quat viewRotate = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(0.0f), 0.0f));
+    glm::mat4 viewMat = glm::translate(glm::toMat4(viewRotate), glm::vec3(0.0f, -1.0f, -0.0f));
+
+    BeerEngine::Transform planeTransform;
+    planeTransform.position = glm::vec3(0.0f, 0.0f, 4.0f);
+    planeTransform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(-22.5f), glm::radians(0.0f)));
+    glm::mat4 planeMat = planeTransform.getMat4();
+
+    BeerEngine::Transform cubeTransform;
+    cubeTransform.parent = &planeTransform;
+    cubeTransform.position = glm::vec3(0.0f, 0.0f, 0.0f);
+    cubeTransform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(-22.5f), glm::radians(0.0f)));
+    glm::mat4 cubeMat = cubeTransform.getMat4();
+
+    glm::vec3 lightDir;
     // ! TEST
 
     // depth-testing
@@ -89,6 +94,7 @@ int main(void)
     // CullFace
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
+    // FPS
     while (!glfwWindowShouldClose(window->getWindow()))
     {
         window->clear();
@@ -102,15 +108,23 @@ int main(void)
         shader.bind();
         shader.uniformMat("projection", window->getProjection3D());
         shader.uniformMat("view", viewMat);
-        shader.uniformMat("model", modelMat);
-        shader.uniform3f("color", 0.75f, 0.0f, 0.0f);
-        mesh->render();
-        shader.uniformMat("model", identityMat);
+        shader.uniformMat("model", planeMat);
+
+        double time = glfwGetTime();
+        lightDir = glm::normalize(glm::vec3(std::cos(time), -2, std::sin(time)));
+        
+        shader.uniform3f("lightDir", lightDir);
         shader.uniform3f("color", 0.75f, 0.75f, 0.75f);
         BeerEngine::Graphics::Graphics::plane->render();
+
+        shader.uniformMat("model", cubeMat);
+        shader.uniform3f("color", 0.f, 0.75f, 0.75f);
+        BeerEngine::Graphics::Graphics::cube->render();
+        
         shader.unbind();
     // ! TEST
         window->swapBuffer();
+        frameCount++;
     }
     BeerEngine::Graphics::Graphics::UnLoad();
     delete window;

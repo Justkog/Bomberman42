@@ -12,6 +12,7 @@ namespace BeerEngine
 		{
 		public:
 			static Mesh	*plane;
+			static Mesh	*cube;
 
 			static void Load(void);
 			static void UnLoad(void);
