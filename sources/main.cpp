@@ -5,6 +5,7 @@
 #include "Core/SceneManager.hpp"
 #include "Core/Graphics/Mesh.hpp"
 #include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/IO/FileUtils.hpp"
 
 void updateThread(BeerEngine::Window *window)
 {
@@ -54,29 +55,24 @@ int main(void)
     const glm::vec3 vertPos[] = {
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(1.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f)
+		glm::vec3(0.0f, 1.0f, 0.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f),
+		glm::vec3(1.0f, 0.0f, 0.0f),
+		glm::vec3(1.0f, 1.0f, 0.0f)
 	};
-    mesh.add(0, GL_FLOAT, 3, (void *)vertPos, 3);
+    mesh.add(0, GL_FLOAT, 3, (void *)vertPos, 6);
 
     BeerEngine::Graphics::ShaderProgram shader(2);
-    shader.load(0, GL_VERTEX_SHADER, 
-		"#version 330 core\n"
-		"layout(location = 0) in vec3 vertexPosition;"
-		"void main()"
-		"{"
-		"   gl_Position = vec4(vertexPosition, 1);"
-		"}"
-    );
+    shader.load(0, GL_VERTEX_SHADER,
+        BeerEngine::IO::FileUtils::LoadFile("shaders/basic.vs").c_str()
+	);
     shader.load(1, GL_FRAGMENT_SHADER,
-		"#version 330 core\n"
-		"out vec4 outColor;"
-        "uniform vec3 color;"
-		"void main()"
-		"{"
-		"    outColor = vec4(color, 1.0);"
-		"}"
-    );
+        BeerEngine::IO::FileUtils::LoadFile("shaders/basic.fs").c_str()
+	);
     shader.compile();
+    glm::mat4 modelMat = glm::translate(glm::mat4(1.0f), glm::vec3(-0.5f, -0.5f, -5.0f));
+    glm::quat viewRotate = glm::quat(glm::vec3(0.0f, glm::radians(0.0f), 0.0f));
+    glm::mat4 viewMat = glm::translate(glm::toMat4(viewRotate), glm::vec3(0.0f, 0.0f, 0.0f));
     // ! TEST
 
     // depth-testing
@@ -96,6 +92,9 @@ int main(void)
         }
     // > TEST
         shader.bind();
+        shader.uniformMat("projection", window->getProjection3D());
+        shader.uniformMat("view", viewMat);
+        shader.uniformMat("model", modelMat);
         shader.uniform3f("color", 1.0f, 0.0f, 0.0f);
         mesh.render();
         shader.unbind();

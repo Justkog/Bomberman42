@@ -21,9 +21,10 @@ SRC = \
 	Core/GameObject.cpp \
 	Core/Component/Component.cpp \
 	Core/Graphics/Mesh.cpp \
-	Core/Graphics/ShaderProgram.cpp
+	Core/Graphics/ShaderProgram.cpp \
+	Core/IO/FileUtils.cpp
 
-DIR = Core Core/Component Core/Graphics
+DIR = Core Core/Component Core/Graphics Core/IO Game
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
