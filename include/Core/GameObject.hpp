@@ -2,6 +2,7 @@
 #define BE_CORE_GAMEOBJECT_HPP 1
 
 #include <vector>
+#include "Transform.hpp"
 
 namespace BeerEngine
 {
@@ -17,8 +18,15 @@ namespace BeerEngine
 		std::vector<Component::Component *> _components;
 
 	public:
+		Transform	transform;
+
 		GameObject(int uniqueID);
 		~GameObject(void);
+
+		virtual void    fixedUpdate(void) const = 0;
+        virtual void    update(void) const = 0;
+        virtual void    renderUpdate(void) const = 0;
+        virtual void    render(void) const = 0;
 
         template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*AddComponent(void)
@@ -38,6 +46,11 @@ namespace BeerEngine
 			}
 			return (nullptr);
 		}
+
+		void    componentFixedUpdate(void);
+        void    componentUpdate(void);
+        void    componentRenderUpdate(void);
+        void    componentRender(void);
 
 	};
 }

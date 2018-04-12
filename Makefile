@@ -19,8 +19,10 @@ SRC = \
 	Core/SceneManager.cpp \
 	Core/AScene.cpp \
 	Core/GameObject.cpp \
+	Core/Transform.cpp \
 	Core/Component/Component.cpp \
 	Core/Graphics/Mesh.cpp \
+	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/IO/FileUtils.cpp
 

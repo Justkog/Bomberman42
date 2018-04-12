@@ -4,8 +4,10 @@
 #include "Core/AScene.hpp"
 #include "Core/SceneManager.hpp"
 #include "Core/Graphics/Mesh.hpp"
+#include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Graphics/ShaderProgram.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Transform.hpp"
 
 void updateThread(BeerEngine::Window *window)
 {
@@ -51,16 +53,25 @@ int main(void)
     updateLoop.detach();
 
     // > TEST
-    BeerEngine::Graphics::Mesh mesh(1);
-    const glm::vec3 vertPos[] = {
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(1.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f),
-		glm::vec3(1.0f, 0.0f, 0.0f),
-		glm::vec3(1.0f, 1.0f, 0.0f)
-	};
-    mesh.add(0, GL_FLOAT, 3, (void *)vertPos, 6);
+    // BeerEngine::Graphics::Mesh mesh(1);
+    // const glm::vec3 vertPos[] = {
+	// 	glm::vec3(0.0f, 0.0f, 0.0f),
+	// 	glm::vec3(1.0f, 0.0f, 0.0f),
+	// 	glm::vec3(0.0f, 1.0f, 0.0f),
+	// 	glm::vec3(0.0f, 1.0f, 0.0f),
+	// 	glm::vec3(1.0f, 0.0f, 0.0f),
+	// 	glm::vec3(1.0f, 1.0f, 0.0f)
+	// };
+    // mesh.add(0, GL_FLOAT, 3, (void *)vertPos, 6);
+
+    BeerEngine::Graphics::MeshBuilder meshBuilder;
+    meshBuilder.addVertice(glm::vec3(0.0f, 0.0f, 0.0f))
+    .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
+    .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
+    .addVertice(glm::vec3(0.0f, 1.0f, 0.0f))
+    .addVertice(glm::vec3(1.0f, 0.0f, 0.0f))
+    .addVertice(glm::vec3(1.0f, 1.0f, 0.0f));
+    BeerEngine::Graphics::Mesh *mesh = meshBuilder.build();
 
     BeerEngine::Graphics::ShaderProgram shader(2);
     shader.load(0, GL_VERTEX_SHADER,
@@ -70,9 +81,12 @@ int main(void)
         BeerEngine::IO::FileUtils::LoadFile("shaders/basic.fs").c_str()
 	);
     shader.compile();
-    glm::mat4 modelMat = glm::translate(glm::mat4(1.0f), glm::vec3(-0.5f, -0.5f, -5.0f));
     glm::quat viewRotate = glm::quat(glm::vec3(0.0f, glm::radians(0.0f), 0.0f));
     glm::mat4 viewMat = glm::translate(glm::toMat4(viewRotate), glm::vec3(0.0f, 0.0f, 0.0f));
+    BeerEngine::Transform modelTransform;
+    modelTransform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.f), 0.0f));
+    modelTransform.position = glm::vec3(-0.5, -0.5, 4.0f);
+    glm::mat4 modelMat = modelTransform.getMat4();
     // ! TEST
 
     // depth-testing
@@ -96,7 +110,7 @@ int main(void)
         shader.uniformMat("view", viewMat);
         shader.uniformMat("model", modelMat);
         shader.uniform3f("color", 1.0f, 0.0f, 0.0f);
-        mesh.render();
+        mesh->render();
         shader.unbind();
     // ! TEST
         window->swapBuffer();
