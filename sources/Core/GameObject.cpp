@@ -18,6 +18,12 @@ namespace BeerEngine
 		}
 	}
 
+	void	GameObject::start(void) {}
+	void    GameObject::fixedUpdate(void) {}
+	void    GameObject::update(void) {}
+	void    GameObject::renderUpdate(void) {}
+	void    GameObject::render(void) {}
+
 	void    GameObject::componentFixedUpdate(void)
 	{
 		for (Component::Component *c : _components)

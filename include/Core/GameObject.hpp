@@ -21,12 +21,13 @@ namespace BeerEngine
 		Transform	transform;
 
 		GameObject(int uniqueID);
-		~GameObject(void);
+		virtual ~GameObject(void);
 
-		virtual void    fixedUpdate(void) const = 0;
-        virtual void    update(void) const = 0;
-        virtual void    renderUpdate(void) const = 0;
-        virtual void    render(void) const = 0;
+		virtual void	start(void);
+		virtual void    fixedUpdate(void);
+        virtual void    update(void);
+        virtual void    renderUpdate(void);
+        virtual void    render(void);
 
         template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*AddComponent(void)

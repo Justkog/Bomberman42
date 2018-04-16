@@ -2,6 +2,7 @@
 #define BE_CORE_ASCENE_HPP 1
 
 #include <map>
+#include <mutex>
 #include "Core.hpp"
 #include "GameObject.hpp"
 
@@ -11,12 +12,15 @@ namespace BeerEngine
     {
     private:
         std::map<int, GameObject *> _gameObjects;
-    
+        std::mutex                  updateMutex;
+        
     public:
         AScene(void);
         virtual ~AScene(void);
 
         virtual void    init(void) = 0;
+
+        void    mutexLock(bool lock);
 
         void    fixedUpdate(void);
         void    update(void);
@@ -30,6 +34,7 @@ namespace BeerEngine
             // while (_gameObjects.find(uniqueID = std::rand()) != _gameObjects.end());
 			T *c = new T(uniqueID++);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
+            c->start();
 			return (c);
 		}
     };

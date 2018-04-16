@@ -17,6 +17,14 @@ namespace BeerEngine
         _gameObjects.clear();
     }
 
+     void    AScene::mutexLock(bool lock)
+     {
+        if (lock)
+            updateMutex.lock();
+        else
+            updateMutex.unlock();
+     }
+
     void    AScene::fixedUpdate(void)
     {
         std::map<int, GameObject *>::iterator it;

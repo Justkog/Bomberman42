@@ -124,18 +124,33 @@ namespace BeerEngine
 		void			ShaderProgram::uniform1i(std::string const &name, int i)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
+			uniform1i(id, i);
+		}
+
+		void			ShaderProgram::uniform1i(GLint id, int i)
+		{
 			glUniform1i(id, i);
 		}
 
 		void			ShaderProgram::uniform1f(std::string const &name, float x)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
+			uniform1f(id, x);
+		}
+
+		void			ShaderProgram::uniform1f(GLint id, float x)
+		{
 			glUniform1f(id, x);
 		}
 
 		void			ShaderProgram::uniform2f(std::string const &name, float x, float y)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
+			uniform2f(id, x, y);
+		}
+
+		void			ShaderProgram::uniform2f(GLint id, float x, float y)
+		{
 			glUniform2f(id, x, y);
 		}
 
@@ -152,6 +167,11 @@ namespace BeerEngine
 		void			ShaderProgram::uniform3f(std::string const &name, float x, float y, float z)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
+			uniform3f(id, x, y, z);
+		}
+
+		void			ShaderProgram::uniform3f(GLint id, float x, float y, float z)
+		{
 			glUniform3f(id, x, y, z);
 		}
 
@@ -168,6 +188,11 @@ namespace BeerEngine
 		void			ShaderProgram::uniform4f(std::string const &name, float x, float y, float z, float w)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
+			uniform4f(id, x, y, z, w);
+		}
+
+		void			ShaderProgram::uniform4f(GLint id, float x, float y, float z, float w)
+		{
 			glUniform4f(id, x, y, z, w);
 		}
 
@@ -179,6 +204,11 @@ namespace BeerEngine
 		void			ShaderProgram::uniformMat(std::string const &name, glm::mat4 &mat)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
+			uniformMat(id, mat);
+		}
+
+		void			ShaderProgram::uniformMat(GLint id, glm::mat4 &mat)
+		{
 			glUniformMatrix4fv(id, 1, GL_FALSE, glm::value_ptr(mat));
 		}
 	}

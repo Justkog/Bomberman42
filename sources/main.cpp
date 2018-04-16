@@ -25,6 +25,8 @@ void updateThread(BeerEngine::Window *window)
     while (!glfwWindowShouldClose(window->getWindow()))
     {
         scene = BeerEngine::SceneManager::GetCurrent();
+        if (scene != nullptr)
+            scene->mutexLock(true);
         BeerEngine::Time::Update();
         fixedTimer += BeerEngine::Time::GetDeltaTime();
         timer += BeerEngine::Time::GetDeltaTime();
@@ -36,7 +38,11 @@ void updateThread(BeerEngine::Window *window)
             fixedTimer -= fixedUpdateTime;
         }
         if (scene != nullptr)
+        {
             scene->update();
+            scene->mutexLock(false);
+        }
+            
         if (timer >= 1.0)
         {
             // #ifdef BE_DEBUG
@@ -59,11 +65,9 @@ int main(void)
     BeerEngine::Window *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     BeerEngine::AScene  *scene;
 
-    std::thread updateLoop (updateThread, window);
-    updateLoop.detach();
-
     BeerEngine::Graphics::Graphics::Load();
     BeerEngine::SceneManager::LoadScene<SceneTest>();
+    
     // > TEST
     BeerEngine::Graphics::ShaderProgram shader(2);
     shader.load(0, GL_VERTEX_SHADER,
@@ -98,6 +102,9 @@ int main(void)
     // glm::vec3 lightDir;
     // ! TEST
 
+    // Thread Update 
+    std::thread updateLoop (updateThread, window);
+    updateLoop.detach();
     // depth-testing
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -111,8 +118,10 @@ int main(void)
         scene = BeerEngine::SceneManager::GetCurrent();
         if (scene != nullptr)
         {
+            scene->mutexLock(true);
             scene->renderUpdate();
             scene->render();
+            scene->mutexLock(false);
         }
     // > TEST
         shader.bind();
