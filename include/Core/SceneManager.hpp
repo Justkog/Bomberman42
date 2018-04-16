@@ -19,6 +19,7 @@ namespace BeerEngine
             if (_Current != nullptr)
                 delete _Current;
             _Current = new T();
+            _Current->init();
         }
     };
 }

@@ -1,4 +1,5 @@
 #include "Core/Window.hpp"
+#include "Core/Input.hpp"
 
 namespace BeerEngine
 {
@@ -46,6 +47,59 @@ namespace BeerEngine
         return (_ortho);
     }
 
+    static void     win_resize_callback(GLFWwindow *window, int width, int height)
+    {
+        static const float aspect = 16.0f / 9.0f;
+        Window  *win = (Window *)glfwGetWindowUserPointer(window);
+        if (win)
+        {
+            float a = (float)width / (float)height;
+            int minX = 0;
+            int minY = 0;
+            int maxX = width;
+            int maxY = height;
+            if (a < aspect)
+            {
+                maxY = (int)std::round((float)width * 9.0f / 16.0f);
+                minY = (height - maxY) / 2;
+            }
+            else if (a > aspect)
+            {
+                maxX = (int)std::round((float)height * 16.0f / 9.0f);
+                minX = (width - maxX) / 2;
+            }
+            glViewport(minX, minY, maxX, maxY);
+
+        }
+    }
+
+    static void     win_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+    {
+        (void)window;
+        // std::cout << "Key: " << key << ", action: " << action << std::endl;
+        Input::SetKey(key, action);
+    }
+
+    static void     win_cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+    {
+        (void)window;
+        BeerEngine::Input::mousePosition[0] = xpos;
+        BeerEngine::Input::mousePosition[1] = ypos;
+    }
+
+    static void     win_mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+    {
+        (void)window;
+        // std::cout << "Button: " << button << ", action: " << action << std::endl;
+        Input::SetMouseButton(button, action);
+    }
+
+    static void     win_scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+    {
+        (void)window;
+        BeerEngine::Input::mouseScroll[0] = xoffset;
+        BeerEngine::Input::mouseScroll[1] = yoffset;
+    }
 
     Window          *Window::CreateWindow(std::string title, int width, int height)
     {
@@ -72,6 +126,11 @@ namespace BeerEngine
             {
                 glfwMakeContextCurrent(win->getWindow());
                 glfwSetWindowUserPointer(win->getWindow(), win);
+                glfwSetFramebufferSizeCallback(win->getWindow(), win_resize_callback);
+                glfwSetKeyCallback(win->getWindow(), win_key_callback);
+                glfwSetCursorPosCallback(win->getWindow(), win_cursor_position_callback);
+                glfwSetMouseButtonCallback(win->getWindow(), win_mouse_button_callback);
+                glfwSetScrollCallback(win->getWindow(), win_scroll_callback);
                 glfwSwapInterval(0);
                 glewExperimental=true;
                 if (glewInit() != GLEW_OK)

@@ -14,20 +14,21 @@ namespace BeerEngine
     
     public:
         AScene(void);
-        ~AScene(void);
+        virtual ~AScene(void);
+
+        virtual void    init(void) = 0;
 
         void    fixedUpdate(void);
         void    update(void);
         void    renderUpdate(void);
         void    render(void);
 
-
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
 		{
-            int     uniqueID = 0;
-            while (_gameObjects.find(uniqueID = std::rand()) != _gameObjects.end());
-			T *c = new T(uniqueID);
+            static int     uniqueID = 0;
+            // while (_gameObjects.find(uniqueID = std::rand()) != _gameObjects.end());
+			T *c = new T(uniqueID++);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
 			return (c);
 		}

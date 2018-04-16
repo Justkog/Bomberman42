@@ -14,6 +14,7 @@ namespace BeerEngine
         {
             delete (it->second);
         }
+        _gameObjects.clear();
     }
 
     void    AScene::fixedUpdate(void)

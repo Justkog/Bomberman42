@@ -9,6 +9,6 @@ in vec3 vNormal;
 
 void main()
 {
-    float l = max(dot(vNormal, -lightDir), 0.05f);
+    float l = max(dot(vNormal, lightDir), 0.05f);
     outColor = vec4(color * l, 1.0);
 }

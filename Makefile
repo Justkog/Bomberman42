@@ -20,12 +20,15 @@ SRC = \
 	Core/AScene.cpp \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \
+	Core/Input.cpp \
 	Core/Component/Component.cpp \
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
-	Core/IO/FileUtils.cpp
+	Core/IO/FileUtils.cpp \
+	\
+	Game/SceneTest.cpp
 
 DIR = Core Core/Component Core/Graphics Core/IO Game
 
