@@ -10,8 +10,8 @@ namespace BeerEngine
 		class IUpdate
 		{
 		public:
-			virtual void    fixedUpdate(void) const = 0;
-       		virtual void    update(void) const = 0;
+			virtual void    fixedUpdate(void) = 0;
+       		virtual void    update(void) = 0;
 		};
 	}
 }

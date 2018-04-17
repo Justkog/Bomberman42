@@ -13,7 +13,7 @@ namespace BeerEngine
 			GameObject		*_gameObject;
 		public:
 			Component(GameObject *gameObject);
-			virtual ~Component(void) = 0;
+			virtual ~Component(void) {}
 
 		};
 	}

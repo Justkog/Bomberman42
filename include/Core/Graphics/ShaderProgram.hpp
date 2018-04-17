@@ -21,6 +21,7 @@ namespace BeerEngine
 			void			bind(void);
 			void			unbind(void);
 			static void		Unbind(void);
+			GLint			getUniformLocation(std::string const &name);
 			void			uniform1i(std::string const &name, int i);
 			void			uniform1i(GLint id, int i);
 			void			uniform1f(std::string const &name, float x);
@@ -33,6 +34,7 @@ namespace BeerEngine
 			void			uniform3f(GLint id, float x, float y, float z);
 			void			uniform3f(std::string const &name, glm::vec3 const &vec);
 			void			uniform3f(std::string const &name, float *data);
+			void			uniform4f(std::string const &name, glm::vec4 const &vec);
 			void			uniform4f(std::string const &name, float x, float y, float z, float w);
 			void			uniform4f(GLint id, float x, float y, float z, float w);
 			void			uniform4f(std::string const &name, float *data);

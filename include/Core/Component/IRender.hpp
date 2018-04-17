@@ -10,8 +10,8 @@ namespace BeerEngine
 		class IRender
 		{
 		public:
-			virtual void    renderUpdate(void) const = 0;
-			virtual void    render(void) const = 0;
+			virtual void    renderUpdate(void) = 0;
+			virtual void    render(void) = 0;
 		};
 	}
 }

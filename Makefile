@@ -22,10 +22,12 @@ SRC = \
 	Core/Transform.cpp \
 	Core/Input.cpp \
 	Core/Component/Component.cpp \
+	Core/Component/MeshRenderer.cpp \
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
+	Core/Graphics/AMaterial.cpp \
 	Core/IO/FileUtils.cpp \
 	\
 	Game/SceneTest.cpp

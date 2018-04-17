@@ -2,13 +2,13 @@
 
 out vec4 outColor;
 
-uniform vec3 lightDir;
-uniform vec3 color;
+uniform vec4 color;
 
 in vec3 vNormal;
 
 void main()
 {
+    vec3 lightDir = normalize(vec3(-1, -1, -0.5f));
     float l = max(dot(vNormal, lightDir), 0.05f);
-    outColor = vec4(color * l, 1.0);
+    outColor = color * vec4(l, l, l, 1.0f);
 }

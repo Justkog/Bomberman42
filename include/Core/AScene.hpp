@@ -5,6 +5,13 @@
 #include <mutex>
 #include "Core.hpp"
 #include "GameObject.hpp"
+#include "Component/Component.hpp"
+#include "Component/MeshRenderer.hpp"
+#include "Graphics/Mesh.hpp"
+#include "Graphics/MeshBuilder.hpp"
+#include "Graphics/ShaderProgram.hpp"
+#include "Graphics/Graphics.hpp"
+#include "Graphics/AMaterial.hpp"
 
 namespace BeerEngine
 {
