@@ -120,6 +120,10 @@ namespace BeerEngine
 			glUseProgram(0);
 		}
 
+		GLint			ShaderProgram::getUniformLocation(std::string const &name)
+		{
+			return (glGetUniformLocation(_program, name.c_str()));
+		}
 
 		void			ShaderProgram::uniform1i(std::string const &name, int i)
 		{
@@ -183,6 +187,11 @@ namespace BeerEngine
 		void			ShaderProgram::uniform3f(std::string const &name, float *data)
 		{
 			uniform3f(name, data[0], data[1], data[2]);
+		}
+
+		void			ShaderProgram::uniform4f(std::string const &name, glm::vec4 const &vec)
+		{
+			uniform4f(name, vec[0], vec[1], vec[2], vec[3]);
 		}
 
 		void			ShaderProgram::uniform4f(std::string const &name, float x, float y, float z, float w)

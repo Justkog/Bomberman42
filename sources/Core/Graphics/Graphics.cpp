@@ -8,35 +8,28 @@ namespace BeerEngine
 		Mesh	*Graphics::plane = nullptr;
 		Mesh	*Graphics::cube = nullptr;
 
-		static void	LoadPlane(Mesh *plane)
+		static Mesh	*LoadPlane(void)
 		{
-			const glm::vec3 vectices[] = {
-				glm::vec3(-1.0f, 0.0f, -1.0f),
-				glm::vec3(-1.0f, 0.0f, 1.0f),
-				glm::vec3(1.0f, 0.0f, 1.0f),
-				glm::vec3(1.0f, 0.0f, 1.0f),
-				glm::vec3(1.0f, 0.0f, -1.0f),
-				glm::vec3(-1.0f, 0.0f, -1.0f)
-			};
-			plane->add(0, GL_FLOAT, 3, (void *)vectices, 6);
-			const glm::vec3 normals[] = {
-				glm::vec3(0.0f, 1.0f, 0.0f),
-				glm::vec3(0.0f, 1.0f, 0.0f),
-				glm::vec3(0.0f, 1.0f, 0.0f),
-				glm::vec3(0.0f, 1.0f, 0.0f),
-				glm::vec3(0.0f, 1.0f, 0.0f),
-				glm::vec3(0.0f, 1.0f, 0.0f)
-			};
-			plane->add(1, GL_FLOAT, 3, (void *)normals, 6);
-			const glm::vec2 uvs[] = {
-				glm::vec2(0.0f, 1.0f),
-				glm::vec2(0.0f, 0.0f),
-				glm::vec2(1.0f, 1.0f),
-				glm::vec2(1.0f, 1.0f),
-				glm::vec2(1.0f, 0.0f),
-				glm::vec2(0.0f, 1.0f)
-			};
-			plane->add(2, GL_FLOAT, 2, (void *)uvs, 6);
+			MeshBuilder builder;
+			builder.addTriangle(
+					glm::vec3(-1.0f, 0.0f, -1.0f),
+					glm::vec3(-1.0f, 0.0f, 1.0f),
+					glm::vec3(1.0f, 0.0f, 1.0f)
+				).addTriangleUV(
+					glm::vec2(0.0f, 1.0f),
+					glm::vec2(0.0f, 0.0f),
+					glm::vec2(1.0f, 1.0f)
+				).addTriangle(
+					glm::vec3(1.0f, 0.0f, 1.0f),
+					glm::vec3(1.0f, 0.0f, -1.0f),
+					glm::vec3(-1.0f, 0.0f, -1.0f)
+				).addTriangleUV(
+					glm::vec2(1.0f, 1.0f),
+					glm::vec2(1.0f, 0.0f),
+					glm::vec2(0.0f, 1.0f)
+				).calculTangent()
+			;
+			return (builder.build());
 		}
 
 		static Mesh	*LoadCube(void)
@@ -45,118 +38,86 @@ namespace BeerEngine
 			builder
 				// TOP
 				.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// DOWN
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, -1.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, -1.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, -1.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, -1.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, -1.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, -1.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// FRONT
 				.addVertice(glm::vec3(-0.5f, -0.5f, 0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, 1.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f, 0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, 1.0f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, 1.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, 1.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, 1.0f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, 0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, 1.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// BACK
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, -1.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  -0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, -1.0f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  -0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, -1.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  -0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, -1.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, -1.0f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(0.0f, 0.0f, -1.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// LEFT
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(-1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f,  0.5f))
-				.addNormal(glm::vec3(-1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(-1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(-1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
-				.addNormal(glm::vec3(-1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(-1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// RIGHT
 				.addVertice(glm::vec3(0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3(0.5f, 0.5f, -0.5f))
-				.addNormal(glm::vec3(1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(0.5f, 0.5f,  0.5f))
-				.addNormal(glm::vec3(1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(0.5f, -0.5f,  0.5f))
-				.addNormal(glm::vec3(1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3(0.5f, -0.5f, -0.5f))
-				.addNormal(glm::vec3(1.0f, 0.0f, 0.0f))
 				.addUV(glm::vec2(0.0f, 1.0f))
+				// Calcul nornal
+				.calculNormal()
+				// Calcul Tangent and Bitangent
+				.calculTangent()
 			;
 			return (builder.build());
 		}
@@ -164,8 +125,7 @@ namespace BeerEngine
 		void Graphics::Load(void)
 		{
 			// PLANE
-			plane = new Mesh(3);
-			LoadPlane(plane);
+			plane = LoadPlane();
 			// CUBE
 			cube = LoadCube();
 		}
