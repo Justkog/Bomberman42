@@ -12,6 +12,8 @@
 
 #include "Game/SceneTest.hpp"
 
+#include "Audio/AudioMaster.hpp"
+
 static int     frameCount = 0;
 
 void updateThread(BeerEngine::Window *window)
@@ -45,7 +47,7 @@ void updateThread(BeerEngine::Window *window)
             scene->update();
             scene->mutexLock(false);
         }
-            
+
         if (timer >= 1.0)
         {
 #ifdef BE_DEBUG
@@ -61,11 +63,12 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
+    AudioMaster audio;
     BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     BeerEngine::AScene  *scene;
     BeerEngine::Graphics::Graphics::Load();
     BeerEngine::SceneManager::LoadScene<SceneTest>();
-    // Thread Update 
+    // Thread Update
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
     // depth-testing

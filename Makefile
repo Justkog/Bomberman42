@@ -12,7 +12,8 @@ LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 	`pkg-config --static --libs glew` \
 	`pkg-config --static --libs glm` \
 	`pkg-config --static --libs libpng`\
-	`pkg-config --static --libs openal`
+	`pkg-config --static --libs openal` 
+	# `pkg-config --static --libs sndfile`
 SRC = \
 	main.cpp \
 	Core/Window.cpp \
@@ -31,9 +32,11 @@ SRC = \
 	Core/Graphics/AMaterial.cpp \
 	Core/IO/FileUtils.cpp \
 	\
-	Game/SceneTest.cpp
+	Game/SceneTest.cpp \
+	\
+	Audio/AudioMaster.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game
+DIR = Core Core/Component Core/Graphics Core/IO Game Audio
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
@@ -41,7 +44,9 @@ CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 	`pkg-config glew --cflags-only-I` \
 	`pkg-config glm --cflags-only-I` \
 	`pkg-config libpng --cflags-only-I`\
-	`pkg-config openal --cflags-only-I`
+	`pkg-config openal --cflags-only-I` \
+	`pkg-config sndfile --cflags-only-I`
+
 
 
 
@@ -66,6 +71,8 @@ install:
 	~/.brew/bin/brew install glew
 	~/.brew/bin/brew install libpng
 	~/.brew/bin/brew install openal-soft
+	~/.brew/bin/brew install linsndfile
+	sh script.sh
 
 relink:
 %.a: relink
