@@ -12,8 +12,9 @@ LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 	`pkg-config --static --libs glew` \
 	`pkg-config --static --libs glm` \
 	`pkg-config --static --libs libpng`\
-	`pkg-config --static --libs openal`
+	`pkg-config --static --libs openal` \
 	# `pkg-config --static --libs sndfile`
+
 SRC = \
 	main.cpp \
 	Core/Window.cpp \
@@ -43,7 +44,7 @@ CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 	`pkg-config glfw3 --cflags-only-I` \
 	`pkg-config glew --cflags-only-I` \
 	`pkg-config glm --cflags-only-I` \
-	`pkg-config libpng --cflags-only-I`\
+	`pkg-config libpng --cflags-only-I` \
 	`pkg-config openal --cflags-only-I` \
 	`pkg-config sndfile --cflags-only-I`
 
@@ -71,10 +72,9 @@ install:
 	~/.brew/bin/brew install glew
 	~/.brew/bin/brew install libpng
 	~/.brew/bin/brew install openal-soft
-	~/.brew/bin/brew install linsndfile
+	~/.brew/bin/brew install libsndfile
 	sh script.sh
 
-	sh script.sh
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)
