@@ -6,7 +6,7 @@
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:46:42 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/18 19:20:02 by stmartin         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:43:59 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,48 @@ void		AudioMaster::ShutdownOpenAL()
     alcCloseDevice(Device);
 }
 
+
+ALuint		AudioMaster::LoadSound(const std::string& Filename)
+{
+    // Ouverture du fichier audio avec libsndfile
+    SF_INFO FileInfos;
+    SNDFILE* File = sf_open(Filename.c_str(), SFM_READ, &FileInfos);
+
+	if (!File)
+        return 0;
+
+	// Lecture du nombre d'échantillons et du taux d'échantillonnage (nombre d'échantillons à lire par seconde)
+    ALsizei NbSamples  = static_cast<ALsizei>(FileInfos.channels * FileInfos.frames);
+    ALsizei SampleRate = static_cast<ALsizei>(FileInfos.samplerate);
+
+	// Lecture des échantillons audio au format entier 16 bits signé (le plus commun)
+    std::vector<ALshort> Samples(NbSamples);
+    if (sf_read_short(File, &Samples[0], NbSamples) < NbSamples)
+        return 0;
+	// Fermeture du fichier
+	sf_close(File);
+	// Détermination du format en fonction du nombre de canaux
+    ALenum Format;
+    switch (FileInfos.channels)
+    {
+        case 1 :  Format = AL_FORMAT_MONO16;   break;
+        case 2 :  Format = AL_FORMAT_STEREO16; break;
+        default : return 0;
+    }
+
+	// Création du tampon OpenAL
+	ALuint Buffer;
+	alGenBuffers(1, &Buffer);
+
+	// Remplissage avec les échantillons lus
+    alBufferData(Buffer, Format, &Samples[0], NbSamples * sizeof(ALushort), SampleRate);
+
+    // Vérification des erreurs
+    if (alGetError() != AL_NO_ERROR)
+        return 0;
+
+    return Buffer;
+}
 // void		AudioMaster::init()
 // {
 	// int channel, samplerate, bps, size;
