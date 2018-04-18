@@ -12,7 +12,7 @@ LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 	`pkg-config --static --libs glew` \
 	`pkg-config --static --libs glm` \
 	`pkg-config --static --libs libpng`\
-	`pkg-config --static --libs openal` 
+	`pkg-config --static --libs openal`
 	# `pkg-config --static --libs sndfile`
 SRC = \
 	main.cpp \
@@ -74,6 +74,7 @@ install:
 	~/.brew/bin/brew install linsndfile
 	sh script.sh
 
+	sh script.sh
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)
