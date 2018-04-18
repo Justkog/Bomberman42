@@ -66,7 +66,7 @@ install:
 	~/.brew/bin/brew install glew
 	~/.brew/bin/brew install libpng
 	~/.brew/bin/brew install openal-soft
-
+	sh script.sh
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)
