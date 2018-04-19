@@ -9,7 +9,7 @@ namespace Game
 {
 	namespace Component
 	{
-		class Player : public BeerEngine::Component::Component, BeerEngine::Component::IUpdate
+		class Player : public BeerEngine::Component::Component, public BeerEngine::Component::IUpdate
 		{
 		protected:
 
