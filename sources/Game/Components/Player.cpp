@@ -13,12 +13,12 @@ namespace Game
 
         void    Player::fixedUpdate(void)
         {
-            std::cout << "test" << "\n";
+            
         }
 
         void    Player::update(void)
         {
-            std::cout << "test" << "\n";
+
         }
     }
 }
