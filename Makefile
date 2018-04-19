@@ -35,9 +35,12 @@ SRC = \
 	\
 	Game/SceneTest.cpp \
 	\
-	Audio/AudioMaster.cpp
+	Audio/AudioMaster.cpp \
+	\
+	Game/Components/Player.cpp
+	
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Audio
+DIR = Core Core/Component Core/Graphics Core/IO Game Audio Game/Components
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
