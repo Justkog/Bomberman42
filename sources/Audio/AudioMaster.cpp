@@ -6,7 +6,7 @@
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:46:42 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/18 19:43:59 by stmartin         ###   ########.fr       */
+/*   Updated: 2018/04/19 16:41:27 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 AudioMaster::AudioMaster()
 {
-	InitOpenAL();
+	entryPoint();
 }
 
 AudioMaster::~AudioMaster()
 { }
 
 
-bool		AudioMaster::InitOpenAL()
+bool		AudioMaster::InitOpenAL(const char* DeviceName = NULL)
 {
     // Ouverture du device
     ALCdevice* Device = alcOpenDevice(NULL);
@@ -85,7 +85,10 @@ ALuint		AudioMaster::LoadSound(const std::string& Filename)
     SNDFILE* File = sf_open(Filename.c_str(), SFM_READ, &FileInfos);
 
 	if (!File)
+    {
+        std::cerr << "Impossible d'ouvrir le fichier audio" << std::endl;
         return 0;
+    }
 
 	// Lecture du nombre d'échantillons et du taux d'échantillonnage (nombre d'échantillons à lire par seconde)
     ALsizei NbSamples  = static_cast<ALsizei>(FileInfos.channels * FileInfos.frames);
@@ -93,8 +96,11 @@ ALuint		AudioMaster::LoadSound(const std::string& Filename)
 
 	// Lecture des échantillons audio au format entier 16 bits signé (le plus commun)
     std::vector<ALshort> Samples(NbSamples);
-    if (sf_read_short(File, &Samples[0], NbSamples) < NbSamples)
+	if (sf_read_short(File, &Samples[0], NbSamples) < NbSamples)
+    {
+        std::cerr << "Impossible de lire les �chantillons stock�s dans le fichier audio" << std::endl;
         return 0;
+    }
 	// Fermeture du fichier
 	sf_close(File);
 	// Détermination du format en fonction du nombre de canaux
@@ -103,7 +109,9 @@ ALuint		AudioMaster::LoadSound(const std::string& Filename)
     {
         case 1 :  Format = AL_FORMAT_MONO16;   break;
         case 2 :  Format = AL_FORMAT_STEREO16; break;
-        default : return 0;
+		default :
+            std::cerr << "Format audio non support� (plus de 2 canaux)" << std::endl;
+            return 0;
     }
 
 	// Création du tampon OpenAL
@@ -114,10 +122,82 @@ ALuint		AudioMaster::LoadSound(const std::string& Filename)
     alBufferData(Buffer, Format, &Samples[0], NbSamples * sizeof(ALushort), SampleRate);
 
     // Vérification des erreurs
-    if (alGetError() != AL_NO_ERROR)
+	if (alGetError() != AL_NO_ERROR)
+    {
+        std::cerr << "Impossible de remplir le tampon OpenAL avec les �chantillons du fichier audio" << std::endl;
         return 0;
+    }
 
     return Buffer;
+}
+
+int			AudioMaster::entryPoint()
+{
+	int Choice = 0;
+
+    // Recuperation des devices disponibles
+    std::vector<std::string> Devices;
+    GetDevices(Devices);
+
+    // On affiche la liste de device de l'utilisateur
+	if (Devices.size() > 1)
+    {
+		std::cout << "Veuillez choisir un device :" << std::endl << std::endl;
+    	for (std::size_t i = 0; i < Devices.size(); ++i)
+        	std::cout << "[" << i << "] " << Devices[i] << std::endl;
+
+	    // Et on le laisse choisir
+	    std::cout << "choose the device : ";
+		std::cin >> Choice;
+	}
+
+    // Initialisation d'OpenAL
+    InitOpenAL(Devices[Choice].c_str());
+
+    // Chargement du fichier audio
+    ALuint Buffer = LoadSound("assets/sounds/sample.wav");
+    if (Buffer == 0)
+        return EXIT_FAILURE;
+
+    // Cr�ation d'une source
+    ALuint Source;
+    alGenSources(1, &Source);
+    alSourcei(Source, AL_BUFFER, Buffer);
+
+    // On joue le son
+    alSourcePlay(Source);
+
+    // On attend qu'il soit termin�
+    ALint Status;
+    do
+    {
+        // R�cup�ration et affichage de la position courante de lecture en secondes
+        ALfloat Seconds = 0.f;
+        alGetSourcef(Source, AL_SEC_OFFSET, &Seconds);
+        std::cout << "\rLecture en cours... " << std::fixed << std::setprecision(2) << Seconds << " sec";
+
+        // R�cup�ration de l'�tat du son
+        alGetSourcei(Source, AL_SOURCE_STATE, &Status);
+    }
+    while (Status == AL_PLAYING);
+
+    // Destruction du tampon
+    alDeleteBuffers(1, &Buffer);
+
+    // Destruction de la source
+    alSourcei(Source, AL_BUFFER, 0);
+    alDeleteSources(1, &Source);
+
+    // Fermeture d'OpenAL
+    ShutdownOpenAL();
+
+    // On attend que l'utilisateur appuie sur entr�e...
+    std::cout << std::endl << std::endl;
+    std::cout << "Appuyez sur entree pour terminer..." << std::endl;
+    std::cin.ignore(10000, '\n');
+    std::cin.ignore(10000, '\n');
+
+    return EXIT_SUCCESS;
 }
 // void		AudioMaster::init()
 // {
