@@ -79,7 +79,7 @@ void    Game::Component::Settings::start(void) {
 	// this->settingsContainer.listSettings.push_back("one setting");
 	// this->settingsContainer.listSettings.push_back("another setting");
 	this->loadSettings();
-	std::cout << *this << "\n";
+	std::cout << "Settings: " << "\n" << *this << "\n";
 	// this->saveSettings();
 }
 
