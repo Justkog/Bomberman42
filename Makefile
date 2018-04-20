@@ -13,7 +13,7 @@ LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 	`pkg-config --static --libs glm` \
 	`pkg-config --static --libs libpng`\
 	`pkg-config --static --libs openal` \
-	# `pkg-config --static --libs sndfile`
+	`pkg-config --static --libs sndfile`
 
 SRC = \
 	main.cpp \

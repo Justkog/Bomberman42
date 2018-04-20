@@ -6,7 +6,7 @@
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:43:15 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/18 19:29:33 by stmartin         ###   ########.fr       */
+/*   Updated: 2018/04/19 14:44:09 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fstream>
 #include <sndfile.h>
 #include <vector>
+#include <iomanip>
 
 class AudioMaster {
 
@@ -27,10 +28,11 @@ public:
 	AudioMaster( void );
 	virtual ~AudioMaster();
 
-	bool		InitOpenAL();
+	bool		InitOpenAL(const char* DeviceName);
 	void		GetDevices(std::vector<std::string>& Devices);
 	void		ShutdownOpenAL();
 	ALuint		LoadSound(const std::string& Filename);
+	int			entryPoint();
 
 	int			loadSound(std::string file);
 	char        *loadWAV(const char * fn, int & chan, int & samplerate, int & bps, int & size);

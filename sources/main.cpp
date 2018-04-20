@@ -63,7 +63,6 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
-    AudioMaster audio;
     BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     BeerEngine::AScene  *scene;
     BeerEngine::Graphics::Graphics::Load();
@@ -77,6 +76,8 @@ int main(void)
     // CullFace
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
+    // Audio
+    // AudioMaster audio;
     // FPS
     while (!glfwWindowShouldClose(window->getWindow()))
     {
