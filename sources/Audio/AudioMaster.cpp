@@ -6,7 +6,7 @@
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:46:42 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/19 18:47:34 by stmartin         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:02:44 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,10 @@ int			AudioMaster::entryPoint()
     do
     {
         // R�cup�ration de l'�tat du son
-        alGetSourcei(Source, AL_SOURCE_STATE, &Status);
+
+
+
+	    alGetSourcei(Source, AL_SOURCE_STATE, &Status);
     }
     while (Status == AL_PLAYING);
 
