@@ -13,6 +13,7 @@
 #include "Game/SceneTest.hpp"
 
 #include "Audio/AudioMaster.hpp"
+#include "Audio/Source.hpp"
 
 static int     frameCount = 0;
 
@@ -65,35 +66,46 @@ int main(void)
 {
     // Audio
     AudioMaster audio;
-    BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
-    BeerEngine::AScene  *scene;
-    BeerEngine::Graphics::Graphics::Load();
-    BeerEngine::SceneManager::LoadScene<SceneTest>();
-    // Thread Update
-    std::thread updateLoop (updateThread, window);
-    updateLoop.detach();
-    // depth-testing
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-    // CullFace
-    glCullFace(GL_BACK);
-    glEnable(GL_CULL_FACE);
-    // FPS
-    while (!glfwWindowShouldClose(window->getWindow()))
-    {
-        window->clear();
-        scene = BeerEngine::SceneManager::GetCurrent();
-        if (scene != nullptr)
-        {
-            scene->mutexLock(true);
-            scene->renderUpdate();
-            scene->render();
-            scene->mutexLock(false);
-        }
-        window->swapBuffer();
-        frameCount++;
-    }
-    BeerEngine::Graphics::Graphics::UnLoad();
-    delete window;
+    // Source      srcAudio;;
+    //
+    // audio.setListenerData(0, 0, 0);
+    // int buf;
+    // buf = audio.LoadSound("assets/sounds/ds_brush_snaremono.wav");
+    // srcAudio.setBuffer(buf);
+    // srcAudio.play();
+    // srcAudio.Delete();
+
+    // BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
+    // BeerEngine::AScene  *scene;
+    // BeerEngine::Graphics::Graphics::Load();
+    // BeerEngine::SceneManager::LoadScene<SceneTest>();
+    // // Thread Update
+    // std::thread updateLoop (updateThread, window);
+    // updateLoop.detach();
+    // // depth-testing
+    // glEnable(GL_DEPTH_TEST);
+    // glDepthFunc(GL_LESS);
+    // // CullFace
+    // glCullFace(GL_BACK);
+    // glEnable(GL_CULL_FACE);
+    // // FPS
+    // while (!glfwWindowShouldClose(window->getWindow()))
+    // {
+    //     window->clear();
+    //     scene = BeerEngine::SceneManager::GetCurrent();
+    //     if (scene != nullptr)
+    //     {
+    //         scene->mutexLock(true);
+    //         scene->renderUpdate();
+    //         scene->render();
+    //         scene->mutexLock(false);
+    //     }
+    //     window->swapBuffer();
+    //
+    //
+    //     frameCount++;
+    // }
+    // BeerEngine::Graphics::Graphics::UnLoad();
+    // delete window;
     return (0);
 }

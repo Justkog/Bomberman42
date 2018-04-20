@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AudioMaster.hpp                                    :+:      :+:    :+:   */
+/*   Source.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 15:43:15 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/20 17:30:26 by stmartin         ###   ########.fr       */
+/*   Created: 2018/04/20 15:21:20 by stmartin          #+#    #+#             */
+/*   Updated: 2018/04/20 17:15:07 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AUDIOMASTER_HPP
-#define AUDIOMASTER_HPP
+#ifndef SOURCE_HPP
+# define SOURCE_HPP
 
 #include <AL/al.h>
 #include <AL/alc.h>
@@ -21,22 +21,34 @@
 #include <vector>
 #include <iomanip>
 
-class AudioMaster {
+class Source
+{
 
 public:
 
-	AudioMaster( void );
-	virtual ~AudioMaster();
+	Source(ALuint buf);
+	~Source( void );
 
-	bool		InitOpenAL(const char* DeviceName);
-	void		GetDevices(std::vector<std::string>& Devices);
-	void		ShutdownOpenAL();
-	ALuint		LoadSound(const std::string& Filename);
+	void	    play();
+	bool        isPlaying();
+	void	    pause();
+	void		continuePlaying();
+	void	    stop();
 
-	void		setListenerData(float x, float y, float z);
+	void	    Delete();
 
-	int			entryPoint();
+	void		setVolume(float);
+	void		setPitch(float);
+	void		setPosition(float x, float y, float z);
+	void		setVelocity(float x, float y, float z);
+	void		setLooping(bool loop);
+	void		setBuffer(ALuint);
+	void		setSource(ALuint);
+
+private:
+	ALuint		_Buffer;
+	ALuint		_Source;
+	ALint		_Status;
 };
-
 
 #endif
