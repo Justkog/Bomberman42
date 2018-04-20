@@ -10,7 +10,8 @@
                 "/Library/Developer/CommandLineTools/usr/include",
                 "/usr/include",
                 "${workspaceFolder}/include",
-                "~/.brew/include"
+                "/Users/jblondea/.brew/include",
+                "${workspaceFolder}/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
@@ -22,8 +23,8 @@
                     "/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include",
                     "/Library/Developer/CommandLineTools/usr/include",
                     "/usr/include",
-					"${workspaceFolder}/include",
-                    "~/.brew/include"
+                    "${workspaceFolder}/include",
+                    "/Users/jblondea/.brew/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
