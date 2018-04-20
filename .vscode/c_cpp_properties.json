@@ -11,6 +11,7 @@
                 "/usr/include",
                 "${workspaceFolder}/include",
                 "/Users/jblondea/.brew/include",
+                "/Users/jblondea/.brew/Cellar/nlohmann_json/3.1.2/include",
                 "${workspaceFolder}/include"
             ],
             "defines": [],
