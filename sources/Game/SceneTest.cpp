@@ -1,4 +1,5 @@
 #include "Game/SceneTest.hpp"
+#include "Game/Components/Settings.hpp"
 #include "Core/IO/FileUtils.hpp"
 
 void    SceneTest::init(void)
@@ -20,4 +21,6 @@ void    SceneTest::init(void)
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	meshRenderer->setMaterial(material);
 	gameObject->transform.position = glm::vec3(-1, -1, 4);
+
+	Game::Component::Settings *settings = gameObject->AddComponent<Game::Component::Settings>();
 }
