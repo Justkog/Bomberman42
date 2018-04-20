@@ -35,3 +35,6 @@
 Bomberman
 
 .vscode/settings.json
+*.rb
+vscodeFileTemplates/
+*~
