@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AudioMaster.cpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 15:46:42 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/20 17:39:50 by stmartin         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "Audio/AudioMaster.hpp"
 #include "Audio/Source.hpp"
@@ -32,22 +21,22 @@ AudioMaster::AudioMaster()
     	// }
         // Initialisation d'OpenAL
         InitOpenAL(Devices[Choice].c_str());
-        setListenerData(1, 1, 1);
+        setListenerData(0, 0, 0);
 
         // LoadSound("assets/sounds/ds_brush_snaremono.wav");
         Source      srcAudio(LoadSound("assets/sounds/ds_brush_snaremono.wav"));
         // srcAudio.setBuffer(buf);
         srcAudio.setVolume(1);
         srcAudio.setPitch(1);
-        srcAudio.setLooping(true);
+        srcAudio.setLooping(false);
         srcAudio.play();
         srcAudio.Delete();
+        ShutdownOpenAL();
 
 }
 
 AudioMaster::~AudioMaster()
 {
-    ShutdownOpenAL();
 }
 
 
@@ -333,7 +322,7 @@ void		AudioMaster::setListenerData(float x, float y, float z)
 //     alSourcei(Source, AL_BUFFER, Buffer);
 //
 //     // On joue le son
-//     std::cout << Source << std::endl;
+//
 //     alSourcePlay(Source);
 //
 //     // On attend qu'il soit termin�
@@ -357,11 +346,6 @@ void		AudioMaster::setListenerData(float x, float y, float z)
 //
 //     // Fermeture d'OpenAL
 //     ShutdownOpenAL();
-//
-//     // On attend que l'utilisateur appuie sur entr�e...
-//     std::cout << std::endl << std::endl;
-//     std::cout << "Appuyez sur entree pour terminer..." << std::endl;
-//     std::cin.ignore(10000, '\n');
 //
 //     return EXIT_SUCCESS;
 // }

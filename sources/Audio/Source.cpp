@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Source.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 15:19:07 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/20 17:39:06 by stmartin         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "Audio/Source.hpp"
 
@@ -24,17 +13,28 @@ Source::~Source()
 
 void	   Source::play()
 {
-    stop();
+    // stop();
     //charge le son depuis le buffer source
+	// alGenSources(1, &_Source);
     alSourcei(_Source, AL_BUFFER, _Buffer);
+	alSourcePlay(_Source);
+	// do
+    // {
+        // R�cup�ration de l'�tat du son
+		// alGetSourcei(_Source, AL_SOURCE_STATE, &_Status);
+		// isPlaying();
+    // }
+    while (isPlaying())
+	{}
     // On joue le son
-    continuePlaying();
+    // continuePlaying();
 }
 
 bool       Source::isPlaying()
 {
     // Recuperation de l'etat du son
 	alGetSourcei(_Source, AL_SOURCE_STATE, &_Status);
+
 	if (_Status == AL_PLAYING)
     	return true;
 	return false;

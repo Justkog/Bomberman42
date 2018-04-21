@@ -6,7 +6,7 @@
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:43:15 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/20 17:30:26 by stmartin         ###   ########.fr       */
+/*   Updated: 2018/04/21 15:55:16 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ public:
 	void		setListenerData(float x, float y, float z);
 
 	int			entryPoint();
+
+	// std::list<ALuint> bufList;
+
 };
 
 

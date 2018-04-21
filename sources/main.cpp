@@ -66,14 +66,6 @@ int main(void)
 {
     // Audio
     AudioMaster audio;
-    // Source      srcAudio;;
-    //
-    // audio.setListenerData(0, 0, 0);
-    // int buf;
-    // buf = audio.LoadSound("assets/sounds/ds_brush_snaremono.wav");
-    // srcAudio.setBuffer(buf);
-    // srcAudio.play();
-    // srcAudio.Delete();
 
     // BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     // BeerEngine::AScene  *scene;
