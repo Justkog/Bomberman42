@@ -4,24 +4,7 @@
 
 AudioMaster::AudioMaster()
 {
-        int Choice = 0;
-        // Recuperation des devices disponibles
-        std::vector<std::string> Devices;
-        GetDevices(Devices);
-        InitOpenAL(Devices[Choice].c_str());
-
-        // Source      srcAudio(LoadSound("assets/sounds/ds_brush_snaremono.wav"));
-        // Source      srcAudio2(LoadSound("assets/sounds/ds_brush_snaremono.wav"));
-        // // srcAudio.setBuffer(buf);
-        // srcAudio.setVolume(1);
-        // srcAudio.setPitch(1);
-        // srcAudio2.setPitch(2);
-        // srcAudio.setLooping(false);
-        // srcAudio.play();
-        // srcAudio2.play();
-        // srcAudio.Delete();
-        // srcAudio2.Delete();
-
+        initDevices();
 }
 
 AudioMaster::~AudioMaster()
@@ -29,6 +12,14 @@ AudioMaster::~AudioMaster()
     ShutdownOpenAL();
 }
 
+void	   AudioMaster::initDevices()
+{
+    int Choice = 0;
+    // Recuperation des devices disponibles
+    std::vector<std::string> Devices;
+    GetDevices(Devices);
+    InitOpenAL(Devices[Choice].c_str());
+}
 
 bool		AudioMaster::InitOpenAL(const char* DeviceName = NULL)
 {

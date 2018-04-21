@@ -6,7 +6,7 @@
 /*   By: stmartin <stmartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:43:15 by stmartin          #+#    #+#             */
-/*   Updated: 2018/04/21 15:55:16 by stmartin         ###   ########.fr       */
+/*   Updated: 2018/04/21 17:59:44 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	AudioMaster( void );
 	virtual ~AudioMaster();
 
+	void		initDevices();
 	bool		InitOpenAL(const char* DeviceName);
 	void		GetDevices(std::vector<std::string>& Devices);
 	void		ShutdownOpenAL();
