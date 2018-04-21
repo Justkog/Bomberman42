@@ -8,35 +8,25 @@ AudioMaster::AudioMaster()
         // Recuperation des devices disponibles
         std::vector<std::string> Devices;
         GetDevices(Devices);
-        // On affiche la liste de device de l'utilisateur
-    	// if (Devices.size() > 1)
-        // {
-    	// 	std::cout << "Veuillez choisir un device :" << std::endl << std::endl;
-        // 	for (std::size_t i = 0; i < Devices.size(); ++i)
-        //     	std::cout << "[" << i << "] " << Devices[i] << std::endl;
-        //
-    	//     // Et on le laisse choisir
-    	//     std::cout << "choose the device : ";
-    	// 	std::cin >> Choice;
-    	// }
-        // Initialisation d'OpenAL
         InitOpenAL(Devices[Choice].c_str());
-        setListenerData(0, 0, 0);
 
-        // LoadSound("assets/sounds/ds_brush_snaremono.wav");
-        Source      srcAudio(LoadSound("assets/sounds/ds_brush_snaremono.wav"));
-        // srcAudio.setBuffer(buf);
-        srcAudio.setVolume(1);
-        srcAudio.setPitch(1);
-        srcAudio.setLooping(false);
-        srcAudio.play();
-        srcAudio.Delete();
-        ShutdownOpenAL();
+        // Source      srcAudio(LoadSound("assets/sounds/ds_brush_snaremono.wav"));
+        // Source      srcAudio2(LoadSound("assets/sounds/ds_brush_snaremono.wav"));
+        // // srcAudio.setBuffer(buf);
+        // srcAudio.setVolume(1);
+        // srcAudio.setPitch(1);
+        // srcAudio2.setPitch(2);
+        // srcAudio.setLooping(false);
+        // srcAudio.play();
+        // srcAudio2.play();
+        // srcAudio.Delete();
+        // srcAudio2.Delete();
 
 }
 
 AudioMaster::~AudioMaster()
 {
+    ShutdownOpenAL();
 }
 
 

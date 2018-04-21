@@ -67,6 +67,33 @@ int main(void)
     // Audio
     AudioMaster audio;
 
+    audio.setListenerData(0, 0, 0);
+
+    Source      srcAudio(audio.LoadSound("assets/sounds/samplemono.wav"));
+    Source      srcAudio2(audio.LoadSound("assets/sounds/ds_brush_snaremono.wav"));
+
+    srcAudio.setVolume(1);
+    srcAudio.setPitch(1);
+    srcAudio2.setPitch(2);
+    srcAudio.setLooping(true);
+    srcAudio.play();
+
+    char c = ' ';
+    while (c != 'q')
+    {
+        std::cin >> c;
+        if (c == 'p')
+        {
+            if (srcAudio.isPlaying())
+                srcAudio.pause();
+            else
+                srcAudio.continuePlaying();
+        }
+        if (c == 'o')
+            srcAudio2.play();
+    }
+    srcAudio.Delete();
+    srcAudio2.Delete();
     // BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     // BeerEngine::AScene  *scene;
     // BeerEngine::Graphics::Graphics::Load();
