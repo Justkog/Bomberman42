@@ -39,7 +39,8 @@ SRC = \
 	\
 	Audio/AudioMaster.cpp \
 	\
-	Game/Components/Player.cpp
+	Game/Components/Player.cpp \
+	Game/Components/CameraController.cpp
 	
 
 DIR = Core Core/Component Core/Graphics Core/IO Game Audio Game/Components

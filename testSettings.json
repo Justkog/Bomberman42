@@ -1,0 +1,9 @@
+{
+    "intSetting": 42,
+    "listSettings": [
+        "one setting",
+        "another setting"
+    ],
+    "soundVolume": 0.5,
+    "stringSetting": "some setting"
+}
