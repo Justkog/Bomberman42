@@ -1,4 +1,5 @@
 #include "Game/SceneTest.hpp"
+#include "Game/CameraTest.hpp"
 
 void    SceneTest::init(void)
 {
@@ -34,10 +35,16 @@ void    SceneTest::init(void)
 	// glm::vec3 v = BeerEngine::Camera::main->transform.forward();
 	// BeerEngine::Camera::main->transform.translate(-v);
 	// GameObject
+	//
 	BeerEngine::GameObject *gameObject;
+	BeerEngine::Component::MeshRenderer *meshRenderer;
+	
+	// FPS Camera
+	instantiate<CameraTest>();
+	
 	// => GameObject 1
 	gameObject = instantiate<BeerEngine::GameObject>();
-	BeerEngine::Component::MeshRenderer *meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	meshRenderer->setMaterial(materialA);
 	gameObject->transform.position = glm::vec3(-1, 0, 4);

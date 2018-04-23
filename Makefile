@@ -34,12 +34,13 @@ SRC = \
 	Core/Graphics/AMaterial.cpp \
 	Core/Graphics/Texture.cpp \
 	Core/IO/FileUtils.cpp \
-	\
-	Game/SceneTest.cpp \
-	\
 	Core/Audio/AudioListener.cpp \
 	Core/Audio/AudioSource.cpp \
-	Core/Audio/AudioClip.cpp
+	Core/Audio/AudioClip.cpp \
+	\
+	Game/SceneTest.cpp \
+	Game/CameraTest.cpp
+
 
 DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio
 
@@ -109,7 +110,7 @@ ffclean: fclean
 	$(addprefix $(MAKE) fclean -C , $(addsuffix ;, $(LIB_DIR)))
 run: all
 	./$(NAME)
-ar: all run
+ar: fclean run
 re: fclean all
 
 -include $(D_FILE)
