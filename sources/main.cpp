@@ -4,10 +4,6 @@
 
 #include "Game/SceneTest.hpp"
 
-#include "Core/Audio/AudioListener.hpp"
-#include "Core/Audio/AudioSource.hpp"
-#include "Core/Audio/AudioClip.hpp"
-
 static int     frameCount = 0;
 
 
@@ -71,7 +67,7 @@ int main(void)
 
     audio.setListenerData(0, 0, 0);
 
-    BeerEngine::Audio::AudioClip   clip("assets/sounds/The_do.ogg");
+    BeerEngine::Audio::AudioClip   clip("assets/sounds/The_domono.ogg");
     // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
     BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
@@ -81,21 +77,30 @@ int main(void)
     srcAudio.setPitch(1);
     // srcAudio2.setPitch(2);
     srcAudio.setLooping(true);
-    // srcAudio.play();
-
+    srcAudio.play();
+    // float x = 0;
+    // srcAudio.setPosition(x, 0, 0);
+    //
     // char c = ' ';
     // while (c != 'q')
     // {
     //     std::cin >> c;
     //     if (c == 'p')
     //     {
-    //         if (srcAudio.isPlaying())
-    //             srcAudio.pause();
-    //         else
-    //             srcAudio.continuePlaying();
+    //         x += 1;
+    //         // if (srcAudio.isPlaying())
+    //         //     srcAudio.pause();
+    //         // else
+    //         //     srcAudio.continuePlaying();
     //     }
+    //     // x -= 0.03f;
+    //     // std::cout << x << std::endl;
     //     if (c == 'o')
-    //         srcAudio2.play();
+    //         // srcAudio2.play();
+    //         x -= 1;
+    //
+    //     // std::cout << x << std::endl;
+    //     srcAudio.setPosition(x, 0, 0);
     // }
 
 
