@@ -38,3 +38,4 @@ Bomberman
 *.rb
 vscodeFileTemplates/
 *~
+*.DS_Store
