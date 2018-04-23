@@ -1,4 +1,5 @@
 #include "Game/SceneTest.hpp"
+#include "Game/Components/Settings.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/CameraController.hpp"
@@ -58,6 +59,7 @@ void    SceneTest::init(void)
 	gameObject->transform.scale = glm::vec3(1, 1, 1);
 
 	Game::Component::Player *player = gameObject->AddComponent<Game::Component::Player>();
+	Game::Component::Settings *settings = gameObject->AddComponent<Game::Component::Settings>();
 
 	// plane
 	BeerEngine::GameObject *mapGO;

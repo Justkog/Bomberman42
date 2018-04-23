@@ -9,5 +9,15 @@ namespace BeerEngine
 			std::ifstream ifs(path);
 			return std::string((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
 		}
+
+		void  FileUtils::WriteFile(std::string const &path, std::string const &content)
+		{
+			std::ofstream myfile(path);
+			if (myfile.is_open())
+			{
+				myfile << content;
+				myfile.close();
+			}
+		}
 	}
 }

@@ -29,6 +29,7 @@ namespace BeerEngine
 
         void    mutexLock(bool lock);
 
+        void    start(void);
         void    fixedUpdate(void);
         void    update(void);
         void    renderUpdate(void);

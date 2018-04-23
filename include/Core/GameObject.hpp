@@ -48,6 +48,7 @@ namespace BeerEngine
 			return (nullptr);
 		}
 
+		void    componentStart(void);
 		void    componentFixedUpdate(void);
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
