@@ -37,11 +37,11 @@ SRC = \
 	\
 	Game/SceneTest.cpp \
 	\
-	Audio/AudioListener.cpp \
-	Audio/AudioSource.cpp \
-	Audio/AudioClip.cpp
+	Core/Audio/AudioListener.cpp \
+	Core/Audio/AudioSource.cpp \
+	Core/Audio/AudioClip.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Audio
+DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \

@@ -3,9 +3,9 @@
 
 #include "Game/SceneTest.hpp"
 
-#include "Audio/AudioListener.hpp"
-#include "Audio/AudioSource.hpp"
-#include "Audio/AudioClip.hpp"
+#include "Core/Audio/AudioListener.hpp"
+#include "Core/Audio/AudioSource.hpp"
+#include "Core/Audio/AudioClip.hpp"
 
 static int     frameCount = 0;
 
@@ -57,16 +57,16 @@ void updateThread(BeerEngine::Window *window)
 int main(void)
 {
     // Audio
-    AudioListener::init();
-    AudioListener audio;
+    BeerEngine::Audio::AudioListener::init();
+    BeerEngine::Audio::AudioListener audio;
 
     audio.setListenerData(0, 0, 0);
 
-    AudioClip   clip("assets/sounds/samplemono.wav");
-    AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
+    BeerEngine::Audio::AudioClip   clip("assets/sounds/samplemono.wav");
+    BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
-    AudioSource      srcAudio(clip.getBuffer());
-    AudioSource      srcAudio2(clip2.getBuffer());
+    BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+    BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
 
     srcAudio.setVolume(1);
     srcAudio.setPitch(1);
@@ -90,7 +90,7 @@ int main(void)
     }
     srcAudio.Delete();
     srcAudio2.Delete();
-    AudioListener::DestroyOpenAL();
+    BeerEngine::Audio::AudioListener::DestroyOpenAL();
     // BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     // BeerEngine::AScene  *scene;
     // BeerEngine::Graphics::Graphics::Load();
