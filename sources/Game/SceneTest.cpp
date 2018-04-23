@@ -30,7 +30,7 @@ void    SceneTest::init(void)
 	// material2->setAlbedo(crate);
 	// Camera
 	BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
-	BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(22.5f), 0.0f));
+	BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
 	glm::vec3 v = BeerEngine::Camera::main->transform.forward();
 	BeerEngine::Camera::main->transform.translate(-v);
 	// GameObject
@@ -49,15 +49,15 @@ void    SceneTest::init(void)
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	meshRenderer->setMaterial(materialB);
 	gameObject->transform.position = glm::vec3(-1, 1, 4);
-	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.0f), 0.0f));
+	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(22.5f), 0.0f));
 	gameObject = instantiate<BeerEngine::GameObject>();
 	// => GameObject 2 : Cube Top
 	gameObject = instantiate<BeerEngine::GameObject>();
 	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	meshRenderer->setMaterial(materialC);
-	gameObject->transform.position = glm::vec3(-1, 2, 4);
-	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.0f), 0.0f));
+	gameObject->transform.position = glm::vec3(-0.5, 2, 4);
+	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(66.0f), 0.0f));
 	gameObject = instantiate<BeerEngine::GameObject>();
 	// => GameObject 3 : Plane
 	gameObject = instantiate<BeerEngine::GameObject>();

@@ -12,6 +12,8 @@
 #include "Graphics/Texture.hpp"
 #include "IO/FileUtils.hpp"
 #include "Transform.hpp"
+#include "Input.hpp"
+#include "KeyCode.hpp"
 
 #include "AScene.hpp"
 #include "IO/FileUtils.hpp"

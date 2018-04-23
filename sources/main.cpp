@@ -1,4 +1,5 @@
 #include <thread>
+#include <chrono>
 #include "Core/BeerEngine.hpp"
 
 #include "Game/SceneTest.hpp"
@@ -12,12 +13,13 @@ static int     frameCount = 0;
 void updateThread(BeerEngine::Window *window)
 {
     static const double fixedUpdateTime = 1.0 / 60.0;
+    static const double sleepTime = fixedUpdateTime / 2.0;
     double  fixedTimer = 0.0;
     double  timer = 0.0;
     int     fixeUpdateNumber = 0;
     BeerEngine::AScene  *scene;
     std::cout << "Thread Update: Started" << std::endl;
-    while (!glfwWindowShouldClose(window->getWindow()))
+    while (!window->isClose())
     {
         scene = BeerEngine::SceneManager::GetCurrent();
         BeerEngine::Time::Update();
@@ -34,6 +36,28 @@ void updateThread(BeerEngine::Window *window)
             fixeUpdateNumber++;
             fixedTimer -= fixedUpdateTime;
         }
+        if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
+            window->closeRequest();
+        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
+        // {
+        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.forward() * BeerEngine::Time::GetDeltaTime());
+        //     // std::cout << "W: " << BeerEngine::Time::GetDeltaTime() << std::endl;
+        // }
+        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
+        // {
+        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.forward() * -BeerEngine::Time::GetDeltaTime());
+        //     // std::cout << "S: " << BeerEngine::Time::GetDeltaTime() << std::endl;
+        // }
+        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+        // {
+        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * BeerEngine::Time::GetDeltaTime());
+        //     // std::cout << "D: " << BeerEngine::Time::GetDeltaTime() << std::endl;
+        // }
+        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+        // {
+        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * -BeerEngine::Time::GetDeltaTime());
+        //     // std::cout << "A: " << BeerEngine::Time::GetDeltaTime() << std::endl;
+        // }
         if (scene != nullptr)
         {
             scene->mutexLock(true);
@@ -50,6 +74,9 @@ void updateThread(BeerEngine::Window *window)
             frameCount = 0;
             timer -= 1.0;
         }
+        //  std::this_thread::sleep_for(sleepTime);
+
+         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     std::cout << "Thread Update: Finish" << std::endl;
 }
@@ -74,53 +101,58 @@ int main(void)
     srcAudio.setLooping(true);
     srcAudio.play();
 
-    char c = ' ';
-    while (c != 'q')
+    // char c = ' ';
+    // while (c != 'q')
+    // {
+    //     std::cin >> c;
+    //     if (c == 'p')
+    //     {
+    //         if (srcAudio.isPlaying())
+    //             srcAudio.pause();
+    //         else
+    //             srcAudio.continuePlaying();
+    //     }
+    //     if (c == 'o')
+    //         srcAudio2.play();
+    // }
+
+
+    BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
+    BeerEngine::AScene  *scene;
+    BeerEngine::Graphics::Graphics::Load();
+    BeerEngine::SceneManager::LoadScene<SceneTest>();
+    // Thread Update
+    std::thread updateLoop (updateThread, window);
+    updateLoop.detach();
+    // depth-testing
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    // Blend Alpha
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    // CullFace
+    glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    // FPS
+    while (!window->isClose())
     {
-        std::cin >> c;
-        if (c == 'p')
-        {
-            if (srcAudio.isPlaying())
-                srcAudio.pause();
-            else
-                srcAudio.continuePlaying();
-        }
-        if (c == 'o')
-            srcAudio2.play();
+       window->clear();
+       scene = BeerEngine::SceneManager::GetCurrent();
+       if (scene != nullptr)
+       {
+           scene->mutexLock(true);
+           scene->renderUpdate();
+           scene->render();
+           scene->mutexLock(false);
+       }
+       window->swapBuffer();
+       frameCount++;
     }
     srcAudio.Delete();
     srcAudio2.Delete();
     BeerEngine::Audio::AudioListener::DestroyOpenAL();
-    // BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
-    // BeerEngine::AScene  *scene;
-    // BeerEngine::Graphics::Graphics::Load();
-    // BeerEngine::SceneManager::LoadScene<SceneTest>();
-    // // Thread Update
-    // std::thread updateLoop (updateThread, window);
-    // updateLoop.detach();
-    // // depth-testing
-    // glEnable(GL_DEPTH_TEST);
-    // glDepthFunc(GL_LESS);
-    // // CullFace
-    // glCullFace(GL_BACK);
-    // glEnable(GL_CULL_FACE);
-    // // FPS
-    // while (!glfwWindowShouldClose(window->getWindow()))
-    // {
-    //     window->clear();
-    //     scene = BeerEngine::SceneManager::GetCurrent();
-    //     if (scene != nullptr)
-    //     {
-    //         scene->mutexLock(true);
-    //         scene->renderUpdate();
-    //         scene->render();
-    //         scene->mutexLock(false);
-    //     }
-    //     window->swapBuffer();
-    //     frameCount++;
-    // }
-    // BeerEngine::Graphics::Graphics::UnLoad();
-    //
-    // delete window;
+    delete BeerEngine::Camera::main;
+    BeerEngine::Graphics::Graphics::UnLoad();
+    delete window;
     return (0);
 }
