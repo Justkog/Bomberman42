@@ -38,4 +38,6 @@ Bomberman
 *.rb
 vscodeFileTemplates/
 *~
+
+.vscode/c_cpp_properties.json
 *.DS_Store

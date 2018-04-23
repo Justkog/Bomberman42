@@ -2,6 +2,7 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
+#include "Core/Component/IStart.hpp"
 
 namespace BeerEngine
 {
@@ -23,6 +24,15 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
+
+	void    GameObject::componentStart(void)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (Component::IStart *u = dynamic_cast<Component::IStart*>(c))
+				u->start();
+		}
+	}
 
 	void    GameObject::componentFixedUpdate(void)
 	{

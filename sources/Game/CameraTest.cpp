@@ -22,12 +22,12 @@ void    CameraTest::update(void)
 	    BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.forward() * -BeerEngine::Time::GetDeltaTime());
 	    // std::cout << "S: " << BeerEngine::Time::GetDeltaTime() << std::endl;
 	}
-	if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+	if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
 	{
 	    BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * BeerEngine::Time::GetDeltaTime());
 	    // std::cout << "D: " << BeerEngine::Time::GetDeltaTime() << std::endl;
 	}
-	if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+	if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
 	{
 	    BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * -BeerEngine::Time::GetDeltaTime());
 	    // std::cout << "A: " << BeerEngine::Time::GetDeltaTime() << std::endl;

@@ -1,4 +1,8 @@
 #include "Game/SceneTest.hpp"
+#include "Game/Components/Settings.hpp"
+#include "Core/IO/FileUtils.hpp"
+#include "Game/Components/Player.hpp"
+#include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
 
 void    SceneTest::init(void)
@@ -12,10 +16,14 @@ void    SceneTest::init(void)
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
 	);
 	shader->compile();
+	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
+
+	// cube 1
 	// Texture
 	BeerEngine::Graphics::Texture *crate = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
 	BeerEngine::Graphics::Texture *crate_normal = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_normal.png");
 	BeerEngine::Graphics::Texture *crate_bump = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_bump.png");
+
 	// Material
 	BeerEngine::Graphics::AMaterial *materialA = new BeerEngine::Graphics::AMaterial(shader);
 	materialA->setAlbedo(crate);
@@ -29,11 +37,17 @@ void    SceneTest::init(void)
 	BeerEngine::Graphics::AMaterial *material2 = new BeerEngine::Graphics::AMaterial(shader);
 	material2->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 	// material2->setAlbedo(crate);
+
 	// Camera
-	BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
+	/*BeerEngine::GameObject *cameraGO;
+	cameraGO = instantiate<BeerEngine::GameObject>();
+	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();*/
+
+	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
 	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
-	// glm::vec3 v = BeerEngine::Camera::main->transform.forward();
-	// BeerEngine::Camera::main->transform.translate(-v);
+	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
+	BeerEngine::Camera::main->transform.translate(-v);*/
+
 	// GameObject
 	//
 	BeerEngine::GameObject *gameObject;
@@ -46,6 +60,22 @@ void    SceneTest::init(void)
 	gameObject = instantiate<BeerEngine::GameObject>();
 	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	meshRenderer->setMaterial(material);
+	gameObject->transform.position = glm::vec3(-3, -2, 6);
+	gameObject->transform.scale = glm::vec3(1, 1, 1);
+
+	Game::Component::Player *player = gameObject->AddComponent<Game::Component::Player>();
+	Game::Component::Settings *settings = gameObject->AddComponent<Game::Component::Settings>();
+
+	// plane
+	BeerEngine::GameObject *mapGO;
+	mapGO = instantiate<BeerEngine::GameObject>();
+	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
+	mapMeshRenderer->setMaterial(material);
+	mapGO->transform.position = glm::vec3(-3, -3, 6);
+	mapGO->transform.scale = glm::vec3(40, 1, 40);
+
 	meshRenderer->setMaterial(materialA);
 	gameObject->transform.position = glm::vec3(-1, 0, 4);
 	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.0f), 0.0f));
