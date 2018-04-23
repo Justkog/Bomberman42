@@ -67,7 +67,7 @@ int main(void)
 
     audio.setListenerData(0, 0, 0);
 
-    BeerEngine::Audio::AudioClip   clip("assets/sounds/the_domono.ogg");
+    BeerEngine::Audio::AudioClip   clip("assets/sounds/The_domono.ogg");
     // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
     BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
