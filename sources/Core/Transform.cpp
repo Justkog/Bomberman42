@@ -18,15 +18,15 @@ namespace BeerEngine
 
 	glm::vec3	Transform::forward(void)
 	{
-		glm::vec4 forward(1.0f, 0.0f, 0.0f, 0.0f);
-		forward = forward * glm::toMat4(rotation);
+		glm::vec4 forward(0.0f, 0.0f, 1.0f, 0.0f);
+		forward = glm::toMat4(rotation) * forward;
 		return (glm::vec3(forward));
 	}
 
 	glm::vec3	Transform::right(void)
 	{
-		glm::vec4 r(0.0f, 0.0f, -1.0f, 0.0f);
-		r = r * glm::toMat4(rotation);
+		glm::vec4 r(1.0f, 0.0f, 0.0f, 0.0f);
+		r = glm::toMat4(rotation) * r;
 		return (glm::vec3(r));
 	}
 
