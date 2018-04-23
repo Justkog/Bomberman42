@@ -41,11 +41,11 @@ namespace BeerEngine
 
 			FILE *file = fopen(path, "rb");
 			if (!file)
-				throw std::logic_error("Image could not be opened\n");
+				throw std::logic_error("[Texture BMP] Image could not be opened\n");
 			if (fread(header, 1, 54, file) != 54)
-				throw std::logic_error("Not a correct BMP file\n");
+				throw std::logic_error("[Texture BMP] Not a correct BMP file\n");
 			if (header[0] != 'B' || header[1] != 'M')
-				throw std::logic_error("Not a correct BMP file\n");
+				throw std::logic_error("[Texture BMP] Not a correct BMP file\n");
 			dataPos = *(int*)&(header[0x0A]);
 			imageSize = *(int*)&(header[0x22]);
 			width = *(int*)&(header[0x12]);
