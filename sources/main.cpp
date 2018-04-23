@@ -77,7 +77,7 @@ int main(void)
     srcAudio.setPitch(1);
     // srcAudio2.setPitch(2);
     srcAudio.setLooping(true);
-    // srcAudio.play();
+    srcAudio.play();
     // float x = 0;
     // srcAudio.setPosition(x, 0, 0);
     //
