@@ -37,8 +37,6 @@ SRC = \
 	\
 	Game/SceneTest.cpp \
 	\
-	Audio/AudioMaster.cpp \
-	\
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \

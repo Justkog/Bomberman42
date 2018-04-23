@@ -18,9 +18,11 @@ namespace BeerEngine
 
 	glm::vec3	Transform::forward(void)
 	{
-		glm::vec4 forward(0.0f, 0.0f, 1.0f, 0.0f);
-		forward = glm::toMat4(rotation) * forward;
-		return (glm::vec3(forward));
+		// glm::vec4 forward(0.0f, 0.0f, 1.0f, 0.0f);
+		// forward = glm::toMat4(rotation) * forward;
+		// return (glm::vec3(forward));
+		glm::vec4 forward(0.0f, 1.0f, 0.0f, 0.0f);
+		return (glm::vec3(glm::toMat4(rotation) * forward));
 	}
 
 	glm::vec3	Transform::right(void)
@@ -42,7 +44,7 @@ namespace BeerEngine
 		glm::mat4 mat;
 		if (isCamera)
 		{
-			mat = glm::translate(glm::vec3(-position[0], -position[1], position[2]));
+			mat = glm::translate(glm::vec3(position[0], position[1], position[2]));
 			mat = glm::toMat4(rotation) * mat;
 		}
 		else

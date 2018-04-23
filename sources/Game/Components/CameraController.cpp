@@ -65,6 +65,7 @@ namespace Game
 		{
 			std::cout << "start" << "\n";
 			this->cam = BeerEngine::Camera::main;
+			this->lastMousePos = BeerEngine::Input::mousePosition;
 		}
 
 		void    CameraController::fixedUpdate(void)
@@ -74,14 +75,19 @@ namespace Game
 
 		void    CameraController::update(void)
 		{
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
-				cam->transform.translate(cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
-				cam->transform.translate(-cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
-				cam->transform.translate(-cam->transform.right() * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
-				cam->transform.translate(cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
+			// 	cam->transform.translate(cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
+			// 	cam->transform.translate(-cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+			// 	cam->transform.translate(-cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+			// 	cam->transform.translate(cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+
+			glm::vec2 mouseDelta = BeerEngine::Input::mousePosition - this->lastMousePos;
+			glm::vec3 EulerAngles(mouseDelta.y * BeerEngine::Time::GetDeltaTime(), mouseDelta.x * BeerEngine::Time::GetDeltaTime(), 0);
+			glm::quat MyQuaternion = glm::quat(EulerAngles);
+			this->cam->transform.rotation = MyQuaternion * this->cam->transform.rotation;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
 		}
 
