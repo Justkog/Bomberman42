@@ -7,6 +7,7 @@ namespace BeerEngine
 	{
 		Mesh	*Graphics::plane = nullptr;
 		Mesh	*Graphics::cube = nullptr;
+		Texture *Graphics::whiteTexture = nullptr;
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -18,14 +19,14 @@ namespace BeerEngine
 				).addTriangleUV(
 					glm::vec2(0.0f, 1.0f),
 					glm::vec2(0.0f, 0.0f),
-					glm::vec2(1.0f, 1.0f)
+					glm::vec2(1.0f, 0.0f)
 				).addTriangle(
 					glm::vec3(1.0f, 0.0f, 1.0f),
 					glm::vec3(1.0f, 0.0f, -1.0f),
 					glm::vec3(-1.0f, 0.0f, -1.0f)
 				).addTriangleUV(
-					glm::vec2(1.0f, 1.0f),
 					glm::vec2(1.0f, 0.0f),
+					glm::vec2(1.0f, 1.0f),
 					glm::vec2(0.0f, 1.0f)
 				).calculTangent()
 			;
@@ -42,37 +43,37 @@ namespace BeerEngine
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3( 0.5f, 0.5f, -0.5f))
 				.addUV(glm::vec2(1.0f, 0.0f))
+				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
+				.addUV(glm::vec2(1.0f, 0.0f))
+				.addVertice(glm::vec3( 0.5f, 0.5f, -0.5f))
+				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// DOWN
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f, -0.5f))
+				.addUV(glm::vec2(0.0f, 0.0f))
+				.addVertice(glm::vec3( 0.5f, -0.5f,  0.5f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3( 0.5f, -0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
+				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f,  0.5f))
-				.addUV(glm::vec2(0.0f, 0.0f))
+				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// FRONT
 				.addVertice(glm::vec3(-0.5f, -0.5f, 0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3( 0.5f, -0.5f, 0.5f))
+				.addUV(glm::vec2(0.0f, 0.0f))
+				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3( 0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
+				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(0.0f, 0.0f))
+				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, 0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// BACK
@@ -81,11 +82,11 @@ namespace BeerEngine
 				.addVertice(glm::vec3(-0.5f, 0.5f,  -0.5f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3( 0.5f, 0.5f,  -0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3( 0.5f, 0.5f,  -0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3( 0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(1.0f, 0.0f))
+				.addVertice(glm::vec3( 0.5f, 0.5f,  -0.5f))
+				.addUV(glm::vec2(1.0f, 0.0f))
+				.addVertice(glm::vec3( 0.5f, -0.5f, -0.5f))
+				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// LEFT
@@ -94,24 +95,24 @@ namespace BeerEngine
 				.addVertice(glm::vec3(-0.5f, -0.5f,  0.5f))
 				.addUV(glm::vec2(0.0f, 0.0f))
 				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
 				.addUV(glm::vec2(1.0f, 0.0f))
+				.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
+				.addUV(glm::vec2(1.0f, 0.0f))
+				.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
+				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(-0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// RIGHT
 				.addVertice(glm::vec3(0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				.addVertice(glm::vec3(0.5f, 0.5f, -0.5f))
+				.addUV(glm::vec2(0.0f, 0.0f))
+				.addVertice(glm::vec3(0.5f, 0.5f,  0.5f))
 				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
-				.addVertice(glm::vec3(0.5f, 0.5f,  0.5f))
-				.addUV(glm::vec2(1.0f, 1.0f))
+				.addUV(glm::vec2(1.0f, 0.0f))
 				.addVertice(glm::vec3(0.5f, -0.5f,  0.5f))
-				.addUV(glm::vec2(0.0f, 0.0f))
+				.addUV(glm::vec2(1.0f, 1.0f))
 				.addVertice(glm::vec3(0.5f, -0.5f, -0.5f))
 				.addUV(glm::vec2(0.0f, 1.0f))
 				// Calcul nornal
@@ -122,18 +123,30 @@ namespace BeerEngine
 			return (builder.build());
 		}
 
+		static Texture	*loadWhiteTexture(void)
+		{
+			// unsigned char data[] = {255, 255, 255, 255};
+			unsigned char *data = new unsigned char[4];
+			for (int i = 0; i < 4; i++)
+				data[i] = 0xff;
+			return (new Texture(1, 1, data, GL_BGRA));
+		}
+
 		void Graphics::Load(void)
 		{
 			// PLANE
 			plane = LoadPlane();
 			// CUBE
 			cube = LoadCube();
+			// Texture White
+			whiteTexture = loadWhiteTexture();
 		}
 
 		void Graphics::UnLoad(void)
 		{
 			delete plane;
 			delete cube;
+			delete whiteTexture;
 		}
 	}
 }

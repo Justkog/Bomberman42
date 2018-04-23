@@ -18,12 +18,12 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
 
-
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
 #include <cmath>
 #include <string>
+#include <cstring>
 #include <sstream>
 
 #endif

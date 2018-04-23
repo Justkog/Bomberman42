@@ -3,6 +3,7 @@
 
 #include "../Core.hpp"
 #include "Mesh.hpp"
+#include "Texture.hpp"
 
 namespace BeerEngine
 {
@@ -11,9 +12,9 @@ namespace BeerEngine
 		class Graphics
 		{
 		public:
-			static Mesh	*plane;
-			static Mesh	*cube;
-
+			static Mesh		*plane;
+			static Mesh		*cube;
+			static Texture	*whiteTexture;
 			static void Load(void);
 			static void UnLoad(void);
 		};

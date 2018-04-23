@@ -1,14 +1,5 @@
 #include <thread>
-#include "Core/Window.hpp"
-#include "Core/Time.hpp"
-#include "Core/AScene.hpp"
-#include "Core/SceneManager.hpp"
-#include "Core/Graphics/Mesh.hpp"
-#include "Core/Graphics/MeshBuilder.hpp"
-#include "Core/Graphics/ShaderProgram.hpp"
-#include "Core/Graphics/Graphics.hpp"
-#include "Core/IO/FileUtils.hpp"
-#include "Core/Transform.hpp"
+#include "Core/BeerEngine.hpp"
 
 #include "Game/SceneTest.hpp"
 
@@ -73,6 +64,9 @@ int main(void)
     // depth-testing
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+    // Blend Alpha
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // CullFace
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
@@ -93,6 +87,7 @@ int main(void)
         window->swapBuffer();
         frameCount++;
     }
+    delete BeerEngine::Camera::main;
     BeerEngine::Graphics::Graphics::UnLoad();
     delete window;
     return (0);
