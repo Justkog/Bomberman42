@@ -20,7 +20,7 @@ namespace BeerEngine
                 delete _Current;
             _Current = new T();
             _Current->init();
-            _Current->start();
+            _Current->debugTest();
         }
     };
 }

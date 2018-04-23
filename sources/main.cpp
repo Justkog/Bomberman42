@@ -10,6 +10,8 @@
 
 static int     frameCount = 0;
 
+
+
 void updateThread(BeerEngine::Window *window)
 {
     static const double fixedUpdateTime = 1.0 / 60.0;
@@ -38,34 +40,6 @@ void updateThread(BeerEngine::Window *window)
         }
         if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
             window->closeRequest();
-        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
-        // {
-        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.forward() * BeerEngine::Time::GetDeltaTime());
-        //     // std::cout << "W: " << BeerEngine::Time::GetDeltaTime() << std::endl;
-        // }
-        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
-        // {
-        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.forward() * -BeerEngine::Time::GetDeltaTime());
-        //     // std::cout << "S: " << BeerEngine::Time::GetDeltaTime() << std::endl;
-        // }
-        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
-        // {
-        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * BeerEngine::Time::GetDeltaTime());
-        //     // std::cout << "D: " << BeerEngine::Time::GetDeltaTime() << std::endl;
-        // }
-        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
-        // {
-        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * -BeerEngine::Time::GetDeltaTime());
-        //     // std::cout << "A: " << BeerEngine::Time::GetDeltaTime() << std::endl;
-        // }
-        if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::SPACE))
-        {
-            BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.top() * BeerEngine::Time::GetDeltaTime());
-        }
-        if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_CONTROL))
-        {
-            BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.top() * -BeerEngine::Time::GetDeltaTime());
-        }
         if (scene != nullptr)
         {
             scene->mutexLock(true);
@@ -97,17 +71,17 @@ int main(void)
 
     audio.setListenerData(0, 0, 0);
 
-    BeerEngine::Audio::AudioClip   clip("assets/sounds/samplemono.wav");
-    BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
+    BeerEngine::Audio::AudioClip   clip("assets/sounds/The_do.ogg");
+    // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
     BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-    BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
+    // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
 
     srcAudio.setVolume(1);
     srcAudio.setPitch(1);
-    srcAudio2.setPitch(2);
+    // srcAudio2.setPitch(2);
     srcAudio.setLooping(true);
-    srcAudio.play();
+    // srcAudio.play();
 
     // char c = ' ';
     // while (c != 'q')
@@ -157,7 +131,7 @@ int main(void)
        frameCount++;
     }
     srcAudio.Delete();
-    srcAudio2.Delete();
+    // srcAudio2.Delete();
     BeerEngine::Audio::AudioListener::DestroyOpenAL();
     delete BeerEngine::Camera::main;
     BeerEngine::Graphics::Graphics::UnLoad();
