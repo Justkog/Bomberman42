@@ -10,6 +10,7 @@ uniform mat4 view;
 uniform mat4 model;
 
 uniform vec3 viewPos;
+uniform vec3 viewDir;
 
 out vec3 vNormal;
 out vec2 vTexture;

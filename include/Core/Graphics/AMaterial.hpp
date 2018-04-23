@@ -29,6 +29,7 @@ namespace BeerEngine
 			GLint	_viewShaderID;
 			GLint	_modelShaderID;
 			GLint	_viewPosID;
+			GLint	_viewDirID;
 		
 		public:
 			AMaterial(ShaderProgram *shader, glm::vec4 color = glm::vec4(1.0f));

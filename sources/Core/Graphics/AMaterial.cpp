@@ -20,6 +20,7 @@ namespace BeerEngine
 			_modelShaderID = _shader->getUniformLocation("model");
 
 			_viewPosID = _shader->getUniformLocation("viewPos");
+			_viewDirID = _shader->getUniformLocation("viewDir");
 
 			_colorShaderID = _shader->getUniformLocation("color");
 			_albedoID = _shader->getUniformLocation("albedo");
@@ -41,6 +42,8 @@ namespace BeerEngine
 			// View Pos
 			glm::vec3 viewPos = Camera::main->transform.position;
 			_shader->uniform3f(_viewPosID, viewPos[0], viewPos[1], viewPos[2]);
+			glm::vec3 viewDir = Camera::main->transform.forward();
+			_shader->uniform3f(_viewDirID, viewDir[0], viewDir[1], viewDir[2]);
 
 			_shader->uniform4f(_colorShaderID, _color[0], _color[1], _color[2], _color[3]);
 
