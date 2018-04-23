@@ -42,7 +42,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(materialA);
 	gameObject->transform.position = glm::vec3(-1, 0, 4);
 	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.0f), 0.0f));
-	gameObject = instantiate<BeerEngine::GameObject>();
+
 	// => GameObject 2 : Cube Mid
 	gameObject = instantiate<BeerEngine::GameObject>();
 	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -50,7 +50,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(materialB);
 	gameObject->transform.position = glm::vec3(-1, 1, 4);
 	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(22.5f), 0.0f));
-	gameObject = instantiate<BeerEngine::GameObject>();
+	
 	// => GameObject 2 : Cube Top
 	gameObject = instantiate<BeerEngine::GameObject>();
 	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -58,7 +58,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(materialC);
 	gameObject->transform.position = glm::vec3(-0.5, 2, 4);
 	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(66.0f), 0.0f));
-	gameObject = instantiate<BeerEngine::GameObject>();
+
 	// => GameObject 3 : Plane
 	gameObject = instantiate<BeerEngine::GameObject>();
 	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();

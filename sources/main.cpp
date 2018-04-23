@@ -58,6 +58,14 @@ void updateThread(BeerEngine::Window *window)
         //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.right() * -BeerEngine::Time::GetDeltaTime());
         //     // std::cout << "A: " << BeerEngine::Time::GetDeltaTime() << std::endl;
         // }
+        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::SPACE))
+        // {
+        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.top() * BeerEngine::Time::GetDeltaTime());
+        // }
+        // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_CONTROL))
+        // {
+        //     BeerEngine::Camera::main->transform.translate(BeerEngine::Camera::main->transform.top() * -BeerEngine::Time::GetDeltaTime());
+        // }
         if (scene != nullptr)
         {
             scene->mutexLock(true);
