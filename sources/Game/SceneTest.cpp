@@ -39,14 +39,15 @@ void    SceneTest::init(void)
 	// material2->setAlbedo(crate);
 
 	// Camera
-	BeerEngine::GameObject *cameraGO;
+	/*BeerEngine::GameObject *cameraGO;
 	cameraGO = instantiate<BeerEngine::GameObject>();
-	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();*/
 
-	BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
+	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
 	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
-	// glm::vec3 v = BeerEngine::Camera::main->transform.forward();
-	// BeerEngine::Camera::main->transform.translate(-v);
+	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
+	BeerEngine::Camera::main->transform.translate(-v);*/
+
 	// GameObject
 	//
 	BeerEngine::GameObject *gameObject;

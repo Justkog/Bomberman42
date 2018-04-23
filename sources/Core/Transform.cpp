@@ -18,22 +18,23 @@ namespace BeerEngine
 
 	glm::vec3	Transform::forward(void)
 	{
-		glm::vec4 forward(0.0f, 0.0f, 1.0f, 0.0f);
-		forward = rotation * forward;
+		glm::vec4 forward(1.0f, 0.0f, 0.0f, 0.0f);
+		forward = forward * glm::toMat4(rotation);
 		return (glm::vec3(forward));
 	}
 
 	glm::vec3	Transform::right(void)
 	{
-		glm::vec4 r(1.0f, 0.0f, 0.0f, 0.0f);
-		r = glm::toMat4(rotation) * r;
-		r[1] = 0.0f;
-		return (glm::normalize(glm::vec3(r)));
+		glm::vec4 r(0.0f, 0.0f, -1.0f, 0.0f);
+		r = r * glm::toMat4(rotation);
+		return (glm::vec3(r));
 	}
 
 	glm::vec3	Transform::top(void)
 	{
-		return (glm::vec3(0, 1, 0));
+		glm::vec4 r(0.0f, 1.0f, 0.0f, 0.0f);
+		r = r * glm::toMat4(rotation);
+		return (glm::vec3(r));
 	}
 
 	glm::mat4	Transform::getMat4(bool isCamera)
