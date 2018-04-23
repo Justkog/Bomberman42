@@ -12,8 +12,9 @@
 
 #include "Game/SceneTest.hpp"
 
-#include "Audio/AudioMaster.hpp"
+#include "Audio/AudioListener.hpp"
 #include "Audio/Source.hpp"
+#include "Audio/AudioClip.hpp"
 
 static int     frameCount = 0;
 
@@ -65,12 +66,15 @@ void updateThread(BeerEngine::Window *window)
 int main(void)
 {
     // Audio
-    AudioMaster audio;
+    AudioListener audio;
 
     audio.setListenerData(0, 0, 0);
 
-    Source      srcAudio(audio.LoadSound("assets/sounds/samplemono.wav"));
-    Source      srcAudio2(audio.LoadSound("assets/sounds/ds_brush_snaremono.wav"));
+    AudioClip   clip("assets/sounds/samplemono.wav");
+    AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
+
+    Source      srcAudio(clip.getBuffer());
+    Source      srcAudio2(clip2.getBuffer());
 
     srcAudio.setVolume(1);
     srcAudio.setPitch(1);
