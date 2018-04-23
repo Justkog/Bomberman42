@@ -19,4 +19,8 @@
 #include "IO/FileUtils.hpp"
 #include "Camera.hpp"
 
+#include "Audio/AudioSource.hpp"
+#include "Audio/AudioListener.hpp"
+#include "Audio/AudioClip.hpp"
+
 #endif

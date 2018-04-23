@@ -1,4 +1,5 @@
 #include "Game/SceneTest.hpp"
+#include "Game/CameraTest.hpp"
 
 void    SceneTest::init(void)
 {
@@ -30,14 +31,20 @@ void    SceneTest::init(void)
 	// material2->setAlbedo(crate);
 	// Camera
 	BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
-	BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
-	glm::vec3 v = BeerEngine::Camera::main->transform.forward();
-	BeerEngine::Camera::main->transform.translate(-v);
+	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
+	// glm::vec3 v = BeerEngine::Camera::main->transform.forward();
+	// BeerEngine::Camera::main->transform.translate(-v);
 	// GameObject
+	//
 	BeerEngine::GameObject *gameObject;
+	BeerEngine::Component::MeshRenderer *meshRenderer;
+	
+	// FPS Camera
+	instantiate<CameraTest>();
+	
 	// => GameObject 1
 	gameObject = instantiate<BeerEngine::GameObject>();
-	BeerEngine::Component::MeshRenderer *meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	meshRenderer->setMaterial(materialA);
 	gameObject->transform.position = glm::vec3(-1, 0, 4);

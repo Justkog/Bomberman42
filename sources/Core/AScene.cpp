@@ -2,6 +2,8 @@
 
 namespace BeerEngine
 {
+    int     AScene::uniqueID = 0;
+
     AScene::AScene(void)
     {
         
