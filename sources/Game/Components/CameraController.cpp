@@ -82,6 +82,11 @@ namespace Game
 				cam->transform.translate(-cam->transform.right() * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
 				cam->transform.translate(cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+
+			glm::vec2 mouseDelta = BeerEngine::Input::mousePosition - this->lastMousePos;
+			glm::vec3 EulerAngles(BeerEngine::Time::GetDeltaTime() * mouseDelta.y, BeerEngine::Time::GetDeltaTime() * mouseDelta.x, 0);
+			auto MyQuaternion = glm::quat(EulerAngles);
+			cam->transform.rotation = MyQuaternion * cam->transform.rotation;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
 		}
 

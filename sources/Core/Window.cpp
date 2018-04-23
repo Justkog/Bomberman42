@@ -10,6 +10,7 @@ namespace BeerEngine
 		_window = glfwCreateWindow(_width, _height, _title.c_str(), NULL, NULL);
 		_perspective = glm::perspective(glm::radians(60.0f), (float)_width / (float)_height, 0.01f, 1000.0f);
 		_ortho = glm::ortho(0.0f, (float)_width, 0.0f, (float)_height);
+		_close = false;
 	}
 
 	Window::~Window()
@@ -47,6 +48,18 @@ namespace BeerEngine
 	{
 		return (_ortho);
 	}
+
+
+	void			Window::closeRequest(void)
+	{
+		_close = true;
+	}
+
+	bool			Window::isClose(void)
+	{
+		return (glfwWindowShouldClose(_window) || _close);
+	}
+
 
 	static void     win_resize_callback(GLFWwindow *window, int width, int height)
 	{

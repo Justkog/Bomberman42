@@ -14,6 +14,7 @@ namespace BeerEngine
 		GLFWwindow      *_window;
 		glm::mat4       _perspective;
 		glm::mat4       _ortho;
+		bool			_close;
 		Window(std::string title, int width, int height);
 
 		static Window	*_Instance;
@@ -24,6 +25,8 @@ namespace BeerEngine
 		void            swapBuffer(void);
 		glm::mat4       &getProjection3D(void);
 		glm::mat4       &getProjection2D(void);
+		void			closeRequest(void);
+		bool			isClose(void);
 
 		static Window   *CreateWindow(std::string title, int width, int height);
 		static Window	*GetInstance(void);
