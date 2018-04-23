@@ -11,13 +11,19 @@ void    SceneTest::init(void)
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
 	);
 	shader->compile();
+	// Texture
+	BeerEngine::Graphics::Texture *crate = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
 	// Material
 	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
+	material->setAlbedo(crate);
 	BeerEngine::Graphics::AMaterial *material2 = new BeerEngine::Graphics::AMaterial(shader);
 	material2->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
+	// material2->setAlbedo(crate);
 	// Camera
 	BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
-	BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(22.5f), 0.0f));
+	BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(22.5f), 0.0f));
+	// glm::vec3 v = BeerEngine::Camera::main->transform.forward();
+	// BeerEngine::Camera::main->transform.translate(-v);
 	// GameObject
 	BeerEngine::GameObject *gameObject;
 	// => GameObject 1

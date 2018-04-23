@@ -32,6 +32,7 @@ SRC = \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
+	Core/Graphics/Texture.cpp \
 	Core/IO/FileUtils.cpp \
 	\
 	Game/SceneTest.cpp \

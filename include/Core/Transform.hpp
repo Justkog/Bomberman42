@@ -16,6 +16,13 @@ namespace BeerEngine
 
 		Transform();
 
+		void		translate(glm::vec3 pos);
+		void		translate(float x, float y, float z);
+
+		glm::vec3	forward(void);
+		glm::vec3	right(void);
+		glm::vec3	top(void);
+
 		glm::mat4	getMat4(bool invPos = false);
 
 	};
