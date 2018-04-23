@@ -21,7 +21,7 @@ void    SceneTest::init(void)
 	BeerEngine::Graphics::Texture *crate = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
 	BeerEngine::Graphics::Texture *crate_normal = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_normal.png");
 	BeerEngine::Graphics::Texture *crate_bump = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_bump.png");
-	
+
 	// Material
 	BeerEngine::Graphics::AMaterial *materialA = new BeerEngine::Graphics::AMaterial(shader);
 	materialA->setAlbedo(crate);
@@ -49,7 +49,7 @@ void    SceneTest::init(void)
 	// GameObject
 	BeerEngine::GameObject *gameObject;
 
-	// => GameObject 1
+	// player
 	gameObject = instantiate<BeerEngine::GameObject>();
 	BeerEngine::Component::MeshRenderer *meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
