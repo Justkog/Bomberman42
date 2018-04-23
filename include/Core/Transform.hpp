@@ -23,7 +23,7 @@ namespace BeerEngine
 		glm::vec3	right(void);
 		glm::vec3	top(void);
 
-		glm::mat4	getMat4(bool invPos = false);
+		glm::mat4	getMat4(bool isCamera = false);
 
 	};
 }

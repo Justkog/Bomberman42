@@ -41,9 +41,13 @@ SRC = \
 	\
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
-	Game/Components/Settings.cpp
+	Game/Components/Settings.cpp \
+	\
+	Core/Audio/AudioListener.cpp \
+	Core/Audio/AudioSource.cpp \
+	Core/Audio/AudioClip.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Audio Game/Components
+DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio Game/Components
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
