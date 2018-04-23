@@ -1,5 +1,5 @@
-#ifndef SOURCE_HPP
-# define SOURCE_HPP
+#ifndef AUDIOSOURCE_HPP
+# define AUDIOSOURCE_HPP
 
 #include <AL/al.h>
 #include <AL/alc.h>
@@ -9,13 +9,13 @@
 #include <vector>
 #include <iomanip>
 
-class Source
+class AudioSource
 {
 
 public:
 
-	Source(ALuint buf);
-	~Source( void );
+	AudioSource(ALuint buf);
+	~AudioSource( void );
 
 	void	    play();
 	bool        isPlaying();

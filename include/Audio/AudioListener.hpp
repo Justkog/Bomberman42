@@ -12,6 +12,7 @@ public:
 	AudioListener( void );
 	virtual ~AudioListener();
 
+	void		init();
 	void		initDevices();
 	bool		InitOpenAL(const char* DeviceName);
 	void		GetDevices(std::vector<std::string>& Devices);

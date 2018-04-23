@@ -13,7 +13,7 @@
 #include "Game/SceneTest.hpp"
 
 #include "Audio/AudioListener.hpp"
-#include "Audio/Source.hpp"
+#include "Audio/AudioSource.hpp"
 #include "Audio/AudioClip.hpp"
 
 static int     frameCount = 0;
@@ -73,62 +73,65 @@ int main(void)
     AudioClip   clip("assets/sounds/samplemono.wav");
     AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
-    Source      srcAudio(clip.getBuffer());
-    Source      srcAudio2(clip2.getBuffer());
+    AudioSource      srcAudio(clip.getBuffer());
+    AudioSource      srcAudio2(clip2.getBuffer());
 
     srcAudio.setVolume(1);
     srcAudio.setPitch(1);
     srcAudio2.setPitch(2);
     srcAudio.setLooping(true);
-    srcAudio.play();
+    // srcAudio.play();
 
-    char c = ' ';
-    while (c != 'q')
-    {
-        std::cin >> c;
-        if (c == 'p')
-        {
-            if (srcAudio.isPlaying())
-                srcAudio.pause();
-            else
-                srcAudio.continuePlaying();
-        }
-        if (c == 'o')
-            srcAudio2.play();
-    }
-    srcAudio.Delete();
-    srcAudio2.Delete();
-    // BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
-    // BeerEngine::AScene  *scene;
-    // BeerEngine::Graphics::Graphics::Load();
-    // BeerEngine::SceneManager::LoadScene<SceneTest>();
-    // // Thread Update
-    // std::thread updateLoop (updateThread, window);
-    // updateLoop.detach();
-    // // depth-testing
-    // glEnable(GL_DEPTH_TEST);
-    // glDepthFunc(GL_LESS);
-    // // CullFace
-    // glCullFace(GL_BACK);
-    // glEnable(GL_CULL_FACE);
-    // // FPS
-    // while (!glfwWindowShouldClose(window->getWindow()))
+    // char c = ' ';
+    // while (c != 'q')
     // {
-    //     window->clear();
-    //     scene = BeerEngine::SceneManager::GetCurrent();
-    //     if (scene != nullptr)
+    //     std::cin >> c;
+    //     if (c == 'p')
     //     {
-    //         scene->mutexLock(true);
-    //         scene->renderUpdate();
-    //         scene->render();
-    //         scene->mutexLock(false);
+    //         if (srcAudio.isPlaying())
+    //             srcAudio.pause();
+    //         else
+    //             srcAudio.continuePlaying();
     //     }
-    //     window->swapBuffer();
-    //
-    //
-    //     frameCount++;
+    //     if (c == 'o')
+    //         srcAudio2.play();
     // }
-    // BeerEngine::Graphics::Graphics::UnLoad();
-    // delete window;
+    // srcAudio.Delete();
+    // srcAudio2.Delete();
+    BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
+    BeerEngine::AScene  *scene;
+    BeerEngine::Graphics::Graphics::Load();
+    BeerEngine::SceneManager::LoadScene<SceneTest>();
+    // Thread Update
+    std::thread updateLoop (updateThread, window);
+    updateLoop.detach();
+    // depth-testing
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    // CullFace
+    glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    // FPS
+    srcAudio.play();
+    char c = ' ';
+
+    while (!glfwWindowShouldClose(window->getWindow()))
+    {
+        window->clear();
+        scene = BeerEngine::SceneManager::GetCurrent();
+        if (scene != nullptr)
+        {
+            scene->mutexLock(true);
+            scene->renderUpdate();
+            scene->render();
+            scene->mutexLock(false);
+        }
+        window->swapBuffer();
+        frameCount++;
+    }
+    BeerEngine::Graphics::Graphics::UnLoad();
+    srcAudio.Delete();
+
+    delete window;
     return (0);
 }

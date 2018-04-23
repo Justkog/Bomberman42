@@ -1,17 +1,17 @@
 
-#include "Audio/Source.hpp"
+#include "Audio/AudioSource.hpp"
 
-Source::Source(ALuint buf): _Buffer(buf)
+AudioSource::AudioSource(ALuint buf): _Buffer(buf)
 {
 	// Création d'une source
 	alGenSources(1, &_Source);
 
 }
 
-Source::~Source()
+AudioSource::~AudioSource()
 { }
 
-void	   Source::play()
+void	   AudioSource::play()
 {
     // arrete un son avant de jouant le suivant
     stop();
@@ -20,7 +20,7 @@ void	   Source::play()
 	continuePlaying();
 }
 
-bool       Source::isPlaying()
+bool       AudioSource::isPlaying()
 {
 	alGetSourcei(_Source, AL_SOURCE_STATE, &_Status);
 	if (_Status == AL_PLAYING)
@@ -28,23 +28,23 @@ bool       Source::isPlaying()
 	return false;
 }
 
-void	   Source::pause()
+void	   AudioSource::pause()
 {
     //mettre un son en pause
     alSourcePause(_Source);
 }
 
-void	   Source::continuePlaying()
+void	   AudioSource::continuePlaying()
 {
     alSourcePlay(_Source);
 }
 
-void	   Source::stop()
+void	   AudioSource::stop()
 {
     alSourceStop(_Source);
 }
 
-void	   Source::Delete()
+void	   AudioSource::Delete()
 {
     stop();
     // Destruction du tampon
@@ -55,42 +55,42 @@ void	   Source::Delete()
     alDeleteSources(1, &_Source);
 }
 
-void	   Source::setVolume(float volume)
+void	   AudioSource::setVolume(float volume)
 {
     //change le volume du son (valeur normalisé)
     alSourcef(_Source, AL_GAIN, volume);
 }
 
-void	   Source::setPitch(float pitch)
+void	   AudioSource::setPitch(float pitch)
 {
     //change le ton du son (1 par defaut)
     alSourcef(_Source, AL_PITCH, pitch);
 }
 
-void	   Source::setPosition(float x, float y, float z)
+void	   AudioSource::setPosition(float x, float y, float z)
 {
     //change la position de la source sonore
     alSource3f(_Source, AL_POSITION, x, y, z);
 }
 
-void	   Source::setVelocity(float x, float y, float z)
+void	   AudioSource::setVelocity(float x, float y, float z)
 {
     //change la vitesse de la source sonore
     alSource3f(_Source, AL_VELOCITY, x, y, z);
 }
 
-void	   Source::setLooping(bool loop)
+void	   AudioSource::setLooping(bool loop)
 {
     //active une boucle
     alSourcei(_Source, AL_LOOPING, loop);
 }
 
-void		Source::setBuffer(ALuint buf)
+void		AudioSource::setBuffer(ALuint buf)
 {
 	_Buffer = buf;
 }
 
-void		Source::setSource(ALuint src)
+void		AudioSource::setSource(ALuint src)
 {
 	_Source = src;
 }

@@ -36,7 +36,7 @@ SRC = \
 	Game/SceneTest.cpp \
 	\
 	Audio/AudioListener.cpp \
-	Audio/Source.cpp \
+	Audio/AudioSource.cpp \
 	Audio/AudioClip.cpp
 
 DIR = Core Core/Component Core/Graphics Core/IO Game Audio

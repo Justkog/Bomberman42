@@ -1,15 +1,20 @@
 
 #include "Audio/AudioListener.hpp"
-#include "Audio/Source.hpp"
+#include "Audio/AudioSource.hpp"
 
 AudioListener::AudioListener()
 {
-        initDevices();
+    init();
 }
 
 AudioListener::~AudioListener()
 {
     ShutdownOpenAL();
+}
+
+void	   AudioListener::init()
+{
+    initDevices();
 }
 
 void	   AudioListener::initDevices()
