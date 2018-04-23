@@ -1,14 +1,5 @@
 #include <thread>
-#include "Core/Window.hpp"
-#include "Core/Time.hpp"
-#include "Core/AScene.hpp"
-#include "Core/SceneManager.hpp"
-#include "Core/Graphics/Mesh.hpp"
-#include "Core/Graphics/MeshBuilder.hpp"
-#include "Core/Graphics/ShaderProgram.hpp"
-#include "Core/Graphics/Graphics.hpp"
-#include "Core/IO/FileUtils.hpp"
-#include "Core/Transform.hpp"
+#include "Core/BeerEngine.hpp"
 
 #include "Game/SceneTest.hpp"
 
@@ -65,6 +56,22 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
+    BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
+    BeerEngine::AScene  *scene;
+    BeerEngine::Graphics::Graphics::Load();
+    BeerEngine::SceneManager::LoadScene<SceneTest>();
+    // Thread Update
+    std::thread updateLoop (updateThread, window);
+    updateLoop.detach();
+    // depth-testing
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    // Blend Alpha
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    // CullFace
+    glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
     // Audio
     AudioListener::init();
     AudioListener audio;
@@ -131,5 +138,8 @@ int main(void)
     // BeerEngine::Graphics::Graphics::UnLoad();
     //
     // delete window;
+    delete BeerEngine::Camera::main;
+    BeerEngine::Graphics::Graphics::UnLoad();
+    delete window;
     return (0);
 }
