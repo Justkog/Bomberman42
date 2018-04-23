@@ -4,7 +4,9 @@
 
 #include "Game/SceneTest.hpp"
 
-#include "Audio/AudioMaster.hpp"
+#include "Audio/AudioListener.hpp"
+#include "Audio/AudioSource.hpp"
+#include "Audio/AudioClip.hpp"
 
 static int     frameCount = 0;
 
@@ -81,6 +83,43 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
+    // Audio
+    // AudioListener::init();
+    // AudioListener audio;
+    //
+    // audio.setListenerData(0, 0, 0);
+    //
+    // AudioClip   clip("assets/sounds/samplemono.wav");
+    // AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
+    //
+    // AudioSource      srcAudio(clip.getBuffer());
+    // AudioSource      srcAudio2(clip2.getBuffer());
+    //
+    // srcAudio.setVolume(1);
+    // srcAudio.setPitch(1);
+    // srcAudio2.setPitch(2);
+    // srcAudio.setLooping(true);
+    // srcAudio.play();
+    //
+    // char c = ' ';
+    // while (c != 'q')
+    // {
+    //     std::cin >> c;
+    //     if (c == 'p')
+    //     {
+    //         if (srcAudio.isPlaying())
+    //             srcAudio.pause();
+    //         else
+    //             srcAudio.continuePlaying();
+    //     }
+    //     if (c == 'o')
+    //         srcAudio2.play();
+    // }
+    // srcAudio.Delete();
+    // srcAudio2.Delete();
+    // AudioListener::DestroyOpenAL();
+
+
     BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     BeerEngine::AScene  *scene;
     BeerEngine::Graphics::Graphics::Load();
@@ -97,22 +136,20 @@ int main(void)
     // CullFace
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
-    // Audio
-    // AudioMaster audio;
     // FPS
     while (!window->isClose())
     {
-        window->clear();
-        scene = BeerEngine::SceneManager::GetCurrent();
-        if (scene != nullptr)
-        {
-            scene->mutexLock(true);
-            scene->renderUpdate();
-            scene->render();
-            scene->mutexLock(false);
-        }
-        window->swapBuffer();
-        frameCount++;
+       window->clear();
+       scene = BeerEngine::SceneManager::GetCurrent();
+       if (scene != nullptr)
+       {
+           scene->mutexLock(true);
+           scene->renderUpdate();
+           scene->render();
+           scene->mutexLock(false);
+       }
+       window->swapBuffer();
+       frameCount++;
     }
     delete BeerEngine::Camera::main;
     BeerEngine::Graphics::Graphics::UnLoad();
