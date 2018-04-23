@@ -1,4 +1,6 @@
 #include "Game/Components/CameraController.hpp"
+#include "Core/Input.hpp"
+#include "Core/Time.hpp"
 
 namespace Game
 {
@@ -59,6 +61,12 @@ namespace Game
 
 		// PUBLIC METHOD #################################################
 
+		void    CameraController::start(void)
+		{
+			std::cout << "start" << "\n";
+			this->cam = BeerEngine::Camera::main;
+		}
+
 		void    CameraController::fixedUpdate(void)
 		{
 
@@ -66,7 +74,15 @@ namespace Game
 
 		void    CameraController::update(void)
 		{
-
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
+				cam->transform.translate(cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
+				cam->transform.translate(-cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+				cam->transform.translate(-cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+				cam->transform.translate(cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+			this->lastMousePos = BeerEngine::Input::mousePosition;
 		}
 
 		// ###############################################################
