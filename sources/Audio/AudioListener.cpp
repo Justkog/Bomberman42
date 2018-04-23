@@ -3,51 +3,16 @@
 #include "Audio/AudioSource.hpp"
 
 AudioListener::AudioListener()
-{
-    init();
-}
+{ }
 
 AudioListener::~AudioListener()
-{
-    ShutdownOpenAL();
-}
+{ }
 
 void	   AudioListener::init()
-{
-    initDevices();
-}
-
-void	   AudioListener::initDevices()
 {
     int Choice = 0;
     // Recuperation des devices disponibles
     std::vector<std::string> Devices;
-    GetDevices(Devices);
-    InitOpenAL(Devices[Choice].c_str());
-}
-
-bool		AudioListener::InitOpenAL(const char* DeviceName = NULL)
-{
-    // Ouverture du device
-    ALCdevice* Device = alcOpenDevice(NULL);
-    if (!Device)
-        return false;
-
-    // Création du contexte
-    ALCcontext* Context = alcCreateContext(Device, NULL);
-    if (!Context)
-        return false;
-
-    // Activation du contexte
-    if (!alcMakeContextCurrent(Context))
-        return false;
-
-    return true;
-}
-
-
-void		AudioListener::GetDevices(std::vector<std::string>& Devices)
-{
     // Vidage de la liste
     Devices.clear();
 
@@ -63,10 +28,22 @@ void		AudioListener::GetDevices(std::vector<std::string>& Devices)
             DeviceList += strlen(DeviceList) + 1;
         }
     }
+    // Ouverture du device
+    ALCdevice* Device = alcOpenDevice(NULL);
+    if (!Device)
+        throw std::runtime_error("No device opened !");
+
+    // Création du contexte
+    ALCcontext* Context = alcCreateContext(Device, NULL);
+    if (!Context)
+        throw std::runtime_error("Context is empty !");
+
+    // Activation du contexte
+    if (!alcMakeContextCurrent(Context))
+        throw std::runtime_error("Context activation failed !");
 }
 
-
-void		AudioListener::ShutdownOpenAL()
+void		AudioListener::DestroyOpenAL()
 {
     // Récupération du contexte et du device
     ALCcontext* Context = alcGetCurrentContext();
