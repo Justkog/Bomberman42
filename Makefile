@@ -24,6 +24,7 @@ SRC = \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \
 	Core/Input.cpp \
+	Core/Camera.cpp \
 	Core/Component/Component.cpp \
 	Core/Component/MeshRenderer.cpp \
 	Core/Graphics/Mesh.cpp \

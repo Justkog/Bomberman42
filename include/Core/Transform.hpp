@@ -16,7 +16,7 @@ namespace BeerEngine
 
 		Transform();
 
-		glm::mat4	getMat4(void);
+		glm::mat4	getMat4(bool invPos = false);
 
 	};
 }

@@ -1,14 +1,5 @@
 #include <thread>
-#include "Core/Window.hpp"
-#include "Core/Time.hpp"
-#include "Core/AScene.hpp"
-#include "Core/SceneManager.hpp"
-#include "Core/Graphics/Mesh.hpp"
-#include "Core/Graphics/MeshBuilder.hpp"
-#include "Core/Graphics/ShaderProgram.hpp"
-#include "Core/Graphics/Graphics.hpp"
-#include "Core/IO/FileUtils.hpp"
-#include "Core/Transform.hpp"
+#include "Core/BeerEngine.hpp"
 
 #include "Game/SceneTest.hpp"
 
@@ -93,6 +84,7 @@ int main(void)
         window->swapBuffer();
         frameCount++;
     }
+    delete BeerEngine::Camera::main;
     BeerEngine::Graphics::Graphics::UnLoad();
     delete window;
     return (0);
