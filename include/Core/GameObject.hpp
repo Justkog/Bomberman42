@@ -53,6 +53,7 @@ namespace BeerEngine
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
         void    componentRender(void);
+        void    componentPhysicUpdate(void);
 
 	};
 }

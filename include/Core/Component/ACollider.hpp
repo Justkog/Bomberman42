@@ -9,18 +9,17 @@ namespace BeerEngine
 {
 	namespace Component
 	{
-		class ACollider : public Component, public IUpdate
+		class ACollider : public Component
 		{
 		protected:
 
 		public:
 			ACollider(GameObject *gameObject);
-			virtual void    fixedUpdate(void);
-			virtual void    update(void);
+			virtual void    physicUpdate(void);
 
+			static std::vector<ACollider*> _colliders;
 			glm::vec2	_offset;
 			Transform	&_transform;
-
 		};
 	}
 }

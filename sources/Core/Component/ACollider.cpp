@@ -9,14 +9,13 @@ namespace BeerEngine
 			Component(gameObject),
 			_offset(glm::vec2(1, 1)),
 			_transform(gameObject->transform)
-		{}
-
-		void    		ACollider::fixedUpdate(void)
 		{
+			_colliders.push_back(this);
 		}
 
-		void    		ACollider::update(void)
+		void    		ACollider::physicUpdate(void)
 		{
+
 		}
 	}
 }

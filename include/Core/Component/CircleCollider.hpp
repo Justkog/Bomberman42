@@ -15,8 +15,6 @@ namespace BeerEngine
 
 		public:
 			CircleCollider(GameObject *gameObject);
-			virtual void    fixedUpdate(void);
-			virtual void    update(void);
 
 			bool collide_AABB2D(CircleCollider &other);
 			bool collide_AABB2D(BoxCollider2D &other);

@@ -29,6 +29,7 @@ void updateThread(BeerEngine::Window *window)
             {
                 scene->mutexLock(true);
                 scene->fixedUpdate();
+                scene->physicUpdate();
                 scene->mutexLock(false);
             }
             fixeUpdateNumber++;

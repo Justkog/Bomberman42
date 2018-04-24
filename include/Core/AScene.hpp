@@ -35,6 +35,7 @@ namespace BeerEngine
         void    update(void);
         void    renderUpdate(void);
         void    render(void);
+        void    physicUpdate(void);
 
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
