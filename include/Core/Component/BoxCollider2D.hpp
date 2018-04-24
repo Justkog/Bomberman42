@@ -7,6 +7,8 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		class CircleCollider;
+
 		class BoxCollider2D : public ACollider
 		{
 		protected:
@@ -16,7 +18,10 @@ namespace BeerEngine
 			virtual void    fixedUpdate(void);
 			virtual void    update(void);
 
-			bool collide_AABB2D(BoxCollider2D &collider);
+			bool collide_AABB2D(BoxCollider2D &other);
+			bool collide_AABB2D(CircleCollider &other);
+
+			glm::vec2	_size;
 		};
 	}
 }

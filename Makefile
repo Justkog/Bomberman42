@@ -29,6 +29,7 @@ SRC = \
 	Core/Component/MeshRenderer.cpp \
 	Core/Component/ACollider.cpp \
 	Core/Component/BoxCollider2D.cpp \
+	Core/Component/CircleCollider.cpp \
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
