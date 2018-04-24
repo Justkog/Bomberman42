@@ -66,7 +66,8 @@ namespace Game
 			std::cout << "cam start" << "\n";
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
-			this->cam->transform.rotation = this->cam->transform.rotation * glm::angleAxis((float)M_PI, glm::vec3(0, 1, 0));
+			this->cam->transform.position = glm::vec3(0, -10, 0);
+			this->cam->transform.rotation = this->cam->transform.rotation * glm::angleAxis((float)M_PI, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-M_PI_4, glm::vec3(1, 0, 0));
 		}
 
 		void    CameraController::fixedUpdate(void)
