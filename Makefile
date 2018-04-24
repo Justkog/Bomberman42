@@ -86,7 +86,7 @@ install:
 	~/.brew/bin/brew install openal-soft
 	~/.brew/bin/brew install libsndfile
 	~/.brew/bin/brew tap nlohmann/json
-	~/.brew/bin/brew install nlohmann/json/nlohmann_json #nlohmann/json
+	~/.brew/bin/brew install nlohmann_json
 	sh script.sh
 
 relink:
