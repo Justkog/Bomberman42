@@ -25,9 +25,13 @@ namespace Game
         void    Player::update(void)
         {
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
-            {
 				this->_transform->translate(this->_transform->forward() * BeerEngine::Time::GetDeltaTime());
-            }
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_2))
+				this->_transform->translate(-this->_transform->forward() * BeerEngine::Time::GetDeltaTime());
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
+				this->_transform->translate(-this->_transform->right() * BeerEngine::Time::GetDeltaTime());
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
+				this->_transform->translate(-this->_transform->left() * BeerEngine::Time::GetDeltaTime());
         }
     }
 }
