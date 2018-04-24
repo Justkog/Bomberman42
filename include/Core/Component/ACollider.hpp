@@ -9,13 +9,19 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		class BoxCollider2D;
+		class CircleCollider;
+
 		class ACollider : public Component
 		{
 		protected:
 
 		public:
 			ACollider(GameObject *gameObject);
-			virtual void    physicUpdate(void);
+			virtual void    physicUpdate(void) = 0;
+
+			virtual bool collide_AABB2D(CircleCollider *other);
+			virtual bool collide_AABB2D(BoxCollider2D *other);
 
 			static std::vector<ACollider*> _colliders;
 			glm::vec2	_offset;

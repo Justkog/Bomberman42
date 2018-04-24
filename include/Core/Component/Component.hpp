@@ -10,11 +10,11 @@ namespace BeerEngine
 		class Component
 		{
 		protected:
-			GameObject		*_gameObject;
 		public:
 			Component(GameObject *gameObject);
 			virtual ~Component(void) {}
 
+			GameObject		*_gameObject;
 		};
 	}
 }

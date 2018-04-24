@@ -1,4 +1,6 @@
 #include "Core/Component/ACollider.hpp"
+#include "Core/Component/BoxCollider2D.hpp"
+#include "Core/Component/CircleCollider.hpp"
 #include "Core/GameObject.hpp"
 
 namespace BeerEngine
@@ -11,11 +13,6 @@ namespace BeerEngine
 			_transform(gameObject->transform)
 		{
 			_colliders.push_back(this);
-		}
-
-		void    		ACollider::physicUpdate(void)
-		{
-
 		}
 	}
 }
