@@ -39,9 +39,10 @@ void    SceneTest::init(void)
 	// material2->setAlbedo(crate);
 
 	// Camera
-	/*BeerEngine::GameObject *cameraGO;
+	BeerEngine::GameObject *cameraGO;
 	cameraGO = instantiate<BeerEngine::GameObject>();
-	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();*/
+
+	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
 	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
@@ -54,7 +55,7 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	
 	// FPS Camera
-	instantiate<CameraTest>();
+	// instantiate<CameraTest>();
 	
 	// => GameObject 1
 	gameObject = instantiate<BeerEngine::GameObject>();
@@ -102,4 +103,6 @@ void    SceneTest::init(void)
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
 	meshRenderer->setMaterial(material2);
 	gameObject->transform.position = glm::vec3(0, -0.5, 4);
+	std::cout << "init end" << "\n";
+	
 }

@@ -12,18 +12,14 @@ namespace BeerEngine
 		class ACollider : public Component, public IUpdate
 		{
 		protected:
-			glm::vec2	_offset;
-			glm::vec2	_size;
-			Transform	&_transform;
 
 		public:
 			ACollider(GameObject *gameObject);
-			glm::vec2 getOffset(void);
-			ACollider &setOffset(glm::vec2 &offset);
-			glm::vec2 getSize(void);
-			ACollider &setSize(glm::vec2 &size);
 			virtual void    fixedUpdate(void);
 			virtual void    update(void);
+
+			glm::vec2	_offset;
+			Transform	&_transform;
 
 		};
 	}

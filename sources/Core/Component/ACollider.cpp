@@ -8,7 +8,6 @@ namespace BeerEngine
 		ACollider::ACollider(GameObject *gameObject) :
 			Component(gameObject),
 			_offset(glm::vec2(1, 1)),
-			_size(glm::vec2(1, 1)),
 			_transform(gameObject->transform)
 		{}
 

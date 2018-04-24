@@ -20,6 +20,7 @@ namespace BeerEngine
 		void		translate(float x, float y, float z);
 
 		glm::vec3	forward(void);
+		glm::vec3	left(void);
 		glm::vec3	right(void);
 		glm::vec3	top(void);
 

@@ -63,9 +63,10 @@ namespace Game
 
 		void    CameraController::start(void)
 		{
-			std::cout << "start" << "\n";
+			std::cout << "cam start" << "\n";
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
+			this->cam->transform.rotation = this->cam->transform.rotation * glm::angleAxis((float)M_PI, glm::vec3(0, 1, 0));
 		}
 
 		void    CameraController::fixedUpdate(void)
@@ -75,19 +76,32 @@ namespace Game
 
 		void    CameraController::update(void)
 		{
-			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
-			// 	cam->transform.translate(cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
-			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
-			// 	cam->transform.translate(-cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
-			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
-			// 	cam->transform.translate(-cam->transform.right() * BeerEngine::Time::GetDeltaTime());
-			// if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
-			// 	cam->transform.translate(cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+			float rotation_y = 0;
+			float rotation_x = 0;
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
+				cam->transform.translate(cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
+				cam->transform.translate(-cam->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+				cam->transform.translate(cam->transform.left() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+				cam->transform.translate(cam->transform.right() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::SPACE))
+				cam->transform.translate(cam->transform.top() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_CONTROL))
+				cam->transform.translate(-cam->transform.top() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT))
+				rotation_y = -1 * BeerEngine::Time::GetDeltaTime();
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::RIGHT))
+				rotation_y = 1 * BeerEngine::Time::GetDeltaTime();
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::UP))
+				rotation_x = 1 * BeerEngine::Time::GetDeltaTime();
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::DOWN))
+				rotation_x = -1 * BeerEngine::Time::GetDeltaTime();
 
 			glm::vec2 mouseDelta = BeerEngine::Input::mousePosition - this->lastMousePos;
-			glm::vec3 EulerAngles(BeerEngine::Time::GetDeltaTime() * mouseDelta.y, BeerEngine::Time::GetDeltaTime() * mouseDelta.x, 0);
-			auto MyQuaternion = glm::quat(EulerAngles);
-			cam->transform.rotation = MyQuaternion * cam->transform.rotation;
+			cam->transform.rotation = cam->transform.rotation * glm::angleAxis(rotation_y, glm::vec3(0, 1, 0));
+			cam->transform.rotation = cam->transform.rotation * glm::angleAxis(rotation_x, cam->transform.left());
 			this->lastMousePos = BeerEngine::Input::mousePosition;
 		}
 
