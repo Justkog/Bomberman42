@@ -14,8 +14,8 @@ namespace BeerEngine
 		static std::map<int, int>	key;
 
 	public:
-		static glm::vec2	mousePosition;
-		static glm::vec2	mouseScroll;
+		static Maths::Vector2f	mousePosition;
+		static Maths::Vector2f	mouseScroll;
 		static void			SetKey(int keycode, int status);
 		static bool			GetKey(KeyCode keycode);
 		static bool			GetKeyDown(KeyCode keycode);

@@ -163,7 +163,7 @@ namespace BeerEngine
 			uniform2f(name, data[0], data[1]);
 		}
 
-		void			ShaderProgram::uniform2f(std::string const &name, glm::vec2 const &vec)
+		void			ShaderProgram::uniform2f(std::string const &name, Maths::Vector2f &vec)
 		{
 			uniform2f(name, vec[0], vec[1]);
 		}
@@ -179,7 +179,7 @@ namespace BeerEngine
 			glUniform3f(id, x, y, z);
 		}
 
-		void			ShaderProgram::uniform3f(std::string const &name, glm::vec3 const &vec)
+		void			ShaderProgram::uniform3f(std::string const &name, Maths::Vector3f &vec)
 		{
 			uniform3f(name, vec[0], vec[1],vec[2]);
 		}
@@ -187,11 +187,6 @@ namespace BeerEngine
 		void			ShaderProgram::uniform3f(std::string const &name, float *data)
 		{
 			uniform3f(name, data[0], data[1], data[2]);
-		}
-
-		void			ShaderProgram::uniform4f(std::string const &name, glm::vec4 const &vec)
-		{
-			uniform4f(name, vec[0], vec[1], vec[2], vec[3]);
 		}
 
 		void			ShaderProgram::uniform4f(std::string const &name, float x, float y, float z, float w)
@@ -210,15 +205,15 @@ namespace BeerEngine
 			uniform4f(name, data[0], data[1], data[2], data[3]);
 		}
 
-		void			ShaderProgram::uniformMat(std::string const &name, glm::mat4 &mat)
+		void			ShaderProgram::uniformMat(std::string const &name, Maths::Matrix4x4 &mat)
 		{
 			GLint id = glGetUniformLocation(_program, name.c_str());
 			uniformMat(id, mat);
 		}
 
-		void			ShaderProgram::uniformMat(GLint id, glm::mat4 &mat)
+		void			ShaderProgram::uniformMat(GLint id, Maths::Matrix4x4 &mat)
 		{
-			glUniformMatrix4fv(id, 1, GL_FALSE, glm::value_ptr(mat));
+			glUniformMatrix4fv(id, 1, GL_FALSE, &mat[0]);
 		}
 	}
 }

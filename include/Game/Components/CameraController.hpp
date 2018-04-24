@@ -33,7 +33,7 @@ namespace Game
        		virtual void    update(void);
 
 			BeerEngine::Camera	*cam;
-			glm::vec2			lastMousePos;
+			// glm::vec2			lastMousePos;
 		};
 
 	};

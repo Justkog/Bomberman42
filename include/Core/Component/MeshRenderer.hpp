@@ -15,7 +15,7 @@ namespace BeerEngine
 		protected:
 			Graphics::Mesh		*_mesh;
 			Graphics::AMaterial	*_material;
-			glm::mat4			_mat;
+			Maths::Matrix4x4	_mat;
 
 		public:
 			MeshRenderer(GameObject *gameObject);

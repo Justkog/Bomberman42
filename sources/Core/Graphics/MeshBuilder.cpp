@@ -17,28 +17,30 @@ namespace BeerEngine
 			clear();
 		}
 
-		MeshBuilder		&MeshBuilder::addVertice(glm::vec3 vertice)
+		MeshBuilder		&MeshBuilder::addVertice(Maths::Vector3f vertice)
 		{
 			vertices.push_back(vertice);
 			return (*this);
 		}
 
-		MeshBuilder		&MeshBuilder::addNormal(glm::vec3 normal)
+		MeshBuilder		&MeshBuilder::addNormal(Maths::Vector3f normal)
 		{
 			normals.push_back(normal);
 			return (*this);
 		}
 
-		MeshBuilder		&MeshBuilder::addUV(glm::vec2 uv)
+		MeshBuilder		&MeshBuilder::addUV(Maths::Vector2f uv)
 		{
 			uvs.push_back(uv);
 			return (*this);
 		}
 
 
-		MeshBuilder		&MeshBuilder::addTriangle(glm::vec3 v0, glm::vec3 v1, glm::vec3 v2)
+		MeshBuilder		&MeshBuilder::addTriangle(Maths::Vector3f v0, Maths::Vector3f v1, Maths::Vector3f v2)
 		{
-			glm::vec3 normal = glm::normalize(glm::cross(v2 - v0, v1 - v0));
+			Maths::Vector3f a = v2 - v0;
+			Maths::Vector3f b = v1 - v0;
+			Maths::Vector3f normal = a.cross(b).normalize();
 			addVertice(v0);
 			addVertice(v1);
 			addVertice(v2);
@@ -48,7 +50,7 @@ namespace BeerEngine
 			return (*this);
 		}
 
-		MeshBuilder		&MeshBuilder::addTriangleUV(glm::vec2 uv0, glm::vec2 uv1, glm::vec2 uv2)
+		MeshBuilder		&MeshBuilder::addTriangleUV(Maths::Vector2f uv0, Maths::Vector2f uv1, Maths::Vector2f uv2)
 		{
 			addUV(uv0);
 			addUV(uv1);
@@ -60,9 +62,9 @@ namespace BeerEngine
 		{
 			for (int i = 0; i < vertices.size(); i+=3)
 			{
-				glm::vec3 deltaPos1 = vertices[i + 1] - vertices[i];
-				glm::vec3 deltaPos2 = vertices[i + 2] - vertices[i];
-				glm::vec3 normal = glm::normalize(glm::cross(deltaPos2, deltaPos1));
+				Maths::Vector3f deltaPos1 = vertices[i + 1] - vertices[i];
+				Maths::Vector3f deltaPos2 = vertices[i + 2] - vertices[i];
+				Maths::Vector3f normal = deltaPos2.cross(deltaPos1).normalize(); //glm::normalize(glm::cross(deltaPos2, deltaPos1));
 
 				addNormal(normal);
 				addNormal(normal);
@@ -76,15 +78,15 @@ namespace BeerEngine
 			for (int i = 0; i < vertices.size(); i+=3)
 			{
 				// Edges of the triangle : postion delta
-				glm::vec3 deltaPos1 = vertices[i + 1] - vertices[i];
-				glm::vec3 deltaPos2 = vertices[i + 2] - vertices[i];
+				Maths::Vector3f deltaPos1 = vertices[i + 1] - vertices[i];
+				Maths::Vector3f deltaPos2 = vertices[i + 2] - vertices[i];
 				// UV delta
-				glm::vec2 deltaUV1 = uvs[i + 1] - uvs[i];
-				glm::vec2 deltaUV2 = uvs[i + 2] - uvs[i];
+				Maths::Vector2f deltaUV1 = uvs[i + 1] - uvs[i];
+				Maths::Vector2f deltaUV2 = uvs[i + 2] - uvs[i];
 				// Calcul tangent and bitangent
-				float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
-				glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y) * r;
-				glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x) * r;
+				float r = 1.0f / (deltaUV1.getX() * deltaUV2.getY() - deltaUV1.getY() * deltaUV2.getX());
+				Maths::Vector3f tangent = (deltaPos1 * deltaUV2.getY() - deltaPos2 * deltaUV1.getY()) * r;
+				Maths::Vector3f bitangent = (deltaPos2 * deltaUV1.getX() - deltaPos1 * deltaUV2.getX()) * r;
 				// Add to list
 				tangents.push_back(tangent);
 				tangents.push_back(tangent);

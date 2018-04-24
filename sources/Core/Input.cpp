@@ -4,8 +4,8 @@ namespace BeerEngine
 {
 	std::map<int, int>		Input::mouseButton;
 	std::map<int, int>		Input::key;
-	glm::vec2				Input::mousePosition;
-	glm::vec2				Input::mouseScroll;
+	Maths::Vector2f			Input::mousePosition;
+	Maths::Vector2f			Input::mouseScroll;
 
 	void			Input::SetKey(int keycode, int status)
 	{

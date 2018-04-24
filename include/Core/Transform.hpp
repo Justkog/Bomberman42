@@ -8,23 +8,23 @@ namespace BeerEngine
     class Transform
 	{
 	public:
-		Transform	*parent;
-		glm::vec3	pivot;
-		glm::vec3	position;
-		glm::quat	rotation;
-		glm::vec3	scale;
+		Transform		*parent;
+		Maths::Vector3f	pivot;
+		Maths::Vector3f	position;
+		Maths::Vector3f	rotation;
+		Maths::Vector3f	scale;
 
 		Transform();
 
-		void		translate(glm::vec3 pos);
+		void		translate(Maths::Vector3f pos);
 		void		translate(float x, float y, float z);
 
-		glm::vec3	forward(void);
-		glm::vec3	left(void);
-		glm::vec3	right(void);
-		glm::vec3	top(void);
+		// Maths::Vector3f		forward(void);
+		// Maths::Vector3f		left(void);
+		// Maths::Vector3f		right(void);
+		// Maths::Vector3f		top(void);
 
-		glm::mat4	getMat4(bool isCamera = false);
+		Maths::Matrix4x4	getMat4(bool isCamera = false);
 
 	};
 }

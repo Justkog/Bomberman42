@@ -1,13 +1,9 @@
 #include <thread>
 #include <chrono>
 #include "Core/BeerEngine.hpp"
-
 #include "Game/SceneTest.hpp"
 
 static int     frameCount = 0;
-
-
-
 void updateThread(BeerEngine::Window *window)
 {
     static const double fixedUpdateTime = 1.0 / 60.0;

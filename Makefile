@@ -10,7 +10,6 @@ NAME = Bomberman
 LIB_NAME =
 LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 	`pkg-config --static --libs glew` \
-	`pkg-config --static --libs glm` \
 	`pkg-config --static --libs libpng`\
 	`pkg-config --static --libs openal` \
 	`pkg-config --static --libs sndfile`
@@ -37,31 +36,33 @@ SRC = \
 	Core/Graphics/Texture.cpp \
 	Core/IO/FileUtils.cpp \
 	\
-	Game/SceneTest.cpp \
+	Core/Audio/AudioListener.cpp \
+	Core/Audio/AudioSource.cpp \
+	Core/Audio/AudioClip.cpp \
+	\
+	Core/Maths/Operator.cpp \
+	Core/Maths/Vector2f.cpp \
+	Core/Maths/Vector3f.cpp \
+	Core/Maths/Vector4f.cpp \
+	Core/Maths/Matrix4x4.cpp \
 	\
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
 	\
-	Core/Audio/AudioListener.cpp \
-	Core/Audio/AudioSource.cpp \
-	Core/Audio/AudioClip.cpp \
+	Game/SceneTest.cpp \
 	\
 	Game/CameraTest.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio Game/Components
+DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Game Core/Audio Game/Components
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 	`pkg-config glfw3 --cflags-only-I` \
 	`pkg-config glew --cflags-only-I` \
-	`pkg-config glm --cflags-only-I` \
 	`pkg-config libpng --cflags-only-I` \
 	`pkg-config openal --cflags-only-I` \
 	`pkg-config sndfile --cflags-only-I`
-
-
-
 
 #------------------------------------------------------------------------------#
 
@@ -79,7 +80,6 @@ all: dircreate $(join $(addsuffix /, $(LIB_DIR)), $(addsuffix .a, $(LIB_DIR)))
 install:
 	~/.brew/bin/brew update
 	~/.brew/bin/brew install pkg-config
-	~/.brew/bin/brew install glm
 	~/.brew/bin/brew install glfw
 	~/.brew/bin/brew install glew
 	~/.brew/bin/brew install libpng

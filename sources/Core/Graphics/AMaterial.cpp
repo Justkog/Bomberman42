@@ -7,7 +7,7 @@ namespace BeerEngine
 {
 	namespace Graphics
 	{
-		AMaterial::AMaterial(ShaderProgram *shader, glm::vec4 color) :
+		AMaterial::AMaterial(ShaderProgram *shader, Maths::Vector4f color) :
 			_shader(shader),
 			_color(color),
 			_albedo(nullptr),
@@ -31,19 +31,19 @@ namespace BeerEngine
 			_hasBumpID = _shader->getUniformLocation("hasBump");
 		}
 
-		void	AMaterial::bind(glm::mat4 &model)
+		void	AMaterial::bind(Maths::Matrix4x4 &model)
 		{
-			// static glm::mat4 identity(1.0f);
+			// static Maths::Matrix4x4 identity(1.0f);
 			_shader->bind();
 			_shader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
-			glm::mat4 view = Camera::main->transform.getMat4(true);
+			Maths::Matrix4x4 view = Camera::main->transform.getMat4(true);
 			_shader->uniformMat(_viewShaderID, view);
 			_shader->uniformMat(_modelShaderID, model);
 			// View Pos
-			glm::vec3 viewPos = Camera::main->transform.position;
+			Maths::Vector3f viewPos = Camera::main->transform.position;
 			_shader->uniform3f(_viewPosID, viewPos[0], viewPos[1], viewPos[2]);
-			glm::vec3 viewDir = Camera::main->transform.forward();
-			_shader->uniform3f(_viewDirID, viewDir[0], viewDir[1], viewDir[2]);
+			// Maths::Vector3f viewDir = Camera::main->transform.forward();
+			// _shader->uniform3f(_viewDirID, viewDir[0], viewDir[1], viewDir[2]);
 
 			_shader->uniform4f(_colorShaderID, _color[0], _color[1], _color[2], _color[3]);
 
@@ -78,7 +78,7 @@ namespace BeerEngine
 				_shader->uniform1i(_hasAlbedoID, 0);
 		}
 
-		AMaterial		&AMaterial::setColor(glm::vec4 color)
+		AMaterial		&AMaterial::setColor(Maths::Vector4f color)
 		{
 			_color = color;
 			return (*this);

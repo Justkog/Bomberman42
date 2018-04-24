@@ -1,6 +1,7 @@
 #ifndef BE_CORE_GRAPHICS_AMATERIAL_HPP
 #define BE_CORE_GRAPHICS_AMATERIAL_HPP 1
 
+#include "../Maths/Maths.hpp"
 #include "ShaderProgram.hpp"
 #include "Texture.hpp"
 
@@ -12,7 +13,7 @@ namespace BeerEngine
 		{
 		private:
 			ShaderProgram	*_shader;
-			glm::vec4		_color;
+			Maths::Vector4f	_color;
 			Texture			*_albedo;
 			Texture			*_normal;
 			Texture			*_bump;
@@ -32,10 +33,10 @@ namespace BeerEngine
 			GLint	_viewDirID;
 		
 		public:
-			AMaterial(ShaderProgram *shader, glm::vec4 color = glm::vec4(1.0f));
+			AMaterial(ShaderProgram *shader, Maths::Vector4f color = Maths::Vector4f(1.0f, 1.0f, 1.0f, 1.0f));
 			virtual ~AMaterial() {};
-			virtual void	bind(glm::mat4 &model);
-			AMaterial		&setColor(glm::vec4 color);
+			virtual void	bind(Maths::Matrix4x4 &model);
+			AMaterial		&setColor(Maths::Vector4f color);
 			AMaterial		&setAlbedo(Texture *tex);
 			AMaterial		&setNormal(Texture *tex);
 			AMaterial		&setBump(Texture *tex);

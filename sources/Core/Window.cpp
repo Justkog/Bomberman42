@@ -8,8 +8,8 @@ namespace BeerEngine
 		_title(title), _width(width), _height(height)
 	{
 		_window = glfwCreateWindow(_width, _height, _title.c_str(), NULL, NULL);
-		_perspective = glm::perspective(glm::radians(60.0f), (float)_width / (float)_height, 0.01f, 1000.0f);
-		_ortho = glm::ortho(0.0f, (float)_width, 0.0f, (float)_height);
+		_perspective = Maths::Matrix4x4::Perspective(M_TORADIANS(60.0f), (float)_width / (float)_height, 0.01f, 1000.0f);
+		_ortho = Maths::Matrix4x4::Orthographic(0.0f, (float)_width, 0.0f, (float)_height, 0.0f, 100.0f);
 		_close = false;
 	}
 
@@ -39,12 +39,12 @@ namespace BeerEngine
 		return (_window);
 	}
 
-	glm::mat4       &Window::getProjection3D(void)
+	Maths::Matrix4x4       &Window::getProjection3D(void)
 	{
 		return (_perspective);
 	}
 
-	glm::mat4       &Window::getProjection2D(void)
+	Maths::Matrix4x4       &Window::getProjection2D(void)
 	{
 		return (_ortho);
 	}

@@ -19,13 +19,13 @@ namespace BeerEngine
 
 		bool BoxCollider2D::collide_AABB2D(BoxCollider2D &other)
 		{
-			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.y + _offset.y);
-			glm::vec2 otherPos(other._transform.position.x + other._offset.x, other._transform.position.y + other._offset.y);
+			Maths::Vector2f thisPos(_transform.position.getX() + _offset.getX(), _transform.position.getY() + _offset.getY());
+			Maths::Vector2f otherPos(other._transform.position.getX() + other._offset.getX(), other._transform.position.getY() + other._offset.getY());
 
-			if (thisPos.x < otherPos.x + other._size.x
-			&& thisPos.x + _size.x > otherPos.x
-			&& thisPos.y < otherPos.y + other._size.y
-			&& thisPos.y + _size.y > otherPos.y)
+			if (thisPos.getX() < otherPos.getX() + other._size.getX()
+			&& thisPos.getX() + _size.getX() > otherPos.getX()
+			&& thisPos.getY() < otherPos.getY() + other._size.getY()
+			&& thisPos.getY() + _size.getY() > otherPos.getY())
 				return (true);
 			return (false);
 		}

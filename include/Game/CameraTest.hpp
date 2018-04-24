@@ -6,7 +6,7 @@
 class CameraTest : public BeerEngine::GameObject
 {
 private:
-	glm::vec3	_rotation;
+	// glm::vec3	_rotation;
 public:
 	CameraTest(int uniqueID);
 	void	start(void);

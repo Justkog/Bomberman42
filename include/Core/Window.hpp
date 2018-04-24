@@ -12,8 +12,8 @@ namespace BeerEngine
 		int             _width;
 		int             _height;
 		GLFWwindow      *_window;
-		glm::mat4       _perspective;
-		glm::mat4       _ortho;
+		Maths::Matrix4x4       _perspective;
+		Maths::Matrix4x4       _ortho;
 		bool			_close;
 		Window(std::string title, int width, int height);
 
@@ -23,8 +23,8 @@ namespace BeerEngine
 		GLFWwindow      *getWindow(void);
 		void            clear(void);
 		void            swapBuffer(void);
-		glm::mat4       &getProjection3D(void);
-		glm::mat4       &getProjection2D(void);
+		Maths::Matrix4x4       &getProjection3D(void);
+		Maths::Matrix4x4       &getProjection2D(void);
 		void			closeRequest(void);
 		bool			isClose(void);
 

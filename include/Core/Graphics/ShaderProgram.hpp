@@ -29,17 +29,16 @@ namespace BeerEngine
 			void			uniform2f(std::string const &name, float x, float y);
 			void			uniform2f(GLint id, float x, float y);
 			void			uniform2f(std::string const &name, float *data);
-			void			uniform2f(std::string const &name, glm::vec2 const &vec);
+			void			uniform2f(std::string const &name, Maths::Vector2f &vec);
 			void			uniform3f(std::string const &name, float x, float y, float z);
 			void			uniform3f(GLint id, float x, float y, float z);
-			void			uniform3f(std::string const &name, glm::vec3 const &vec);
+			void			uniform3f(std::string const &name, Maths::Vector3f &vec);
 			void			uniform3f(std::string const &name, float *data);
-			void			uniform4f(std::string const &name, glm::vec4 const &vec);
 			void			uniform4f(std::string const &name, float x, float y, float z, float w);
 			void			uniform4f(GLint id, float x, float y, float z, float w);
 			void			uniform4f(std::string const &name, float *data);
-			void			uniformMat(std::string const &name, glm::mat4 &mat);
-			void			uniformMat(GLint id, glm::mat4 &mat);
+			void			uniformMat(std::string const &name, Maths::Matrix4x4 &mat);
+			void			uniformMat(GLint id, Maths::Matrix4x4 &mat);
 		};
 	}
 }

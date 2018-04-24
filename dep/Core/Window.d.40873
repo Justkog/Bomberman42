@@ -1,0 +1,7 @@
+Window.o: sources/Core/Window.cpp include/Core/Window.hpp \
+  include/Core/Core.hpp /usr/local/Cellar/glew/2.1.0/include/GL/glew.h \
+  /usr/local/Cellar/glfw/3.2.1/include/GLFW/glfw3.h \
+  include/Core/Maths/Maths.hpp include/Core/Maths/Vector2f.hpp \
+  include/Core/Maths/Vector3f.hpp include/Core/Maths/Matrix4x4.hpp \
+  include/Core/Maths/Operator.hpp include/Core/Input.hpp \
+  include/Core/KeyCode.hpp
