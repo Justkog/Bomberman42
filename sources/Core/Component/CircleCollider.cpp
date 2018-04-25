@@ -20,9 +20,10 @@ namespace BeerEngine
 
 			for (; pos < _colliders.size() - 1; ++pos)
 			{
-				auto pouet = _colliders[pos + 1];
-				if (collide_AABB2D(dynamic_cast<BoxCollider2D*>(pouet)))
+				auto other = _colliders[pos + 1];
+				if (collide_AABB2D(dynamic_cast<BoxCollider2D*>(other)))
 				{
+					std::cout << "Collision: " << std::endl; 
 					// auto collisionTriggers = _colliders[pos + 1]->_gameObject->GetComponents<ICollision>();
 					// for (auto comp: collisionTriggers)
 					// {

@@ -1,6 +1,7 @@
 #include "Game/SceneTest.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Component/BoxCollider2D.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
@@ -84,6 +85,10 @@ void    SceneTest::init(void)
 	mapBlocGO->transform.position = glm::vec3(-1, 0.5, 6);
 	mapBlocGO->transform.scale = glm::vec3(1, 1, 1);
 
+	std::cout << "mapBloc: " << mapBlocGO << std::endl;
+	mapBlocGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
+	std::cout << "player: " << playerGO << std::endl;
+	playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
 
 	// plane
 	BeerEngine::GameObject *mapGO;

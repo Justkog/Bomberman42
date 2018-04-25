@@ -7,10 +7,13 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		std::vector<ACollider*> ACollider::_colliders;
+
 		ACollider::ACollider(GameObject *gameObject) :
 			Component(gameObject),
-			_offset(glm::vec2(1, 1)),
-			_transform(gameObject->transform)
+			_offset(glm::vec2(0, 0)),
+			_transform(gameObject->transform),
+			_collide(false)
 		{
 			_colliders.push_back(this);
 		}

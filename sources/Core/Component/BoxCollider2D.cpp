@@ -13,22 +13,31 @@ namespace BeerEngine
 
 		void    BoxCollider2D::physicUpdate(void)
 		{
-			int pos = std::find(_colliders.begin(), _colliders.end(), this) - _colliders.begin();
+			int nbCollision = 0;
 
-			if (pos < _colliders.size())
-				return;
-
-			for (; pos < _colliders.size() - 1; ++pos)
+			for (int i = 0; i < _colliders.size(); ++i)
 			{
-				auto pouet = _colliders[pos + 1];
-				if (pouet->collide_AABB2D(this))
+				auto other = _colliders[i];
+				if (other == this)
+					continue;
+				if (other->collide_AABB2D(this))
 				{
-					// auto collisionTriggers = _colliders[pos + 1]->_gameObject->GetComponents<ICollision>();
+					nbCollision++;
+					_collide = true;
+					_gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
+					->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
+					// auto collisionTriggers = other->_gameObject->GetComponents<ICollision>();
 					// for (auto comp: collisionTriggers)
 					// {
 					// 	// call onCollisionStay
 					// }
 				}
+			}
+			if (!nbCollision)
+			{
+				_collide = false;
+				_gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
+				->getMaterial()->setColor(glm::vec4(1, 1, 1, 1));
 			}
 		}
 
@@ -37,12 +46,13 @@ namespace BeerEngine
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
 
-			if (thisPos.x < otherPos.x + other->_size.x
-			&& thisPos.x + _size.x > otherPos.x
-			&& thisPos.y < otherPos.y + other->_size.y
-			&& thisPos.y + _size.y > otherPos.y)
-				return (true);
-			return (false);
+			if (thisPos.x > otherPos.x + other->_size.x
+			|| thisPos.x + _size.x < otherPos.x
+			|| thisPos.y > otherPos.y + other->_size.y
+			|| thisPos.y + _size.y < otherPos.y)
+				return (false);
+			
+			return (true);
 		}
 
 		bool BoxCollider2D::collide_AABB2D(CircleCollider *other)
