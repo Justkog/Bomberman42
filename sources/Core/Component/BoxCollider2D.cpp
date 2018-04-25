@@ -1,6 +1,11 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
+#include "Core/Component/ITriggerStay.hpp"
+#include "Core/Component/ITriggerEnter.hpp"
+#include "Core/Component/ITriggerExit.hpp"
 #include "Core/GameObject.hpp"
+
+#include <vector>
 
 namespace BeerEngine
 {
@@ -11,34 +16,12 @@ namespace BeerEngine
 			_size(glm::vec2(gameObject->transform.scale.x, gameObject->transform.scale.z))
 		{}
 
-		void    BoxCollider2D::physicUpdate(void)
+		bool BoxCollider2D::checkCollision(ACollider *other)
 		{
-			int nbCollision = 0;
-
-			for (int i = 0; i < _colliders.size(); ++i)
-			{
-				auto other = _colliders[i];
-				if (other == this)
-					continue;
-				if (other->collide_AABB2D(this))
-				{
-					nbCollision++;
-					_collide = true;
-					_gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-					->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
-					// auto collisionTriggers = other->_gameObject->GetComponents<ICollision>();
-					// for (auto comp: collisionTriggers)
-					// {
-					// 	// call onCollisionStay
-					// }
-				}
-			}
-			if (!nbCollision)
-			{
-				_collide = false;
-				_gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-				->getMaterial()->setColor(glm::vec4(1, 1, 1, 1));
-			}
+			if (other->collide_AABB2D(this))
+				return true;
+			else
+				return false;
 		}
 
 		bool BoxCollider2D::collide_AABB2D(BoxCollider2D *other)

@@ -15,7 +15,8 @@ namespace BeerEngine
 
 		public:
 			BoxCollider2D(GameObject *gameObject);
-			virtual void    physicUpdate(void);
+			bool 	checkCollision(ACollider *other);
+
 
 			bool collide_AABB2D(BoxCollider2D *other);
 			bool collide_AABB2D(CircleCollider *other);

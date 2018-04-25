@@ -11,26 +11,12 @@ namespace BeerEngine
 			_radius(1)
 		{}
 
-		void    CircleCollider::physicUpdate(void)
+		bool CircleCollider::checkCollision(ACollider *other)
 		{
-			int pos = std::find(_colliders.begin(), _colliders.end(), this) - _colliders.begin();
-
-			if (pos < _colliders.size())
-				return;
-
-			for (; pos < _colliders.size() - 1; ++pos)
-			{
-				auto other = _colliders[pos + 1];
-				if (collide_AABB2D(dynamic_cast<BoxCollider2D*>(other)))
-				{
-					std::cout << "Collision: " << std::endl; 
-					// auto collisionTriggers = _colliders[pos + 1]->_gameObject->GetComponents<ICollision>();
-					// for (auto comp: collisionTriggers)
-					// {
-					// 	// call onCollisionStay
-					// }
-				}
-			}
+			if (other->collide_AABB2D(this))
+				return true;
+			else
+				return false;
 		}
 
 		bool CircleCollider::collide_AABB2D(CircleCollider *other)
