@@ -17,6 +17,7 @@ void    SceneTest::init(void)
 	);
 	shader->compile();
 	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
+	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// cube 1
 	// Texture
@@ -38,6 +39,11 @@ void    SceneTest::init(void)
 	material2->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 	// material2->setAlbedo(crate);
 
+	// GameObject
+	//
+	BeerEngine::GameObject *gameObject;
+	BeerEngine::Component::MeshRenderer *meshRenderer;
+
 	// Camera
 	BeerEngine::GameObject *cameraGO;
 	cameraGO = instantiate<BeerEngine::GameObject>();
@@ -49,24 +55,35 @@ void    SceneTest::init(void)
 	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
 	BeerEngine::Camera::main->transform.translate(-v);*/
 
-	// GameObject
-	//
-	BeerEngine::GameObject *gameObject;
-	BeerEngine::Component::MeshRenderer *meshRenderer;
-	
 	// FPS Camera
 	// instantiate<CameraTest>();
 	
-	// => GameObject 1
-	gameObject = instantiate<BeerEngine::GameObject>();
-	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// Player
+	
+	auto playerGO = instantiate<BeerEngine::GameObject>();
+	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	meshRenderer->setMaterial(material);
-	gameObject->transform.position = glm::vec3(-3, -2, 6);
-	gameObject->transform.scale = glm::vec3(1, 1, 1);
+	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
+	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+	playerMat->setAlbedo(playerTex);
+	meshRenderer->setMaterial(playerMat);
+	playerGO->transform.position = glm::vec3(-3, 0.5, 6);
+	playerGO->transform.scale = glm::vec3(1, 1, 1);
 
-	Game::Component::Player *player = gameObject->AddComponent<Game::Component::Player>();
-	Game::Component::Settings *settings = gameObject->AddComponent<Game::Component::Settings>();
+	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+
+	// mapBloc
+	auto mapBlocGO = instantiate<BeerEngine::GameObject>();
+	meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *mapBlocTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
+	mapBlocMat->setAlbedo(mapBlocTex);
+	meshRenderer->setMaterial(mapBlocMat);
+	mapBlocGO->transform.position = glm::vec3(-1, 0.5, 6);
+	mapBlocGO->transform.scale = glm::vec3(1, 1, 1);
+
 
 	// plane
 	BeerEngine::GameObject *mapGO;
@@ -74,35 +91,35 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
 	mapMeshRenderer->setMaterial(material);
-	mapGO->transform.position = glm::vec3(-3, -3, 6);
+	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
 
-	meshRenderer->setMaterial(materialA);
-	gameObject->transform.position = glm::vec3(-1, 0, 4);
-	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.0f), 0.0f));
+	// meshRenderer->setMaterial(materialA);
+	// gameObject->transform.position = glm::vec3(-1, 0, 4);
+	// gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(45.0f), 0.0f));
 
 	// => GameObject 2 : Cube Mid
-	gameObject = instantiate<BeerEngine::GameObject>();
-	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	meshRenderer->setMaterial(materialB);
-	gameObject->transform.position = glm::vec3(-1, 1, 4);
-	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(22.5f), 0.0f));
+	// gameObject = instantiate<BeerEngine::GameObject>();
+	// meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	// meshRenderer->setMaterial(materialB);
+	// gameObject->transform.position = glm::vec3(-1, 1, 4);
+	// gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(22.5f), 0.0f));
 	
 	// => GameObject 2 : Cube Top
-	gameObject = instantiate<BeerEngine::GameObject>();
-	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	meshRenderer->setMaterial(materialC);
-	gameObject->transform.position = glm::vec3(-0.5, 2, 4);
-	gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(66.0f), 0.0f));
+	// gameObject = instantiate<BeerEngine::GameObject>();
+	// meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	// meshRenderer->setMaterial(materialC);
+	// gameObject->transform.position = glm::vec3(-0.5, 2, 4);
+	// gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(66.0f), 0.0f));
 
 	// => GameObject 3 : Plane
-	gameObject = instantiate<BeerEngine::GameObject>();
-	meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
-	meshRenderer->setMaterial(material2);
-	gameObject->transform.position = glm::vec3(0, -0.5, 4);
-	std::cout << "init end" << "\n";
+	// gameObject = instantiate<BeerEngine::GameObject>();
+	// meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
+	// meshRenderer->setMaterial(material2);
+	// gameObject->transform.position = glm::vec3(0, -0.5, 4);
+	// std::cout << "init end" << "\n";
 	
 }
