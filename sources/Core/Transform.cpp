@@ -16,46 +16,41 @@ namespace BeerEngine
 		translate(Maths::Vector3f(x, y, z));
 	}
 
-	// glm::vec3	Transform::forward(void)
-	// {
-	// 	glm::vec4 forward(0.0f, 0.0f, 1.0f, 0.0f);
-	// 	forward = forward * glm::toMat4(rotation);
-	// 	return (glm::vec3(forward));
-	// }
+	Maths::Vector3f		Transform::forward(void)
+	{
+		Maths::Vector3f vec;
+		float cosY = (float)std::cos(rotation[1] - M_TORADIANS(90));
+		float sinY = (float)std::sin(rotation[1] - M_TORADIANS(90));
+		float cosP = (float)std::cos(-rotation[0]);
+		float sinP = (float)std::sin(-rotation[0]);
+		vec.set(cosY * cosP, -sinP, -(sinY * cosP));
+		vec.normalize();
+		return (vec);
+	}
 
-	// glm::vec3	Transform::left(void)
-	// {
-	// 	glm::vec4 r(1.0f, 0.0f, 0.0f, 0.0f);
-	// 	r = r * glm::toMat4(rotation);
-	// 	return (glm::vec3(r));
-	// }
-
-	// glm::vec3	Transform::right(void)
-	// {
-	// 	glm::vec4 r(-1.0f, 0.0f, 0.0f, 0.0f);
-	// 	r = r * glm::toMat4(rotation);
-	// 	return (glm::vec3(r));
-	// }
-
-	// glm::vec3	Transform::top(void)
-	// {
-	// 	glm::vec4 r(0.0f, -1.0f, 0.0f, 0.0f);
-	// 	r = r * glm::toMat4(rotation);
-	// 	return (glm::vec3(r));
-	// }
+	Maths::Vector3f		Transform::straf(void)
+	{
+		Maths::Vector3f vec;
+		float cosY = (float) std::cos(rotation[1]);
+		float sinY = (float) std::sin(rotation[1]);
+		float cosP = (float) std::cos(-rotation[0]);
+		vec.set(cosY * cosP, 0.0f, -(sinY * cosP));
+		vec.normalize();
+		return (vec);
+	}
 
 	Maths::Matrix4x4	Transform::getMat4(bool isCamera)
 	{
 		Maths::Matrix4x4 mat;
+		mat = Maths::Matrix4x4::RotateX(rotation[0]) * Maths::Matrix4x4::RotateY(rotation[1]) * Maths::Matrix4x4::RotateZ(rotation[2]);
 		if (isCamera)
 		{
-			mat = Maths::Matrix4x4::Translate(position * -1.0f);
+			mat = mat * Maths::Matrix4x4::Translate(position * -1.0f);
 			// mat = glm::toMat4(rotation) * mat;
-			mat = mat * Maths::Matrix4x4::Euler(rotation);
 		}
 		else
 		{
-			mat = Maths::Matrix4x4::Translate(position) * Maths::Matrix4x4::Euler(rotation) * Maths::Matrix4x4::Scale(scale);
+			mat = Maths::Matrix4x4::Translate(position) * mat * Maths::Matrix4x4::Scale(scale);
 			// mat = Maths::Matrix4x4::Euler(rotation) * mat;
 			// mat = mat * Maths::Matrix4x4::Translate(pivot);
 			// mat = mat * glm::toMat4(rotation) * glm::translate(glm::vec3(pivot[0], pivot[1], pivot[2]));

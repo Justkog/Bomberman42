@@ -55,7 +55,7 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	
 	// FPS Camera
-	// instantiate<CameraTest>();
+	instantiate<CameraTest>();
 	
 	// => GameObject 1
 	gameObject = instantiate<BeerEngine::GameObject>();

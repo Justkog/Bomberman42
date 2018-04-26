@@ -18,10 +18,8 @@ namespace BeerEngine
 		void		translate(Maths::Vector3f pos);
 		void		translate(float x, float y, float z);
 
-		// Maths::Vector3f		forward(void);
-		// Maths::Vector3f		left(void);
-		// Maths::Vector3f		right(void);
-		// Maths::Vector3f		top(void);
+		Maths::Vector3f		forward(void);
+		Maths::Vector3f		straf(void);
 
 		Maths::Matrix4x4	getMat4(bool isCamera = false);
 
