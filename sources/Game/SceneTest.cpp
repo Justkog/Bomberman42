@@ -116,17 +116,17 @@ void    SceneTest::init(void)
 	      tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
 	      tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
 		  // std::cout << "on est la 7.4" << std::endl;
-	      // tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
+	      tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
 		  // std::cout << "on est la 7.5" << std::endl;
-	      // tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
+	      tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
 		  // std::cout << "on est la 7.6" << std::endl;
-	      // tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
+	      tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
 	      tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
 	      tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
 
 		  builder
 			  .addVertice(glm::vec3(vx, vy, vz))
-			  // .addNormal(glm::vec3(nx, ny, nz))
+			  .addNormal(glm::vec3(nx, ny, nz))
 			  .addUV(glm::vec2(tx, ty))
 			  .calculTangent()
 		 ;
