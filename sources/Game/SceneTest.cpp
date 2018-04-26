@@ -146,7 +146,7 @@ void    SceneTest::init(void)
 	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
 	objetMat->setAlbedo(objetTex);
 	meshRenderer->setMaterial(objetMat);
-	objet->transform.position = glm::vec3(2, 0.5, 4);
+	objet->transform.position = glm::vec3(2, 0.5, 10);
 	objet->transform.scale = glm::vec3(1, 1, 1);
 
 
