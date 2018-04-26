@@ -21,6 +21,8 @@ namespace BeerEngine
 			bool collide_AABB2D(CircleCollider *other);
 			bool collide_AABB2D(BoxCollider2D *other);
 
+			void response_AABB2D(CircleCollider *other, glm::vec2 &thisPos, glm::vec2 &otherPos);
+
 			float	_radius;
 		};
 	}

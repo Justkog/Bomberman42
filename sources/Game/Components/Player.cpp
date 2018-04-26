@@ -39,38 +39,26 @@ namespace Game
 
         void   Player::onTriggerStay(BeerEngine::Component::ACollider *other)
         {
-            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-			// 		->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
         }
 
         void   Player::onTriggerEnter(BeerEngine::Component::ACollider *other)
         {
-            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-			// 		->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
         }
 
         void   Player::onTriggerExit(BeerEngine::Component::ACollider *other)
         {
-            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-			// 	->getMaterial()->setColor(glm::vec4(1, 1, 1, 1));
         }
 
         void   Player::onColliderStay(BeerEngine::Component::ACollider *other)
         {
-            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-			// 		->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
         }
 
         void   Player::onColliderEnter(BeerEngine::Component::ACollider *other)
         {
-            _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-					->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
         }
 
         void   Player::onColliderExit(BeerEngine::Component::ACollider *other)
         {
-            _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
-				->getMaterial()->setColor(glm::vec4(1, 1, 1, 1));
         }
     }
 }

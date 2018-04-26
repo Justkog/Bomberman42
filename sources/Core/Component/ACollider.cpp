@@ -21,7 +21,8 @@ namespace BeerEngine
 			_offset(glm::vec2(0, 0)),
 			_transform(gameObject->transform),
 			_collide(false),
-			_isTrigger(false)
+			_isTrigger(false),
+			_kinematic(true)
 		{
 			_id = _colliders.size();
 			_colliders.push_back(this);

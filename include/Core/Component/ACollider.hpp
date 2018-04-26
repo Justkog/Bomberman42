@@ -39,6 +39,7 @@ namespace BeerEngine
 			Transform	&_transform;
 			bool		_collide;
 			bool		_isTrigger;
+			bool		_kinematic;
 		};
 	}
 }
