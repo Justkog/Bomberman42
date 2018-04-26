@@ -9,7 +9,6 @@ namespace BeerEngine
 	{
 	public:
 		Transform		*parent;
-		Maths::Vector3f	pivot;
 		Maths::Vector3f	position;
 		Maths::Vector3f	rotation;
 		Maths::Vector3f	scale;

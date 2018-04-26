@@ -29,6 +29,7 @@ namespace BeerEngine
 			MeshBuilder		&calculNormal(void);
 			MeshBuilder		&calculTangent(void);
 			MeshBuilder		&clear(void);
+			MeshBuilder		&debug(void);
 			Mesh			*build(void);
 		};
 	}

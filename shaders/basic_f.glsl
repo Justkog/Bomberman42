@@ -25,7 +25,7 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
 
 void main()
 {
-    vec3 lightDir = normalize(vec3(-1, -0.75f, -0.5f));
+    vec3 lightDir = normalize(vec3(-1.0f, -0.75f, 1.0f));
 
     vec2 texCoords;
     if (hasBump == 1)
@@ -51,7 +51,7 @@ void main()
     {
         tNormal = vNormal;
     }
-    float l = max(dot(tNormal, lightDir), 0.15f);
+    float l = max(dot(tNormal, -lightDir), 0.15f);
     if (hasAlbedo == 1)
     {
          vec4 texColor = texture(albedo, texCoords);

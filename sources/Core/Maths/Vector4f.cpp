@@ -39,5 +39,9 @@ namespace BeerEngine
 			return (_data[index]);
 		}
 
+		Vector3f	Vector4f::xyz(void)
+		{
+			return (Vector3f(_data[0], _data[1], _data[2]));
+		}
 	}
 }

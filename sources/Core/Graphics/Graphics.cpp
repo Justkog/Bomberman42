@@ -120,6 +120,7 @@ namespace BeerEngine
 				// Calcul Tangent and Bitangent
 				.calculTangent()
 			;
+			builder.debug();
 			return (builder.build());
 		}
 

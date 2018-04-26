@@ -3,7 +3,7 @@
 namespace BeerEngine
 {
 	Transform::Transform() :
-		parent(nullptr), pivot(0.0f), position(0.0f), rotation(), scale(1.0f)
+		parent(nullptr),position(0.0f), rotation(), scale(1.0f)
 	{}
 
 	void		Transform::translate(Maths::Vector3f pos)
@@ -51,13 +51,16 @@ namespace BeerEngine
 		{
 			mat = Maths::Matrix4x4::Translate(position * -1.0f);
 			// mat = glm::toMat4(rotation) * mat;
+			mat = mat * Maths::Matrix4x4::Euler(rotation);
 		}
 		else
 		{
-			mat = Maths::Matrix4x4::Translate(position);
+			mat = Maths::Matrix4x4::Translate(position) * Maths::Matrix4x4::Euler(rotation) * Maths::Matrix4x4::Scale(scale);
+			// mat = Maths::Matrix4x4::Euler(rotation) * mat;
+			// mat = mat * Maths::Matrix4x4::Translate(pivot);
 			// mat = mat * glm::toMat4(rotation) * glm::translate(glm::vec3(pivot[0], pivot[1], pivot[2]));
 			// mat = glm::scale(mat, scale);
-			mat = mat * Maths::Matrix4x4::Scale(scale);
+			// mat = mat * Maths::Matrix4x4::Scale(scale);
 		}
 		if (parent != nullptr)
 			mat = parent->getMat4() * mat;

@@ -38,8 +38,8 @@ namespace BeerEngine
 
 		MeshBuilder		&MeshBuilder::addTriangle(Maths::Vector3f v0, Maths::Vector3f v1, Maths::Vector3f v2)
 		{
-			Maths::Vector3f a = v2 - v0;
-			Maths::Vector3f b = v1 - v0;
+			Maths::Vector3f a = v1 - v0;
+			Maths::Vector3f b = v2 - v0;
 			Maths::Vector3f normal = a.cross(b).normalize();
 			addVertice(v0);
 			addVertice(v1);
@@ -64,7 +64,7 @@ namespace BeerEngine
 			{
 				Maths::Vector3f deltaPos1 = vertices[i + 1] - vertices[i];
 				Maths::Vector3f deltaPos2 = vertices[i + 2] - vertices[i];
-				Maths::Vector3f normal = deltaPos2.cross(deltaPos1).normalize(); //glm::normalize(glm::cross(deltaPos2, deltaPos1));
+				Maths::Vector3f normal = deltaPos1.cross(deltaPos2).normalize(); //glm::normalize(glm::cross(deltaPos2, deltaPos1));
 
 				addNormal(normal);
 				addNormal(normal);
@@ -105,6 +105,41 @@ namespace BeerEngine
 			uvs.clear();
 			tangents.clear();
 			bitangents.clear();
+			return (*this);
+		}
+
+		MeshBuilder		&MeshBuilder::debug(void)
+		{
+			if (vertices.size() > 0)
+			{
+				std::cout << "Vertices List:" << std::endl;
+				for (int i = 0; i < vertices.size(); i++)
+					std::cout << vertices[i] << std::endl;
+			}
+			if (normals.size() > 0)
+			{
+				std::cout << "Normals List:" << std::endl;
+				for (int i = 0; i < normals.size(); i++)
+					std::cout << normals[i] << std::endl;
+			}
+			if (uvs.size() > 0)
+			{
+				std::cout << "Texture UVs List:" << std::endl;
+				for (int i = 0; i < uvs.size(); i++)
+					std::cout << uvs[i] << std::endl;
+			}
+			if (tangents.size() > 0)
+			{
+				std::cout << "Tangents List:" << std::endl;
+				for (int i = 0; i < tangents.size(); i++)
+					std::cout << tangents[i] << std::endl;
+			}
+			if (bitangents.size() > 0)
+			{
+				std::cout << "Bitangents List:" << std::endl;
+				for (int i = 0; i < bitangents.size(); i++)
+					std::cout << bitangents[i] << std::endl;
+			}
 			return (*this);
 		}
 

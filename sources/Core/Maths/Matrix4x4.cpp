@@ -42,11 +42,17 @@ namespace BeerEngine
 			for (int i = 0; i < 4; i++)
             	for (int j = 0; j < 4; j++)
                 	for (int k = 0; k < 4; k++)
-                   		mat[i + j * 4] += _data[k + j * 4] * rhs[i + k * 4];
+                   		mat[i + j * 4] += rhs[k + j * 4] * _data[i + k * 4];
 			return (mat);
 		}
 
 		Vector3f	Matrix4x4::operator*(Vector3f &rhs)
+		{
+			return (transform(rhs));
+		}
+
+
+		Vector4f	Matrix4x4::operator*(Vector4f &rhs)
 		{
 			return (transform(rhs));
 		}
@@ -57,6 +63,16 @@ namespace BeerEngine
 				_data[0] * v[0] + _data[4] * v[1] + _data[8] * v[2] + _data[12],
 				_data[1] * v[0] + _data[5] * v[1] + _data[9] * v[2] + _data[13],
 				_data[2] * v[0] + _data[6] * v[1] + _data[10] * v[2] + _data[14]
+			));
+		}
+
+		Vector4f	Matrix4x4::transform(Vector4f &v)
+		{
+			return (Vector4f(
+				_data[0 + 0 * 4] * v[0] + _data[0 + 1 * 4] * v[1] + _data[0 + 2 * 4] * v[2] + _data[0 + 3 * 4] * v[3],
+				_data[1 + 0 * 4] * v[0] + _data[1 + 1 * 4] * v[1] + _data[1 + 2 * 4] * v[2] + _data[1 + 3 * 4] * v[3],
+				_data[2 + 0 * 4] * v[0] + _data[2 + 1 * 4] * v[1] + _data[2 + 2 * 4] * v[2] + _data[2 + 3 * 4] * v[3],
+				v[3]
 			));
 		}
 		
@@ -216,6 +232,34 @@ namespace BeerEngine
 			mat[4] = -rsin;
 			mat[5] = rcos;
 			return (mat);
+		}
+
+		Matrix4x4	Matrix4x4::Euler(float x, float y, float z)
+		{
+			Matrix4x4 mat = Identity();
+			float xcos = (float)std::cos(x);
+			float xsin = (float)std::sin(x);
+			float ycos = (float)std::cos(y);
+			float ysin = (float)std::sin(y);
+			float zcos = (float)std::cos(z);
+			float zsin = (float)std::sin(z);
+			float xcys = xcos * ysin;
+			float xsys = xsin * ysin;
+			mat[0 + 0 * 4] = ycos * zcos;
+			mat[1 + 0 * 4] = -ycos * zsin;
+			mat[2 + 0 * 4] = ysin;
+			mat[0 + 1 * 4] = xsys * zcos + xcos * zsin;
+			mat[1 + 1 * 4] = -xsys * zsin + xcos * zcos;
+			mat[2 + 1 * 4] = -xsin * ycos;
+			mat[0 + 2 * 4] = -xcys * zcos + xsin * zsin;
+			mat[1 + 2 * 4] = xcys * zsin + xsin * zcos;
+			mat[2 + 2 * 4] = xcos * ycos;
+			return (mat);
+		}
+
+		Matrix4x4	Matrix4x4::Euler(Vector3f rhs)
+		{
+			return (Euler(rhs[0], rhs[1], rhs[2]));
 		}
 
 		Matrix4x4	Matrix4x4::Perspective(float fov, float aspect, float zNear, float zFar)

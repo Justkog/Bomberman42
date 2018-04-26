@@ -3,6 +3,7 @@
 
 #include "Vector2f.hpp"
 #include "Vector3f.hpp"
+#include "Vector4f.hpp"
 
 namespace BeerEngine
 {
@@ -20,8 +21,10 @@ namespace BeerEngine
 			// Matrix4x4	operator*(Matrix4x4 &rhs);
 			Matrix4x4	operator*(Matrix4x4 rhs);
 			Vector3f	operator*(Vector3f &rhs);
+			Vector4f	operator*(Vector4f &rhs);
 
 			Vector3f	transform(Vector3f &v);
+			Vector4f	transform(Vector4f &v);
 			float		determinant(void);
 			Matrix4x4	invert(void);
 
@@ -36,6 +39,8 @@ namespace BeerEngine
 			static Matrix4x4	RotateX(float r);
 			static Matrix4x4	RotateY(float r);
 			static Matrix4x4	RotateZ(float r);
+			static Matrix4x4	Euler(float x, float y, float z);
+			static Matrix4x4	Euler(Vector3f rhs);
 			static Matrix4x4	Perspective(float fov, float aspect, float zNear, float zFar);
 			static Matrix4x4	Orthographic(float left, float right, float bottom, float top, float zNear, float zFar);
 
