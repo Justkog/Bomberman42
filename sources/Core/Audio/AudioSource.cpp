@@ -5,15 +5,24 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-		AudioSource::AudioSource(ALuint buf): _Buffer(buf)
+		AudioSource::AudioSource(BeerEngine::GameObject *gameObject) :
+			Component(gameObject)
 		{
 			// Création d'une source
 			alGenSources(1, &_Source);
+        }
 
-		}
+		// AudioSource::AudioSource(ALuint buf): _Buffer(buf)
+		// {
+		// 	// Création d'une source
+		// 	alGenSources(1, &_Source);
+
+		// }
 
 		AudioSource::~AudioSource()
-		{ }
+		{ 
+			Delete();
+		}
 
 		void	   AudioSource::play()
 		{
@@ -97,6 +106,21 @@ namespace BeerEngine
 		void		AudioSource::setSource(ALuint src)
 		{
 			_Source = src;
+		}
+
+		void		AudioSource::start(void)
+		{
+			setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+		}
+	
+		void		AudioSource::fixedUpdate(void)
+		{
+
+		}
+
+		void		AudioSource::update(void)
+		{
+			setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 		}
 	}
 }

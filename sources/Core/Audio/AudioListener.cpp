@@ -6,11 +6,16 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-        AudioListener::AudioListener()
-        { }
+        AudioListener::AudioListener(BeerEngine::GameObject *gameObject) :
+			Component(gameObject)
+		{ 
+            // init();
+        }
 
         AudioListener::~AudioListener()
-        { }
+        { 
+            DestroyOpenAL();
+        }
 
         void	   AudioListener::init()
         {
@@ -68,5 +73,20 @@ namespace BeerEngine
             alListener3f(AL_POSITION, x, y, z);
             alListener3f(AL_VELOCITY, x, y, z);
         }
+
+        void		AudioListener::start(void)
+		{
+            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+		}
+	
+		void		AudioListener::fixedUpdate(void)
+		{
+
+		}
+
+		void		AudioListener::update(void)
+		{
+            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+		}
     }
 }

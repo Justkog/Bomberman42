@@ -3,6 +3,7 @@
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
+#include "Core/Audio/AudioSource.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
@@ -101,11 +102,22 @@ void    SceneTest::init(void)
 	circleBlocGO->transform.scale = glm::vec3(3, 1, 3);
 
 	std::cout << "mapBloc: " << mapBlocGO << std::endl;
-	mapBlocGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
+	mapBlocGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
 	std::cout << "circleBloc: " << circleBlocGO << std::endl;
-	circleBlocGO->AddComponent<BeerEngine::Component::CircleCollider>();//TEST BOX COLLIDER
+	circleBlocGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	std::cout << "player: " << playerGO << std::endl;
-	playerGO->AddComponent<BeerEngine::Component::CircleCollider>();//TEST BOX COLLIDER
+	playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+
+	// Audio test
+	auto al = cameraGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	auto as = mapBlocGO->AddComponent<BeerEngine::Audio::AudioSource>();
+
+	BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+	as->setBuffer(clip.getBuffer());
+	as->setVolume(1);
+	as->setPitch(1);
+	as->setLooping(true);
+	as->play();
 
 	// plane
 	BeerEngine::GameObject *mapGO;
