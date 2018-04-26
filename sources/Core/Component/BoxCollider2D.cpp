@@ -29,10 +29,10 @@ namespace BeerEngine
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
 
-			if (thisPos.x > otherPos.x + other->_size.x
-			|| thisPos.x + _size.x < otherPos.x
-			|| thisPos.y > otherPos.y + other->_size.y
-			|| thisPos.y + _size.y < otherPos.y)
+			if (thisPos.x - _size.x / 2 > otherPos.x + other->_size.x / 2
+			|| thisPos.x + _size.x / 2 < otherPos.x - other->_size.x / 2
+			|| thisPos.y - _size.y / 2 > otherPos.y + other->_size.y / 2
+			|| thisPos.y + _size.y / 2 < otherPos.y - other->_size.y / 2)
 				return (false);
 			
 			return (true);
@@ -42,7 +42,7 @@ namespace BeerEngine
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
-			glm::vec2 nearest(glm::clamp(otherPos.x, thisPos.x, thisPos.x + _size.x), glm::clamp(otherPos.y, thisPos.y, thisPos.y + _size.y));
+			glm::vec2 nearest(glm::clamp(otherPos.x, thisPos.x - _size.x / 2, thisPos.x + _size.x / 2), glm::clamp(otherPos.y, thisPos.y - _size.y / 2, thisPos.y + _size.y / 2));
 
 			if (glm::distance2(nearest, otherPos) < other->_radius * other->_radius)
 				return (true);

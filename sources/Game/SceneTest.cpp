@@ -85,8 +85,8 @@ void    SceneTest::init(void)
 	auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 	mapBlocMat->setAlbedo(mapBlocTex);
 	meshRenderer->setMaterial(mapBlocMat);
-	mapBlocGO->transform.position = glm::vec3(-1, 0.5, 6);
-	mapBlocGO->transform.scale = glm::vec3(1, 1, 1);
+	mapBlocGO->transform.position = glm::vec3(-1, 0.5, 9);
+	mapBlocGO->transform.scale = glm::vec3(5, 1, 5);
 
 	// circleBloc
 	auto circleBlocGO = instantiate<BeerEngine::GameObject>();
@@ -98,14 +98,14 @@ void    SceneTest::init(void)
 	circleBlocMat->setAlbedo(circleBlocTex);
 	meshRenderer->setMaterial(circleBlocMat);
 	circleBlocGO->transform.position = glm::vec3(-1, 0.5, 3);
-	circleBlocGO->transform.scale = glm::vec3(1, 1, 1);
+	circleBlocGO->transform.scale = glm::vec3(3, 1, 3);
 
 	std::cout << "mapBloc: " << mapBlocGO << std::endl;
 	mapBlocGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
 	std::cout << "circleBloc: " << circleBlocGO << std::endl;
 	circleBlocGO->AddComponent<BeerEngine::Component::CircleCollider>();//TEST BOX COLLIDER
 	std::cout << "player: " << playerGO << std::endl;
-	playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
+	playerGO->AddComponent<BeerEngine::Component::CircleCollider>();//TEST BOX COLLIDER
 
 	// plane
 	BeerEngine::GameObject *mapGO;
