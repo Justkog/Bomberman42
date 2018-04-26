@@ -1,6 +1,8 @@
 #include "Game/SceneTest.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Component/BoxCollider2D.hpp"
+#include "Core/Component/CircleCollider.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
@@ -61,6 +63,7 @@ void    SceneTest::init(void)
 	// Player
 	
 	auto playerGO = instantiate<BeerEngine::GameObject>();
+	playerGO->name = "player";
 	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
@@ -75,6 +78,7 @@ void    SceneTest::init(void)
 
 	// mapBloc
 	auto mapBlocGO = instantiate<BeerEngine::GameObject>();
+	mapBlocGO->name = "map block";
 	meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	auto *mapBlocTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
@@ -84,6 +88,24 @@ void    SceneTest::init(void)
 	mapBlocGO->transform.position = glm::vec3(-1, 0.5, 6);
 	mapBlocGO->transform.scale = glm::vec3(1, 1, 1);
 
+	// circleBloc
+	auto circleBlocGO = instantiate<BeerEngine::GameObject>();
+	circleBlocGO->name = "circle block";
+	meshRenderer = circleBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *circleBlocTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *circleBlocMat = new BeerEngine::Graphics::AMaterial(shader);
+	circleBlocMat->setAlbedo(circleBlocTex);
+	meshRenderer->setMaterial(circleBlocMat);
+	circleBlocGO->transform.position = glm::vec3(-1, 0.5, 3);
+	circleBlocGO->transform.scale = glm::vec3(1, 1, 1);
+
+	std::cout << "mapBloc: " << mapBlocGO << std::endl;
+	mapBlocGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
+	std::cout << "circleBloc: " << circleBlocGO << std::endl;
+	circleBlocGO->AddComponent<BeerEngine::Component::CircleCollider>();//TEST BOX COLLIDER
+	std::cout << "player: " << playerGO << std::endl;
+	playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
 
 	// plane
 	BeerEngine::GameObject *mapGO;

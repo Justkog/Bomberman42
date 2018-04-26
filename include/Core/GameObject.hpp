@@ -19,6 +19,7 @@ namespace BeerEngine
 
 	public:
 		Transform	transform;
+		std::string	name;
 
 		GameObject(int uniqueID);
 		virtual ~GameObject(void);
@@ -48,11 +49,29 @@ namespace BeerEngine
 			return (nullptr);
 		}
 
+		template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
+		std::vector<T *>	GetComponents(void)
+		{
+			std::vector<T *> res;
+			for (Component::Component *c : _components)
+			{
+				if (T *r = dynamic_cast<T *>(c))
+					res.push_back(r);
+			}
+			return res;
+		}
+
 		void    componentStart(void);
 		void    componentFixedUpdate(void);
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
         void    componentRender(void);
+        void    componentPhysicUpdate(void);
+
+		std::vector<Component::Component *> GetComponents(void)
+		{
+			return _components;
+		}
 
 	};
 }

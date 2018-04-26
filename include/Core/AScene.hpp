@@ -35,11 +35,11 @@ namespace BeerEngine
         void    update(void);
         void    renderUpdate(void);
         void    render(void);
+        void    physicUpdate(void);
 
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
 		{
-            // while (_gameObjects.find(uniqueID = std::rand()) != _gameObjects.end());
              std::cout << "GameObject added : " << uniqueID << std::endl;
 			T *c = new T(uniqueID++);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));

@@ -77,4 +77,12 @@ namespace BeerEngine
         }
     }
 
+    void    AScene::physicUpdate(void)
+    {
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentPhysicUpdate();
+        }
+    }
 }

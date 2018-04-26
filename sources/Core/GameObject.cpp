@@ -3,6 +3,7 @@
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IStart.hpp"
+#include "Core/Component/ACollider.hpp"
 
 namespace BeerEngine
 {
@@ -67,6 +68,15 @@ namespace BeerEngine
 		{
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->render();
+		}
+	}
+
+	void    GameObject::componentPhysicUpdate(void)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (auto *p = dynamic_cast<Component::ACollider*>(c))
+				p->physicUpdate();
 		}
 	}
 
