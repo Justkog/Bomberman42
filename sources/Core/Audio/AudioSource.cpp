@@ -83,7 +83,7 @@ namespace BeerEngine
 		void	   AudioSource::setPosition(float x, float y, float z)
 		{
 		    //change la position de la source sonore
-		    alSource3f(_Source, AL_POSITION, x, y, z);
+		    alSource3f(_Source, AL_POSITION, -x, -y, -z);
 		}
 
 		void	   AudioSource::setVelocity(float x, float y, float z)
