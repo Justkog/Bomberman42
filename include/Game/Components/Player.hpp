@@ -7,6 +7,9 @@
 #include "Core/Component/ITriggerStay.hpp"
 #include "Core/Component/ITriggerEnter.hpp"
 #include "Core/Component/ITriggerExit.hpp"
+#include "Core/Component/IColliderStay.hpp"
+#include "Core/Component/IColliderEnter.hpp"
+#include "Core/Component/IColliderExit.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Transform.hpp"
 
@@ -19,7 +22,10 @@ namespace Game
 						public BeerEngine::Component::IUpdate, 
 						public BeerEngine::Component::ITriggerStay,
 						public BeerEngine::Component::ITriggerEnter,
-						public BeerEngine::Component::ITriggerExit
+						public BeerEngine::Component::ITriggerExit, 
+						public BeerEngine::Component::IColliderStay,
+						public BeerEngine::Component::IColliderEnter,
+						public BeerEngine::Component::IColliderExit
 		{
 		protected:
 			BeerEngine::Transform	*_transform;
@@ -30,9 +36,12 @@ namespace Game
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
-       		virtual void    onTriggerStay(void);
-       		virtual void    onTriggerEnter(void);
-       		virtual void    onTriggerExit(void);
+       		virtual void    onTriggerStay(BeerEngine::Component::ACollider *other);
+       		virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);
+       		virtual void    onTriggerExit(BeerEngine::Component::ACollider *other);
+       		virtual void    onColliderStay(BeerEngine::Component::ACollider *other);
+       		virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
+       		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 		};
 	}
 }

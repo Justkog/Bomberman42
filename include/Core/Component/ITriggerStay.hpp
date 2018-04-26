@@ -7,10 +7,12 @@ namespace BeerEngine
 	
 	namespace Component
 	{
+		class ACollider;
+
 		class ITriggerStay
 		{
 		public:
-			virtual void    onTriggerStay(void) = 0;
+			virtual void    onTriggerStay(ACollider *other) = 0;
 		};
 	}
 }

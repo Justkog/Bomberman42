@@ -37,19 +37,37 @@ namespace Game
 				this->_transform->translate(-this->_transform->left() * BeerEngine::Time::GetDeltaTime());
         }
 
-        void   Player::onTriggerStay(void)
+        void   Player::onTriggerStay(BeerEngine::Component::ACollider *other)
         {
             // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
 			// 		->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
         }
 
-        void   Player::onTriggerEnter(void)
+        void   Player::onTriggerEnter(BeerEngine::Component::ACollider *other)
+        {
+            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
+			// 		->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
+        }
+
+        void   Player::onTriggerExit(BeerEngine::Component::ACollider *other)
+        {
+            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
+			// 	->getMaterial()->setColor(glm::vec4(1, 1, 1, 1));
+        }
+
+        void   Player::onColliderStay(BeerEngine::Component::ACollider *other)
+        {
+            // _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
+			// 		->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
+        }
+
+        void   Player::onColliderEnter(BeerEngine::Component::ACollider *other)
         {
             _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
 					->getMaterial()->setColor(glm::vec4(1, 0, 0, 1));
         }
 
-        void   Player::onTriggerExit(void)
+        void   Player::onColliderExit(BeerEngine::Component::ACollider *other)
         {
             _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>()
 				->getMaterial()->setColor(glm::vec4(1, 1, 1, 1));
