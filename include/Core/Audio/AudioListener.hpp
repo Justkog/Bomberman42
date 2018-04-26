@@ -26,7 +26,7 @@ namespace BeerEngine
 			void static	init();
 			void static DestroyOpenAL();
 
-			void		setListenerData(float x, float y, float z);
+			void		setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ);
 
 			virtual void    start(void);
             virtual void    fixedUpdate(void);

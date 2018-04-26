@@ -17,6 +17,9 @@ namespace Game
 	namespace Component	{		
 		class CameraController : public BeerEngine::Component::Component, public BeerEngine::Component::IUpdate, public BeerEngine::Component::IStart
 		{
+		private:
+			void syncCam();
+
 		public:
 
 			// CameraController( void );

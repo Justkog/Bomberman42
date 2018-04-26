@@ -68,15 +68,21 @@ namespace BeerEngine
             alcCloseDevice(Device);
         }
 
-        void		AudioListener::setListenerData(float x, float y, float z)
+        void		AudioListener::setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ)
         {
-            alListener3f(AL_POSITION, x, y, z);
-            alListener3f(AL_VELOCITY, x, y, z);
+            // std::cout << "orientation x = " << dirX << " y = " << dirY << " z = " << dirZ << "\n";
+            ALfloat values[3];
+            values[0] = dirX;
+            values[1] = dirY;
+            values[2] = dirZ;
+            alListener3f(AL_POSITION, x, y, -z);
+            alListenerfv(AL_ORIENTATION, values);
         }
 
         void		AudioListener::start(void)
 		{
-            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z,
+                            _gameObject->transform.rotation.x, _gameObject->transform.rotation.y, _gameObject->transform.rotation.z);
 		}
 	
 		void		AudioListener::fixedUpdate(void)
@@ -86,7 +92,8 @@ namespace BeerEngine
 
 		void		AudioListener::update(void)
 		{
-            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z,
+                            _gameObject->transform.rotation.x, _gameObject->transform.rotation.y, _gameObject->transform.rotation.z);
 		}
     }
 }
