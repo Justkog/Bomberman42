@@ -78,13 +78,27 @@ void    SceneTest::init(void)
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
 	playerColl->_kinematic = false;
 
+ // test obj skull
+
+	auto Skull = instantiate<BeerEngine::GameObject>();
+	Skull->name = "skull";
+	meshRenderer = Skull->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Skull.obj");
+	auto *SkullTex = BeerEngine::Graphics::Texture::LoadJPG("models/HouseOBJ/DSC_5871_.jpg");
+	auto *SkullMat = new BeerEngine::Graphics::AMaterial(shader);
+	SkullMat->setAlbedo(SkullTex);
+	meshRenderer->setMaterial(SkullMat);
+	Skull->transform.position = glm::vec3(1, 0.5, 10);
+	Skull->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	Skull->transform.rotation = glm::vec3(-0.45, -3.14, 0);
+
 //test obj house
 
 	auto objet = instantiate<BeerEngine::GameObject>();
 	objet->name = "house";
 	meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh("models/house_01.obj");
-	auto *objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	meshRenderer->setMesh("models/HouseOBJ/house_01.obj");
+	auto *objetTex = BeerEngine::Graphics::Texture::LoadJPG("models/HouseOBJ/DSC_5871_.jpg");
 	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
 	objetMat->setAlbedo(objetTex);
 	meshRenderer->setMaterial(objetMat);
@@ -93,27 +107,27 @@ void    SceneTest::init(void)
 	objet->transform.rotation = glm::vec3(0, -1.5, 0);
 
 
-//test obj car
-
-	auto car = instantiate<BeerEngine::GameObject>();
-	car->name = "car";
-	meshRenderer = car->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh("models/Dodge_Chellenger_SRT10_OBJ.obj");
-	auto *carTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
-	auto *carMat = new BeerEngine::Graphics::AMaterial(shader);
-	carMat->setAlbedo(carTex);
-	meshRenderer->setMaterial(carMat);
-	car->transform.position = glm::vec3(0, 0.5, 10);
-	car->transform.scale = glm::vec3(0.02, 0.02, 0.02);
-	car->transform.rotation = glm::vec3(0, -1.5, 0);
+// //test obj car
+//
+// 	auto car = instantiate<BeerEngine::GameObject>();
+// 	car->name = "car";
+// 	meshRenderer = car->AddComponent<BeerEngine::Component::MeshRenderer>();
+// 	meshRenderer->setMesh("models/DodgeOBJ/Dodge_Chellenger_SRT10_OBJ.obj");
+// 	auto *carTex = BeerEngine::Graphics::Texture::LoadJPG("models/OrangeOBJ/Color.jpg");
+// 	auto *carMat = new BeerEngine::Graphics::AMaterial(shader);
+// 	carMat->setAlbedo(carTex);
+// 	meshRenderer->setMaterial(carMat);
+// 	car->transform.position = glm::vec3(0, 0.5, 10);
+// 	car->transform.scale = glm::vec3(0.02, 0.02, 0.02);
+// 	car->transform.rotation = glm::vec3(0, -1.5, 0);
 
 //test obj bigmax
 
 	auto bigmax = instantiate<BeerEngine::GameObject>();
 	bigmax->name = "bigmax";
 	meshRenderer = bigmax->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh("models/Bigmax_White_OBJ.obj");
-	auto *bigmaxTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	meshRenderer->setMesh("models/BigMaxOBJ/Bigmax_White_OBJ.obj");
+	auto *bigmaxTex = BeerEngine::Graphics::Texture::LoadJPG("models/BigMaxOBJ/EyesWhite.jpg");
 	auto *bigmaxMat = new BeerEngine::Graphics::AMaterial(shader);
 	bigmaxMat->setAlbedo(bigmaxTex);
 	meshRenderer->setMaterial(bigmaxMat);
@@ -135,73 +149,20 @@ void    SceneTest::init(void)
 	suzanne->transform.scale = glm::vec3(1,1,1);
 	suzanne->transform.rotation = glm::vec3(0, 3, 0);
 
-	// //test obj Suzanne
-    //
-	//  	inputfile = "models/Suzanne.obj";
-	// 	auto Suobjet = instantiate<BeerEngine::GameObject>();
-	// 	Suobjet->name = "Suzanne";
-	// 	meshRenderer = Suobjet->AddComponent<BeerEngine::Component::MeshRenderer>();
-	// 	BeerEngine::Graphics::MeshBuilder Subuilder;
-    //
-	// 	ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str());
-    //
-	// 	if (!err.empty()) // `err` may contain warning message.
-	// 	  std::cerr << err << std::endl;
-    //
-	// 	if (!ret)
-	// 	  exit(1);
-    //
-	// 	// Loop over shapes
-	// 	for (size_t s = 0; s < shapes.size(); s++)
-	// 	{
-	// 	  // Loop over faces(polygon)
-	// 	  size_t index_offset = 0;
-	// 	  for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++)
-	// 	  {
-	// 	    int fv = shapes[s].mesh.num_face_vertices[f];
-	// 	    // Loop over vertices in the face.
-	// 	    for (size_t v = 0; v < fv; v++)
-	// 		{
-	// 	      // access to vertex
-	// 	      tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
-	// 	      tinyobj::real_t vx = attrib.vertices[3*idx.vertex_index+0];
-	// 	      tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
-	// 	      tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
-	// 		  // std::cout << "on est la 7.4" << std::endl;
-	// 	      tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
-	// 		  // std::cout << "on est la 7.5" << std::endl;
-	// 	      tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
-	// 		  // std::cout << "on est la 7.6" << std::endl;
-	// 	      tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
-	// 	      tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
-	// 	      tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
-    //
-	// 		  Subuilder
-	// 			  .addVertice(glm::vec3(vx, vy, vz))
-	// 			  .addNormal(glm::vec3(nx, ny, nz))
-	// 			  .addUV(glm::vec2(tx, ty))
-	// 		 ;
-	// 	      // Optional: vertex colors
-	// 	      // tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
-	// 	      // tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];
-	// 	      // tinyobj::real_t blue = attrib.colors[3*idx.vertex_index+2];
-	// 	    }
-	// 	    index_offset += fv;
-	// 	    // per-face material
-	// 	    shapes[s].mesh.material_ids[f];
-	// 	  }
-	// 	}
-	// 	builder.calculTangent();
-    //
-	// 	meshRenderer->setMesh(Subuilder.build());
-	// 	objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
-	// 	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	// 	objetMat->setAlbedo(objetTex);
-	// 	meshRenderer->setMaterial(objetMat);
-	// 	Suobjet->transform.position = glm::vec3(4, 0.5, 18);
-	// 	Suobjet->transform.scale = glm::vec3(1, 1, 1);
-	// 	Suobjet->transform.rotation = glm::vec3(-0.3, 3.14, 0);
-    //
+
+	//test obj Orange
+
+		auto Orange = instantiate<BeerEngine::GameObject>();
+		Orange->name = "Orange";
+		meshRenderer = Orange->AddComponent<BeerEngine::Component::MeshRenderer>();
+		meshRenderer->setMesh("models/OrangeOBJ/Orange.obj");
+		auto *OrangeTex = BeerEngine::Graphics::Texture::LoadJPG("models/OrangeOBJ/Color.jpg");
+		auto *OrangeMat = new BeerEngine::Graphics::AMaterial(shader);
+		OrangeMat->setAlbedo(OrangeTex);
+		meshRenderer->setMaterial(OrangeMat);
+		Orange->transform.position = glm::vec3(0, 7, 10);
+		Orange->transform.scale = glm::vec3(1,1,1);
+		Orange->transform.rotation = glm::vec3(0, 3, 0);
 
 
 	// mapBlocs
