@@ -20,9 +20,10 @@ namespace BeerEngine
 		public:
 			MeshRenderer(GameObject *gameObject);
 			Graphics::Mesh	*getMesh(void);
-			MeshRenderer	&setMesh(Graphics::Mesh *mesh);	
+			MeshRenderer	&setMesh(Graphics::Mesh *mesh);
+			MeshRenderer	&setMesh(std::string inputfile);	
 			Graphics::AMaterial	*getMaterial(void);
-			MeshRenderer	&setMaterial(Graphics::AMaterial *material);	
+			MeshRenderer	&setMaterial(Graphics::AMaterial *material);
 			virtual void    renderUpdate(void);
 			virtual void    render(void);
 
