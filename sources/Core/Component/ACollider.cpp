@@ -5,6 +5,9 @@
 #include "Core/Component/ITriggerStay.hpp"
 #include "Core/Component/ITriggerEnter.hpp"
 #include "Core/Component/ITriggerExit.hpp"
+#include "Core/Component/IColliderStay.hpp"
+#include "Core/Component/IColliderEnter.hpp"
+#include "Core/Component/IColliderExit.hpp"
 
 
 namespace BeerEngine
@@ -17,7 +20,9 @@ namespace BeerEngine
 			Component(gameObject),
 			_offset(glm::vec2(0, 0)),
 			_transform(gameObject->transform),
-			_collide(false)
+			_collide(false),
+			_isTrigger(false),
+			_kinematic(true)
 		{
 			_id = _colliders.size();
 			_colliders.push_back(this);
@@ -30,15 +35,27 @@ namespace BeerEngine
 				auto other = _colliders[i];
 				if (checkCollision(other))
 				{
-					triggerStay();
-					other->triggerStay();
+					if (_isTrigger)
+						triggerStay(other);
+					else
+						colliderStay(other);
+					if (other->_isTrigger)
+						other->triggerStay(this);
+					else
+						other->colliderStay(this);
 
 					auto c = std::find(_currentCollisions.begin(), _currentCollisions.end(), other);
 					if (c == _currentCollisions.end())
 					{
 						_currentCollisions.push_back(other);
-						triggerEnter();
-						other->triggerEnter();
+						if (_isTrigger)
+							triggerEnter(other);
+						else
+							colliderEnter(other);
+						if (other->_isTrigger)
+							other->triggerEnter(this);
+						else
+							other->colliderEnter(this);
 					}
 				}
 				else
@@ -47,45 +64,89 @@ namespace BeerEngine
 					if (c != _currentCollisions.end())
 					{
 						_currentCollisions.erase(c);
-						triggerExit();
-						other->triggerExit();
+						if (_isTrigger)
+							triggerExit(other);
+						else
+							colliderExit(other);
+						if (other->_isTrigger)
+							other->triggerExit(this);
+						else
+							other->colliderExit(this);
 					}
 				}
 			}
 		}
 
-		void ACollider::triggerStay(void)
+		void ACollider::triggerStay(ACollider *other)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
 			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerStay *>(c))
 				{
-					r->onTriggerStay();
+					r->onTriggerStay(other);
 				}
 			}
 		}
 
-		void ACollider::triggerEnter(void)
+		void ACollider::triggerEnter(ACollider *other)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
+			for (Component *c : GOcomponents)
+
 			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerEnter *>(c))
 				{
-					r->onTriggerEnter();
+					r->onTriggerEnter(other);
 				}
 			}
 		}
 
-		void ACollider::triggerExit(void)
+		void ACollider::triggerExit(ACollider *other)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
 			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerExit *>(c))
 				{
-					r->onTriggerExit();
+					r->onTriggerExit(other);
+				}
+			}
+		}
+
+		void ACollider::colliderStay(ACollider *other)
+		{
+			auto GOcomponents = _gameObject->GetComponents();
+			for (Component *c : GOcomponents)
+			{
+				if (auto r = dynamic_cast<BeerEngine::Component::IColliderStay *>(c))
+				{
+					r->onColliderStay(other);
+				}
+			}
+		}
+
+		void ACollider::colliderEnter(ACollider *other)
+		{
+			auto GOcomponents = _gameObject->GetComponents();
+			for (Component *c : GOcomponents)
+			{
+				if (auto r = dynamic_cast<BeerEngine::Component::IColliderEnter *>(c))
+				{
+					r->onColliderEnter(other);
+				}
+			}
+		}
+
+		void ACollider::colliderExit(ACollider *other)
+		{
+			auto GOcomponents = _gameObject->GetComponents();
+			for (Component *c : GOcomponents)
+			{
+				if (auto r = dynamic_cast<BeerEngine::Component::IColliderExit *>(c))
+				{
+					r->onColliderExit(other);
 				}
 			}
 		}

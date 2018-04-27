@@ -72,9 +72,8 @@ void    SceneTest::init(void)
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	meshRenderer->setMaterial(playerMat);
-	playerGO->transform.position = glm::vec3(-3, 0.5, 6);
+	playerGO->transform.position = glm::vec3(-1, 0.5, 10);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
-
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 
@@ -180,6 +179,26 @@ void    SceneTest::init(void)
 	circleBlocGO->AddComponent<BeerEngine::Component::CircleCollider>();//TEST BOX COLLIDER
 	std::cout << "player: " << playerGO << std::endl;
 	playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();//TEST BOX COLLIDER
+	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
+	playerColl->_kinematic = false;
+
+	// mapBlocs
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-5, 0.5, 6), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-5, 0.5, 8), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-5, 0.5, 10), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-5, 0.5, 12), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-5, 0.5, 14), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-3, 0.5, 14), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-1, 0.5, 14), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(1, 0.5, 14), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(3, 0.5, 14), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(3, 0.5, 12), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(3, 0.5, 10), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(3, 0.5, 8), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(3, 0.5, 6), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(1, 0.5, 6), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-1, 0.5, 6), true);
+	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-3, 0.5, 6), true);
 
 	// plane
 	BeerEngine::GameObject *mapGO;

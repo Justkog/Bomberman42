@@ -19,9 +19,9 @@ namespace BeerEngine
 		bool BoxCollider2D::checkCollision(ACollider *other)
 		{
 			if (other->collide_AABB2D(this))
-				return true;
+				return (true);
 			else
-				return false;
+				return (false);
 		}
 
 		bool BoxCollider2D::collide_AABB2D(BoxCollider2D *other)
@@ -29,12 +29,12 @@ namespace BeerEngine
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
 
-			if (thisPos.x > otherPos.x + other->_size.x
-			|| thisPos.x + _size.x < otherPos.x
-			|| thisPos.y > otherPos.y + other->_size.y
-			|| thisPos.y + _size.y < otherPos.y)
+			if (thisPos.x - _size.x / 2 > otherPos.x + other->_size.x / 2
+			|| thisPos.x + _size.x / 2 < otherPos.x - other->_size.x / 2
+			|| thisPos.y - _size.y / 2 > otherPos.y + other->_size.y / 2
+			|| thisPos.y + _size.y / 2 < otherPos.y - other->_size.y / 2)
 				return (false);
-			
+			response_AABB2D(other, thisPos, otherPos);
 			return (true);
 		}
 
@@ -42,11 +42,59 @@ namespace BeerEngine
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
-			glm::vec2 nearest(glm::clamp(otherPos.x, thisPos.x, thisPos.x + _size.x), glm::clamp(otherPos.y, thisPos.y, thisPos.y + _size.y));
+			glm::vec2 nearest(glm::clamp(otherPos.x, thisPos.x - _size.x / 2, thisPos.x + _size.x / 2), glm::clamp(otherPos.y, thisPos.y - _size.y / 2, thisPos.y + _size.y / 2));
 
 			if (glm::distance2(nearest, otherPos) < other->_radius * other->_radius)
+			{
+				response_AABB2D(other, nearest, otherPos);
 				return (true);
+			}
 			return (false);
+		}
+
+		void BoxCollider2D::response_AABB2D(BoxCollider2D *other, glm::vec2 &thisPos, glm::vec2 &otherPos)
+		{
+			glm::vec3 move(0, 0, 0);
+
+			if (thisPos.x >= otherPos.x && thisPos.x - _size.x / 2 < otherPos.x + other->_size.x / 2)
+				move.x = otherPos.x + other->_size.x / 2 - (thisPos.x - _size.x / 2);
+			if (thisPos.x < otherPos.x && thisPos.x + _size.x / 2 > otherPos.x - other->_size.x / 2)
+				move.x = otherPos.x - other->_size.x / 2 - (thisPos.x + _size.x / 2);
+			if (thisPos.y >= otherPos.y && thisPos.y - _size.y / 2 < otherPos.y + other->_size.y / 2)
+				move.z = otherPos.y + other->_size.y / 2 - (thisPos.y - _size.y / 2);
+			if (thisPos.y < otherPos.y && thisPos.y + _size.y / 2 > otherPos.y - other->_size.y / 2)
+				move.z = otherPos.y - other->_size.y / 2 - (thisPos.y + _size.y / 2);
+			if (abs(move.x) >= abs(move.z))
+				move.x = 0;
+			else
+				move.z = 0;
+
+			if (other->_kinematic && !_kinematic)
+				_transform.translate(move);
+			else if (!other->_kinematic && _kinematic)
+				other->_transform.translate(-move);
+			else if (!other->_kinematic && !_kinematic)
+			{
+				_transform.translate(move / 2);
+				other->_transform.translate(-move / 2);
+			}
+		}
+
+		void BoxCollider2D::response_AABB2D(CircleCollider *other, glm::vec2 &nearest, glm::vec2 &otherPos)
+		{
+			float overlap = other->_radius - glm::distance(nearest, otherPos);
+			glm::vec3 dir(nearest.x - otherPos.x, 0, nearest.y - otherPos.y);
+			dir = glm::normalize(dir);
+
+			if (other->_kinematic && !_kinematic)
+				_transform.translate(dir * overlap);
+			else if (!other->_kinematic && _kinematic)
+				other->_transform.translate(-dir * overlap);
+			else if (!other->_kinematic && !_kinematic)
+			{
+				_transform.translate(dir * (overlap / 2));
+				other->_transform.translate(-dir * (overlap / 2));
+			}
 		}
 	}
 }
