@@ -57,7 +57,7 @@ namespace BeerEngine
 		void ACollider::triggerStay(void)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
-			for (Component::Component *c : GOcomponents)
+			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerStay *>(c))
 				{
@@ -69,7 +69,7 @@ namespace BeerEngine
 		void ACollider::triggerEnter(void)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
-			for (Component::Component *c : GOcomponents)
+			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerEnter *>(c))
 				{
@@ -81,7 +81,7 @@ namespace BeerEngine
 		void ACollider::triggerExit(void)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
-			for (Component::Component *c : GOcomponents)
+			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerExit *>(c))
 				{
