@@ -1,4 +1,6 @@
 #include "Core/Graphics/Texture.hpp"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 namespace BeerEngine
 {
@@ -101,6 +103,19 @@ namespace BeerEngine
 			png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 			fclose(fp);
 			return (new Texture(width, height, outData, (color_type == PNG_COLOR_TYPE_RGBA) ? GL_RGBA : GL_RGB));
+		}
+
+		Texture		*Texture::LoadJPG(const char *path)
+		{
+			int	width;
+			int	height;
+			int	n;
+			unsigned char	*data;
+
+			data = stbi_load(path, &width, &height, &n, 4);
+			if (!data)
+				std::logic_error("[Texture JPG] File could not be load");
+			return (new Texture(width, height, data, GL_RGBA));
 		}
 
 		int		Texture::getWidth(void)

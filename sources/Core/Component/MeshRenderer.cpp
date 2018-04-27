@@ -50,13 +50,12 @@ namespace BeerEngine
 
 				bool normal = true;
 				bool UV = true;
-				tinyobj::index_t idx = shapes[s].mesh.indices[index_offset];
-				// std::cout << "v " << 3*idx.vertex_index << " " << 3*idx.normal_index << " " << 2*idx.texcoord_index  << std::endl;
 
-				if (3*idx.normal_index < 0)
+				if (attrib.normals.size() == 0)
 					normal = false;
-				if (2*idx.texcoord_index < 0)
+				if (attrib.texcoords.size() == 0)
 					UV = false;
+
 				for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++)
 				{
 					int fv = shapes[s].mesh.num_face_vertices[f];
@@ -128,6 +127,7 @@ namespace BeerEngine
 						  // tinyobj::real_t blue = attrib.colors[3*idx.vertex_index+2];
 						}
 					}
+
 					index_offset += fv;
 					// per-face material
 					shapes[s].mesh.material_ids[f];
