@@ -43,3 +43,4 @@ vscodeFileTemplates/
 *._*.*
 dep/
 tinyobjloader/
+stb/

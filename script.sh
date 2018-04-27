@@ -10,3 +10,6 @@ sed -i -e 's/libvorbis\/1.3.5/libvorbis\/1.3.6/g' $sndfile
 rm -rf tinyobjloader
 git clone https://github.com/syoyo/tinyobjloader.git
 rm -rf tinyobjloader/.git
+rm -rf stb
+git clone https://github.com/nothings/stb.git
+rm -rf stb/.git
