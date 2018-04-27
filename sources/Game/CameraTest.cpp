@@ -1,7 +1,8 @@
 #include "Game/CameraTest.hpp"
 
-CameraTest::CameraTest(int uniqueID) :
-	BeerEngine::GameObject(uniqueID)
+
+CameraTest::CameraTest(int uniqueID, BeerEngine::AScene &scene) :
+	BeerEngine::GameObject(uniqueID, scene)
 {}
 
 void	CameraTest::start(void)

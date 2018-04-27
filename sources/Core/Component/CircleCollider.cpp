@@ -11,6 +11,9 @@ namespace BeerEngine
 			_radius((gameObject->transform.scale.x + gameObject->transform.scale.z) / 4)
 		{}
 
+		CircleCollider::~CircleCollider()
+		{}
+
 		bool CircleCollider::checkCollision(ACollider *other)
 		{
 			if (other->collide_AABB2D(this))

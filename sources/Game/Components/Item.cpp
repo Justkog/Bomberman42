@@ -43,15 +43,21 @@ namespace Game
 
             if (character)
             {
-                std::cout << "Character on me !!!\n";
                 switch (_type)
                 {
                     case ItemType::SpeedBoost:
-                        character->increaseSpeed(2);
-                    default:
-                        character->increaseSpeed(2);
-
+                        character->increaseSpeed(0.1);
+                        break;
+                    
+                    case ItemType::Bomb:
+                        character->addBomb(1);
+                        break;
+                    
+                    case ItemType::ExplosionBoost:
+                        character->increaseExplosionSize(0.5);
+                        break;
                 }
+                this->destroy();
             }
         }
 

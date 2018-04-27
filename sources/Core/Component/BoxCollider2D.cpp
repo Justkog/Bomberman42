@@ -16,6 +16,9 @@ namespace BeerEngine
 			_size(glm::vec2(gameObject->transform.scale.x, gameObject->transform.scale.z))
 		{}
 
+		BoxCollider2D::~BoxCollider2D()
+		{}
+
 		bool BoxCollider2D::checkCollision(ACollider *other)
 		{
 			if (other->collide_AABB2D(this))

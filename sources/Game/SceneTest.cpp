@@ -13,10 +13,10 @@ void    SceneTest::init(void)
 {
 	// Shader
 	BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
-	shader->load(0, GL_VERTEX_SHADER, 
+	shader->load(0, GL_VERTEX_SHADER,
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
 	);
-	shader->load(1, GL_FRAGMENT_SHADER, 
+	shader->load(1, GL_FRAGMENT_SHADER,
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
 	);
 	shader->compile();
@@ -61,8 +61,9 @@ void    SceneTest::init(void)
 
 	// FPS Camera
 	// instantiate<CameraTest>();
-	
+
 	// Player
+
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";
 	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -71,13 +72,139 @@ void    SceneTest::init(void)
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	meshRenderer->setMaterial(playerMat);
-	playerGO->transform.position = glm::vec3(-1, 0.5, 10);
+	playerGO->transform.position = glm::vec3(1, 0.5, 7);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
 	playerColl->_kinematic = false;
+
+//test obj house
+
+	auto objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "house";
+	meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/house_01.obj");
+	auto *objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	meshRenderer->setMaterial(objetMat);
+	objet->transform.position = glm::vec3(7, 0.5, 10);
+	objet->transform.scale = glm::vec3(0.05, 0.05, 0.05);
+	objet->transform.rotation = glm::vec3(0, -1.5, 0);
+
+
+//test obj car
+
+	auto car = instantiate<BeerEngine::GameObject>();
+	car->name = "car";
+	meshRenderer = car->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Dodge_Chellenger_SRT10_OBJ.obj");
+	auto *carTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *carMat = new BeerEngine::Graphics::AMaterial(shader);
+	carMat->setAlbedo(carTex);
+	meshRenderer->setMaterial(carMat);
+	car->transform.position = glm::vec3(0, 0.5, 10);
+	car->transform.scale = glm::vec3(0.02, 0.02, 0.02);
+	car->transform.rotation = glm::vec3(0, -1.5, 0);
+
+//test obj bigmax
+
+	auto bigmax = instantiate<BeerEngine::GameObject>();
+	bigmax->name = "bigmax";
+	meshRenderer = bigmax->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Bigmax_White_OBJ.obj");
+	auto *bigmaxTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *bigmaxMat = new BeerEngine::Graphics::AMaterial(shader);
+	bigmaxMat->setAlbedo(bigmaxTex);
+	meshRenderer->setMaterial(bigmaxMat);
+	bigmax->transform.position = glm::vec3(-7, 0, 10);
+	bigmax->transform.scale = glm::vec3(0.07, 0.07, 0.07);
+	bigmax->transform.rotation = glm::vec3(0, 3, 0);
+
+//test obj suzanne
+
+	auto suzanne = instantiate<BeerEngine::GameObject>();
+	suzanne->name = "suzanne";
+	meshRenderer = suzanne->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Suzanne.obj");
+	auto *suzanneTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *suzanneMat = new BeerEngine::Graphics::AMaterial(shader);
+	suzanneMat->setAlbedo(suzanneTex);
+	meshRenderer->setMaterial(suzanneMat);
+	suzanne->transform.position = glm::vec3(0, 4, 16);
+	suzanne->transform.scale = glm::vec3(1,1,1);
+	suzanne->transform.rotation = glm::vec3(0, 3, 0);
+
+	// //test obj Suzanne
+    //
+	//  	inputfile = "models/Suzanne.obj";
+	// 	auto Suobjet = instantiate<BeerEngine::GameObject>();
+	// 	Suobjet->name = "Suzanne";
+	// 	meshRenderer = Suobjet->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// 	BeerEngine::Graphics::MeshBuilder Subuilder;
+    //
+	// 	ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str());
+    //
+	// 	if (!err.empty()) // `err` may contain warning message.
+	// 	  std::cerr << err << std::endl;
+    //
+	// 	if (!ret)
+	// 	  exit(1);
+    //
+	// 	// Loop over shapes
+	// 	for (size_t s = 0; s < shapes.size(); s++)
+	// 	{
+	// 	  // Loop over faces(polygon)
+	// 	  size_t index_offset = 0;
+	// 	  for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++)
+	// 	  {
+	// 	    int fv = shapes[s].mesh.num_face_vertices[f];
+	// 	    // Loop over vertices in the face.
+	// 	    for (size_t v = 0; v < fv; v++)
+	// 		{
+	// 	      // access to vertex
+	// 	      tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
+	// 	      tinyobj::real_t vx = attrib.vertices[3*idx.vertex_index+0];
+	// 	      tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
+	// 	      tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
+	// 		  // std::cout << "on est la 7.4" << std::endl;
+	// 	      tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
+	// 		  // std::cout << "on est la 7.5" << std::endl;
+	// 	      tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
+	// 		  // std::cout << "on est la 7.6" << std::endl;
+	// 	      tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
+	// 	      tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
+	// 	      tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+    //
+	// 		  Subuilder
+	// 			  .addVertice(glm::vec3(vx, vy, vz))
+	// 			  .addNormal(glm::vec3(nx, ny, nz))
+	// 			  .addUV(glm::vec2(tx, ty))
+	// 		 ;
+	// 	      // Optional: vertex colors
+	// 	      // tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
+	// 	      // tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];
+	// 	      // tinyobj::real_t blue = attrib.colors[3*idx.vertex_index+2];
+	// 	    }
+	// 	    index_offset += fv;
+	// 	    // per-face material
+	// 	    shapes[s].mesh.material_ids[f];
+	// 	  }
+	// 	}
+	// 	builder.calculTangent();
+    //
+	// 	meshRenderer->setMesh(Subuilder.build());
+	// 	objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	// 	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// 	objetMat->setAlbedo(objetTex);
+	// 	meshRenderer->setMaterial(objetMat);
+	// 	Suobjet->transform.position = glm::vec3(4, 0.5, 18);
+	// 	Suobjet->transform.scale = glm::vec3(1, 1, 1);
+	// 	Suobjet->transform.rotation = glm::vec3(-0.3, 3.14, 0);
+    //
+
 
 	// mapBlocs
 	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-5, 0.5, 6), true);
@@ -99,6 +226,7 @@ void    SceneTest::init(void)
 
 	// Item
 	auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), glm::vec3(-3, 0.5, 10), true);
+	itemGO->name = "item";
 	itemGO->AddComponent<Game::Component::Item>();
 	auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
 	itemColl->_isTrigger = true;
@@ -123,7 +251,7 @@ void    SceneTest::init(void)
 	// meshRenderer->setMaterial(materialB);
 	// gameObject->transform.position = glm::vec3(-1, 1, 4);
 	// gameObject->transform.rotation = glm::quat(glm::vec3(0.0f, glm::radians(22.5f), 0.0f));
-	
+
 	// => GameObject 2 : Cube Top
 	// gameObject = instantiate<BeerEngine::GameObject>();
 	// meshRenderer = gameObject->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -139,7 +267,5 @@ void    SceneTest::init(void)
 	// meshRenderer->setMaterial(material2);
 	// gameObject->transform.position = glm::vec3(0, -0.5, 4);
 	// std::cout << "init end" << "\n";
-	
+
 }
-
-

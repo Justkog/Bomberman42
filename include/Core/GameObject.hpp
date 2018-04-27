@@ -11,17 +11,20 @@ namespace BeerEngine
 		class Component;
 	}
 
+	class AScene;
+
     class GameObject
 	{
 	protected:
-		int		_uniqueID;
 		std::vector<Component::Component *> _components;
 
 	public:
+		int			_uniqueID;
+		AScene		&_scene;
 		Transform	transform;
 		std::string	name;
 
-		GameObject(int uniqueID);
+		GameObject(int uniqueID, AScene &scene);
 		virtual ~GameObject(void);
 
 		virtual void	start(void);
@@ -29,6 +32,8 @@ namespace BeerEngine
         virtual void    update(void);
         virtual void    renderUpdate(void);
         virtual void    render(void);
+
+		void    destroy(GameObject *go);
 
         template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*AddComponent(void)

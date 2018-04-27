@@ -41,6 +41,7 @@ void updateThread(BeerEngine::Window *window)
         {
             scene->mutexLock(true);
             scene->update();
+            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
 
@@ -68,7 +69,7 @@ int main(void)
     BeerEngine::Audio::AudioListener audio;
 
     audio.setListenerData(0, 0, 0);
-
+    alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
     BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
     // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
@@ -79,9 +80,9 @@ int main(void)
     srcAudio.setPitch(1);
     // srcAudio2.setPitch(2);
     srcAudio.setLooping(true);
-    // srcAudio.play();
-    // float x = 0;
-    // srcAudio.setPosition(x, 0, 0);
+    srcAudio.play();
+    float x = 0;
+    srcAudio.setPosition(x, 0, 0);
     //
     // char c = ' ';
     // while (c != 'q')
@@ -101,7 +102,7 @@ int main(void)
     //         // srcAudio2.play();
     //         x -= 1;
     //
-    //     // std::cout << x << std::endl;
+    //     std::cout << x << std::endl;
     //     srcAudio.setPosition(x, 0, 0);
     // }
 

@@ -14,6 +14,8 @@
 #include "Core/Transform.hpp"
 
 #define MAX_SPEED 4
+#define MAX_BOMBS 20
+#define MAX_EXPLOSION_SIZE 8
 
 namespace Game
 {
@@ -41,6 +43,8 @@ namespace Game
 
 			void	translate(glm::vec3 dir);
 			void    increaseSpeed(float val);
+			void    addBomb(int nb);
+			void    increaseExplosionSize(float val);
 			
        		virtual void    onTriggerStay(BeerEngine::Component::ACollider *other);
        		virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);

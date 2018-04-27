@@ -71,7 +71,8 @@ CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 C_FILE = $(addprefix sources/, $(SRC))
 O_FILE = $(addprefix obj/, $(SRC:.cpp=.o))
 D_FILE = $(addprefix dep/, $(SRC:.cpp=.d))
-CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME)))
+CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include -I \
+tinyobjloader/ -I stb/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME)))
 LIB_DIR = $(addprefix lib, $(LIB_NAME))
 LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))
 .PHONY: all dircreate clean fclean ffclean run ar re req install

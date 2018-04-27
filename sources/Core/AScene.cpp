@@ -85,4 +85,26 @@ namespace BeerEngine
             (it->second)->componentPhysicUpdate();
         }
     }
+
+    void    AScene::destroy(GameObject *go)
+    {
+        if(std::find(_toDestroy.begin(), _toDestroy.end(), go) == _toDestroy.end())
+        {
+            _toDestroy.push_back(go);
+        }
+    }
+
+    void    AScene::destroyGameObjects(void)
+    {
+        for (GameObject *go : _toDestroy)
+		{
+            std::map<int, GameObject *>::iterator it;
+			if ((it = _gameObjects.find(go->_uniqueID)) != _gameObjects.end())
+            {
+                delete it->second;
+                _gameObjects.erase(it);
+            }
+		}
+        _toDestroy.clear();
+    }
 }

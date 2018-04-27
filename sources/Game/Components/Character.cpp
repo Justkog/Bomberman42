@@ -39,6 +39,23 @@ namespace Game
             _speed += val;
             if (_speed >= MAX_SPEED)
                 _speed = MAX_SPEED;
+            std::cout << "Increase Speed by " << val << ". _speed = " << _speed << std::endl;
+        }
+
+        void    Character::addBomb(int nb)
+        {
+            _bombNb += nb;
+            if (_bombNb >= MAX_BOMBS)
+                _bombNb = MAX_BOMBS;
+            std::cout << "Add " << nb << " Bomb. _bombNb = " << _bombNb << std::endl;
+        }
+
+        void    Character::increaseExplosionSize(float val)
+        {
+            _explosionSize += val;
+            if (_explosionSize >= MAX_EXPLOSION_SIZE)
+                _explosionSize = MAX_EXPLOSION_SIZE;
+            std::cout << "Increase Explosion Size by " << val << ". _explosionSize = " << _explosionSize << std::endl;
         }
 
         void   Character::onTriggerStay(BeerEngine::Component::ACollider *other)

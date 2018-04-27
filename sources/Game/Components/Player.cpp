@@ -34,6 +34,8 @@ namespace Game
 				_character->translate(_transform.left());
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
 				_character->translate(_transform.right());
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
+				this->destroy();
         }
     }
 }
