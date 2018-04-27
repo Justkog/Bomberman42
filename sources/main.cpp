@@ -62,26 +62,26 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
-    std::srand(std::time(nullptr));
-    // Audio
-    BeerEngine::Audio::AudioListener::init();
-    BeerEngine::Audio::AudioListener audio;
+    // std::srand(std::time(nullptr));
+    // // Audio
+    // BeerEngine::Audio::AudioListener::init();
+    // BeerEngine::Audio::AudioListener audio;
 
-    audio.setListenerData(0, 0, 0);
-    alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
-    BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
-    // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
+    // audio.setListenerData(0, 0, 0);
+    // alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
+    // BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+    // // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
 
-    BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-    // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
+    // BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+    // // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
 
-    srcAudio.setVolume(1);
-    srcAudio.setPitch(1);
-    // srcAudio2.setPitch(2);
-    srcAudio.setLooping(true);
-    srcAudio.play();
-    float x = 0;
-    srcAudio.setPosition(x, 0, 0);
+    // srcAudio.setVolume(1);
+    // srcAudio.setPitch(1);
+    // // srcAudio2.setPitch(2);
+    // srcAudio.setLooping(true);
+    // srcAudio.play();
+    // float x = 0;
+    // srcAudio.setPosition(x, 0, 0);
     //
     // char c = ' ';
     // while (c != 'q')
@@ -137,7 +137,7 @@ int main(void)
        window->swapBuffer();
        frameCount++;
     }
-    srcAudio.Delete();
+    // srcAudio.Delete();
     // srcAudio2.Delete();
     BeerEngine::Audio::AudioListener::DestroyOpenAL();
     delete BeerEngine::Camera::main;

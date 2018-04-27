@@ -11,6 +11,7 @@
 #include "Core/Component/Component.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include <vector>
+#include <iostream>
 
 namespace Game
 {	

@@ -1,5 +1,4 @@
 #include "Game/Components/Settings.hpp"
-#include <iostream>
 
 // STATIC ########################################################
 

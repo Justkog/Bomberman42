@@ -1,0 +1,76 @@
+{
+    "gameObjects": [
+        {
+            "name": ""
+        },
+        {
+            "name": "player"
+        },
+        {
+            "name": "house"
+        },
+        {
+            "name": "car"
+        },
+        {
+            "name": "bigmax"
+        },
+        {
+            "name": "suzanne"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": "map block"
+        },
+        {
+            "name": ""
+        }
+    ]
+}

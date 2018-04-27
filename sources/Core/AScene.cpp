@@ -1,4 +1,5 @@
 #include "Core/AScene.hpp"
+#include <nlohmann/json.hpp>
 
 namespace BeerEngine
 {
@@ -84,5 +85,38 @@ namespace BeerEngine
         {
             (it->second)->componentPhysicUpdate();
         }
+    }
+
+    void    AScene::save(std::string filePath) {
+        nlohmann::json j = *this;
+        std::string content = j.dump(4);
+        BeerEngine::IO::FileUtils::WriteFile(filePath, content);
+        std::cout << content << std::endl;
+    }
+
+    void to_json(nlohmann::json& j, GameObject * s) {
+        j = nlohmann::json {
+            {"name", s->name},
+        };
+    }
+
+    void from_json(const nlohmann::json& j, GameObject * s) {
+        // s.soundVolume = j.at("soundVolume").get<float>();
+        // s.stringSetting = j.at("stringSetting").get<std::string>();
+        // s.intSetting = j.at("intSetting").get<int>();
+        // s.listSettings = j.at("listSettings").get<std::vector<std::string>>();
+    }
+
+    void to_json(nlohmann::json& j, AScene& s) {
+        j = nlohmann::json {
+            {"gameObjects", s.getGameObjects()},
+        };
+    }
+
+    void from_json(const nlohmann::json& j, AScene& s) {
+        // s.soundVolume = j.at("soundVolume").get<float>();
+        // s.stringSetting = j.at("stringSetting").get<std::string>();
+        // s.intSetting = j.at("intSetting").get<int>();
+        // s.listSettings = j.at("listSettings").get<std::vector<std::string>>();
     }
 }

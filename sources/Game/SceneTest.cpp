@@ -10,6 +10,9 @@
 
 void    SceneTest::init(void)
 {
+
+
+
 	// Shader
 	BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 	shader->load(0, GL_VERTEX_SHADER,
@@ -265,4 +268,6 @@ void    SceneTest::init(void)
 	// gameObject->transform.position = glm::vec3(0, -0.5, 4);
 	// std::cout << "init end" << "\n";
 
+	this->save("test.scene");
 }
+

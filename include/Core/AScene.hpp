@@ -12,17 +12,21 @@
 #include "Graphics/ShaderProgram.hpp"
 #include "Graphics/Graphics.hpp"
 #include "Graphics/AMaterial.hpp"
+#include "Core/IO/FileUtils.hpp"
 
 namespace BeerEngine
 {
     class AScene
     {
     private:
-        static int     uniqueID;
+        static int                  uniqueID;
         std::map<int, GameObject *> _gameObjects;
         std::mutex                  updateMutex;
+
         
     public:
+        std::string                 filePath;
+
         AScene(void);
         virtual ~AScene(void);
 
@@ -51,6 +55,28 @@ namespace BeerEngine
         {
             std::cout << "GameObject List Size : " << _gameObjects.size() << std::endl;
         }
+
+        std::vector<GameObject *> getGameObjects()
+        {
+            std::vector<GameObject *> res;
+
+            // populate map somehow
+            for(auto it = _gameObjects.begin(); it != _gameObjects.end(); ++it) {
+                res.push_back( it->second );
+            }
+            return (res);
+        }
+
+        // void load(std::string filePath)
+        // {
+        //     std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
+        //     auto j = nlohmann::json::parse(content);
+        //     // Game::SettingsContainer c;
+        //     // this->settingsContainer = j;
+        // }
+
+        void save(std::string filePath);
+
     };
 }
 

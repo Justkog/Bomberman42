@@ -4,6 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
+#include <nlohmann/json.hpp>
 
 namespace BeerEngine
 {
@@ -79,5 +80,4 @@ namespace BeerEngine
 				p->physicUpdate();
 		}
 	}
-
 }
