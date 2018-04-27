@@ -14,6 +14,8 @@ namespace BeerEngine
 			Component(GameObject *gameObject);
 			virtual ~Component(void) {}
 
+			void    destroy(GameObject *go = nullptr);
+
 			GameObject		*_gameObject;
 		};
 	}

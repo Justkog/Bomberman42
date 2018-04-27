@@ -35,6 +35,8 @@ namespace Game
 				this->_transform->translate(-this->_transform->right() * BeerEngine::Time::GetDeltaTime());
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
 				this->_transform->translate(-this->_transform->left() * BeerEngine::Time::GetDeltaTime());
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
+				this->destroy();
         }
 
         void   Player::onTriggerStay(BeerEngine::Component::ACollider *other)

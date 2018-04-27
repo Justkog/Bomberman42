@@ -4,20 +4,25 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
+#include "Core/AScene.hpp"
 
 namespace BeerEngine
 {
-    GameObject::GameObject(int uniqueID) :
-		_uniqueID(uniqueID)
+    GameObject::GameObject(int uniqueID, AScene &scene) :
+		_uniqueID(uniqueID),
+		_scene(scene)
 	{
 	}
 
 	GameObject::~GameObject(void)
 	{
+		std::cout << "destroying : " << this->name << std::endl;
 		for (Component::Component *c : _components)
 		{
+			std::cout << "destroying component : " << c << std::endl;
 			delete c;
 		}
+		_components.clear();
 	}
 
 	void	GameObject::start(void) {}
@@ -25,6 +30,11 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
+
+	void    GameObject::destroy(GameObject *go)
+    {
+        _scene.destroy(go);
+    }
 
 	void    GameObject::componentStart(void)
 	{
