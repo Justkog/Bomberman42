@@ -9,7 +9,7 @@ public:
 	void    init(void);
 
 	template <typename T>
-	void addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+	BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
 	{
 		BeerEngine::Component::MeshRenderer *meshRenderer;
 		auto mapBlocGO = instantiate<BeerEngine::GameObject>();
@@ -24,6 +24,8 @@ public:
 		mapBlocGO->transform.scale = scale;
 		auto blockColl = mapBlocGO->AddComponent<T>();
 		blockColl->_kinematic = kinematic;
+
+		return (mapBlocGO);
 	}
 	
 };

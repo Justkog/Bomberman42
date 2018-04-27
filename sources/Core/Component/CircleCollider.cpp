@@ -26,7 +26,8 @@ namespace BeerEngine
 
 			if (glm::distance2(thisPos, otherPos) < (_radius + other->_radius) * (_radius + other->_radius))
 			{
-				response_AABB2D(other, thisPos, otherPos);
+				if (!_isTrigger && !other->_isTrigger)
+					response_AABB2D(other, thisPos, otherPos);
 				return (true);
 			}
 			return (false);

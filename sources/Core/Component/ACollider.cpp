@@ -18,9 +18,8 @@ namespace BeerEngine
 
 		ACollider::ACollider(GameObject *gameObject) :
 			Component(gameObject),
-			_offset(glm::vec2(0, 0)),
 			_transform(gameObject->transform),
-			_collide(false),
+			_offset(glm::vec2(0, 0)),
 			_isTrigger(false),
 			_kinematic(true)
 		{

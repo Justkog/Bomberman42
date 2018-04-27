@@ -34,7 +34,8 @@ namespace BeerEngine
 			|| thisPos.y - _size.y / 2 > otherPos.y + other->_size.y / 2
 			|| thisPos.y + _size.y / 2 < otherPos.y - other->_size.y / 2)
 				return (false);
-			response_AABB2D(other, thisPos, otherPos);
+			if (!_isTrigger && !other->_isTrigger)
+				response_AABB2D(other, thisPos, otherPos);
 			return (true);
 		}
 
@@ -46,7 +47,8 @@ namespace BeerEngine
 
 			if (glm::distance2(nearest, otherPos) < other->_radius * other->_radius)
 			{
-				response_AABB2D(other, nearest, otherPos);
+				if (!_isTrigger && !other->_isTrigger)
+					response_AABB2D(other, nearest, otherPos);
 				return (true);
 			}
 			return (false);
