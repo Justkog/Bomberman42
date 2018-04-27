@@ -10,6 +10,8 @@
 #include "Core/GameObject.hpp"
 #include "Core/Transform.hpp"
 
+#define MAX_SPEED 4
+
 namespace Game
 {
 	namespace Component

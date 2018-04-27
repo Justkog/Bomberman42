@@ -38,11 +38,16 @@ namespace Game
 
         void   Item::onTriggerEnter(BeerEngine::Component::ACollider *other)
         {
-            auto go = other->_gameObject->GetComponent<Player>();
+            auto character = other->_gameObject->GetComponent<Character>();
 
-            if (go)
+            if (character)
             {
-                std::cout << "Player on me !!!\n";
+                std::cout << "Character on me !!!\n";
+                switch (_type)
+                {
+                    case ItemType::SpeedBoost:
+                        character->increaseSpeed(0.2);
+                }
             }
         }
 

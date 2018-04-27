@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Game/Components/Player.hpp"
+#include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
@@ -73,6 +74,7 @@ void    SceneTest::init(void)
 	playerGO->transform.position = glm::vec3(-1, 0.5, 10);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
 	playerColl->_kinematic = false;
