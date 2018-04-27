@@ -41,6 +41,7 @@ void updateThread(BeerEngine::Window *window)
         {
             scene->mutexLock(true);
             scene->update();
+            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
 
