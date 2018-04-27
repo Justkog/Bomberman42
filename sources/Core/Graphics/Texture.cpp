@@ -118,6 +118,19 @@ namespace BeerEngine
 			return (new Texture(width, height, data, GL_RGBA));
 		}
 
+		Texture		*Texture::LoadTGA(const char *path)
+		{
+			int	width;
+			int	height;
+			int	n;
+			unsigned char	*data;
+
+			data = stbi_load(path, &width, &height, &n, 4);
+			if (!data)
+				std::logic_error("[Texture JPG] File could not be load");
+			return (new Texture(width, height, data, GL_RGBA));
+		}
+
 		int		Texture::getWidth(void)
 		{
 			return (_width);

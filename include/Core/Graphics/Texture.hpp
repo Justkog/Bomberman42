@@ -24,6 +24,8 @@ namespace BeerEngine
 			static Texture	*LoadBMP(const char *path, GLenum format = GL_BGR);
 			static Texture	*LoadPNG(const char *path);
 			static Texture	*LoadJPG(const char *path);
+			static Texture	*LoadTGA(const char *path);
+
 			int		getWidth(void);
 			int		getHeight(void);
 		};

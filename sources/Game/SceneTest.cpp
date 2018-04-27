@@ -85,7 +85,7 @@ void    SceneTest::init(void)
 	Old->name = "old";
 	meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh("models/Old_man/muro.obj");
-	auto *OldTex = BeerEngine::Graphics::Texture::LoadJPG("models/Old_man/Muro_head_dm.tga");
+	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("models/Old_man/Muro_head_dm.tga");
 	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
 	OldMat->setAlbedo(OldTex);
 	meshRenderer->setMaterial(OldMat);
