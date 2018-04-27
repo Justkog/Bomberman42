@@ -83,7 +83,7 @@ void    SceneTest::init(void)
 	objet->name = "house";
 	meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh("models/house_01.obj");
-	auto *objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/DSC_5871_NRM.png");
+	auto *objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
 	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
 	objetMat->setAlbedo(objetTex);
 	meshRenderer->setMaterial(objetMat);
@@ -92,33 +92,47 @@ void    SceneTest::init(void)
 	objet->transform.rotation = glm::vec3(0, -1.5, 0);
 
 
-	//test obj car
+//test obj car
 
-		auto car = instantiate<BeerEngine::GameObject>();
-		car->name = "car";
-		meshRenderer = car->AddComponent<BeerEngine::Component::MeshRenderer>();
-		meshRenderer->setMesh("models/Dodge_Chellenger_SRT10_OBJ.obj");
-		auto *carTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
-		auto *carMat = new BeerEngine::Graphics::AMaterial(shader);
-		carMat->setAlbedo(carTex);
-		meshRenderer->setMaterial(carMat);
-		car->transform.position = glm::vec3(0, 0.5, 10);
-		car->transform.scale = glm::vec3(0.02, 0.02, 0.02);
-		car->transform.rotation = glm::vec3(0, -1.5, 0);
+	auto car = instantiate<BeerEngine::GameObject>();
+	car->name = "car";
+	meshRenderer = car->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Dodge_Chellenger_SRT10_OBJ.obj");
+	auto *carTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *carMat = new BeerEngine::Graphics::AMaterial(shader);
+	carMat->setAlbedo(carTex);
+	meshRenderer->setMaterial(carMat);
+	car->transform.position = glm::vec3(0, 0.5, 10);
+	car->transform.scale = glm::vec3(0.02, 0.02, 0.02);
+	car->transform.rotation = glm::vec3(0, -1.5, 0);
 
-		// //test obj bungalo
-        //
-		// 	auto bungalo = instantiate<BeerEngine::GameObject>();
-		// 	bungalo->name = "bungalo";
-		// 	meshRenderer = bungalo->AddComponent<BeerEngine::Component::MeshRenderer>();
-		// 	meshRenderer->setMesh("models/bg3_obj.obj");
-		// 	auto *bungaloTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
-		// 	auto *bungaloMat = new BeerEngine::Graphics::AMaterial(shader);
-		// 	bungaloMat->setAlbedo(bungaloTex);
-		// 	meshRenderer->setMaterial(bungaloMat);
-		// 	bungalo->transform.position = glm::vec3(0, 15, 10);
-		// 	bungalo->transform.scale = glm::vec3(0.02, 0.02, 0.02);
-		// 	bungalo->transform.rotation = glm::vec3(0, -1.5, 0);
+//test obj bigmax
+
+	auto bigmax = instantiate<BeerEngine::GameObject>();
+	bigmax->name = "bigmax";
+	meshRenderer = bigmax->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Bigmax_White_OBJ.obj");
+	auto *bigmaxTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *bigmaxMat = new BeerEngine::Graphics::AMaterial(shader);
+	bigmaxMat->setAlbedo(bigmaxTex);
+	meshRenderer->setMaterial(bigmaxMat);
+	bigmax->transform.position = glm::vec3(-7, 0, 10);
+	bigmax->transform.scale = glm::vec3(0.07, 0.07, 0.07);
+	bigmax->transform.rotation = glm::vec3(0, 3, 0);
+
+//test obj suzanne
+
+	auto suzanne = instantiate<BeerEngine::GameObject>();
+	suzanne->name = "suzanne";
+	meshRenderer = suzanne->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Suzanne.obj");
+	auto *suzanneTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *suzanneMat = new BeerEngine::Graphics::AMaterial(shader);
+	suzanneMat->setAlbedo(suzanneTex);
+	meshRenderer->setMaterial(suzanneMat);
+	suzanne->transform.position = glm::vec3(0, 4, 16);
+	suzanne->transform.scale = glm::vec3(1,1,1);
+	suzanne->transform.rotation = glm::vec3(0, 3, 0);
 
 	// //test obj Suzanne
     //
