@@ -62,37 +62,51 @@ void    SceneTest::init(void)
 	// instantiate<CameraTest>();
 
 	// Player
+//
+// 	auto playerGO = instantiate<BeerEngine::GameObject>();
+// 	playerGO->name = "player";
+// 	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+// 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+// 	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
+// 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+// 	playerMat->setAlbedo(playerTex);
+// 	meshRenderer->setMaterial(playerMat);
+// 	playerGO->transform.position = glm::vec3(1, 0.5, 7);
+// 	playerGO->transform.scale = glm::vec3(1, 1, 1);
+// 	auto *player = playerGO->AddComponent<Game::Component::Player>();
+// 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+// 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
+// 	playerColl->_kinematic = false;
+//
+//  // test obj skull
+//
+// 	auto Skull = instantiate<BeerEngine::GameObject>();
+// 	Skull->name = "skull";
+// 	meshRenderer = Skull->AddComponent<BeerEngine::Component::MeshRenderer>();
+// 	meshRenderer->setMesh("models/Skull.obj");
+// 	auto *SkullTex = BeerEngine::Graphics::Texture::LoadJPG("models/HouseOBJ/DSC_5871_.jpg");
+// 	auto *SkullMat = new BeerEngine::Graphics::AMaterial(shader);
+// 	SkullMat->setAlbedo(SkullTex);
+// 	meshRenderer->setMaterial(SkullMat);
+// 	Skull->transform.position = glm::vec3(1, 0.5, 10);
+// 	Skull->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+// 	Skull->transform.rotation = glm::vec3(-0.45, -3.14, 0);
+//
+ // test obj old
 
-	auto playerGO = instantiate<BeerEngine::GameObject>();
-	playerGO->name = "player";
-	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
-	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	playerMat->setAlbedo(playerTex);
-	meshRenderer->setMaterial(playerMat);
-	playerGO->transform.position = glm::vec3(1, 0.5, 7);
-	playerGO->transform.scale = glm::vec3(1, 1, 1);
-	auto *player = playerGO->AddComponent<Game::Component::Player>();
-	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
-	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
-	playerColl->_kinematic = false;
+	auto Old = instantiate<BeerEngine::GameObject>();
+	Old->name = "old";
+	meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Old_man/muro.obj");
+	auto *OldTex = BeerEngine::Graphics::Texture::LoadJPG("models/Old_man/Muro_head_dm.tga");
+	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
+	OldMat->setAlbedo(OldTex);
+	meshRenderer->setMaterial(OldMat);
+	Old->transform.position = glm::vec3(1, 0.5, 10);
+	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
+	Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
- // test obj skull
-
-	auto Skull = instantiate<BeerEngine::GameObject>();
-	Skull->name = "skull";
-	meshRenderer = Skull->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh("models/Skull.obj");
-	auto *SkullTex = BeerEngine::Graphics::Texture::LoadJPG("models/HouseOBJ/DSC_5871_.jpg");
-	auto *SkullMat = new BeerEngine::Graphics::AMaterial(shader);
-	SkullMat->setAlbedo(SkullTex);
-	meshRenderer->setMaterial(SkullMat);
-	Skull->transform.position = glm::vec3(1, 0.5, 10);
-	Skull->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	Skull->transform.rotation = glm::vec3(-0.45, -3.14, 0);
-
-//test obj house
+// test obj house
 
 	auto objet = instantiate<BeerEngine::GameObject>();
 	objet->name = "house";
@@ -135,6 +149,21 @@ void    SceneTest::init(void)
 	bigmax->transform.scale = glm::vec3(0.07, 0.07, 0.07);
 	bigmax->transform.rotation = glm::vec3(0, 3, 0);
 
+	//test obj fourmi
+
+		auto fourmi = instantiate<BeerEngine::GameObject>();
+		fourmi->name = "fourmi";
+		meshRenderer = fourmi->AddComponent<BeerEngine::Component::MeshRenderer>();
+		meshRenderer->setMesh("models/fourmis/formica_rufa.obj");
+		auto *fourmiTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+		auto *fourmiMat = new BeerEngine::Graphics::AMaterial(shader);
+		fourmiMat->setAlbedo(fourmiTex);
+		meshRenderer->setMaterial(fourmiMat);
+		fourmi->transform.position = glm::vec3(-3, 0, 10);
+		fourmi->transform.scale = glm::vec3(5, 5, 5);
+		fourmi->transform.rotation = glm::vec3(0, 0, 0);
+
+
 //test obj suzanne
 
 	auto suzanne = instantiate<BeerEngine::GameObject>();
@@ -149,20 +178,20 @@ void    SceneTest::init(void)
 	suzanne->transform.scale = glm::vec3(1,1,1);
 	suzanne->transform.rotation = glm::vec3(0, 3, 0);
 
-
-	//test obj Orange
-
-		auto Orange = instantiate<BeerEngine::GameObject>();
-		Orange->name = "Orange";
-		meshRenderer = Orange->AddComponent<BeerEngine::Component::MeshRenderer>();
-		meshRenderer->setMesh("models/OrangeOBJ/Orange.obj");
-		auto *OrangeTex = BeerEngine::Graphics::Texture::LoadJPG("models/OrangeOBJ/Color.jpg");
-		auto *OrangeMat = new BeerEngine::Graphics::AMaterial(shader);
-		OrangeMat->setAlbedo(OrangeTex);
-		meshRenderer->setMaterial(OrangeMat);
-		Orange->transform.position = glm::vec3(0, 7, 10);
-		Orange->transform.scale = glm::vec3(1,1,1);
-		Orange->transform.rotation = glm::vec3(0, 3, 0);
+    //
+	// //test obj Orange
+    //
+	// 	auto Orange = instantiate<BeerEngine::GameObject>();
+	// 	Orange->name = "Orange";
+	// 	meshRenderer = Orange->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// 	meshRenderer->setMesh("models/OrangeOBJ/Orange.obj");
+	// 	auto *OrangeTex = BeerEngine::Graphics::Texture::LoadJPG("models/OrangeOBJ/Color.jpg");
+	// 	auto *OrangeMat = new BeerEngine::Graphics::AMaterial(shader);
+	// 	OrangeMat->setAlbedo(OrangeTex);
+	// 	meshRenderer->setMaterial(OrangeMat);
+	// 	Orange->transform.position = glm::vec3(0, 7, 10);
+	// 	Orange->transform.scale = glm::vec3(1,1,1);
+	// 	Orange->transform.rotation = glm::vec3(0, 3, 0);
 
 
 	// mapBlocs
