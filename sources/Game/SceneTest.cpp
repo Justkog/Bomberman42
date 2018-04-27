@@ -128,7 +128,6 @@ void    SceneTest::init(void)
 			  .addVertice(glm::vec3(vx, vy, vz))
 			  .addNormal(glm::vec3(nx, ny, nz))
 			  .addUV(glm::vec2(tx, ty))
-			  .calculTangent()
 		 ;
 	      // Optional: vertex colors
 	      // tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
@@ -140,6 +139,7 @@ void    SceneTest::init(void)
 	    shapes[s].mesh.material_ids[f];
 	  }
 	}
+	builder.calculTangent();
 
 	meshRenderer->setMesh(builder.build());
 	auto *objetTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
