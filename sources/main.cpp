@@ -62,6 +62,7 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
+    std::srand(std::time(nullptr));
     // Audio
     BeerEngine::Audio::AudioListener::init();
     BeerEngine::Audio::AudioListener audio;

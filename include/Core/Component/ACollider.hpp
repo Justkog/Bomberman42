@@ -34,10 +34,9 @@ namespace BeerEngine
 
 			static std::vector<ACollider*> _colliders;
 			std::vector<ACollider*> _currentCollisions;
+			Transform	&_transform;
 			int			_id;
 			glm::vec2	_offset;
-			Transform	&_transform;
-			bool		_collide;
 			bool		_isTrigger;
 			bool		_kinematic;
 		};

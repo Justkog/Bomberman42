@@ -43,6 +43,7 @@ SRC = \
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
+	Game/Components/Item.cpp \
 	\
 	Core/Audio/AudioListener.cpp \
 	Core/Audio/AudioSource.cpp \

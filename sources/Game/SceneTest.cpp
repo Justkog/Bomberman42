@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Game/Components/Player.hpp"
+#include "Game/Components/Item.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
 
@@ -220,6 +221,12 @@ void    SceneTest::init(void)
 	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(1, 0.5, 6), true);
 	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-1, 0.5, 6), true);
 	addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-3, 0.5, 6), true);
+
+	// Item
+	auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), glm::vec3(-3, 0.5, 10), true);
+	itemGO->AddComponent<Game::Component::Item>();
+	auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
+	itemColl->_isTrigger = true;
 
 	// plane
 	BeerEngine::GameObject *mapGO;
