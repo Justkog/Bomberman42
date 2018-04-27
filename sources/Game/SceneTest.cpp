@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Game/Components/Player.hpp"
+#include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
@@ -62,35 +63,21 @@ void    SceneTest::init(void)
 	// instantiate<CameraTest>();
 
 	// Player
-//
-// 	auto playerGO = instantiate<BeerEngine::GameObject>();
-// 	playerGO->name = "player";
-// 	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-// 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-// 	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
-// 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-// 	playerMat->setAlbedo(playerTex);
-// 	meshRenderer->setMaterial(playerMat);
-// 	playerGO->transform.position = glm::vec3(1, 0.5, 7);
-// 	playerGO->transform.scale = glm::vec3(1, 1, 1);
-// 	auto *player = playerGO->AddComponent<Game::Component::Player>();
-// 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
-// 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
-// 	playerColl->_kinematic = false;
-//
-//  // test obj skull
-//
-// 	auto Skull = instantiate<BeerEngine::GameObject>();
-// 	Skull->name = "skull";
-// 	meshRenderer = Skull->AddComponent<BeerEngine::Component::MeshRenderer>();
-// 	meshRenderer->setMesh("models/Skull.obj");
-// 	auto *SkullTex = BeerEngine::Graphics::Texture::LoadJPG("models/HouseOBJ/DSC_5871_.jpg");
-// 	auto *SkullMat = new BeerEngine::Graphics::AMaterial(shader);
-// 	SkullMat->setAlbedo(SkullTex);
-// 	meshRenderer->setMaterial(SkullMat);
-// 	Skull->transform.position = glm::vec3(1, 0.5, 10);
-// 	Skull->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-// 	Skull->transform.rotation = glm::vec3(-0.45, -3.14, 0);
+
+	auto playerGO = instantiate<BeerEngine::GameObject>();
+	playerGO->name = "player";
+	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
+	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+	playerMat->setAlbedo(playerTex);
+	meshRenderer->setMaterial(playerMat);
+	playerGO->transform.position = glm::vec3(1, 0.5, 7);
+	playerGO->transform.scale = glm::vec3(1, 1, 1);
+	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
+	playerColl->_kinematic = false;
 //
  // test obj old
 
@@ -106,7 +93,21 @@ void    SceneTest::init(void)
 	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
 	Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
-// test obj house
+ // test obj skull
+
+	auto Skull = instantiate<BeerEngine::GameObject>();
+	Skull->name = "skull";
+	meshRenderer = Skull->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("models/Skull.obj");
+	auto *SkullTex = BeerEngine::Graphics::Texture::LoadJPG("models/HouseOBJ/DSC_5871_.jpg");
+	auto *SkullMat = new BeerEngine::Graphics::AMaterial(shader);
+	SkullMat->setAlbedo(SkullTex);
+	meshRenderer->setMaterial(SkullMat);
+	Skull->transform.position = glm::vec3(8, 0.5, 10);
+	Skull->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	Skull->transform.rotation = glm::vec3(-0.45, -3.14, 0);
+
+//test obj house
 
 	auto objet = instantiate<BeerEngine::GameObject>();
 	objet->name = "house";
@@ -214,6 +215,7 @@ void    SceneTest::init(void)
 
 	// Item
 	auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), glm::vec3(-3, 0.5, 10), true);
+	itemGO->name = "item";
 	itemGO->AddComponent<Game::Component::Item>();
 	auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
 	itemColl->_isTrigger = true;

@@ -18,6 +18,7 @@ namespace BeerEngine
 
 		public:
 			ACollider(GameObject *gameObject);
+			virtual ~ACollider();
 			virtual void    physicUpdate(void);
 			virtual bool 	checkCollision(ACollider *other) = 0;
 
@@ -35,7 +36,6 @@ namespace BeerEngine
 			static std::vector<ACollider*> _colliders;
 			std::vector<ACollider*> _currentCollisions;
 			Transform	&_transform;
-			int			_id;
 			glm::vec2	_offset;
 			bool		_isTrigger;
 			bool		_kinematic;

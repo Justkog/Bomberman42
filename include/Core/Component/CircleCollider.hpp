@@ -15,6 +15,7 @@ namespace BeerEngine
 
 		public:
 			CircleCollider(GameObject *gameObject);
+			virtual ~CircleCollider();
 			bool 	checkCollision(ACollider *other);
 
 

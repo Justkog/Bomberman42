@@ -40,6 +40,7 @@ SRC = \
 	\
 	Game/SceneTest.cpp \
 	\
+	Game/Components/Character.cpp \
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \

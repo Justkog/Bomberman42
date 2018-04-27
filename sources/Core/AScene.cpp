@@ -90,11 +90,8 @@ namespace BeerEngine
     {
         if(std::find(_toDestroy.begin(), _toDestroy.end(), go) == _toDestroy.end())
         {
-            std::cout << "toDestroy : " << go->name << std::endl;
             _toDestroy.push_back(go);
         }
-        else
-            std::cout << "already toDestroy : " << go->name << std::endl;
     }
 
     void    AScene::destroyGameObjects(void)
@@ -102,10 +99,8 @@ namespace BeerEngine
         for (GameObject *go : _toDestroy)
 		{
             std::map<int, GameObject *>::iterator it;
-            std::cout << "trying to Destroy : " << go->name << std::endl;
 			if ((it = _gameObjects.find(go->_uniqueID)) != _gameObjects.end())
             {
-                std::cout << "found to Destroy : " << go->name << std::endl;
                 delete it->second;
                 _gameObjects.erase(it);
             }

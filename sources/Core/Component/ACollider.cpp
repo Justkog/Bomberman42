@@ -23,13 +23,28 @@ namespace BeerEngine
 			_isTrigger(false),
 			_kinematic(true)
 		{
-			_id = _colliders.size();
 			_colliders.push_back(this);
+		}
+
+		ACollider::~ACollider()
+		{
+			auto it = std::find(_colliders.begin(), _colliders.end(), this);
+			if (it != _colliders.end())
+				_colliders.erase(it);
+			for (ACollider *other : _currentCollisions)
+			{
+				if ((it = std::find(other->_currentCollisions.begin(), other->_currentCollisions.end(), this)) != other->_currentCollisions.end())
+				{
+					other->_currentCollisions.erase(it);
+				}
+			}
 		}
 
 		void    ACollider::physicUpdate(void)
 		{
-			for (int i = _id + 1; i < _colliders.size(); i++)
+			auto it = std::find(_colliders.begin(), _colliders.end(), this);
+			++it;
+			for (int i = it - _colliders.begin(); i < _colliders.size(); i++)
 			{
 				auto other = _colliders[i];
 				if (checkCollision(other))
@@ -47,6 +62,7 @@ namespace BeerEngine
 					if (c == _currentCollisions.end())
 					{
 						_currentCollisions.push_back(other);
+						other->_currentCollisions.push_back(this);
 						if (_isTrigger)
 							triggerEnter(other);
 						else
@@ -63,6 +79,8 @@ namespace BeerEngine
 					if (c != _currentCollisions.end())
 					{
 						_currentCollisions.erase(c);
+						if ((c = std::find(other->_currentCollisions.begin(), other->_currentCollisions.end(), this)) != other->_currentCollisions.end())
+							other->_currentCollisions.erase(c);
 						if (_isTrigger)
 							triggerExit(other);
 						else
@@ -91,8 +109,6 @@ namespace BeerEngine
 		void ACollider::triggerEnter(ACollider *other)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
-			for (Component *c : GOcomponents)
-
 			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerEnter *>(c))

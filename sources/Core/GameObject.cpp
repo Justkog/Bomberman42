@@ -16,10 +16,8 @@ namespace BeerEngine
 
 	GameObject::~GameObject(void)
 	{
-		std::cout << "destroying : " << this->name << std::endl;
 		for (Component::Component *c : _components)
 		{
-			std::cout << "destroying component : " << c << std::endl;
 			delete c;
 		}
 		_components.clear();
