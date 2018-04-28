@@ -13,7 +13,7 @@ namespace BeerEngine
 
 		nlohmann::json	Component::serialize()
 		{
-			return {
+			return nlohmann::json {
 				{"componentClass", "Component"}
 			};
 		}

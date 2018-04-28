@@ -21,6 +21,7 @@ SRC = \
 	Core/Time.cpp \
 	Core/SceneManager.cpp \
 	Core/Json/Json.cpp \
+	Core/Json/JsonSerializable.cpp \
 	Core/AScene.cpp \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \

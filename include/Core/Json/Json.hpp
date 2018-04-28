@@ -2,18 +2,7 @@
 #define BE_CORE_JSON_HPP 1
 
 #include "Core/Core.hpp"
-
-namespace BeerEngine
-{
-    class AScene;
-    class GameObject;
-
-	namespace Component
-	{
-		class Component;
-		class MeshRenderer;
-	}
-}
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace glm
 {
@@ -24,19 +13,26 @@ namespace glm
 
 namespace BeerEngine
 {
+    void to_json(nlohmann::json& j, Transform & item);
+    void from_json(const nlohmann::json& j, Transform & item);
+    void to_json(nlohmann::json& j, Transform * item);
+    void from_json(const nlohmann::json& j, Transform * item);
+
     namespace Component
     {
         void to_json(nlohmann::json& j, Component * comp);
-
         void from_json(const nlohmann::json& j, Component * comp);
     }
 
     void to_json(nlohmann::json& j, GameObject * s);
-
     void from_json(const nlohmann::json& j, GameObject * s);
 
-    void to_json(nlohmann::json& j, BeerEngine::AScene& s);
+    // void to_json(nlohmann::json& j, BeerEngine::AScene& s);
+    // void from_json(const nlohmann::json& j, BeerEngine::AScene& s);
 
-    void from_json(const nlohmann::json& j, BeerEngine::AScene& s);
+    void to_json(nlohmann::json& j, JsonSerializable & item);
+    void from_json(const nlohmann::json& j, JsonSerializable & item);
+    void to_json(nlohmann::json& j, JsonSerializable * item);
+    void from_json(const nlohmann::json& j, JsonSerializable * item);
 }
 #endif

@@ -2,7 +2,6 @@
 #define BE_CORE_COMPONENT_ACOLLIDER_HPP 1
 
 #include "Core/Core.hpp"
-#include "Core/Component/Component.hpp"
 
 namespace BeerEngine
 {
@@ -15,6 +14,8 @@ namespace BeerEngine
 		class CircleCollider;
 	}
 }
+
+#include "Core/Component/Component.hpp"
 
 namespace BeerEngine
 {

@@ -99,5 +99,13 @@ namespace BeerEngine
 				other->_transform.translate(-dir * (overlap / 2));
 			}
 		}
+
+		nlohmann::json	BoxCollider2D::serialize()
+		{
+			return {
+				{"componentClass", typeid(BoxCollider2D).name()},
+				{"size", _size},
+			};
+		}
 	}
 }

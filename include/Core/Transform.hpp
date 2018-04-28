@@ -2,10 +2,11 @@
 #define BE_CORE_TRANSFORM_HPP 1
 
 #include "Core.hpp"
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
 {
-    class Transform
+    class Transform : public JsonSerializable
 	{
 	public:
 		Transform	*parent;
@@ -25,6 +26,8 @@ namespace BeerEngine
 		glm::vec3	top(void);
 
 		glm::mat4	getMat4(bool isCamera = false);
+
+		virtual nlohmann::json	serialize();
 
 	};
 }

@@ -1,4 +1,7 @@
 #include "Game/CameraTest.hpp"
+#include "Core/Input.hpp"
+#include "Core/Time.hpp"
+#include "Core/Camera.hpp"
 
 CameraTest::CameraTest(int uniqueID) :
 	BeerEngine::GameObject(uniqueID)

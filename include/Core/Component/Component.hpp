@@ -2,17 +2,13 @@
 #define BE_CORE_COMPONENT_HPP 1
 
 #include "Core/Core.hpp"
-
-namespace BeerEngine
-{
-	class GameObject;
-}
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
 {
 	namespace Component
 	{
-		class Component
+		class Component : public JsonSerializable
 		{
 		protected:
 		public:

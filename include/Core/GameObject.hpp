@@ -1,17 +1,15 @@
 #ifndef BE_CORE_GAMEOBJECT_HPP
 #define BE_CORE_GAMEOBJECT_HPP 1
 
-#include <vector>
-#include "Transform.hpp"
+#include "Core/Core.hpp"
+#include "Core/Transform.hpp"
+#include "Core/Component/Component.hpp"
+#include "Core/Component/MeshRenderer.hpp"
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
 {
-	namespace Component
-	{
-		class Component;
-	}
-
-    class GameObject
+    class GameObject : public JsonSerializable
 	{
 	protected:
 		int		_uniqueID;
@@ -48,7 +46,7 @@ namespace BeerEngine
 			}
 			return (nullptr);
 		}
-
+		
 		template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		std::vector<T *>	GetComponents(void)
 		{
@@ -68,10 +66,9 @@ namespace BeerEngine
         void    componentRender(void);
         void    componentPhysicUpdate(void);
 
-		std::vector<Component::Component *> GetComponents(void)
-		{
-			return _components;
-		}
+		std::vector<Component::Component *> GetComponents(void);
+
+		virtual nlohmann::json	serialize();
 
 	};
 }

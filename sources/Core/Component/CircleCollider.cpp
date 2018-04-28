@@ -55,5 +55,13 @@ namespace BeerEngine
 				other->_transform.translate(-dir * (overlap / 2));
 			}
 		}
+
+		nlohmann::json	CircleCollider::serialize()
+		{
+			return {
+				{"componentClass", typeid(CircleCollider).name()},
+				{"radius", _radius},
+			};
+		}
 	}
 }

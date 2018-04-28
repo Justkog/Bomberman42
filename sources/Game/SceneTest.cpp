@@ -7,9 +7,12 @@
 #include "Game/Components/Item.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
+#include "Core/Graphics/AMaterial.hpp"
+#include "Core/Json/Json.hpp"
+#include "Core/Graphics/Graphics.hpp"
 
-template <typename T>
-BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+template<typename T>
+BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
 {
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	auto mapBlocGO = instantiate<BeerEngine::GameObject>();

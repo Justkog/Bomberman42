@@ -1,7 +1,8 @@
 #ifndef GAME_CAMERA_TEST_HPP
 #define GAME_CAMERA_TEST_HPP 1
 
-#include "Core/BeerEngine.hpp"
+#include "Core/Core.hpp"
+#include "Core/GameObject.hpp"
 
 class CameraTest : public BeerEngine::GameObject
 {

@@ -4,7 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
-#include <nlohmann/json.hpp>
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -19,6 +19,11 @@ namespace BeerEngine
 		{
 			delete c;
 		}
+	}
+
+	std::vector<Component::Component *> GameObject::GetComponents(void)
+	{
+		return _components;
 	}
 
 	void	GameObject::start(void) {}
@@ -79,5 +84,15 @@ namespace BeerEngine
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}
+	}
+
+	nlohmann::json	GameObject::serialize()
+	{
+		return nlohmann::json {
+            {"id", this->_uniqueID},
+            {"name", this->name},
+            {"transform", JsonSerializable::toSerializable(this->transform)},
+            {"components", JsonSerializable::toSerializables<BeerEngine::Component::Component>(this->GetComponents())}
+		};
 	}
 }

@@ -1,4 +1,5 @@
 #include "Core/Transform.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -61,5 +62,17 @@ namespace BeerEngine
 		if (parent != nullptr)
 			mat = parent->getMat4() * mat;
 		return (mat);
+	}
+
+	nlohmann::json	Transform::serialize()
+	{
+		std::cout << "start serialize transform!" << "\n";
+		return nlohmann::json {
+            {"parent", dynamic_cast<JsonSerializable *>(this->parent)},
+            {"pivot", this->pivot},
+            {"position", this->position},
+            {"rotation", this->rotation},
+            {"scale", this->scale},
+		};
 	}
 }

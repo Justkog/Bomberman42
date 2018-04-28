@@ -30,4 +30,26 @@
 
 #include <nlohmann/json.hpp>
 
+namespace BeerEngine
+{
+    class AScene;
+    class GameObject;
+    class Transform;
+    class JsonSerializable;
+
+	namespace Component
+	{
+		class Component;
+		class MeshRenderer;
+        class CircleCollider;
+        class BoxCollider2D;
+	}
+
+    namespace Graphics
+	{
+		class Graphics;
+		class ShaderProgram;
+	}
+}
+
 #endif

@@ -6,7 +6,29 @@
                     "componentClass": "Component"
                 }
             ],
-            "name": ""
+            "id": 0,
+            "name": "",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -21,13 +43,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "player"
+            "id": 1,
+            "name": "player",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    1.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -35,7 +79,29 @@
                     "componentClass": "Component"
                 }
             ],
-            "name": "house"
+            "id": 2,
+            "name": "house",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    7.0,
+                    0.5
+                ],
+                "rotation": [
+                    0.7316888570785522,
+                    0.0,
+                    -0.681638777256012,
+                    0.0
+                ],
+                "scale": [
+                    0.05000000074505806,
+                    0.05000000074505806
+                ]
+            }
         },
         {
             "components": [
@@ -43,7 +109,29 @@
                     "componentClass": "Component"
                 }
             ],
-            "name": "car"
+            "id": 3,
+            "name": "car",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.5
+                ],
+                "rotation": [
+                    0.7316888570785522,
+                    0.0,
+                    -0.681638777256012,
+                    0.0
+                ],
+                "scale": [
+                    0.019999999552965164,
+                    0.019999999552965164
+                ]
+            }
         },
         {
             "components": [
@@ -51,7 +139,29 @@
                     "componentClass": "Component"
                 }
             ],
-            "name": "bigmax"
+            "id": 4,
+            "name": "bigmax",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -7.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.07073719799518585,
+                    0.0,
+                    0.9974949955940247,
+                    0.0
+                ],
+                "scale": [
+                    0.07000000029802322,
+                    0.07000000029802322
+                ]
+            }
         },
         {
             "components": [
@@ -59,127 +169,29 @@
                     "componentClass": "Component"
                 }
             ],
-            "name": "suzanne"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
-                }
-            ],
-            "name": "map block"
+            "id": 5,
+            "name": "suzanne",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    4.0
+                ],
+                "rotation": [
+                    0.07073719799518585,
+                    0.0,
+                    0.9974949955940247,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -188,13 +200,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 6,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -5.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -203,13 +237,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 7,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -5.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -218,13 +274,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 8,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -5.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -233,13 +311,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 9,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -5.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -248,13 +348,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 10,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -5.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -263,13 +385,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 11,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -278,13 +422,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 12,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -1.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -293,13 +459,35 @@
                 },
                 {
                     "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": {
-                        "x": 1.0,
-                        "y": 1.0
-                    }
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
                 }
             ],
-            "name": "map block"
+            "id": 13,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    1.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "components": [
@@ -307,13 +495,332 @@
                     "componentClass": "Component"
                 },
                 {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 14,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
                     "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 15,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 16,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 17,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 18,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 19,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    1.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 20,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -1.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
+            "id": 21,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
+                    "radius": 0.25
                 },
                 {
                     "componentClass": "Component"
                 }
             ],
-            "name": "map block"
+            "id": 22,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -3.0,
+                    0.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.5,
+                    0.5
+                ]
+            }
         },
         {
             "components": [
@@ -321,11 +828,29 @@
                     "componentClass": "Component"
                 }
             ],
-            "name": ""
+            "id": 23,
+            "name": "",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -3.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    40.0,
+                    1.0
+                ]
+            }
         }
-    ],
-    "vec": {
-        "x": 10.0,
-        "y": 0.0
-    }
+    ]
 }

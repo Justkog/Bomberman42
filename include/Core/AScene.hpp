@@ -2,12 +2,11 @@
 #define BE_CORE_ASCENE_HPP 1
 
 #include "Core.hpp"
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
 {
-    class GameObject;
-
-    class AScene
+    class AScene : public JsonSerializable
     {
     private:
         static int                  uniqueID;
@@ -34,30 +33,18 @@ namespace BeerEngine
 
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
-		{
-             std::cout << "GameObject added : " << uniqueID << std::endl;
-			T *c = new T(uniqueID++);
-			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
+        {
+            std::cout << "GameObject added : " << uniqueID << std::endl;
+            T *c = new T(uniqueID++);
+            _gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             c->start();
-			return (c);
-		}
-
-        void debugTest(void)
-        {
-            std::cout << "GameObject List Size : " << _gameObjects.size() << std::endl;
+            return (c);
         }
 
-        std::vector<GameObject *> getGameObjects()
-        {
-            std::vector<GameObject *> res;
+        void debugTest(void);
 
-            // populate map somehow
-            for(auto it = _gameObjects.begin(); it != _gameObjects.end(); ++it) {
-                res.push_back( it->second );
-            }
-            return (res);
-        }
-
+        std::vector<GameObject *> getGameObjects();
+        
         // void load(std::string filePath)
         // {
         //     std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
@@ -67,6 +54,8 @@ namespace BeerEngine
         // }
 
         void save(std::string filePath);
+
+        virtual nlohmann::json	serialize();
 
     };
 }

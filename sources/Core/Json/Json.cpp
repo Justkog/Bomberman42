@@ -1,7 +1,9 @@
 #include "Core/Json/Json.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Transform.hpp"
 #include "Core/AScene.hpp"
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace glm
 {
@@ -20,52 +22,22 @@ namespace glm
 
 namespace BeerEngine
 {
-    namespace Component
-        {
-        void to_json(nlohmann::json& j, Component * comp) {
-            j = comp->serialize();
-        }
-
-        void from_json(const nlohmann::json& j, Component * comp) {
-            // s.soundVolume = j.at("soundVolume").get<float>();
-            // s.stringSetting = j.at("stringSetting").get<std::string>();
-            // s.intSetting = j.at("intSetting").get<int>();
-            // s.listSettings = j.at("listSettings").get<std::vector<std::string>>();
-        }
+    void to_json(nlohmann::json& j, JsonSerializable & item) {
+        j = item.serialize();
     }
 
-    void to_json(nlohmann::json& j, GameObject * s) {
-        j = nlohmann::json {
-            {"name", s->name},
-            {"components", s->GetComponents()}
-        };
-        std::cout << "GO done!" << "\n";
+    void from_json(const nlohmann::json& j, JsonSerializable & item) {
         
     }
 
-    void from_json(const nlohmann::json& j, GameObject * s) {
-        // s.soundVolume = j.at("soundVolume").get<float>();
-        // s.stringSetting = j.at("stringSetting").get<std::string>();
-        // s.intSetting = j.at("intSetting").get<int>();
-        // s.listSettings = j.at("listSettings").get<std::vector<std::string>>();
+    void to_json(nlohmann::json& j, JsonSerializable * item) {
+        if (item)
+            j = item->serialize();
+        else
+            j = nlohmann::json {};
     }
 
-    void to_json(nlohmann::json& j, BeerEngine::AScene& s) {
-        glm::vec2 vec;
-        vec.x = 10;
-        std::cout << "serializeing!" << "\n";
-        j = nlohmann::json {
-            {"gameObjects", s.getGameObjects()},
-            {"vec", vec}
-        };
-        std::cout << "done!" << "\n";
+    void from_json(const nlohmann::json& j, JsonSerializable * item) {
         
-    }
-
-    void from_json(const nlohmann::json& j, BeerEngine::AScene& s) {
-        // s.soundVolume = j.at("soundVolume").get<float>();
-        // s.stringSetting = j.at("stringSetting").get<std::string>();
-        // s.intSetting = j.at("intSetting").get<int>();
-        // s.listSettings = j.at("listSettings").get<std::vector<std::string>>();
     }
 }
