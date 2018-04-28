@@ -8,7 +8,7 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
-
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {

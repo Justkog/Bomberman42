@@ -1,4 +1,5 @@
 #include "Core/Component/Component.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -8,6 +9,13 @@ namespace BeerEngine
 			_gameObject(gameObject)
 		{
 
+		}
+
+		nlohmann::json	Component::serialize()
+		{
+			return {
+				{"componentClass", "Component"}
+			};
 		}
 	}
 }

@@ -1,12 +1,15 @@
 #ifndef BE_CORE_COMPONENT_HPP
 #define BE_CORE_COMPONENT_HPP 1
 
-#include <nlohmann/json.hpp>
+#include "Core/Core.hpp"
 
 namespace BeerEngine
 {
 	class GameObject;
-	
+}
+
+namespace BeerEngine
+{
 	namespace Component
 	{
 		class Component
@@ -17,12 +20,7 @@ namespace BeerEngine
 			virtual ~Component(void) {}
 
 			GameObject		*_gameObject;
-			virtual nlohmann::json	serialize()
-			{
-				return {
-					{"componentClass", "Component"}
-				};
-			}
+			virtual nlohmann::json	serialize();
 		};
 	}
 }

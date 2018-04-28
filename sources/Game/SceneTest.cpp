@@ -8,6 +8,26 @@
 #include "Game/Components/CameraController.hpp"
 #include "Game/CameraTest.hpp"
 
+template <typename T>
+BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+{
+	BeerEngine::Component::MeshRenderer *meshRenderer;
+	auto mapBlocGO = instantiate<BeerEngine::GameObject>();
+	mapBlocGO->name = "map block";
+	meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *mapBlocTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
+	mapBlocMat->setAlbedo(mapBlocTex);
+	meshRenderer->setMaterial(mapBlocMat);
+	mapBlocGO->transform.position = pos;
+	mapBlocGO->transform.scale = scale;
+	auto blockColl = mapBlocGO->AddComponent<T>();
+	blockColl->_kinematic = kinematic;
+
+	return (mapBlocGO);
+}
+
 void    SceneTest::init(void)
 {
 

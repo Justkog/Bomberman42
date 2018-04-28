@@ -4,6 +4,7 @@
 #include "Core/Component/ITriggerEnter.hpp"
 #include "Core/Component/ITriggerExit.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Json/Json.hpp"
 
 #include <vector>
 

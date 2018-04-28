@@ -1,13 +1,20 @@
 #include "Core/Json/Json.hpp"
+#include "Core/Component/Component.hpp"
+#include "Core/GameObject.hpp"
+#include "Core/AScene.hpp"
 
 namespace glm
 {
-    void to_json(nlohmann::json& j, glm::vec2 & s) {
-        std::cout << "glm to here!" << "\n";
-        j = nlohmann::json {
-            {"x", s.x},
-            {"y", s.y}
-        };
+    void to_json(nlohmann::json& j, glm::vec2 & item) {
+        j = nlohmann::json {item.x, item.y};
+    }
+
+    void to_json(nlohmann::json& j, glm::vec3 & item) {
+        j = nlohmann::json {item.x, item.y};
+    }
+
+    void to_json(nlohmann::json& j, glm::quat & item) {
+        j = nlohmann::json {item.w, item.x, item.y, item.z};
     }
 }
 

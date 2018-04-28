@@ -1,22 +1,12 @@
 #ifndef BE_CORE_ASCENE_HPP
 #define BE_CORE_ASCENE_HPP 1
 
-#include <map>
-#include <mutex>
 #include "Core.hpp"
-#include "GameObject.hpp"
-#include "Component/Component.hpp"
-#include "Component/MeshRenderer.hpp"
-#include "Graphics/Mesh.hpp"
-#include "Graphics/MeshBuilder.hpp"
-#include "Graphics/ShaderProgram.hpp"
-#include "Graphics/Graphics.hpp"
-#include "Graphics/AMaterial.hpp"
-#include "Core/IO/FileUtils.hpp"
-#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
+    class GameObject;
+
     class AScene
     {
     private:

@@ -1,23 +1,31 @@
 #ifndef BE_CORE_JSON_HPP
 #define BE_CORE_JSON_HPP 1
 
-#include <nlohmann/json.hpp>
 #include "Core/Core.hpp"
-#include "Core/AScene.hpp"
-#include "Core/Component/Component.hpp"
-#include "Core/GameObject.hpp"
-#include <glm/glm.hpp>
-
-namespace glm
-{
-    void to_json(nlohmann::json& j, glm::vec2 & s);
-}
 
 namespace BeerEngine
 {
     class AScene;
+    class GameObject;
+
+	namespace Component
+	{
+		class Component;
+		class MeshRenderer;
+	}
+}
+
+namespace glm
+{
+    void to_json(nlohmann::json& j, glm::vec2 & item);
+    void to_json(nlohmann::json& j, glm::vec3 & item);
+    void to_json(nlohmann::json& j, glm::quat & item);
+}
+
+namespace BeerEngine
+{
     namespace Component
-        {
+    {
         void to_json(nlohmann::json& j, Component * comp);
 
         void from_json(const nlohmann::json& j, Component * comp);

@@ -1,26 +1,15 @@
 #include "Core/AScene.hpp"
-// #include <nlohmann/json.hpp>
-// #include <glm/glm.hpp>
+#include "Core/Core.hpp"
+#include "Core/GameObject.hpp"
+#include "Core/Component/Component.hpp"
+#include "Core/Component/MeshRenderer.hpp"
+#include "Core/Graphics/Mesh.hpp"
+#include "Core/Graphics/MeshBuilder.hpp"
+#include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/Graphics/Graphics.hpp"
+#include "Core/Graphics/AMaterial.hpp"
+#include "Core/IO/FileUtils.hpp"
 #include "Core/Json/Json.hpp"
-
-// namespace glm
-// {
-//     void to_json(nlohmann::json& j, glm::vec2 & s) {
-//         std::cout << "glm to here!" << "\n";
-//         j = nlohmann::json {
-//             {"x", s.x},
-//             {"y", s.y}
-//         };
-//     }
-// }
-
-// void to_json(nlohmann::json& j, glm::vec2 & s) {
-//     std::cout << "glm to here!" << "\n";
-//     j = nlohmann::json {
-//         {"x", s.x},
-//         {"y", s.y}
-//     };
-// }
 
 namespace BeerEngine
 {

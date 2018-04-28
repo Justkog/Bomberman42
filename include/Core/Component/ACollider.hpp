@@ -1,17 +1,25 @@
 #ifndef BE_CORE_COMPONENT_ACOLLIDER_HPP
 #define BE_CORE_COMPONENT_ACOLLIDER_HPP 1
 
-#include "../BeerEngine.hpp"
-#include "Component.hpp"
-#include "IUpdate.hpp"
+#include "Core/Core.hpp"
+#include "Core/Component/Component.hpp"
+
+namespace BeerEngine
+{
+	class GameObject;
+	class Transform;
+
+	namespace Component
+	{
+		class BoxCollider2D;
+		class CircleCollider;
+	}
+}
 
 namespace BeerEngine
 {
 	namespace Component
 	{
-		class BoxCollider2D;
-		class CircleCollider;
-
 		class ACollider : public Component
 		{
 		protected:

@@ -1,6 +1,7 @@
 #include "Core/Component/CircleCollider.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
