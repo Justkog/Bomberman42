@@ -13,6 +13,7 @@
 #include "Graphics/Graphics.hpp"
 #include "Graphics/AMaterial.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {

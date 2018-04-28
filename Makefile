@@ -20,6 +20,7 @@ SRC = \
 	Core/Window.cpp \
 	Core/Time.cpp \
 	Core/SceneManager.cpp \
+	Core/Json/Json.cpp \
 	Core/AScene.cpp \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \
@@ -51,7 +52,7 @@ SRC = \
 	\
 	Game/CameraTest.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio Game/Components
+DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio Game/Components Core/Json
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
