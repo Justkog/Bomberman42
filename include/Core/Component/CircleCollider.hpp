@@ -8,8 +8,6 @@ namespace BeerEngine
 {
 	namespace Component
 	{
-		// class BoxCollider2D;
-
 		class CircleCollider : public ACollider
 		{
 		protected:

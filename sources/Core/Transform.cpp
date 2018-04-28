@@ -68,7 +68,7 @@ namespace BeerEngine
 	{
 		std::cout << "start serialize transform!" << "\n";
 		return nlohmann::json {
-            {"parent", dynamic_cast<JsonSerializable *>(this->parent)},
+            {"parent", JsonSerializable::toSerializable(this->parent)},
             {"pivot", this->pivot},
             {"position", this->position},
             {"rotation", this->rotation},
