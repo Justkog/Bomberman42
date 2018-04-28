@@ -74,6 +74,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(playerMat);
 	playerGO->transform.position = glm::vec3(1, 0.5, 7);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
+	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
