@@ -1,0 +1,97 @@
+#ifndef BE_GAME_COMPONENT_MAP_HPP
+#define BE_GAME_COMPONENT_MAP_HPP
+
+#include "Core/Component/Component.hpp"
+#include "Core/GameObject.hpp"
+#include "Core/Transform.hpp"
+#include "Core/BeerEngine.hpp"
+#include "Game/Assets.hpp"
+#include "Game/Components/Player.hpp"
+#include "Game/Components/Character.hpp"
+#include "Game/Components/Settings.hpp"
+#include "Core/Component/CircleCollider.hpp"
+#include "Game/Components/Item.hpp"
+
+#define COL 17
+#define ROW 13
+#define S -1 //spawn position
+#define I 9
+
+namespace Game
+{
+	namespace Component
+	{
+		class Map : public BeerEngine::Component::Component
+		{
+		protected:
+			BeerEngine::Transform	&_transform;
+
+		public:
+            Map(BeerEngine::GameObject *gameObject);
+
+            virtual void    start(void);
+            virtual void    loadMap(int arr[ROW][COL]);
+       		virtual void    update(void);
+			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
+
+			template <typename T>
+			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+			{
+
+				BeerEngine::Component::MeshRenderer *meshRenderer;
+				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
+				mapBlocGO->name = "map block";
+				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+				auto *mapBlocTex = Assets::GetTexture("textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
+				mapBlocMat->setAlbedo(mapBlocTex);
+				meshRenderer->setMaterial(mapBlocMat);
+				mapBlocGO->transform.position = pos;
+				mapBlocGO->transform.scale = scale;
+				auto blockColl = mapBlocGO->AddComponent<T>();
+				blockColl->_kinematic = kinematic;
+
+				return (mapBlocGO);
+			}
+
+			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+			{
+
+				auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, true);
+				itemGO->name = "item";
+				itemGO->AddComponent<Game::Component::Item>();
+				auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
+				itemColl->_isTrigger = true;
+				return itemGO;
+			}
+
+			BeerEngine::GameObject *addPlayer(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+			{
+				BeerEngine::Component::MeshRenderer *meshRenderer;
+				auto playerGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
+				playerGO->name = "player";
+				meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+				auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+				auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+				playerMat->setAlbedo(playerTex);
+				meshRenderer->setMaterial(playerMat);
+				playerGO->transform.position = pos;
+				playerGO->transform.scale = glm::vec3(1, 1, 1);
+				auto *character = playerGO->AddComponent<Game::Component::Character>();
+				auto *player = playerGO->AddComponent<Game::Component::Player>();
+				auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+				auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+				playerColl->_kinematic = false;
+
+				return (playerGO);
+			}
+
+		private:
+			int	_map[ROW][COL];
+		};
+	}
+}
+
+#endif
