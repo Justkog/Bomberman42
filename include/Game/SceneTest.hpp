@@ -2,6 +2,7 @@
 #define GAME_SCENE_TEST_HPP 1
 
 #include "Core/BeerEngine.hpp"
+#include "Assets.hpp"
 
 class SceneTest : public BeerEngine::AScene
 {
@@ -16,7 +17,7 @@ public:
 		mapBlocGO->name = "map block";
 		meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 		meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-		auto *mapBlocTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+		auto *mapBlocTex = Assets::GetTexture("textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 		auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 		mapBlocMat->setAlbedo(mapBlocTex);
 		meshRenderer->setMaterial(mapBlocMat);

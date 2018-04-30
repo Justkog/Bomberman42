@@ -25,9 +25,9 @@ void    SceneTest::init(void)
 
 	// cube 1
 	// Texture
-	BeerEngine::Graphics::Texture *crate = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
-	BeerEngine::Graphics::Texture *crate_normal = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_normal.png");
-	BeerEngine::Graphics::Texture *crate_bump = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_bump.png");
+	BeerEngine::Graphics::Texture *crate = Assets::GetTexture("textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+	BeerEngine::Graphics::Texture *crate_normal = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_normal.png");
+	BeerEngine::Graphics::Texture *crate_bump = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_bump.png");
 
 	// Material
 	BeerEngine::Graphics::AMaterial *materialA = new BeerEngine::Graphics::AMaterial(shader);
@@ -68,7 +68,7 @@ void    SceneTest::init(void)
 	playerGO->name = "player";
 	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("textures/player2.png");
+	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	meshRenderer->setMaterial(playerMat);
@@ -157,7 +157,7 @@ void    SceneTest::init(void)
 		fourmi->name = "fourmi";
 		meshRenderer = fourmi->AddComponent<BeerEngine::Component::MeshRenderer>();
 		meshRenderer->setMesh("models/fourmis/formica_rufa.obj");
-		auto *fourmiTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+		auto *fourmiTex = Assets::GetTexture("textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 		auto *fourmiMat = new BeerEngine::Graphics::AMaterial(shader);
 		fourmiMat->setAlbedo(fourmiTex);
 		meshRenderer->setMaterial(fourmiMat);
@@ -172,7 +172,7 @@ void    SceneTest::init(void)
 	suzanne->name = "suzanne";
 	meshRenderer = suzanne->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh("models/Suzanne.obj");
-	auto *suzanneTex = BeerEngine::Graphics::Texture::LoadPNG("textures/crate1_diffuse.png");
+	auto *suzanneTex = Assets::GetTexture("textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 	auto *suzanneMat = new BeerEngine::Graphics::AMaterial(shader);
 	suzanneMat->setAlbedo(suzanneTex);
 	meshRenderer->setMaterial(suzanneMat);

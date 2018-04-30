@@ -17,6 +17,8 @@ namespace BeerEngine
 			static Texture	*whiteTexture;
 			static void Load(void);
 			static void UnLoad(void);
+
+			static Mesh	*OBJLoader(std::string path);
 		};
 	}
 }
