@@ -124,7 +124,8 @@ int main(void)
         nk_glfw3_new_frame();
         if (nk_begin(ctx, "Nuklear", nk_rect(1280/2 - 110, 720/2 - 110, 220, 220), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
         {
-            
+            nk_layout_row_dynamic(ctx, 20, 1);
+            nk_label(ctx, "Hello", NK_TEXT_LEFT);
         }    
         nk_end(ctx);
 

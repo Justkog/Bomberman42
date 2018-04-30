@@ -8,6 +8,10 @@ Assets::GetTexture("textures/crate1_diffuse.png"); => Return BeerEngine::Graphic
 Assets::GetAudioClip("..."); => Return BeerEngine::Audio::AudioClip *
 ```
 Cela evitera de charger deux fois la meme texture ou le meme model.
+### Link
+[GLFW](http://www.glfw.org/docs/latest/index.html)
+[GLM](https://glm.g-truc.net/0.9.4/api/a00131.html)
+[Nuklear Help](https://github.com/vurtun/nuklear/wiki/Window)
 ## Help:
 ### Git
 Voici une piqure de rappel de git!
