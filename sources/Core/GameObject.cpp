@@ -86,6 +86,9 @@ namespace BeerEngine
 		{
 			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
 				p->physicUpdate();
+		}
+		for (Component::Component *c : _components)
+		{
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}

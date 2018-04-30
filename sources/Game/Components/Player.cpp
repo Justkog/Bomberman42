@@ -29,14 +29,17 @@ namespace Game
             BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
             if (rb2d)
             {
+                glm::vec2 dir(0.0f);
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
-                    rb2d->velocity = glm::vec2(0, 2);
+                    dir += glm::vec2(0, 1);
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
-                    rb2d->velocity = glm::vec2(0, -2);
+                    dir += glm::vec2(0, -1);
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
-                    rb2d->velocity = glm::vec2(2, 0);
+                    dir += glm::vec2(1, 0);
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
-                    rb2d->velocity = glm::vec2(-2, 0);
+                    dir += glm::vec2(-1, 0);
+                if (dir != glm::vec2(0.0f))
+                    rb2d->velocity = glm::normalize(dir) * _character->_speed;
             }
             
 
