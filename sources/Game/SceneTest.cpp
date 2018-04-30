@@ -152,7 +152,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(bigmaxMat);
 	bigmax->transform.position = glm::vec3(-7, 0, 10);
 	bigmax->transform.scale = glm::vec3(0.07, 0.07, 0.07);
-	bigmax->transform.rotation = glm::vec3(0, 0, 0);
+	bigmax->transform.rotation = glm::vec3(0, 0.0f, 0);
 
 	//test obj fourmi
 
@@ -181,7 +181,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(suzanneMat);
 	suzanne->transform.position = glm::vec3(0, 4, 16);
 	suzanne->transform.scale = glm::vec3(1,1,1);
-	suzanne->transform.rotation = glm::vec3(0, 3, 0);
+	suzanne->transform.rotation = glm::vec3(0, 0, 0);
 
     //
 	// //test obj Orange

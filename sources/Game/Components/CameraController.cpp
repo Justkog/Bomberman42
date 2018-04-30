@@ -67,7 +67,7 @@ namespace Game
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
 			this->cam->transform.position = glm::vec3(0, 10, 0);
-			// this->cam->transform.rotation = this->cam->transform.rotation * glm::angleAxis((float)0, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-, glm::vec3(1, 0, 0));
+			this->cam->transform.rotation = this->cam->transform.rotation * glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)0.0f, glm::vec3(1, 0, 0));
 		}
 
 		void    CameraController::fixedUpdate(void)
@@ -95,9 +95,9 @@ namespace Game
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::X))
 				cam->transform.translate(-cam->transform.top() * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT))
-				rotation_y = 1 * BeerEngine::Time::GetDeltaTime();
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::RIGHT))
 				rotation_y = -1 * BeerEngine::Time::GetDeltaTime();
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::RIGHT))
+				rotation_y = 1 * BeerEngine::Time::GetDeltaTime();
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::UP))
 				rotation_x = 1 * BeerEngine::Time::GetDeltaTime();
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::DOWN))
