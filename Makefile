@@ -46,12 +46,6 @@ SRC = \
 	Core/Audio/AudioSource.cpp \
 	Core/Audio/AudioClip.cpp \
 	\
-	Core/Maths/Operator.cpp \
-	Core/Maths/Vector2f.cpp \
-	Core/Maths/Vector3f.cpp \
-	Core/Maths/Vector4f.cpp \
-	Core/Maths/Matrix4x4.cpp \
-	\
 	Game/Assets.cpp \
 	Game/SceneTest.cpp \
 	Game/Components/Character.cpp \
@@ -80,7 +74,7 @@ CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 
 C_FILE = $(addprefix sources/, $(SRC))
 O_FILE = $(addprefix obj/, $(SRC:.cpp=.o))
-D_FILE = $(addprefix dep/, $(SRC:.cpp=.d))
+D_FILE = $(addprefix obj/, $(SRC:.cpp=.d))
 CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include -I \
 tinyobjloader/ -I stb/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME)))
 LIB_DIR = $(addprefix lib, $(LIB_NAME))
@@ -109,31 +103,31 @@ relink:
 
 dircreate:
 	@$(MKDIR) obj $(addprefix obj/, $(DIR))
-	@$(MKDIR) dep $(addprefix dep/, $(DIR))
+
 req: $(O_FILE)
 
-$(NAME): $(O_FILE) $(D_FILE)
+$(NAME): $(O_FILE)
 	$(CC) -o $(@F) $(O_FILE) $(LIBS)
 
 obj/%.o: sources/%.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
-dep/%.d: sources/%.cpp
-	@set -e; rm -f $@; \
-	$(CC) -MM $(CFLAGS) $< > $@.$$$$; \
-		sed 's,\($*\)\.o[ :]*,obj/\1.o $@ : ,g' < $@.$$$$ >> $@; \
-		$(RM) $@.$$$$
+	$(CC) -MMD -o $@ -c $< $(CFLAGS)
+
 clean:
 	$(RM) $(O_FILE)
 	$(RM) $(D_FILE)
+
 fclean: clean
 	$(RM) $(NAME)
 	$(RMDIR) obj
-	$(RMDIR) dep
+
 ffclean: fclean
 	$(addprefix $(MAKE) fclean -C , $(addsuffix ;, $(LIB_DIR)))
+
 run: all
 	./$(NAME)
+
 ar: fclean run
+
 re: fclean all
 
 -include $(D_FILE)
