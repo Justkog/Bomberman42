@@ -1,6 +1,7 @@
 #include "Game/Components/CameraController.hpp"
 #include "Core/Input.hpp"
 #include "Core/Time.hpp"
+#include "Core/Camera.hpp"
 
 namespace Game
 {
@@ -107,6 +108,13 @@ namespace Game
 			cam->transform.rotation = cam->transform.rotation * glm::angleAxis(rotation_y, glm::vec3(0, 1, 0));
 			cam->transform.rotation = cam->transform.rotation * glm::angleAxis(rotation_x, cam->transform.left());
 			this->lastMousePos = BeerEngine::Input::mousePosition;
+		}
+
+		nlohmann::json	CameraController::serialize()
+		{
+			return nlohmann::json {
+				{"componentClass", typeid(CameraController).name()},
+			};
 		}
 
 		// ###############################################################

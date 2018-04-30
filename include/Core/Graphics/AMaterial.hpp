@@ -1,14 +1,14 @@
 #ifndef BE_CORE_GRAPHICS_AMATERIAL_HPP
 #define BE_CORE_GRAPHICS_AMATERIAL_HPP 1
 
-#include "ShaderProgram.hpp"
-#include "Texture.hpp"
+#include "Core/Core.hpp"
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
 {
 	namespace Graphics
 	{
-		class AMaterial
+		class AMaterial : public JsonSerializable
 		{
 		private:
 			ShaderProgram	*_shader;
@@ -39,6 +39,8 @@ namespace BeerEngine
 			AMaterial		&setAlbedo(Texture *tex);
 			AMaterial		&setNormal(Texture *tex);
 			AMaterial		&setBump(Texture *tex);
+
+			nlohmann::json	serialize();
 		};
 	}
 }

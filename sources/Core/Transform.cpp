@@ -66,7 +66,6 @@ namespace BeerEngine
 
 	nlohmann::json	Transform::serialize()
 	{
-		std::cout << "start serialize transform!" << "\n";
 		return nlohmann::json {
             {"parent", JsonSerializable::toSerializable(this->parent)},
             {"pivot", this->pivot},
@@ -74,5 +73,22 @@ namespace BeerEngine
             {"rotation", this->rotation},
             {"scale", this->scale},
 		};
+	}
+
+	// Not implemented
+	Transform * DeserializePtr(const nlohmann::json & j)
+	{
+		return NULL;
+	}
+
+	Transform Deserialize(const nlohmann::json & j)
+	{
+		Transform t;
+		t.parent = DeserializePtr(j.at("parent"));
+		t.pivot = j.at("pivot");
+		t.position = j.at("position");
+		t.rotation = j.at("rotation");
+		t.scale = j.at("scale");
+		return t;
 	}
 }

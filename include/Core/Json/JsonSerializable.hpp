@@ -23,6 +23,13 @@ namespace BeerEngine
             return serializables;
         }
     };
+
+    class JsonDeserializable
+    {
+    public:
+        virtual void deserialize(const nlohmann::json & j);
+        static void Deserialize(const nlohmann::json & j);
+    };
 }
 
 #endif

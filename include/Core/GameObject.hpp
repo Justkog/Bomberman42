@@ -9,7 +9,7 @@
 
 namespace BeerEngine
 {
-    class GameObject : public JsonSerializable
+    class GameObject : public JsonSerializable, public JsonDeserializable
 	{
 	protected:
 		int		_uniqueID;
@@ -19,8 +19,11 @@ namespace BeerEngine
 		Transform	transform;
 		std::string	name;
 
+		GameObject() {};
 		GameObject(int uniqueID);
 		virtual ~GameObject(void);
+
+		int				getID();
 
 		virtual void	start(void);
 		virtual void    fixedUpdate(void);
@@ -69,7 +72,8 @@ namespace BeerEngine
 		std::vector<Component::Component *> GetComponents(void);
 
 		virtual nlohmann::json	serialize();
-
+        virtual void deserialize(const nlohmann::json & j);
+		static GameObject * Deserialize(const nlohmann::json & j);
 	};
 }
 

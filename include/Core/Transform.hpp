@@ -28,6 +28,8 @@ namespace BeerEngine
 		glm::mat4	getMat4(bool isCamera = false);
 
 		virtual nlohmann::json	serialize();
+		static Transform Deserialize(const nlohmann::json & j);
+		static Transform * DeserializePtr(const nlohmann::json & j);
 
 	};
 }

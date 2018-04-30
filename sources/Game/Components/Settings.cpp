@@ -82,6 +82,14 @@ void    Game::Component::Settings::start(void) {
 	// this->saveSettings();
 }
 
+nlohmann::json	Game::Component::Settings::serialize()
+{
+	return nlohmann::json {
+		{"componentClass", typeid(Game::Component::Settings).name()},
+		{"filePath", filePath},
+	};
+}
+
 // ###############################################################
 
 // GETTER METHOD #################################################

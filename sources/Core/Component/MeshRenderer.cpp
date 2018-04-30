@@ -3,6 +3,8 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Graphics/AMaterial.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -34,6 +36,8 @@ namespace BeerEngine
 			BeerEngine::Graphics::MeshBuilder builder;
 
 			std::string err;
+
+			_sourceFile = inputfile;
 			bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str());
 
 			if (!err.empty()) // `err` may contain warning message.
@@ -164,6 +168,16 @@ namespace BeerEngine
 					_material->bind(_mat);
 				_mesh->render();
 			}
+		}
+
+		nlohmann::json	MeshRenderer::serialize()
+		{
+			return nlohmann::json {
+				{"componentClass", typeid(MeshRenderer).name()},
+				{"sourceFile", _sourceFile},
+				{"material", _material},
+				{"pivot", _mat},
+			};
 		}
 	}
 }

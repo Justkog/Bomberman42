@@ -42,6 +42,8 @@ namespace Game
        		virtual void    onColliderStay(BeerEngine::Component::ACollider *other);
        		virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
        		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
+
+			nlohmann::json	serialize();
 		};
 	}
 }

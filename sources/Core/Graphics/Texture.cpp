@@ -1,4 +1,5 @@
 #include "Core/Graphics/Texture.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -100,7 +101,9 @@ namespace BeerEngine
 			}
 			png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 			fclose(fp);
-			return (new Texture(width, height, outData, (color_type == PNG_COLOR_TYPE_RGBA) ? GL_RGBA : GL_RGB));
+			auto texture = new Texture(width, height, outData, (color_type == PNG_COLOR_TYPE_RGBA) ? GL_RGBA : GL_RGB);
+			texture->_sourceFile = path;
+			return (texture);
 		}
 
 		int		Texture::getWidth(void)
@@ -110,6 +113,13 @@ namespace BeerEngine
 		int		Texture::getHeight(void)
 		{
 			return (_height);
+		}
+
+		nlohmann::json	Texture::serialize()
+		{
+			return nlohmann::json {
+				{"sourceFile", _sourceFile},
+			};
 		}
 	}
 }

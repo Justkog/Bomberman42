@@ -4,6 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
+#include "Core/Transform.hpp"
 #include "Core/Json/Json.hpp"
 
 namespace BeerEngine
@@ -15,10 +16,16 @@ namespace BeerEngine
 
 	GameObject::~GameObject(void)
 	{
+		std::cout << "boom" << "\n";
 		for (Component::Component *c : _components)
 		{
 			delete c;
 		}
+	}
+
+	int		GameObject::getID()
+	{
+		return _uniqueID;
 	}
 
 	std::vector<Component::Component *> GameObject::GetComponents(void)
@@ -95,4 +102,19 @@ namespace BeerEngine
             {"components", JsonSerializable::toSerializables<BeerEngine::Component::Component>(this->GetComponents())}
 		};
 	}
+
+	void GameObject::deserialize(const nlohmann::json & j)
+    {
+        this->_uniqueID = j.at("id");
+		this->name = j.at("name");
+    }
+
+	GameObject * GameObject::Deserialize(const nlohmann::json & j)
+    {
+		int id = j.at("id");
+		auto go = new GameObject(id);
+		go->name = j.at("name");
+		go->transform = Transform::Deserialize(j.at("transform"));
+		return go;
+    }
 }

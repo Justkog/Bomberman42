@@ -6,11 +6,10 @@
 #ifndef CAMERACONTROLLER_HPP
 # define CAMERACONTROLLER_HPP
 
+#include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
-#include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
-#include "Core/GameObject.hpp"
-#include "Core/Camera.hpp"
+#include "Core/Component/IUpdate.hpp"
 
 namespace Game
 {	
@@ -31,6 +30,8 @@ namespace Game
 			virtual void    start(void);
 			virtual void    fixedUpdate(void);
        		virtual void    update(void);
+
+			nlohmann::json	serialize();
 
 			BeerEngine::Camera	*cam;
 			glm::vec2			lastMousePos;

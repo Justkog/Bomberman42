@@ -42,6 +42,8 @@ namespace Game
 			void saveSettings();
 			void start(void);
 
+			nlohmann::json	serialize();
+
 			std::string filePath;
 			Game::SettingsContainer settingsContainer;
 		};

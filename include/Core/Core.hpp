@@ -36,6 +36,7 @@ namespace BeerEngine
     class GameObject;
     class Transform;
     class JsonSerializable;
+	class Camera;
 
 	namespace Component
 	{
@@ -49,6 +50,10 @@ namespace BeerEngine
 	{
 		class Graphics;
 		class ShaderProgram;
+		class Mesh;
+		class AMaterial;
+		class Texture;
+		class MeshBuilder;
 	}
 }
 

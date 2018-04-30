@@ -3,17 +3,19 @@
 
 #include "../Core.hpp"
 #include <png.h>
+#include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
 {
 	namespace Graphics
 	{
-		class Texture {
+		class Texture : public JsonSerializable {
 		private:
 			unsigned int	_width;
 			unsigned int	_height;
 			unsigned char	*_data;
 			GLuint			_textureID;
+			std::string		_sourceFile;
 
 		public:
 			Texture(unsigned int width, unsigned int height, unsigned char *data, GLenum format = GL_BGR);
@@ -25,6 +27,8 @@ namespace BeerEngine
 			static Texture	*LoadPNG(const char *path);
 			int		getWidth(void);
 			int		getHeight(void);
+
+			nlohmann::json	serialize();
 		};
 	}
 }

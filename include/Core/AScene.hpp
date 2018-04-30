@@ -6,7 +6,7 @@
 
 namespace BeerEngine
 {
-    class AScene : public JsonSerializable
+    class AScene : public JsonSerializable, public JsonDeserializable
     {
     private:
         static int                  uniqueID;
@@ -54,8 +54,10 @@ namespace BeerEngine
         // }
 
         void save(std::string filePath);
+        void load(std::string filePath);
 
         virtual nlohmann::json	serialize();
+        virtual void deserialize(const nlohmann::json & j);
 
     };
 }

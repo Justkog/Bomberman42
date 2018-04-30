@@ -60,5 +60,12 @@ namespace Game
         void   Player::onColliderExit(BeerEngine::Component::ACollider *other)
         {
         }
+
+        nlohmann::json	Player::serialize()
+		{
+			return nlohmann::json {
+				{"componentClass", typeid(Player).name()},
+			};
+		}
     }
 }

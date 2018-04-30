@@ -10,6 +10,7 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Graphics/ShaderProgram.hpp"
 
 template<typename T>
 BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
@@ -33,8 +34,10 @@ BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram 
 
 void    SceneTest::init(void)
 {
-
-
+	this->load("test.scene");
+	this->save("destest.scene");
+	
+	return;
 
 	// Shader
 	BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
@@ -76,6 +79,7 @@ void    SceneTest::init(void)
 	// Camera
 	BeerEngine::GameObject *cameraGO;
 	cameraGO = instantiate<BeerEngine::GameObject>();
+	cameraGO->name = "Camera";
 
 	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 

@@ -2,6 +2,9 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Window.hpp"
 #include "Core/Camera.hpp"
+#include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/Graphics/Texture.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -102,5 +105,15 @@ namespace BeerEngine
 			return (*this);
 		}
 
+		nlohmann::json	AMaterial::serialize()
+		{
+			return nlohmann::json {
+				{"albedo", _albedo},
+				{"normal", _normal},
+				{"bump", _bump},
+				{"color", _color},
+				{"shader", "defaultShader"},
+			};
+		}
 	}
 }

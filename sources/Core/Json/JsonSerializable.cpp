@@ -11,4 +11,15 @@ namespace BeerEngine
     {
         return item;
     }
+
+    void JsonDeserializable::deserialize(const nlohmann::json & j)
+    {
+
+    }
+
+    void JsonDeserializable::Deserialize(const nlohmann::json & j)
+    {
+        
+    }
+
 }
