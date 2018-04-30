@@ -35,9 +35,9 @@ namespace Game
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
                     dir += glm::vec2(0, -1);
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
-                    dir += glm::vec2(1, 0);
-                if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
                     dir += glm::vec2(-1, 0);
+                if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
+                    dir += glm::vec2(1, 0);
                 if (dir != glm::vec2(0.0f))
                     rb2d->velocity = glm::normalize(dir) * _character->_speed;
             }

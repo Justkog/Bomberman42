@@ -38,7 +38,7 @@ namespace BeerEngine
 
 		MeshBuilder		&MeshBuilder::addTriangle(glm::vec3 v0, glm::vec3 v1, glm::vec3 v2)
 		{
-			glm::vec3 normal = glm::normalize(glm::cross(v2 - v0, v1 - v0));
+			glm::vec3 normal = glm::normalize(glm::cross(v1 - v0, v2 - v0));
 			addVertice(v0);
 			addVertice(v1);
 			addVertice(v2);
@@ -62,7 +62,7 @@ namespace BeerEngine
 			{
 				glm::vec3 deltaPos1 = vertices[i + 1] - vertices[i];
 				glm::vec3 deltaPos2 = vertices[i + 2] - vertices[i];
-				glm::vec3 normal = glm::normalize(glm::cross(deltaPos2, deltaPos1));
+				glm::vec3 normal = glm::normalize(glm::cross(deltaPos1, deltaPos2));
 
 				addNormal(normal);
 				addNormal(normal);

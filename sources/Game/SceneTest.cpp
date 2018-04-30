@@ -152,7 +152,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(bigmaxMat);
 	bigmax->transform.position = glm::vec3(-7, 0, 10);
 	bigmax->transform.scale = glm::vec3(0.07, 0.07, 0.07);
-	bigmax->transform.rotation = glm::vec3(0, 3, 0);
+	bigmax->transform.rotation = glm::vec3(0, 0, 0);
 
 	//test obj fourmi
 
