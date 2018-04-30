@@ -3,6 +3,7 @@
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
+#include "Core/Component/RigidBody2D.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
@@ -77,8 +78,10 @@ void    SceneTest::init(void)
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	playerRB2D->kinematic = false;
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::BoxCollider2D>();
-	playerColl->_kinematic = false;
+	// playerColl->_kinematic = false;
 //
  // test obj old
 

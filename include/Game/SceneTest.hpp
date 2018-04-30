@@ -1,6 +1,7 @@
 #ifndef GAME_SCENE_TEST_HPP
 #define GAME_SCENE_TEST_HPP 1
 
+#include "Core/Component/RigidBody2D.hpp"
 #include "Core/BeerEngine.hpp"
 #include "Assets.hpp"
 
@@ -24,7 +25,12 @@ public:
 		mapBlocGO->transform.position = pos;
 		mapBlocGO->transform.scale = scale;
 		auto blockColl = mapBlocGO->AddComponent<T>();
-		blockColl->_kinematic = kinematic;
+		if (!kinematic)
+		{
+			auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+			rb2d->kinematic = kinematic;
+			rb2d->mass = 10.0f;
+		}
 
 		return (mapBlocGO);
 	}

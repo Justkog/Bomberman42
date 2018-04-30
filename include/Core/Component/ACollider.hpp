@@ -3,7 +3,9 @@
 
 #include "../BeerEngine.hpp"
 #include "Component.hpp"
+#include "IStart.hpp"
 #include "IUpdate.hpp"
+#include "RigidBody2D.hpp"
 
 namespace BeerEngine
 {
@@ -12,13 +14,17 @@ namespace BeerEngine
 		class BoxCollider2D;
 		class CircleCollider;
 
-		class ACollider : public Component
+		class ACollider :
+			public Component,
+			public IStart
 		{
 		protected:
 
 		public:
 			ACollider(GameObject *gameObject);
 			virtual ~ACollider();
+			void    start(void);
+
 			virtual void    physicUpdate(void);
 			virtual bool 	checkCollision(ACollider *other) = 0;
 
@@ -33,12 +39,17 @@ namespace BeerEngine
 			virtual void colliderEnter(ACollider *other);
 			virtual void colliderExit(ACollider *other);
 
+			bool		isKinematic(void);
+
+			void		response(ACollider *other, glm::vec3 move);
+
 			static std::vector<ACollider*> _colliders;
 			std::vector<ACollider*> _currentCollisions;
 			Transform	&_transform;
 			glm::vec2	_offset;
 			bool		_isTrigger;
-			bool		_kinematic;
+			// bool		_kinematic;
+			RigidBody2D *rb2d;
 		};
 	}
 }

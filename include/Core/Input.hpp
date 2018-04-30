@@ -21,6 +21,7 @@ namespace BeerEngine
 		static bool			GetKey(KeyCode keycode);
 		static bool			GetKeyDown(KeyCode keycode);
 		static bool			GetKeyUp(KeyCode keycode);
+		static int			GetKeyStatus(KeyCode keycode);
 		static void			SetMouseButton(int mouseButton, int status);
 		static bool			GetMouseButton(int mouseButton);
 		static bool			GetMouseButtonDown(int mouseButton);

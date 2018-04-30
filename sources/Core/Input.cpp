@@ -28,6 +28,11 @@ namespace BeerEngine
 		return (key[keycode] == 0);
 	}
 
+	int				Input::GetKeyStatus(KeyCode keycode)
+	{
+		return (key[keycode]);
+	}
+
 	void			Input::SetMouseButton(int button, int status)
 	{
 		mouseButton[button] = status;
@@ -63,6 +68,16 @@ namespace BeerEngine
 		for (std::map<std::string, float>::iterator it = axis.begin(); it != axis.end(); ++it)
 		{
 			it->second = 0.0f;
+		}
+		for (std::map<int, int>::iterator it = key.begin(); it != key.end(); ++it)
+		{
+			if (it->second == 1)
+				it->second = 2;
+		}
+		for (std::map<int, int>::iterator it = mouseButton.begin(); it != mouseButton.end(); ++it)
+		{
+			if (it->second == 1)
+				it->second = 2;
 		}
 	}
 

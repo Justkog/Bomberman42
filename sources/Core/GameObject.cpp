@@ -4,6 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
+#include "Core/Component/RigidBody2D.hpp"
 #include "Core/AScene.hpp"
 
 namespace BeerEngine
@@ -83,6 +84,8 @@ namespace BeerEngine
 	{
 		for (Component::Component *c : _components)
 		{
+			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
+				p->physicUpdate();
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}

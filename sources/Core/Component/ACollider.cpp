@@ -20,8 +20,7 @@ namespace BeerEngine
 			Component(gameObject),
 			_transform(gameObject->transform),
 			_offset(glm::vec2(0, 0)),
-			_isTrigger(false),
-			_kinematic(true)
+			_isTrigger(false)
 		{
 			_colliders.push_back(this);
 		}
@@ -38,6 +37,11 @@ namespace BeerEngine
 					other->_currentCollisions.erase(it);
 				}
 			}
+		}
+
+		void    ACollider::start(void)
+		{
+			rb2d = _gameObject->GetComponent<RigidBody2D>();
 		}
 
 		void    ACollider::physicUpdate(void)
@@ -163,6 +167,41 @@ namespace BeerEngine
 				{
 					r->onColliderExit(other);
 				}
+			}
+		}
+
+		bool ACollider::isKinematic(void)
+		{
+			if (rb2d != nullptr)
+				return (rb2d->kinematic);
+			return (true);
+		}
+
+		void ACollider::response(ACollider *other, glm::vec3 move)
+		{
+			if (other->isKinematic() && !isKinematic())
+			{
+				_transform.translate(move);
+				if (move[0] != 0)
+					rb2d->velocity[0] = 0.0f;
+				else
+					rb2d->velocity[1] = 0.0f;
+			}
+			else if (!other->isKinematic() && isKinematic())
+			{
+				other->_transform.translate(-move);
+				if (move[0] != 0)
+					other->rb2d->velocity[0] = 0.0f;
+				else
+					other->rb2d->velocity[1] = 0.0f;
+			}
+			else if (!other->isKinematic() && !isKinematic())
+			{
+				float totalMass = other->rb2d->mass + rb2d->mass;
+				float a = rb2d->mass / totalMass;
+				float b = other->rb2d->mass / totalMass;
+				_transform.translate(move * b);
+				other->_transform.translate(-move * a);
 			}
 		}
 	}
