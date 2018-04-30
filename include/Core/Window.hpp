@@ -22,6 +22,7 @@ namespace BeerEngine
 		~Window();
 		GLFWwindow      *getWindow(void);
 		void            clear(void);
+		void            update(void);
 		void            swapBuffer(void);
 		glm::mat4       &getProjection3D(void);
 		glm::mat4       &getProjection2D(void);
