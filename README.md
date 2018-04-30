@@ -1,6 +1,13 @@
 # Bomberman42
 C++ Project 42, Bomberman 3D
-
+## Projet:
+Tous se qu'il y a dans le dossier Assets se charge automatiquement
+```
+Assets::GetModel("..."); => Return BeerEngine::Graphics::Mesh *
+Assets::GetTexture("textures/crate1_diffuse.png"); => Return BeerEngine::Graphics::Texture *
+Assets::GetAudioClip("..."); => Return BeerEngine::Audio::AudioClip *
+```
+Cela evitera de charger deux fois la meme texture ou le meme model.
 ## Help:
 ### Git
 Voici une piqure de rappel de git!
