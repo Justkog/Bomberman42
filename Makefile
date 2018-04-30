@@ -25,34 +25,43 @@ SRC = \
 	Core/Transform.cpp \
 	Core/Input.cpp \
 	Core/Camera.cpp \
+	\
 	Core/Component/Component.cpp \
 	Core/Component/MeshRenderer.cpp \
 	Core/Component/ACollider.cpp \
 	Core/Component/BoxCollider2D.cpp \
 	Core/Component/CircleCollider.cpp \
+	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
 	Core/Graphics/Texture.cpp \
+	\
 	Core/IO/FileUtils.cpp \
-	\
-	Game/SceneTest.cpp \
-	\
-	Game/Components/Character.cpp \
-	Game/Components/Player.cpp \
-	Game/Components/CameraController.cpp \
-	Game/Components/Settings.cpp \
-	Game/Components/Item.cpp \
 	\
 	Core/Audio/AudioListener.cpp \
 	Core/Audio/AudioSource.cpp \
 	Core/Audio/AudioClip.cpp \
 	\
+	Core/Maths/Operator.cpp \
+	Core/Maths/Vector2f.cpp \
+	Core/Maths/Vector3f.cpp \
+	Core/Maths/Vector4f.cpp \
+	Core/Maths/Matrix4x4.cpp \
+	\
+	Game/Assets.cpp \
+	Game/SceneTest.cpp \
+	Game/Components/Character.cpp \
+	Game/Components/Player.cpp \
+	Game/Components/CameraController.cpp \
+	Game/Components/Settings.cpp \
+	Game/Components/Item.cpp \
 	Game/CameraTest.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio Game/Components
+DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
+	Game Game/Components
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \

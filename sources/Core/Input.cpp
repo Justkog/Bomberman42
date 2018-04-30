@@ -4,6 +4,7 @@ namespace BeerEngine
 {
 	std::map<int, int>		Input::mouseButton;
 	std::map<int, int>		Input::key;
+	std::map<std::string, float>		Input::axis;
 	glm::vec2				Input::mousePosition;
 	glm::vec2				Input::mouseScroll;
 
@@ -45,6 +46,24 @@ namespace BeerEngine
 	bool			Input::GetMouseButtonUp(int button)
 	{
 		return (mouseButton[button] == 0);
+	}
+
+	void			Input::SetAxis(std::string name, float value)
+	{
+		axis[name] = value;
+	}
+
+	float			Input::GetAxis(std::string name)
+	{
+		return (axis[name]);
+	}
+
+	void			Input::Update(void)
+	{
+		for (std::map<std::string, float>::iterator it = axis.begin(); it != axis.end(); ++it)
+		{
+			it->second = 0.0f;
+		}
 	}
 
 }
