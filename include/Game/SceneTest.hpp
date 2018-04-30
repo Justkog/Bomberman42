@@ -29,7 +29,7 @@ public:
 		{
 			auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 			rb2d->kinematic = kinematic;
-			rb2d->mass = 100.0f;
+			rb2d->mass = 1.0f;
 		}
 
 		return (mapBlocGO);
