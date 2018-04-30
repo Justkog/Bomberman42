@@ -76,12 +76,12 @@ namespace BeerEngine
 	}
 
 	// Not implemented
-	Transform * DeserializePtr(const nlohmann::json & j)
+	Transform * Transform::DeserializePtr(const nlohmann::json & j)
 	{
 		return NULL;
 	}
 
-	Transform Deserialize(const nlohmann::json & j)
+	Transform Transform::Deserialize(const nlohmann::json & j)
 	{
 		Transform t;
 		t.parent = DeserializePtr(j.at("parent"));

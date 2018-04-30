@@ -103,11 +103,11 @@ namespace BeerEngine
 		};
 	}
 
-	void GameObject::deserialize(const nlohmann::json & j)
-    {
-        this->_uniqueID = j.at("id");
-		this->name = j.at("name");
-    }
+	// void GameObject::deserialize(const nlohmann::json & j)
+    // {
+    //     this->_uniqueID = j.at("id");
+	// 	this->name = j.at("name");
+    // }
 
 	GameObject * GameObject::Deserialize(const nlohmann::json & j)
     {
@@ -115,6 +115,10 @@ namespace BeerEngine
 		auto go = new GameObject(id);
 		go->name = j.at("name");
 		go->transform = Transform::Deserialize(j.at("transform"));
+		auto components = j.at("components");
+        for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
+			std::cout << it.value() << "\n";
+		}
 		return go;
     }
 }
