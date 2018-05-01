@@ -11,6 +11,9 @@
 #define NK_IMPLEMENTATION
 #define NK_GLFW_GL3_IMPLEMENTATION
 
+#define MAX_VERTEX_BUFFER 512 * 1024
+#define MAX_ELEMENT_BUFFER 128 * 1024
+
 #include "Core/BeerEngine.hpp"
 #include "Game/SceneTest.hpp"
 #include "Game/Assets.hpp"
@@ -78,7 +81,7 @@ void updateThread(BeerEngine::Window *window)
 int main(void)
 {
     std::srand(std::time(nullptr));
-    BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
+    BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", WINDOW_WIDTH, WINDOW_HEIGHT);
     BeerEngine::AScene  *scene;
     // Nukclear
     struct nk_context *ctx;
@@ -137,6 +140,7 @@ int main(void)
         window->swapBuffer();
         frameCount++;
     }
+    nk_glfw3_shutdown();
     BeerEngine::Audio::AudioListener::DestroyOpenAL();
     delete BeerEngine::Camera::main;
     Assets::GetInstance()->unload();

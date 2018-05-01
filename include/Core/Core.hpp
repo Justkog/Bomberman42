@@ -29,13 +29,13 @@
 #include <vector>
 #include <fstream>
 
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+
 #include <nuklear.h>
 #include <nuklear_glfw_gl3.h>
 
 #include <nlohmann/json.hpp>
-
-#define MAX_VERTEX_BUFFER 512 * 1024
-#define MAX_ELEMENT_BUFFER 128 * 1024
 
 namespace BeerEngine
 {
