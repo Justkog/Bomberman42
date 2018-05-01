@@ -81,5 +81,24 @@ namespace Game
         void   Character::onColliderExit(BeerEngine::Component::ACollider *other)
         {
         }
+
+		nlohmann::json	Character::serialize()
+		{
+			return nlohmann::json {
+				{"componentClass", typeid(Character).name()},
+				{"speed", _speed},
+				{"bombNB", _bombNb},
+				{"explosionSize", _explosionSize},
+			};
+		}
+
+        void Character::deserialize(const nlohmann::json & j)
+    	{
+            this->_speed = j.at("speed");
+            this->_bombNb = j.at("bombNB");
+            this->_explosionSize = j.at("explosionSize");
+		}
+
+		REGISTER_COMPONENT_CPP(Character)
     }
 }

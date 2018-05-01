@@ -83,7 +83,10 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "bombNB": 5,
+                    "componentClass": "N4Game9Component9CharacterE",
+                    "explosionSize": 2.0,
+                    "speed": 2.0
                 },
                 {
                     "componentClass": "N4Game9Component6PlayerE"
@@ -97,7 +100,13 @@
                     "radius": 0.5
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 1,
@@ -720,7 +729,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 9,
@@ -807,7 +822,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 10,
@@ -894,7 +915,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 11,
@@ -981,7 +1008,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 12,
@@ -1068,7 +1101,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 13,
@@ -1155,7 +1194,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 14,
@@ -1242,7 +1287,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 15,
@@ -1329,7 +1380,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 16,
@@ -1416,7 +1473,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 17,
@@ -1503,7 +1566,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 18,
@@ -1590,7 +1659,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 19,
@@ -1677,7 +1752,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 20,
@@ -1764,7 +1845,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 21,
@@ -1851,7 +1938,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 22,
@@ -1938,7 +2031,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 23,
@@ -2025,7 +2124,13 @@
                     ]
                 },
                 {
-                    "componentClass": "Component"
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 24,
@@ -2110,7 +2215,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 2
+                    "type": 1
                 }
             ],
             "id": 25,
@@ -2158,7 +2263,7 @@
                     },
                     "mesh": {
                         "sourceFile": "",
-                        "type": "cube"
+                        "type": "plane"
                     },
                     "pivot": [
                         [

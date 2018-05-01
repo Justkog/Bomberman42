@@ -1,5 +1,6 @@
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace BeerEngine
 {
@@ -24,5 +25,24 @@ namespace BeerEngine
 			float ndist = dist - (dist / 60.0f);
 			velocity = velocityDir * ndist;
 		}
+
+		nlohmann::json	RigidBody2D::serialize()
+		{
+			return {
+				{"componentClass", typeid(RigidBody2D).name()},
+				{"velocity", velocity},
+				{"kinematic", kinematic},
+				{"mass", mass},
+			};
+		}
+
+		void RigidBody2D::deserialize(const nlohmann::json & j)
+		{
+			this->velocity = j.at("velocity");
+			this->kinematic = j.at("kinematic");
+			this->mass = j.at("mass");
+		}
+
+		REGISTER_COMPONENT_CPP(RigidBody2D)
 	}
 }

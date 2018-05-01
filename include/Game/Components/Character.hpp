@@ -56,6 +56,11 @@ namespace Game
 			float _speed;
 			unsigned int _bombNb;
 			float _explosionSize;
+
+			nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 	}
 }
