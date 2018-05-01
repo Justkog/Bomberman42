@@ -116,13 +116,6 @@ int main(void)
         }    
         nk_end(ctx);
 
-        if (scene != nullptr)
-        {
-            scene->mutexLock(true);
-            scene->renderUI(ctx);
-            scene->mutexLock(false);
-        }
-
         // Draw
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_LESS);
@@ -136,6 +129,7 @@ int main(void)
             scene->mutexLock(true);
             scene->renderUpdate();
             scene->render();
+            scene->renderUI(ctx);
             scene->mutexLock(false);
         }
         glDisable(GL_DEPTH_TEST);
