@@ -103,6 +103,7 @@ int main(void)
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
     // FPS
+    glfwFocusWindow(window->getWindow());
     while (!window->isClose())
     {
         window->update();
