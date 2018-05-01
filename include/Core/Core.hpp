@@ -27,8 +27,15 @@
 #include <sstream>
 #include <map>
 #include <vector>
+#include <fstream>
+
+#include <nuklear.h>
+#include <nuklear_glfw_gl3.h>
 
 #include <nlohmann/json.hpp>
+
+#define MAX_VERTEX_BUFFER 512 * 1024
+#define MAX_ELEMENT_BUFFER 128 * 1024
 
 namespace BeerEngine
 {
@@ -62,6 +69,7 @@ namespace BeerEngine
 		class AMaterial;
 		class Texture;
 		class MeshBuilder;
+		class Particles;
 	}
 }
 
@@ -75,6 +83,5 @@ namespace BeerEngine
 		}\
 		\
 		int Class::componentRegisterer = Class::RegisterComponentType();
-#include <fstream>
 
 #endif

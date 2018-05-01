@@ -1,9 +1,5 @@
 #include <thread>
 #include <chrono>
-#include "Core/BeerEngine.hpp"
-#include "Game/SceneTest.hpp"
-#include "Game/Assets.hpp"
-
 
 #define NK_INCLUDE_FIXED_TYPES
 #define NK_INCLUDE_STANDARD_IO
@@ -14,11 +10,11 @@
 #define NK_INCLUDE_DEFAULT_FONT
 #define NK_IMPLEMENTATION
 #define NK_GLFW_GL3_IMPLEMENTATION
-#include <nuklear.h>
-#include <nuklear_glfw_gl3.h>
 
-#define MAX_VERTEX_BUFFER 512 * 1024
-#define MAX_ELEMENT_BUFFER 128 * 1024
+#include "Core/BeerEngine.hpp"
+#include "Game/SceneTest.hpp"
+#include "Game/Assets.hpp"
+
 
 static int      frameCount = 0;
 static int      FPS = 60;
