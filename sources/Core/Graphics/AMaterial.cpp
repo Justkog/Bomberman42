@@ -5,6 +5,7 @@
 #include "Core/Graphics/ShaderProgram.hpp"
 #include "Core/Graphics/Texture.hpp"
 #include "Core/Json/Json.hpp"
+#include "Core/IO/FileUtils.hpp"
 
 namespace BeerEngine
 {
@@ -114,6 +115,30 @@ namespace BeerEngine
 				{"color", _color},
 				{"shader", "defaultShader"},
 			};
+		}
+
+		void AMaterial::deserialize(const nlohmann::json & j)
+		{
+			this->setAlbedo(Texture::Deserialize(j.at("albedo")));
+			this->setNormal(Texture::Deserialize(j.at("normal")));
+			this->setBump(Texture::Deserialize(j.at("bump")));
+			this->setColor(j.at("color"));
+		}
+
+		AMaterial * AMaterial::Deserialize(const nlohmann::json & j)
+		{
+			BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
+			);
+			shader->compile();
+			auto material = new AMaterial(shader);
+			material->deserialize(j);
+			
+			return material;
 		}
 	}
 }

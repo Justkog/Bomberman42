@@ -19,14 +19,19 @@ namespace BeerEngine
 			virtual ~Component(void) {}
 
 			GameObject		*_gameObject;
+
 			virtual nlohmann::json	serialize();
 
 			template<typename T>
-			static Component * createInstance(GameObject *gameObject);
+			static Component * createInstance(GameObject *gameObject)
+			{ 
+				return new T(gameObject); 
+			}
 
+			virtual void deserialize(const nlohmann::json & j);
+			static Component * Deserialize(const nlohmann::json & j, GameObject *go);
 			static component_type typeToComponent;
 			static component_type create_map();
-			// static void RegisterComponentType();
 		};
 	}
 }

@@ -49,5 +49,19 @@ namespace Game
         void   Item::onTriggerExit(BeerEngine::Component::ACollider *other)
         {
         }
+
+        nlohmann::json	Item::serialize()
+		{
+			return nlohmann::json {
+				{"type", _type},
+			};
+		}
+
+		void Item::deserialize(const nlohmann::json & j)
+		{
+            this->_type = j.at("_type");
+		}
+
+		REGISTER_COMPONENT_CPP(Item)
     }
 }

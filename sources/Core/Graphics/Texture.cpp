@@ -121,5 +121,17 @@ namespace BeerEngine
 				{"sourceFile", _sourceFile},
 			};
 		}
+
+		Texture * Texture::Deserialize(const nlohmann::json & j)
+		{
+			if (j.is_null())
+				return NULL;
+			std::string path = j.at("sourceFile");
+			if (path != "")
+				return (Texture::LoadPNG(path.c_str()));
+			else
+				return NULL;
+		}
+
 	}
 }

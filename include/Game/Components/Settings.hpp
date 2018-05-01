@@ -6,12 +6,9 @@
 #ifndef SETTINGS_HPP
 # define SETTINGS_HPP
 
-#include <nlohmann/json.hpp>
+#include "Core/Core.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/Component.hpp"
-#include "Core/IO/FileUtils.hpp"
-#include <vector>
-#include <iostream>
 
 namespace Game
 {	
@@ -43,6 +40,9 @@ namespace Game
 			void start(void);
 
 			nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 
 			std::string filePath;
 			Game::SettingsContainer settingsContainer;

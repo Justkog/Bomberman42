@@ -117,6 +117,13 @@ namespace Game
 			};
 		}
 
+		void CameraController::deserialize(const nlohmann::json & j)
+		{
+			// this->_size = j.at("size");
+		}
+
+		REGISTER_COMPONENT_CPP(CameraController)
+
 		// ###############################################################
 
 		// GETTER METHOD #################################################

@@ -67,5 +67,12 @@ namespace Game
 				{"componentClass", typeid(Player).name()},
 			};
 		}
+
+        void Player::deserialize(const nlohmann::json & j)
+    	{
+            
+		}
+
+		REGISTER_COMPONENT_CPP(Player)
     }
 }

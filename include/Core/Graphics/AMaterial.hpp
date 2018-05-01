@@ -41,6 +41,8 @@ namespace BeerEngine
 			AMaterial		&setBump(Texture *tex);
 
 			nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+			static AMaterial * Deserialize(const nlohmann::json & j);
 		};
 	}
 }

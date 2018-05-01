@@ -1,6 +1,7 @@
 #ifndef BE_GAME_COMPONENT_PLAYER_HPP
 #define BE_GAME_COMPONENT_PLAYER_HPP 1
 
+#include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
@@ -10,8 +11,6 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
-#include "Core/GameObject.hpp"
-#include "Core/Transform.hpp"
 
 namespace Game
 {
@@ -44,6 +43,9 @@ namespace Game
        		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
 			nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 	}
 }

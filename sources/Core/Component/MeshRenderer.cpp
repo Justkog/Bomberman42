@@ -179,5 +179,17 @@ namespace BeerEngine
 				{"pivot", _mat},
 			};
 		}
+
+		void MeshRenderer::deserialize(const nlohmann::json & j)
+		{
+			std::cout << this->_sourceFile << "\n";
+			this->_sourceFile = j.at("sourceFile");
+			if (this->_sourceFile != "")
+				this->setMesh(this->_sourceFile);
+			this->setMaterial(Graphics::AMaterial::Deserialize(j.at("material")));
+			this->_mat = j.at("pivot");
+		}
+
+		REGISTER_COMPONENT_CPP(MeshRenderer)
 	}
 }

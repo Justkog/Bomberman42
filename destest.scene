@@ -1,7 +1,11 @@
 {
     "gameObjects": [
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N4Game9Component16CameraControllerE"
+                }
+            ],
             "id": 0,
             "name": "Camera",
             "transform": {
@@ -30,7 +34,66 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/player2.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N4Game9Component6PlayerE"
+                },
+                {
+                    "componentClass": "N4Game9Component8SettingsE",
+                    "filePath": "testSettings.json"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 1,
             "name": "player",
             "transform": {
@@ -59,7 +122,52 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": "models/house_01.obj"
+                }
+            ],
             "id": 2,
             "name": "house",
             "transform": {
@@ -88,7 +196,52 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": "models/Dodge_Chellenger_SRT10_OBJ.obj"
+                }
+            ],
             "id": 3,
             "name": "car",
             "transform": {
@@ -117,7 +270,52 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": "models/Bigmax_White_OBJ.obj"
+                }
+            ],
             "id": 4,
             "name": "bigmax",
             "transform": {
@@ -146,7 +344,52 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": "models/Suzanne.obj"
+                }
+            ],
             "id": 5,
             "name": "suzanne",
             "transform": {
@@ -175,7 +418,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 6,
             "name": "map block",
             "transform": {
@@ -204,7 +499,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 7,
             "name": "map block",
             "transform": {
@@ -233,7 +580,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 8,
             "name": "map block",
             "transform": {
@@ -262,7 +661,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 9,
             "name": "map block",
             "transform": {
@@ -291,7 +742,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 10,
             "name": "map block",
             "transform": {
@@ -320,7 +823,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 11,
             "name": "map block",
             "transform": {
@@ -349,7 +904,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 12,
             "name": "map block",
             "transform": {
@@ -378,7 +985,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 13,
             "name": "map block",
             "transform": {
@@ -407,7 +1066,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 14,
             "name": "map block",
             "transform": {
@@ -436,7 +1147,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 15,
             "name": "map block",
             "transform": {
@@ -465,7 +1228,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 16,
             "name": "map block",
             "transform": {
@@ -494,7 +1309,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 17,
             "name": "map block",
             "transform": {
@@ -523,7 +1390,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 18,
             "name": "map block",
             "transform": {
@@ -552,7 +1471,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 19,
             "name": "map block",
             "transform": {
@@ -581,7 +1552,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 20,
             "name": "map block",
             "transform": {
@@ -610,7 +1633,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ],
             "id": 21,
             "name": "map block",
             "transform": {
@@ -639,7 +1714,59 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
+                    "radius": 0.25
+                },
+                {
+                    "componentClass": "Component"
+                }
+            ],
             "id": 22,
             "name": "map block",
             "transform": {
@@ -668,7 +1795,50 @@
             }
         },
         {
-            "components": [],
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": null,
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            0.5,
+                            0.0,
+                            0.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    ],
+                    "sourceFile": ""
+                }
+            ],
             "id": 23,
             "name": "",
             "transform": {

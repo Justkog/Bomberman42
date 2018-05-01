@@ -4,8 +4,6 @@
 #include "Core/Core.hpp"
 #include "Component.hpp"
 #include "IRender.hpp"
-// #include "../Graphics/Mesh.hpp"
-// #include "../Graphics/AMaterial.hpp"
 
 namespace BeerEngine
 {
@@ -30,7 +28,9 @@ namespace BeerEngine
 			virtual void    render(void);
 
 			nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
 
+			REGISTER_COMPONENT_HPP
 		};
 	}
 }

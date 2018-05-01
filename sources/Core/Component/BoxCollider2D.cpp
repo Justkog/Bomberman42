@@ -107,5 +107,12 @@ namespace BeerEngine
 				{"size", _size},
 			};
 		}
+
+		void BoxCollider2D::deserialize(const nlohmann::json & j)
+		{
+			this->_size = j.at("size");
+		}
+
+		REGISTER_COMPONENT_CPP(BoxCollider2D)
 	}
 }

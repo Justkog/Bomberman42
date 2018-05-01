@@ -1,4 +1,5 @@
 #include "Game/Components/Settings.hpp"
+#include "Core/IO/FileUtils.hpp"
 
 // STATIC ########################################################
 
@@ -89,6 +90,13 @@ nlohmann::json	Game::Component::Settings::serialize()
 		{"filePath", filePath},
 	};
 }
+
+void Game::Component::Settings::deserialize(const nlohmann::json & j)
+{
+	
+}
+
+REGISTER_COMPONENT_CPP(Game::Component::Settings)
 
 // ###############################################################
 

@@ -25,8 +25,9 @@ namespace glm
 namespace BeerEngine
 {
     void to_json(nlohmann::json& j, JsonSerializable & item);
-    void from_json(const nlohmann::json& j, JsonDeserializable & item);
+    // void from_json(const nlohmann::json& j, JsonDeserializable & item);
     void to_json(nlohmann::json& j, JsonSerializable * item);
-    void from_json(const nlohmann::json& j, JsonDeserializable * item);
+    // void from_json(const nlohmann::json& j, JsonDeserializable * item);
 }
+
 #endif

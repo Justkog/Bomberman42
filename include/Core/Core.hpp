@@ -57,4 +57,15 @@ namespace BeerEngine
 	}
 }
 
+#define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
+							static 	int componentRegisterer;
+
+#define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
+		{\
+			Component::typeToComponent[typeid(Class).name()] = &Component::createInstance<Class>;\
+			return (1);\
+		}\
+		\
+		int Class::componentRegisterer = Class::RegisterComponentType();
+
 #endif

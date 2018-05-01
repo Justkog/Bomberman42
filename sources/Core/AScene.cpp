@@ -141,7 +141,6 @@ namespace BeerEngine
         for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
             auto goJson = it.value();
             auto go = GameObject::Deserialize(goJson);
-            // std::cout << "go has id : " << go->getID() << " and name : " << go->name << "\n";
             this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
             go->start();
         }

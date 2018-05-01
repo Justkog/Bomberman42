@@ -22,9 +22,12 @@ namespace BeerEngine
 			void response_AABB2D(BoxCollider2D *other, glm::vec2 &thisPos, glm::vec2 &otherPos);
 			void response_AABB2D(CircleCollider *other, glm::vec2 &nearest, glm::vec2 &otherPos);
 
-			virtual nlohmann::json	serialize();
-
 			glm::vec2	_size;
+
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 	}
 }

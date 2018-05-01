@@ -67,7 +67,7 @@ namespace glm
         {
             for (int col = 0; col < 4; col++)
             {
-                item[row][col] = j.at(col + row * 4);
+                item[row][col] = j.at(row).at(row);
             }
         }
     }
@@ -79,9 +79,9 @@ namespace BeerEngine
         j = item.serialize();
     }
 
-    void from_json(const nlohmann::json& j, JsonDeserializable & item) {
-        item.deserialize(j);
-    }
+    // void from_json(const nlohmann::json& j, JsonDeserializable & item) {
+    //     item.deserialize(j);
+    // }
 
     void to_json(nlohmann::json& j, JsonSerializable * item) {
         if (item)
@@ -90,15 +90,7 @@ namespace BeerEngine
             j = nlohmann::json {};
     }
 
-    void from_json(const nlohmann::json& j, JsonDeserializable * item) {
-        item->deserialize(j);
-    }
-
-    void from_json(const nlohmann::json& j, GameObject & item) {
-        item.deserialize(j);
-    }
-
-    void from_json(const nlohmann::json& j, GameObject * item) {
-        item->deserialize(j);
-    }
+    // void from_json(const nlohmann::json& j, JsonDeserializable * item) {
+    //     item->deserialize(j);
+    // }
 }

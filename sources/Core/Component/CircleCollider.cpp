@@ -2,6 +2,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Json/Json.hpp"
+#include "Core/Component/Component.hpp"
 
 namespace BeerEngine
 {
@@ -63,5 +64,12 @@ namespace BeerEngine
 				{"radius", _radius},
 			};
 		}
+
+		void CircleCollider::deserialize(const nlohmann::json & j)
+		{
+			this->_radius = j.at("radius");
+		}
+
+		REGISTER_COMPONENT_CPP(CircleCollider)
 	}
 }

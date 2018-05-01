@@ -117,7 +117,8 @@ namespace BeerEngine
 		go->transform = Transform::Deserialize(j.at("transform"));
 		auto components = j.at("components");
         for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
-			std::cout << it.value() << "\n";
+			auto comp = Component::Component::Deserialize(it.value(), go);
+			go->_components.push_back(comp);
 		}
 		return go;
     }
