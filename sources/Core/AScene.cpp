@@ -105,6 +105,16 @@ namespace BeerEngine
         }
     }
 
+    void    AScene::renderUI(struct nk_context *ctx)
+    {
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->renderUI(ctx);
+            (it->second)->componentRenderUI(ctx);
+        }
+    }
+
     void    AScene::physicUpdate(void)
     {
         std::map<int, GameObject *>::iterator it;

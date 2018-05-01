@@ -2,6 +2,7 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
+#include "Core/Component/IUI.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Core/Transform.hpp"
@@ -42,6 +43,7 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
+    void    GameObject::renderUI(struct nk_context *ctx) {}
 
 	void    GameObject::destroy(GameObject *go)
     {
@@ -104,6 +106,15 @@ namespace BeerEngine
 		{
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
+		}
+	}
+
+	void    GameObject::componentRenderUI(struct nk_context *ctx)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (Component::IUI *r = dynamic_cast<Component::IUI*>(c))
+				r->renderUI(ctx);
 		}
 	}
 

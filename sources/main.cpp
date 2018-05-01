@@ -103,10 +103,11 @@ int main(void)
     while (!window->isClose())
     {
         window->update();
+        scene = BeerEngine::SceneManager::GetCurrent();
         nk_glfw3_new_frame();
 
 
-        if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 220), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
+        if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
         {
             std::stringstream ss;
             ss << "FPS: " << FPS << " / UPS: " << UPS;
@@ -114,6 +115,13 @@ int main(void)
             nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
         }    
         nk_end(ctx);
+
+        if (scene != nullptr)
+        {
+            scene->mutexLock(true);
+            scene->renderUI(ctx);
+            scene->mutexLock(false);
+        }
 
         // Draw
         glEnable(GL_DEPTH_TEST);
@@ -123,7 +131,6 @@ int main(void)
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         window->clear();
-        scene = BeerEngine::SceneManager::GetCurrent();
         if (scene != nullptr)
         {
             scene->mutexLock(true);

@@ -33,6 +33,7 @@ namespace BeerEngine
         virtual void    update(void);
         virtual void    renderUpdate(void);
         virtual void    render(void);
+        virtual void    renderUI(struct nk_context *ctx);
 
 		void    destroy(GameObject *go);
 
@@ -73,6 +74,7 @@ namespace BeerEngine
         void    componentRenderUpdate(void);
         void    componentRender(void);
         void    componentPhysicUpdate(void);
+        void    componentRenderUI(struct nk_context *ctx);
 
 		std::vector<Component::Component *> GetComponents(void);
 

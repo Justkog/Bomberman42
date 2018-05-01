@@ -11,6 +11,7 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
+#include "Core/Component/IUI.hpp"
 
 namespace Game
 {
@@ -20,7 +21,8 @@ namespace Game
 
 		class Player : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
-						public BeerEngine::Component::IUpdate
+						public BeerEngine::Component::IUpdate,
+						public BeerEngine::Component::IUI
 		{
 		protected:
 			BeerEngine::Transform	&_transform;
@@ -32,6 +34,7 @@ namespace Game
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
+			virtual void    renderUI(struct nk_context *ctx);
        		// virtual void    onTriggerStay(BeerEngine::Component::ACollider *other);
        		// virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onTriggerExit(BeerEngine::Component::ACollider *other);
