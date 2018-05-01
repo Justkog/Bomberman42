@@ -2,6 +2,7 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
+#include "Core/Component/IRenderAlpha.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
@@ -83,6 +84,8 @@ namespace BeerEngine
 		{
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->renderUpdate();
+			else if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
+				r->renderUpdate();
 		}
 	}
 
@@ -91,6 +94,14 @@ namespace BeerEngine
 		for (Component::Component *c : _components)
 		{
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
+				r->render();
+		}
+	}
+	void    GameObject::componentRenderAlpha(void)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->render();
 		}
 	}

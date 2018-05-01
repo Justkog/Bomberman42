@@ -10,7 +10,6 @@
 #include "Graphics/ShaderProgram.hpp"
 #include "Graphics/Graphics.hpp"
 #include "Graphics/Texture.hpp"
-#include "Graphics/Particles.hpp"
 #include "IO/FileUtils.hpp"
 #include "Transform.hpp"
 #include "Input.hpp"

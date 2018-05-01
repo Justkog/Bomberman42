@@ -1,10 +1,10 @@
 #include "Game/SceneTest.hpp"
-#include "Core/Graphics/Particles.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Core/Component/RigidBody2D.hpp"
+#include "Core/Component/ParticleBase.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
@@ -121,6 +121,8 @@ void    SceneTest::init(void)
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerRB2D->kinematic = false;
 	// playerColl->_kinematic = false;
+	auto playerParticule = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
+	playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 //
  // test obj old
 
@@ -285,14 +287,6 @@ void    SceneTest::init(void)
 	mapMeshRenderer->setMaterial(material);
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
-
-
-	// Particule -1 0.5 10
-	BeerEngine::Graphics::ParticlesSystem *particles;
-	particles = instantiate<BeerEngine::Graphics::ParticlesSystem>();
-	particles->setTexture( Assets::GetTexture("assets/textures/ParticleAtlas.png")); // textures/ParticleAtlas.png
-	particles->transform.position = glm::vec3(0, 0.5, 0);
-	particles->transform.parent =  &(playerGO->transform);
 	// particles->transform.rotation = glm::vec3(0, 1.14f, 0);
 	// meshRenderer->setMaterial(materialA);
 	// gameObject->transform.position = glm::vec3(-1, 0, 4);

@@ -1,19 +1,17 @@
-#ifndef BE_CORE_GRAPHICS_PARTICLESSYSTEM_HPP
-#define BE_CORE_GRAPHICS_PARTICLESSYSTEM_HPP 1
+#ifndef BE_CORE_COMPONENT_PARTICLEBASE_HPP
+#define BE_CORE_COMPONENT_PARTICLEBASE_HPP 1
 
-#include "../Core.hpp"
-#include "../GameObject.hpp"
-#include "Texture.hpp"
-#include <vector>
+#include "Core/Core.hpp"
+#include "Core/Component/Component.hpp"
+#include "Core/Component/IUpdate.hpp"
+#include "Core/Component/IRenderAlpha.hpp"
 
 #define BE_PARTICLESSYSTEM_MAX 30000
 
 namespace BeerEngine
 {
-	namespace Graphics
+	namespace Component
 	{
-		class Mesh;
-
 		struct Particle {
 			glm::vec3 position;
 			glm::vec3 velocity;
@@ -32,16 +30,16 @@ namespace BeerEngine
 			{}
 		};
 
-		class ParticlesSystem : public GameObject
+		class ParticleBase : public Component, public IUpdate, public IRenderAlpha
 		{
-		private:
-			Mesh					*_mesh;
+		protected:
+			Graphics::Mesh			*_mesh;
 			std::vector<Particle>	_particles;
 			glm::vec3				*_particlePositionBuffer;
 			glm::vec2				*_particleUVBuffer;
 			glm::vec4				*_particleColorBuffer;
 			int						_particleCount;
-			Texture					*texture;
+			Graphics::Texture		*_texture;
 
 			GLint	_projectionShaderID;
 			GLint	_viewShaderID;
@@ -49,17 +47,16 @@ namespace BeerEngine
 			GLint	_spriteID;
 			
 			void	addParticle(void);
-		
 		public:
-			ParticlesSystem(int uniqueID, AScene &scene);
-			virtual ~ParticlesSystem();
+			ParticleBase(GameObject *gameObject);
+			virtual ~ParticleBase();
 
-			void	start(void);
 			void    fixedUpdate(void);
         	void    update(void);
         	void    renderUpdate(void);
         	void    render(void);
-			void	setTexture(Texture *t);
+			void	setTexture(Graphics::Texture *t);
+
 		};
 	}
 }

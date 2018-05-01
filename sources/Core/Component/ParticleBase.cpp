@@ -1,28 +1,24 @@
-#include <algorithm>
-#include "Core/Graphics/Particles.hpp"
-#include "Core/Graphics/Mesh.hpp"
+#include "Core/Component/ParticleBase.hpp"
 #include "Core/GameObject.hpp"
-#include "Core/AScene.hpp"
-#include "Core/Graphics/Graphics.hpp"
-#include "Core/Window.hpp"
-#include "Core/Camera.hpp"
 #include "Core/Time.hpp"
-
+#include "Core/Camera.hpp"
+#include "Core/Window.hpp"
+#include "Core/Graphics/Graphics.hpp"
 
 namespace BeerEngine
 {
-	namespace Graphics
+	namespace Component
 	{
-		ParticlesSystem::ParticlesSystem(int uniqueID, AScene &scene) :
-			GameObject(uniqueID, scene),
+		ParticleBase::ParticleBase(GameObject *gameObject) :
+			Component(gameObject),
 			_mesh(nullptr),
 			_particles()
 		{
-			texture = Graphics::whiteTexture;
+			_texture = Graphics::Graphics::whiteTexture;
 			_particlePositionBuffer = new glm::vec3[BE_PARTICLESSYSTEM_MAX];
 			_particleUVBuffer = new glm::vec2[BE_PARTICLESSYSTEM_MAX];
 			_particleColorBuffer = new glm::vec4[BE_PARTICLESSYSTEM_MAX];
-			_mesh = new Mesh(5);
+			_mesh = new Graphics::Mesh(5);
 			const glm::vec3 vertPos[] = {
 				glm::vec3(-0.5, -0.5, 0.0),
 				glm::vec3(0.5, -0.5, 0.0),
@@ -47,14 +43,14 @@ namespace BeerEngine
 			_mesh->add(4, GL_FLOAT, 4, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
 			_mesh->setSize(6);
 			_particleCount = 0;
-			Graphics::particleShader->bind();
-			_projectionShaderID = Graphics::particleShader->getUniformLocation("projection");
-			_viewShaderID = Graphics::particleShader->getUniformLocation("view");
-			_modelShaderID = Graphics::particleShader->getUniformLocation("model");
-			_spriteID = Graphics::particleShader->getUniformLocation("sprite");
+			Graphics::Graphics::particleShader->bind();
+			_projectionShaderID = Graphics::Graphics::particleShader->getUniformLocation("projection");
+			_viewShaderID = Graphics::Graphics::particleShader->getUniformLocation("view");
+			_modelShaderID = Graphics::Graphics::particleShader->getUniformLocation("model");
+			_spriteID = Graphics::Graphics::particleShader->getUniformLocation("sprite");
 		}
 
-		ParticlesSystem::~ParticlesSystem()
+		ParticleBase::~ParticleBase()
 		{
 			_particles.clear();
 			delete _particlePositionBuffer;
@@ -62,11 +58,8 @@ namespace BeerEngine
 			delete _particleColorBuffer;
 			delete _mesh;
 		}
-		
-		void	ParticlesSystem::start(void)
-		{}
 
-		void	ParticlesSystem::addParticle(void)
+		void	ParticleBase::addParticle(void)
 		{
 			if (_particles.size() + 1 >= BE_PARTICLESSYSTEM_MAX)
 					return ;
@@ -74,29 +67,30 @@ namespace BeerEngine
 			float rx = (2.0 * ((float)rand() / RAND_MAX)) + -1;
 			float rz = (0.2 * ((float)rand() / RAND_MAX)) + 1.9f;
 			int id = _particles.size() - 1;
-			_particles[id].position = transform.getWorldPosition();
-			_particles[id].velocity = transform.getWorldRotate(glm::vec3(rx, 9.81f, rz));
+			_particles[id].life = 6.4f;
+			_particles[id].position = _gameObject->transform.getWorldPosition();
+			_particles[id].velocity = _gameObject->transform.getWorldRotate(glm::vec3(rx, 9.81f, rz));
 			_particles[id].lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
 		}
 
-		void    ParticlesSystem::fixedUpdate(void)
+		void    ParticleBase::fixedUpdate(void)
 		{
 			// for (int i = 0; i < 10; i++)
 				addParticle();
 			// std::cout << _particles.size() << std::endl;
 		}
 
-		void    ParticlesSystem::update(void)
+		void    ParticleBase::update(void)
 		{
 			float delta = Time::GetDeltaTime();
 			int i = 0;
 			while (i < _particles.size())
 			{
-				_particles[i].life += delta;
-				if (_particles[i].life <= 6.4)
+				_particles[i].life -= delta;
+				if (_particles[i].life > 0.0f)
 				{
 					_particles[i].lifeAnim += _particles[i].lifeAnimSpeed * delta;
-					_particles[i].velocity += transform.getWorldRotate(glm::vec3(0.0f, -9.81f, 0.0f)) * delta;
+					_particles[i].velocity += _gameObject->transform.getWorldRotate(glm::vec3(0.0f, -9.81f, 0.0f)) * delta;
 					_particles[i].position += _particles[i].velocity * delta;
 					i++;
 				}
@@ -105,7 +99,7 @@ namespace BeerEngine
 			}
 		}
 
-		void    ParticlesSystem::renderUpdate(void)
+		void    ParticleBase::renderUpdate(void)
 		{
 			_particleCount = 0;
 			for (int i = 0; i < _particles.size(); i++)
@@ -123,7 +117,7 @@ namespace BeerEngine
 			_mesh->setSize(6);
 		}
 
-		void    ParticlesSystem::render(void)
+		void    ParticleBase::render(void)
 		{
 			static int	divisor[] {
 				0, 0, 1, 1, 1
@@ -131,24 +125,24 @@ namespace BeerEngine
 			glEnable(GL_ALPHA_TEST);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			glDepthMask(GL_FALSE);
-			Graphics::particleShader->bind();
-			Graphics::particleShader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
+			Graphics::Graphics::particleShader->bind();
+			Graphics::Graphics::particleShader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
 			glm::mat4 view = Camera::main->transform.getMat4(true);
-			Graphics::particleShader->uniformMat(_viewShaderID, view);
-			glm::mat4 model = transform.getMat4();
-			Graphics::particleShader->uniformMat(_modelShaderID, model);
-			Graphics::particleShader->uniform1i(_spriteID, 0);
+			Graphics::Graphics::particleShader->uniformMat(_viewShaderID, view);
+			glm::mat4 model = _gameObject->transform.getMat4();
+			Graphics::Graphics::particleShader->uniformMat(_modelShaderID, model);
+			Graphics::Graphics::particleShader->uniform1i(_spriteID, 0);
 			glActiveTexture(GL_TEXTURE0);
-			texture->bind();
+			_texture->bind();
 			_mesh->render(GL_TRIANGLES, true, _particleCount, (int *)divisor, 5);
 			glDepthMask(GL_TRUE);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		}
 
 
-		void	ParticlesSystem::setTexture(Texture *t)
+		void	ParticleBase::setTexture(Graphics::Texture *t)
 		{
-			texture = t;
+			_texture = t;
 		}
 	}
 }

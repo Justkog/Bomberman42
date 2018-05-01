@@ -73,6 +73,7 @@ namespace BeerEngine
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
         void    componentRender(void);
+        void    componentRenderAlpha(void);
         void    componentPhysicUpdate(void);
         void    componentRenderUI(struct nk_context *ctx);
 
