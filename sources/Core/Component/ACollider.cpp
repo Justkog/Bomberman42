@@ -8,6 +8,7 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
+#include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
 
 namespace BeerEngine
@@ -20,16 +21,35 @@ namespace BeerEngine
 			Component(gameObject),
 			_transform(gameObject->transform),
 			_offset(glm::vec2(0, 0)),
-			_isTrigger(false),
-			_kinematic(true)
+			_isTrigger(false)
 		{
-			_id = _colliders.size();
 			_colliders.push_back(this);
+		}
+
+		ACollider::~ACollider()
+		{
+			auto it = std::find(_colliders.begin(), _colliders.end(), this);
+			if (it != _colliders.end())
+				_colliders.erase(it);
+			for (ACollider *other : _currentCollisions)
+			{
+				if ((it = std::find(other->_currentCollisions.begin(), other->_currentCollisions.end(), this)) != other->_currentCollisions.end())
+				{
+					other->_currentCollisions.erase(it);
+				}
+			}
+		}
+
+		void    ACollider::start(void)
+		{
+			rb2d = _gameObject->GetComponent<RigidBody2D>();
 		}
 
 		void    ACollider::physicUpdate(void)
 		{
-			for (int i = _id + 1; i < _colliders.size(); i++)
+			auto it = std::find(_colliders.begin(), _colliders.end(), this);
+			++it;
+			for (int i = it - _colliders.begin(); i < _colliders.size(); i++)
 			{
 				auto other = _colliders[i];
 				if (checkCollision(other))
@@ -47,6 +67,7 @@ namespace BeerEngine
 					if (c == _currentCollisions.end())
 					{
 						_currentCollisions.push_back(other);
+						other->_currentCollisions.push_back(this);
 						if (_isTrigger)
 							triggerEnter(other);
 						else
@@ -63,6 +84,8 @@ namespace BeerEngine
 					if (c != _currentCollisions.end())
 					{
 						_currentCollisions.erase(c);
+						if ((c = std::find(other->_currentCollisions.begin(), other->_currentCollisions.end(), this)) != other->_currentCollisions.end())
+							other->_currentCollisions.erase(c);
 						if (_isTrigger)
 							triggerExit(other);
 						else
@@ -91,8 +114,6 @@ namespace BeerEngine
 		void ACollider::triggerEnter(ACollider *other)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
-			for (Component *c : GOcomponents)
-
 			for (Component *c : GOcomponents)
 			{
 				if (auto r = dynamic_cast<BeerEngine::Component::ITriggerEnter *>(c))
@@ -147,6 +168,41 @@ namespace BeerEngine
 				{
 					r->onColliderExit(other);
 				}
+			}
+		}
+
+		bool ACollider::isKinematic(void)
+		{
+			if (rb2d != nullptr)
+				return (rb2d->kinematic);
+			return (true);
+		}
+
+		void ACollider::response(ACollider *other, glm::vec3 move)
+		{
+			if (other->isKinematic() && !isKinematic())
+			{
+				_transform.translate(move);
+				if (move[0] != 0)
+					rb2d->velocity[0] = 0.0f;
+				else
+					rb2d->velocity[1] = 0.0f;
+			}
+			else if (!other->isKinematic() && isKinematic())
+			{
+				other->_transform.translate(-move);
+				if (move[0] != 0)
+					other->rb2d->velocity[0] = 0.0f;
+				else
+					other->rb2d->velocity[1] = 0.0f;
+			}
+			else if (!other->isKinematic() && !isKinematic())
+			{
+				float totalMass = other->rb2d->mass + rb2d->mass;
+				float a = rb2d->mass / totalMass;
+				float b = other->rb2d->mass / totalMass;
+				_transform.translate(move * b);
+				other->_transform.translate(-move * a);
 			}
 		}
 	}

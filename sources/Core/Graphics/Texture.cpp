@@ -1,5 +1,8 @@
 #include "Core/Graphics/Texture.hpp"
 #include "Core/Json/Json.hpp"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+#include "Game/Assets.hpp"
 
 namespace BeerEngine
 {
@@ -42,11 +45,11 @@ namespace BeerEngine
 
 			FILE *file = fopen(path, "rb");
 			if (!file)
-				throw std::logic_error("[Texture BMP] Image could not be opened\n");
+				throw std::logic_error(std::string("[Texture BMP] Image could not be opened\n ") + path);
 			if (fread(header, 1, 54, file) != 54)
-				throw std::logic_error("[Texture BMP] Not a correct BMP file\n");
+				throw std::logic_error(std::string("[Texture BMP] Not a correct BMP file\n ") + path);
 			if (header[0] != 'B' || header[1] != 'M')
-				throw std::logic_error("[Texture BMP] Not a correct BMP file\n");
+				throw std::logic_error(std::string("[Texture BMP] Not a correct BMP file\n ") + path);
 			dataPos = *(int*)&(header[0x0A]);
 			imageSize = *(int*)&(header[0x22]);
 			width = *(int*)&(header[0x12]);
@@ -59,7 +62,9 @@ namespace BeerEngine
 			data = new unsigned char [imageSize];
 			fread(data, 1, imageSize, file);
 			fclose(file);
-			return (new Texture(width, height, data, format));
+			auto texture = new Texture(width, height, data, format);
+			texture->_sourceFile = path;
+			return (texture);
 		}
 
 		Texture		*Texture::LoadPNG(const char *path)
@@ -70,22 +75,22 @@ namespace BeerEngine
 			int color_type, interlace_type;
 			FILE *fp;
 			if ((fp = fopen(path, "rb")) == NULL)
-				throw std::logic_error("[Texture PNG] File could not be opened for reading");
+				throw std::logic_error(std::string("[Texture PNG] File could not be opened for reading ") + path);
 			png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 			if (png_ptr == NULL) {
 				fclose(fp);
-				throw std::logic_error("[Texture PNG] File doesn't valid!");
+				throw std::logic_error(std::string("[Texture PNG] File doesn't valid! ") + path);
 			}
 			info_ptr = png_create_info_struct(png_ptr);
 			if (info_ptr == NULL) {
 				fclose(fp);
 				png_destroy_read_struct(&png_ptr, NULL, NULL);
-				throw std::logic_error("[Texture PNG] File doesn't valid!");
+				throw std::logic_error(std::string("[Texture PNG] File doesn't valid! ") + path);
 			}
 			if (setjmp(png_jmpbuf(png_ptr))) {
 				png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 				fclose(fp);
-				throw std::logic_error("[Texture PNG] File doesn't valid!");
+				throw std::logic_error(std::string("[Texture PNG] File doesn't valid! ") + path);
 			}
 			png_init_io(png_ptr, fp);
 			png_set_sig_bytes(png_ptr, sig_read);
@@ -102,6 +107,36 @@ namespace BeerEngine
 			png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 			fclose(fp);
 			auto texture = new Texture(width, height, outData, (color_type == PNG_COLOR_TYPE_RGBA) ? GL_RGBA : GL_RGB);
+			texture->_sourceFile = path;
+			return (texture);
+		}
+
+		Texture		*Texture::LoadJPG(const char *path)
+		{
+			int	width;
+			int	height;
+			int	n;
+			unsigned char	*data;
+
+			data = stbi_load(path, &width, &height, &n, 4);
+			if (!data)
+				std::logic_error(std::string("[Texture JPG] File could not be load ") + path);
+			auto texture = new Texture(width, height, data, GL_RGBA);
+			texture->_sourceFile = path;
+			return (texture);
+		}
+
+		Texture		*Texture::LoadTGA(const char *path)
+		{
+			int	width;
+			int	height;
+			int	n;
+			unsigned char	*data;
+
+			data = stbi_load(path, &width, &height, &n, 4);
+			if (!data)
+				std::logic_error(std::string("[Texture JPG] File could not be load ") + path);
+			auto texture = new Texture(width, height, data, GL_RGBA);
 			texture->_sourceFile = path;
 			return (texture);
 		}
@@ -128,7 +163,10 @@ namespace BeerEngine
 				return NULL;
 			std::string path = j.at("sourceFile");
 			if (path != "")
-				return (Texture::LoadPNG(path.c_str()));
+			{
+				std::cout << "getting texture at " << path << "\n";
+				return (Assets::GetTexture(path));
+			}
 			else
 				return NULL;
 		}

@@ -16,18 +16,15 @@ namespace Game
 {
 	namespace Component
 	{
-		class Player : public BeerEngine::Component::Component, 
+		class Character;
+
+		class Player : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
-						public BeerEngine::Component::IUpdate, 
-						public BeerEngine::Component::ITriggerStay,
-						public BeerEngine::Component::ITriggerEnter,
-						public BeerEngine::Component::ITriggerExit, 
-						public BeerEngine::Component::IColliderStay,
-						public BeerEngine::Component::IColliderEnter,
-						public BeerEngine::Component::IColliderExit
+						public BeerEngine::Component::IUpdate
 		{
 		protected:
-			BeerEngine::Transform	*_transform;
+			BeerEngine::Transform	&_transform;
+			Game::Component::Character *_character;
 
 		public:
             Player(BeerEngine::GameObject *gameObject);
@@ -35,12 +32,12 @@ namespace Game
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
-       		virtual void    onTriggerStay(BeerEngine::Component::ACollider *other);
-       		virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);
-       		virtual void    onTriggerExit(BeerEngine::Component::ACollider *other);
-       		virtual void    onColliderStay(BeerEngine::Component::ACollider *other);
-       		virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
-       		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
+       		// virtual void    onTriggerStay(BeerEngine::Component::ACollider *other);
+       		// virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);
+       		// virtual void    onTriggerExit(BeerEngine::Component::ACollider *other);
+       		// virtual void    onColliderStay(BeerEngine::Component::ACollider *other);
+       		// virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
+       		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);

@@ -28,10 +28,15 @@ namespace BeerEngine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
+	void            Window::update(void)
+	{
+		BeerEngine::Input::Update();
+		glfwPollEvents();
+	}
+
 	void            Window::swapBuffer(void)
 	{
 		glfwSwapBuffers(_window);
-		glfwPollEvents();
 	}
 
 	GLFWwindow      *Window::getWindow(void)
@@ -95,9 +100,15 @@ namespace BeerEngine
 
 	static void     win_cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 	{
+		static float lastXpos = xpos;
+		static float lastYpos = ypos;
 		(void)window;
 		BeerEngine::Input::mousePosition[0] = xpos;
 		BeerEngine::Input::mousePosition[1] = ypos;
+		BeerEngine::Input::SetAxis("Mouse X", xpos - lastXpos);
+		BeerEngine::Input::SetAxis("Mouse Y", ypos - lastYpos);
+		lastXpos = xpos;
+		lastYpos = ypos;
 	}
 
 	static void     win_mouse_button_callback(GLFWwindow* window, int button, int action, int mods)

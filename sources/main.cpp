@@ -1,12 +1,26 @@
 #include <thread>
 #include <chrono>
 #include "Core/BeerEngine.hpp"
-
 #include "Game/SceneTest.hpp"
+#include "Game/Assets.hpp"
+
+
+#define NK_INCLUDE_FIXED_TYPES
+#define NK_INCLUDE_STANDARD_IO
+#define NK_INCLUDE_STANDARD_VARARGS
+#define NK_INCLUDE_DEFAULT_ALLOCATOR
+#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
+#define NK_INCLUDE_FONT_BAKING
+#define NK_INCLUDE_DEFAULT_FONT
+#define NK_IMPLEMENTATION
+#define NK_GLFW_GL3_IMPLEMENTATION
+#include <nuklear.h>
+#include <nuklear_glfw_gl3.h>
+
+#define MAX_VERTEX_BUFFER 512 * 1024
+#define MAX_ELEMENT_BUFFER 128 * 1024
 
 static int     frameCount = 0;
-
-
 
 void updateThread(BeerEngine::Window *window)
 {
@@ -41,6 +55,7 @@ void updateThread(BeerEngine::Window *window)
         {
             scene->mutexLock(true);
             scene->update();
+            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
 
@@ -62,85 +77,66 @@ void updateThread(BeerEngine::Window *window)
 
 int main(void)
 {
-    // std::srand(std::time(nullptr));
-    // // Audio
-    // BeerEngine::Audio::AudioListener::init();
-    // BeerEngine::Audio::AudioListener audio;
-
-    // audio.setListenerData(0, 0, 0);
-    // alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
-    // BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
-    // // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
-
-    // BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-    // // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
-
-    // srcAudio.setVolume(1);
-    // srcAudio.setPitch(1);
-    // // srcAudio2.setPitch(2);
-    // srcAudio.setLooping(true);
-    // srcAudio.play();
-    // float x = 0;
-    // srcAudio.setPosition(x, 0, 0);
-    //
-    // char c = ' ';
-    // while (c != 'q')
-    // {
-    //     std::cin >> c;
-    //     if (c == 'p')
-    //     {
-    //         x += 1;
-    //         // if (srcAudio.isPlaying())
-    //         //     srcAudio.pause();
-    //         // else
-    //         //     srcAudio.continuePlaying();
-    //     }
-    //     // x -= 0.03f;
-    //     // std::cout << x << std::endl;
-    //     if (c == 'o')
-    //         // srcAudio2.play();
-    //         x -= 1;
-    //
-    //     std::cout << x << std::endl;
-    //     srcAudio.setPosition(x, 0, 0);
-    // }
-
-
+    std::srand(std::time(nullptr));
     BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", 1280, 720);
     BeerEngine::AScene  *scene;
+    // Nukclear
+    struct nk_context *ctx;
+    ctx = nk_glfw3_init(window->getWindow(), NK_GLFW3_INSTALL_CALLBACKS);
+    struct nk_font_atlas *atlas;
+    nk_glfw3_font_stash_begin(&atlas);
+
+    nk_glfw3_font_stash_end();
+
+    // Audio
+    BeerEngine::Audio::AudioListener::init();
+    // Graphics
     BeerEngine::Graphics::Graphics::Load();
+    // Game Assets
+    Assets::GetInstance()->load();
+    // First Scene
     BeerEngine::SceneManager::LoadScene<SceneTest>();
     // Thread Update
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
-    // depth-testing
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
     // Blend Alpha
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // CullFace
-    glCullFace(GL_BACK);
+    // glCullFace(GL_FRONT);
     glEnable(GL_CULL_FACE);
     // FPS
     while (!window->isClose())
     {
-       window->clear();
-       scene = BeerEngine::SceneManager::GetCurrent();
-       if (scene != nullptr)
-       {
-           scene->mutexLock(true);
-           scene->renderUpdate();
-           scene->render();
-           scene->mutexLock(false);
-       }
-       window->swapBuffer();
-       frameCount++;
+        window->update();
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS);
+        window->clear();
+        scene = BeerEngine::SceneManager::GetCurrent();
+        if (scene != nullptr)
+        {
+            scene->mutexLock(true);
+            scene->renderUpdate();
+            scene->render();
+            scene->mutexLock(false);
+        }
+        glDisable(GL_DEPTH_TEST);
+        nk_glfw3_new_frame();
+        if (nk_begin(ctx, "Nuklear", nk_rect(1280/2 - 110, 720/2 - 110, 220, 220), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
+        {
+            nk_layout_row_dynamic(ctx, 20, 1);
+            nk_label(ctx, "Hello", NK_TEXT_LEFT);
+        }    
+        nk_end(ctx);
+
+        nk_glfw3_render(NK_ANTI_ALIASING_ON, MAX_VERTEX_BUFFER, MAX_ELEMENT_BUFFER);
+        window->swapBuffer();
+        frameCount++;
     }
-    // srcAudio.Delete();
-    // srcAudio2.Delete();
     BeerEngine::Audio::AudioListener::DestroyOpenAL();
     delete BeerEngine::Camera::main;
+    Assets::GetInstance()->unload();
+    delete Assets::GetInstance();
     BeerEngine::Graphics::Graphics::UnLoad();
     delete window;
     return (0);

@@ -5,12 +5,15 @@
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Core/Transform.hpp"
+#include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
+#include "Core/AScene.hpp"
 
 namespace BeerEngine
 {
-    GameObject::GameObject(int uniqueID) :
-		_uniqueID(uniqueID)
+    GameObject::GameObject(int uniqueID, AScene &scene) :
+		_uniqueID(uniqueID),
+		_scene(scene)
 	{
 	}
 
@@ -21,6 +24,7 @@ namespace BeerEngine
 		{
 			delete c;
 		}
+		_components.clear();
 	}
 
 	int		GameObject::getID()
@@ -38,6 +42,11 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
+
+	void    GameObject::destroy(GameObject *go)
+    {
+        _scene.destroy(go);
+    }
 
 	void    GameObject::componentStart(void)
 	{
@@ -88,6 +97,11 @@ namespace BeerEngine
 	{
 		for (Component::Component *c : _components)
 		{
+			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
+				p->physicUpdate();
+		}
+		for (Component::Component *c : _components)
+		{
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}
@@ -109,10 +123,10 @@ namespace BeerEngine
 	// 	this->name = j.at("name");
     // }
 
-	GameObject * GameObject::Deserialize(const nlohmann::json & j)
+	GameObject * GameObject::Deserialize(const nlohmann::json & j, AScene &scene)
     {
 		int id = j.at("id");
-		auto go = new GameObject(id);
+		auto go = new GameObject(id, scene);
 		go->name = j.at("name");
 		go->transform = Transform::Deserialize(j.at("transform"));
 		auto components = j.at("components");

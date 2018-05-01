@@ -11,6 +11,7 @@ namespace BeerEngine
     private:
         static int                  uniqueID;
         std::map<int, GameObject *> _gameObjects;
+        std::vector<GameObject *>   _toDestroy;
         std::mutex                  updateMutex;
 
         
@@ -31,15 +32,19 @@ namespace BeerEngine
         void    render(void);
         void    physicUpdate(void);
 
+        void    destroy(GameObject *go);
+        void    destroyGameObjects(void);
+
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
-        {
-            std::cout << "GameObject added : " << uniqueID << std::endl;
-            T *c = new T(uniqueID++);
-            _gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
+		{
+             std::cout << "GameObject added : " << uniqueID << std::endl;
+			T *c = new T(uniqueID, *this);
+			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             c->start();
-            return (c);
-        }
+            uniqueID++;
+			return (c);
+		}
 
         void debugTest(void);
 

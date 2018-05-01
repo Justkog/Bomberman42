@@ -9,9 +9,9 @@ class SceneTest : public BeerEngine::AScene
 public:
 	void    init(void);
 
-	template<typename T>
+	template <typename T>
 	BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic);
-	
+
 };
 
 #endif

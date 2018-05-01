@@ -17,6 +17,9 @@ namespace BeerEngine
 			_size(glm::vec2(gameObject->transform.scale.x, gameObject->transform.scale.z))
 		{}
 
+		BoxCollider2D::~BoxCollider2D()
+		{}
+
 		bool BoxCollider2D::checkCollision(ACollider *other)
 		{
 			if (other->collide_AABB2D(this))
@@ -72,15 +75,29 @@ namespace BeerEngine
 			else
 				move.z = 0;
 
-			if (other->_kinematic && !_kinematic)
-				_transform.translate(move);
-			else if (!other->_kinematic && _kinematic)
-				other->_transform.translate(-move);
-			else if (!other->_kinematic && !_kinematic)
-			{
-				_transform.translate(move / 2);
-				other->_transform.translate(-move / 2);
-			}
+			// if (rb2d != nullptr)
+			// {
+			// 	rb2d->velocity = glm::vec2(0.0f);
+			// }
+			// if (other->rb2d != nullptr)
+			// {
+			// 	other->rb2d->velocity = glm::vec2(0.0f);
+			// }
+
+			// if (other->isKinematic() && !isKinematic())
+			// {
+			// 	_transform.translate(move);
+			// }
+			// else if (!other->isKinematic() && isKinematic())
+			// {
+			// 	other->_transform.translate(-move);
+			// }
+			// else if (!other->isKinematic() && !isKinematic())
+			// {
+			// 	_transform.translate(move / 2);
+			// 	other->_transform.translate(-move / 2);
+			// }
+			response(other, move);
 		}
 
 		void BoxCollider2D::response_AABB2D(CircleCollider *other, glm::vec2 &nearest, glm::vec2 &otherPos)
@@ -89,15 +106,16 @@ namespace BeerEngine
 			glm::vec3 dir(nearest.x - otherPos.x, 0, nearest.y - otherPos.y);
 			dir = glm::normalize(dir);
 
-			if (other->_kinematic && !_kinematic)
-				_transform.translate(dir * overlap);
-			else if (!other->_kinematic && _kinematic)
-				other->_transform.translate(-dir * overlap);
-			else if (!other->_kinematic && !_kinematic)
-			{
-				_transform.translate(dir * (overlap / 2));
-				other->_transform.translate(-dir * (overlap / 2));
-			}
+			response(other, dir * overlap);
+			// if (other->isKinematic() && !isKinematic())
+			// 	_transform.translate(dir * overlap);
+			// else if (!other->isKinematic() && isKinematic())
+			// 	other->_transform.translate(-dir * overlap);
+			// else if (!other->isKinematic() && !isKinematic())
+			// {
+			// 	_transform.translate(dir * (overlap / 2));
+			// 	other->_transform.translate(-dir * (overlap / 2));
+			// }
 		}
 
 		nlohmann::json	BoxCollider2D::serialize()

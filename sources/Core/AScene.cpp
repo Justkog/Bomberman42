@@ -136,13 +136,35 @@ namespace BeerEngine
 
     void AScene::deserialize(const nlohmann::json & j)
     {
-        std::cout << "deserializing scene" << "\n";
-        auto gameObjects = j.at("gameObjects");
-        for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
-            auto goJson = it.value();
-            auto go = GameObject::Deserialize(goJson);
-            this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
-            go->start();
+		std::cout << "deserializing scene" << "\n";
+		auto gameObjects = j.at("gameObjects");
+		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
+			auto goJson = it.value();
+			auto go = GameObject::Deserialize(goJson, *this);
+			this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
+			go->start();
+		}
+	}
+
+    void    AScene::destroy(GameObject *go)
+    {
+        if(std::find(_toDestroy.begin(), _toDestroy.end(), go) == _toDestroy.end())
+        {
+            _toDestroy.push_back(go);
         }
+    }
+
+    void    AScene::destroyGameObjects(void)
+    {
+        for (GameObject *go : _toDestroy)
+		{
+            std::map<int, GameObject *>::iterator it;
+			if ((it = _gameObjects.find(go->_uniqueID)) != _gameObjects.end())
+            {
+                delete it->second;
+                _gameObjects.erase(it);
+            }
+		}
+        _toDestroy.clear();
     }
 }

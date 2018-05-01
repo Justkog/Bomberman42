@@ -13,6 +13,9 @@ namespace BeerEngine
 			_radius((gameObject->transform.scale.x + gameObject->transform.scale.z) / 4)
 		{}
 
+		CircleCollider::~CircleCollider()
+		{}
+
 		bool CircleCollider::checkCollision(ACollider *other)
 		{
 			if (other->collide_AABB2D(this))
@@ -45,16 +48,17 @@ namespace BeerEngine
 			float overlap = (_radius + other->_radius) - glm::distance(thisPos, otherPos);
 			glm::vec3 dir(thisPos.x - otherPos.x, 0, thisPos.y - otherPos.y);
 			dir = glm::normalize(dir);
-
-			if (other->_kinematic && !_kinematic)
-				_transform.translate(dir * overlap);
-			else if (!other->_kinematic && _kinematic)
-				other->_transform.translate(-dir * overlap);
-			else if (!other->_kinematic && !_kinematic)
-			{
-				_transform.translate(dir * (overlap / 2));
-				other->_transform.translate(-dir * (overlap / 2));
-			}
+			
+			response(other, dir * overlap);
+			// if (other->isKinematic() && !isKinematic())
+			// 	_transform.translate(dir * overlap);
+			// else if (!other->isKinematic() && isKinematic())
+			// 	other->_transform.translate(-dir * overlap);
+			// else if (!other->isKinematic() && !isKinematic())
+			// {
+			// 	_transform.translate(dir * (overlap / 2));
+			// 	other->_transform.translate(-dir * (overlap / 2));
+			// }
 		}
 
 		nlohmann::json	CircleCollider::serialize()

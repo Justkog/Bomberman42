@@ -1,4 +1,4 @@
-CC = g++
+CC = g++ -g
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 MKDIR = /bin/mkdir -p
@@ -27,33 +27,38 @@ SRC = \
 	Core/Transform.cpp \
 	Core/Input.cpp \
 	Core/Camera.cpp \
+	\
 	Core/Component/Component.cpp \
 	Core/Component/MeshRenderer.cpp \
 	Core/Component/ACollider.cpp \
 	Core/Component/BoxCollider2D.cpp \
 	Core/Component/CircleCollider.cpp \
+	Core/Component/RigidBody2D.cpp \
+	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
 	Core/Graphics/Texture.cpp \
+	\
 	Core/IO/FileUtils.cpp \
-	\
-	Game/SceneTest.cpp \
-	\
-	Game/Components/Player.cpp \
-	Game/Components/CameraController.cpp \
-	Game/Components/Settings.cpp \
-	Game/Components/Item.cpp \
 	\
 	Core/Audio/AudioListener.cpp \
 	Core/Audio/AudioSource.cpp \
 	Core/Audio/AudioClip.cpp \
 	\
+	Game/Assets.cpp \
+	Game/SceneTest.cpp \
+	Game/Components/Character.cpp \
+	Game/Components/Player.cpp \
+	Game/Components/CameraController.cpp \
+	Game/Components/Settings.cpp \
+	Game/Components/Item.cpp \
 	Game/CameraTest.cpp
 
-DIR = Core Core/Component Core/Graphics Core/IO Game Core/Audio Game/Components Core/Json
+DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
+	Game Game/Components Core/Json
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
@@ -71,8 +76,11 @@ CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 
 C_FILE = $(addprefix sources/, $(SRC))
 O_FILE = $(addprefix obj/, $(SRC:.cpp=.o))
-D_FILE = $(addprefix dep/, $(SRC:.cpp=.d))
-CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include -I tinyobjloader/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME)))
+D_FILE = $(addprefix obj/, $(SRC:.cpp=.d))
+CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include \
+	-I tinyobjloader/ -I stb/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME))) \
+	-I nuklear/
+
 LIB_DIR = $(addprefix lib, $(LIB_NAME))
 LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))
 .PHONY: all dircreate clean fclean ffclean run ar re req install
@@ -99,31 +107,31 @@ relink:
 
 dircreate:
 	@$(MKDIR) obj $(addprefix obj/, $(DIR))
-	@$(MKDIR) dep $(addprefix dep/, $(DIR))
+
 req: $(O_FILE)
 
-$(NAME): $(O_FILE) $(D_FILE)
+$(NAME): $(O_FILE)
 	$(CC) -o $(@F) $(O_FILE) $(LIBS)
 
 obj/%.o: sources/%.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
-dep/%.d: sources/%.cpp
-	@set -e; rm -f $@; \
-	$(CC) -MM $(CFLAGS) $< > $@.$$$$; \
-		sed 's,\($*\)\.o[ :]*,obj/\1.o $@ : ,g' < $@.$$$$ >> $@; \
-		$(RM) $@.$$$$
+	$(CC) -MMD -o $@ -c $< $(CFLAGS)
+
 clean:
 	$(RM) $(O_FILE)
 	$(RM) $(D_FILE)
+
 fclean: clean
 	$(RM) $(NAME)
 	$(RMDIR) obj
-	$(RMDIR) dep
+
 ffclean: fclean
 	$(addprefix $(MAKE) fclean -C , $(addsuffix ;, $(LIB_DIR)))
+
 run: all
 	./$(NAME)
+
 ar: fclean run
+
 re: fclean all
 
 -include $(D_FILE)

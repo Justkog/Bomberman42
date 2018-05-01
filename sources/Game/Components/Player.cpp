@@ -1,23 +1,22 @@
 #include "Game/Components/Player.hpp"
+#include "Game/Components/Character.hpp"
 #include "Core/Input.hpp"
-#include "Core/Time.hpp"
-#include "Core/GameObject.hpp"
-#include "Core/Component/MeshRenderer.hpp"
-
+#include "Core/Component/RigidBody2D.hpp"
 
 namespace Game
 {
 	namespace Component
 	{
         Player::Player(BeerEngine::GameObject *gameObject) :
-			Component(gameObject)
+			Component(gameObject),
+            _transform(gameObject->transform)
 		{
 
         }
 
         void    Player::start(void)
         {
-            _transform = &(this->_gameObject->transform);
+            _character = _gameObject->GetComponent<Game::Component::Character>();
         }
 
         void    Player::fixedUpdate(void)
@@ -27,38 +26,39 @@ namespace Game
 
         void    Player::update(void)
         {
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
-				this->_transform->translate(this->_transform->forward() * BeerEngine::Time::GetDeltaTime());
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
-				this->_transform->translate(-this->_transform->forward() * BeerEngine::Time::GetDeltaTime());
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
-				this->_transform->translate(-this->_transform->right() * BeerEngine::Time::GetDeltaTime());
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
-				this->_transform->translate(-this->_transform->left() * BeerEngine::Time::GetDeltaTime());
-        }
+            BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
+            if (rb2d)
+            {
+                glm::vec2 dir(0.0f);
+                if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
+                    dir += glm::vec2(0, 1);
+                if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
+                    dir += glm::vec2(0, -1);
+                if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
+                    dir += glm::vec2(1, 0);
+                if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
+                    dir += glm::vec2(-1, 0);
+                if (dir != glm::vec2(0.0f))
+                    rb2d->velocity = glm::normalize(dir) * _character->_speed;
+            }
+            
 
-        void   Player::onTriggerStay(BeerEngine::Component::ACollider *other)
-        {
-        }
-
-        void   Player::onTriggerEnter(BeerEngine::Component::ACollider *other)
-        {
-        }
-
-        void   Player::onTriggerExit(BeerEngine::Component::ACollider *other)
-        {
-        }
-
-        void   Player::onColliderStay(BeerEngine::Component::ACollider *other)
-        {
-        }
-
-        void   Player::onColliderEnter(BeerEngine::Component::ACollider *other)
-        {
-        }
-
-        void   Player::onColliderExit(BeerEngine::Component::ACollider *other)
-        {
+            // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
+            // {
+            //     if (rb2d)
+            //     {
+            //         rb2d->velocity = glm::vec2(0, 5);
+            //     }
+            // }
+				//_character->translate(_transform.forward());
+            // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
+			// 	_character->translate(-_transform.forward());
+            // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
+			// 	_character->translate(_transform.left());
+            // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
+			// 	_character->translate(_transform.right());
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
+				this->destroy();
         }
 
         nlohmann::json	Player::serialize()

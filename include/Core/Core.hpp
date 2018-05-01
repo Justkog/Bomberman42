@@ -38,12 +38,20 @@ namespace BeerEngine
     class JsonSerializable;
 	class Camera;
 
+	namespace Audio
+	{
+		class AudioClip;
+		class AudioListener;
+		class AudioSource;
+	}
+
 	namespace Component
 	{
 		class Component;
 		class MeshRenderer;
         class CircleCollider;
         class BoxCollider2D;
+		class RigidBody2D;
 	}
 
     namespace Graphics

@@ -1,4 +1,6 @@
 #include "Core/Graphics/Mesh.hpp"
+#include "Core/Graphics/Graphics.hpp"
+#include "Game/Assets.hpp"
 
 namespace BeerEngine
 {
@@ -72,6 +74,43 @@ namespace BeerEngine
 			glBindVertexArray(_vao);
 			glDrawArrays(mode, 0, _size);
 			glBindVertexArray(0);
+		}
+
+		nlohmann::json	Mesh::serialize()
+		{
+			return nlohmann::json {
+				{"sourceFile", _sourceFile},
+				{"type", _type},
+			};
+		}
+
+		void Mesh::deserialize(const nlohmann::json & j)
+		{
+
+		}
+
+		Mesh * Mesh::Deserialize(const nlohmann::json & j)
+		{
+			if (j.is_null())
+				return NULL;
+			std::string path = j.at("sourceFile");
+			if (path != "")
+				return (Assets::GetModel(path));
+			std::string type = j.at("type");
+			if (type != "")
+				return (BeerEngine::Graphics::Graphics::typeToMesh[type]);
+			else
+				return NULL;
+		}
+
+		void Mesh::setSourcefile(std::string path)
+		{
+			_sourceFile = path;
+		}
+
+		void Mesh::setType(std::string type)
+		{
+			_type = type;
 		}
 	}
 }
