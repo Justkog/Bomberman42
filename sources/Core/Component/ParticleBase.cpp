@@ -4,6 +4,7 @@
 #include "Core/Camera.hpp"
 #include "Core/Window.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Mathf.hpp"
 
 namespace BeerEngine
 {
@@ -64,20 +65,13 @@ namespace BeerEngine
 			if (_particles.size() + 1 >= BE_PARTICLESSYSTEM_MAX)
 					return ;
 			_particles.push_back(Particle());
-			float rx = (2.0 * ((float)rand() / RAND_MAX)) + -1;
-			float rz = (0.2 * ((float)rand() / RAND_MAX)) + 1.9f;
 			int id = _particles.size() - 1;
-			_particles[id].life = 6.4f;
-			_particles[id].position = _gameObject->transform.getWorldPosition();
-			_particles[id].velocity = _gameObject->transform.getWorldRotate(glm::vec3(rx, 9.81f, rz));
-			_particles[id].lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
+			initParticle(_particles[id]);
 		}
 
 		void    ParticleBase::fixedUpdate(void)
 		{
-			// for (int i = 0; i < 10; i++)
-				addParticle();
-			// std::cout << _particles.size() << std::endl;
+			addParticle();
 		}
 
 		void    ParticleBase::update(void)
@@ -89,9 +83,7 @@ namespace BeerEngine
 				_particles[i].life -= delta;
 				if (_particles[i].life > 0.0f)
 				{
-					_particles[i].lifeAnim += _particles[i].lifeAnimSpeed * delta;
-					_particles[i].velocity += _gameObject->transform.getWorldRotate(glm::vec3(0.0f, -9.81f, 0.0f)) * delta;
-					_particles[i].position += _particles[i].velocity * delta;
+					upgradeParticle(_particles[i], delta);
 					i++;
 				}
 				else
@@ -144,5 +136,23 @@ namespace BeerEngine
 		{
 			_texture = t;
 		}
+
+		void 	ParticleBase::initParticle(Particle &particle)
+		{
+			float rx =  Mathf::Range(-1.0f, 1.0f);
+			float rz = Mathf::Range(1.9f, 2.1f);
+			particle.life = 6.4f;
+			particle.position = _gameObject->transform.getWorldPosition();
+			particle.velocity = _gameObject->transform.getWorldRotate(glm::vec3(rx, 9.81f, rz));
+			particle.lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
+		}
+
+		void 	ParticleBase::upgradeParticle(Particle &particle, float delta)
+		{
+			particle.lifeAnim += particle.lifeAnimSpeed * delta;
+			particle.velocity += _gameObject->transform.getWorldRotate(glm::vec3(0.0f, -9.81f, 0.0f)) * delta;
+			particle.position += particle.velocity * delta;
+		}
+
 	}
 }

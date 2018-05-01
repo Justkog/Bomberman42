@@ -57,6 +57,9 @@ namespace BeerEngine
         	void    render(void);
 			void	setTexture(Graphics::Texture *t);
 
+			virtual void initParticle(Particle &particle);
+			virtual void upgradeParticle(Particle &particle, float delta);
+
 		};
 	}
 }

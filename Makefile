@@ -27,6 +27,7 @@ SRC = \
 	Core/Transform.cpp \
 	Core/Input.cpp \
 	Core/Camera.cpp \
+	Core/Mathf.cpp \
 	\
 	Core/Component/Component.cpp \
 	Core/Component/MeshRenderer.cpp \
