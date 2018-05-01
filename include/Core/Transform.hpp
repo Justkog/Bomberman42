@@ -25,6 +25,9 @@ namespace BeerEngine
 		glm::vec3	right(void);
 		glm::vec3	top(void);
 
+		glm::vec3	getWorldPosition();
+		glm::vec3	getWorldRotate(glm::vec3 v);
+
 		glm::mat4	getMat4(bool isCamera = false);
 
 		virtual nlohmann::json	serialize();

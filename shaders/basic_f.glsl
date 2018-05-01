@@ -25,7 +25,7 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
 
 void main()
 {
-    vec3 lightDir = normalize(vec3(0, -1, -0.5));
+    vec3 lightDir = normalize(vec3(0, -1, 0.5));
 
     vec2 texCoords;
     if (hasBump == 1)

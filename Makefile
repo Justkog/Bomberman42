@@ -41,6 +41,7 @@ SRC = \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
 	Core/Graphics/Texture.cpp \
+	Core/Graphics/Particles.cpp \
 	\
 	Core/IO/FileUtils.cpp \
 	\

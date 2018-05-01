@@ -10,6 +10,7 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Json/Json.hpp"
+#include "Core/Graphics/Particles.hpp"
 
 namespace BeerEngine
 {

@@ -75,5 +75,6 @@ namespace BeerEngine
 		}\
 		\
 		int Class::componentRegisterer = Class::RegisterComponentType();
+#include <fstream>
 
 #endif

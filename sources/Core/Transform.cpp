@@ -45,6 +45,20 @@ namespace BeerEngine
 		return (glm::vec3(r));
 	}
 
+	glm::vec3	Transform::getWorldPosition()
+	{
+		glm::mat4 mat = getMat4();
+		float *f = glm::value_ptr(mat);
+		return (glm::vec3(f[12], f[13], f[14]));
+	}
+
+	glm::vec3	Transform::getWorldRotate(glm::vec3 v)
+	{
+		glm::vec4 r(v, 0.0f);
+		r = r * glm::toMat4(rotation);
+		return (glm::vec3(r));
+	}
+
 	glm::mat4	Transform::getMat4(bool isCamera)
 	{
 		glm::mat4 mat;
