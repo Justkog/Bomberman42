@@ -67,11 +67,27 @@ namespace BeerEngine
 			glBindVertexArray(0);
 		}
 
-		void			Mesh::render(GLenum mode)
+		void			Mesh::render(GLenum mode, bool instancing, int count, int *divisor, int divisorCount)
 		{
 			glBindVertexArray(_vao);
-			glDrawArrays(mode, 0, _size);
+			if (instancing)
+			{
+				if (count > 0)
+				{
+					for (int i = 0; i < divisorCount; i++)
+						glVertexAttribDivisor(i, divisor[i]);
+					glDrawArraysInstanced(mode, 0, _size, count);
+				}
+			}
+			else
+				glDrawArrays(mode, 0, _size);
 			glBindVertexArray(0);
+		}
+
+		Mesh	&Mesh::setSize(unsigned int size)
+		{
+			_size = size;
+			return (*this);
 		}
 	}
 }

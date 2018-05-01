@@ -1,4 +1,5 @@
 #include "Core/AScene.hpp"
+#include "Core/Graphics/Particles.hpp"
 
 namespace BeerEngine
 {

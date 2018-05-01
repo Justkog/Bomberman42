@@ -4,6 +4,7 @@
 #include "../Core.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
+#include "ShaderProgram.hpp"
 
 namespace BeerEngine
 {
@@ -12,9 +13,11 @@ namespace BeerEngine
 		class Graphics
 		{
 		public:
-			static Mesh		*plane;
-			static Mesh		*cube;
-			static Texture	*whiteTexture;
+			static Mesh				*plane;
+			static Mesh				*cube;
+			static Texture			*whiteTexture;
+			static ShaderProgram	*particleShader;
+
 			static void Load(void);
 			static void UnLoad(void);
 

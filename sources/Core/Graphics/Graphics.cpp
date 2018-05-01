@@ -2,14 +2,16 @@
 #include "tiny_obj_loader.h"
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
+#include "Core/IO/FileUtils.hpp"
 
 namespace BeerEngine
 {
 	namespace Graphics
 	{
-		Mesh	*Graphics::plane = nullptr;
-		Mesh	*Graphics::cube = nullptr;
-		Texture *Graphics::whiteTexture = nullptr;
+		Mesh			*Graphics::plane = nullptr;
+		Mesh			*Graphics::cube = nullptr;
+		Texture 		*Graphics::whiteTexture = nullptr;
+		ShaderProgram	*Graphics::particleShader = nullptr;
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -134,6 +136,22 @@ namespace BeerEngine
 			return (new Texture(1, 1, data, GL_BGRA));
 		}
 
+		static ShaderProgram *loadParticleShader(void)
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_f.glsl").c_str()
+			);
+			// shader->load(2, GL_GEOMETRY_SHADER,
+			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_g.glsl").c_str()
+			// );
+			shader->compile();
+			return (shader);
+		}
+
 		void Graphics::Load(void)
 		{
 			// PLANE
@@ -142,6 +160,8 @@ namespace BeerEngine
 			cube = LoadCube();
 			// Texture White
 			whiteTexture = loadWhiteTexture();
+			//Shader Particle;
+			particleShader = loadParticleShader();
 		}
 
 		void Graphics::UnLoad(void)
@@ -149,6 +169,7 @@ namespace BeerEngine
 			delete plane;
 			delete cube;
 			delete whiteTexture;
+			delete particleShader;
 		}
 
 		Mesh	*Graphics::OBJLoader(std::string path)
