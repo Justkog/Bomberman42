@@ -42,10 +42,10 @@ BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram 
 
 void    SceneTest::init(void)
 {
-	this->load("test2.scene");
-	this->save("destest.scene");
+	// this->load("test2.scene");
+	// this->save("destest.scene");
 	
-	return;
+	// return;
 
 	std::cout << "init test scene" << "\n";
 
