@@ -113,6 +113,7 @@ namespace BeerEngine
 				else
 					_particles.erase(_particles.begin() + i);
 			}
+			// std::cout << _particles.size() << std::endl;
 		}
 
 		void    ParticleBase::renderUpdate(void)
