@@ -13,6 +13,8 @@ namespace BeerEngine
 		Mesh			*Graphics::cube = nullptr;
 		Texture 		*Graphics::whiteTexture = nullptr;
 		ShaderProgram	*Graphics::particleShader = nullptr;
+		ShaderProgram	*Graphics::defaultShader = nullptr;
+		AMaterial		*Graphics::defaultMaterial = nullptr;
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -169,6 +171,16 @@ namespace BeerEngine
 			whiteTexture = loadWhiteTexture();
 			//Shader Particle;
 			particleShader = loadParticleShader();
+			// Default Material
+			defaultShader = new BeerEngine::Graphics::ShaderProgram(2);
+			defaultShader->load(0, GL_VERTEX_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
+			);
+			defaultShader->load(1, GL_FRAGMENT_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
+			);
+			defaultShader->compile();
+			defaultMaterial = new AMaterial(defaultShader);
 		}
 
 		void Graphics::UnLoad(void)
@@ -177,6 +189,8 @@ namespace BeerEngine
 			delete cube;
 			delete whiteTexture;
 			delete particleShader;
+			delete defaultShader;
+			delete defaultMaterial;
 		}
 
 		Mesh	*Graphics::OBJLoader(std::string path)
