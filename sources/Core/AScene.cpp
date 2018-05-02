@@ -60,7 +60,6 @@ namespace BeerEngine
         for (GameObject *go : _toStart)
         {
             go->start();
-            // _gameObjects.insert(std::pair<int, GameObject *>(go->_uniqueID, go));
         }
         _toStart.clear();
         std::map<int, GameObject *>::iterator it;

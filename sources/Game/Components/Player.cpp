@@ -67,6 +67,7 @@ namespace Game
             {
                 BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
                 go->transform.position = _gameObject->transform.position;
+                go->transform.scale = glm::vec3(0.5f);
                 auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			    render->setMesh(BeerEngine::Graphics::Graphics::cube);
                 Bomb *bomb = go->AddComponent<Bomb>();
