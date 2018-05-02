@@ -8,6 +8,7 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Physics/Physics.hpp"
 
 namespace BeerEngine
 {
@@ -95,16 +96,6 @@ void RaysRenderer::RebuildMesh()
 	this->setMesh(lines);
 }
 
-// void RaysRenderer::update()
-// {
-
-// }
-
-// void RaysRenderer::fixedUpdate()
-// {
-	
-// }
-
 void RaysRenderer::renderUpdate(void)
 {
 	MeshRenderer::renderUpdate();
@@ -115,7 +106,7 @@ void RaysRenderer::renderUpdate(void)
 	}
 }
 
-void RaysRenderer::addRay(Ray ray)
+void RaysRenderer::addRay(Physics::Ray ray)
 {
 	rays.push_back(ray);
 }
@@ -131,29 +122,6 @@ void RaysRenderer::addRay(Ray ray)
 // ###############################################################
 
 // PRIVATE METHOD ################################################
-
-BeerEngine::Component::Ray RaysRenderer::ScreenToWorldRay(glm::vec2 screenPosition) {
-	float pointX = screenPosition.x / (WINDOW_WIDTH  * 0.5f) - 1.0f;
-    float pointY = screenPosition.y / (WINDOW_HEIGHT * 0.5f) - 1.0f;
-	glm::mat4 proj = BeerEngine::Window::GetInstance()->getProjection3D();
-	auto cam = BeerEngine::Camera::main;
-    glm::mat4 view = glm::lookAt(glm::vec3(0.0f), cam->transform.forward(), cam->transform.top());
-
-    glm::mat4 invVP = glm::inverse(proj * view);
-    glm::vec4 screenPos = glm::vec4(pointX, -pointY, 1.0f, 1.0f);
-    glm::vec4 worldPos = invVP * screenPos;
-
-    glm::vec3 dir = glm::normalize(glm::vec3(worldPos));
-	Ray ray;
-	ray.origin = BeerEngine::Camera::main->transform.position;
-	ray.direction = dir;
-
-    return ray;
-}
-
-BeerEngine::Component::Ray RaysRenderer::MouseToWorldRay() {
-    return ScreenToWorldRay(BeerEngine::Input::mousePosition);
-}
 
 // ###############################################################
 

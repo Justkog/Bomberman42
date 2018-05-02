@@ -56,7 +56,6 @@ namespace BeerEngine
 	{
 		class Component;
 		class MeshRenderer;
-		struct Ray;
 		class RaysRenderer;
         class CircleCollider;
         class BoxCollider2D;
@@ -72,6 +71,12 @@ namespace BeerEngine
 		class Texture;
 		class MeshBuilder;
 		class Particles;
+	}
+
+	namespace Physics
+	{
+		struct Ray;
+		class Physics;
 	}
 }
 

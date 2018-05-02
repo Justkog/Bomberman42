@@ -44,7 +44,6 @@ namespace BeerEngine
 			return (*this);
 		}
 
-
 		void    		MeshRenderer::renderUpdate(void)
 		{
 			_mat = _gameObject->transform.getMat4();

@@ -34,16 +34,8 @@ namespace Game
 			virtual void start();
 			virtual void update();
 			virtual void fixedUpdate();
-			// virtual void renderUpdate(void);
-			// virtual void render(void);
-
-			BeerEngine::Component::Ray MouseToWorldRay();
-			BeerEngine::Component::Ray ScreenToWorldRay(glm::vec2 screenPosition);
-	
-			std::vector<BeerEngine::Component::Ray> rays;
 
 			bool clicking;
-			int old_size;
 			BeerEngine::Component::RaysRenderer *linesRenderer;
 		};
 

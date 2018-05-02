@@ -16,16 +16,10 @@ namespace BeerEngine
 {
 	namespace Component
 	{
-		struct Ray
-		{
-			glm::vec3 origin;
-			glm::vec3 direction;
-		};
+
 
 		class RaysRenderer : public BeerEngine::Component::MeshRenderer,
-								// public BeerEngine::Component::IUpdate, 
 								public BeerEngine::Component::IStart
-								// public BeerEngine::Component::IRender
 		{
 		public:
 
@@ -39,20 +33,13 @@ namespace BeerEngine
 			friend std::ostream & operator<<(std::ostream & o, RaysRenderer const & i);
 
 			virtual void start();
-			// virtual void update();
-			// virtual void fixedUpdate();
 			virtual void renderUpdate(void);
 
-			void addRay(Ray ray);
-			Ray MouseToWorldRay();
-			Ray ScreenToWorldRay(glm::vec2 screenPosition);
+			void addRay(Physics::Ray ray);
 			void RebuildMesh();
 	
-			std::vector<Ray> rays;
-
-			bool clicking;
+			std::vector<Physics::Ray> rays;
 			int old_size;
-			// BeerEngine::Component::MeshRenderer *linesRenderer;
 		};
 
 	};
