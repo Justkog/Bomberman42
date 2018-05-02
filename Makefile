@@ -59,6 +59,7 @@ SRC = \
 	Game/Components/Settings.cpp \
 	Game/Components/Item.cpp \
 	Game/Components/Bomb.cpp \
+	Game/Components/Map.cpp \
 	Game/CameraTest.cpp
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
