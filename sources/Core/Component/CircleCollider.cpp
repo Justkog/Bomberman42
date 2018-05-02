@@ -33,7 +33,7 @@ namespace BeerEngine
 			return (false);
 		}
 
-		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir, float dist)
+		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir)
 		{
 			// glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 

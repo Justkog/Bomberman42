@@ -25,7 +25,7 @@ namespace BeerEngine
 			virtual bool collide_AABB2D(BoxCollider2D *other) = 0;
 			
 			virtual bool contain(glm::vec2 other) = 0;
-			virtual bool intersect(glm::vec2 origin, glm::vec2 dir, float dist = 10000) = 0;
+			virtual bool intersect(glm::vec2 origin, glm::vec2 dir) = 0;
 
 			virtual void triggerStay(ACollider *other);
 			virtual void triggerEnter(ACollider *other);
