@@ -46,7 +46,7 @@ void    SceneTest::init(void)
 {
 	// this->load("test2.scene");
 	// this->save("destest.scene");
-	
+
 	// return;
 
 	std::cout << "init test scene" << "\n";
@@ -106,6 +106,23 @@ void    SceneTest::init(void)
 	auto MapGO = instantiate<BeerEngine::GameObject>();
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
+
+	std::vector<int> line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+	std::vector<int> line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int> line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int> line3{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+	std::vector<int> line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int> line5{1,0,0,0,0,0,0,I,0,0,0,0,0,0,0,0,1};
+	std::vector<int> line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int> line7{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+	std::vector<int> line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int> line9{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+	std::vector<int> line10{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int> line11{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
+
+	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
 
 	// auto playerGO = instantiate<BeerEngine::GameObject>();
@@ -128,17 +145,17 @@ void    SceneTest::init(void)
 //
  // test obj old
 
-// 	auto Old = instantiate<BeerEngine::GameObject>();
-// 	Old->name = "old";
-// 	meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
-// 	meshRenderer->setMesh("assets/models/Old_man/muro.obj");
-// 	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
-// 	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
-// 	OldMat->setAlbedo(OldTex);
-// 	meshRenderer->setMaterial(OldMat);
-// 	Old->transform.position = glm::vec3(1, 0.5, 10);
-// 	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
-// 	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+	auto Old = instantiate<BeerEngine::GameObject>();
+	Old->name = "old";
+	meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("assets/models/Old_man/muro.obj");
+	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
+	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
+	OldMat->setAlbedo(OldTex);
+	meshRenderer->setMaterial(OldMat);
+	Old->transform.position = glm::vec3(1, 0.5, 10);
+	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
+	Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
 //  // test obj skull
 
@@ -154,20 +171,32 @@ void    SceneTest::init(void)
 // 	Skull->transform.scale = glm::vec3(0.005, 0.005, 0.005);
 // 	Skull->transform.rotation = glm::vec3(-0.45, -3.14, 0);
 
-// //test obj house
+//test obj house
 
-// 	auto objet = instantiate<BeerEngine::GameObject>();
-// 	objet->name = "house";
-// 	meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
-// 	meshRenderer->setMesh("assets/models/HouseOBJ/house_01.obj");
-// 	auto *objetTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/HouseOBJ/DSC_5871_.jpg");
-// 	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
-// 	objetMat->setAlbedo(objetTex);
-// 	meshRenderer->setMaterial(objetMat);
-// 	objet->transform.position = glm::vec3(7, 0.5, 10);
-// 	objet->transform.scale = glm::vec3(0.05, 0.05, 0.05);
-// 	objet->transform.rotation = glm::vec3(0, -1.5, 0);
+	auto objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "house";
+	meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("assets/models/HouseOBJ/house_01.obj");
+	auto *objetTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/HouseOBJ/DSC_5871_.jpg");
+	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	meshRenderer->setMaterial(objetMat);
+	objet->transform.position = glm::vec3(-4, 0, 16.5);
+	objet->transform.scale = glm::vec3(0.05, 0.05, 0.05);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
 
+
+	auto house2 = instantiate<BeerEngine::GameObject>();
+	house2->name = "house2";
+	meshRenderer = house2->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("assets/models/HouseOBJ/house_01.obj");
+	auto *house2Tex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/HouseOBJ/DSC_5871_.jpg");
+	auto *house2Mat = new BeerEngine::Graphics::AMaterial(shader);
+	house2Mat->setAlbedo(house2Tex);
+	meshRenderer->setMaterial(house2Mat);
+	house2->transform.position = glm::vec3(3.5, 0, 14.4);
+	house2->transform.scale = glm::vec3(0.05, 0.05, 0.05);
+	house2->transform.rotation = glm::vec3(0, 3.14, 0);
 
 // //test obj car
 //
@@ -328,4 +357,3 @@ void    SceneTest::init(void)
 
 	this->save("testIA.scene");
 }
-

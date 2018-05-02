@@ -32,9 +32,11 @@ namespace Game
             Map(BeerEngine::GameObject *gameObject);
 
             virtual void    start(void);
-            virtual void    loadMap(int arr[ROW][COL]);
+			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
        		virtual void    update(void);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
+
+			int				**_map;
 
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
@@ -45,7 +47,7 @@ namespace Game
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				meshRenderer->setMaterial(mapBlocMat);
@@ -96,9 +98,6 @@ namespace Game
 
 				return (playerGO);
 			}
-
-		private:
-			int	_map[ROW][COL];
 		};
 	}
 }
