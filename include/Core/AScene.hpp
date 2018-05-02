@@ -43,8 +43,8 @@ namespace BeerEngine
              std::cout << "GameObject added : " << uniqueID << std::endl;
 			T *c = new T(uniqueID, *this);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
-            uniqueID++;
             _toStart.push_back(c);
+            uniqueID++;
 			return (c);
 		}
 

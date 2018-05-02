@@ -4,6 +4,8 @@
 #include "Core/Input.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/RigidBody2D.hpp"
+#include "Core/Component/MeshRenderer.hpp"
+#include "Core/Graphics/Graphics.hpp"
 
 namespace Game
 {
@@ -65,6 +67,8 @@ namespace Game
             {
                 BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
                 go->transform.position = _gameObject->transform.position;
+                auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
+			    render->setMesh(BeerEngine::Graphics::Graphics::cube);
                 Bomb *bomb = go->AddComponent<Bomb>();
                 bomb->setPower(_character->_explosionSize);
             }
