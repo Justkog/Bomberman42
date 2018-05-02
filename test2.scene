@@ -6194,30 +6194,7 @@
             "id": 74,
             "name": "map block",
             "transform": {
-                "parent": {
-                    "parent": null,
-                    "pivot": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "position": [
-                        1.0,
-                        0.5,
-                        7.0
-                    ],
-                    "rotation": [
-                        1.0,
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "scale": [
-                        1.0,
-                        1.0,
-                        1.0
-                    ]
-                },
+                "parent": null,
                 "pivot": [
                     0.0,
                     0.0,
@@ -8123,17 +8100,6 @@
                             1.0
                         ]
                     ]
-<<<<<<< HEAD
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
-                    "radius": 0.25
-                },
-                {
-                    "componentClass": "N4Game9Component4ItemE",
-                    "type": 2
-=======
->>>>>>> master
                 }
             ],
             "id": 97,

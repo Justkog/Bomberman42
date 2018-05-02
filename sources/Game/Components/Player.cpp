@@ -80,7 +80,7 @@ namespace Game
 
         void            Player::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "Player", nk_rect(10, 100, 220, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
+            if (nk_begin(ctx, "Player", nk_rect(10, 100, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
                 ss << "Speed: " << _character->_speed;
@@ -96,6 +96,8 @@ namespace Game
                 ss << "Size: " << _character->_explosionSize;
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+                nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
             }
             nk_end(ctx);
         }

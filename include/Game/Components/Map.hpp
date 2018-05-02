@@ -13,6 +13,7 @@
 #include "Core/Component/RigidBody2D.hpp"
 #include "Game/Components/Item.hpp"
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Component/IUI.hpp"
 
 #define COL 17
 #define ROW 13
@@ -23,7 +24,8 @@ namespace Game
 {
 	namespace Component
 	{
-		class Map : public BeerEngine::Component::Component
+		class Map : public BeerEngine::Component::Component,
+						public BeerEngine::Component::IUI
 		{
 		protected:
 			BeerEngine::Transform	&_transform;
@@ -35,7 +37,8 @@ namespace Game
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
        		virtual void    update(void);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
-
+			virtual void    renderUI(struct nk_context *ctx);
+		
 			int				**_map;
 
 			template <typename T>
