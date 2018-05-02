@@ -58,6 +58,11 @@ namespace BeerEngine
 			return (false);
 		}
 
+		bool BoxCollider2D:pointCollide(glm::vec2 other)
+		{
+			
+		}
+
 		void BoxCollider2D::response_AABB2D(BoxCollider2D *other, glm::vec2 &thisPos, glm::vec2 &otherPos)
 		{
 			glm::vec3 move(0, 0, 0);
