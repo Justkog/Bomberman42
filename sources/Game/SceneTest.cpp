@@ -123,6 +123,12 @@ void    SceneTest::init(void)
 	// playerColl->_kinematic = false;
 	auto playerParticule = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
 	playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+	playerParticule->setColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec4(1.0f));
+	playerParticule->setAnimate(true, 64, 8, 8);
+	playerParticule->setLifeTime(10.0f);
+	playerParticule->setSize(1.0f, 20.0f);
+	playerParticule->setSpawnTime(1.0f / 60.0f);
+
 //
  // test obj old
 

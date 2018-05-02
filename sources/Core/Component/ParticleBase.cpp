@@ -15,12 +15,13 @@ namespace BeerEngine
 			_mesh(nullptr),
 			_particles()
 		{
-			_texture = Graphics::Graphics::whiteTexture;
+			texture = Graphics::Graphics::whiteTexture;
 			_particlePositionBuffer = new glm::vec3[BE_PARTICLESSYSTEM_MAX];
 			_particleUVBuffer = new glm::vec2[BE_PARTICLESSYSTEM_MAX];
 			_particleColorBuffer = new glm::vec4[BE_PARTICLESSYSTEM_MAX];
-			_mesh = new Graphics::Mesh(5);
-			const glm::vec3 vertPos[] = {
+			_particleSizeBuffer = new float[BE_PARTICLESSYSTEM_MAX];
+			_mesh = new Graphics::Mesh(6);
+			static const glm::vec3 vertPos[] = {
 				glm::vec3(-0.5, -0.5, 0.0),
 				glm::vec3(0.5, -0.5, 0.0),
 				glm::vec3(0.5, 0.5, 0.0),
@@ -29,8 +30,8 @@ namespace BeerEngine
 				glm::vec3(-0.5, -0.5, 0.0)
 			};
 			_mesh->add(0, GL_FLOAT, 3, (void *)vertPos, 6);
-			float s = 1.0f / 8.0f;
-			const glm::vec2 vertUV[] = {
+			static float s = 1.0f;
+			static const glm::vec2 vertUV[] = {
 				glm::vec2(0, 0),
 				glm::vec2(s, 0),
 				glm::vec2(s, s),
@@ -42,6 +43,7 @@ namespace BeerEngine
 			_mesh->add(2, GL_FLOAT, 3, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
 			_mesh->add(3, GL_FLOAT, 2, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
 			_mesh->add(4, GL_FLOAT, 4, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
+			_mesh->add(5, GL_FLOAT, 1, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
 			_mesh->setSize(6);
 			_particleCount = 0;
 			Graphics::Graphics::particleShader->bind();
@@ -49,6 +51,20 @@ namespace BeerEngine
 			_viewShaderID = Graphics::Graphics::particleShader->getUniformLocation("view");
 			_modelShaderID = Graphics::Graphics::particleShader->getUniformLocation("model");
 			_spriteID = Graphics::Graphics::particleShader->getUniformLocation("sprite");
+			_spriteUVSizeID = Graphics::Graphics::particleShader->getUniformLocation("UVSize");
+
+			// Init Variable for particle
+			spawnTime = 1.0f;
+			lifeTime = 1.0f;
+			color0 = glm::vec4(1);
+			color1 = glm::vec4(1);
+			velocity = glm::vec3(0, 5.0f, 5.0f);
+			size0 = 1.0f;
+			size1 = 1.0f;
+			anim = false;
+			animTotalFrame = 1;
+			animFrameWidth = 1;
+			animFrameHeight = 1;
 		}
 
 		ParticleBase::~ParticleBase()
@@ -57,6 +73,7 @@ namespace BeerEngine
 			delete _particlePositionBuffer;
 			delete _particleUVBuffer;
 			delete _particleColorBuffer;
+			delete _particleSizeBuffer;
 			delete _mesh;
 		}
 
@@ -70,13 +87,20 @@ namespace BeerEngine
 		}
 
 		void    ParticleBase::fixedUpdate(void)
-		{
-			addParticle();
-		}
+		{}
 
 		void    ParticleBase::update(void)
 		{
+			static float spawnTimeRate = 0.0f;
 			float delta = Time::GetDeltaTime();
+			spawnTimeRate += delta;
+			// std::cout << spawnTimeRate << " // " << spawnTime << std::endl;
+			while (spawnTimeRate >= spawnTime)
+			{
+				addParticle();
+				spawnTimeRate -= spawnTime;
+			}
+
 			int i = 0;
 			while (i < _particles.size())
 			{
@@ -96,27 +120,41 @@ namespace BeerEngine
 			_particleCount = 0;
 			for (int i = 0; i < _particles.size(); i++)
 			{
-				int j = (int)(_particles[i].lifeAnim * 100);
-				j = j % 64;
+				float u = 0.0f;
+				float v = 0.0f;
+				// Animate
+				if (anim)
+				{
+					int j = (int)(_particles[i].lifeAnim * 100);
+					j = j % animTotalFrame;
+					u = (float)(j % animFrameWidth) / (float)animFrameWidth;
+					v = (float)(j / animFrameWidth) / (float)animFrameWidth;
+				}
+				float lifeProgress = 1.0f - (_particles[i].life / lifeTime);
+				glm::vec4 color = glm::lerp(color0, color1, lifeProgress);
 				_particlePositionBuffer[_particleCount] = _particles[i].position;
-				_particleUVBuffer[_particleCount] = glm::vec2((float)(j % 8) / 8.0f, (float)(j / 8) / 8.0f);
-				_particleColorBuffer[_particleCount] = _particles[i].color;
+				_particleUVBuffer[_particleCount] = glm::vec2(u, v);
+				_particleColorBuffer[_particleCount] = color;
+				float size = glm::lerp(size0, size1, lifeProgress);
+				_particleSizeBuffer[_particleCount] = size;
 				_particleCount++;
 			}
 			_mesh->add(2, GL_FLOAT, 3, (void *)_particlePositionBuffer, _particleCount, GL_STREAM_DRAW);
 			_mesh->add(3, GL_FLOAT, 2, (void *)_particleUVBuffer, _particleCount, GL_STREAM_DRAW);
 			_mesh->add(4, GL_FLOAT, 4, (void *)_particleColorBuffer, _particleCount, GL_STREAM_DRAW);
+			_mesh->add(5, GL_FLOAT, 1, (void *)_particleSizeBuffer, _particleCount, GL_STREAM_DRAW);
 			_mesh->setSize(6);
 		}
 
 		void    ParticleBase::render(void)
 		{
 			static int	divisor[] {
-				0, 0, 1, 1, 1
+				0, 0, 1, 1, 1, 1
 			};
 			glEnable(GL_ALPHA_TEST);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			glDepthMask(GL_FALSE);
+			
 			Graphics::Graphics::particleShader->bind();
 			Graphics::Graphics::particleShader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
 			glm::mat4 view = Camera::main->transform.getMat4(true);
@@ -124,9 +162,11 @@ namespace BeerEngine
 			glm::mat4 model = _gameObject->transform.getMat4();
 			Graphics::Graphics::particleShader->uniformMat(_modelShaderID, model);
 			Graphics::Graphics::particleShader->uniform1i(_spriteID, 0);
+			Graphics::Graphics::particleShader->uniform2f(_spriteUVSizeID, 1.0f / (float)animFrameWidth, 1.0f / (float)animFrameHeight);
+			
 			glActiveTexture(GL_TEXTURE0);
-			_texture->bind();
-			_mesh->render(GL_TRIANGLES, true, _particleCount, (int *)divisor, 5);
+			texture->bind();
+			_mesh->render(GL_TRIANGLES, true, _particleCount, (int *)divisor, 6);
 			glDepthMask(GL_TRUE);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		}
@@ -134,25 +174,90 @@ namespace BeerEngine
 
 		void	ParticleBase::setTexture(Graphics::Texture *t)
 		{
-			_texture = t;
+			texture = t;
 		}
 
 		void 	ParticleBase::initParticle(Particle &particle)
 		{
-			float rx =  Mathf::Range(-1.0f, 1.0f);
-			float rz = Mathf::Range(1.9f, 2.1f);
-			particle.life = 6.4f;
+			particle.life = lifeTime;
 			particle.position = _gameObject->transform.getWorldPosition();
-			particle.velocity = _gameObject->transform.getWorldRotate(glm::vec3(rx, 9.81f, rz));
+			particle.velocity = _gameObject->transform.getWorldRotate(velocity);
 			particle.lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
 		}
 
 		void 	ParticleBase::upgradeParticle(Particle &particle, float delta)
 		{
 			particle.lifeAnim += particle.lifeAnimSpeed * delta;
-			particle.velocity += _gameObject->transform.getWorldRotate(glm::vec3(0.0f, -9.81f, 0.0f)) * delta;
 			particle.position += particle.velocity * delta;
 		}
+
+		ParticleBase	&ParticleBase::setSpawnTime(GLfloat stime)
+		{
+			spawnTime = stime;
+			if (spawnTime < 0.0f)
+				spawnTime = 1.0f;
+			std::cout << " > " << spawnTime << std::endl;
+			return (*this);	
+		}
+
+		ParticleBase	&ParticleBase::setLifeTime(GLfloat life)
+		{
+			lifeTime = life;
+			if (lifeTime < 0.0f)
+				lifeTime = 1.0f;
+			return (*this);	
+		}
+
+		ParticleBase	&ParticleBase::setColor(glm::vec4 c0)
+		{
+			color0 = c0;
+			color1 = c0;
+			return (*this);	
+		}
+
+		ParticleBase	&ParticleBase::setColor(glm::vec4 c0, glm::vec4 c1)
+		{	
+			color0 = c0;
+			color1 = c1;
+			return (*this);	
+		}
+
+		ParticleBase	&ParticleBase::setVelocity(glm::vec3 vel)
+		{
+			velocity = vel;
+			return (*this);	
+		}
+
+		ParticleBase	&ParticleBase::setSize(float s)
+		{
+			if (s > 0.0f)
+			{
+				size0 = s;
+				size1 = s;
+			}
+			return (*this);
+		}
+		ParticleBase	&ParticleBase::setSize(float s0, float s1)
+		{
+			if (s0 > 0.0f)
+			{
+				size0 = s0;
+				size1 = s0;
+			}
+			if (s1 > 0.0f)
+				size1 = s1;
+			return (*this);
+		}
+
+		ParticleBase	&ParticleBase::setAnimate(bool a, int aTotalFrame, int aFrameWidth, int aFrameHeight)
+		{
+			anim = a;
+			animTotalFrame = aTotalFrame;
+			animFrameWidth = aFrameWidth;
+			animFrameHeight = aFrameHeight;
+			return (*this);	
+		}
+
 
 	}
 }
