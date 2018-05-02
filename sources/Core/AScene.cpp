@@ -56,12 +56,23 @@ namespace BeerEngine
 
     void    AScene::start(void)
     {
+        // std::map<int, GameObject *>::iterator it;
+        // for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        // {
+        //     (it->second)->start();
+        //     (it->second)->componentStart();
+        // }
+        // for (GameObject *go : _toStart)
+		// {
+        //     go->start();
+        //     go->componentStart();
+        // }
+        for (GameObject *go : _toStart)
+            go->start();
+        _toStart.clear();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
-        {
-            (it->second)->start();
             (it->second)->componentStart();
-        }
     }
 
     void    AScene::fixedUpdate(void)
@@ -162,6 +173,12 @@ namespace BeerEngine
 
     void    AScene::destroy(GameObject *go)
     {
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            if ((it->second)->transform.parent == &(go->transform))
+                destroy((it->second));
+        }
         if(std::find(_toDestroy.begin(), _toDestroy.end(), go) == _toDestroy.end())
         {
             _toDestroy.push_back(go);

@@ -35,6 +35,12 @@ void updateThread(BeerEngine::Window *window)
     while (!window->isClose())
     {
         scene = BeerEngine::SceneManager::GetCurrent();
+        if (scene != nullptr)
+        {
+            scene->mutexLock(true);
+            scene->start();
+            scene->mutexLock(false);
+        }
         BeerEngine::Time::Update();
         fixedTimer += BeerEngine::Time::GetDeltaTime();
         timer += BeerEngine::Time::GetDeltaTime();

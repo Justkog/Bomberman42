@@ -59,6 +59,11 @@ namespace Game
 			// 	_character->translate(_transform.right());
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
+
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
+            {
+                _gameObject->destroy(this);
+            }
         }
 
         void            Player::renderUI(struct nk_context *ctx)

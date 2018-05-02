@@ -46,6 +46,18 @@ namespace BeerEngine
 	void    GameObject::render(void) {}
     void    GameObject::renderUI(struct nk_context *ctx) {}
 
+	void     GameObject::destroy(Component::Component *comp)
+	{
+		for (int i = 0; i <_components.size(); i++)
+		{
+			if (_components[i] == comp)
+			{
+				_components.erase(_components.begin() + i);
+				return ;
+			}
+		}
+	}
+
 	void    GameObject::destroy(GameObject *go)
     {
         _scene.destroy(go);
@@ -53,11 +65,14 @@ namespace BeerEngine
 
 	void    GameObject::componentStart(void)
 	{
-		for (Component::Component *c : _components)
-		{
-			if (Component::IStart *u = dynamic_cast<Component::IStart*>(c))
-				u->start();
-		}
+		// for (Component::Component *c : _components)
+		// {
+		// 	if (Component::IStart *u = dynamic_cast<Component::IStart*>(c))
+		// 		u->start();
+		// }
+		for (Component::IStart *s : _toStart)
+			s->start();
+		_toStart.clear();
 	}
 
 	void    GameObject::componentFixedUpdate(void)

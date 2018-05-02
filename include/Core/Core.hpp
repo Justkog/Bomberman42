@@ -60,6 +60,7 @@ namespace BeerEngine
         class BoxCollider2D;
 		class RigidBody2D;
 		class ParticleBase;
+		class ParticleExplode;
 	}
 
     namespace Graphics

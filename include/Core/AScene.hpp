@@ -12,6 +12,7 @@ namespace BeerEngine
         static int                  uniqueID;
         std::map<int, GameObject *> _gameObjects;
         std::vector<GameObject *>   _toDestroy;
+        std::vector<GameObject *>   _toStart;
         std::mutex                  updateMutex;
 
         
@@ -43,6 +44,7 @@ namespace BeerEngine
 			T *c = new T(uniqueID, *this);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             uniqueID++;
+            _toStart.push_back(c);
 			return (c);
 		}
 

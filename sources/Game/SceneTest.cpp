@@ -122,51 +122,52 @@ void    SceneTest::init(void)
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerRB2D->kinematic = false;
 	// playerColl->_kinematic = false;
-	auto playerParticule = playerGO->AddComponent<BeerEngine::Component::ParticleExplode>();
-	playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-	// playerParticule->setColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec4(1.0f));
-	playerParticule->setAnimate(true, 64, 8, 8);
-	playerParticule->setLifeTime(0.5f);
-	playerParticule->setSize(1.0f, 2.0f);
-	playerParticule->setSpawnTime(1.0f / 120.0f);
 
-	float sizeDeflag = 4.25f;
+	// auto playerParticule = playerGO->AddComponent<BeerEngine::Component::ParticleExplode>();
+	// playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+	// // playerParticule->setColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec4(1.0f));
+	// playerParticule->setAnimate(true, 64, 8, 8);
+	// playerParticule->setLifeTime(0.5f);
+	// playerParticule->setSize(1.0f, 2.0f);
+	// playerParticule->setSpawnTime(1.0f / 120.0f);
 
-	auto playerDeflag0 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
-	playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-	playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-	playerDeflag0->setAnimate(true, 64, 8, 8);
-	playerDeflag0->setLifeTime(1.0f);
-	playerDeflag0->setSize(2.0f, 1.0f);
-	playerDeflag0->setSpawnTime(1.0f / 120.0f);
-	playerDeflag0->setVelocity(glm::vec3(sizeDeflag, 0.0f, 0.0f));
+	// float sizeDeflag = 4.25f;
 
-	auto playerDeflag1 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
-	playerDeflag1->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-	playerDeflag1->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-	playerDeflag1->setAnimate(true, 64, 8, 8);
-	playerDeflag1->setLifeTime(1.0f);
-	playerDeflag1->setSize(2.0f, 1.0f);
-	playerDeflag1->setSpawnTime(1.0f / 120.0f);
-	playerDeflag1->setVelocity(glm::vec3(-sizeDeflag, 0.0f, 0.0f));
+	// auto playerDeflag0 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
+	// playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+	// playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+	// playerDeflag0->setAnimate(true, 64, 8, 8);
+	// playerDeflag0->setLifeTime(1.0f);
+	// playerDeflag0->setSize(2.0f, 1.0f);
+	// playerDeflag0->setSpawnTime(1.0f / 120.0f);
+	// playerDeflag0->setVelocity(glm::vec3(sizeDeflag, 0.0f, 0.0f));
 
-	auto playerDeflag2 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
-	playerDeflag2->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-	playerDeflag2->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-	playerDeflag2->setAnimate(true, 64, 8, 8);
-	playerDeflag2->setLifeTime(1.0f);
-	playerDeflag2->setSize(2.0f, 1.0f);
-	playerDeflag2->setSpawnTime(1.0f / 120.0f);
-	playerDeflag2->setVelocity(glm::vec3(0.0f, 0.0f, sizeDeflag));
+	// auto playerDeflag1 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
+	// playerDeflag1->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+	// playerDeflag1->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+	// playerDeflag1->setAnimate(true, 64, 8, 8);
+	// playerDeflag1->setLifeTime(1.0f);
+	// playerDeflag1->setSize(2.0f, 1.0f);
+	// playerDeflag1->setSpawnTime(1.0f / 120.0f);
+	// playerDeflag1->setVelocity(glm::vec3(-sizeDeflag, 0.0f, 0.0f));
 
-	auto playerDeflag3 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
-	playerDeflag3->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-	playerDeflag3->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-	playerDeflag3->setAnimate(true, 64, 8, 8);
-	playerDeflag3->setLifeTime(1.0f);
-	playerDeflag3->setSize(2.0f, 1.0f);
-	playerDeflag3->setSpawnTime(1.0f / 120.0f);
-	playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
+	// auto playerDeflag2 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
+	// playerDeflag2->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+	// playerDeflag2->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+	// playerDeflag2->setAnimate(true, 64, 8, 8);
+	// playerDeflag2->setLifeTime(1.0f);
+	// playerDeflag2->setSize(2.0f, 1.0f);
+	// playerDeflag2->setSpawnTime(1.0f / 120.0f);
+	// playerDeflag2->setVelocity(glm::vec3(0.0f, 0.0f, sizeDeflag));
+
+	// auto playerDeflag3 = playerGO->AddComponent<BeerEngine::Component::ParticleBase>();
+	// playerDeflag3->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+	// playerDeflag3->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+	// playerDeflag3->setAnimate(true, 64, 8, 8);
+	// playerDeflag3->setLifeTime(1.0f);
+	// playerDeflag3->setSize(2.0f, 1.0f);
+	// playerDeflag3->setSpawnTime(1.0f / 120.0f);
+	// playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
 
 //
  // test obj old
@@ -182,6 +183,7 @@ void    SceneTest::init(void)
 	Old->transform.position = glm::vec3(1, 0.5, 10);
 	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
 	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+	Old->transform.parent = &(playerGO->transform);
 
  // test obj skull
 

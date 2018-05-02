@@ -107,21 +107,6 @@
                         0.0,
                         0.0
                     ]
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
                 }
             ],
             "id": 1,
@@ -204,7 +189,30 @@
             "id": 2,
             "name": "old",
             "transform": {
-                "parent": null,
+                "parent": {
+                    "parent": null,
+                    "pivot": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        1.0,
+                        0.5,
+                        7.0
+                    ],
+                    "rotation": [
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
                 "pivot": [
                     0.0,
                     0.0,
@@ -2233,7 +2241,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 0
+                    "type": 1
                 }
             ],
             "id": 25,
