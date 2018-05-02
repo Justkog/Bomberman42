@@ -1,6 +1,8 @@
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
+#include "Game/Components/Bomb.hpp"
 #include "Core/Input.hpp"
+#include "Core/GameObject.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 
 namespace Game
@@ -59,7 +61,13 @@ namespace Game
 			// 	_character->translate(_transform.right());
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
-
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
+            {
+                BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
+                go->transform.position = _gameObject->transform.position;
+                Bomb *bomb = go->AddComponent<Bomb>();
+                bomb->setPower(_character->_explosionSize);
+            }
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
             {
                 _gameObject->destroy(this);

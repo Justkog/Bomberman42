@@ -62,7 +62,6 @@ void updateThread(BeerEngine::Window *window)
         {
             scene->mutexLock(true);
             scene->update();
-            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
 
@@ -140,6 +139,7 @@ int main(void)
             scene->renderUpdate();
             scene->render();
             scene->renderUI(ctx);
+            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
         glDisable(GL_DEPTH_TEST);

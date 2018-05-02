@@ -15,7 +15,8 @@ namespace BeerEngine
 	{
 	protected:
 		std::vector<Component::Component *> _components;
-		std::vector<Component::IStart *> _toStart;
+		std::vector<Component::Component *> _toStart;
+		std::vector<Component::Component *> _toDestroy;
 
 	public:
 		int			_uniqueID;
@@ -39,6 +40,7 @@ namespace BeerEngine
         virtual void    renderUI(struct nk_context *ctx);
 
 		void    destroy(Component::Component *comp);
+		void    destroyComponent(void);
 		void    destroy(GameObject *go);
 
 		template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
@@ -52,8 +54,7 @@ namespace BeerEngine
 		{
 			T *c = new T(this);
 			_components.push_back(c);
-			if (Component::IStart  *r = dynamic_cast<Component::IStart  *>(c))
-				_toStart.push_back(r);
+			_toStart.push_back(c);
 			return (c);
 		}
 

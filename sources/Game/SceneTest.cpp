@@ -121,7 +121,6 @@ void    SceneTest::init(void)
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerRB2D->kinematic = false;
-	// playerColl->_kinematic = false;
 
 	// auto playerParticule = playerGO->AddComponent<BeerEngine::Component::ParticleExplode>();
 	// playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));

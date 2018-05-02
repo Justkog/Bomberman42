@@ -10,8 +10,8 @@ namespace BeerEngine
 		class IRenderAlpha
 		{
 		public:
-			virtual void    renderUpdate(void) = 0;
-			virtual void    render(void) = 0;
+			virtual void    renderAlphaUpdate(void) = 0;
+			virtual void    renderAlpha(void) = 0;
 		};
 	}
 }

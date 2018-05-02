@@ -5,8 +5,6 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
-#include "Core/Component/ParticleBase.hpp"
-#include "Core/Component/ParticleExplode.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 
 namespace Game
@@ -19,7 +17,8 @@ namespace Game
 		{
 		protected:
 			BeerEngine::Component::MeshRenderer		*render;
-			float								power;
+			float	power;
+			float	timer;
 
 		public:
             Bomb(BeerEngine::GameObject *gameObject);

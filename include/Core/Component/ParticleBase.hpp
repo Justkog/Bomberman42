@@ -67,8 +67,8 @@ namespace BeerEngine
 
 			void    fixedUpdate(void);
         	void    update(void);
-        	void    renderUpdate(void);
-        	void    render(void);
+        	void    renderAlphaUpdate(void);
+        	void    renderAlpha(void);
 			void	setTexture(Graphics::Texture *t);
 
 			virtual void initParticle(Particle &particle);

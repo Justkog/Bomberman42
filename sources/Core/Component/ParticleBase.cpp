@@ -20,38 +20,7 @@ namespace BeerEngine
 			_particleUVBuffer = new glm::vec2[BE_PARTICLESSYSTEM_MAX];
 			_particleColorBuffer = new glm::vec4[BE_PARTICLESSYSTEM_MAX];
 			_particleSizeBuffer = new float[BE_PARTICLESSYSTEM_MAX];
-			_mesh = new Graphics::Mesh(6);
-			static const glm::vec3 vertPos[] = {
-				glm::vec3(-0.5, -0.5, 0.0),
-				glm::vec3(0.5, -0.5, 0.0),
-				glm::vec3(0.5, 0.5, 0.0),
-				glm::vec3(0.5, 0.5, 0.0),
-				glm::vec3(-0.5, 0.5, 0.0),
-				glm::vec3(-0.5, -0.5, 0.0)
-			};
-			_mesh->add(0, GL_FLOAT, 3, (void *)vertPos, 6);
-			static float s = 1.0f;
-			static const glm::vec2 vertUV[] = {
-				glm::vec2(0, 0),
-				glm::vec2(s, 0),
-				glm::vec2(s, s),
-				glm::vec2(s, s),
-				glm::vec2(0, s),
-				glm::vec2(0, 0),
-			};
-			_mesh->add(1, GL_FLOAT, 2, (void *)vertUV, 6);
-			_mesh->add(2, GL_FLOAT, 3, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
-			_mesh->add(3, GL_FLOAT, 2, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
-			_mesh->add(4, GL_FLOAT, 4, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
-			_mesh->add(5, GL_FLOAT, 1, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
-			_mesh->setSize(6);
 			_particleCount = 0;
-			Graphics::Graphics::particleShader->bind();
-			_projectionShaderID = Graphics::Graphics::particleShader->getUniformLocation("projection");
-			_viewShaderID = Graphics::Graphics::particleShader->getUniformLocation("view");
-			_modelShaderID = Graphics::Graphics::particleShader->getUniformLocation("model");
-			_spriteID = Graphics::Graphics::particleShader->getUniformLocation("sprite");
-			_spriteUVSizeID = Graphics::Graphics::particleShader->getUniformLocation("UVSize");
 
 			// Init Variable for particle
 			spawnTime = 1.0f;
@@ -116,8 +85,44 @@ namespace BeerEngine
 			// std::cout << _particles.size() << std::endl;
 		}
 
-		void    ParticleBase::renderUpdate(void)
+		void    ParticleBase::renderAlphaUpdate(void)
 		{
+			if (_mesh == nullptr)
+			{
+				_mesh = new Graphics::Mesh(6);
+				static const glm::vec3 vertPos[] = {
+					glm::vec3(-0.5, -0.5, 0.0),
+					glm::vec3(0.5, -0.5, 0.0),
+					glm::vec3(0.5, 0.5, 0.0),
+					glm::vec3(0.5, 0.5, 0.0),
+					glm::vec3(-0.5, 0.5, 0.0),
+					glm::vec3(-0.5, -0.5, 0.0)
+				};
+				_mesh->add(0, GL_FLOAT, 3, (void *)vertPos, 6);
+				static float s = 1.0f;
+				static const glm::vec2 vertUV[] = {
+					glm::vec2(0, 0),
+					glm::vec2(s, 0),
+					glm::vec2(s, s),
+					glm::vec2(s, s),
+					glm::vec2(0, s),
+					glm::vec2(0, 0),
+				};
+				_mesh->add(1, GL_FLOAT, 2, (void *)vertUV, 6);
+				_mesh->add(2, GL_FLOAT, 3, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
+				_mesh->add(3, GL_FLOAT, 2, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
+				_mesh->add(4, GL_FLOAT, 4, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
+				_mesh->add(5, GL_FLOAT, 1, NULL, BE_PARTICLESSYSTEM_MAX, GL_STREAM_DRAW);
+				_mesh->setSize(6);
+
+				Graphics::Graphics::particleShader->bind();
+				_projectionShaderID = Graphics::Graphics::particleShader->getUniformLocation("projection");
+				_viewShaderID = Graphics::Graphics::particleShader->getUniformLocation("view");
+				_modelShaderID = Graphics::Graphics::particleShader->getUniformLocation("model");
+				_spriteID = Graphics::Graphics::particleShader->getUniformLocation("sprite");
+				_spriteUVSizeID = Graphics::Graphics::particleShader->getUniformLocation("UVSize");
+				return;
+			}
 			_particleCount = 0;
 			for (int i = 0; i < _particles.size(); i++)
 			{
@@ -147,11 +152,13 @@ namespace BeerEngine
 			_mesh->setSize(6);
 		}
 
-		void    ParticleBase::render(void)
+		void    ParticleBase::renderAlpha(void)
 		{
 			static int	divisor[] {
 				0, 0, 1, 1, 1, 1
 			};
+			if (_mesh == nullptr)
+				return ;
 			glEnable(GL_ALPHA_TEST);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			glDepthMask(GL_FALSE);
@@ -197,7 +204,6 @@ namespace BeerEngine
 			spawnTime = stime;
 			if (spawnTime < 0.0f)
 				spawnTime = 1.0f;
-			std::cout << " > " << spawnTime << std::endl;
 			return (*this);	
 		}
 
