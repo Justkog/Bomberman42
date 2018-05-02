@@ -42,53 +42,27 @@ namespace BeerEngine
 
 		bool BoxCollider2D::intersect(glm::vec2 origin, glm::vec2 dir)
 		{
-			// 
-		}
+			glm::vec2 pos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+			glm::vec2 dest(origin.x + dir.x, origin.y + dir.y);
+			glm::vec2 posMin(pos.x - _size.x / 2, pos.y - _size.y / 2);
+			glm::vec2 posMax(pos.x + _size.x / 2, pos.y + _size.y / 2);
+			float m = (dest.y - origin.y) / (dest.x - origin.x);
 
-/*
-		bool CollisionDroite(Point A,Point B,Cercle C)
-		{
-			Vecteur u;
-			u.x = B.x - A.x;
-			u.y = B.y - A.y;
-			Vecteur AC;
-			AC.x = C.x - A.x;
-			AC.y = C.y - A.y;
-			float numerateur = u.x*AC.y - u.y*AC.x;   // norme du vecteur v
-			if (numerateur <0)
-				numerateur = -numerateur ;   // valeur absolue ; si c'est négatif, on prend l'opposé.
-			float denominateur = sqrt(u.x*u.x + u.y*u.y);  // norme de u
-			float CI = numerateur / denominateur;
-			if (CI<C.rayon)
-				return true;
-			else
-				return false;
-		}
+			if ((posMin.x > dest.x && posMin.x > origin.x) || (posMin.y > dest.y && posMin.y > origin.y)
+			|| (posMax.x < dest.x && posMax.x < origin.x) || (posMax.y < dest.y && posMax.y < origin.y))
+				return (false);
 
+			float y = m * (posMin.x - origin.x) + origin.y;
+			if (y > posMin.y && y < posMax.y) return (true);
+			y = m * (posMax.x - origin.x) + origin.y;
+			if (y > posMin.y && y < posMax.y) return (true);
+			float x = (posMin.y - origin.y) / m + origin.x;
+			if (x > posMin.x && x < posMax.x) return (true);
+			x = (posMax.y - origin.y) / m + origin.x;
+			if (x > posMin.x && x < posMax.x) return (true);
 
-		bool CollisionSegment(Point A,Point B,Cercle C)
-		{
-			if (CollisionDroite(A,B,C) == false)
-				return false;  // si on ne touche pas la droite, on ne touchera jamais le segment
-			Vecteur AB,AC,BC;
-			AB.x = B.x - A.x;
-			AB.y = B.y - A.y;
-			AC.x = C.x - A.x;
-			AC.y = C.y - A.y;
-			BC.x = C.x - B.x;
-			BC.y = C.y - B.y;
-			float pscal1 = AB.x*AC.x + AB.y*AC.y;  // produit scalaire
-			float pscal2 = (-AB.x)*BC.x + (-AB.y)*BC.y;  // produit scalaire
-			if (pscal1>=0 && pscal2>=0)
-				return true;   // I entre A et B, ok.
-			// dernière possibilité, A ou B dans le cercle
-			if (CollisionPointCercle(A,C))
-				return true;
-			if (CollisionPointCercle(B,C))
-				return true;
-			return false;
+			return (false);
 		}
-*/
 
 		bool BoxCollider2D::collide_AABB2D(BoxCollider2D *other)
 		{

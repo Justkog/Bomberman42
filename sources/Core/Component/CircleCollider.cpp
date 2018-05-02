@@ -35,16 +35,52 @@ namespace BeerEngine
 
 		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir)
 		{
-			// glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
-
-			// dir = glm::normalize(dir);
-			// if (thisPos.x - _size.x / 2 > origin.x + (dir.x * dist)
-			// || thisPos.x + _size.x / 2 < origin.x
-			// || thisPos.y - _size.y / 2 > origin.y + (dir.y * dist)
-			// || thisPos.y + _size.y / 2 < origin.y)
-			// 	return (false);
-			// return (true);
+			return (false);
 		}
+/*
+		bool CollisionDroite(Point A,Point B,Cercle C)
+		{
+			Vecteur u;
+			u.x = B.x - A.x;
+			u.y = B.y - A.y;
+			Vecteur AC;
+			AC.x = C.x - A.x;
+			AC.y = C.y - A.y;
+			float numerateur = u.x*AC.y - u.y*AC.x;   // norme du vecteur v
+			if (numerateur <0)
+				numerateur = -numerateur ;   // valeur absolue ; si c'est négatif, on prend l'opposé.
+			float denominateur = sqrt(u.x*u.x + u.y*u.y);  // norme de u
+			float CI = numerateur / denominateur;
+			if (CI<C.rayon)
+				return true;
+			else
+				return false;
+		}
+
+
+		bool CollisionSegment(Point A,Point B,Cercle C)
+		{
+			if (CollisionDroite(A,B,C) == false)
+				return false;  // si on ne touche pas la droite, on ne touchera jamais le segment
+			Vecteur AB,AC,BC;
+			AB.x = B.x - A.x;
+			AB.y = B.y - A.y;
+			AC.x = C.x - A.x;
+			AC.y = C.y - A.y;
+			BC.x = C.x - B.x;
+			BC.y = C.y - B.y;
+			float pscal1 = AB.x*AC.x + AB.y*AC.y;  // produit scalaire
+			float pscal2 = (-AB.x)*BC.x + (-AB.y)*BC.y;  // produit scalaire
+			if (pscal1>=0 && pscal2>=0)
+				return true;   // I entre A et B, ok.
+			// dernière possibilité, A ou B dans le cercle
+			if (CollisionPointCercle(A,C))
+				return true;
+			if (CollisionPointCercle(B,C))
+				return true;
+			return false;
+		}
+*/
 
 		bool CircleCollider::collide_AABB2D(CircleCollider *other)
 		{
