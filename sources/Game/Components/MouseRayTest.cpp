@@ -4,6 +4,7 @@
 #include "Core/Camera.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Graphics/Mesh.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Graphics/AMaterial.hpp"
@@ -100,6 +101,25 @@ void MouseRayTest::start()
 
 	linesRenderer->renderMode = GL_LINES;
 	linesRenderer->setMesh(mesh);
+	old_size = 0;
+}
+
+void MouseRayTest::RebuildMesh()
+{
+	BeerEngine::Graphics::MeshBuilder builder;
+	for (int i = 0; i < rays.size(); i++)
+	{
+		auto rayEndPos = rays[i].origin + rays[i].direction;
+		builder
+		.addVertice(rays[i].origin)
+		// .addUV(glm::vec2(0.0f, 1.0f))
+		.addVertice(rayEndPos)
+		// .addUV(glm::vec2(0.0f, 1.0f))
+		;
+	}
+
+	auto lines = builder.build();
+	linesRenderer->setMesh(lines);
 }
 
 void MouseRayTest::update()
@@ -108,21 +128,20 @@ void MouseRayTest::update()
 	if (state == GLFW_PRESS && !clicking)
 	{
 		clicking = true;
-		rays.push_back(CreateRay());
+		Ray ray;
+		ray.origin = BeerEngine::Camera::main->transform.position;
+		ray.direction = CreateRay() * 10;
+		rays.push_back(ray);
 		for (int i = 0; i < rays.size(); i++)
 		{
 			std::cout << "cam is at : " << glm::to_string(BeerEngine::Camera::main->transform.position) << std::endl;
-			std::cout << glm::to_string(rays[i]) << std::endl;
+			std::cout << "ray pos : " << glm::to_string(rays[i].origin) << " / ray dir : " << glm::to_string(rays[i].direction) << std::endl;
 		}
 	}
 	else if (state == GLFW_RELEASE && clicking)
 	{
 		clicking = false;
 	}
-
-	// GLfloat x = BeerEngine::Camera::main->transform.x;
-	// GLfloat y = BeerEngine::Camera::main->transform.y;
-	// GLfloat z = BeerEngine::Camera::main->transform.z;
 }
 
 void MouseRayTest::fixedUpdate()
@@ -132,7 +151,11 @@ void MouseRayTest::fixedUpdate()
 
 void MouseRayTest::renderUpdate(void)
 {
-
+	if (old_size != rays.size())
+	{
+		RebuildMesh();
+		old_size = rays.size();
+	}
 }
 
 void MouseRayTest::render(void)

@@ -16,6 +16,12 @@ namespace Game
 {
 	namespace Component
 	{
+		struct Ray
+		{
+			glm::vec3 origin;
+			glm::vec3 direction;
+		};
+
 		class MouseRayTest : public BeerEngine::Component::Component, 
 								public BeerEngine::Component::IUpdate, 
 								public BeerEngine::Component::IStart,
@@ -39,10 +45,12 @@ namespace Game
 			virtual void render(void);
 
 			glm::vec3 CreateRay();
+			void RebuildMesh();
 	
-			std::vector<glm::vec3> rays;
+			std::vector<Ray> rays;
 
 			bool clicking;
+			int old_size;
 			BeerEngine::Component::MeshRenderer *linesRenderer;
 		};
 
