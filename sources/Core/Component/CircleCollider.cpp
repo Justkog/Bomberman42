@@ -24,6 +24,28 @@ namespace BeerEngine
 				return (false);
 		}
 
+		bool CircleCollider::contain(glm::vec2 other)
+		{
+			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+
+			if (glm::distance2(thisPos, other) < _radius * _radius)
+				return (true);
+			return (false);
+		}
+
+		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir, float dist)
+		{
+			// glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+
+			// dir = glm::normalize(dir);
+			// if (thisPos.x - _size.x / 2 > origin.x + (dir.x * dist)
+			// || thisPos.x + _size.x / 2 < origin.x
+			// || thisPos.y - _size.y / 2 > origin.y + (dir.y * dist)
+			// || thisPos.y + _size.y / 2 < origin.y)
+			// 	return (false);
+			// return (true);
+		}
+
 		bool CircleCollider::collide_AABB2D(CircleCollider *other)
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
@@ -50,15 +72,6 @@ namespace BeerEngine
 			dir = glm::normalize(dir);
 			
 			response(other, dir * overlap);
-			// if (other->isKinematic() && !isKinematic())
-			// 	_transform.translate(dir * overlap);
-			// else if (!other->isKinematic() && isKinematic())
-			// 	other->_transform.translate(-dir * overlap);
-			// else if (!other->isKinematic() && !isKinematic())
-			// {
-			// 	_transform.translate(dir * (overlap / 2));
-			// 	other->_transform.translate(-dir * (overlap / 2));
-			// }
 		}
 
 		nlohmann::json	CircleCollider::serialize()

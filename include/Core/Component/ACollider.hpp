@@ -18,11 +18,14 @@ namespace BeerEngine
 			virtual ~ACollider();
 			void    start(void);
 
-			virtual void    physicUpdate(void);
-			virtual bool 	checkCollision(ACollider *other) = 0;
+			virtual void physicUpdate(void);
+			virtual bool checkCollision(ACollider *other) = 0;
 
 			virtual bool collide_AABB2D(CircleCollider *other) = 0;
 			virtual bool collide_AABB2D(BoxCollider2D *other) = 0;
+			
+			virtual bool contain(glm::vec2 other) = 0;
+			virtual bool intersect(glm::vec2 origin, glm::vec2 dir, float dist = 10000) = 0;
 
 			virtual void triggerStay(ACollider *other);
 			virtual void triggerEnter(ACollider *other);
@@ -41,7 +44,6 @@ namespace BeerEngine
 			Transform	&_transform;
 			glm::vec2	_offset;
 			bool		_isTrigger;
-			// bool		_kinematic;
 			RigidBody2D *rb2d;
 		};
 	}

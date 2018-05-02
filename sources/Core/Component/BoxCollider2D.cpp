@@ -28,6 +28,35 @@ namespace BeerEngine
 				return (false);
 		}
 
+		bool BoxCollider2D::contain(glm::vec2 other)
+		{
+			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+
+			if (thisPos.x - _size.x / 2 > other.x
+			|| thisPos.x + _size.x / 2 < other.x
+			|| thisPos.y - _size.y / 2 > other.y
+			|| thisPos.y + _size.y / 2 < other.y)
+				return (false);
+			return (true);
+		}
+
+		bool BoxCollider2D::intersect(glm::vec2 origin, glm::vec2 dir, float dist)
+		{
+			glm::vec2 pos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+			glm::vec2 dest(origin.x + (dir.x * dist), origin.y + (dir.y * dist));
+			glm::vec2 posMin(pos.x - _size.x / 2, pos.y - _size.y / 2);
+			glm::vec2 posMax(pos.x + _size.x / 2, pos.y + _size.y / 2);
+
+			dir = glm::normalize(dir);
+			if ((posMin.x > dest.x && posMin.x > origin.x)
+			|| (posMin.y > dest.y && posMin.y > origin.y)
+			|| (posMax.x < dest.x && posMax.x < origin.x)
+			|| (posMax.y < dest.y && posMax.y < origin.y))
+				return (false);
+			//mising calc
+			return (true);
+		}
+
 		bool BoxCollider2D::collide_AABB2D(BoxCollider2D *other)
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
@@ -56,11 +85,6 @@ namespace BeerEngine
 				return (true);
 			}
 			return (false);
-		}
-
-		bool BoxCollider2D:pointCollide(glm::vec2 other)
-		{
-			
 		}
 
 		void BoxCollider2D::response_AABB2D(BoxCollider2D *other, glm::vec2 &thisPos, glm::vec2 &otherPos)
