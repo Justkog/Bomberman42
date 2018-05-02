@@ -21,7 +21,7 @@ namespace Game
 
         void    Player::fixedUpdate(void)
         {
-            
+
         }
 
         void    Player::update(void)
@@ -41,7 +41,6 @@ namespace Game
                 if (dir != glm::vec2(0.0f))
                     rb2d->velocity = glm::normalize(dir) * _character->_speed;
             }
-            
 
             // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
             // {
@@ -79,7 +78,7 @@ namespace Game
                 ss << "Size: " << _character->_explosionSize;
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-            }    
+            }
             nk_end(ctx);
         }
 
@@ -92,7 +91,7 @@ namespace Game
 
         void Player::deserialize(const nlohmann::json & j)
     	{
-            
+
 		}
 
 		REGISTER_COMPONENT_CPP(Player)
