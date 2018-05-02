@@ -5,6 +5,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Core/Component/RigidBody2D.hpp"
+#include "Core/Component/RaysRenderer.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
@@ -89,7 +90,7 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 
 	auto linesGO = instantiate<BeerEngine::GameObject>();
-	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
 	linesGO->name = "lines Holder";
 
 	// Camera

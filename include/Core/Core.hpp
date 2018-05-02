@@ -56,6 +56,8 @@ namespace BeerEngine
 	{
 		class Component;
 		class MeshRenderer;
+		struct Ray;
+		class RaysRenderer;
         class CircleCollider;
         class BoxCollider2D;
 		class RigidBody2D;

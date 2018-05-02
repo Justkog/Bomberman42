@@ -16,16 +16,9 @@ namespace Game
 {
 	namespace Component
 	{
-		struct Ray
-		{
-			glm::vec3 origin;
-			glm::vec3 direction;
-		};
-
 		class MouseRayTest : public BeerEngine::Component::Component, 
 								public BeerEngine::Component::IUpdate, 
-								public BeerEngine::Component::IStart,
-								public BeerEngine::Component::IRender
+								public BeerEngine::Component::IStart
 		{
 		public:
 
@@ -41,18 +34,17 @@ namespace Game
 			virtual void start();
 			virtual void update();
 			virtual void fixedUpdate();
-			virtual void renderUpdate(void);
-			virtual void render(void);
+			// virtual void renderUpdate(void);
+			// virtual void render(void);
 
-			Ray MouseToWorldRay();
-			Ray ScreenToWorldRay(glm::vec2 screenPosition);
-			void RebuildMesh();
+			BeerEngine::Component::Ray MouseToWorldRay();
+			BeerEngine::Component::Ray ScreenToWorldRay(glm::vec2 screenPosition);
 	
-			std::vector<Ray> rays;
+			std::vector<BeerEngine::Component::Ray> rays;
 
 			bool clicking;
 			int old_size;
-			BeerEngine::Component::MeshRenderer *linesRenderer;
+			BeerEngine::Component::RaysRenderer *linesRenderer;
 		};
 
 	};
