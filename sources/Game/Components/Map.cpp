@@ -55,9 +55,8 @@ namespace Game
 							}
 							else
 							{
-								BeerEngine::GameObject *player = addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+								addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 								playerSpawn = true;
-								std::cout << "==========" << player->transform.position.x << std::endl;
 							}
 							break;
 						case I:
