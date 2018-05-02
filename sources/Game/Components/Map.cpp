@@ -55,7 +55,8 @@ namespace Game
 							}
 							else
 							{
-								addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+								_player->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
+								// addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 								playerSpawn = true;
 							}
 							break;
@@ -66,6 +67,7 @@ namespace Game
 				}
 			}
 		}
+
 		void    Map::renderUI(struct nk_context *ctx)
 		{
 			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))

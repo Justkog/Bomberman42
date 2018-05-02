@@ -102,12 +102,31 @@ void    SceneTest::init(void)
 	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
 	BeerEngine::Camera::main->transform.translate(-v);*/
 
+
+	// Player
+	auto playerGO = instantiate<BeerEngine::GameObject>();
+	playerGO->name = "player";
+	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+	playerMat->setAlbedo(playerTex);
+	meshRenderer->setMaterial(playerMat);
+	// playerGO->transform.position = glm::vec3(1, 0.5, 7);
+	playerGO->transform.scale = glm::vec3(1, 1, 1);
+	auto *character = playerGO->AddComponent<Game::Component::Character>();
+	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	playerRB2D->kinematic = false;
+
 	// FPS Camera
 	// instantiate<CameraTest>();
 	auto MapGO = instantiate<BeerEngine::GameObject>();
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
-
+	map->player = playerGO;
 	std::vector<int> line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<int> line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
 	std::vector<int> line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
