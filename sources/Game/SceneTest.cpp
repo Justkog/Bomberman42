@@ -102,7 +102,10 @@ void    SceneTest::init(void)
 	// FPS Camera
 	// instantiate<CameraTest>();
 
-	// Player
+	auto MapGO = instantiate<BeerEngine::GameObject>();
+		MapGO->name = "map";
+	auto	map = MapGO->AddComponent<Game::Component::Map>();
+	map->drawMap(shader);
 
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";
