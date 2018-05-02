@@ -44,7 +44,8 @@ namespace Game
 			virtual void renderUpdate(void);
 			virtual void render(void);
 
-			glm::vec3 CreateRay();
+			Ray MouseToWorldRay();
+			Ray ScreenToWorldRay(glm::vec2 screenPosition);
 			void RebuildMesh();
 	
 			std::vector<Ray> rays;

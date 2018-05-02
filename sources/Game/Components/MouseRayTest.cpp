@@ -72,16 +72,7 @@ void MouseRayTest::start()
 {
 	std::cout << "MouseRayTest start" << std::endl;
 	clicking = false;
-	BeerEngine::Graphics::MeshBuilder builder;
-	builder
-		// line
-		.addVertice(glm::vec3(-0.5f, 0.5f, -0.5f))
-		.addUV(glm::vec2(0.0f, 1.0f))
-		.addVertice(glm::vec3(-0.5f, 0.5f,  0.5f))
-		.addUV(glm::vec2(0.0f, 0.0f))
-	;
-	auto line = builder.build();
-	// linesRenderer->setMesh(line);
+	old_size = 0;
 
 	// Shader
 	BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
@@ -96,12 +87,7 @@ void MouseRayTest::start()
 	material->setColor(glm::vec4(0.5f, 1.0f, 1.0f, 1.0f));
 	linesRenderer->setMaterial(material);
 
-	// auto mesh = BeerEngine::Graphics::Graphics::cube;
-	auto mesh = line;
-
 	linesRenderer->renderMode = GL_LINES;
-	linesRenderer->setMesh(mesh);
-	old_size = 0;
 }
 
 void MouseRayTest::RebuildMesh()
@@ -112,9 +98,7 @@ void MouseRayTest::RebuildMesh()
 		auto rayEndPos = rays[i].origin + rays[i].direction;
 		builder
 		.addVertice(rays[i].origin)
-		// .addUV(glm::vec2(0.0f, 1.0f))
 		.addVertice(rayEndPos)
-		// .addUV(glm::vec2(0.0f, 1.0f))
 		;
 	}
 
@@ -128,15 +112,14 @@ void MouseRayTest::update()
 	if (state == GLFW_PRESS && !clicking)
 	{
 		clicking = true;
-		Ray ray;
-		ray.origin = BeerEngine::Camera::main->transform.position;
-		ray.direction = CreateRay() * 10;
+		auto ray = MouseToWorldRay();
+		ray.direction *= 10;
 		rays.push_back(ray);
-		for (int i = 0; i < rays.size(); i++)
-		{
-			std::cout << "cam is at : " << glm::to_string(BeerEngine::Camera::main->transform.position) << std::endl;
-			std::cout << "ray pos : " << glm::to_string(rays[i].origin) << " / ray dir : " << glm::to_string(rays[i].direction) << std::endl;
-		}
+		// for (int i = 0; i < rays.size(); i++)
+		// {
+		// 	std::cout << "cam is at : " << glm::to_string(BeerEngine::Camera::main->transform.position) << std::endl;
+		// 	std::cout << "ray pos : " << glm::to_string(rays[i].origin) << " / ray dir : " << glm::to_string(rays[i].direction) << std::endl;
+		// }
 	}
 	else if (state == GLFW_RELEASE && clicking)
 	{
@@ -160,26 +143,7 @@ void MouseRayTest::renderUpdate(void)
 
 void MouseRayTest::render(void)
 {
-	glLineWidth(1.0f);
-	glBegin(GL_LINES);
-	for (int i = 0; i < rays.size(); i++)
-	{
-		glVertex3f(0, 0, 0); // origin of the line
-		glVertex3f(10, 10, 10); // ending point of the line
-		// glVertex3f(rays[i].x, rays[i].y, rays[i].z); // ending point of the line
-	}
-	glEnd();
 
-	glBegin(GL_TRIANGLES);
-        glVertex3f( 0.0f, 1.0f, 0.0f);				// Top
-        glVertex3f(-1.0f,-1.0f, 0.0f);				// Bottom Left
-        glVertex3f( 1.0f,-1.0f, 0.0f);				// Bottom Right
-	glEnd();
-
-	glBegin(GL_LINES);
-		glVertex2f(10, 10);
-		glVertex2f(20, 20);
-	glEnd();
 }
 
 // ###############################################################
@@ -194,22 +158,27 @@ void MouseRayTest::render(void)
 
 // PRIVATE METHOD ################################################
 
-glm::vec3 MouseRayTest::CreateRay() {
-    // these positions must be in range [-1, 1] (!!!), not [0, width] and [0, height]
-    float mouseX = BeerEngine::Input::mousePosition.x / (WINDOW_WIDTH  * 0.5f) - 1.0f;
-    float mouseY = BeerEngine::Input::mousePosition.y / (WINDOW_HEIGHT * 0.5f) - 1.0f;
-
-    glm::mat4 proj = BeerEngine::Window::GetInstance()->getProjection3D();
+Game::Component::Ray MouseRayTest::ScreenToWorldRay(glm::vec2 screenPosition) {
+	float pointX = screenPosition.x / (WINDOW_WIDTH  * 0.5f) - 1.0f;
+    float pointY = screenPosition.y / (WINDOW_HEIGHT * 0.5f) - 1.0f;
+	glm::mat4 proj = BeerEngine::Window::GetInstance()->getProjection3D();
 	auto cam = BeerEngine::Camera::main;
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f), cam->transform.forward(), cam->transform.top());
 
     glm::mat4 invVP = glm::inverse(proj * view);
-    glm::vec4 screenPos = glm::vec4(mouseX, -mouseY, 1.0f, 1.0f);
+    glm::vec4 screenPos = glm::vec4(pointX, -pointY, 1.0f, 1.0f);
     glm::vec4 worldPos = invVP * screenPos;
 
     glm::vec3 dir = glm::normalize(glm::vec3(worldPos));
+	Ray ray;
+	ray.origin = BeerEngine::Camera::main->transform.position;
+	ray.direction = dir;
 
-    return dir;
+    return ray;
+}
+
+Game::Component::Ray MouseRayTest::MouseToWorldRay() {
+    return ScreenToWorldRay(BeerEngine::Input::mousePosition);
 }
 
 // ###############################################################
