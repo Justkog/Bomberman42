@@ -10,7 +10,9 @@
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/Component/CircleCollider.hpp"
+#include "Core/Component/RigidBody2D.hpp"
 #include "Game/Components/Item.hpp"
+#include "Core/Graphics/AMaterial.hpp"
 
 #define COL 17
 #define ROW 13
@@ -50,7 +52,12 @@ namespace Game
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
 				auto blockColl = mapBlocGO->AddComponent<T>();
-				blockColl->_kinematic = kinematic;
+				if (!kinematic)
+				{
+					auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+					rb2d->kinematic = kinematic;
+					rb2d->mass = 1.0f;
+				}
 
 				return (mapBlocGO);
 			}
@@ -83,7 +90,9 @@ namespace Game
 				auto *player = playerGO->AddComponent<Game::Component::Player>();
 				auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 				auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-				playerColl->_kinematic = false;
+				auto rb2d = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+				rb2d->kinematic = false;
+				rb2d->mass = 1.0f;
 
 				return (playerGO);
 			}
