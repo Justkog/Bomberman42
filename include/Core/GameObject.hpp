@@ -2,9 +2,11 @@
 #define BE_CORE_GAMEOBJECT_HPP 1
 
 #include "Core/Core.hpp"
+#include "Core/AScene.hpp"
 #include "Core/Transform.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/MeshRenderer.hpp"
+#include "Core/Component/IStart.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
 namespace BeerEngine
@@ -13,6 +15,8 @@ namespace BeerEngine
 	{
 	protected:
 		std::vector<Component::Component *> _components;
+		std::vector<Component::Component *> _toStart;
+		std::vector<Component::Component *> _toDestroy;
 
 	public:
 		int			_uniqueID;
@@ -35,13 +39,22 @@ namespace BeerEngine
         virtual void    render(void);
         virtual void    renderUI(struct nk_context *ctx);
 
+		void    destroy(Component::Component *comp);
+		void    destroyComponent(void);
 		void    destroy(GameObject *go);
+
+		template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
+		T	*instantiate(void)
+		{
+			return (_scene.instantiate<T>());
+		}
 
         template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*AddComponent(void)
 		{
 			T *c = new T(this);
 			_components.push_back(c);
+			_toStart.push_back(c);
 			return (c);
 		}
 
@@ -73,6 +86,7 @@ namespace BeerEngine
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
         void    componentRender(void);
+        void    componentRenderAlpha(void);
         void    componentPhysicUpdate(void);
         void    componentRenderUI(struct nk_context *ctx);
 

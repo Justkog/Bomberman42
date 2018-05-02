@@ -60,6 +60,8 @@ namespace BeerEngine
         class CircleCollider;
         class BoxCollider2D;
 		class RigidBody2D;
+		class ParticleBase;
+		class ParticleExplode;
 	}
 
     namespace Graphics
@@ -70,7 +72,6 @@ namespace BeerEngine
 		class AMaterial;
 		class Texture;
 		class MeshBuilder;
-		class Particles;
 	}
 
 	namespace Physics

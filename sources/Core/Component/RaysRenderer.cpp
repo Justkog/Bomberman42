@@ -52,7 +52,10 @@ RaysRenderer::~RaysRenderer ( void )
 RaysRenderer::RaysRenderer(BeerEngine::GameObject *gameObject) :
 MeshRenderer(gameObject)
 {
-	
+	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::loadLineShader());
+	material->setColor(glm::vec4(0.5f, 1.0f, 1.0f, 1.0f));
+	this->setMaterial(material);
+	this->renderMode = GL_LINES;
 }
 
 // ###############################################################
@@ -73,11 +76,6 @@ void RaysRenderer::start()
 {
 	std::cout << "RaysRenderer start" << std::endl;
 	old_size = 0;
-
-	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::loadLineShader());
-	material->setColor(glm::vec4(0.5f, 1.0f, 1.0f, 1.0f));
-	this->setMaterial(material);
-	this->renderMode = GL_LINES;
 }
 
 void RaysRenderer::RebuildMesh()

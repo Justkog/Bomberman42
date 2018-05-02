@@ -27,6 +27,7 @@ SRC = \
 	Core/Transform.cpp \
 	Core/Input.cpp \
 	Core/Camera.cpp \
+	Core/Mathf.cpp \
 	\
 	Core/Component/Component.cpp \
 	Core/Component/MeshRenderer.cpp \
@@ -35,6 +36,8 @@ SRC = \
 	Core/Component/BoxCollider2D.cpp \
 	Core/Component/CircleCollider.cpp \
 	Core/Component/RigidBody2D.cpp \
+	Core/Component/ParticleBase.cpp \
+	Core/Component/ParticleExplode.cpp \
 	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
@@ -42,7 +45,6 @@ SRC = \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
 	Core/Graphics/Texture.cpp \
-	Core/Graphics/Particles.cpp \
 	\
 	Core/Physics/Physics.cpp \
 	\
@@ -60,6 +62,8 @@ SRC = \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
 	Game/Components/Item.cpp \
+	Game/Components/Bomb.cpp \
+	Game/Components/Map.cpp \
 	Game/CameraTest.cpp
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \

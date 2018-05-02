@@ -1,7 +1,11 @@
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
+#include "Game/Components/Bomb.hpp"
 #include "Core/Input.hpp"
+#include "Core/GameObject.hpp"
 #include "Core/Component/RigidBody2D.hpp"
+#include "Core/Component/MeshRenderer.hpp"
+#include "Core/Graphics/Graphics.hpp"
 
 namespace Game
 {
@@ -21,7 +25,7 @@ namespace Game
 
         void    Player::fixedUpdate(void)
         {
-            
+
         }
 
         void    Player::update(void)
@@ -41,7 +45,6 @@ namespace Game
                 if (dir != glm::vec2(0.0f))
                     rb2d->velocity = glm::normalize(dir) * _character->_speed;
             }
-            
 
             // if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
             // {
@@ -59,11 +62,25 @@ namespace Game
 			// 	_character->translate(_transform.right());
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
+            {
+                BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
+                go->transform.position = _gameObject->transform.position;
+                go->transform.scale = glm::vec3(0.5f);
+                auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
+			    render->setMesh(BeerEngine::Graphics::Graphics::cube);
+                Bomb *bomb = go->AddComponent<Bomb>();
+                bomb->setPower(_character->_explosionSize);
+            }
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
+            {
+                _gameObject->destroy(this);
+            }
         }
 
         void            Player::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "Player", nk_rect(10, 100, 220, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
+            if (nk_begin(ctx, "Player", nk_rect(10, 100, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
                 ss << "Speed: " << _character->_speed;
@@ -79,7 +96,9 @@ namespace Game
                 ss << "Size: " << _character->_explosionSize;
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-            }    
+                nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
+            }
             nk_end(ctx);
         }
 
@@ -92,7 +111,7 @@ namespace Game
 
         void Player::deserialize(const nlohmann::json & j)
     	{
-            
+
 		}
 
 		REGISTER_COMPONENT_CPP(Player)

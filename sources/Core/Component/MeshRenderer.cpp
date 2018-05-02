@@ -55,6 +55,8 @@ namespace BeerEngine
 			{
 				if (_material != nullptr)
 					_material->bind(_mat);
+				else
+					Graphics::Graphics::defaultMaterial->bind(_mat);
 				_mesh->render(renderMode);
 			}
 		}
