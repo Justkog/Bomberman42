@@ -35,6 +35,12 @@ void updateThread(BeerEngine::Window *window)
     while (!window->isClose())
     {
         scene = BeerEngine::SceneManager::GetCurrent();
+        if (scene != nullptr)
+        {
+            scene->mutexLock(true);
+            scene->start();
+            scene->mutexLock(false);
+        }
         BeerEngine::Time::Update();
         fixedTimer += BeerEngine::Time::GetDeltaTime();
         timer += BeerEngine::Time::GetDeltaTime();
@@ -56,7 +62,6 @@ void updateThread(BeerEngine::Window *window)
         {
             scene->mutexLock(true);
             scene->update();
-            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
 
@@ -111,7 +116,7 @@ int main(void)
         nk_glfw3_new_frame();
 
 
-        if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_CLOSABLE))
+        if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
         {
             std::stringstream ss;
             ss << "FPS: " << FPS << " / UPS: " << UPS;
@@ -134,6 +139,7 @@ int main(void)
             scene->renderUpdate();
             scene->render();
             scene->renderUI(ctx);
+            scene->destroyGameObjects();
             scene->mutexLock(false);
         }
         glDisable(GL_DEPTH_TEST);

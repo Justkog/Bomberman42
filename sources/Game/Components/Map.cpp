@@ -67,5 +67,14 @@ namespace Game
 				}
 			}
 		}
+		void    Map::renderUI(struct nk_context *ctx)
+		{
+			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            {
+				nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, "Hello World!", NK_TEXT_LEFT);
+            }
+            nk_end(ctx);
+		}
     }
 }

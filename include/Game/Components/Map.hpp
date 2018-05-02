@@ -13,6 +13,7 @@
 #include "Core/Component/RigidBody2D.hpp"
 #include "Game/Components/Item.hpp"
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Component/IUI.hpp"
 
 #define S -1 //spawn position
 #define I 9
@@ -21,7 +22,8 @@ namespace Game
 {
 	namespace Component
 	{
-		class Map : public BeerEngine::Component::Component
+		class Map : public BeerEngine::Component::Component,
+						public BeerEngine::Component::IUI
 		{
 		private:
 			int	_sizeX;
@@ -37,7 +39,8 @@ namespace Game
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
        		virtual void    update(void);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
-
+			virtual void    renderUI(struct nk_context *ctx);
+		
 			int				**_map;
 
 			template <typename T>
