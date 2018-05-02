@@ -14,8 +14,6 @@
 #include "Game/Components/Item.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 
-#define COL 17
-#define ROW 13
 #define S -1 //spawn position
 #define I 9
 
@@ -25,6 +23,10 @@ namespace Game
 	{
 		class Map : public BeerEngine::Component::Component
 		{
+		private:
+			int	_sizeX;
+			int	_sizeY;
+
 		protected:
 			BeerEngine::Transform	&_transform;
 
