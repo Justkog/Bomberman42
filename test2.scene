@@ -3,10 +3,74 @@
         {
             "components": [
                 {
-                    "componentClass": "N4Game9Component16CameraControllerE"
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": null,
+                    "mesh": null,
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
                 }
             ],
             "id": 0,
+            "name": "lines Holder",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N4Game9Component16CameraControllerE"
+                },
+                {
+                    "componentClass": "Component"
+                }
+            ],
+            "id": 1,
             "name": "Camera",
             "transform": {
                 "parent": null,
@@ -109,7 +173,7 @@
                     ]
                 }
             ],
-            "id": 1,
+            "id": 2,
             "name": "player",
             "transform": {
                 "parent": null,
@@ -186,7 +250,7 @@
                     ]
                 }
             ],
-            "id": 2,
+            "id": 3,
             "name": "old",
             "transform": {
                 "parent": null,
@@ -263,7 +327,7 @@
                     ]
                 }
             ],
-            "id": 3,
+            "id": 4,
             "name": "skull",
             "transform": {
                 "parent": null,
@@ -340,7 +404,7 @@
                     ]
                 }
             ],
-            "id": 4,
+            "id": 5,
             "name": "house",
             "transform": {
                 "parent": null,
@@ -417,7 +481,7 @@
                     ]
                 }
             ],
-            "id": 5,
+            "id": 6,
             "name": "bigmax",
             "transform": {
                 "parent": null,
@@ -494,7 +558,7 @@
                     ]
                 }
             ],
-            "id": 6,
+            "id": 7,
             "name": "fourmi",
             "transform": {
                 "parent": null,
@@ -571,7 +635,7 @@
                     ]
                 }
             ],
-            "id": 7,
+            "id": 8,
             "name": "suzanne",
             "transform": {
                 "parent": null,
@@ -648,7 +712,7 @@
                     ]
                 }
             ],
-            "id": 8,
+            "id": 9,
             "name": "lightBulb",
             "transform": {
                 "parent": null,
@@ -741,7 +805,7 @@
                     ]
                 }
             ],
-            "id": 9,
+            "id": 10,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -834,7 +898,7 @@
                     ]
                 }
             ],
-            "id": 10,
+            "id": 11,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -927,7 +991,7 @@
                     ]
                 }
             ],
-            "id": 11,
+            "id": 12,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -1020,7 +1084,7 @@
                     ]
                 }
             ],
-            "id": 12,
+            "id": 13,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -1113,7 +1177,7 @@
                     ]
                 }
             ],
-            "id": 13,
+            "id": 14,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -1206,7 +1270,7 @@
                     ]
                 }
             ],
-            "id": 14,
+            "id": 15,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -1299,7 +1363,7 @@
                     ]
                 }
             ],
-            "id": 15,
+            "id": 16,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -1392,99 +1456,6 @@
                     ]
                 }
             ],
-            "id": 16,
-            "name": "map block",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
-                    1.0,
-                    0.5,
-                    14.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
-                    "kinematic": false,
-                    "mass": 1.0,
-                    "velocity": [
-                        0.0,
-                        0.0
-                    ]
-                }
-            ],
             "id": 17,
             "name": "map block",
             "transform": {
@@ -1495,7 +1466,7 @@
                     0.0
                 ],
                 "position": [
-                    3.0,
+                    1.0,
                     0.5,
                     14.0
                 ],
@@ -1590,7 +1561,7 @@
                 "position": [
                     3.0,
                     0.5,
-                    12.0
+                    14.0
                 ],
                 "rotation": [
                     1.0,
@@ -1683,7 +1654,7 @@
                 "position": [
                     3.0,
                     0.5,
-                    10.0
+                    12.0
                 ],
                 "rotation": [
                     1.0,
@@ -1776,7 +1747,7 @@
                 "position": [
                     3.0,
                     0.5,
-                    8.0
+                    10.0
                 ],
                 "rotation": [
                     1.0,
@@ -1869,7 +1840,7 @@
                 "position": [
                     3.0,
                     0.5,
-                    6.0
+                    8.0
                 ],
                 "rotation": [
                     1.0,
@@ -1960,7 +1931,7 @@
                     0.0
                 ],
                 "position": [
-                    1.0,
+                    3.0,
                     0.5,
                     6.0
                 ],
@@ -2053,7 +2024,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    1.0,
                     0.5,
                     6.0
                 ],
@@ -2146,6 +2117,99 @@
                     0.0
                 ],
                 "position": [
+                    -1.0,
+                    0.5,
+                    6.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": false,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            ],
+            "id": 25,
+            "name": "map block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
                     -3.0,
                     0.5,
                     6.0
@@ -2218,10 +2282,10 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 2
+                    "type": 0
                 }
             ],
-            "id": 25,
+            "id": 26,
             "name": "item",
             "transform": {
                 "parent": null,
@@ -2296,7 +2360,7 @@
                     ]
                 }
             ],
-            "id": 26,
+            "id": 27,
             "name": "",
             "transform": {
                 "parent": null,
@@ -2325,7 +2389,7 @@
         },
         {
             "components": [],
-            "id": 27,
+            "id": 28,
             "name": "",
             "transform": {
                 "parent": {

@@ -9,6 +9,7 @@
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/CameraController.hpp"
+#include "Game/Components/MouseRayTest.hpp"
 #include "Game/CameraTest.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -87,12 +88,19 @@ void    SceneTest::init(void)
 	BeerEngine::GameObject *gameObject;
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 
+	auto linesGO = instantiate<BeerEngine::GameObject>();
+	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	linesGO->name = "lines Holder";
+
 	// Camera
 	BeerEngine::GameObject *cameraGO;
 	cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
 	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
+	mouseRay->linesRenderer = linesRenderer;
+	
 
 	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
 	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));

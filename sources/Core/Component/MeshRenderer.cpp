@@ -12,7 +12,8 @@ namespace BeerEngine
 		MeshRenderer::MeshRenderer(GameObject *gameObject) :
 			Component(gameObject),
 			_mesh(nullptr),
-			_material(nullptr)
+			_material(nullptr),
+			renderMode(GL_TRIANGLES)
 		{}
 
 		Graphics::Mesh	*MeshRenderer::getMesh(void)
@@ -55,7 +56,7 @@ namespace BeerEngine
 			{
 				if (_material != nullptr)
 					_material->bind(_mat);
-				_mesh->render();
+				_mesh->render(renderMode);
 			}
 		}
 

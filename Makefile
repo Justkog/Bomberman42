@@ -52,6 +52,7 @@ SRC = \
 	Game/Assets.cpp \
 	Game/SceneTest.cpp \
 	Game/Components/Character.cpp \
+	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
