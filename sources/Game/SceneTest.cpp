@@ -126,7 +126,7 @@ void    SceneTest::init(void)
 	auto MapGO = instantiate<BeerEngine::GameObject>();
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
-	map->player = playerGO;
+	map->_player = playerGO;
 	std::vector<int> line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<int> line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
 	std::vector<int> line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
