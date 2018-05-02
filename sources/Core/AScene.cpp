@@ -10,7 +10,6 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Json/Json.hpp"
-#include "Core/Graphics/Particles.hpp"
 
 namespace BeerEngine
 {
@@ -57,16 +56,22 @@ namespace BeerEngine
 
     void    AScene::start(void)
     {
+		// std::cout << "DEBUG: AScene::start" << std::endl;
+        for (GameObject *go : _toStart)
+        {
+            go->start();
+        }
+        _toStart.clear();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
-            (it->second)->start();
             (it->second)->componentStart();
         }
     }
 
     void    AScene::fixedUpdate(void)
     {
+        // std::cout << "DEBUG: AScene::fixedUpdate" << std::endl;
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
@@ -77,6 +82,7 @@ namespace BeerEngine
 
     void    AScene::update(void)
     {
+        // std::cout << "DEBUG: AScene::update" << std::endl;
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
@@ -87,6 +93,7 @@ namespace BeerEngine
 
     void    AScene::renderUpdate(void)
     {
+        // std::cout << "DEBUG: AScene::renderUpdate" << std::endl;
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
@@ -97,16 +104,22 @@ namespace BeerEngine
 
     void    AScene::render(void)
     {
+        // std::cout << "DEBUG: AScene::render" << std::endl;
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->render();
             (it->second)->componentRender();
         }
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentRenderAlpha();
+        }
     }
 
     void    AScene::renderUI(struct nk_context *ctx)
     {
+        // std::cout << "DEBUG: AScene::renderUI" << std::endl;
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
@@ -117,6 +130,7 @@ namespace BeerEngine
 
     void    AScene::physicUpdate(void)
     {
+        // std::cout << "DEBUG: AScene::physicUpdate" << std::endl;
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
@@ -159,6 +173,12 @@ namespace BeerEngine
 
     void    AScene::destroy(GameObject *go)
     {
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            if ((it->second)->transform.parent == &(go->transform))
+                destroy((it->second));
+        }
         if(std::find(_toDestroy.begin(), _toDestroy.end(), go) == _toDestroy.end())
         {
             _toDestroy.push_back(go);
@@ -177,5 +197,10 @@ namespace BeerEngine
             }
 		}
         _toDestroy.clear();
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->destroyComponent();
+        }
     }
 }

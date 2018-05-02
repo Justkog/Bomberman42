@@ -21,7 +21,7 @@ namespace BeerEngine
             _Current = new T();
             _Current->init();
             _Current->debugTest();
-            _Current->start();
+            // _Current->start();
         }
     };
 }

@@ -2,6 +2,7 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
+#include "Core/Component/IRenderAlpha.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
@@ -45,6 +46,28 @@ namespace BeerEngine
 	void    GameObject::render(void) {}
     void    GameObject::renderUI(struct nk_context *ctx) {}
 
+	void     GameObject::destroy(Component::Component *comp)
+	{
+		if(std::find(_toDestroy.begin(), _toDestroy.end(), comp) == _toDestroy.end())
+			_toDestroy.push_back(comp);
+	}
+	void    GameObject::destroyComponent(void)
+	{
+		for (Component::Component *comp : _toDestroy)
+		{
+			for (int i = 0; i <_components.size(); i++)
+			{
+				if (_components[i] == comp)
+				{
+					_components.erase(_components.begin() + i);
+					break;
+				}
+			}
+			delete comp;
+		}
+        _toDestroy.clear();
+	}
+
 	void    GameObject::destroy(GameObject *go)
     {
         _scene.destroy(go);
@@ -52,15 +75,19 @@ namespace BeerEngine
 
 	void    GameObject::componentStart(void)
 	{
-		for (Component::Component *c : _components)
+        // std::cout << "DEBUG: GameObject::componentStart" << std::endl;
+		for (Component::Component *c : _toStart)
 		{
 			if (Component::IStart *u = dynamic_cast<Component::IStart*>(c))
 				u->start();
+			// _components.push_back(c);
 		}
+		_toStart.clear();
 	}
 
 	void    GameObject::componentFixedUpdate(void)
 	{
+        // std::cout << "DEBUG: GameObject::componentFixedUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
@@ -70,6 +97,7 @@ namespace BeerEngine
 
 	void    GameObject::componentUpdate(void)
 	{
+        // std::cout << "DEBUG: GameObject::componentUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
@@ -79,24 +107,38 @@ namespace BeerEngine
 
 	void    GameObject::componentRenderUpdate(void)
 	{
+        // std::cout << "DEBUG: GameObject::componentRenderUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->renderUpdate();
+			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
+				r->renderAlphaUpdate();
 		}
 	}
 
 	void    GameObject::componentRender(void)
 	{
+        // std::cout << "DEBUG: GameObject::componentRender" << std::endl;
 		for (Component::Component *c : _components)
 		{
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->render();
 		}
 	}
+	void    GameObject::componentRenderAlpha(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentRenderAlpha" << std::endl;
+		for (Component::Component *c : _components)
+		{
+			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
+				r->renderAlpha();
+		}
+	}
 
 	void    GameObject::componentPhysicUpdate(void)
 	{
+        // std::cout << "DEBUG: GameObject::componentPhysicUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
 			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
@@ -111,6 +153,7 @@ namespace BeerEngine
 
 	void    GameObject::componentRenderUI(struct nk_context *ctx)
 	{
+        // std::cout << "DEBUG: GameObject::componentRenderUI" << std::endl;
 		for (Component::Component *c : _components)
 		{
 			if (Component::IUI *r = dynamic_cast<Component::IUI*>(c))

@@ -5,6 +5,7 @@
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "ShaderProgram.hpp"
+#include "AMaterial.hpp"
 
 namespace BeerEngine
 {
@@ -18,7 +19,8 @@ namespace BeerEngine
 			static Mesh				*cube;
 			static Texture			*whiteTexture;
 			static ShaderProgram	*particleShader;
-
+			static ShaderProgram	*defaultShader;
+			static AMaterial		*defaultMaterial;
 			static void Load(void);
 			static void UnLoad(void);
 
