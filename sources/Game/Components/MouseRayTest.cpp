@@ -83,7 +83,14 @@ void MouseRayTest::update()
 	{
 		clicking = true;
 		auto ray = BeerEngine::Physics::Physics::MouseToWorldRay();
-		ray.direction *= 10;
+		ray.origin.y = 0.5;
+		ray.direction.y = 0;
+		ray.direction = glm::normalize(ray.direction);
+		ray.direction *= 2;
+		if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction))
+			std::cout << "Collide\n";
+		else
+			std::cout << "No collision\n";
 		linesRenderer->addRay(ray);
 	}
 	else if (state == GLFW_RELEASE && clicking)

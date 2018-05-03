@@ -20,6 +20,7 @@ namespace BeerEngine
 
 			static Ray MouseToWorldRay();
 			static Ray ScreenToWorldRay(glm::vec2 screenPosition);
+			static bool Raycast(glm::vec3 origin, glm::vec3 direction);
 		};
 	}
 }

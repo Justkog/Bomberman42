@@ -30,7 +30,7 @@ namespace Game
 
         void    Character::translate(glm::vec3 dir)
         {
-            glm::normalize(dir);
+            dir = glm::normalize(dir);
             _transform.translate(dir * _speed * BeerEngine::Time::GetDeltaTime());
         }
 
