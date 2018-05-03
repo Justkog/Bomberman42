@@ -38,10 +38,9 @@ namespace Game
 
 		void Map::setDestruction(float posX, float posY)
 		{
-			std::cout << "setting destr!" << "\n";
 			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
-			// std::cout << "============posY " << Mpos.y <<  "\n";
-			_map[static_cast<int>(Mpos.y)][static_cast<int>(Mpos.x)] = 0;
+			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y));
+			// _map[static_cast<int>(Mpos.y)][static_cast<int>(Mpos.x)] = 0;
 
 		}
 
