@@ -17,6 +17,9 @@ LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 
 SRC = \
 	main.cpp \
+	\
+	sigslot/src/signal.cpp \
+	\
 	Core/Window.cpp \
 	Core/Time.cpp \
 	Core/SceneManager.cpp \
@@ -69,7 +72,7 @@ SRC = \
 
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
-	Game Game/Components Core/Json Core/Physics
+	Game Game/Components Core/Json Core/Physics sigslot/src
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
@@ -90,7 +93,7 @@ O_FILE = $(addprefix obj/, $(SRC:.cpp=.o))
 D_FILE = $(addprefix obj/, $(SRC:.cpp=.d))
 CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include \
 	-I tinyobjloader/ -I stb/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME))) \
-	-I nuklear/
+	-I nuklear/ -I sources/sigslot/src
 
 LIB_DIR = $(addprefix lib, $(LIB_NAME))
 LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))

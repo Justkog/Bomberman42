@@ -46,6 +46,8 @@ namespace Game
 			virtual void deserialize(const nlohmann::json & j);
 
 			REGISTER_COMPONENT_HPP
+
+			Signal<float, float> createCrateSignal;
 		};
 	}
 }

@@ -1,12 +1,12 @@
 #ifndef BE_GAME_COMPONENT_MAP_HPP
 #define BE_GAME_COMPONENT_MAP_HPP
 
+#include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Transform.hpp"
 #include "Core/BeerEngine.hpp"
 #include "Game/Assets.hpp"
-#include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/Component/CircleCollider.hpp"
@@ -14,6 +14,8 @@
 #include "Game/Components/Item.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Component/IUI.hpp"
+#include "Core/Component/IStart.hpp"
+#include "Game/Components/Player.hpp"
 
 #define S -1 //spawn position
 #define I 9 //Item
@@ -23,6 +25,7 @@ namespace Game
 	namespace Component
 	{
 		class Map : public BeerEngine::Component::Component,
+						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUI
 		{
 		protected:
@@ -39,9 +42,11 @@ namespace Game
 			glm::vec2		worldToMap(glm::vec3 pos);
 
 			int								**_map;
-			BeerEngine::GameObject			*_player;
 			int	_sizeX;
 			int	_sizeY;
+			Game::Component::Player			*_player;
+
+			void setDestruction(float posX, float posY);
 
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)

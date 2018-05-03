@@ -43,7 +43,12 @@ namespace Game
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
                     dir += glm::vec2(1, 0);
                 if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
-                    dir += glm::vec2(-1, 0);
+					dir += glm::vec2(-1, 0);
+				if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::B))
+				{
+					createCrateSignal.emit(_gameObject->transform.position.x, _gameObject->transform.position.z);
+					std::cout << "emitting" << "\n";
+				}
                 if (dir != glm::vec2(0.0f))
                     rb2d->velocity = glm::normalize(dir) * _character->_speed;
             }
@@ -70,7 +75,8 @@ namespace Game
                 go->transform.position = glm::round(_gameObject->transform.position);
                 go->transform.position.y = 0.25f;
                 go->transform.scale = glm::vec3(0.5f);
-                // auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
+                auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
+                collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
                 auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			    render->setMesh(BeerEngine::Graphics::Graphics::cube);
                 render->setMaterial(Assets::GetInstance()->bombMaterial);

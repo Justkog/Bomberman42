@@ -53,6 +53,16 @@ namespace Game
 			}
 		}
 
+		void    Bomb::onColliderExit(BeerEngine::Component::ACollider *other)
+		{
+			BeerEngine::Component::ACollider *collider = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
+			if (!collider)
+				return;
+			auto it = std::find(collider->_exceptions.begin(), collider->_exceptions.end(), other);
+			if (it != collider->_exceptions.end())
+				collider->_exceptions.erase(it);
+		}
+
 		void	Bomb::explode(void)
 		{
 			if (render != nullptr)
