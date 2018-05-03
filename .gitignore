@@ -44,3 +44,4 @@ vscodeFileTemplates/
 dep/
 tinyobjloader/
 stb/
+sources/sigslot/
