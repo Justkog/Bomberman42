@@ -39,6 +39,10 @@ namespace Game
 		void Map::setDestruction(float posX, float posY)
 		{
 			std::cout << "setting destr!" << "\n";
+			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
+			// std::cout << "============posY " << Mpos.y <<  "\n";
+			_map[static_cast<int>(Mpos.y)][static_cast<int>(Mpos.x)] = 0;
+
 		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
@@ -75,24 +79,36 @@ namespace Game
 				}
 			}
 		}
-
+#include <sstream>
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			if (nk_begin(ctx, "Map", nk_rect(10, 100, 320, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
-				// glm::vec2 tr = worldToMap(_player->transform.position);
-				// std::cout << "transform======== x: " << tr.x << " y: " << tr.y << std::endl;
 				nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, "position", NK_TEXT_LEFT);
 				nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, glm::to_string(worldToMap(_player->_gameObject->transform.position)).c_str(), NK_TEXT_LEFT);
+				nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, "map", NK_TEXT_LEFT);
+				for (int row = 0; row < _sizeY; row++)
+				{
+					std::stringstream ss;
+					// nk_layout_row_dynamic(ctx, 20, 1);
+					for (int col = 0; col < _sizeX; col++)
+					{
+						ss << _map[row][col];
+						// nk_label(ctx, std::to_string(_map[row][col]).c_str(), NK_TEXT_LEFT);
+					}
+					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+
+				}
             }
             nk_end(ctx);
 		}
 
 		glm::vec2		Map::worldToMap(glm::vec3 pos)
 		{
-			return glm::vec2((pos.x - (_sizeX / 2)) * (-1), _sizeY - pos.z);
+			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
 		}
 
     }
