@@ -30,7 +30,7 @@ namespace BeerEngine
 
 	void            Window::update(void)
 	{
-		BeerEngine::Input::Update();
+		// BeerEngine::Input::Update();
 		glfwPollEvents();
 	}
 
