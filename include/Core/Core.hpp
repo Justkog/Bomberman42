@@ -28,6 +28,7 @@
 #include <map>
 #include <vector>
 #include <fstream>
+#include <functional>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -80,6 +81,11 @@ namespace BeerEngine
 	{
 		struct Ray;
 		class Physics;
+	}
+
+	namespace BeerRoutine
+	{
+		class BeerRoutine;
 	}
 }
 

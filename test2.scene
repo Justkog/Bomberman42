@@ -167,6 +167,9 @@
                     "componentClass": "N4Game9Component6PlayerE"
                 },
                 {
+                    "componentClass": "Component"
+                },
+                {
                     "componentClass": "N4Game9Component8SettingsE",
                     "filePath": "testSettings.json"
                 },
