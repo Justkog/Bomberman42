@@ -4,6 +4,7 @@
 #include "Core/Audio/AudioClip.hpp"
 #include "Core/Graphics/Texture.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Graphics/AMaterial.hpp"
 
 Assets	*Assets::_Instance = nullptr;
 
@@ -74,6 +75,7 @@ void			Assets::autoload(std::string path)
 void			Assets::load(void)
 {
 	autoload("assets");
+	bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
 }
 
 void			Assets::unload(void)

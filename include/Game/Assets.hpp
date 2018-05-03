@@ -15,6 +15,8 @@ public:
 	std::map<std::string, BeerEngine::Graphics::Texture *>	textures;
 	std::map<std::string, BeerEngine::Graphics::Mesh *>	models;
 
+	BeerEngine::Graphics::AMaterial		*bombMaterial;
+
 	void			autoload(std::string path);
 	void			load(void);
 	void			unload(void);
