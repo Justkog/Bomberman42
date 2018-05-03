@@ -1,4 +1,5 @@
 #include "Core/Physics/Physics.hpp"
+#include "Core/Component/ACollider.hpp"
 #include "Core/Window.hpp"
 #include "Core/Camera.hpp"
 #include "Core/Input.hpp"
@@ -30,6 +31,16 @@ namespace BeerEngine
 		Ray Physics::MouseToWorldRay()
 		{
 			return ScreenToWorldRay(BeerEngine::Input::mousePosition);
+		}
+
+		bool Physics::Raycast(glm::vec3 origin, glm::vec3 direction)
+		{
+			for (BeerEngine::Component::ACollider *c : BeerEngine::Component::ACollider::_colliders)
+			{
+				if (c->intersect(glm::vec2(origin.x, origin.z), glm::vec2(direction.x, direction.z)))
+					return (true);
+			}
+			return (false);
 		}
 	}
 }

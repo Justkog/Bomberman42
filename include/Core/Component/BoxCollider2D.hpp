@@ -15,7 +15,10 @@ namespace BeerEngine
 		public:
 			BoxCollider2D(GameObject *gameObject);
 			virtual ~BoxCollider2D();
-			bool 	checkCollision(ACollider *other);
+			bool checkCollision(ACollider *other);
+
+			bool contain(glm::vec2 other);
+			bool intersect(glm::vec2 origin, glm::vec2 dir);
 
 			bool collide_AABB2D(BoxCollider2D *other);
 			bool collide_AABB2D(CircleCollider *other);

@@ -78,7 +78,8 @@ void updateThread(BeerEngine::Window *window)
         }
         //  std::this_thread::sleep_for(sleepTime);
 
-         std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		BeerEngine::Input::Update();
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     std::cout << "Thread Update: Finish" << std::endl;
 }
