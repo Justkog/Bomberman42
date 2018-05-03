@@ -21,7 +21,7 @@ namespace BeerEngine
 			static Ray MouseToWorldRay();
 			static Ray ScreenToWorldRay(glm::vec2 screenPosition);
 			static bool Raycast(glm::vec3 origin, glm::vec3 direction);
-			static bool Raycast(glm::vec3 origin, glm::vec3 direction, BeerEngine::Component::ACollider* collision);
+			static bool Raycast(glm::vec3 origin, glm::vec3 direction, BeerEngine::Component::ACollider** collision);
 			static std::vector<BeerEngine::Component::ACollider*> RaycastAll(glm::vec3 origin, glm::vec3 direction);
 		};
 	}

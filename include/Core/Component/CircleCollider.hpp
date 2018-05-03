@@ -11,6 +11,8 @@ namespace BeerEngine
 		class CircleCollider : public ACollider
 		{
 		protected:
+			bool lineCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
+			bool segmentCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
 
 		public:
 			CircleCollider(GameObject *gameObject);

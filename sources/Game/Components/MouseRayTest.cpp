@@ -10,6 +10,8 @@
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Physics/Physics.hpp"
+#include "Core/Component/ACollider.hpp"
+#include "Core/GameObject.hpp"
 
 namespace Game
 {
@@ -89,8 +91,9 @@ void MouseRayTest::update()
 		ray.direction *= 2;
 
 		// BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction);
-		BeerEngine::Component::ACollider *c;
-		BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, c);
+		BeerEngine::Component::ACollider *c = nullptr;
+		if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, &c))
+			std::cout << "collide: " << c->_transform.position.x << "," << c->_transform.position.z << std::endl;
 		// BeerEngine::Physics::Physics::RaycastAll(ray.origin, ray.direction);
 		linesRenderer->addRay(ray);
 	}
