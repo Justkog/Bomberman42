@@ -16,7 +16,7 @@
 #include "Core/Component/IUI.hpp"
 
 #define S -1 //spawn position
-#define I 9
+#define I 9 //Item
 
 namespace Game
 {
