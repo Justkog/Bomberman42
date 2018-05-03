@@ -13,7 +13,10 @@ namespace Game
 		{ }
 
         void    Map::start(void)
-        { }
+        {
+			std::cout << "map start" << "\n";
+			_player->createCrateSignal.bind(&Map::setDestruction, this);
+		}
 
 		void	Map::setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
 		{
@@ -28,10 +31,15 @@ namespace Game
 				}
 		}
 
-        void    Map::update(void)
+        void    Map::mapUpdate(int x, int y)
         {
-
+			_map[y][x] = 0;
         }
+
+		void Map::setDestruction(float posX, float posY)
+		{
+			std::cout << "setting destr!" << "\n";
+		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
 		{
@@ -55,7 +63,7 @@ namespace Game
 							}
 							else
 							{
-								_player->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
 								// addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 								playerSpawn = true;
 							}
@@ -72,10 +80,20 @@ namespace Game
 		{
 			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
+				// glm::vec2 tr = worldToMap(_player->transform.position);
+				// std::cout << "transform======== x: " << tr.x << " y: " << tr.y << std::endl;
 				nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, "Hello World!", NK_TEXT_LEFT);
+                nk_label(ctx, "position", NK_TEXT_LEFT);
+				nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, glm::to_string(worldToMap(_player->_gameObject->transform.position)).c_str(), NK_TEXT_LEFT);
             }
             nk_end(ctx);
 		}
+
+		glm::vec2		Map::worldToMap(glm::vec3 pos)
+		{
+			return glm::vec2((pos.x - (_sizeX / 2)) * (-1), _sizeY - pos.z);
+		}
+
     }
 }

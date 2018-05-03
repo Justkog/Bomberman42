@@ -37,6 +37,8 @@
 
 #include <nlohmann/json.hpp>
 
+#include <signal.h>
+
 namespace BeerEngine
 {
     class AScene;
