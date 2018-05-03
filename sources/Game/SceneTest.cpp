@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Core/Component/RigidBody2D.hpp"
+#include "Core/Component/RaysRenderer.hpp"
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
 #include "Game/Components/Player.hpp"
@@ -12,6 +13,7 @@
 #include "Game/Components/Map.hpp"
 
 #include "Game/Components/CameraController.hpp"
+#include "Game/Components/MouseRayTest.hpp"
 #include "Game/CameraTest.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -90,24 +92,50 @@ void    SceneTest::init(void)
 	BeerEngine::GameObject *gameObject;
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 
+	auto linesGO = instantiate<BeerEngine::GameObject>();
+	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
+	linesGO->name = "lines Holder";
+
 	// Camera
 	BeerEngine::GameObject *cameraGO;
 	cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
 	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
+	mouseRay->linesRenderer = linesRenderer;
+	
 
 	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
 	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
 	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
 	BeerEngine::Camera::main->transform.translate(-v);*/
 
+
+	// Player
+	auto playerGO = instantiate<BeerEngine::GameObject>();
+	playerGO->name = "player";
+	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+	playerMat->setAlbedo(playerTex);
+	meshRenderer->setMaterial(playerMat);
+	// playerGO->transform.position = glm::vec3(1, 0.5, 7);
+	playerGO->transform.scale = glm::vec3(1, 1, 1);
+	auto *character = playerGO->AddComponent<Game::Component::Character>();
+	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	playerRB2D->kinematic = false;
+
 	// FPS Camera
 	// instantiate<CameraTest>();
 	auto MapGO = instantiate<BeerEngine::GameObject>();
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
-
+	map->_player = playerGO;
 	std::vector<int> line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<int> line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
 	std::vector<int> line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};

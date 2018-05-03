@@ -15,10 +15,8 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Component/IUI.hpp"
 
-#define COL 17
-#define ROW 13
 #define S -1 //spawn position
-#define I 9
+#define I 9 //Item
 
 namespace Game
 {
@@ -27,6 +25,10 @@ namespace Game
 		class Map : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IUI
 		{
+		private:
+			int	_sizeX;
+			int	_sizeY;
+
 		protected:
 			BeerEngine::Transform	&_transform;
 
@@ -38,8 +40,9 @@ namespace Game
        		virtual void    update(void);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
 			virtual void    renderUI(struct nk_context *ctx);
-		
-			int				**_map;
+
+			int								**_map;
+			BeerEngine::GameObject			*_player;
 
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
@@ -78,29 +81,29 @@ namespace Game
 				return itemGO;
 			}
 
-			BeerEngine::GameObject *addPlayer(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
-			{
-				BeerEngine::Component::MeshRenderer *meshRenderer;
-				auto playerGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
-				playerGO->name = "player";
-				meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-				auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-				playerMat->setAlbedo(playerTex);
-				meshRenderer->setMaterial(playerMat);
-				playerGO->transform.position = pos;
-				playerGO->transform.scale = glm::vec3(1, 1, 1);
-				auto *character = playerGO->AddComponent<Game::Component::Character>();
-				auto *player = playerGO->AddComponent<Game::Component::Player>();
-				auto *settings = playerGO->AddComponent<Game::Component::Settings>();
-				auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-				auto rb2d = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-				rb2d->kinematic = false;
-				rb2d->mass = 1.0f;
-
-				return (playerGO);
-			}
+			// BeerEngine::GameObject *addPlayer(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+			// {
+			// 	BeerEngine::Component::MeshRenderer *meshRenderer;
+			// 	auto playerGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
+			// 	playerGO->name = "player";
+			// 	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+			// 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+			// 	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+			// 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+			// 	playerMat->setAlbedo(playerTex);
+			// 	meshRenderer->setMaterial(playerMat);
+			// 	playerGO->transform.position = pos;
+			// 	playerGO->transform.scale = glm::vec3(1, 1, 1);
+			// 	auto *character = playerGO->AddComponent<Game::Component::Character>();
+			// 	auto *player = playerGO->AddComponent<Game::Component::Player>();
+			// 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
+			// 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+			// 	auto rb2d = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+			// 	rb2d->kinematic = false;
+			// 	rb2d->mass = 1.0f;
+            //
+			// 	return (playerGO);
+			// }
 		};
 	}
 }

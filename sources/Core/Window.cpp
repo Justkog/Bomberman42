@@ -157,7 +157,7 @@ namespace BeerEngine
 				glfwSetMouseButtonCallback(win->getWindow(), win_mouse_button_callback);
 				glfwSetScrollCallback(win->getWindow(), win_scroll_callback);
 				glfwSwapInterval(0);
-				glewExperimental=true;
+				glewExperimental = true;
 				if (glewInit() != GLEW_OK)
 				{
 					delete win;

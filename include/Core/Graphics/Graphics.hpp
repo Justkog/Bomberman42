@@ -24,6 +24,8 @@ namespace BeerEngine
 			static void Load(void);
 			static void UnLoad(void);
 
+			static ShaderProgram *loadLineShader();
+
 			static Mesh	*OBJLoader(std::string path);
 		};
 	}

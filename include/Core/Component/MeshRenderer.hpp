@@ -27,6 +27,8 @@ namespace BeerEngine
 			virtual void    renderUpdate(void);
 			virtual void    render(void);
 
+			GLenum 			renderMode;
+
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
 

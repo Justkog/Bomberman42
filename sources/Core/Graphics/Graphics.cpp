@@ -161,6 +161,19 @@ namespace BeerEngine
 			return (shader);
 		}
 
+		ShaderProgram *Graphics::loadLineShader(void)
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/line_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile("shaders/line_f.glsl").c_str()
+			);
+			shader->compile();
+			return (shader);
+		}
+
 		void Graphics::Load(void)
 		{
 			// PLANE

@@ -10,18 +10,15 @@ namespace Game
         Map::Map(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform)
-		{
-			// setMap(tab, 17, 13);
-			// loadMap(lvl1);
-        }
+		{ }
 
         void    Map::start(void)
-        {
-			// drawMap();
-		}
+        { }
 
 		void	Map::setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
 		{
+			_sizeX = sizeX;
+			_sizeY = sizeY;
 				_map = new int*[sizeY];
 				for (int y = 0; y < sizeY; y++)
 				{
@@ -41,15 +38,15 @@ namespace Game
 			int type = 0;
 			bool playerSpawn = false;
 
-			for (int row = 0; row < ROW; row++)
+			for (int row = 0; row < _sizeY; row++)
 			{
-				for (int col = 0; col < COL; col++)
+				for (int col = 0; col < _sizeX; col++)
 				{
 					type = _map[row][col];
 					switch (type)
 					{
 						case 1:
-							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (COL / 2), 0.5, -row + ROW), true);
+							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
 							break;
 						case S:
 							if (playerSpawn)
@@ -58,17 +55,19 @@ namespace Game
 							}
 							else
 							{
-								addPlayer(shader, glm::vec3(-col + (COL / 2), 0.5, -row + ROW));
+								_player->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
+								// addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 								playerSpawn = true;
 							}
 							break;
 						case I:
-							addItem(shader, glm::vec3(-col + (COL / 2), 0.5, -row + ROW));
+							addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
 				}
 			}
 		}
+
 		void    Map::renderUI(struct nk_context *ctx)
 		{
 			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))

@@ -6,6 +6,8 @@
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Component/BoxCollider2D.hpp"
+#include "Game/Assets.hpp"
 
 namespace Game
 {
@@ -65,10 +67,14 @@ namespace Game
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
             {
                 BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
-                go->transform.position = _gameObject->transform.position;
+                go->transform.position = glm::round(_gameObject->transform.position);
+                go->transform.position.y = 0.25f;
                 go->transform.scale = glm::vec3(0.5f);
+                auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
+                collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
                 auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			    render->setMesh(BeerEngine::Graphics::Graphics::cube);
+                render->setMaterial(Assets::GetInstance()->bombMaterial);
                 Bomb *bomb = go->AddComponent<Bomb>();
                 bomb->setPower(_character->_explosionSize);
             }
@@ -80,7 +86,7 @@ namespace Game
 
         void            Player::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "Player", nk_rect(10, 100, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
                 ss << "Speed: " << _character->_speed;

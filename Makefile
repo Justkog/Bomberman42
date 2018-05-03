@@ -31,6 +31,7 @@ SRC = \
 	\
 	Core/Component/Component.cpp \
 	Core/Component/MeshRenderer.cpp \
+	Core/Component/RaysRenderer.cpp \
 	Core/Component/ACollider.cpp \
 	Core/Component/BoxCollider2D.cpp \
 	Core/Component/CircleCollider.cpp \
@@ -45,6 +46,8 @@ SRC = \
 	Core/Graphics/AMaterial.cpp \
 	Core/Graphics/Texture.cpp \
 	\
+	Core/Physics/Physics.cpp \
+	\
 	Core/IO/FileUtils.cpp \
 	\
 	Core/Audio/AudioListener.cpp \
@@ -54,6 +57,7 @@ SRC = \
 	Game/Assets.cpp \
 	Game/SceneTest.cpp \
 	Game/Components/Character.cpp \
+	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
@@ -63,7 +67,7 @@ SRC = \
 	Game/CameraTest.cpp
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
-	Game Game/Components Core/Json
+	Game Game/Components Core/Json Core/Physics
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \

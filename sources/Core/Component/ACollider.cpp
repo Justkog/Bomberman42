@@ -99,6 +99,17 @@ namespace BeerEngine
 			}
 		}
 
+		bool ACollider::hasException(ACollider *other)
+		{
+			auto it = std::find(_exceptions.begin(), _exceptions.end(), other);
+			if (it != _exceptions.end())
+				return (true);
+			it = std::find(other->_exceptions.begin(), other->_exceptions.end(), this);
+			if (it != other->_exceptions.end())
+				return (true);
+			return (false);
+		}
+
 		void ACollider::triggerStay(ACollider *other)
 		{
 			auto GOcomponents = _gameObject->GetComponents();
@@ -180,6 +191,8 @@ namespace BeerEngine
 
 		void ACollider::response(ACollider *other, glm::vec3 move)
 		{
+			if (hasException(other))
+				return;
 			if (other->isKinematic() && !isKinematic())
 			{
 				_transform.translate(move);
