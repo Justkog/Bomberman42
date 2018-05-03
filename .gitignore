@@ -45,3 +45,4 @@ dep/
 tinyobjloader/
 stb/
 sigslot/
+sources/sigslot/

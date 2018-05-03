@@ -11,7 +11,7 @@ namespace BeerEngine
 	{
 		typedef std::map<std::string, Component*(*)(GameObject *)> component_type;
 
-		class Component : public JsonSerializable, public Object
+		class Component : public JsonSerializable, public SigSlotBase
 		{
 		protected:
 		public:

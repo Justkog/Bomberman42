@@ -13,7 +13,10 @@ namespace Game
 		{ }
 
         void    Map::start(void)
-        { }
+        { 
+			std::cout << "map start" << "\n";
+			_player->createCrateSignal.bind(&Map::setDestruction, this);
+		}
 
 		void	Map::setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
 		{
@@ -32,6 +35,11 @@ namespace Game
         {
 
         }
+
+		void Map::setDestruction(float posX, float posY)
+		{
+			std::cout << "setting destr!" << "\n";
+		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
 		{
@@ -55,7 +63,7 @@ namespace Game
 							}
 							else
 							{
-								_player->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
 								// addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 								playerSpawn = true;
 							}
