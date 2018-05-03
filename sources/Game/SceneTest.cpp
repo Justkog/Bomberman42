@@ -179,6 +179,19 @@ void    SceneTest::init(void)
 	house2->transform.position = glm::vec3(4.5, 0, 14.4);
 	house2->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	house2->transform.rotation = glm::vec3(0, 3.14, 0);
+
+	auto dragon = instantiate<BeerEngine::GameObject>();
+	dragon->name = "dragon";
+	meshRenderer = dragon->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
+	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
+	auto *dragonMat = new BeerEngine::Graphics::AMaterial(shader);
+	dragonMat->setAlbedo(dragonTex);
+	meshRenderer->setMaterial(dragonMat);
+	dragon->transform.position = glm::vec3(0, 8, 5);
+	dragon->transform.scale = glm::vec3(0.05, 0.05, 0.05);
+	dragon->transform.rotation = glm::vec3(-90, 180, 0);
+
 	// Player
 	// auto playerGO = instantiate<BeerEngine::GameObject>();
 	// playerGO->name = "player";

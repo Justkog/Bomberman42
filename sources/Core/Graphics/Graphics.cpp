@@ -320,5 +320,87 @@ namespace BeerEngine
 			mesh->setSourcefile(path);
 			return (mesh);
 		}
+
+		/*
+		 *	Model loader using Assimp
+		 */
+
+		Mesh	*Graphics::ModelLoader(std::string path)
+		{
+			Assimp::Importer importer;
+			const aiScene *scene = importer.ReadFile(path.c_str(), 
+										aiProcess_Triangulate |
+										aiProcess_FlipUVs | 
+										aiProcess_JoinIdenticalVertices); 
+			if (!scene)
+			{
+				std::cerr << "Invalid model file !" << std::endl;
+				exit(EXIT_FAILURE);
+			}
+
+			BeerEngine::Graphics::MeshBuilder builder;
+
+			bool useTexCoords = false;
+			for (std::size_t k = 0; k < scene->mNumMeshes; k++)
+			{
+				aiMesh *mesh = scene->mMeshes[k];
+
+				std::vector<glm::vec3>	positions;
+				std::vector<glm::vec3>	normals;
+				std::vector<glm::vec2>	texcoords;
+				
+				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
+				{
+					glm::vec3 position;
+					position.x = mesh->mVertices[i].x;
+					position.y = mesh->mVertices[i].y;
+					position.z = mesh->mVertices[i].z;
+					positions.push_back(position);
+
+					glm::vec3 normal;
+					normal.x = mesh->mNormals[i].x;
+					normal.y = mesh->mNormals[i].y;
+					normal.z = mesh->mNormals[i].z;
+					normals.push_back(normal);
+
+					if(mesh->HasTextureCoords(0))
+					{
+						useTexCoords = true;
+						glm::vec2 texcoord;
+						texcoord.x = mesh->mTextureCoords[0][i].x;
+						texcoord.y = 1.0 - mesh->mTextureCoords[0][i].y;
+						texcoords.push_back(texcoord);
+					}
+				}
+
+				for (std::size_t i = 0; i < mesh->mNumFaces; i++)
+				{
+					aiFace face = mesh->mFaces[i];
+					for (std::size_t j = 0; j < face.mNumIndices; j++)
+					{
+						int index = face.mIndices[j];
+
+						glm::vec3 position = positions[index];
+						builder.addVertice(position);
+
+						glm::vec3 normal = normals[index];
+						builder.addNormal(normal);
+
+						if(mesh->HasTextureCoords(0))
+						{
+							glm::vec2 texcoord = texcoords[index];
+							builder.addUV(texcoord);
+						}
+					}
+				}
+			}
+
+			if (useTexCoords)
+				builder.calculTangent();
+			
+			auto result = builder.build();
+			result->setSourcefile(path);
+			return (result);
+		}
 	}
 }

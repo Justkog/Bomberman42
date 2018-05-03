@@ -130,7 +130,6 @@ int main(void)
         scene = BeerEngine::SceneManager::GetCurrent();
         nk_glfw3_new_frame();
 
-
         if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
         {
             std::stringstream ss;

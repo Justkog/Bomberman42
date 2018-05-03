@@ -65,7 +65,7 @@ void			Assets::autoload(std::string path)
 			else if (has_suffix(dp->d_name, ".obj"))
 			{
 				std::cout << "[MODEL] " << nameWithPath << std::endl;
-				models[nameWithPath] = BeerEngine::Graphics::Graphics::OBJLoader(nameWithPath);
+				models[nameWithPath] = BeerEngine::Graphics::Graphics::ModelLoader(nameWithPath);
 			}
 		}
     }

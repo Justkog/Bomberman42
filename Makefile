@@ -13,7 +13,8 @@ LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
 	`pkg-config --static --libs glm` \
 	`pkg-config --static --libs libpng`\
 	`pkg-config --static --libs openal` \
-	`pkg-config --static --libs sndfile`
+	`pkg-config --static --libs sndfile` \
+	`pkg-config --static --libs assimp`
 
 SRC = \
 	main.cpp \
@@ -76,7 +77,8 @@ CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 	`pkg-config glm --cflags-only-I` \
 	`pkg-config libpng --cflags-only-I` \
 	`pkg-config openal --cflags-only-I` \
-	`pkg-config sndfile --cflags-only-I`
+	`pkg-config sndfile --cflags-only-I` \
+	`pkg-config assimp --cflags-only-I`
 
 
 
@@ -108,6 +110,7 @@ install:
 	~/.brew/bin/brew install libsndfile
 	~/.brew/bin/brew tap nlohmann/json
 	~/.brew/bin/brew install nlohmann_json
+	~/.brew/bin/brew install assimp
 	sh script.sh
 
 relink:

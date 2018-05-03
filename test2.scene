@@ -8133,6 +8133,83 @@
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "material": {
                         "albedo": {
+                            "sourceFile": "assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "assets/models/BlackDragon/Dragon 2.5_fbx.fbx",
+                        "type": ""
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                }
+            ],
+            "id": 98,
+            "name": "dragon",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    8.0,
+                    5.0
+                ],
+                "rotation": [
+                    -0.23538291454315186,
+                    0.3812674283981323,
+                    0.46963608264923096,
+                    0.7607048749923706
+                ],
+                "scale": [
+                    0.05000000074505806,
+                    0.05000000074505806,
+                    0.05000000074505806
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
                             "sourceFile": "assets/models/Old_man/Muro_head_dm.tga"
                         },
                         "bump": null,
@@ -8177,7 +8254,7 @@
                     ]
                 }
             ],
-            "id": 98,
+            "id": 99,
             "name": "old",
             "transform": {
                 "parent": null,
@@ -8252,7 +8329,7 @@
                     ]
                 }
             ],
-            "id": 99,
+            "id": 100,
             "name": "",
             "transform": {
                 "parent": null,
