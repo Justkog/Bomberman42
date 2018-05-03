@@ -3659,7 +3659,11 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
+<<<<<<< HEAD
                     "type": 1
+=======
+                    "type": 2
+>>>>>>> master
                 }
             ],
             "id": 44,
