@@ -25,6 +25,7 @@ namespace Game
 			virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
+			void			explode(void);
 			
 			void			setPower(float pow);
 		};
