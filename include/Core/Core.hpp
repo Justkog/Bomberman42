@@ -60,6 +60,7 @@ namespace BeerEngine
 		class Component;
 		class MeshRenderer;
 		class RaysRenderer;
+        class ACollider;
         class CircleCollider;
         class BoxCollider2D;
 		class RigidBody2D;

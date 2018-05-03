@@ -37,6 +37,11 @@ namespace BeerEngine
 		{
 			return (false);
 		}
+
+		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir, glm::vec2 &outPosition)
+		{
+			return (false);
+		}
 /*
 		bool CollisionDroite(Point A,Point B,Cercle C)
 		{
