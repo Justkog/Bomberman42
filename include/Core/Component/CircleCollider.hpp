@@ -19,6 +19,7 @@ namespace BeerEngine
 
 			bool contain(glm::vec2 other);
 			bool intersect(glm::vec2 origin, glm::vec2 dir);
+			bool intersect(glm::vec2 origin, glm::vec2 dir, glm::vec2 &outPosition);
 
 			bool collide_AABB2D(CircleCollider *other);
 			bool collide_AABB2D(BoxCollider2D *other);
