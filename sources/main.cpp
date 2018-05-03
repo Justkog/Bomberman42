@@ -98,6 +98,21 @@ int main(void)
 
     // Audio
     BeerEngine::Audio::AudioListener::init();
+    // BeerEngine::Audio::AudioListener audio;
+    //
+    // audio.setListenerData(0, 0, 0);
+    // alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
+    // BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+    // // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
+    //
+    // BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+    // // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
+    //
+    // srcAudio.setVolume(1);
+    // srcAudio.setPitch(1);
+    // // srcAudio2.setPitch(2);
+    // srcAudio.setLooping(true);
+    // srcAudio.play();
     // Graphics
     BeerEngine::Graphics::Graphics::Load();
     // Game Assets
@@ -122,7 +137,7 @@ int main(void)
             ss << "FPS: " << FPS << " / UPS: " << UPS;
             nk_layout_row_dynamic(ctx, 20, 1);
             nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-        }    
+        }
         nk_end(ctx);
 
         // Draw
