@@ -12,7 +12,8 @@ namespace BeerEngine
 		MeshRenderer::MeshRenderer(GameObject *gameObject) :
 			Component(gameObject),
 			_mesh(nullptr),
-			_material(nullptr)
+			_material(nullptr),
+			renderMode(GL_TRIANGLES)
 		{}
 
 		Graphics::Mesh	*MeshRenderer::getMesh(void)
@@ -43,7 +44,6 @@ namespace BeerEngine
 			return (*this);
 		}
 
-
 		void    		MeshRenderer::renderUpdate(void)
 		{
 			_mat = _gameObject->transform.getMat4();
@@ -57,7 +57,7 @@ namespace BeerEngine
 					_material->bind(_mat);
 				else
 					Graphics::Graphics::defaultMaterial->bind(_mat);
-				_mesh->render();
+				_mesh->render(renderMode);
 			}
 		}
 

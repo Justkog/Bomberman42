@@ -1,7 +1,6 @@
 #ifndef BE_CORE_INPUT_HPP
 #define BE_CORE_INPUT_HPP 1
 
-#include <map>
 #include "Core.hpp"
 #include "KeyCode.hpp"
 
