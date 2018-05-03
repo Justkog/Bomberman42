@@ -92,9 +92,7 @@ namespace Game
 
 		glm::vec2		Map::worldToMap(glm::vec3 pos)
 		{
-			int x = (pos.x - (_sizeX / 2)) * (-1);
-			int y = _sizeY - pos.z;
-			return glm::vec2(x, y);
+			return glm::vec2((pos.x - (_sizeX / 2)) * (-1), _sizeY - pos.z);
 		}
 
     }
