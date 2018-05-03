@@ -5,6 +5,11 @@ namespace BeerEngine
 {
 	namespace BeerRoutine
 	{
+		BeerRoutine::BeerRoutine()
+		{
+			_loop = false;
+		}
+
 		BeerRoutine &BeerRoutine::addAction(std::function<bool (void)> action)
 		{
 			_actions.push_back(action);
@@ -14,11 +19,17 @@ namespace BeerEngine
 		BeerRoutine &BeerRoutine::addTimer(float seconds)
 		{
 			_actions.push_back([=] () {
-				if (this->timer >= seconds)
+				if (this->_timer >= seconds)
 					return true;
 				else
 					return false;
 			});
+			return *this;
+		}
+
+		BeerRoutine &BeerRoutine::loop()
+		{
+			_loop = true;
 			return *this;
 		}
 
@@ -28,26 +39,31 @@ namespace BeerEngine
 			return *routine;
 		}
 
+		bool	BeerRoutine::hasActionsLeft()
+		{
+			return (_actions.size() > 0);
+		}
+
+
 		void	BeerRoutine::update()
 		{
-			std::cout << "routine udpate .." << "\n";
+			this->_timer += Time::GetDeltaTime();
 			
-			this->timer += Time::GetDeltaTime();
-			
-			bool res = false;
+			bool res = true;
 			while (res)
 			{
 				if (_actions.size() > 0)
 					res = _actions[0]();
 				else
 				{
-					std::cout << "all routines actions done" << "\n";
 					break;
 				}
 				if (res)
 				{
+					if (_loop)
+						this->_actions.push_back(_actions[0]);
 					this->_actions.erase(_actions.begin());
-					this->timer = 0;
+					this->_timer = 0;
 				}
 			}
 		}

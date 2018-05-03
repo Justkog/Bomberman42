@@ -10,6 +10,8 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
+#include "Core/BeerRoutine/BeerRoutine.hpp"
+#include "Core/BeerRoutine/ARoutineRunner.hpp"
 
 namespace Game
 {
@@ -17,7 +19,8 @@ namespace Game
 	{
 		class BeerRoutineTester : public BeerEngine::Component::Component,
 									public BeerEngine::Component::IUpdate,
-									public BeerEngine::Component::IStart
+									public BeerEngine::Component::IStart,
+									public BeerEngine::BeerRoutine::ARoutineRunner
 		{
 		public:
 
@@ -33,11 +36,6 @@ namespace Game
 			virtual void start();
 			virtual void update();
 			virtual void fixedUpdate();
-
-			void startRoutine(BeerEngine::BeerRoutine::BeerRoutine &routine);
-
-			BeerEngine::BeerRoutine::BeerRoutine *currentRoutine;
-			BeerEngine::BeerRoutine::BeerRoutine *testRoutine;
 
 			void	testDisplay(std::string content);
 			BeerEngine::BeerRoutine::BeerRoutine *createTestRoutine();

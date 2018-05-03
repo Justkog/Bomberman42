@@ -58,6 +58,7 @@ SRC = \
 	Core/Audio/AudioClip.cpp \
 	\
 	Core/BeerRoutine/BeerRoutine.cpp \
+	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
 	Game/Assets.cpp \
 	Game/SceneTest.cpp \

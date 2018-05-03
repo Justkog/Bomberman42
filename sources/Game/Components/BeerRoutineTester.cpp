@@ -1,5 +1,6 @@
 #include "Game/Components/BeerRoutineTester.hpp"
 #include "Core/BeerRoutine/BeerRoutine.hpp"
+#include "Core/BeerRoutine/ARoutineRunner.hpp"
 #include "Core/Input.hpp"
 
 namespace Game
@@ -44,7 +45,7 @@ BeerRoutineTester::~BeerRoutineTester ( void )
 BeerRoutineTester::BeerRoutineTester(BeerEngine::GameObject *gameObject) :
 Component(gameObject)
 {
-	
+
 }
 
 // ###############################################################
@@ -73,11 +74,12 @@ BeerEngine::BeerRoutine::BeerRoutine *BeerRoutineTester::createTestRoutine()
 		this->testDisplay("first display");
 		return true;
 	})
-	.addTimer(1.0f)
+	.addTimer(2.0f)
 	.addAction([&] () {
 		this->testDisplay("late display");
 		return true;
 	})
+	.loop()
 	;
 	return routine;
 }
@@ -85,33 +87,20 @@ BeerEngine::BeerRoutine::BeerRoutine *BeerRoutineTester::createTestRoutine()
 void BeerRoutineTester::start()
 {
 	std::cout << "BeerRoutineTester start" << std::endl;
-	
-	testRoutine = createTestRoutine();
 }
 
 void BeerRoutineTester::update()
 {
+	ARoutineRunner::update();
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::R))
-		startRoutine(*testRoutine);
-	if (currentRoutine)
-	{
-		currentRoutine->update();
-	}
+		startRoutine(*createTestRoutine());
+	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::T))
+		stopRoutine(getRunningRoutines()[0]);
 }
 
 void BeerRoutineTester::fixedUpdate()
 {
 	
-}
-
-void BeerRoutineTester::startRoutine(BeerEngine::BeerRoutine::BeerRoutine &routine)
-{
-	std::cout << "starting routine!" << "\n";
-	if (currentRoutine)
-	{
-		std::cout << "need to stop old routine!" << "\n";
-	}
-	currentRoutine = &routine;
 }
 
 // ###############################################################

@@ -1,5 +1,5 @@
-#ifndef BE_CORE_PHYSICS_HPP
-#define BE_CORE_PHYSICS_HPP 1
+#ifndef BE_CORE_BEER_ROUTINE_HPP
+#define BE_CORE_BEER_ROUTINE_HPP 1
 
 #include "Core/Core.hpp"
 
@@ -11,15 +11,19 @@ namespace BeerEngine
 		{
 		private:
 			std::vector<std::function<bool (void)>> _actions;
-			float	timer;
+			float	_timer;
+			bool	_loop;
 		public:
 
+			BeerRoutine();
 			BeerRoutine &addAction(std::function<bool (void)> action);
 			BeerRoutine &addTimer(float seconds);
+			BeerRoutine &loop();
 
 			static BeerRoutine &CreateRoutine();
 
 			void	update();
+			bool	hasActionsLeft();
 		};
 	}
 }

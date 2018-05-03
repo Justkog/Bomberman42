@@ -86,6 +86,7 @@ namespace BeerEngine
 	namespace BeerRoutine
 	{
 		class BeerRoutine;
+		class ARoutineRunner;
 	}
 }
 
