@@ -93,12 +93,8 @@ namespace Game
 				for (int row = 0; row < _sizeY; row++)
 				{
 					std::stringstream ss;
-					// nk_layout_row_dynamic(ctx, 20, 1);
 					for (int col = 0; col < _sizeX; col++)
-					{
 						ss << _map[row][col];
-						// nk_label(ctx, std::to_string(_map[row][col]).c_str(), NK_TEXT_LEFT);
-					}
 					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
 
 				}
