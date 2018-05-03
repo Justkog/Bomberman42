@@ -28,9 +28,9 @@ namespace Game
 				}
 		}
 
-        void    Map::update(void)
+        void    Map::mapUpdate(int x, int y)
         {
-
+			_map[y][x] = 0;
         }
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
@@ -72,10 +72,22 @@ namespace Game
 		{
 			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
+				// glm::vec2 tr = worldToMap(_player->transform.position);
+				// std::cout << "transform======== x: " << tr.x << " y: " << tr.y << std::endl;
 				nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, "Hello World!", NK_TEXT_LEFT);
+                nk_label(ctx, "position", NK_TEXT_LEFT);
+				nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, glm::to_string(worldToMap(_player->transform.position)).c_str(), NK_TEXT_LEFT);
             }
             nk_end(ctx);
 		}
+
+		glm::vec2		Map::worldToMap(glm::vec3 pos)
+		{
+			int x = (pos.x - (_sizeX / 2)) * (-1);
+			int y = _sizeY - pos.z;
+			return glm::vec2(x, y);
+		}
+
     }
 }

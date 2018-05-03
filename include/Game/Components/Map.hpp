@@ -25,10 +25,6 @@ namespace Game
 		class Map : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IUI
 		{
-		private:
-			int	_sizeX;
-			int	_sizeY;
-
 		protected:
 			BeerEngine::Transform	&_transform;
 
@@ -37,12 +33,15 @@ namespace Game
 
             virtual void    start(void);
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
-       		virtual void    update(void);
+       		virtual void    mapUpdate(int x, int y);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
 			virtual void    renderUI(struct nk_context *ctx);
+			glm::vec2		worldToMap(glm::vec3 pos);
 
 			int								**_map;
 			BeerEngine::GameObject			*_player;
+			int	_sizeX;
+			int	_sizeY;
 
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)

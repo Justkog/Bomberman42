@@ -3,6 +3,9 @@
 
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
+#include "Core/GameObject.hpp"
+#include "Game/Components/Map.hpp"
+
 // #include "Core/Component/IUpdate.hpp"
 // #include "Core/Component/IStart.hpp"
 // #include "Core/Component/ITriggerStay.hpp"
@@ -28,9 +31,9 @@ namespace Game
 		public:
             Breakable(BeerEngine::GameObject *gameObject);
 
-			void	updateMap();
+			// void	updateMap(int **map);
 
-			int		**_map;
+			Map		*_map;
 
 		private:
 			int		_posX;
