@@ -19,6 +19,8 @@ namespace BeerEngine
 			void    start(void);
 
 			virtual void    physicUpdate(void);
+			virtual bool	hasException(ACollider *other);
+
 			virtual bool 	checkCollision(ACollider *other) = 0;
 
 			virtual bool collide_AABB2D(CircleCollider *other) = 0;
@@ -38,6 +40,7 @@ namespace BeerEngine
 
 			static std::vector<ACollider*> _colliders;
 			std::vector<ACollider*> _currentCollisions;
+			std::vector<ACollider*> _exceptions;
 			Transform	&_transform;
 			glm::vec2	_offset;
 			bool		_isTrigger;

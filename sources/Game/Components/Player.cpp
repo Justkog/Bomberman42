@@ -70,7 +70,8 @@ namespace Game
                 go->transform.position = glm::round(_gameObject->transform.position);
                 go->transform.position.y = 0.25f;
                 go->transform.scale = glm::vec3(0.5f);
-                // auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
+                auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
+                collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
                 auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			    render->setMesh(BeerEngine::Graphics::Graphics::cube);
                 render->setMaterial(Assets::GetInstance()->bombMaterial);
