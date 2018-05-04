@@ -118,6 +118,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(playerMat);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
+	playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
@@ -130,18 +131,18 @@ void    SceneTest::init(void)
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
-	std::vector<int> line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<int> line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
-	std::vector<int> line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line3{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line5{1,0,0,0,0,0,0,I,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line7{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line9{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
+	std::vector<int>  line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int>  line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line3{1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,1};
+	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line5{1,0,0,2,0,0,0,I,0,0,0,2,0,0,0,0,1};
+	std::vector<int>  line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line7{1,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,1};
+	std::vector<int>  line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line9{1,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,1};
 	std::vector<int> line10{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line11{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int> line11{1,S,0,0,0,0,0,2,0,0,0,0,0,0,0,S,1};
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 
@@ -157,7 +158,7 @@ void    SceneTest::init(void)
 	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
 	objetMat->setAlbedo(objetTex);
 	meshRenderer->setMaterial(objetMat);
-	objet->transform.position = glm::vec3(-5, 0, 16.5);
+	objet->transform.position = glm::vec3(-5.5, 0, 16.5);
 	objet->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	objet->transform.rotation = glm::vec3(0, 0, 0);
 

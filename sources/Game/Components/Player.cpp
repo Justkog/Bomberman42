@@ -35,11 +35,6 @@ namespace Game
                     _character->move(Character::Direction::Left);
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
                     _character->move(Character::Direction::Right);
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::B))
-            {
-                createCrateSignal.emit(_gameObject->transform.position.x, _gameObject->transform.position.z);
-                std::cout << "emitting" << "\n";
-            }
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))

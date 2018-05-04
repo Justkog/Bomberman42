@@ -5,6 +5,7 @@
 #include "Core/Component/ParticleExplode.hpp"
 #include "Core/Physics/Physics.hpp"
 #include "Game/Assets.hpp"
+#include "Game/Components/Breakable.hpp"
 
 namespace Game
 {
@@ -84,7 +85,6 @@ namespace Game
 
 				float lifeTime = 1.0f / 2.0f;
 				float sizeDeflag = (power + 0.25f) * 2.0f;
-				std::cout << "power " << power << " sizeflag " << sizeDeflag << std::endl;
 				auto playerDeflag0 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
 				playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -95,10 +95,11 @@ namespace Game
 
 				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x, pos.y, pos.z), explodeDirs[0], hit, 1))
 				{
-				// 	// std::cout << "collide left : " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
+					if (destroyable)
+						_gameObject->destroy(hit.collider->_gameObject);
 					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag0->setSize(2.0f, 1.0f);
 				playerDeflag0->setSpawnTime(1.0f / 120.0f);
@@ -111,10 +112,11 @@ namespace Game
 				playerDeflag1->setLifeTime(lifeTime);
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[1], hit, 1))
 				{
-				// 	// std::cout << "collide right: " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
+					if (destroyable)
+						_gameObject->destroy(hit.collider->_gameObject);
 					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag1->setSize(2.0f, 1.0f);
 				playerDeflag1->setSpawnTime(1.0f / 120.0f);
@@ -127,10 +129,11 @@ namespace Game
 				playerDeflag2->setLifeTime(lifeTime);
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[2], hit, 1))
 				{
-				// 	// std::cout << "collide up: " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
+					if (destroyable)
+						_gameObject->destroy(hit.collider->_gameObject);
 					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag2->setSize(2.0f, 1.0f);
 				playerDeflag2->setSpawnTime(1.0f / 120.0f);
@@ -143,10 +146,11 @@ namespace Game
 				playerDeflag3->setLifeTime(lifeTime);
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[3], hit, 1))
 				{
-				// 	// std::cout << "collide down: " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
+					if (destroyable)
+						_gameObject->destroy(hit.collider->_gameObject);
 					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag3->setSize(2.0f, 1.0f);
 				playerDeflag3->setSpawnTime(1.0f / 120.0f);
