@@ -8,6 +8,7 @@
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
 #include "Game/Components/Player.hpp"
+#include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
@@ -155,6 +156,26 @@ void    SceneTest::init(void)
 
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
+
+	// IA
+	auto iaGO = instantiate<BeerEngine::GameObject>();
+	iaGO->name = "IA";
+	meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+	auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
+	iaMat->setAlbedo(iaTex);
+	meshRenderer->setMaterial(iaMat);
+	iaGO->transform.position = glm::vec3(1, 0.5, 7);
+	iaGO->transform.scale = glm::vec3(1, 1, 1);
+	character = iaGO->AddComponent<Game::Component::Character>();
+	auto *ia = iaGO->AddComponent<Game::Component::IA>();
+	ia->map = map;
+	routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
+	settings = iaGO->AddComponent<Game::Component::Settings>();
+	auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	iaRB2D->kinematic = false;
 
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();

@@ -27,6 +27,13 @@ namespace Game
 		protected:
 			BeerEngine::Transform	&_transform;
 			Game::Component::Character *_character;
+			bool _hasObjective;
+			glm::vec2 _objective;
+
+			std::stack<glm::vec2> _path;
+
+			bool    moveToObjective(void);
+			bool    findPath(void);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
@@ -41,7 +48,7 @@ namespace Game
 
 			REGISTER_COMPONENT_HPP
 
-			Signal<float, float> createCrateSignal;
+			Game::Component::Map *map;
 		};
 	}
 }

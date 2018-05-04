@@ -3,13 +3,20 @@
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 
+//TEST
+#include "Core/Input.hpp"
+#include "Core/Window.hpp"
+#include "Core/Physics/Physics.hpp"
+
 namespace Game
 {
 	namespace Component
 	{
         IA::IA(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
-            _transform(gameObject->transform)
+            _transform(gameObject->transform),
+            _hasObjective(false),
+            _objective(0, 0)
 		{
 
         }
@@ -26,38 +33,52 @@ namespace Game
 
         void    IA::update(void)
         {
-            // //MOVE UP
-            // _character->move(Character::Direction::Up);
-            // //MOVE DOWN
-            // _character->move(Character::Direction::Down);
-            // //MOVE LEFT
-            // _character->move(Character::Direction::Left);
-            // //MOVE RIGHT
-            // _character->move(Character::Direction::Right);
-            // //MOVE BOMB
-            // _character->dropBomb();
+            if (!_hasObjective)
+            {
+                //SEARCH TARGET
+                _hasObjective = true;
+                _objective = glm::vec2(3, 3);
+            }
+            if (_hasObjective)
+            {
+                if (moveToObjective())
+                    _hasObjective = false;
+            }
         }
 
-        void            IA::renderUI(struct nk_context *ctx)
+        bool    IA::findPath(void)
         {
-            if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            std::vector<std::vector<int>> mapCopy;
+
+            mapCopy.resize(map->_sizeY);
+            for (int y = 0; y < map->_sizeY; ++y)
+            {
+                mapCopy[y].resize(map->_sizeX);
+                for (int x = 0; x < map->_sizeX; ++x)
+                {
+                    mapCopy[y][x] = map->_map[y][x];
+                }
+            }
+        }
+
+        bool    IA::moveToObjective(void)
+        {
+            if (_path.empty() && map->worldToMap(_transform.position) != _objective)
+            {
+                findPath();
+            }
+        }
+
+        void    IA::renderUI(struct nk_context *ctx)
+        {
+            if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
-                ss << "Speed: " << _character->_speed;
+                ss << "Target: " << glm::to_string(target);
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
                 ss.str(std::string());
-                ss.clear();
-                ss << "Bomb: " << _character->_bombNb;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Size: " << _character->_explosionSize;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
+                // ss.clear();
             }
             nk_end(ctx);
         }
