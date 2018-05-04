@@ -31,7 +31,7 @@ namespace BeerEngine
 			static ShaderProgram *loadLineShader();
 
 			static Mesh	*OBJLoader(std::string path);
-			static Mesh	*ModelLoader(std::string path);
+			static Mesh *ModelLoader(std::string path);
 		};
 	}
 }

@@ -106,6 +106,11 @@ namespace BeerEngine
 			return (*this);
 		}
 
+		ShaderProgram	&AMaterial::getShader()
+		{
+			return (*_shader);
+		}
+
 		nlohmann::json	AMaterial::serialize()
 		{
 			return nlohmann::json {

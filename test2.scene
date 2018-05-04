@@ -3659,7 +3659,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 0
+                    "type": 1
                 }
             ],
             "id": 44,
@@ -8130,25 +8130,7 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "assets/models/BlackDragon/Dragon 2.5_fbx.fbx",
-                        "type": ""
-                    },
+                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
                     "pivot": [
                         [
                             1.0,
@@ -8207,25 +8189,7 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/models/Old_man/Muro_head_dm.tga"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "assets/models/Old_man/muro.obj",
-                        "type": ""
-                    },
+                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
                     "pivot": [
                         [
                             1.0,

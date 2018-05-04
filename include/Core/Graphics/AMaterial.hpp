@@ -40,6 +40,8 @@ namespace BeerEngine
 			AMaterial		&setNormal(Texture *tex);
 			AMaterial		&setBump(Texture *tex);
 
+			ShaderProgram	&getShader();
+
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
 			static AMaterial * Deserialize(const nlohmann::json & j);

@@ -29,9 +29,8 @@ namespace BeerEngine
 
 		MeshRenderer		&MeshRenderer::setMesh(std::string inputfile)
 		{
-			return setMesh(BeerEngine::Graphics::Graphics::ModelLoader(inputfile));
+			return setMesh(BeerEngine::Graphics::Graphics::OBJLoader(inputfile));
 		}
-
 
 		Graphics::AMaterial	*MeshRenderer::getMaterial(void)
 		{

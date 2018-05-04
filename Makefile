@@ -39,6 +39,7 @@ SRC = \
 	Core/Component/RigidBody2D.cpp \
 	Core/Component/ParticleBase.cpp \
 	Core/Component/ParticleExplode.cpp \
+	Core/Component/ModelRenderer.cpp \
 	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \

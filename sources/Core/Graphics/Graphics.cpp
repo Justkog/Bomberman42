@@ -398,9 +398,10 @@ namespace BeerEngine
 			if (useTexCoords)
 				builder.calculTangent();
 			
-			auto result = builder.build();
-			result->setSourcefile(path);
-			return (result);
+			auto builtMesh = builder.build();
+			builtMesh->setSourcefile(path);
+
+			return (builtMesh);
 		}
 	}
 }
