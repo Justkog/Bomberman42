@@ -96,69 +96,64 @@ namespace BeerEngine
 			return (*this);
 		}
 
+		void ModelRenderer::loadBoneIds(unsigned int index, const aiMesh* mesh)
+		{
+			for (unsigned int i = 0 ; i < mesh->mNumBones ; i++)
+			{ 
+				unsigned int index = 0;
+
+				std::string boneName(mesh->mBones[i]->mName.data);
+				if (m_BoneMapping.find(BoneName) == m_BoneMapping.end())
+				{
+					index = m_NumBones;
+					m_NumBones++; 
+					BoneInfo bi; 
+					m_BoneInfo.push_back(bi);
+				}
+				else
+				{
+					index = m_BoneMapping[BoneName];
+				}
+
+				m_BoneMapping[BoneName] = index;
+				m_BoneInfo[index].BoneOffset = mesh->mBones[i]->mOffsetMatrix;
+
+				for (unsigned int j = 0 ; j < mesh->mBones[i]->mNumWeights; j++)
+				{
+					unsigned int vertexID = m_Entries[MeshIndex].BaseVertex + mesh->mBones[i]->mWeights[j].mVertexId;
+					float weight = mesh->mBones[i]->mWeights[j].mWeight; 
+					_bones[VertexID].AddBoneData(index, Weight);
+				}
+			}
+		}
+
+		void ModelRenderer::loadSkeleton()
+		{
+			Matrix4f root = _assimpScene->mRootNode->mTransformation;
+		}
+
 		ModelRenderer	&ModelRenderer::loadMaterials(Graphics::ShaderProgram *shader)
 		{
-			std::cout << "Ignoring call to loadMaterials" << std::endl;
-			return (*this);
+			// if (_assimpScene == nullptr)
+			// {
+			// 	std::cerr << "Trying to load materials from a null model !" << std::endl;
+			// 	exit(1);
+			// }
+			// for (std::size_t i = 0; i < _assimpScene->mNumMaterials; i++)
+			// {
+			// 	const aiMaterial *mat = _assimpScene->mMaterials[i];
+			// 	if (mat == nullptr)
+			// 	{
+			// 		std::cerr << "Null materials !" << std::endl;
+			// 		exit(1);
+			// 	}
+			// 	// auto *material = new BeerEngine::Graphics::AMaterial(shader);
 
-			if (_assimpScene == nullptr)
-			{
-				std::cerr << "Trying to load materials from a null model !" << std::endl;
-				exit(1);
-			}
-			for (std::size_t i = 0; i < _assimpScene->mNumMaterials; i++)
-			{
-				const aiMaterial *mat = _assimpScene->mMaterials[i];
-				if (mat == nullptr)
-				{
-					std::cerr << "Null materials !" << std::endl;
-					exit(1);
-				}
-				// auto *material = new BeerEngine::Graphics::AMaterial(shader);
-
-				std::cout << "MAT: " << mat << std::endl;
-				std::cout << "MAT tex index: " << aiTextureType_DIFFUSE << std::endl;
-				std::cout << "MAT tex index: " << aiGetMaterialTextureCount(mat, aiTextureType_DIFFUSE) << std::endl;
-				std::cout << "MAT tex: " << mat->GetTextureCount(aiTextureType_DIFFUSE) << std::endl;
-				// {
-				// 	std::cout << "LOOOOOOOOOL" << std::endl;
-				// 	// aiString texturePath;
-				// 	// if (mat->GetTexture(aiTextureType_DIFFUSE, 0, &texturePath, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS)
-				// 	// {
-				// 	// 	std::string fullPath = texturePath.data;
-				// 	// 	auto *texture = BeerEngine::Graphics::Texture::LoadJPG(fullPath.c_str());
-				// 	// 	material->setAlbedo(texture);
-				// 	// }
-				// }
-				// std::cout << "LOOOOOOL " << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_NONE ) > 0)
-				// 	std::cout << "aiTextureType_NONE " << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_DIFFUSE) > 0)
-				// 	std::cout << "aiTextureType_DIFFUSE" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_SPECULAR) > 0)
-				// 	std::cout << "aiTextureType_SPECULAR" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_AMBIENT) > 0)
-				// 	std::cout << "aiTextureType_AMBIENT" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_EMISSIVE) > 0)
-				// 	std::cout << "aiTextureType_EMISSIVE" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_HEIGHT) > 0)
-				// 	std::cout << "aiTextureType_HEIGHT" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_NORMALS) > 0)
-				// 	std::cout << "aiTextureType_NORMALS" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_SHININESS) > 0)
-				// 	std::cout << "aiTextureType_SHININESS" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_OPACITY) > 0)
-				// 	std::cout << "aiTextureType_OPACITY" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_DISPLACEMENT) > 0)
-				// 	std::cout << "aiTextureType_DISPLACEMENT" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_LIGHTMAP) > 0)
-				// 	std::cout << "aiTextureType_LIGHTMAP" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_REFLECTION) > 0)
-				// 	std::cout << "aiTextureType_REFLECTION" << std::endl;
-				// if (mat->GetTextureCount(aiTextureType_UNKNOWN) > 0)
-				// 	std::cout << "aiTextureType_UNKNOWN" << std::endl;
-				// addMaterial(i, material);
-			}
+			// 	std::cout << "MAT: " << mat << std::endl;
+			// 	std::cout << "MAT tex index: " << aiTextureType_DIFFUSE << std::endl;
+			// 	std::cout << "MAT tex index: " << aiGetMaterialTextureCount(mat, aiTextureType_DIFFUSE) << std::endl;
+			// 	std::cout << "MAT tex: " << mat->GetTextureCount(aiTextureType_DIFFUSE) << std::endl;
+			// }
 			return (*this);
 		}
 

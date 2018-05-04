@@ -10,12 +10,21 @@
 #include "IRender.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 
+#define VERTEX_BONES_COUNT 4
+
 namespace BeerEngine
 {
 	namespace Component
 	{
 		class ModelRenderer : public Component, public IRender
 		{
+		private:
+			struct BoneData
+			{
+				unsigned int vertexIds[VERTEX_BONES_COUNT];
+    			float weights[VERTEX_BONES_COUNT];
+			};
+
 		protected:
 			std::map<int, Graphics::Mesh*>		_meshes;
 			std::map<int, Graphics::AMaterial*>	_materials;
@@ -24,11 +33,13 @@ namespace BeerEngine
 			std::string							_sourceFile;
 			const aiScene						*_assimpScene;
 
-
+			Graphics::Mesh						_boneDebugView;
+			std::vector<BoneData>				_bones;
 			GLint								_isModelID;
-			GLint								_boneIndexID;
-			GLint								_boneWeightsID;
 			GLint								_bonesID;
+
+			void			loadBonesIds();
+			void			loadSkeleton();
 
 		public:
 			ModelRenderer(GameObject *gameObject);
