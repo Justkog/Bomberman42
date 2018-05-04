@@ -6,6 +6,7 @@
 #include "Game/Components/Bomb.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
+#include "Core/Json/Json.hpp"
 
 namespace Game
 {
@@ -133,7 +134,7 @@ namespace Game
 				{"speed", _speed},
 				{"bombNB", _bombNb},
 				{"explosionSize", _explosionSize},
-				// {"direction", _direction},
+				{"direction", _direction},
 			};
 		}
 
@@ -142,7 +143,7 @@ namespace Game
             this->_speed = j.at("speed");
             this->_bombNb = j.at("bombNB");
             this->_explosionSize = j.at("explosionSize");
-            // this->_direction = j.at("direction");
+            this->_direction = j.at("direction");
 		}
 
 		REGISTER_COMPONENT_CPP(Character)
