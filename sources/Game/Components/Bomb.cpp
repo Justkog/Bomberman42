@@ -105,6 +105,7 @@ namespace Game
 				playerDeflag0->setSpawnTime(1.0f / 120.0f);
 				playerDeflag0->setVelocity(glm::vec3(sizeDeflag, 0.0f, 0.0f));
 
+				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag1 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
 				playerDeflag1->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerDeflag1->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -122,6 +123,7 @@ namespace Game
 				playerDeflag1->setSpawnTime(1.0f / 120.0f);
 				playerDeflag1->setVelocity(glm::vec3(-sizeDeflag, 0.0f, 0.0f));
 
+				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag2 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
 				playerDeflag2->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerDeflag2->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -139,6 +141,7 @@ namespace Game
 				playerDeflag2->setSpawnTime(1.0f / 120.0f);
 				playerDeflag2->setVelocity(glm::vec3(0.0f, 0.0f, sizeDeflag));
 
+				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag3 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
 				playerDeflag3->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerDeflag3->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
