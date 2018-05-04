@@ -27,13 +27,13 @@ namespace Game
 
         void    Player::update(void)
         {
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::I))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
                     _character->move(Character::Direction::Up);
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
                     _character->move(Character::Direction::Down);
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::J))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
                     _character->move(Character::Direction::Left);
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
                     _character->move(Character::Direction::Right);
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::B))
             {
@@ -42,7 +42,7 @@ namespace Game
             }
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::O))
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
                 _character->dropBomb();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
