@@ -40,12 +40,28 @@ namespace BeerEngine
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
 		{
-             std::cout << "GameObject added : " << uniqueID << std::endl;
+			std::cout << "GameObject added : " << uniqueID << std::endl;
 			T *c = new T(uniqueID, *this);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             _toStart.push_back(c);
             uniqueID++;
 			return (c);
+		}
+
+        template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
+		T	*instantiate(std::string prefabPath)
+		{
+			std::cout << "scene instantiating " << prefabPath << "\n";
+			T *object = instantiate<T>();
+			// T *object = new T(uniqueID, *this);
+			// T *object = GameObject::Deserialize(prefab)
+			// int id = object->_uniqueID;
+			object->load(prefabPath);
+			// object->_uniqueID = id;
+			// _gameObjects.insert(std::pair<int, GameObject *>(uniqueID, object));
+            // _toStart.push_back(object);
+            // uniqueID++;
+			return (object);
 		}
 
         void debugTest(void);

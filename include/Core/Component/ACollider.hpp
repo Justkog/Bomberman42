@@ -16,7 +16,7 @@ namespace BeerEngine
 		public:
 			ACollider(GameObject *gameObject);
 			virtual ~ACollider();
-			void    start(void);
+			virtual void    start(void);
 
 			virtual void    physicUpdate(void);
 			virtual bool	hasException(ACollider *other);

@@ -10,6 +10,7 @@
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
 #include "Core/AScene.hpp"
+#include "Core/IO/FileUtils.hpp"
 
 namespace BeerEngine
 {
@@ -171,23 +172,44 @@ namespace BeerEngine
 		};
 	}
 
-	// void GameObject::deserialize(const nlohmann::json & j)
-    // {
-    //     this->_uniqueID = j.at("id");
-	// 	this->name = j.at("name");
-    // }
+	void GameObject::deserialize(const nlohmann::json & j)
+    {
+		this->name = j.at("name");
+		this->transform = Transform::Deserialize(j.at("transform"));
+		auto components = j.at("components");
+        for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
+			auto comp = Component::Component::Deserialize(it.value(), this);
+			this->registerComponent(comp);
+		}
+    }
 
 	GameObject * GameObject::Deserialize(const nlohmann::json & j, AScene &scene)
     {
 		int id = j.at("id");
 		auto go = new GameObject(id, scene);
-		go->name = j.at("name");
-		go->transform = Transform::Deserialize(j.at("transform"));
-		auto components = j.at("components");
-        for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
-			auto comp = Component::Component::Deserialize(it.value(), go);
-			go->_components.push_back(comp);
-		}
+		go->deserialize(j);
+		// go->name = j.at("name");
+		// go->transform = Transform::Deserialize(j.at("transform"));
+		// auto components = j.at("components");
+        // for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
+		// 	auto comp = Component::Component::Deserialize(it.value(), go);
+		// 	go->_components.push_back(comp);
+		// }
 		return go;
+    }
+
+	void    GameObject::save(std::string filePath) {
+        nlohmann::json j = dynamic_cast<JsonSerializable *>(this);
+        std::string content = j.dump(4);
+        BeerEngine::IO::FileUtils::WriteFile(filePath, content);
+        // std::cout << content << std::endl;
+    }
+
+    void    GameObject::load(std::string filePath) {
+        std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
+        // std::cout << "deserializing " << filePath << "\n";
+        auto j = nlohmann::json::parse(content);
+		// std::cout << "json loaded" << "\n";
+        this->deserialize(j);
     }
 }

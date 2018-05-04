@@ -193,6 +193,7 @@ namespace BeerEngine
 		{
 			if (hasException(other))
 				return;
+
 			if (other->isKinematic() && !isKinematic())
 			{
 				_transform.translate(move);
