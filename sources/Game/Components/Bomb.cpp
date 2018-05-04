@@ -90,10 +90,10 @@ namespace Game
 				playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag0->setAnimate(true, 64, 8, 8);
 				playerDeflag0->setLifeTime(lifeTime);
-
+std::cout << "sizeDeflag 0: " << sizeDeflag << std::endl;
 				glm::vec3 pos(_gameObject->transform.position);
 
-				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x, pos.y, pos.z), explodeDirs[0], hit, 1))
+				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[0], hit, 1))
 				{
 					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
 					if (destroyable)
@@ -104,6 +104,7 @@ namespace Game
 				playerDeflag0->setSize(2.0f, 1.0f);
 				playerDeflag0->setSpawnTime(1.0f / 120.0f);
 				playerDeflag0->setVelocity(glm::vec3(sizeDeflag, 0.0f, 0.0f));
+std::cout << "sizeDeflag 1: " << sizeDeflag <<std::endl;
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag1 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
@@ -122,6 +123,7 @@ namespace Game
 				playerDeflag1->setSize(2.0f, 1.0f);
 				playerDeflag1->setSpawnTime(1.0f / 120.0f);
 				playerDeflag1->setVelocity(glm::vec3(-sizeDeflag, 0.0f, 0.0f));
+std::cout << "sizeDeflag 2: " << sizeDeflag <<std::endl;
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag2 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
@@ -140,6 +142,7 @@ namespace Game
 				playerDeflag2->setSize(2.0f, 1.0f);
 				playerDeflag2->setSpawnTime(1.0f / 120.0f);
 				playerDeflag2->setVelocity(glm::vec3(0.0f, 0.0f, sizeDeflag));
+std::cout << "sizeDeflag 3: " << sizeDeflag <<std::endl;
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag3 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
@@ -158,6 +161,7 @@ namespace Game
 				playerDeflag3->setSize(2.0f, 1.0f);
 				playerDeflag3->setSpawnTime(1.0f / 120.0f);
 				playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
+std::cout << "sizeDeflag 4: " << sizeDeflag <<std::endl;
 
 				_gameObject->destroy(render);
 				render = nullptr;
