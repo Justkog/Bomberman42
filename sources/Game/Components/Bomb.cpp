@@ -90,11 +90,12 @@ namespace Game
 				playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag0->setAnimate(true, 64, 8, 8);
 				playerDeflag0->setLifeTime(lifeTime);
-std::cout << "sizeDeflag 0: " << sizeDeflag << std::endl;
+std::cout << "sizeDeflag 0: " << sizeDeflag << " power " << power <<std::endl;
 				glm::vec3 pos(_gameObject->transform.position);
 
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[0], hit, 1))
 				{
+					std::cout << "entre 1" << std::endl;
 					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
 					if (destroyable)
 						_gameObject->destroy(hit.collider->_gameObject);
@@ -104,7 +105,7 @@ std::cout << "sizeDeflag 0: " << sizeDeflag << std::endl;
 				playerDeflag0->setSize(2.0f, 1.0f);
 				playerDeflag0->setSpawnTime(1.0f / 120.0f);
 				playerDeflag0->setVelocity(glm::vec3(sizeDeflag, 0.0f, 0.0f));
-std::cout << "sizeDeflag 1: " << sizeDeflag <<std::endl;
+std::cout << "sizeDeflag 1: " << sizeDeflag << " power " << power << std::endl;
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag1 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
@@ -114,6 +115,7 @@ std::cout << "sizeDeflag 1: " << sizeDeflag <<std::endl;
 				playerDeflag1->setLifeTime(lifeTime);
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[1], hit, 1))
 				{
+					std::cout << "entre 2" << std::endl;
 					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
 					if (destroyable)
 						_gameObject->destroy(hit.collider->_gameObject);
@@ -123,7 +125,7 @@ std::cout << "sizeDeflag 1: " << sizeDeflag <<std::endl;
 				playerDeflag1->setSize(2.0f, 1.0f);
 				playerDeflag1->setSpawnTime(1.0f / 120.0f);
 				playerDeflag1->setVelocity(glm::vec3(-sizeDeflag, 0.0f, 0.0f));
-std::cout << "sizeDeflag 2: " << sizeDeflag <<std::endl;
+std::cout << "sizeDeflag 2: " << sizeDeflag <<" power " << power <<std::endl;
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag2 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
@@ -133,6 +135,7 @@ std::cout << "sizeDeflag 2: " << sizeDeflag <<std::endl;
 				playerDeflag2->setLifeTime(lifeTime);
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[2], hit, 1))
 				{
+					std::cout << "entre 3" << std::endl;
 					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
 					if (destroyable)
 						_gameObject->destroy(hit.collider->_gameObject);
@@ -142,7 +145,7 @@ std::cout << "sizeDeflag 2: " << sizeDeflag <<std::endl;
 				playerDeflag2->setSize(2.0f, 1.0f);
 				playerDeflag2->setSpawnTime(1.0f / 120.0f);
 				playerDeflag2->setVelocity(glm::vec3(0.0f, 0.0f, sizeDeflag));
-std::cout << "sizeDeflag 3: " << sizeDeflag <<std::endl;
+std::cout << "sizeDeflag 3: " << sizeDeflag <<" power " << power <<std::endl;
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag3 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
@@ -152,6 +155,7 @@ std::cout << "sizeDeflag 3: " << sizeDeflag <<std::endl;
 				playerDeflag3->setLifeTime(lifeTime);
 				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[3], hit, 1))
 				{
+					std::cout << "entre 4" << std::endl;
 					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
 					if (destroyable)
 						_gameObject->destroy(hit.collider->_gameObject);
@@ -161,7 +165,7 @@ std::cout << "sizeDeflag 3: " << sizeDeflag <<std::endl;
 				playerDeflag3->setSize(2.0f, 1.0f);
 				playerDeflag3->setSpawnTime(1.0f / 120.0f);
 				playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
-std::cout << "sizeDeflag 4: " << sizeDeflag <<std::endl;
+std::cout << "sizeDeflag 4: " << sizeDeflag <<" power " << power <<std::endl;
 
 				_gameObject->destroy(render);
 				render = nullptr;
