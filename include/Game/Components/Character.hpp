@@ -1,6 +1,7 @@
 #ifndef BE_GAME_COMPONENT_CHARACTER_HPP
 #define BE_GAME_COMPONENT_CHARACTER_HPP 1
 
+#include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
@@ -35,6 +36,8 @@ namespace Game
 			BeerEngine::Transform &_transform;
 
 		public:
+			enum Direction {Up, Down, Left, Right};
+
             Character(BeerEngine::GameObject *gameObject);
 
             virtual void    start(void);
@@ -42,9 +45,11 @@ namespace Game
        		virtual void    update(void);
 
 			void	translate(glm::vec3 dir);
+			void    move(Direction dir);
 			void    increaseSpeed(float val);
 			void    addBomb(int nb);
 			void    increaseExplosionSize(float val);
+			void    dropBomb(void);
 			
        		virtual void    onTriggerStay(BeerEngine::Component::ACollider *other);
        		virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);
@@ -56,6 +61,7 @@ namespace Game
 			float _speed;
 			unsigned int _bombNb;
 			float _explosionSize;
+			glm::vec2 _direction;
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
