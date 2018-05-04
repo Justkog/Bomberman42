@@ -68,6 +68,13 @@ namespace Game
 		{
 			if (render != nullptr)
 			{
+				BeerEngine::Physics::RaycastHit				hit;
+				std::vector<glm::vec3>						explodeDirs;
+				explodeDirs.push_back(glm::vec3(power, 0.0f, 0.0f));
+				explodeDirs.push_back(glm::vec3(-power, 0.0f, 0.0f));
+				explodeDirs.push_back(glm::vec3(0.0f, 0.0f, power));
+				explodeDirs.push_back(glm::vec3(0.0f, 0.0f, -power));
+
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
 				playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerParticule->setAnimate(true, 64, 8, 8);
@@ -77,6 +84,7 @@ namespace Game
 
 				float lifeTime = 1.0f / 2.0f;
 				float sizeDeflag = (power + 0.25f) * 2.0f;
+				std::cout << "power " << power << " sizeflag " << sizeDeflag << std::endl;
 				auto playerDeflag0 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
 				playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -85,13 +93,12 @@ namespace Game
 
 				glm::vec3 pos(_gameObject->transform.position);
 
-				BeerEngine::Component::ACollider *c = nullptr;
-				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x + 0.5, pos.y, pos.z), glm::vec3(power, 0.0f, 0.0f), &c))
+				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x, pos.y, pos.z), explodeDirs[0], hit, 1))
 				{
-					// std::cout << "collide left : " << c->_transform.position.x << "," << c->_transform.position.z << std::endl;
-					int distance = glm::distance(c->_transform.position, _gameObject->transform.position);
+				// 	// std::cout << "collide left : " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-					// std::cout << "distance " << glm::distance(c->_transform.position, _gameObject->transform.position) << std::endl;
+				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag0->setSize(2.0f, 1.0f);
 				playerDeflag0->setSpawnTime(1.0f / 120.0f);
@@ -102,12 +109,12 @@ namespace Game
 				playerDeflag1->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag1->setAnimate(true, 64, 8, 8);
 				playerDeflag1->setLifeTime(lifeTime);
-				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x - 0.5, pos.y, pos.z), glm::vec3(-power, 0.0f, 0.0f), &c))
+				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[1], hit, 1))
 				{
-					// std::cout << "collide right: " << c->_transform.position.x << "," << c->_transform.position.z << std::endl;
-					int distance = glm::distance(c->_transform.position, _gameObject->transform.position);
+				// 	// std::cout << "collide right: " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-					// std::cout << "distance " << glm::distance(c->_transform.position, _gameObject->transform.position) << std::endl;
+				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag1->setSize(2.0f, 1.0f);
 				playerDeflag1->setSpawnTime(1.0f / 120.0f);
@@ -118,12 +125,12 @@ namespace Game
 				playerDeflag2->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag2->setAnimate(true, 64, 8, 8);
 				playerDeflag2->setLifeTime(lifeTime);
-				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x, pos.y, pos.z + 0.5), glm::vec3(0.0f, 0.0f, power), &c))
+				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[2], hit, 1))
 				{
-					// std::cout << "collide up: " << c->_transform.position.x << "," << c->_transform.position.z << std::endl;
-					int distance = glm::distance(c->_transform.position, _gameObject->transform.position);
+				// 	// std::cout << "collide up: " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-					// std::cout << "distance " << glm::distance(c->_transform.position, _gameObject->transform.position) << std::endl;
+				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag2->setSize(2.0f, 1.0f);
 				playerDeflag2->setSpawnTime(1.0f / 120.0f);
@@ -134,12 +141,12 @@ namespace Game
 				playerDeflag3->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag3->setAnimate(true, 64, 8, 8);
 				playerDeflag3->setLifeTime(lifeTime);
-				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x, pos.y, pos.z - 0.5), glm::vec3(0.0f, 0.0f, -power), &c))
+				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[3], hit, 1))
 				{
-					// std::cout << "collide down: " << c->_transform.position.x << "," << c->_transform.position.z << std::endl;
-					int distance = glm::distance(c->_transform.position, _gameObject->transform.position);
+				// 	// std::cout << "collide down: " << hit.transform->position.x << "," << hit.transform->position.z << std::endl;
+					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
 					sizeDeflag = (distance + 0.25f) * 2.0f;
-					// std::cout << "distance " << glm::distance(c->_transform.position, _gameObject->transform.position) << std::endl;
+				// 	// std::cout << "distance " << glm::distance(hit.transform->position, _gameObject->transform.position) << std::endl;
 				}
 				playerDeflag3->setSize(2.0f, 1.0f);
 				playerDeflag3->setSpawnTime(1.0f / 120.0f);
