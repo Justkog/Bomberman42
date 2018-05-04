@@ -104,12 +104,6 @@ void    SceneTest::init(void)
 	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
-	
-
-	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
-	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
-	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
-	BeerEngine::Camera::main->transform.translate(-v);*/
 
 
 	// Player
@@ -121,7 +115,6 @@ void    SceneTest::init(void)
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	meshRenderer->setMaterial(playerMat);
-	// playerGO->transform.position = glm::vec3(1, 0.5, 7);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
@@ -130,8 +123,7 @@ void    SceneTest::init(void)
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerRB2D->kinematic = false;
 
-	// FPS Camera
-	// instantiate<CameraTest>();
+	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
@@ -179,23 +171,6 @@ void    SceneTest::init(void)
 	house2->transform.position = glm::vec3(4.5, 0, 14.4);
 	house2->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	house2->transform.rotation = glm::vec3(0, 3.14, 0);
-	// Player
-	// auto playerGO = instantiate<BeerEngine::GameObject>();
-	// playerGO->name = "player";
-	// meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	// auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-	// auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	// playerMat->setAlbedo(playerTex);
-	// meshRenderer->setMaterial(playerMat);
-	// playerGO->transform.position = glm::vec3(1, 0.5, 7);
-	// playerGO->transform.scale = glm::vec3(1, 1, 1);
-	// auto *character = playerGO->AddComponent<Game::Component::Character>();
-	// auto *player = playerGO->AddComponent<Game::Component::Player>();
-	// auto *settings = playerGO->AddComponent<Game::Component::Settings>();
-	// auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	// auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	// playerRB2D->kinematic = false;
 
  // test obj old
 

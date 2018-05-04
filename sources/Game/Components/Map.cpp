@@ -40,8 +40,6 @@ namespace Game
 		{
 			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
 			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y));
-			// _map[static_cast<int>(Mpos.y)][static_cast<int>(Mpos.x)] = 0;
-
 		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
@@ -105,6 +103,5 @@ namespace Game
 		{
 			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
 		}
-
     }
 }
