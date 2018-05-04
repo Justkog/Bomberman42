@@ -1,5 +1,11 @@
 #include "Game/Components/Character.hpp"
 #include "Core/Time.hpp"
+#include "Core/GameObject.hpp"
+#include "Core/Component/BoxCollider2D.hpp"
+#include "Core/Graphics/Graphics.hpp"
+#include "Game/Components/Bomb.hpp"
+#include "Game/Assets.hpp"
+#include "Core/Component/RigidBody2D.hpp"
 
 namespace Game
 {
@@ -10,7 +16,8 @@ namespace Game
             _transform(gameObject->transform),
             _speed(2),
             _bombNb(5),
-            _explosionSize(2)
+            _explosionSize(2),
+            _direction(0, 0)
 		{
 
         }
@@ -21,7 +28,10 @@ namespace Game
 
         void    Character::fixedUpdate(void)
         {
-            
+            BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
+            if (rb2d)
+                rb2d->velocity = glm::normalize(_direction) * _speed;
+            _direction = glm::vec2(0, 0);
         }
 
         void    Character::update(void)
@@ -34,12 +44,33 @@ namespace Game
             _transform.translate(dir * _speed * BeerEngine::Time::GetDeltaTime());
         }
 
+        void    Character::move(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction::Up:
+                    _direction += glm::vec2(0, 1);
+                    break;
+                
+                case Direction::Down:
+                    _direction += glm::vec2(0, -1);
+                    break;
+                
+                case Direction::Left:
+                    _direction += glm::vec2(1, 0);
+                    break;
+                
+                case Direction::Right:
+                    _direction += glm::vec2(-1, 0);
+                    break;
+            }
+        }
+
         void    Character::increaseSpeed(float val)
         {
             _speed += val;
             if (_speed >= MAX_SPEED)
                 _speed = MAX_SPEED;
-            std::cout << "Increase Speed by " << val << ". _speed = " << _speed << std::endl;
         }
 
         void    Character::addBomb(int nb)
@@ -47,7 +78,6 @@ namespace Game
             _bombNb += nb;
             if (_bombNb >= MAX_BOMBS)
                 _bombNb = MAX_BOMBS;
-            std::cout << "Add " << nb << " Bomb. _bombNb = " << _bombNb << std::endl;
         }
 
         void    Character::increaseExplosionSize(float val)
@@ -55,7 +85,21 @@ namespace Game
             _explosionSize += val;
             if (_explosionSize >= MAX_EXPLOSION_SIZE)
                 _explosionSize = MAX_EXPLOSION_SIZE;
-            std::cout << "Increase Explosion Size by " << val << ". _explosionSize = " << _explosionSize << std::endl;
+        }
+
+        void    Character::dropBomb(void)
+        {
+            BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
+            go->transform.position = glm::round(_gameObject->transform.position);
+            go->transform.position.y = 0.25f;
+            go->transform.scale = glm::vec3(0.5f);
+            auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
+            collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
+            auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
+            render->setMesh(BeerEngine::Graphics::Graphics::cube);
+            render->setMaterial(Assets::GetInstance()->bombMaterial);
+            Bomb *bomb = go->AddComponent<Bomb>();
+            bomb->setPower(_explosionSize);
         }
 
         void   Character::onTriggerStay(BeerEngine::Component::ACollider *other)
@@ -89,6 +133,7 @@ namespace Game
 				{"speed", _speed},
 				{"bombNB", _bombNb},
 				{"explosionSize", _explosionSize},
+				// {"direction", _direction},
 			};
 		}
 
@@ -97,6 +142,7 @@ namespace Game
             this->_speed = j.at("speed");
             this->_bombNb = j.at("bombNB");
             this->_explosionSize = j.at("explosionSize");
+            // this->_direction = j.at("direction");
 		}
 
 		REGISTER_COMPONENT_CPP(Character)

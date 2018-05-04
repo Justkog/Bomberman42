@@ -28,6 +28,7 @@
 #include <map>
 #include <vector>
 #include <fstream>
+#include <functional>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -59,6 +60,7 @@ namespace BeerEngine
 		class Component;
 		class MeshRenderer;
 		class RaysRenderer;
+        class ACollider;
         class CircleCollider;
         class BoxCollider2D;
 		class RigidBody2D;
@@ -80,6 +82,12 @@ namespace BeerEngine
 	{
 		struct Ray;
 		class Physics;
+	}
+
+	namespace BeerRoutine
+	{
+		class BeerRoutine;
+		class ARoutineRunner;
 	}
 }
 

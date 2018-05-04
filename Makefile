@@ -57,22 +57,27 @@ SRC = \
 	Core/Audio/AudioSource.cpp \
 	Core/Audio/AudioClip.cpp \
 	\
+	Core/BeerRoutine/BeerRoutine.cpp \
+	Core/BeerRoutine/ARoutineRunner.cpp \
+	\
 	Game/Assets.cpp \
 	Game/SceneTest.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
+	Game/Components/IA.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
 	Game/Components/Item.cpp \
 	Game/Components/Bomb.cpp \
 	Game/Components/Map.cpp \
 	Game/Components/Breakable.cpp \
+	Game/Components/BeerRoutineTester.cpp \
 	Game/CameraTest.cpp
 
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
-	Game Game/Components Core/Json Core/Physics sigslot/src
+	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \

@@ -14,6 +14,7 @@
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
+#include "Game/Components/BeerRoutineTester.hpp"
 #include "Game/CameraTest.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -118,6 +119,7 @@ void    SceneTest::init(void)
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
