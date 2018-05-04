@@ -91,9 +91,9 @@ void MouseRayTest::update()
 		ray.direction *= 2;
 
 		// BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction);
-		BeerEngine::Component::ACollider *c = nullptr;
-		if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, &c))
-			std::cout << "collide: " << c->_transform.position.x << "," << c->_transform.position.z << std::endl;
+		BeerEngine::Physics::RaycastHit hit;
+		if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, hit, 1))
+			std::cout << "hit: " << glm::to_string(hit.transform->position) << " | " << hit.distance << std::endl;
 		// BeerEngine::Physics::Physics::RaycastAll(ray.origin, ray.direction);
 		linesRenderer->addRay(ray);
 	}

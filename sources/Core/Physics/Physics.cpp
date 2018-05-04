@@ -43,38 +43,79 @@ namespace BeerEngine
 			return (false);
 		}
 
-		bool Physics::Raycast(glm::vec3 origin, glm::vec3 direction, BeerEngine::Component::ACollider** collision)
+		bool Physics::Raycast(glm::vec3 origin, glm::vec3 direction, RaycastHit &hit)
 		{
 			glm::vec2 origin2D = glm::vec2(origin.x, origin.z);
 			glm::vec2 direction2D = glm::vec2(direction.x, direction.z);
-			float bestDist = 0;
+			float bestDist = -1;
 
-			*collision = nullptr;
 			for (BeerEngine::Component::ACollider *c : BeerEngine::Component::ACollider::_colliders)
 			{
 				glm::vec2 pos;
 				if (c->intersect(origin2D, direction2D, pos))
 				{
 					float dist = glm::distance2(origin2D, pos);
-					if (*collision == nullptr || dist < bestDist)
+					if (bestDist == -1 || dist < bestDist)
 					{
-						*collision = c;
+						hit.collider = c;
+						hit.transform = &(c->_transform);
+						hit.distance = glm::distance(origin2D, pos);
 						bestDist = dist;
 					}
 				}
 			}
-			return (*collision == nullptr ? false : true);
+			return (bestDist == -1 ? false : true);
 		}
 
-		std::vector<BeerEngine::Component::ACollider*> Physics::RaycastAll(glm::vec3 origin, glm::vec3 direction)
+		bool Physics::Raycast(glm::vec3 origin, glm::vec3 direction, RaycastHit &hit, int n)
 		{
-			std::vector<BeerEngine::Component::ACollider*> collisions;
+			std::vector<RaycastHit> collisions;
+			glm::vec2 origin2D = glm::vec2(origin.x, origin.z);
+			glm::vec2 direction2D = glm::vec2(direction.x, direction.z);
 
 			for (BeerEngine::Component::ACollider *c : BeerEngine::Component::ACollider::_colliders)
 			{
-				if (c->intersect(glm::vec2(origin.x, origin.z), glm::vec2(direction.x, direction.z)))
-					collisions.push_back(c);
+				glm::vec2 pos;
+				if (c->intersect(origin2D, direction2D, pos))
+					collisions.push_back(RaycastHit(c, &(c->_transform), glm::distance(origin2D, pos)));
 			}
+			std::sort(collisions.begin(), collisions.end());
+			if (n < collisions.size())
+			{
+				hit = collisions[n];
+				return (true);
+			}
+			return (false);
+		}
+
+		std::vector<RaycastHit> Physics::RaycastAll(glm::vec3 origin, glm::vec3 direction)
+		{
+			std::vector<RaycastHit> collisions;
+			glm::vec2 origin2D = glm::vec2(origin.x, origin.z);
+			glm::vec2 direction2D = glm::vec2(direction.x, direction.z);
+
+			for (BeerEngine::Component::ACollider *c : BeerEngine::Component::ACollider::_colliders)
+			{
+				glm::vec2 pos;
+				if (c->intersect(origin2D, direction2D, pos))
+					collisions.push_back(RaycastHit(c, &(c->_transform), glm::distance(origin2D, pos)));
+			}
+			return (collisions);
+		}
+
+		std::vector<RaycastHit> Physics::RaycastAllOrdered(glm::vec3 origin, glm::vec3 direction)
+		{
+			std::vector<RaycastHit> collisions;
+			glm::vec2 origin2D = glm::vec2(origin.x, origin.z);
+			glm::vec2 direction2D = glm::vec2(direction.x, direction.z);
+
+			for (BeerEngine::Component::ACollider *c : BeerEngine::Component::ACollider::_colliders)
+			{
+				glm::vec2 pos;
+				if (c->intersect(origin2D, direction2D, pos))
+					collisions.push_back(RaycastHit(c, &(c->_transform), glm::distance(origin2D, pos)));
+			}
+			std::sort(collisions.begin(), collisions.end());
 			return (collisions);
 		}
 	}
