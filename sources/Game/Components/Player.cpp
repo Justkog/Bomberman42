@@ -12,7 +12,14 @@ namespace Game
 			Component(gameObject),
             _transform(gameObject->transform)
 		{
-
+			// BeerEngine::Audio::AudioClip   		clip1("assets/sounds/footsteps1");
+			// srcAudio1(clip1.getBuffer());
+			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+			// srcAudio.play();
+			// BeerEngine::Audio::AudioClip   		clip2("assets/sounds/footsteps2.wav");
+			// srcAudio2(clip2.getBuffer());
+			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+			// srcAudio.play();
         }
 
         void    Player::start(void)
