@@ -9,12 +9,17 @@ namespace Game
 		Component(gameObject),
 		_transform(gameObject->transform),
 		_posX(_transform.position.x),
-		_posY(_transform.position.y)
+		_posY(_transform.position.z)
 		{ }
 
-		void	destroyed()
+		Breakable::~Breakable(void)
 		{
-			// _map.mapUpdate(_posX, _posY);
+			destroyed();
+		}
+
+		void	Breakable::destroyed()
+		{
+			onDestruction.emit(_posX, _posY);
 		}
 	}
 }
