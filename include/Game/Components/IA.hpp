@@ -12,7 +12,7 @@
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
 #include "Core/Component/IUI.hpp"
-#include <stack>
+#include <queue>
 
 namespace Game
 {
@@ -32,9 +32,17 @@ namespace Game
 			bool _hasObjective;
 			glm::vec2 _objective;
 
-			std::stack<glm::vec2> _path;
+			glm::vec3 dir;//DEBUG
+
+			std::vector<glm::vec2> _path;
 
 			bool    moveToObjective(void);
+			void    moveToNextCell(void);
+
+			//PATHFINDER
+			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
+			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy);
+			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
 			bool    findPath(void);
 
 		public:

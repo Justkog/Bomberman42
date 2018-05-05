@@ -159,7 +159,7 @@ void    SceneTest::init(void)
 	auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
 	iaMat->setAlbedo(iaTex);
 	meshRenderer->setMaterial(iaMat);
-	iaGO->transform.position = glm::vec3(1, 0.5, 7);
+	iaGO->transform.position = glm::vec3(0, 0.5, 2);
 	iaGO->transform.scale = glm::vec3(1, 1, 1);
 	character = iaGO->AddComponent<Game::Component::Character>();
 	auto *ia = iaGO->AddComponent<Game::Component::IA>();

@@ -119,5 +119,10 @@ namespace Game
 		{
 			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
 		}
+
+		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
+		{
+			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);
+		}
     }
 }
