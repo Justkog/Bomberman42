@@ -96,7 +96,7 @@ namespace BeerEngine
 
 #define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
 		{\
-			Component::typeToComponent[typeid(Class).name()] = &Component::createInstance<Class>;\
+			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
 			return (1);\
 		}\
 		\

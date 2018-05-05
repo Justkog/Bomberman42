@@ -166,12 +166,10 @@ void    SceneTest::init(void)
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 
 	map->setMap(tab, line0.size(), tab.size());
-
-
 	map->drawMap(shader);
 
 	auto mapCrateGO = map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
-	// mapCrateGO->save("Prefabs/mapCrate.prefab");
+	mapCrateGO->save("Prefabs/mapCrate.prefab");
 	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
 	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
 	std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";	

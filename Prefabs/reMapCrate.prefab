@@ -48,6 +48,88 @@
             ]
         },
         {
+            "componentClass": "N10BeerEngine9Component12MeshRendererE",
+            "material": {
+                "albedo": {
+                    "sourceFile": "assets/textures/crate1_diffuse.png"
+                },
+                "bump": null,
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "normal": null,
+                "shader": "defaultShader"
+            },
+            "mesh": {
+                "sourceFile": "",
+                "type": "cube"
+            },
+            "pivot": [
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "size": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "size": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "size": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "size": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "size": [
+                1.0,
+                1.0
+            ]
+        },
+        {
             "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
             "size": [
                 1.0,

@@ -6,14 +6,14 @@ namespace BeerEngine
 {
 	namespace Component
 	{
-		component_type Component::create_map()
+		add_component_type Component::createAddMap()
 		{
-			component_type typeToComponent;
-			typeToComponent["Component"] = &Component::createInstance<Component>;
-			return typeToComponent;
+			add_component_type typeToAddComponent;
+			typeToAddComponent["Component"] = &Component::addComponent<Component>;
+			return typeToAddComponent;
 		}
 
-		component_type Component::typeToComponent = Component::create_map();
+		add_component_type Component::typeToAddComponent = Component::createAddMap();
 
 		Component::Component(GameObject *gameObject) :
 			_gameObject(gameObject)
@@ -38,10 +38,10 @@ namespace BeerEngine
 			// std::cout << "deserialize component : " << j << "\n";
 			std::string type = j.at("componentClass");
 			// std::cout << "after" << "\n";
-			auto mapIt = Component::Component::typeToComponent.find(type);
-			if(mapIt != Component::Component::typeToComponent.end())
+			auto mapIt = Component::Component::typeToAddComponent.find(type);
+			if(mapIt != Component::Component::typeToAddComponent.end())
 			{
-				auto component = Component::Component::typeToComponent[type](go);
+				auto component = Component::Component::typeToAddComponent[type](go);
 				component->deserialize(j);
 				// std::cout << "deserialize component done" << "\n";
 				return component;

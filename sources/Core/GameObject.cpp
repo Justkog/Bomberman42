@@ -179,7 +179,7 @@ namespace BeerEngine
 		auto components = j.at("components");
         for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
 			auto comp = Component::Component::Deserialize(it.value(), this);
-			this->registerComponent(comp);
+			// this->registerComponent(comp);
 		}
     }
 

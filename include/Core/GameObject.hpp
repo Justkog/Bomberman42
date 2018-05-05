@@ -4,8 +4,7 @@
 #include "Core/Core.hpp"
 #include "Core/AScene.hpp"
 #include "Core/Transform.hpp"
-#include "Core/Component/Component.hpp"
-#include "Core/Component/MeshRenderer.hpp"
+// #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
