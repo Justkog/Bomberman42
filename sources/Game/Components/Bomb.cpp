@@ -166,6 +166,7 @@ namespace Game
 				srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 				srcAudio.play();
 
+				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);
 				render = nullptr;
 				timer = 5.0f;
