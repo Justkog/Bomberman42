@@ -6,6 +6,8 @@
 #include "Core/Physics/Physics.hpp"
 #include "Game/Assets.hpp"
 #include "Game/Components/Breakable.hpp"
+#include "Core/Audio/AudioSource.hpp"
+#include "Core/Audio/AudioClip.hpp"
 
 namespace Game
 {
@@ -158,6 +160,11 @@ namespace Game
 				playerDeflag3->setSize(2.0f, 1.0f);
 				playerDeflag3->setSpawnTime(1.0f / 120.0f);
 				playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
+
+				BeerEngine::Audio::AudioClip   		clip("assets/sounds/Bomb+1.wav");
+				BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+				srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+				srcAudio.play();
 
 				_gameObject->destroy(render);
 				render = nullptr;
