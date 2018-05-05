@@ -1,5 +1,6 @@
 #include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
+#include "Game/Components/Map.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 
@@ -55,10 +56,9 @@ namespace Game
             {
                 mapCopy[y].resize(map->_sizeX);
                 for (int x = 0; x < map->_sizeX; ++x)
-                {
                     mapCopy[y][x] = map->_map[y][x];
-                }
             }
+            return (false);
         }
 
         bool    IA::moveToObjective(void)
@@ -67,6 +67,7 @@ namespace Game
             {
                 findPath();
             }
+            return (false);
         }
 
         void    IA::renderUI(struct nk_context *ctx)
@@ -74,7 +75,7 @@ namespace Game
             if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
-                ss << "Target: " << glm::to_string(target);
+                ss << "Target: " << glm::to_string(_objective);
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
                 ss.str(std::string());

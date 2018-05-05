@@ -12,11 +12,13 @@
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
 #include "Core/Component/IUI.hpp"
+#include <stack>
 
 namespace Game
 {
 	namespace Component
 	{
+		class Map;
 		class Character;
 
 		class IA : public BeerEngine::Component::Component,
