@@ -106,14 +106,17 @@ namespace BeerEngine
 
 		nlohmann::json	CircleCollider::serialize()
 		{
-			return {
+			auto j = ACollider::serialize();
+			j.merge_patch({
 				{"componentClass", typeid(CircleCollider).name()},
 				{"radius", _radius},
-			};
+			});
+			return j;
 		}
 
 		void CircleCollider::deserialize(const nlohmann::json & j)
 		{
+			this->ACollider::deserialize(j);
 			this->_radius = j.at("radius");
 		}
 

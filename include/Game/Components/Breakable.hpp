@@ -3,8 +3,8 @@
 
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
-#include "Core/GameObject.hpp"
-#include "Game/Components/Map.hpp"
+// #include "Core/GameObject.hpp"
+// #include "Game/Components/Map.hpp"
 
 // #include "Core/Component/IUpdate.hpp"
 // #include "Core/Component/IStart.hpp"
@@ -20,6 +20,8 @@ namespace Game
 {
 	namespace Component
 	{
+		class Map;
+
 		class Breakable : public BeerEngine::Component::Component
 						// public BeerEngine::Component::IStart,
 						// public BeerEngine::Component::IUpdate,
@@ -50,10 +52,10 @@ namespace Game
        		// virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
-			// nlohmann::json	serialize();
-			// virtual void deserialize(const nlohmann::json & j);
+			nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
 
-			// REGISTER_COMPONENT_HPP
+			REGISTER_COMPONENT_HPP
 		};
 	}
 }

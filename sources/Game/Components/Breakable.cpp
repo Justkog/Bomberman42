@@ -16,5 +16,22 @@ namespace Game
 		{
 			// _map.mapUpdate(_posX, _posY);
 		}
+
+		nlohmann::json	Breakable::serialize()
+		{
+			return nlohmann::json {
+				{"componentClass", typeid(Breakable).name()},
+			};
+		}
+
+		void Breakable::deserialize(const nlohmann::json & j)
+		{
+			// std::cout << this->_sourceFile << "\n";
+			// this->_sourceFile = j.at("sourceFile");
+			// if (this->_sourceFile != "")
+			// 	this->setMesh(this->_sourceFile);
+		}
+
+		REGISTER_COMPONENT_CPP(Breakable)
 	}
 }

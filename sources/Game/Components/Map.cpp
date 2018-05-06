@@ -18,6 +18,33 @@ namespace Game
 			_player->createCrateSignal.bind(&Map::setDestruction, this);
 		}
 
+		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+		{
+			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+			mapBlocGO->transform.position = pos;
+			mapBlocGO->transform.scale = scale;
+			return (mapBlocGO);
+		}
+
+		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		{
+			std::cout << "item start" << std::endl;
+			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, true);
+			itemGO->name = "item";
+			itemGO->AddComponent<Game::Component::Item>();
+			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
+			itemColl->_isTrigger = true;
+			return itemGO;
+		}
+
+		BeerEngine::GameObject *Map::createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		{
+			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
+			mapBlocGO->transform.position = pos;
+			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
+			return (mapBlocGO);
+		}
+
 		void	Map::setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
 		{
 			_sizeX = sizeX;
@@ -54,10 +81,13 @@ namespace Game
 				for (int col = 0; col < _sizeX; col++)
 				{
 					type = _map[row][col];
+					std::cout << "map coord : " << row << " / " << col << std::endl;
+					std::cout << "type : " << type << std::endl;
 					switch (type)
 					{
 						case 1:
-							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							// addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
 							break;
 						case S:
 							if (playerSpawn)
@@ -72,9 +102,11 @@ namespace Game
 							}
 							break;
 						case I:
-							addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							// addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
+					std::cout << "map coord end" << std::endl;
 				}
 			}
 		}
@@ -106,5 +138,18 @@ namespace Game
 			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
 		}
 
+		nlohmann::json	Map::serialize()
+		{
+			return {
+				{"componentClass", typeid(Map).name()},
+			};
+		}
+
+		void Map::deserialize(const nlohmann::json & j)
+		{
+
+		}
+
+		REGISTER_COMPONENT_CPP(Map)
     }
 }

@@ -219,5 +219,17 @@ namespace BeerEngine
 				other->_transform.translate(-move * a);
 			}
 		}
+
+		nlohmann::json	ACollider::serialize()
+		{
+			return {
+				{"isTrigger", _isTrigger},
+			};
+		}
+
+		void ACollider::deserialize(const nlohmann::json & j)
+		{
+			this->_isTrigger = j.at("isTrigger");
+		}
 	}
 }
