@@ -1,5 +1,6 @@
 #include "Game/Components/Map.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
+#include <sstream>
 #include "Core/IO/FileUtils.hpp"
 
 namespace Game
@@ -81,8 +82,6 @@ namespace Game
 				for (int col = 0; col < _sizeX; col++)
 				{
 					type = _map[row][col];
-					std::cout << "map coord : " << row << " / " << col << std::endl;
-					std::cout << "type : " << type << std::endl;
 					switch (type)
 					{
 						case 1:
@@ -106,11 +105,10 @@ namespace Game
 							createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
-					std::cout << "map coord end" << std::endl;
 				}
 			}
 		}
-#include <sstream>
+		
 		void    Map::renderUI(struct nk_context *ctx)
 		{
 			if (nk_begin(ctx, "Map", nk_rect(10, 100, 320, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))

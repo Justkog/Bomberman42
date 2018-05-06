@@ -56,7 +56,6 @@ namespace Game
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
 			{
-				std::cout << "creating map comp" << std::endl;
 				BeerEngine::Component::MeshRenderer *meshRenderer;
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "map block";
@@ -68,7 +67,6 @@ namespace Game
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
-				std::cout << "done creating map comp" << std::endl;
 				auto blockColl = mapBlocGO->AddComponent<T>();
 				if (!kinematic)
 				{

@@ -169,13 +169,13 @@ void    SceneTest::init(void)
 	mapCrateGO->save("Prefabs/mapCrate.prefab");
 	auto itemGO = map->addItem(shader, glm::vec3(0, 0, 0));
 	itemGO->save("Prefabs/item.prefab");
-	
+
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
 
 	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
 	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
-	std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";	
+	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
 	mapCrateGO2->save("Prefabs/reMapCrate.prefab");
 
 	//test obj house
