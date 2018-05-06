@@ -64,7 +64,7 @@ namespace BeerEngine
 		nlohmann::json	MeshRenderer::serialize()
 		{
 			return nlohmann::json {
-				{"componentClass", typeid(MeshRenderer).name()},
+				{"componentClass", type},
 				{"mesh", _mesh},
 				{"material", _material},
 				{"pivot", _mat},

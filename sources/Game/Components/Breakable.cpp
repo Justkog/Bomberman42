@@ -20,7 +20,7 @@ namespace Game
 		nlohmann::json	Breakable::serialize()
 		{
 			return nlohmann::json {
-				{"componentClass", typeid(Breakable).name()},
+				{"componentClass", type},
 			};
 		}
 
