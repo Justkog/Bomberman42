@@ -117,6 +117,20 @@ namespace BeerEngine
         }
     }
 
+	void    AScene::startUI(struct nk_context *ctx)
+    {
+        for (GameObject *go : _toStartUI)
+        {
+            go->startUI(ctx);
+        }
+        _toStartUI.clear();
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentStartUI(ctx);
+        }
+    }
+
     void    AScene::renderUI(struct nk_context *ctx)
     {
         // std::cout << "DEBUG: AScene::renderUI" << std::endl;

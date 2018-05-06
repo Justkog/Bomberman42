@@ -16,8 +16,8 @@
 
 #include "Core/BeerEngine.hpp"
 #include "Game/SceneTest.hpp"
+#include "Game/SceneMain.hpp"
 #include "Game/Assets.hpp"
-
 
 static int      frameCount = 0;
 static int      FPS = 60;
@@ -89,7 +89,7 @@ int main(void)
     std::srand(std::time(nullptr));
     BeerEngine::Window  *window = BeerEngine::Window::CreateWindow("Bomberman", WINDOW_WIDTH, WINDOW_HEIGHT);
     BeerEngine::AScene  *scene;
-    // Nukclear
+    // Nuklear
     struct nk_context *ctx;
     ctx = nk_glfw3_init(window->getWindow(), NK_GLFW3_INSTALL_CALLBACKS);
     struct nk_font_atlas *atlas;
@@ -119,7 +119,9 @@ int main(void)
     // Game Assets
     Assets::GetInstance()->load();
     // First Scene
-    BeerEngine::SceneManager::LoadScene<SceneTest>();
+    // BeerEngine::SceneManager::LoadScene<SceneTest>();
+    BeerEngine::SceneManager::LoadScene<SceneMain>();
+	
     // Thread Update
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
@@ -130,7 +132,6 @@ int main(void)
         window->update();
         scene = BeerEngine::SceneManager::GetCurrent();
         nk_glfw3_new_frame();
-
 
         if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
         {
@@ -154,6 +155,7 @@ int main(void)
             scene->mutexLock(true);
             scene->renderUpdate();
             scene->render();
+            scene->startUI(ctx);
             scene->renderUI(ctx);
             scene->destroyGameObjects();
             scene->mutexLock(false);

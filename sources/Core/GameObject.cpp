@@ -4,6 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IRenderAlpha.hpp"
 #include "Core/Component/IUI.hpp"
+#include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Core/Transform.hpp"
@@ -45,6 +46,7 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
+    void    GameObject::startUI(struct nk_context *ctx) {}
     void    GameObject::renderUI(struct nk_context *ctx) {}
 
 	void     GameObject::destroy(Component::Component *comp)
@@ -160,6 +162,18 @@ namespace BeerEngine
 			if (Component::IUI *r = dynamic_cast<Component::IUI*>(c))
 				r->renderUI(ctx);
 		}
+	}
+
+	void    GameObject::componentStartUI(struct nk_context *ctx)
+	{
+		// std::cout << "DEBUG: GameObject::componentStart" << std::endl;
+		for (Component::Component *c : _toStartUI)
+		{
+			if (auto u = dynamic_cast<Component::IStartUI*>(c))
+				u->startUI(ctx);
+			// _components.push_back(c);
+		}
+		_toStartUI.clear();
 	}
 
 	nlohmann::json	GameObject::serialize()

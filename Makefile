@@ -62,6 +62,7 @@ SRC = \
 	\
 	Game/Assets.cpp \
 	Game/SceneTest.cpp \
+	Game/SceneMain.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
@@ -73,6 +74,7 @@ SRC = \
 	Game/Components/Map.cpp \
 	Game/Components/Breakable.cpp \
 	Game/Components/BeerRoutineTester.cpp \
+	Game/Components/MainMenu.cpp \
 	Game/CameraTest.cpp
 
 

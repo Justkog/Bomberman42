@@ -34,7 +34,7 @@
 #define WINDOW_HEIGHT 720
 
 #include <nuklear.h>
-#include <nuklear_glfw_gl3.h>
+#include "demo/glfw_opengl3/nuklear_glfw_gl3.h"
 
 #include <nlohmann/json.hpp>
 
