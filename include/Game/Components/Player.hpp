@@ -12,6 +12,8 @@
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
 #include "Core/Component/IUI.hpp"
+#include "Core/Audio/AudioSource.hpp"
+#include "Core/Audio/AudioClip.hpp"
 
 namespace Game
 {
@@ -48,6 +50,10 @@ namespace Game
 			REGISTER_COMPONENT_HPP
 
 			Signal<float, float> createCrateSignal;
+
+			BeerEngine::Audio::AudioSource      srcAudio1(ALuint);
+			BeerEngine::Audio::AudioSource      srcAudio2(ALuint);
+
 		};
 	}
 }

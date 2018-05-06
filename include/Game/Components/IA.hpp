@@ -12,11 +12,13 @@
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
 #include "Core/Component/IUI.hpp"
+#include <queue>
 
 namespace Game
 {
 	namespace Component
 	{
+		class Map;
 		class Character;
 
 		class IA : public BeerEngine::Component::Component,
@@ -27,6 +29,21 @@ namespace Game
 		protected:
 			BeerEngine::Transform	&_transform;
 			Game::Component::Character *_character;
+			bool _hasObjective;
+			glm::vec2 _objective;
+
+			glm::vec3 dir;//DEBUG
+
+			std::vector<glm::vec2> _path;
+
+			bool    moveToObjective(void);
+			void    moveToNextCell(void);
+
+			//PATHFINDER
+			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
+			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy);
+			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
+			bool    findPath(void);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
@@ -41,7 +58,7 @@ namespace Game
 
 			REGISTER_COMPONENT_HPP
 
-			Signal<float, float> createCrateSignal;
+			Game::Component::Map *map;
 		};
 	}
 }

@@ -13,6 +13,6 @@ rm -rf tinyobjloader/.git
 rm -rf stb
 git clone https://github.com/nothings/stb.git
 rm -rf stb/.git
+rm -rf sigslot
 git clone https://github.com/supergrover/sigslot.git sources/sigslot
 rm -rf sigslot/.git
-

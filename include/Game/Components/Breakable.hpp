@@ -23,7 +23,7 @@ namespace Game
 		class Map;
 
 		class Breakable : public BeerEngine::Component::Component
-						// public BeerEngine::Component::IStart,
+						// public BeerEngine::Component::IStart
 						// public BeerEngine::Component::IUpdate,
 						// public BeerEngine::Component::IUI
 		{
@@ -32,10 +32,14 @@ namespace Game
 
 		public:
             Breakable(BeerEngine::GameObject *gameObject);
+			~Breakable(void);
 
+			Signal<float, float> onDestruction;
+
+			void destroyed();
 			// void	updateMap(int **map);
-
-			Map		*_map;
+			BeerEngine::GameObject	*_crateDestoyed;
+			// Map			*_map;
 
 		private:
 			int		_posX;
