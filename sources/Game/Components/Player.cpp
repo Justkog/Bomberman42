@@ -12,8 +12,8 @@ namespace Game
 			Component(gameObject),
             _transform(gameObject->transform)
 		{
-			// BeerEngine::Audio::AudioClip   		clip1("assets/sounds/footsteps1");
-			// srcAudio1(clip1.getBuffer());
+			// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+
 			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 			// srcAudio.play();
 			// BeerEngine::Audio::AudioClip   		clip2("assets/sounds/footsteps2.wav");
@@ -25,6 +25,13 @@ namespace Game
         void    Player::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
+			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps2.wav");
+			// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+			// BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps1.wav");
+			srcAudio.setBuffer(clip.getBuffer());
+			srcAudio.play();
+			srcAudio.setLooping(false);
+
         }
 
         void    Player::fixedUpdate(void)
@@ -34,20 +41,33 @@ namespace Game
 
         void    Player::update(void)
         {
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
-                    _character->move(Character::Direction::Up);
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
+
+			// srcAudio.setLooping(true);
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::I))
+            {
+				srcAudio.setLooping(true);
+				
+				// srcAudio.continuePlaying();
+				// srcAudio.setLooping(true);
+
+				// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+				_character->move(Character::Direction::Up);
+			}
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
                     _character->move(Character::Direction::Down);
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::J))
                     _character->move(Character::Direction::Left);
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
                     _character->move(Character::Direction::Right);
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
+            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::O))
                 _character->dropBomb();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
+			// else
+			// 	srcAudio.setLooping(false);
+
         }
 
         void            Player::renderUI(struct nk_context *ctx)

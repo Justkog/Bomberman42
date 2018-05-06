@@ -5,6 +5,15 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
+		AudioSource::AudioSource()
+		{
+			// Création d'une source
+			alGenSources(1, &_Source);
+			alSourcef(_Source, AL_ROLLOFF_FACTOR, 1);
+			alSourcef(_Source, AL_REFERENCE_DISTANCE, 12);
+			alSourcef(_Source, AL_MAX_DISTANCE, 30);
+		}
+
 		AudioSource::AudioSource(ALuint buf): _Buffer(buf)
 		{
 			// Création d'une source
