@@ -183,7 +183,7 @@ namespace BeerEngine
 		{
 			auto j = ACollider::serialize();
 			j.merge_patch({
-				{"componentClass", typeid(BoxCollider2D).name()},
+				{"componentClass", type},
 				{"size", _size},
 			});
 			return j;

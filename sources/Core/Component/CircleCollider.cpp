@@ -108,7 +108,7 @@ namespace BeerEngine
 		{
 			auto j = ACollider::serialize();
 			j.merge_patch({
-				{"componentClass", typeid(CircleCollider).name()},
+				{"componentClass", type},
 				{"radius", _radius},
 			});
 			return j;

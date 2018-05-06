@@ -29,7 +29,7 @@ namespace BeerEngine
 		nlohmann::json	RigidBody2D::serialize()
 		{
 			return {
-				{"componentClass", typeid(RigidBody2D).name()},
+				{"componentClass", type},
 				{"velocity", velocity},
 				{"kinematic", kinematic},
 				{"mass", mass},

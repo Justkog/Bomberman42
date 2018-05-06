@@ -26,5 +26,20 @@ namespace BeerEngine
 			particle.lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
 		}
 
+		nlohmann::json	ParticleExplode::serialize()
+		{
+			auto j = ParticleBase::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+			});
+			return j;
+		}
+
+		void ParticleExplode::deserialize(const nlohmann::json & j)
+		{
+			this->ParticleBase::deserialize(j);
+		}
+
+		REGISTER_COMPONENT_CPP(ParticleExplode)
 	}
 }

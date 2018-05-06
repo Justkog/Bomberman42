@@ -141,7 +141,7 @@ namespace Game
 		nlohmann::json	Map::serialize()
 		{
 			return {
-				{"componentClass", typeid(Map).name()},
+				{"componentClass", type},
 			};
 		}
 
