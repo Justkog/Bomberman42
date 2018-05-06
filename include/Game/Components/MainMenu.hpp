@@ -23,11 +23,11 @@ namespace Game
 
 		{
 		public:
-			nk_style_item defaultBackground;
-			nk_style_item menuBackground;
+			nk_style_window defaultWindow;
+			nk_style_button defaultButton;
 
-			nk_style_item defaultButtonBackground;
-			nk_style_item buttonBackground;
+			nk_style_window mWindow;
+			nk_style_button mButton;
 
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );

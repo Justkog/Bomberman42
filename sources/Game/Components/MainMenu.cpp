@@ -68,20 +68,23 @@ void MainMenu::start()
 
 void MainMenu::saveDefaultUI(struct nk_context *ctx)
 {
-	defaultBackground = ctx->style.window.fixed_background;
-	defaultButtonBackground = ctx->style.button.normal;
+	defaultWindow = ctx->style.window;
+	defaultButton = ctx->style.button;
+	mWindow = defaultWindow;
+	mButton = defaultButton;
 }
 
 void MainMenu::setUI(struct nk_context *ctx)
 {
-	ctx->style.window.fixed_background = menuBackground;
-	ctx->style.button.normal = buttonBackground;
+	ctx->style.window = mWindow;
+	ctx->style.button = mButton;
+
 }
 
 void MainMenu::resetToDefaultUI(struct nk_context *ctx)
 {
-	ctx->style.window.fixed_background = defaultBackground;
-	ctx->style.button.normal = defaultButtonBackground;
+	ctx->style.window = defaultWindow;
+	ctx->style.button = defaultButton;
 }
 
 nk_style_item loadSprite(std::string spritePath)
@@ -89,7 +92,7 @@ nk_style_item loadSprite(std::string spritePath)
 	auto texture = Assets::GetTexture(spritePath);
 	auto nk_image = nk_subimage_id(
 		texture->getID(), 
-		texture->getWidth(), 
+		texture->getWidth(),
 		texture->getHeight(), 
 		nk_rect(0,0,texture->getWidth(),texture->getHeight()));
 	return (nk_style_item_image(nk_image));
@@ -99,15 +102,17 @@ void MainMenu::startUI(struct nk_context *ctx)
 {
 	std::cout << "start UI" << std::endl;
 	saveDefaultUI(ctx);
-	menuBackground = loadSprite("assets/textures/crate1_diffuse.png");
-	buttonBackground = loadSprite("assets/textures/crate1_bump.png");
+	mWindow.fixed_background = loadSprite("assets/textures/crate1_diffuse.png");
+	mWindow.padding = nk_vec2(0, 0);
+	mWindow.spacing = nk_vec2(0, 0);
+	mButton.normal = loadSprite("assets/models/Old_man/Muro_body_dm.tga");
 }
 
 void MainMenu::renderUI(struct nk_context *ctx)
 {
 	setUI(ctx);
 	float menuWidth = 320;
-	float menuHeight = 430;
+	float menuHeight = 375;
 	auto window_rect = nk_rect(
 		WINDOW_WIDTH / 2 - menuWidth / 2, 
 		WINDOW_HEIGHT / 2 - menuHeight / 2, 
@@ -116,7 +121,7 @@ void MainMenu::renderUI(struct nk_context *ctx)
 	);
 	if (nk_begin(ctx, "Map", window_rect, NK_WINDOW_NO_SCROLLBAR))
 	{
-		nk_layout_row_dynamic(ctx, 50, 1);
+		nk_layout_row_dynamic(ctx, 75, 1);
 
 		if (nk_button_label(ctx, "Adventure"))
 			fprintf(stdout, "button pressed\n");
