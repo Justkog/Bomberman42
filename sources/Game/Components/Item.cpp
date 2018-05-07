@@ -5,6 +5,8 @@
 #include "Core/GameObject.hpp"
 #include "Core/Transform.hpp"
 #include "Core/Component/ACollider.hpp"
+#include "Core/Audio/AudioSource.hpp"
+#include "Core/Audio/AudioClip.hpp"
 
 namespace Game
 {
@@ -23,7 +25,7 @@ namespace Game
 
         void    Item::fixedUpdate(void)
         {
-            
+
         }
 
         void    Item::update(void)
@@ -41,20 +43,27 @@ namespace Game
         {
             auto character = other->_gameObject->GetComponent<Game::Component::Character>();
 
+			if (other->_gameObject->GetComponent<Game::Component::Player>())
+			{
+				BeerEngine::Audio::AudioClip   		clip("assets/sounds/item.wav");
+				BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+				srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+				srcAudio.play();
+			}
             if (character)
             {
                 switch (_type)
                 {
                     case ItemType::SpeedBoost:
-                        character->increaseSpeed(0.1);
+                        character->increaseSpeed(0.25);
                         break;
-                    
+
                     case ItemType::Bomb:
                         character->addBomb(1);
                         break;
-                    
+
                     case ItemType::ExplosionBoost:
-                        character->increaseExplosionSize(0.5);
+                        character->increaseExplosionSize(1);
                         break;
                 }
                 this->destroy();

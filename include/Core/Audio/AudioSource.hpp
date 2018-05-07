@@ -18,6 +18,7 @@ namespace BeerEngine
 
 		public:
 
+			AudioSource();
 			AudioSource(ALuint buf);
 			~AudioSource( void );
 

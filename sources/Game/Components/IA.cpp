@@ -49,7 +49,7 @@ namespace Game
 
         bool    IA::moveToObjective(void)
         {
-            if (_path.empty() && glm::distance2(map->mapToWorld(_objective), _transform.position) > 0.01)
+            if (_path.empty() && glm::distance2(map->mapToWorld(_objective), _transform.position) > 0.001)
             {
                 if (findPath())
                 {
@@ -60,7 +60,7 @@ namespace Game
                     //DO SOMETHING ELSE
                 }
             }
-            else if (glm::distance2(map->mapToWorld(_objective), _transform.position) < 0.01)
+            else if (glm::distance2(map->mapToWorld(_objective), _transform.position) < 0.001)
             {
                 return (true);
             }
@@ -75,17 +75,13 @@ namespace Game
         {
             // glm::vec2 dir;
 
-            if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.01)
+            if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
                 _path.erase(_path.begin());
             dir = map->mapToWorld(_path[0]) - _transform.position;
-            if (dir.z > 0)
-                    _character->move(Character::Direction::Up);
-            else if (dir.z < 0)
-                    _character->move(Character::Direction::Down);
-            if (dir.x > 0)
-                    _character->move(Character::Direction::Left);
-            else if (dir.x < 0)
-                    _character->move(Character::Direction::Right);
+            if (std::abs(dir.z) > std::abs(dir.x))
+                _character->move(dir.z > 0 ? Character::Direction::Up : Character::Direction::Down);
+            else
+                _character->move(dir.x > 0 ?Character::Direction::Left : Character::Direction::Right);
         }
 
           ///////////////////////////////////////////////////////////////////////////////////////

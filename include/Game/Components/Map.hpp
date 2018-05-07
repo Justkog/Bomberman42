@@ -52,12 +52,12 @@ namespace Game
 
 			void setDestruction(float posX, float posY);
 
-			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic);
+			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
 			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 			BeerEngine::GameObject *createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 
 			template <typename T>
-			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 			{
 				BeerEngine::Component::MeshRenderer *meshRenderer;
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
@@ -71,7 +71,7 @@ namespace Game
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
 				mapBlocGO->AddComponent<T>();
-				if (!kinematic)
+				if (kinematic != BeerEngine::Component::RBType::Kinematic)
 				{
 					auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 					rb2d->kinematic = kinematic;
@@ -82,7 +82,7 @@ namespace Game
 			}
 
 			template <typename T>
-			BeerEngine::GameObject *addDestoyableCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+			BeerEngine::GameObject *addDestoyableCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 			{
 
 				BeerEngine::Component::MeshRenderer *meshRenderer;
@@ -99,7 +99,7 @@ namespace Game
 				mapBlocGO->AddComponent<T>();
 				auto destroyable = mapBlocGO->AddComponent<Game::Component::Breakable>();
 				destroyable->onDestruction.bind(&Map::setDestruction, this);
-				if (!kinematic)
+				if (kinematic != BeerEngine::Component::RBType::Kinematic)
 				{
 					auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 					rb2d->kinematic = kinematic;

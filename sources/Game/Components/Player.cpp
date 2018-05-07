@@ -11,20 +11,15 @@ namespace Game
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform)
-		{
-			// BeerEngine::Audio::AudioClip   		clip1("assets/sounds/footsteps1");
-			// srcAudio1(clip1.getBuffer());
-			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-			// srcAudio.play();
-			// BeerEngine::Audio::AudioClip   		clip2("assets/sounds/footsteps2.wav");
-			// srcAudio2(clip2.getBuffer());
-			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-			// srcAudio.play();
-        }
+		{ }
 
         void    Player::start(void)
         {
+			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
+			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
+			srcAudio.setBuffer(clip.getBuffer());
+			srcAudio.setLooping(false);
         }
 
         void    Player::fixedUpdate(void)
@@ -34,20 +29,61 @@ namespace Game
 
         void    Player::update(void)
         {
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
-                    _character->move(Character::Direction::Up);
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
+            {
+				if (play == false)
+				{
+					play = true;
+					srcAudio.setLooping(true);
+					srcAudio.play();
+				}
+				_character->move(Character::Direction::Up);
+			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
-                    _character->move(Character::Direction::Down);
+			{
+				if (play == false)
+				{
+					play = true;
+					srcAudio.setLooping(true);
+					srcAudio.play();
+				}
+                _character->move(Character::Direction::Down);
+			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
-                    _character->move(Character::Direction::Left);
+            {
+				if (play == false)
+				{
+					play = true;
+					srcAudio.setLooping(true);
+					srcAudio.play();
+				}
+				_character->move(Character::Direction::Left);
+			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
-                    _character->move(Character::Direction::Right);
+            {
+				if (play == false)
+				{
+					play = true;
+					srcAudio.setLooping(true);
+					srcAudio.play();
+				}
+				_character->move(Character::Direction::Right);
+			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
                 _character->dropBomb();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
+			if (BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_8) &&
+				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_4) &&
+				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_5) &&
+				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_6))
+			{
+				srcAudio.setLooping(false);
+				play = false;
+			}
+
         }
 
         void            Player::renderUI(struct nk_context *ctx)

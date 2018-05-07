@@ -57,6 +57,8 @@ namespace BeerEngine
 
 	namespace Component
 	{
+		enum RBType {None, Kinematic, Static};
+
 		class Component;
 		class MeshRenderer;
 		class RaysRenderer;

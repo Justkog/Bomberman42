@@ -30,7 +30,7 @@ namespace Game
 			// _player->createCrateSignal.bind(&Map::setDestruction, this);
 		}
 
-		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 		{
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
 			mapBlocGO->transform.position = pos;
@@ -41,7 +41,7 @@ namespace Game
 		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
 		{
 			std::cout << "item start" << std::endl;
-			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, true);
+			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, BeerEngine::Component::RBType::Kinematic);
 			itemGO->name = "item";
 			itemGO->AddComponent<Game::Component::Item>();
 			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
@@ -53,6 +53,7 @@ namespace Game
 		{
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
+			mapBlocGO->AddComponent<Game::Component::Breakable>();
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 			return (mapBlocGO);
 		}
@@ -95,10 +96,10 @@ namespace Game
 					{
 						case 1:
 							// addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
-							createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case 2:
-							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case S:
 							if (playerSpawn)
@@ -119,10 +120,10 @@ namespace Game
 				}
 			}
 		}
-		
+
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 100, 320, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			if (nk_begin(ctx, "Map", nk_rect(10, 100, 220, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
 				nk_layout_row_dynamic(ctx, 20, 1);
 				// if (_player)
@@ -163,7 +164,7 @@ namespace Game
 		}
 
 		REGISTER_COMPONENT_CPP(Map)
-		
+
 		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
 		{
 			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);

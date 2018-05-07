@@ -51,8 +51,8 @@ namespace Game
 
 			Signal<float, float> createCrateSignal;
 
-			BeerEngine::Audio::AudioSource      srcAudio1(ALuint);
-			BeerEngine::Audio::AudioSource      srcAudio2(ALuint);
+			BeerEngine::Audio::AudioSource      srcAudio;
+			bool								play;
 
 		};
 	}
