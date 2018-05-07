@@ -193,6 +193,7 @@ namespace BeerEngine
 		{
 			if (hasException(other))
 				return;
+
 			if (other->isKinematic() && !isKinematic())
 			{
 				_transform.translate(move);
@@ -217,6 +218,18 @@ namespace BeerEngine
 				_transform.translate(move * b);
 				other->_transform.translate(-move * a);
 			}
+		}
+
+		nlohmann::json	ACollider::serialize()
+		{
+			return {
+				{"isTrigger", _isTrigger},
+			};
+		}
+
+		void ACollider::deserialize(const nlohmann::json & j)
+		{
+			this->_isTrigger = j.at("isTrigger");
 		}
 	}
 }

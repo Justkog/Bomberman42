@@ -1,5 +1,8 @@
 #include "Game/Components/Map.hpp"
+// #include "Game/Components/Breakable.hpp"
+
 #include "Core/Component/BoxCollider2D.hpp"
+#include <sstream>
 #include "Core/IO/FileUtils.hpp"
 
 namespace Game
@@ -12,8 +15,47 @@ namespace Game
             _transform(gameObject->transform)
 		{ }
 
+		Map::~Map()
+		{
+			for (int y = 0; y < _sizeY; y++)
+			{
+				delete[] _map[y];
+			}
+			delete[]_map;
+		}
+
         void    Map::start(void)
-        { }
+        {
+			// std::cout << "map start" << "\n";
+			// _player->createCrateSignal.bind(&Map::setDestruction, this);
+		}
+
+		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+		{
+			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+			mapBlocGO->transform.position = pos;
+			mapBlocGO->transform.scale = scale;
+			return (mapBlocGO);
+		}
+
+		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		{
+			std::cout << "item start" << std::endl;
+			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, true);
+			itemGO->name = "item";
+			itemGO->AddComponent<Game::Component::Item>();
+			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
+			itemColl->_isTrigger = true;
+			return itemGO;
+		}
+
+		BeerEngine::GameObject *Map::createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		{
+			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
+			mapBlocGO->transform.position = pos;
+			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
+			return (mapBlocGO);
+		}
 
 		void	Map::setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
 		{
@@ -28,10 +70,16 @@ namespace Game
 				}
 		}
 
-        void    Map::update(void)
+        void    Map::mapUpdate(int x, int y)
         {
-
+			_map[y][x] = 0;
         }
+
+		void Map::setDestruction(float posX, float posY)
+		{
+			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
+			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y));
+		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
 		{
@@ -46,7 +94,11 @@ namespace Game
 					switch (type)
 					{
 						case 1:
-							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							// addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
+							break;
+						case 2:
+							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
 							break;
 						case S:
 							if (playerSpawn)
@@ -55,27 +107,66 @@ namespace Game
 							}
 							else
 							{
-								_player->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
-								// addPlayer(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
 								playerSpawn = true;
 							}
 							break;
 						case I:
-							addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							// addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
 				}
 			}
 		}
-
+		
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 270, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			if (nk_begin(ctx, "Map", nk_rect(10, 100, 320, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
 				nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, "Hello World!", NK_TEXT_LEFT);
+				// if (_player)
+				// {
+	            //     nk_label(ctx, "position", NK_TEXT_LEFT);
+				// 	nk_layout_row_dynamic(ctx, 20, 1);
+	            //     nk_label(ctx, glm::to_string(worldToMap(_player->_gameObject->transform.position)).c_str(), NK_TEXT_LEFT);
+				// }
+				nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, "map", NK_TEXT_LEFT);
+				for (int row = 0; row < _sizeY; row++)
+				{
+					std::stringstream ss;
+					for (int col = 0; col < _sizeX; col++)
+						ss << _map[row][col];
+					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+
+				}
             }
             nk_end(ctx);
+		}
+
+		glm::vec2		Map::worldToMap(glm::vec3 pos)
+		{
+			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
+		}
+
+		nlohmann::json	Map::serialize()
+		{
+			return {
+				{"componentClass", type},
+			};
+		}
+
+		void Map::deserialize(const nlohmann::json & j)
+		{
+
+		}
+
+		REGISTER_COMPONENT_CPP(Map)
+		
+		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
+		{
+			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);
 		}
     }
 }

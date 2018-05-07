@@ -24,6 +24,58 @@ namespace BeerEngine
 				return (false);
 		}
 
+		bool CircleCollider::contain(glm::vec2 other)
+		{
+			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+
+			if (glm::distance2(thisPos, other) < _radius * _radius)
+				return (true);
+			return (false);
+		}
+
+		bool CircleCollider::lineCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C)
+		{
+			glm::vec2 u = B - A;
+			glm::vec2 AC = C - A;
+			float numerator = std::abs(u.x * AC.y - u.y * AC.x);
+			float denominator = glm::length(u);//sqrt(u.x * u.x + u.y * u.y);
+			float CI = numerator / denominator;
+
+			return (CI < _radius);
+		}
+
+		bool CircleCollider::segmentCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C)
+		{
+			if (!lineCollision(A, B, C))
+				return (false);
+
+			glm::vec2 AB = B - A;
+			glm::vec2 AC = C - A;
+			glm::vec2 BC = C - B;
+			float scalar1 = AB.x * AC.x + AB.y * AC.y;
+			float scalar2 = (-AB.x) * BC.x + (-AB.y) * BC.y;
+			if (scalar1 >= 0 && scalar2 >= 0)
+				return (true);
+			if (contain(A) || contain(B))
+				return (true);
+			return (false);
+		}
+
+		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir)
+		{
+			glm::vec2 pos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+
+			return (segmentCollision(origin, origin + dir, pos));
+		}
+
+		bool CircleCollider::intersect(glm::vec2 origin, glm::vec2 dir, glm::vec2 &outPosition)
+		{
+			glm::vec2 pos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
+
+			outPosition = pos;
+			return (segmentCollision(origin, origin + dir, pos));
+		}
+
 		bool CircleCollider::collide_AABB2D(CircleCollider *other)
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
@@ -50,27 +102,21 @@ namespace BeerEngine
 			dir = glm::normalize(dir);
 			
 			response(other, dir * overlap);
-			// if (other->isKinematic() && !isKinematic())
-			// 	_transform.translate(dir * overlap);
-			// else if (!other->isKinematic() && isKinematic())
-			// 	other->_transform.translate(-dir * overlap);
-			// else if (!other->isKinematic() && !isKinematic())
-			// {
-			// 	_transform.translate(dir * (overlap / 2));
-			// 	other->_transform.translate(-dir * (overlap / 2));
-			// }
 		}
 
 		nlohmann::json	CircleCollider::serialize()
 		{
-			return {
-				{"componentClass", typeid(CircleCollider).name()},
+			auto j = ACollider::serialize();
+			j.merge_patch({
+				{"componentClass", type},
 				{"radius", _radius},
-			};
+			});
+			return j;
 		}
 
 		void CircleCollider::deserialize(const nlohmann::json & j)
 		{
+			this->ACollider::deserialize(j);
 			this->_radius = j.at("radius");
 		}
 

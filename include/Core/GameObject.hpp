@@ -4,8 +4,7 @@
 #include "Core/Core.hpp"
 #include "Core/AScene.hpp"
 #include "Core/Transform.hpp"
-#include "Core/Component/Component.hpp"
-#include "Core/Component/MeshRenderer.hpp"
+// #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
@@ -49,13 +48,24 @@ namespace BeerEngine
 			return (_scene.instantiate<T>());
 		}
 
+		template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
+		T	*instantiate(std::string prefabPath)
+		{
+			return (_scene.instantiate<T>(prefabPath));
+		}
+
         template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*AddComponent(void)
 		{
 			T *c = new T(this);
-			_components.push_back(c);
-			_toStart.push_back(c);
+			registerComponent(c);
 			return (c);
+		}
+
+		void	registerComponent(Component::Component *comp)
+		{
+			_components.push_back(comp);
+			_toStart.push_back(comp);
 		}
 
 		template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
@@ -93,8 +103,11 @@ namespace BeerEngine
 		std::vector<Component::Component *> GetComponents(void);
 
 		virtual nlohmann::json	serialize();
-        // virtual void deserialize(const nlohmann::json & j);
+        virtual void deserialize(const nlohmann::json & j);
 		static GameObject * Deserialize(const nlohmann::json & j, AScene & scene);
+
+		void save(std::string filePath);
+        void load(std::string filePath);
 	};
 }
 

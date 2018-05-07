@@ -3,15 +3,15 @@
 
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
-
+#include "Core/GameObject.hpp"
 
 namespace BeerEngine
 {
 	namespace Component
 	{
-		typedef std::map<std::string, Component*(*)(GameObject *)> component_type;
+		typedef std::map<std::string, Component*(*)(GameObject *)> add_component_type;
 
-		class Component : public JsonSerializable
+		class Component : public JsonSerializable, public SigSlotBase
 		{
 		protected:
 		public:
@@ -30,10 +30,16 @@ namespace BeerEngine
 				return new T(gameObject); 
 			}
 
+			template<typename T>
+			static Component * addComponent(GameObject *gameObject)
+			{ 
+				return (gameObject->AddComponent<T>()); 
+			}
+
 			virtual void deserialize(const nlohmann::json & j);
 			static Component * Deserialize(const nlohmann::json & j, GameObject *go);
-			static component_type typeToComponent;
-			static component_type create_map();
+			static add_component_type typeToAddComponent;
+			static add_component_type createAddMap();
 		};
 	}
 }

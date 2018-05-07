@@ -9,12 +9,14 @@
 #include "Core/Component/ParticleExplode.hpp"
 #include "Core/Component/ModelRenderer.hpp"
 #include "Game/Components/Player.hpp"
+#include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
+#include "Game/Components/BeerRoutineTester.hpp"
 #include "Game/CameraTest.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -52,6 +54,7 @@ void    SceneTest::init(void)
 	// this->load("test2.scene");
 	// this->save("destest.scene");
 
+
 	// return;
 
 	std::cout << "init test scene" << "\n";
@@ -68,6 +71,15 @@ void    SceneTest::init(void)
 	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
+	// prefab test
+	// auto crateGO = addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(10, 0, 5), true);
+	// crateGO->save("Prefabs/crate.prefab");
+
+	// auto crate2 = instantiate<BeerEngine::GameObject>("Prefabs/crate.prefab");
+	// crate2->transform.position.x += 2;
+	// crate2->save("Prefabs/reserializedCrate.prefab");
+
+	// return;
 	// cube 1
 	// Texture
 	BeerEngine::Graphics::Texture *crate = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
@@ -106,12 +118,6 @@ void    SceneTest::init(void)
 	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
-	
-
-	// BeerEngine::Camera::main->transform.position = glm::vec3(-1, 1, 0);
-	// BeerEngine::Camera::main->transform.rotation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(45.0f), 0.0f));
-	/*glm::vec3 v = BeerEngine::Camera::main->transform.forward();
-	BeerEngine::Camera::main->transform.translate(-v);*/
 
 
 	// Player
@@ -123,38 +129,68 @@ void    SceneTest::init(void)
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	meshRenderer->setMaterial(playerMat);
-	// playerGO->transform.position = glm::vec3(1, 0.5, 7);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
+	playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
+	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerRB2D->kinematic = false;
 
-	// FPS Camera
-	// instantiate<CameraTest>();
+	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
-	map->_player = playerGO;
-	std::vector<int> line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<int> line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
-	std::vector<int> line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line3{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line5{1,0,0,0,0,0,0,I,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line7{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line9{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+	map->_player = player;
+	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
+	std::vector<int>  line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int>  line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line3{1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,1};
+	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line5{1,0,0,2,0,0,0,I,0,0,0,2,0,0,0,0,1};
+	std::vector<int>  line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line7{1,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,1};
+	std::vector<int>  line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	std::vector<int>  line9{1,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,1};
 	std::vector<int> line10{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line11{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int> line11{1,S,0,0,0,0,0,2,0,0,0,0,0,0,0,S,1};
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 
+	auto mapCrateGO = map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
+	mapCrateGO->save("Prefabs/mapCrate.prefab");
+	auto itemGO = map->addItem(shader, glm::vec3(0, 0, 0));
+	itemGO->save("Prefabs/item.prefab");
+
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
+
+	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
+	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
+	mapCrateGO2->save("Prefabs/reMapCrate.prefab");
+	
+	// IA
+	auto iaGO = instantiate<BeerEngine::GameObject>();
+	iaGO->name = "IA";
+	meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+	auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
+	iaMat->setAlbedo(iaTex);
+	meshRenderer->setMaterial(iaMat);
+	iaGO->transform.position = glm::vec3(0, 0.5, 2);
+	iaGO->transform.scale = glm::vec3(1, 1, 1);
+	character = iaGO->AddComponent<Game::Component::Character>();
+	auto *ia = iaGO->AddComponent<Game::Component::IA>();
+	ia->map = map;
+	routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
+	settings = iaGO->AddComponent<Game::Component::Settings>();
+	auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	iaRB2D->kinematic = false;
 
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();
@@ -165,10 +201,9 @@ void    SceneTest::init(void)
 	auto *objetMat = new BeerEngine::Graphics::AMaterial(shader);
 	objetMat->setAlbedo(objetTex);
 	meshRenderer->setMaterial(objetMat);
-	objet->transform.position = glm::vec3(-5, 0, 16.5);
+	objet->transform.position = glm::vec3(-5.5, 0, 16.5);
 	objet->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	objet->transform.rotation = glm::vec3(0, 0, 0);
-
 
 	auto house2 = instantiate<BeerEngine::GameObject>();
 	house2->name = "house2";
@@ -181,37 +216,6 @@ void    SceneTest::init(void)
 	house2->transform.position = glm::vec3(4.5, 0, 14.4);
 	house2->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	house2->transform.rotation = glm::vec3(0, 3.14, 0);
-
-	auto dragon = instantiate<BeerEngine::GameObject>();
-	dragon->name = "dragon";
-	modelRenderer = dragon->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
-	// modelRenderer->loadMaterials(shader);
-	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
-	auto *dragonMat = new BeerEngine::Graphics::AMaterial(shader);
-	dragonMat->setAlbedo(dragonTex);
-	modelRenderer->addMaterial(0, dragonMat);
-	dragon->transform.position = glm::vec3(0, 8, 5);
-	dragon->transform.scale = glm::vec3(0.05, 0.05, 0.05);
-	dragon->transform.rotation = glm::vec3(-90, 180, 0);
-
-	// Player
-	// auto playerGO = instantiate<BeerEngine::GameObject>();
-	// playerGO->name = "player";
-	// meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	// auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-	// auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	// playerMat->setAlbedo(playerTex);
-	// meshRenderer->setMaterial(playerMat);
-	// playerGO->transform.position = glm::vec3(1, 0.5, 7);
-	// playerGO->transform.scale = glm::vec3(1, 1, 1);
-	// auto *character = playerGO->AddComponent<Game::Component::Character>();
-	// auto *player = playerGO->AddComponent<Game::Component::Player>();
-	// auto *settings = playerGO->AddComponent<Game::Component::Settings>();
-	// auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	// auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	// playerRB2D->kinematic = false;
 
  // test obj old
 
@@ -238,5 +242,27 @@ void    SceneTest::init(void)
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
 
 
+	// ==================
+	// === ANIMATIONS ===
+	// ==================
+	auto dragon = instantiate<BeerEngine::GameObject>();
+	dragon->name = "dragon";
+	modelRenderer = dragon->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
+	// modelRenderer->loadMaterials(shader);
+	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
+	auto *dragonMat = new BeerEngine::Graphics::AMaterial(shader);
+	dragonMat->setAlbedo(dragonTex);
+	modelRenderer->addMaterial(0, dragonMat);
+	dragon->transform.position = glm::vec3(0, 8, 5);
+	dragon->transform.scale = glm::vec3(0.05, 0.05, 0.05);
+	dragon->transform.rotation = glm::vec3(-90, 180, 0);
+
+	// ==================
+	// =/= ANIMATIONS =\=
+	// ==================
+
+
 	this->save("test2.scene");
+	std::cout << "init end" << "\n";
 }

@@ -11,11 +11,17 @@ namespace BeerEngine
 		class CircleCollider : public ACollider
 		{
 		protected:
+			bool lineCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
+			bool segmentCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
 
 		public:
 			CircleCollider(GameObject *gameObject);
 			virtual ~CircleCollider();
-			bool 	checkCollision(ACollider *other);
+			bool checkCollision(ACollider *other);
+
+			bool contain(glm::vec2 other);
+			bool intersect(glm::vec2 origin, glm::vec2 dir);
+			bool intersect(glm::vec2 origin, glm::vec2 dir, glm::vec2 &outPosition);
 
 			bool collide_AABB2D(CircleCollider *other);
 			bool collide_AABB2D(BoxCollider2D *other);

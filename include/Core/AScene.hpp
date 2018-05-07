@@ -40,7 +40,7 @@ namespace BeerEngine
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
 		{
-             std::cout << "GameObject added : " << uniqueID << std::endl;
+			std::cout << "GameObject added : " << uniqueID << std::endl;
 			T *c = new T(uniqueID, *this);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             _toStart.push_back(c);
@@ -48,18 +48,19 @@ namespace BeerEngine
 			return (c);
 		}
 
+        template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
+		T	*instantiate(std::string prefabPath)
+		{
+			// std::cout << "scene instantiating " << prefabPath << "\n";
+			T *object = instantiate<T>();
+			object->load(prefabPath);
+			return (object);
+		}
+
         void debugTest(void);
 
         std::vector<GameObject *> getGameObjects();
         
-        // void load(std::string filePath)
-        // {
-        //     std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
-        //     auto j = nlohmann::json::parse(content);
-        //     // Game::SettingsContainer c;
-        //     // this->settingsContainer = j;
-        // }
-
         void save(std::string filePath);
         void load(std::string filePath);
 

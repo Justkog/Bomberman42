@@ -10,6 +10,8 @@
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Physics/Physics.hpp"
+#include "Core/Component/ACollider.hpp"
+#include "Core/GameObject.hpp"
 
 namespace Game
 {
@@ -83,7 +85,16 @@ void MouseRayTest::update()
 	{
 		clicking = true;
 		auto ray = BeerEngine::Physics::Physics::MouseToWorldRay();
-		ray.direction *= 10;
+		ray.origin.y = 0.5;
+		ray.direction.y = 0;
+		ray.direction = glm::normalize(ray.direction);
+		ray.direction *= 2;
+
+		// BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction);
+		BeerEngine::Physics::RaycastHit hit;
+		if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, hit, 1))
+			std::cout << "hit: " << glm::to_string(hit.transform->position) << " | " << hit.distance << std::endl;
+		// BeerEngine::Physics::Physics::RaycastAll(ray.origin, ray.direction);
 		linesRenderer->addRay(ray);
 	}
 	else if (state == GLFW_RELEASE && clicking)

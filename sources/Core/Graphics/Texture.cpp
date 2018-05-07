@@ -164,7 +164,7 @@ namespace BeerEngine
 			std::string path = j.at("sourceFile");
 			if (path != "")
 			{
-				std::cout << "getting texture at " << path << "\n";
+				// std::cout << "getting texture at " << path << "\n";
 				return (Assets::GetTexture(path));
 			}
 			else

@@ -28,6 +28,7 @@
 #include <map>
 #include <vector>
 #include <fstream>
+#include <functional>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -36,6 +37,8 @@
 #include <nuklear_glfw_gl3.h>
 
 #include <nlohmann/json.hpp>
+
+#include <signal.h>
 
 namespace BeerEngine
 {
@@ -57,6 +60,7 @@ namespace BeerEngine
 		class Component;
 		class MeshRenderer;
 		class RaysRenderer;
+        class ACollider;
         class CircleCollider;
         class BoxCollider2D;
 		class RigidBody2D;
@@ -79,17 +83,25 @@ namespace BeerEngine
 		struct Ray;
 		class Physics;
 	}
+
+	namespace BeerRoutine
+	{
+		class BeerRoutine;
+		class ARoutineRunner;
+	}
 }
 
 #define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
-							static 	int componentRegisterer;
+							static 	int componentRegisterer;\
+							static std::string type;
 
 #define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
 		{\
-			Component::typeToComponent[typeid(Class).name()] = &Component::createInstance<Class>;\
+			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
 			return (1);\
 		}\
 		\
-		int Class::componentRegisterer = Class::RegisterComponentType();
+		int Class::componentRegisterer = Class::RegisterComponentType();\
+		std::string Class::type = typeid(Class).name();
 
 #endif

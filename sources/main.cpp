@@ -78,7 +78,8 @@ void updateThread(BeerEngine::Window *window)
         }
         //  std::this_thread::sleep_for(sleepTime);
 
-         std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		BeerEngine::Input::Update();
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     std::cout << "Thread Update: Finish" << std::endl;
 }
@@ -98,10 +99,10 @@ int main(void)
 
     // Audio
     BeerEngine::Audio::AudioListener::init();
-    // BeerEngine::Audio::AudioListener audio;
-    //
-    // audio.setListenerData(0, 0, 0);
-    // alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
+    BeerEngine::Audio::AudioListener audio;
+
+    audio.setListenerData(0, 0, 0);
+    alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
     // BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
     // // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
     //

@@ -63,7 +63,7 @@ namespace BeerEngine
 		nlohmann::json	MeshRenderer::serialize()
 		{
 			return nlohmann::json {
-				{"componentClass", typeid(MeshRenderer).name()},
+				{"componentClass", type},
 				{"mesh", _mesh},
 				{"material", _material},
 				{"pivot", _mat},
@@ -72,7 +72,7 @@ namespace BeerEngine
 
 		void MeshRenderer::deserialize(const nlohmann::json & j)
 		{
-			std::cout << this->_sourceFile << "\n";
+			// std::cout << this->_sourceFile << "\n";
 			// this->_sourceFile = j.at("sourceFile");
 			// if (this->_sourceFile != "")
 			// 	this->setMesh(this->_sourceFile);
