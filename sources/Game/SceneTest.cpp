@@ -259,7 +259,7 @@ void    SceneTest::init(void)
 	auto dragon = instantiate<BeerEngine::GameObject>();
 	dragon->name = "dragon";
 	modelRenderer2 = dragon->AddComponent<BeerEngine::Component::Model>();
-	modelRenderer2->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
+	modelRenderer2->load("assets/models/BlackDragon/Dragon_Baked_Actions.dae");
 	// modelRenderer2->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
 	// modelRenderer->loadMaterials(shader);
 	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
@@ -267,7 +267,7 @@ void    SceneTest::init(void)
 	dragonMat->setAlbedo(dragonTex);
 	modelRenderer2->addMaterial(0, dragonMat);
 	dragon->transform.position = glm::vec3(0, 8, 5);
-	dragon->transform.scale = glm::vec3(0.0005, 0.0005, 0.0005);
+	dragon->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	dragon->transform.rotation = glm::vec3(0, 0, 0);
 
 	// ==================

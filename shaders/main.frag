@@ -62,5 +62,4 @@ void main()
     {
         outColor = color * vec4(l, l, l, 1.0f);
     }
-    outColor = vec4(vWeight.rgb, 1.0) * vec4(l, l, l, 1.0f);
 }

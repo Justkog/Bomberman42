@@ -25,8 +25,7 @@ namespace BeerEngine
 
 		Model	&Model::load(const std::string &file)
 		{
-			Assimp::Importer importer;
-			m_scene = importer.ReadFile(file.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
+			m_scene = _importer.ReadFile(file.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices | aiProcess_LimitBoneWeights);
 
 			if (!m_scene)
 			{
@@ -48,7 +47,7 @@ namespace BeerEngine
 
 			aiMatrix4x4 globalInverseTransform = m_scene->mRootNode->mTransformation;
 			globalInverseTransform = globalInverseTransform.Inverse();
-			m_globalInverseTransform = globalInverseTransform;
+			m_globalInverseTransform = Mathf::assimp_to_glm(globalInverseTransform);
 
 			m_numMeshes = m_scene->mNumMeshes;
 			m_vao = new GLuint[m_scene->mNumMeshes];
@@ -166,7 +165,7 @@ namespace BeerEngine
 
 		void Model::boneTransform(float timeInSeconds, std::vector<glm::mat4 > &transforms)
 		{
-			aiMatrix4x4 identity;
+			glm::mat4 identity;
 
 			std::cout << "Animation: " << m_scene->mAnimations[0]->mName.C_Str() << std::endl;
 
@@ -175,7 +174,7 @@ namespace BeerEngine
 			float timeInTicks = timeInSeconds * ticksPerSecond;
 			float animationTime = fmod(timeInTicks, m_scene->mAnimations[0]->mDuration);
 
-			readNodes(0, m_scene->mRootNode, identity);
+			readNodes(animationTime, m_scene->mRootNode, identity);
 
 			transforms.resize(m_numBones);
 
@@ -196,31 +195,33 @@ namespace BeerEngine
 			return nullptr;
 		}
 
-		void Model::readNodes(float animationTime, const aiNode *node, aiMatrix4x4 &parent)
+		void Model::readNodes(float animationTime, const aiNode *node, glm::mat4 &parent)
 		{
 			std::string nodeName(node->mName.data);
 
 			const aiAnimation *anim = m_scene->mAnimations[0];
 			const aiNodeAnim *animNode = fineNodeAnim(anim, node->mName.data);
 
-			aiMatrix4x4 aiFinalBoneTransformation = parent * node->mTransformation;
+			// aiMatrix4x4 aiFinalBoneTransformation = parent * node->mTransformation;
 			glm::mat4 boneTransform = Mathf::assimp_to_glm(node->mTransformation);
 
-		//	if (animNode)
-		//	{
-		//		aiVector3D Scaling;
-		//		ModelAnimation::interpolateNodeScale(Scaling, animationTime, animNode);
-		//		glm::mat4 scaling = glm::scale(glm::mat4(1.0f), glm::vec3(Scaling.x, Scaling.y, Scaling.z));
-		//
-		//		aiQuaternion RotationQ;
-		//		ModelAnimation::interpolateNodeRotation(RotationQ, animationTime, animNode);
-		//		glm::mat4 rotation = Mat4<float>::mat4FromAssimp(aiMatrix4x4t<float>(RotationQ.GetMatrix()));
-		//
-		//		aiVector3D Translation;
-		//		ModelAnimation::interpolateNodePosition(Translation, animationTime, animNode);
-		//		glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(Translation.x, Translation.y, Translation.z));
-		////		boneTransform = translation * rotation * scaling;
-		//	}
+			if (animNode)
+			{
+				aiVector3D Scaling;
+				interpolateNodeScale(Scaling, animationTime, animNode);
+				glm::mat4 scaling = glm::scale(glm::mat4(1.0f), glm::vec3(Scaling.x, Scaling.y, Scaling.z));
+		
+				aiQuaternion RotationQ;
+				interpolateNodeRotation(RotationQ, animationTime, animNode);
+				glm::mat4 rotation = Mathf::assimp_to_glm(aiMatrix4x4t<float>(RotationQ.GetMatrix()));
+		
+				aiVector3D Translation;
+				interpolateNodePosition(Translation, animationTime, animNode);
+				glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(Translation.x, Translation.y, Translation.z));
+				boneTransform = translation * rotation * scaling;
+			}
+
+			glm::mat4 aiFinalBoneTransformation = parent * boneTransform;
 
 			// glm::mat4 finalBoneTransformation = Mathf::assimp_to_glm(aiFinalBoneTransformation);
 			// ModelSkeleton::Node *n = new ModelSkeleton::Node();
@@ -232,10 +233,10 @@ namespace BeerEngine
 			if (m_boneMapping.find(nodeName) != m_boneMapping.end())
 			{
 				uint BoneIndex = m_boneMapping[nodeName];
-				aiMatrix4x4 trs = m_globalInverseTransform * aiFinalBoneTransformation * m_boneInfo[BoneIndex].boneOffset;
+				glm::mat4 trs = m_globalInverseTransform * aiFinalBoneTransformation * Mathf::assimp_to_glm(m_boneInfo[BoneIndex].boneOffset);
 
 		//		glm::mat4 boneOffset = Mathf::assimp_to_glm(m_boneInfo[BoneIndex].boneOffset);
-				m_boneInfo[BoneIndex].finalTransformation = Mathf::assimp_to_glm(trs);
+				m_boneInfo[BoneIndex].finalTransformation = trs;
 			}
 
 			for (std::size_t i = 0; i < node->mNumChildren; i++)
@@ -338,10 +339,9 @@ namespace BeerEngine
 		void Model::renderUpdate(void)
 		{
 			_mat = _gameObject->transform.getMat4();
-			if (m_scene->HasAnimations())
-				boneTransform(0, m_transforms);
+			// if (m_scene->HasAnimations())
+			// 	boneTransform(0, m_transforms);
 		}
-
 
 		void Model::render(void)
 		{
@@ -363,6 +363,12 @@ namespace BeerEngine
 			// 	Graphics::Graphics::defaultMaterial->bind(_mat);
 			// else
 
+			static float t = 0;
+
+			t += Time::GetDeltaTime() * 3;
+
+			if (m_scene->HasAnimations())
+				boneTransform(t, m_transforms);
 
 			_materials[0]->bind(_mat);
 			std::cout << "Trs size: " << m_transforms.size() << std::endl;
@@ -383,6 +389,82 @@ namespace BeerEngine
 			// glDisable(GL_DEPTH_TEST);
 			// m_skeleton->render(shader);
 			// glEnable(GL_DEPTH_TEST);
+		}
+
+		static uint findRotation(float animationTime, const aiNodeAnim *node)
+		{
+			for (uint i = 0 ; i < node->mNumRotationKeys - 1 ; i++)
+				if (animationTime < (float)node->mRotationKeys[i + 1].mTime)
+					return i;
+			return 0;
+		}
+
+		static uint findPosition(float animationTime, const aiNodeAnim *node)
+		{
+			for (uint i = 0 ; i < node->mNumPositionKeys - 1 ; i++)
+				if (animationTime < (float)node->mPositionKeys[i + 1].mTime)
+					return i;
+			return 0;
+		}
+
+		static uint findScale(float animationTime, const aiNodeAnim *node)
+		{
+			for (uint i = 0 ; i < node->mNumScalingKeys - 1 ; i++)
+				if (animationTime < (float)node->mScalingKeys[i + 1].mTime)
+					return i;
+			return 0;
+		}
+
+		void Model::interpolateNodeRotation(aiQuaternion &out, float animationTime, const aiNodeAnim *node)
+		{
+			if (node->mNumRotationKeys == 1)
+			{
+				out = node->mRotationKeys[0].mValue;
+				return;
+			}
+
+			uint index = findRotation(animationTime, node);
+			uint nextIndex = (index + 1);
+			float delta = node->mRotationKeys[nextIndex].mTime - node->mRotationKeys[index].mTime;
+			float factor = (animationTime - (float)node->mRotationKeys[index].mTime) / delta;
+			const aiQuaternion& start = node->mRotationKeys[index].mValue;
+			const aiQuaternion& end = node->mRotationKeys[nextIndex].mValue;
+			aiQuaternion::Interpolate(out, start, end, factor);
+			out = out.Normalize();
+		}
+
+		void Model::interpolateNodePosition(aiVector3D &out, float animationTime, const aiNodeAnim *node)
+		{
+			if (node->mNumPositionKeys == 1)
+			{
+				out = node->mPositionKeys[0].mValue;
+				return;
+			}
+
+			uint index = findPosition(animationTime, node);
+			uint nextIndex = (index + 1);
+			float delta = node->mPositionKeys[nextIndex].mTime - node->mPositionKeys[index].mTime;
+			float factor = (animationTime - (float)node->mPositionKeys[index].mTime) / delta;
+			const aiVector3D& start = node->mPositionKeys[index].mValue;
+			const aiVector3D& end = node->mPositionKeys[nextIndex].mValue;
+			out = start + (end - start) * factor;
+		}
+
+		void Model::interpolateNodeScale(aiVector3D &out, float animationTime, const aiNodeAnim *node)
+		{
+			if (node->mNumPositionKeys == 1)
+			{
+				out = node->mPositionKeys[0].mValue;
+				return;
+			}
+
+			uint index = findScale(animationTime, node);
+			uint nextIndex = (index + 1);
+			float delta = node->mScalingKeys[nextIndex].mTime - node->mScalingKeys[index].mTime;
+			float factor = (animationTime - (float)node->mScalingKeys[index].mTime) / delta;
+			const aiVector3D& start = node->mScalingKeys[index].mValue;
+			const aiVector3D& end = node->mScalingKeys[nextIndex].mValue;
+			out = start + (end - start) * factor;
 		}
 
 		Graphics::AMaterial	*Model::getMaterial(const int &index)
@@ -424,5 +506,6 @@ namespace BeerEngine
 		}
 
 		REGISTER_COMPONENT_CPP(Model)
+
 	}
 }

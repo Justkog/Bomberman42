@@ -6,6 +6,7 @@
 #include "IRender.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Mathf.hpp"
+#include "Core/Time.hpp"
 
 // #include <maths/Vec3.hpp>
 // #include <maths/Vec2.hpp>
@@ -55,6 +56,7 @@ namespace BeerEngine
 				}
 			};
 
+			Assimp::Importer 					_importer;
 			const aiScene						*_assimpScene;
 			std::map<int, Graphics::AMaterial*>	_materials;
 			std::map<Graphics::Mesh*, int>		_materialIndices;
@@ -75,13 +77,17 @@ namespace BeerEngine
 			std::vector<glm::mat4> 			m_transforms;
 
 			std::vector<float>	m_boneTransforms;
-			aiMatrix4x4			m_globalInverseTransform;
+			glm::mat4			m_globalInverseTransform;
 
 			void build(int id, std::vector<glm::vec3> &positions, std::vector<glm::vec3> &normals, std::vector<glm::vec2> &uvs, std::vector<VertexBoneData> &bones);
 			void loadBones(uint meshIndex, const aiMesh* mesh, std::vector<VertexBoneData>& bones);
 			void boneTransform(float timeInSeconds, std::vector<glm::mat4> &transforms);
 			const aiNodeAnim *fineNodeAnim(const aiAnimation *anim, const std::string &name);
-			void readNodes(float animationTime, const aiNode *node, aiMatrix4x4 &parent);
+			void readNodes(float animationTime, const aiNode *node, glm::mat4 &parent);
+
+			void interpolateNodeRotation(aiQuaternion &out, float animationTime, const aiNodeAnim *node);
+			void interpolateNodePosition(aiVector3D &out, float animationTime, const aiNodeAnim *node);
+			void interpolateNodeScale(aiVector3D &out, float animationTime, const aiNodeAnim *node);
 
 		public:
 			Model(GameObject *gameObject);
