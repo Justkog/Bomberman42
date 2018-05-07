@@ -55,9 +55,11 @@ namespace BeerEngine
 			m_vbo = new GLuint[m_scene->mNumMeshes];
 			m_ubo = new GLuint[m_scene->mNumMeshes];
 			m_nbo = new GLuint[m_scene->mNumMeshes];
-			m_bbo = new GLuint[m_scene->mNumMeshes];
-			m_wbo = new GLuint[m_scene->mNumMeshes];
+			// m_bbo = new GLuint[m_scene->mNumMeshes];
+			// m_wbo = new GLuint[m_scene->mNumMeshes];
 			m_drawSize = new int[m_scene->mNumMeshes];
+
+			m_numBones = 0;
 
 			for (std::size_t k = 0; k < m_scene->mNumMeshes; k++)
 			{
@@ -73,29 +75,14 @@ namespace BeerEngine
 				texcoords.reserve(mesh->mNumVertices);
 				bones.resize(mesh->mNumVertices);
 
-				loadBones(k, mesh, bones);
+				// loadBones(k, mesh, bones);
 
 				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
 				{
-					glm::vec3 position;
-					position.x = mesh->mVertices[i].x;
-					position.y = mesh->mVertices[i].y;
-					position.z = mesh->mVertices[i].z;
-					positions.push_back(position);
-
-					glm::vec3 normal;
-					normal.x = mesh->mNormals[i].x;
-					normal.y = mesh->mNormals[i].y;
-					normal.x = mesh->mNormals[i].z;
-					normals.push_back(normal);
-
+					positions.push_back(glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z));
+					normals.push_back(glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z));
 					if(mesh->HasTextureCoords(0))
-					{
-						glm::vec2 texcoord;
-						texcoord.x = mesh->mTextureCoords[0][i].x;
-						texcoord.y = mesh->mTextureCoords[0][i].y;
-						texcoords.push_back(texcoord);
-					}
+						texcoords.push_back(glm::vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y));
 				}
 
 				std::vector<glm::vec3>	indexedPpositions;
@@ -122,7 +109,7 @@ namespace BeerEngine
 							indexedTexcoords.push_back(texcoord);
 						}
 
-						indexedBonesData.push_back(bones[index]);
+						// indexedBonesData.push_back(bones[index]);
 					}
 				}
 				build(k, indexedPpositions, indexedNormals, indexedTexcoords, indexedBonesData);
@@ -317,8 +304,8 @@ namespace BeerEngine
 			GLfloat *vBuffer = new GLfloat[positions.size() * 3];
 			GLfloat *uBuffer = new GLfloat[uvs.size() * 2];
 			GLfloat *nBuffer = new GLfloat[normals.size() * 3];
-			GLuint *bBuffer = new GLuint[bones.size() * 4];
-			GLfloat *wBuffer = new GLfloat[bones.size() * 4];
+			// GLuint *bBuffer = new GLuint[bones.size() * 4];
+			// GLfloat *wBuffer = new GLfloat[bones.size() * 4];
 
 			for (std::size_t i = 0; i < positions.size(); i++)
 			{
@@ -337,18 +324,18 @@ namespace BeerEngine
 				nBuffer[i * 3 + 1] = normals[i].y;
 				nBuffer[i * 3 + 2] = normals[i].z;
 			}
-			for (std::size_t i = 0; i < bones.size(); i++)
-			{
-				wBuffer[i * 4 + 0] = bones[i].weights[0];
-				wBuffer[i * 4 + 1] = bones[i].weights[1];
-				wBuffer[i * 4 + 2] = bones[i].weights[2];
-				wBuffer[i * 4 + 3] = bones[i].weights[3];
+			// for (std::size_t i = 0; i < bones.size(); i++)
+			// {
+			// 	wBuffer[i * 4 + 0] = 1.0; //bones[i].weights[0];
+			// 	wBuffer[i * 4 + 1] = 1.0; //bones[i].weights[1];
+			// 	wBuffer[i * 4 + 2] = 1.0; //bones[i].weights[2];
+			// 	wBuffer[i * 4 + 3] = 1.0; //bones[i].weights[3];
 
-				bBuffer[i * 4 + 0] = bones[i].ids[0];
-				bBuffer[i * 4 + 1] = bones[i].ids[1];
-				bBuffer[i * 4 + 2] = bones[i].ids[2];
-				bBuffer[i * 4 + 3] = bones[i].ids[3];
-			}
+			// 	bBuffer[i * 4 + 0] = 1.0; //bones[i].ids[0];
+			// 	bBuffer[i * 4 + 1] = 1.0; //bones[i].ids[1];
+			// 	bBuffer[i * 4 + 2] = 1.0; //bones[i].ids[2];
+			// 	bBuffer[i * 4 + 3] = 1.0; //bones[i].ids[3];
+			// }
 
 			std::cout << "Bones: " << bones.size() << std::endl;
 			std::cout << "Vertices: " << positions.size() << std::endl;
@@ -359,8 +346,10 @@ namespace BeerEngine
 			glGenBuffers(1, &m_vbo[i]);
 			glGenBuffers(1, &m_ubo[i]);
 			glGenBuffers(1, &m_nbo[i]);
-			glGenBuffers(1, &m_bbo[i]);
-			glGenBuffers(1, &m_wbo[i]);
+			// glGenBuffers(1, &m_bbo[i]);
+			// glGenBuffers(1, &m_wbo[i]);
+
+std::cout << "LOOOOOL" << std::endl;
 
 			glBindVertexArray(m_vao[i]);
 
@@ -379,23 +368,25 @@ namespace BeerEngine
 			glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * normals.size() * 3, nBuffer, GL_STATIC_DRAW);
 			glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
-			glEnableVertexAttribArray(3);
-			glBindBuffer(GL_ARRAY_BUFFER, m_bbo[i]);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(GLuint) * bones.size() * 4, bBuffer, GL_STATIC_DRAW);
-			glVertexAttribIPointer(3, 4, GL_UNSIGNED_INT, 0, nullptr);
+			// glEnableVertexAttribArray(3);
+			// glBindBuffer(GL_ARRAY_BUFFER, m_bbo[i]);
+			// glBufferData(GL_ARRAY_BUFFER, sizeof(GLuint) * bones.size() * 4, bBuffer, GL_STATIC_DRAW);
+			// glVertexAttribIPointer(3, 4, GL_UNSIGNED_INT, 0, nullptr);
 
-			glEnableVertexAttribArray(4);
-			glBindBuffer(GL_ARRAY_BUFFER, m_wbo[i]);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * bones.size() * 4, wBuffer, GL_STATIC_DRAW);
-			glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
+			// glEnableVertexAttribArray(4);
+			// glBindBuffer(GL_ARRAY_BUFFER, m_wbo[i]);
+			// glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * bones.size() * 4, wBuffer, GL_STATIC_DRAW);
+			// glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
 
 			glBindVertexArray(0);
 
 			delete[] vBuffer;
 			delete[] uBuffer;
 			delete[] nBuffer;
-			delete[] bBuffer;
-			delete[] wBuffer;
+			// delete[] bBuffer;
+			// delete[] wBuffer;
+
+			std::cout << "LOOOOOL" << std::endl;
 		}
 
 		void Model::renderUpdate(void)
@@ -419,10 +410,12 @@ namespace BeerEngine
 		//
 		//	for (int i = 0; i < bone)
 		//
-			if (_materials.empty())
-				Graphics::Graphics::defaultMaterial->bind(_mat);
-			else
-				_materials[0]->bind(_mat);
+		Graphics::Graphics::defaultMaterial->bind(_mat);
+
+			// if (_materials.empty())
+			// 	Graphics::Graphics::defaultMaterial->bind(_mat);
+			// else
+			// 	_materials[0]->bind(_mat);
 
 			for (int i = 0; i < m_numMeshes; i++)
 			{

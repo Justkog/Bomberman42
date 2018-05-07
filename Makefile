@@ -77,7 +77,7 @@ DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
 
-CFLAGS = -std=c++11 -Wc++11-extensions \
+CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 
