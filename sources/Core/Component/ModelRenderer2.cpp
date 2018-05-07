@@ -132,62 +132,6 @@ namespace BeerEngine
 			delete[] m_wbo;
 		}
 
-		//void Model::VertexBoneData::addBoneData(uint boneID, float weight)
-		//{
-		//	for (uint i = 0 ; i < NUM_BONES_PER_VEREX ; i++)
-		//	{
-		//		if (weights[i] == 0.0)
-		//		{
-		//			ids[i] = boneID;
-		//			weights[i] = weight;
-		//			return;
-		//		}
-		//	}
-		//}
-
-		//void Model::loadNode(float animationTime, const aiNode *node, aiMatrix4x4 &parent, ModelSkeleton::Node *parentNode)
-		//{
-		//	if (node == nullptr)
-		//		return;
-		//
-		//	ModelSkeleton::Node *newNode = new ModelSkeleton::Node();
-		//	newNode->name = node->mName.C_Str();
-		//
-		//	aiMatrix4x4 abs = parent * node->mTransformation;
-		//	Mat4<float> animated = Mat4<float>::mat4FromAssimp(node->mTransformation);
-		//
-		//	newNode->localMatrix = Mat4<float>::mat4FromAssimp(node->mTransformation);
-		//	newNode->absoluteMatrix = Mat4<float>::mat4FromAssimp(abs);
-		//
-		//	ModelAnimation::Animation *anim = m_animations->getCurrentAnimation();
-		//
-		//	const aiNodeAnim *animNode = anim->findNode(newNode->name);
-		//
-		//	if (animNode)
-		//	{
-		//		aiVector3D Scaling;
-		//		ModelAnimation::interpolateNodeScale(Scaling, animationTime, animNode);
-		//		Mat4<float> scaling = Mat4<float>::scale(Scaling.x, Scaling.y, Scaling.z);
-		//		aiQuaternion RotationQ;
-		//		ModelAnimation::interpolateNodeRotation(RotationQ, animationTime, animNode);
-		//		Mat4<float> rotation = Mat4<float>::mat4FromAssimp(aiMatrix4x4t<float>(RotationQ.GetMatrix()));
-		//		aiVector3D Translation;
-		//		ModelAnimation::interpolateNodePosition(Translation, animationTime, animNode);
-		//		Mat4<float> translation = Mat4<float>::translate(Translation.x, Translation.y, Translation.z);
-		//		animated = translation * rotation * scaling;
-		//	}
-		//
-		//	Mat4<float> absAnimated = Mat4<float>::mat4FromAssimp(parent) * animated;
-		//	newNode->animatedMatrix = animated;
-		//	newNode->animatedAbosluteMatrix = absAnimated;
-		//	newNode->parent = parentNode;
-		//
-		//	m_skeleton->addNode(newNode);
-		//
-		//	for (std::size_t i = 0; i < node->mNumChildren; i++)
-		//		loadNode(animationTime, node->mChildren[i], abs, newNode);
-		//}
-
 		void Model::loadBones(uint meshIndex, const aiMesh* mesh, std::vector<VertexBoneData>& bones)
 		{
 			for (uint i = 0 ; i < mesh->mNumBones ; i++)
@@ -414,18 +358,19 @@ namespace BeerEngine
 			// if (_materials.empty())
 			// 	Graphics::Graphics::defaultMaterial->bind(_mat);
 			// else
-				_materials[0]->bind(_mat);
+
+			_materials[0]->bind(_mat);
+			// std::cout << "Trs size: " << m_transforms.size() << std::endl;
+			for (int i = 0; i < 127; i++)
+			{
+				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
+				// _materials[0]->getShader().uniformMat(uniform.c_str(), m_transforms[i]);
+				glm::mat4 transform = glm::mat4(1.0);
+				_materials[0]->getShader().uniformMat(uniform, transform);
+			}
 
 			for (int i = 0; i < m_numMeshes; i++)
 			{
-		//		std::cout << "Trs size: " << m_transforms.size() << std::endl;
-				// for (int i = 0; i < m_transforms.size(); i++)
-				// {
-				// 	std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
-				// 	// _materials[0]->getShader().uniformMat(uniform.c_str(), m_transforms[i]);
-				// 	_materials[0]->getShader().uniformMat(uniform.c_str(), glm::mat4(1.0));
-				// }
-
 				glBindVertexArray(m_vao[i]);
 				glDrawArrays(GL_TRIANGLES, 0, m_drawSize[i]);
 				glBindVertexArray(0);

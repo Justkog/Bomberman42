@@ -1,4 +1,6 @@
-#version 330 core
+#version 400 core
+#define MAX_BONES 127
+
 layout(location = 0) in vec3 vertexPosition;
 layout(location = 1) in vec3 vertexNormal;
 layout(location = 2) in vec2 vertexTexture;
@@ -13,6 +15,7 @@ uniform mat4 model;
 
 uniform vec3 viewPos;
 uniform vec3 viewDir;
+uniform mat4 bonesTransforms[MAX_BONES];
 
 out vec3 vNormal;
 out vec2 vTexture;
@@ -23,7 +26,12 @@ out vec4 vWeight;
 
 void main()
 {
-   vWeight = vertexBoneIDs;
+    mat4 boneTransform =  bonesTransforms[vertexBoneIDs[0]] * vertexWeights[0];
+         boneTransform += bonesTransforms[vertexBoneIDs[1]] * vertexWeights[1];
+         boneTransform += bonesTransforms[vertexBoneIDs[2]] * vertexWeights[2];
+         boneTransform += bonesTransforms[vertexBoneIDs[3]] * vertexWeights[3];
+
+    vWeight = vertexWeights;
 
     gl_Position = projection * view * model * vec4(vertexPosition, 1);
     vec3 fragPos = vec3(model * vec4(vertexPosition, 1));

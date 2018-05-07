@@ -212,6 +212,7 @@ namespace BeerEngine
 
 		void			ShaderProgram::uniformMat(std::string const &name, glm::mat4 &mat)
 		{
+			// std::cout << name << std::endl;
 			GLint id = glGetUniformLocation(_program, name.c_str());
 			uniformMat(id, mat);
 		}
