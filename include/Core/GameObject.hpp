@@ -15,6 +15,7 @@ namespace BeerEngine
 	protected:
 		std::vector<Component::Component *> _components;
 		std::vector<Component::Component *> _toStart;
+		std::vector<Component::Component *> _toStartUI;
 		std::vector<Component::Component *> _toDestroy;
 
 	public:
@@ -36,6 +37,7 @@ namespace BeerEngine
         virtual void    update(void);
         virtual void    renderUpdate(void);
         virtual void    render(void);
+        virtual void    startUI(struct nk_context *ctx);
         virtual void    renderUI(struct nk_context *ctx);
 
 		void    destroy(Component::Component *comp);
@@ -66,6 +68,7 @@ namespace BeerEngine
 		{
 			_components.push_back(comp);
 			_toStart.push_back(comp);
+			_toStartUI.push_back(comp);
 		}
 
 		template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
@@ -98,6 +101,7 @@ namespace BeerEngine
         void    componentRender(void);
         void    componentRenderAlpha(void);
         void    componentPhysicUpdate(void);
+        void    componentStartUI(struct nk_context *ctx);
         void    componentRenderUI(struct nk_context *ctx);
 
 		std::vector<Component::Component *> GetComponents(void);

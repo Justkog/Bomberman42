@@ -24,7 +24,9 @@ namespace Game
 		class Player : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
-						public BeerEngine::Component::IUI
+						public BeerEngine::Component::IUI,
+						public BeerEngine::Component::IColliderEnter
+
 		{
 		protected:
 			BeerEngine::Transform	&_transform;
@@ -41,17 +43,20 @@ namespace Game
        		// virtual void    onTriggerEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onTriggerExit(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderStay(BeerEngine::Component::ACollider *other);
-       		// virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
+       		virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
 
+			void		playStepSound();
+			
 			REGISTER_COMPONENT_HPP
 
 			Signal<float, float> createCrateSignal;
 
-			BeerEngine::Audio::AudioSource      srcAudio;
+			BeerEngine::Audio::AudioSource      *srcAudio;
+			BeerEngine::Audio::AudioSource      *itemSrcAudio;
 			bool								play;
 
 		};

@@ -19,7 +19,7 @@ namespace Game
 
 		void	Breakable::destroyed()
 		{
-			onDestruction.emit(_posX, _posY);
+			onDestruction.emit(_posX, _posY, 0);
 		}
 
 		nlohmann::json	Breakable::serialize()

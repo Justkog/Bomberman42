@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include <sstream>
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Audio/AudioSource.hpp"
 
 namespace Game
 {
@@ -43,7 +44,9 @@ namespace Game
 			std::cout << "item start" << std::endl;
 			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, BeerEngine::Component::RBType::Kinematic);
 			itemGO->name = "item";
-			itemGO->AddComponent<Game::Component::Item>();
+			// auto as = itemGO->AddComponent<BeerEngine::Audio::AudioSource>();
+			auto item = itemGO->AddComponent<Game::Component::Item>();
+			// item->as = as;
 			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
 			return itemGO;
@@ -71,15 +74,15 @@ namespace Game
 				}
 		}
 
-        void    Map::mapUpdate(int x, int y)
+        void    Map::mapUpdate(int x, int y, int value)
         {
-			_map[y][x] = 0;
+			_map[y][x] = value;
         }
 
-		void Map::setDestruction(float posX, float posY)
+		void Map::setDestruction(float posX, float posY, int value)
 		{
 			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
-			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y));
+			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y), value);
 		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
@@ -95,8 +98,8 @@ namespace Game
 					switch (type)
 					{
 						case 1:
-							// addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
-							createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							// createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case 2:
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
@@ -113,8 +116,8 @@ namespace Game
 							}
 							break;
 						case I:
-							// addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
-							createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							// createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
 				}
@@ -149,6 +152,15 @@ namespace Game
 		glm::vec2		Map::worldToMap(glm::vec3 pos)
 		{
 			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
+		}
+
+		bool			Map::canWalk(glm::vec2 pos)
+		{
+			int x = static_cast<int>(pos.x);
+			int y = static_cast<int>(pos.y);
+			if (_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9)
+				return true;
+			return false;
 		}
 
 		nlohmann::json	Map::serialize()

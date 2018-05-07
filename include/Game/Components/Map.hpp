@@ -39,18 +39,19 @@ namespace Game
 
             virtual void    start(void);
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
-       		virtual void    mapUpdate(int x, int y);
+       		virtual void    mapUpdate(int x, int y, int value);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
+			bool			canWalk(glm::vec2 pos);
 
 			int								**_map;
 			int	_sizeX;
 			int	_sizeY;
 			Game::Component::Player			*_player;
 
-			void setDestruction(float posX, float posY);
+			void setDestruction(float posX, float posY, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
 			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
