@@ -9,7 +9,7 @@ namespace BeerEngine
 		RigidBody2D::RigidBody2D(GameObject *gameObject) :
 			Component(gameObject),
 			velocity(0.0f, 0.0f),
-			kinematic(true),
+			kinematic(RBType::Kinematic),
 			mass(1.0f)
 		{}
 
