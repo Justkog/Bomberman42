@@ -8,18 +8,25 @@
 #include <sndfile.h>
 #include <vector>
 #include <iomanip>
+#include "Core/GameObject.hpp"
+#include "Core/Component/Component.hpp"
+#include "Core/Component/IUpdate.hpp"
+#include "Core/Component/IStart.hpp"
 
 namespace BeerEngine
 {
 	namespace Audio
 	{
-		class AudioSource
+		class AudioSource : public BeerEngine::Component::Component, 
+							public BeerEngine::Component::IStart,
+							public BeerEngine::Component::IUpdate
 		{
 
 		public:
 
-			AudioSource();
-			AudioSource(ALuint buf);
+			// AudioSource();
+			// AudioSource(ALuint buf);
+			AudioSource(BeerEngine::GameObject *gameObject);
 			~AudioSource( void );
 
 			void	    play();
@@ -37,6 +44,10 @@ namespace BeerEngine
 			void		setLooping(bool loop);
 			void		setBuffer(ALuint);
 			void		setSource(ALuint);
+
+			virtual void    start(void);
+            virtual void    fixedUpdate(void);
+       		virtual void    update(void);
 
 		private:
 			ALuint		_Buffer;

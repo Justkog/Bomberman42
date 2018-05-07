@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include <sstream>
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Audio/AudioSource.hpp"
 
 namespace Game
 {
@@ -43,7 +44,9 @@ namespace Game
 			std::cout << "item start" << std::endl;
 			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, BeerEngine::Component::RBType::Kinematic);
 			itemGO->name = "item";
-			itemGO->AddComponent<Game::Component::Item>();
+			// auto as = itemGO->AddComponent<BeerEngine::Audio::AudioSource>();
+			auto item = itemGO->AddComponent<Game::Component::Item>();
+			// item->as = as;
 			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
 			return itemGO;
@@ -53,6 +56,7 @@ namespace Game
 		{
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
+			mapBlocGO->AddComponent<Game::Component::Breakable>();
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 			return (mapBlocGO);
 		}
@@ -94,8 +98,8 @@ namespace Game
 					switch (type)
 					{
 						case 1:
-							// addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), true);
-							createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							// createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case 2:
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
@@ -112,8 +116,8 @@ namespace Game
 							}
 							break;
 						case I:
-							// addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
-							createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							// createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
 				}

@@ -3,6 +3,8 @@
 #include "Core/Input.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
+#include "Core/Component/ACollider.hpp"
+#include "Game/Components/Item.hpp"
 
 namespace Game
 {
@@ -18,7 +20,10 @@ namespace Game
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
-			srcAudio.setBuffer(clip.getBuffer());
+			srcAudio->setBuffer(clip.getBuffer());
+
+			BeerEngine::Audio::AudioClip   		itemClip("assets/sounds/item.wav");
+			itemSrcAudio->setBuffer(itemClip.getBuffer());
         }
 
         void    Player::fixedUpdate(void)
@@ -59,7 +64,7 @@ namespace Game
 				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_5) &&
 				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_6))
 			{
-				srcAudio.setLooping(false);
+				srcAudio->setLooping(false);
 				play = false;
 			}
 
@@ -89,6 +94,15 @@ namespace Game
             nk_end(ctx);
         }
 
+		void    Player::onColliderEnter(BeerEngine::Component::ACollider *other)
+		{
+			if (other->_gameObject->GetComponent<Game::Component::Item>())
+			{
+				this->itemSrcAudio->play();
+			}
+		}
+
+
         nlohmann::json	Player::serialize()
 		{
 			return nlohmann::json {
@@ -106,8 +120,8 @@ namespace Game
 			if (play == false)
 			{
 				play = true;
-				srcAudio.setLooping(true);
-				srcAudio.play();
+				srcAudio->setLooping(true);
+				srcAudio->play();
 			}
 		}
 

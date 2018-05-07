@@ -7,6 +7,7 @@
 #include "Core/Component/RaysRenderer.hpp"
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
+#include "Core/Audio/AudioSource.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
@@ -135,7 +136,12 @@ void    SceneTest::init(void)
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
+	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	player->srcAudio = as2;
+	player->itemSrcAudio = itemAs;
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -229,6 +235,16 @@ void    SceneTest::init(void)
 	Old->transform.position = glm::vec3(1, 0.5, 10);
 	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
 	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+
+	// Audio test
+	// auto al = cameraGO->AddComponent<BeerEngine::Audio::AudioListener>();
+
+	// BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+	// as->setBuffer(clip.getBuffer());
+	// as->setVolume(1);
+	// as->setPitch(1);
+	// as->setLooping(true);
+	// as->play();
 
 	// plane
 	BeerEngine::GameObject *mapGO;
