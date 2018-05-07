@@ -101,6 +101,7 @@ namespace Game
             render->setMaterial(Assets::GetInstance()->bombMaterial);
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->setPower(_explosionSize);
+            --_bombNb;
         }
 
         void   Character::onTriggerStay(BeerEngine::Component::ACollider *other)
