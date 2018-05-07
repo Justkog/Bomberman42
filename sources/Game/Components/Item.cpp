@@ -21,6 +21,11 @@ namespace Game
 
         void    Item::start(void)
         {
+			// BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+			// as->setBuffer(clip.getBuffer());
+			// as->setVolume(1);
+			// as->setPitch(1);
+
         }
 
         void    Item::fixedUpdate(void)
@@ -43,13 +48,14 @@ namespace Game
         {
             auto character = other->_gameObject->GetComponent<Game::Component::Character>();
 
-			if (other->_gameObject->GetComponent<Game::Component::Player>())
-			{
-				BeerEngine::Audio::AudioClip   		clip("assets/sounds/item.wav");
-				BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-				srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-				srcAudio.play();
-			}
+			// if (other->_gameObject->GetComponent<Game::Component::Player>())
+			// {
+				// BeerEngine::Audio::AudioClip   		clip("assets/sounds/item.wav");
+				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+				// as->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+				// std::cout << "should play" << std::endl;
+				// as->play();
+			// }
             if (character)
             {
                 switch (_type)

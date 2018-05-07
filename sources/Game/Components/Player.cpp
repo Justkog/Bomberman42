@@ -3,6 +3,8 @@
 #include "Core/Input.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
+#include "Core/Component/ACollider.hpp"
+#include "Game/Components/Item.hpp"
 
 namespace Game
 {
@@ -18,8 +20,10 @@ namespace Game
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
-			srcAudio.setBuffer(clip.getBuffer());
-			srcAudio.setLooping(false);
+			srcAudio->setBuffer(clip.getBuffer());
+
+			BeerEngine::Audio::AudioClip   		itemClip("assets/sounds/item.wav");
+			itemSrcAudio->setBuffer(itemClip.getBuffer());
         }
 
         void    Player::fixedUpdate(void)
@@ -31,42 +35,22 @@ namespace Game
         {
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
             {
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
 				_character->move(Character::Direction::Up);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
 			{
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
                 _character->move(Character::Direction::Down);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
             {
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
 				_character->move(Character::Direction::Left);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
             {
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
 				_character->move(Character::Direction::Right);
 			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
@@ -80,7 +64,7 @@ namespace Game
 				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_5) &&
 				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_6))
 			{
-				srcAudio.setLooping(false);
+				srcAudio->setLooping(false);
 				play = false;
 			}
 
@@ -110,6 +94,15 @@ namespace Game
             nk_end(ctx);
         }
 
+		void    Player::onColliderEnter(BeerEngine::Component::ACollider *other)
+		{
+			if (other->_gameObject->GetComponent<Game::Component::Item>())
+			{
+				this->itemSrcAudio->play();
+			}
+		}
+
+
         nlohmann::json	Player::serialize()
 		{
 			return nlohmann::json {
@@ -120,6 +113,16 @@ namespace Game
         void Player::deserialize(const nlohmann::json & j)
     	{
 
+		}
+
+		void Player::playStepSound()
+		{
+			if (play == false)
+			{
+				play = true;
+				srcAudio->setLooping(true);
+				srcAudio->play();
+			}
 		}
 
 		REGISTER_COMPONENT_CPP(Player)
