@@ -53,7 +53,6 @@ namespace Game
 
 			BeerEngine::Audio::AudioSource      srcAudio;
 			bool								play;
-			// BeerEngine::Audio::AudioSource      srcAudio2(ALuint);
 
 		};
 	}

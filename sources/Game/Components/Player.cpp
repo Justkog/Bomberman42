@@ -19,7 +19,6 @@ namespace Game
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
 			srcAudio.setBuffer(clip.getBuffer());
-			// srcAudio.play();
 			srcAudio.setLooping(false);
         }
 
