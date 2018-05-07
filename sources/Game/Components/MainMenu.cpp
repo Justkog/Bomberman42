@@ -102,20 +102,39 @@ void MainMenu::startUI(struct nk_context *ctx)
 {
 	std::cout << "start UI" << std::endl;
 	saveDefaultUI(ctx);
-	mWindow.fixed_background = loadSprite("assets/textures/crate1_diffuse.png");
-	mWindow.padding = nk_vec2(0, 0);
-	mWindow.spacing = nk_vec2(0, 0);
-	mButton.normal = loadSprite("assets/models/Old_man/Muro_body_dm.tga");
+	// mWindow.fixed_background = loadSprite("assets/textures/crate1_diffuse.png");
+	mWindow.fixed_background = nk_style_item_hide();
+	// mWindow.background = nk_style_item_hide();
+	// mWindow.padding = nk_vec2(0, 0);
+	mWindow.spacing = nk_vec2(0, 10);
+	// mButton.normal = 
+	mButton.normal = loadSprite("assets/textures/button_normal.png");
 }
 
 void MainMenu::renderUI(struct nk_context *ctx)
 {
+	ctx->style.window.fixed_background = loadSprite("assets/textures/MainScreen.png");
+	auto back_window_rect = nk_rect(
+		0, 
+		0, 
+		WINDOW_WIDTH, 
+		WINDOW_HEIGHT
+	);
+
+	if (nk_begin(ctx, "Background", back_window_rect, NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE))
+	{
+		// just the background window
+	}
+	nk_end(ctx);
+
 	setUI(ctx);
 	float menuWidth = 320;
-	float menuHeight = 375;
+	float menuHeight = 375 + 5 * 10;
+	float xOffset = 0;
+	float yOffset = 100;
 	auto window_rect = nk_rect(
-		WINDOW_WIDTH / 2 - menuWidth / 2, 
-		WINDOW_HEIGHT / 2 - menuHeight / 2, 
+		WINDOW_WIDTH / 2 - menuWidth / 2 + xOffset, 
+		WINDOW_HEIGHT / 2 - menuHeight / 2 + yOffset, 
 		menuWidth, 
 		menuHeight
 	);

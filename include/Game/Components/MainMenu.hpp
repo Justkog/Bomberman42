@@ -29,6 +29,8 @@ namespace Game
 			nk_style_window mWindow;
 			nk_style_button mButton;
 
+			nk_style_window mBackWindow;
+
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );
 			MainMenu(BeerEngine::GameObject *gameObject);
