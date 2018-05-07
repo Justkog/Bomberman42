@@ -247,13 +247,22 @@ void    SceneTest::init(void)
 	// ==================
 	// === ANIMATIONS ===
 	// ==================
+	BeerEngine::Graphics::ShaderProgram *animShader = new BeerEngine::Graphics::ShaderProgram(2);
+	animShader->load(0, GL_VERTEX_SHADER,
+		BeerEngine::IO::FileUtils::LoadFile("shaders/main.vert").c_str()
+	);
+	animShader->load(1, GL_FRAGMENT_SHADER,
+		BeerEngine::IO::FileUtils::LoadFile("shaders/main.frag").c_str()
+	);
+	animShader->compile();
+
 	auto dragon = instantiate<BeerEngine::GameObject>();
 	dragon->name = "dragon";
 	modelRenderer2 = dragon->AddComponent<BeerEngine::Component::Model>();
 	modelRenderer2->load("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
 	// modelRenderer->loadMaterials(shader);
 	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
-	auto *dragonMat = new BeerEngine::Graphics::AMaterial(shader);
+	auto *dragonMat = new BeerEngine::Graphics::AMaterial(animShader);
 	dragonMat->setAlbedo(dragonTex);
 	modelRenderer2->addMaterial(0, dragonMat);
 	dragon->transform.position = glm::vec3(0, 8, 5);

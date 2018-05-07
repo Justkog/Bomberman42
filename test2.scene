@@ -396,7 +396,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 2
+                    "type": 0
                 }
             ],
             "id": 5,
@@ -4149,7 +4149,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 2
+                    "type": 0
                 }
             ],
             "id": 49,
