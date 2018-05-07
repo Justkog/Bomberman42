@@ -71,15 +71,15 @@ namespace Game
 				}
 		}
 
-        void    Map::mapUpdate(int x, int y)
+        void    Map::mapUpdate(int x, int y, int value)
         {
-			_map[y][x] = 0;
+			_map[y][x] = value;
         }
 
-		void Map::setDestruction(float posX, float posY)
+		void Map::setDestruction(float posX, float posY, int value)
 		{
 			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
-			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y));
+			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y), value);
 		}
 
 		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
@@ -149,6 +149,15 @@ namespace Game
 		glm::vec2		Map::worldToMap(glm::vec3 pos)
 		{
 			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
+		}
+
+		bool			Map::canWalk(glm::vec2 pos)
+		{
+			int x = static_cast<int>(pos.x);
+			int y = static_cast<int>(pos.y);
+			if (_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9)
+				return true;
+			return false;
 		}
 
 		nlohmann::json	Map::serialize()

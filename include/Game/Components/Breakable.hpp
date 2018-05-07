@@ -34,7 +34,7 @@ namespace Game
             Breakable(BeerEngine::GameObject *gameObject);
 			~Breakable(void);
 
-			Signal<float, float> onDestruction;
+			Signal<float, float, int> onDestruction;
 
 			void destroyed();
 			// void	updateMap(int **map);
