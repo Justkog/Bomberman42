@@ -47,6 +47,8 @@ namespace Game
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
 
+			void		playStepSound();
+			
 			REGISTER_COMPONENT_HPP
 
 			Signal<float, float> createCrateSignal;

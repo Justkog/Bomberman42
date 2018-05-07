@@ -19,7 +19,6 @@ namespace Game
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
 			srcAudio.setBuffer(clip.getBuffer());
-			srcAudio.setLooping(false);
         }
 
         void    Player::fixedUpdate(void)
@@ -31,42 +30,22 @@ namespace Game
         {
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
             {
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
 				_character->move(Character::Direction::Up);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
 			{
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
                 _character->move(Character::Direction::Down);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
             {
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
 				_character->move(Character::Direction::Left);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
             {
-				if (play == false)
-				{
-					play = true;
-					srcAudio.setLooping(true);
-					srcAudio.play();
-				}
+				playStepSound();
 				_character->move(Character::Direction::Right);
 			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
@@ -120,6 +99,16 @@ namespace Game
         void Player::deserialize(const nlohmann::json & j)
     	{
 
+		}
+
+		void Player::playStepSound()
+		{
+			if (play == false)
+			{
+				play = true;
+				srcAudio.setLooping(true);
+				srcAudio.play();
+			}
 		}
 
 		REGISTER_COMPONENT_CPP(Player)
