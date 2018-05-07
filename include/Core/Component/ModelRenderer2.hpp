@@ -61,6 +61,7 @@ namespace BeerEngine
 			std::map<int, Graphics::AMaterial*>	_materials;
 			std::map<Graphics::Mesh*, int>		_materialIndices;
 			glm::mat4							_mat;
+			int									_currentAnimation;
 
 			const aiScene		*m_scene;
 

@@ -57,6 +57,7 @@ namespace BeerEngine
 			m_bbo = new GLuint[m_scene->mNumMeshes];
 			m_wbo = new GLuint[m_scene->mNumMeshes];
 			m_drawSize = new int[m_scene->mNumMeshes];
+			_currentAnimation = 0;
 
 			m_numBones = 0;
 
@@ -167,12 +168,12 @@ namespace BeerEngine
 		{
 			glm::mat4 identity;
 
-			std::cout << "Animation: " << m_scene->mAnimations[0]->mName.C_Str() << std::endl;
+			// std::cout << "Animation: " << m_scene->mAnimations[_currentAnimation]->mName.C_Str() << std::endl;
 
-			float ticksPerSecond = m_scene->mAnimations[0]->mTicksPerSecond != 0 ?
-								m_scene->mAnimations[0]->mTicksPerSecond : 25.0f;
+			float ticksPerSecond = m_scene->mAnimations[_currentAnimation]->mTicksPerSecond != 0 ?
+								m_scene->mAnimations[_currentAnimation]->mTicksPerSecond : 25.0f;
 			float timeInTicks = timeInSeconds * ticksPerSecond;
-			float animationTime = fmod(timeInTicks, m_scene->mAnimations[0]->mDuration);
+			float animationTime = fmod(timeInTicks, m_scene->mAnimations[_currentAnimation]->mDuration);
 
 			readNodes(animationTime, m_scene->mRootNode, identity);
 
@@ -199,7 +200,7 @@ namespace BeerEngine
 		{
 			std::string nodeName(node->mName.data);
 
-			const aiAnimation *anim = m_scene->mAnimations[0];
+			const aiAnimation *anim = m_scene->mAnimations[_currentAnimation];
 			const aiNodeAnim *animNode = fineNodeAnim(anim, node->mName.data);
 
 			// aiMatrix4x4 aiFinalBoneTransformation = parent * node->mTransformation;
@@ -367,11 +368,25 @@ namespace BeerEngine
 
 			t += Time::GetDeltaTime() * 3;
 
+			static float t2 = 0;
+
+			t2 += Time::GetDeltaTime() * 3;
+
+		float ticksPerSecond = m_scene->mAnimations[_currentAnimation]->mTicksPerSecond != 0 ?
+								m_scene->mAnimations[_currentAnimation]->mTicksPerSecond : 25.0f;
+
+			std::cout << "Animation: " << t << "   " << m_scene->mAnimations[_currentAnimation]->mDuration << std::endl;
+			if (t2 * ticksPerSecond >= m_scene->mAnimations[_currentAnimation]->mDuration)
+			{
+				_currentAnimation = (_currentAnimation + 1) % m_scene->mNumAnimations;
+				t2 = 0;
+			}
+
 			if (m_scene->HasAnimations())
 				boneTransform(t, m_transforms);
 
 			_materials[0]->bind(_mat);
-			std::cout << "Trs size: " << m_transforms.size() << std::endl;
+			// std::cout << "Trs size: " << m_transforms.size() << std::endl;
 			for (int i = 0; i < m_transforms.size(); i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
