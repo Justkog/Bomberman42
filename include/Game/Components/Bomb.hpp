@@ -2,6 +2,7 @@
 #define BE_GAME_COMPONENT_BOMB_HPP 1
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
@@ -32,6 +33,8 @@ namespace Game
 			void			explode(void);
 			
 			void			setPower(float pow);
+
+			Game::Component::Map *map;
 		};
 	}
 }

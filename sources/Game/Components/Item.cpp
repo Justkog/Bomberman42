@@ -64,7 +64,7 @@ namespace Game
                         character->increaseSpeed(0.25);
                         break;
 
-                    case ItemType::Bomb:
+                    case ItemType::AddBomb:
                         character->addBomb(1);
                         break;
 

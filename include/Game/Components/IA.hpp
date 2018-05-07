@@ -2,6 +2,7 @@
 #define BE_GAME_COMPONENT_IA_HPP 1
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
@@ -30,20 +31,24 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 			Game::Component::Character *_character;
 			bool _hasObjective;
-			glm::vec2 _objective;
+			glm::vec2 _target;
+			Objective _objective;
 
 			glm::vec3 dir;//DEBUG
 
 			std::vector<glm::vec2> _path;
 
+			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir);
+			int     checkExplosionZone(glm::vec3 pos);
+			void    getObjective(void);
 			bool    moveToObjective(void);
 			void    moveToNextCell(void);
 
 			//PATHFINDER
 			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
-			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy);
+			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target);
 			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
-			bool    findPath(void);
+			bool    findPath(glm::vec2 target);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);

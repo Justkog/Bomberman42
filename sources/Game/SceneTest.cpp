@@ -171,10 +171,12 @@ void    SceneTest::init(void)
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
 
-	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), RBType::Kinematic);
-	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+	character->map = map;
+
+	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), BeerEngine::Component::RBType::Kinematic);
+	// auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
 	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
-	mapCrateGO2->save("Prefabs/reMapCrate.prefab");
+	// mapCrateGO2->save("Prefabs/reMapCrate.prefab");
 
 	// IA
 	auto iaGO = instantiate<BeerEngine::GameObject>();
@@ -188,6 +190,7 @@ void    SceneTest::init(void)
 	iaGO->transform.position = glm::vec3(0, 0.5, 2);
 	iaGO->transform.scale = glm::vec3(1, 1, 1);
 	character = iaGO->AddComponent<Game::Component::Character>();
+	character->map = map;
 	auto *ia = iaGO->AddComponent<Game::Component::IA>();
 	iaGO->AddComponent<Game::Component::Breakable>();
 	ia->map = map;
