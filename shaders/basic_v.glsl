@@ -31,5 +31,5 @@ void main()
     vTangentViewPos = TBN * viewPos;
     vTangentFragPos = TBN * fragPos;
 
-    vTexture = vertexTexture * vec2(1, -1);
+    vTexture = vertexTexture * vec2(1, 1);
 }

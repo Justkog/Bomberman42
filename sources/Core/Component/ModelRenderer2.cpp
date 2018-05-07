@@ -311,7 +311,7 @@ namespace BeerEngine
 			{
 				vBuffer[i * 3 + 0] = positions[i].x;
 				vBuffer[i * 3 + 1] = positions[i].y;
-				vBuffer[i * 3 + 2] = positions[i].x;
+				vBuffer[i * 3 + 2] = positions[i].z;
 			}
 			for (std::size_t i = 0; i < uvs.size(); i++)
 			{
@@ -410,12 +410,11 @@ std::cout << "LOOOOOL" << std::endl;
 		//
 		//	for (int i = 0; i < bone)
 		//
-		Graphics::Graphics::defaultMaterial->bind(_mat);
 
-			// if (_materials.empty())
-			// 	Graphics::Graphics::defaultMaterial->bind(_mat);
-			// else
-			// 	_materials[0]->bind(_mat);
+			if (_materials.empty())
+				Graphics::Graphics::defaultMaterial->bind(_mat);
+			else
+				_materials[0]->bind(_mat);
 
 			for (int i = 0; i < m_numMeshes; i++)
 			{
