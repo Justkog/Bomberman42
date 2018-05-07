@@ -47,7 +47,7 @@ namespace BeerEngine
 		//	readNodes(0, m_scene->mRootNode, identity);
 
 			aiMatrix4x4 globalInverseTransform = m_scene->mRootNode->mTransformation;
-			globalInverseTransform.Inverse();
+			globalInverseTransform = globalInverseTransform.Inverse();
 			m_globalInverseTransform = globalInverseTransform;
 
 			m_numMeshes = m_scene->mNumMeshes;
@@ -115,7 +115,6 @@ namespace BeerEngine
 				}
 				build(k, indexedPpositions, indexedNormals, indexedTexcoords, indexedBonesData);
 			}
-
 			if (m_scene->HasAnimations())
 				boneTransform(0, m_transforms);
 			// m_skeleton->buildMesh();
@@ -230,7 +229,8 @@ namespace BeerEngine
 			// n->parent = p;
 			// m_skeleton->addNode(n);
 
-			if (m_boneMapping.find(nodeName) != m_boneMapping.end()) {
+			if (m_boneMapping.find(nodeName) != m_boneMapping.end())
+			{
 				uint BoneIndex = m_boneMapping[nodeName];
 				aiMatrix4x4 trs = m_globalInverseTransform * aiFinalBoneTransformation * m_boneInfo[BoneIndex].boneOffset;
 
@@ -338,6 +338,8 @@ namespace BeerEngine
 		void Model::renderUpdate(void)
 		{
 			_mat = _gameObject->transform.getMat4();
+			if (m_scene->HasAnimations())
+				boneTransform(0, m_transforms);
 		}
 
 
@@ -361,14 +363,14 @@ namespace BeerEngine
 			// 	Graphics::Graphics::defaultMaterial->bind(_mat);
 			// else
 
+
 			_materials[0]->bind(_mat);
-			// std::cout << "Trs size: " << m_transforms.size() << std::endl;
-			for (int i = 0; i < 100; i++)
+			std::cout << "Trs size: " << m_transforms.size() << std::endl;
+			for (int i = 0; i < m_transforms.size(); i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
-				// _materials[0]->getShader().uniformMat(uniform.c_str(), m_transforms[i]);
 				glm::mat4 transform = glm::mat4(1.0);
-				_materials[0]->getShader().uniformMat(uniform, transform);
+				_materials[0]->getShader().uniformMat(uniform, m_transforms[i]);
 			}
 
 			for (int i = 0; i < m_numMeshes; i++)

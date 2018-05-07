@@ -1,5 +1,5 @@
 #version 400 core
-#define MAX_BONES 100
+#define MAX_BONES 120
 
 layout(location = 0) in vec3 vertexPosition;
 layout(location = 1) in vec3 vertexNormal;
@@ -33,12 +33,12 @@ void main()
 
     vWeight = vertexWeights;
 
-    gl_Position = projection * view * model * vec4(vertexPosition, 1);
+    gl_Position = projection * view * model * boneTransform * vec4(vertexPosition, 1);
     vec3 fragPos = vec3(model * vec4(vertexPosition, 1));
 
-    vec3 T = normalize(vec3(model * vec4(vertexTangent, 0.0)));
-    vec3 B = normalize(vec3(model * vec4(vertexBitangent, 0.0)));
-    vNormal = normalize(vec3(model * vec4(vertexNormal, 0)));
+    vec3 T = normalize(vec3(model * boneTransform * vec4(vertexTangent, 0.0)));
+    vec3 B = normalize(vec3(model * boneTransform * vec4(vertexBitangent, 0.0)));
+    vNormal = normalize(vec3(model * boneTransform * vec4(vertexNormal, 0)));
     TBN = mat3(T, B, vNormal);
 
     vTangentViewPos = TBN * viewPos;
