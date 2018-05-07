@@ -7,7 +7,7 @@ namespace BeerEngine
 		return (((max - min) * ((float)rand() / RAND_MAX)) + min);
 	}
 	
-	glm::mat4		assimp_to_glm(aiMatrix4x4 mat)
+	glm::mat4		Mathf::assimp_to_glm(aiMatrix4x4 mat)
 	{
 		glm::mat4 result;
 
@@ -31,7 +31,7 @@ namespace BeerEngine
 		return result;
 	}
 
-	aiMatrix4x4		glm_to_assimp(glm::mat4 mat)
+	aiMatrix4x4		Mathf::glm_to_assimp(glm::mat4 mat)
 	{
 		return aiMatrix4x4(mat[0][0],mat[0][1],mat[0][2],mat[0][3],
 						   mat[1][0],mat[1][1],mat[1][2],mat[1][3],

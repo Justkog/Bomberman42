@@ -97,37 +97,6 @@ namespace BeerEngine
 			return (*this);
 		}
 
-		// void ModelRenderer::loadBoneIds(unsigned int index, const aiMesh* mesh)
-		// {
-			// for (unsigned int i = 0 ; i < mesh->mNumBones ; i++)
-			// { 
-			// 	unsigned int index = 0;
-
-			// 	std::string boneName(mesh->mBones[i]->mName.data);
-			// 	if (m_BoneMapping.find(BoneName) == m_BoneMapping.end())
-			// 	{
-			// 		index = m_NumBones;
-			// 		m_NumBones++; 
-			// 		BoneInfo bi; 
-			// 		m_BoneInfo.push_back(bi);
-			// 	}
-			// 	else
-			// 	{
-			// 		index = m_BoneMapping[BoneName];
-			// 	}
-
-			// 	m_BoneMapping[BoneName] = index;
-			// 	m_BoneInfo[index].BoneOffset = mesh->mBones[i]->mOffsetMatrix;
-
-			// 	for (unsigned int j = 0 ; j < mesh->mBones[i]->mNumWeights; j++)
-			// 	{
-			// 		unsigned int vertexID = m_Entries[MeshIndex].BaseVertex + mesh->mBones[i]->mWeights[j].mVertexId;
-			// 		float weight = mesh->mBones[i]->mWeights[j].mWeight; 
-			// 		_bones[vertexID].AddBoneData(index, weight);
-			// 	}
-			// }
-		// }
-
 		void ModelRenderer::loadSkeleton()
 		{
 			glm::mat4 root = Mathf::assimp_to_glm(_assimpScene->mRootNode->mTransformation);

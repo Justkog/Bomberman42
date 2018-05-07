@@ -8,6 +8,7 @@
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
 #include "Core/Component/ModelRenderer.hpp"
+#include "Core/Component/ModelRenderer2.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
@@ -105,6 +106,7 @@ void    SceneTest::init(void)
 	BeerEngine::GameObject *gameObject;
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
+	BeerEngine::Component::Model *modelRenderer2;
 
 	auto linesGO = instantiate<BeerEngine::GameObject>();
 	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
@@ -247,13 +249,13 @@ void    SceneTest::init(void)
 	// ==================
 	auto dragon = instantiate<BeerEngine::GameObject>();
 	dragon->name = "dragon";
-	modelRenderer = dragon->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
+	modelRenderer2 = dragon->AddComponent<BeerEngine::Component::Model>();
+	modelRenderer2->load("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
 	// modelRenderer->loadMaterials(shader);
 	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
 	auto *dragonMat = new BeerEngine::Graphics::AMaterial(shader);
 	dragonMat->setAlbedo(dragonTex);
-	modelRenderer->addMaterial(0, dragonMat);
+	modelRenderer2->addMaterial(0, dragonMat);
 	dragon->transform.position = glm::vec3(0, 8, 5);
 	dragon->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	dragon->transform.rotation = glm::vec3(-90, 180, 0);

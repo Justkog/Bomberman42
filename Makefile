@@ -1,4 +1,4 @@
-CC = g++ -g3
+CC = g++ -g
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 MKDIR = /bin/mkdir -p
@@ -37,6 +37,7 @@ SRC = \
 	Core/Component/ParticleBase.cpp \
 	Core/Component/ParticleExplode.cpp \
 	Core/Component/ModelRenderer.cpp \
+	Core/Component/ModelRenderer2.cpp \
 	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
@@ -76,7 +77,7 @@ DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
 
-CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
+CFLAGS = -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 

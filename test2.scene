@@ -9617,7 +9617,7 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
+                    "componentClass": "N10BeerEngine9Component5ModelE",
                     "pivot": [
                         [
                             1.0,
