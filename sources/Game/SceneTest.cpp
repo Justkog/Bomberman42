@@ -133,7 +133,7 @@ void    SceneTest::init(void)
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
 	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
-	std::vector<int>  line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
+	std::vector<int>  line1{1,S,0,0,0,0,0,I,0,0,0,0,0,0,0,S,1};
 	std::vector<int>  line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
 	std::vector<int>  line3{1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,1};
 	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
