@@ -15,11 +15,11 @@ namespace Game
 
         void    Player::start(void)
         {
-			play = false;
+			// play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
-			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
-			srcAudio.setBuffer(clip.getBuffer());
-			srcAudio.setLooping(false);
+			// BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
+			// srcAudio.setBuffer(clip.getBuffer());
+			// srcAudio.setLooping(false);
         }
 
         void    Player::fixedUpdate(void)

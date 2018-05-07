@@ -7,6 +7,7 @@
 #include "Core/Component/RaysRenderer.hpp"
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
+#include "Core/Audio/AudioSource.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
@@ -229,6 +230,17 @@ void    SceneTest::init(void)
 	Old->transform.position = glm::vec3(1, 0.5, 10);
 	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
 	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+
+	// Audio test
+	auto al = cameraGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	auto as = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+
+	BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+	as->setBuffer(clip.getBuffer());
+	as->setVolume(1);
+	as->setPitch(1);
+	as->setLooping(true);
+	as->play();
 
 	// plane
 	BeerEngine::GameObject *mapGO;

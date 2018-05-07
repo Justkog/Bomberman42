@@ -4,24 +4,33 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <vector>
-
+#include "Core/GameObject.hpp"
+#include "Core/Component/Component.hpp"
+#include "Core/Component/IUpdate.hpp"
+#include "Core/Component/IStart.hpp"
 
 namespace BeerEngine
 {
 	namespace Audio
 	{
-		class AudioListener {
+		class AudioListener : public BeerEngine::Component::Component, 
+							public BeerEngine::Component::IStart,
+							public BeerEngine::Component::IUpdate
+		{
 
 		public:
 
-			AudioListener( void );
+			AudioListener(BeerEngine::GameObject *gameObject);
 			virtual ~AudioListener();
 
 			void static	init();
 			void static DestroyOpenAL();
 
-			void		setListenerData(float x, float y, float z);
+			void		setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ);
 
+			virtual void    start(void);
+            virtual void    fixedUpdate(void);
+       		virtual void    update(void);
 		};
 	}
 }

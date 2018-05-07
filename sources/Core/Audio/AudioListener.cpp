@@ -6,11 +6,16 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-        AudioListener::AudioListener()
-        { }
+        AudioListener::AudioListener(BeerEngine::GameObject *gameObject) :
+			Component(gameObject)
+		{ 
+            // init();
+        }
 
         AudioListener::~AudioListener()
-        { }
+        { 
+            DestroyOpenAL();
+        }
 
         void	   AudioListener::init()
         {
@@ -63,10 +68,36 @@ namespace BeerEngine
             alcCloseDevice(Device);
         }
 
-        void		AudioListener::setListenerData(float x, float y, float z)
+        void		AudioListener::setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ)
         {
-            alListener3f(AL_POSITION, x, y, z);
-            alListener3f(AL_VELOCITY, x, y, z);
+            std::cout << "position x = " << x << " y = " << y << " z = " << z << "\n";
+            std::cout << "orientation x = " << dirX << " y = " << dirY << " z = " << dirZ << "\n";
+            ALfloat values[6];
+            values[0] = dirX;
+            values[1] = dirY;
+            values[2] = -dirZ;
+            values[3] = 0;
+            values[4] = 1;
+            values[5] = 0;
+            alListener3f(AL_POSITION, -x, y, z);
+            alListenerfv(AL_ORIENTATION, values);
         }
+
+        void		AudioListener::start(void)
+		{
+            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z,
+                            _gameObject->transform.forward().x, _gameObject->transform.forward().y, _gameObject->transform.forward().z);
+		}
+	
+		void		AudioListener::fixedUpdate(void)
+		{
+
+		}
+
+		void		AudioListener::update(void)
+		{
+            setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z,
+                            _gameObject->transform.forward().x, _gameObject->transform.forward().y, _gameObject->transform.forward().z);
+		}
     }
 }
