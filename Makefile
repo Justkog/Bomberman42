@@ -8,13 +8,7 @@ MAKE = make --no-print-directory
 
 NAME = Bomberman
 LIB_NAME =
-LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
-	`pkg-config --static --libs glew` \
-	`pkg-config --static --libs glm` \
-	`pkg-config --static --libs libpng`\
-	`pkg-config --static --libs openal` \
-	`pkg-config --static --libs sndfile` \
-	`pkg-config --static --libs assimp`
+LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3 glew glm libpng openal sndfile assimp`
 
 SRC = \
 	main.cpp \
@@ -83,13 +77,7 @@ DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 
 
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
-	`pkg-config glfw3 --cflags-only-I` \
-	`pkg-config glew --cflags-only-I` \
-	`pkg-config glm --cflags-only-I` \
-	`pkg-config libpng --cflags-only-I` \
-	`pkg-config openal --cflags-only-I` \
-	`pkg-config sndfile --cflags-only-I` \
-	`pkg-config assimp --cflags-only-I`
+	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 
 
