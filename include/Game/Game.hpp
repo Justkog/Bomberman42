@@ -8,8 +8,8 @@ namespace Game
 
 	namespace Component
 	{
-		enum ItemType { SpeedBoost, AddBomb, ExplosionBoost };
-		enum Objective {Move, Bomb, Bonus};
+		enum ItemType {SpeedBoost, AddBomb, ExplosionBoost};
+		enum Objective {MoveTo, DropBomb, TakeBonus};
 
 		class Bomb;
         class Breakable;

@@ -18,7 +18,7 @@ namespace Game
             _transform(gameObject->transform),
             _hasObjective(false),
             _target(0, 0),
-		    _objective(Objective::Move)
+		    _objective(Objective::MoveTo)
 		{
 
         }
@@ -28,7 +28,7 @@ namespace Game
             _character = _gameObject->GetComponent<Game::Component::Character>();
                 // _hasObjective = true;
                 // _target = glm::vec2(11, 10);
-                // _objective = Objective::Bomb;
+                // _objective = Objective::DropBomb;
         }
 
         void    IA::fixedUpdate(void)
@@ -44,7 +44,7 @@ namespace Game
                 getObjective();
                 // _hasObjective = true;
                 // _target = glm::vec2(10, 11);
-                // _objective = Objective::Move;
+                // _objective = Objective::MoveTo;
             }
             if (_hasObjective)
             {
@@ -52,15 +52,15 @@ namespace Game
                 {
                     switch (_objective)
                     {
-                        case Objective::Bomb:
+                        case Objective::DropBomb:
                             _character->dropBomb();
 
                         break;
 
-                        case Objective::Move:
+                        case Objective::MoveTo:
                         break;
 
-                        case Objective::Bonus:
+                        case Objective::TakeBonus:
                         break;
                     }
                     _hasObjective = false;
@@ -99,7 +99,7 @@ namespace Game
 
         void    IA::getObjective(void)
         {
-            Objective objective = Objective::Move;
+            Objective objective = Objective::MoveTo;
 			glm::vec2 target(0);
             int val = 0;
 
@@ -108,7 +108,7 @@ namespace Game
                 for (int x = 0; x < map->_sizeX; ++x)
                 {
                     int tmpVal = 0;
-                    Objective tmpObj = Objective::Move;
+                    Objective tmpObj = Objective::MoveTo;
 
                     if (map->_map[y][x] != 1 && map->_map[y][x] != 2 && map->_map[y][x] != 5)
                     {
@@ -122,7 +122,7 @@ namespace Game
                             tmpVal += checkExplosionZone(glm::vec3(x, 0.5, y));
                             if (tmpVal > val)
                                 std::cout << "val: " << val << ", pos: " << y << "," << x << std::endl;
-                            tmpObj = Objective::Bomb;
+                            tmpObj = Objective::DropBomb;
                         }
                         if (tmpVal > val)
                         {
@@ -137,8 +137,6 @@ namespace Game
             }
             _target = target;
             _objective = objective;
-            if (_objective == Objective::Bomb)
-                map->_map[(int)_target.y][(int)_target.x] = 5;//DEBUG
             _hasObjective = true;
         }
 

@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
+#include "Game/Components/Map.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -100,6 +101,7 @@ namespace Game
             render->setMesh(BeerEngine::Graphics::Graphics::cube);
             render->setMaterial(Assets::GetInstance()->bombMaterial);
             Bomb *bomb = go->AddComponent<Bomb>();
+            bomb->map = map;
             bomb->setPower(_explosionSize);
             --_bombNb;
         }

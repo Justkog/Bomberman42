@@ -2,12 +2,12 @@
 #define BE_GAME_COMPONENT_MAP_HPP
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Transform.hpp"
 #include "Core/BeerEngine.hpp"
 #include "Game/Assets.hpp"
-#include "Game/Components/Character.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Core/Component/RigidBody2D.hpp"

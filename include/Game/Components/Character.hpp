@@ -2,6 +2,7 @@
 #define BE_GAME_COMPONENT_CHARACTER_HPP 1
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
@@ -62,6 +63,7 @@ namespace Game
 			unsigned int _bombNb;
 			float _explosionSize;
 			glm::vec2 _direction;
+			Game::Component::Map *map;
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
