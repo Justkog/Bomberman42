@@ -34,10 +34,10 @@ namespace BeerEngine
 				exit(EXIT_FAILURE);
 			}
 
-		//	for (int i = 0; i < m_scene->mNumAnimations; i++)
-		//	{
-		//		std::cout << "Animation: " << m_scene->mAnimations[i]->mName.data << std::endl;
-		//	}
+			for (int i = 0; i < m_scene->mNumAnimations; i++)
+			{
+				std::cout << "Animation: " << m_scene->mAnimations[i]->mName.data << std::endl;
+			}
 
 		//	m_animations = new ModelAnimation(*this);
 		//	m_animations->loadAnimation();
@@ -361,7 +361,7 @@ namespace BeerEngine
 
 			_materials[0]->bind(_mat);
 			// std::cout << "Trs size: " << m_transforms.size() << std::endl;
-			for (int i = 0; i < 127; i++)
+			for (int i = 0; i < 100; i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
 				// _materials[0]->getShader().uniformMat(uniform.c_str(), m_transforms[i]);
