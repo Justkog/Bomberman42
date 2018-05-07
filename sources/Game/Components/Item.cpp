@@ -1,3 +1,4 @@
+#include "Game/Components/Map.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
@@ -18,6 +19,11 @@ namespace Game
 		{
             _type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
         }
+
+		Item::~Item()
+		{
+			map->mapUpdate(_gameObject->transform.position, 0);
+		}
 
         void    Item::start(void)
         {
@@ -63,11 +69,9 @@ namespace Game
                     case ItemType::SpeedBoost:
                         character->increaseSpeed(0.25);
                         break;
-
                     case ItemType::AddBomb:
                         character->addBomb(1);
                         break;
-
                     case ItemType::ExplosionBoost:
                         character->increaseExplosionSize(1);
                         break;

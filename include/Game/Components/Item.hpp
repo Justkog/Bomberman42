@@ -26,7 +26,8 @@ namespace Game
 
 		public:
             Item(BeerEngine::GameObject *gameObject);
-
+			~Item();
+			
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
@@ -39,6 +40,8 @@ namespace Game
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
+
+			Game::Component::Map	*map;
 
 			REGISTER_COMPONENT_HPP
 

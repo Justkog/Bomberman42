@@ -51,7 +51,7 @@ namespace Game
 			int	_sizeY;
 			Game::Component::Player			*_player;
 
-			void setDestruction(float posX, float posY, int value);
+			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
 			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
@@ -99,7 +99,7 @@ namespace Game
 				mapBlocGO->transform.scale = scale;
 				mapBlocGO->AddComponent<T>();
 				auto destroyable = mapBlocGO->AddComponent<Game::Component::Breakable>();
-				destroyable->onDestruction.bind(&Map::setDestruction, this);
+				destroyable->onDestruction.bind(&Map::mapUpdate, this);
 				if (kinematic != BeerEngine::Component::RBType::Kinematic)
 				{
 					auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();

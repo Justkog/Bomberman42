@@ -28,7 +28,7 @@ namespace Game
         void    Map::start(void)
         {
 			// std::cout << "map start" << "\n";
-			// _player->createCrateSignal.bind(&Map::setDestruction, this);
+			// _player->createCrateSignal.bind(&Map::mapUpdate, this);
 		}
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
@@ -46,6 +46,8 @@ namespace Game
 			itemGO->name = "item";
 			// auto as = itemGO->AddComponent<BeerEngine::Audio::AudioSource>();
 			auto item = itemGO->AddComponent<Game::Component::Item>();
+			itemGO->AddComponent<Game::Component::Breakable>();
+			item->map = this;
 			// item->as = as;
 			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
@@ -56,7 +58,6 @@ namespace Game
 		{
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
-			mapBlocGO->AddComponent<Game::Component::Breakable>();
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 			return (mapBlocGO);
 		}
@@ -79,9 +80,9 @@ namespace Game
 			_map[y][x] = value;
         }
 
-		void Map::setDestruction(float posX, float posY, int value)
+		void Map::mapUpdate(glm::vec3 pos, int value)
 		{
-			glm::vec2 Mpos = worldToMap(glm::vec3(posX, 0, posY));
+			glm::vec2 Mpos = worldToMap(glm::vec3(pos.x, 0, pos.z));
 			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y), value);
 		}
 

@@ -34,17 +34,12 @@ namespace Game
             Breakable(BeerEngine::GameObject *gameObject);
 			~Breakable(void);
 
-			Signal<float, float, int> onDestruction;
+			Signal<glm::vec3, int> onDestruction;
 
 			void destroyed();
-			// void	updateMap(int **map);
 			BeerEngine::GameObject	*_crateDestoyed;
-			// Map			*_map;
 
 		private:
-			int		_posX;
-			int		_posY;
-
             // virtual void    start(void);
             // virtual void    fixedUpdate(void);
        		// virtual void    update(void);
