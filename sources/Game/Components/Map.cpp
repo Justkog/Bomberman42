@@ -53,6 +53,7 @@ namespace Game
 		{
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
+			mapBlocGO->AddComponent<Game::Component::Breakable>();
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 			return (mapBlocGO);
 		}
