@@ -259,7 +259,7 @@ void    SceneTest::init(void)
 	auto dragon = instantiate<BeerEngine::GameObject>();
 	dragon->name = "dragon";
 	modelRenderer2 = dragon->AddComponent<BeerEngine::Component::Model>();
-	modelRenderer2->load("assets/models/BlackDragon/Dragon 2.5_fbx.fbx");
+	modelRenderer2->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
 	// modelRenderer->loadMaterials(shader);
 	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
 	auto *dragonMat = new BeerEngine::Graphics::AMaterial(animShader);

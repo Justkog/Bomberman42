@@ -75,7 +75,8 @@ namespace BeerEngine
 				texcoords.reserve(mesh->mNumVertices);
 				bones.resize(mesh->mNumVertices);
 
-				loadBones(k, mesh, bones);
+				if (m_scene->HasAnimations())
+					loadBones(k, mesh, bones);
 
 				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
 				{
@@ -115,7 +116,8 @@ namespace BeerEngine
 				build(k, indexedPpositions, indexedNormals, indexedTexcoords, indexedBonesData);
 			}
 
-			// boneTransform(0, m_transforms);
+			if (m_scene->HasAnimations())
+				boneTransform(0, m_transforms);
 			// m_skeleton->buildMesh();
 			return *this;
 		}
