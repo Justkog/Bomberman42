@@ -1,10 +1,6 @@
 #ifndef BE_CORE_COMPONENT_MODELRENDERER_HPP
 #define BE_CORE_COMPONENT_MODELRENDERER_HPP 1
 
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
-
 #include "Core/Core.hpp"
 #include "Component.hpp"
 #include "IRender.hpp"
@@ -33,7 +29,7 @@ namespace BeerEngine
 			std::string							_sourceFile;
 			const aiScene						*_assimpScene;
 
-			Graphics::Mesh						_boneDebugView;
+			Graphics::Mesh						*_boneDebugView;
 			std::vector<BoneData>				_bones;
 			GLint								_isModelID;
 			GLint								_bonesID;

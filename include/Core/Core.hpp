@@ -6,6 +6,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+// GLM
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <glm/vec2.hpp> // glm::vec2
@@ -17,6 +18,10 @@
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
+// ASSIMP : Model loader
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 #include <cstdlib>
 #include <iostream>

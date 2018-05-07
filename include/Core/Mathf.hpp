@@ -9,6 +9,8 @@ namespace BeerEngine
 	{
 	public:
 		static float Range(float min, float max);
+		static glm::mat4		assimp_to_glm(aiMatrix4x4 mat);
+		static aiMatrix4x4		glm_to_assimp(glm::mat4 mat);
 	};
 }
 
