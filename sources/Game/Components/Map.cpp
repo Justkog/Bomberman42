@@ -119,10 +119,10 @@ namespace Game
 				}
 			}
 		}
-		
+
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 100, 320, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			if (nk_begin(ctx, "Map", nk_rect(10, 100, 220, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
 				nk_layout_row_dynamic(ctx, 20, 1);
 				// if (_player)
@@ -163,7 +163,7 @@ namespace Game
 		}
 
 		REGISTER_COMPONENT_CPP(Map)
-		
+
 		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
 		{
 			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);

@@ -169,7 +169,7 @@ void    SceneTest::init(void)
 	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
 	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
 	mapCrateGO2->save("Prefabs/reMapCrate.prefab");
-	
+
 	// IA
 	auto iaGO = instantiate<BeerEngine::GameObject>();
 	iaGO->name = "IA";
@@ -183,6 +183,7 @@ void    SceneTest::init(void)
 	iaGO->transform.scale = glm::vec3(1, 1, 1);
 	character = iaGO->AddComponent<Game::Component::Character>();
 	auto *ia = iaGO->AddComponent<Game::Component::IA>();
+	iaGO->AddComponent<Game::Component::Breakable>();
 	ia->map = map;
 	routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
 	settings = iaGO->AddComponent<Game::Component::Settings>();

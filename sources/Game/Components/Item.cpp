@@ -43,7 +43,7 @@ namespace Game
         {
             auto character = other->_gameObject->GetComponent<Game::Component::Character>();
 
-			if (!_gameObject->GetComponent<Game::Component::Player>())
+			if (other->_gameObject->GetComponent<Game::Component::Player>())
 			{
 				BeerEngine::Audio::AudioClip   		clip("assets/sounds/item.wav");
 				BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
@@ -55,7 +55,7 @@ namespace Game
                 switch (_type)
                 {
                     case ItemType::SpeedBoost:
-                        character->increaseSpeed(0.1);
+                        character->increaseSpeed(0.25);
                         break;
 
                     case ItemType::Bomb:
@@ -63,7 +63,7 @@ namespace Game
                         break;
 
                     case ItemType::ExplosionBoost:
-                        character->increaseExplosionSize(0.5);
+                        character->increaseExplosionSize(1);
                         break;
                 }
                 this->destroy();
