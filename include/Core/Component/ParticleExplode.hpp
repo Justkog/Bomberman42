@@ -12,6 +12,11 @@ namespace BeerEngine
 		public:
 			ParticleExplode(GameObject *gameObject);
 			virtual void initParticle(Particle &particle);
+
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 	}
 }

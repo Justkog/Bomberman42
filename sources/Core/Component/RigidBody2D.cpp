@@ -9,7 +9,7 @@ namespace BeerEngine
 		RigidBody2D::RigidBody2D(GameObject *gameObject) :
 			Component(gameObject),
 			velocity(0.0f, 0.0f),
-			kinematic(true),
+			kinematic(RBType::Kinematic),
 			mass(1.0f)
 		{}
 
@@ -29,7 +29,7 @@ namespace BeerEngine
 		nlohmann::json	RigidBody2D::serialize()
 		{
 			return {
-				{"componentClass", typeid(RigidBody2D).name()},
+				{"componentClass", type},
 				{"velocity", velocity},
 				{"kinematic", kinematic},
 				{"mass", mass},

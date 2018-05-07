@@ -57,6 +57,8 @@ namespace BeerEngine
 
 	namespace Component
 	{
+		enum RBType {None, Kinematic, Static};
+
 		class Component;
 		class MeshRenderer;
 		class RaysRenderer;
@@ -92,14 +94,16 @@ namespace BeerEngine
 }
 
 #define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
-							static 	int componentRegisterer;
+							static 	int componentRegisterer;\
+							static std::string type;
 
 #define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
 		{\
-			Component::typeToComponent[typeid(Class).name()] = &Component::createInstance<Class>;\
+			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
 			return (1);\
 		}\
 		\
-		int Class::componentRegisterer = Class::RegisterComponentType();
+		int Class::componentRegisterer = Class::RegisterComponentType();\
+		std::string Class::type = typeid(Class).name();
 
 #endif

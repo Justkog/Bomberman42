@@ -181,14 +181,17 @@ namespace BeerEngine
 
 		nlohmann::json	BoxCollider2D::serialize()
 		{
-			return {
-				{"componentClass", typeid(BoxCollider2D).name()},
+			auto j = ACollider::serialize();
+			j.merge_patch({
+				{"componentClass", type},
 				{"size", _size},
-			};
+			});
+			return j;
 		}
 
 		void BoxCollider2D::deserialize(const nlohmann::json & j)
 		{
+			this->ACollider::deserialize(j);
 			this->_size = j.at("size");
 		}
 

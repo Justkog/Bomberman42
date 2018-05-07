@@ -185,7 +185,11 @@ namespace BeerEngine
 		bool ACollider::isKinematic(void)
 		{
 			if (rb2d != nullptr)
-				return (rb2d->kinematic);
+			{
+				if (rb2d->kinematic == RBType::Static)
+					return (rb2d->velocity == glm::vec2(0));
+				return (rb2d->kinematic == RBType::Kinematic ? true : false);
+			}
 			return (true);
 		}
 
@@ -193,6 +197,7 @@ namespace BeerEngine
 		{
 			if (hasException(other))
 				return;
+
 			if (other->isKinematic() && !isKinematic())
 			{
 				_transform.translate(move);
@@ -217,6 +222,18 @@ namespace BeerEngine
 				_transform.translate(move * b);
 				other->_transform.translate(-move * a);
 			}
+		}
+
+		nlohmann::json	ACollider::serialize()
+		{
+			return {
+				{"isTrigger", _isTrigger},
+			};
+		}
+
+		void ACollider::deserialize(const nlohmann::json & j)
+		{
+			this->_isTrigger = j.at("isTrigger");
 		}
 	}
 }

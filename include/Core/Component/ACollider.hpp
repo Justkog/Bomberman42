@@ -16,7 +16,7 @@ namespace BeerEngine
 		public:
 			ACollider(GameObject *gameObject);
 			virtual ~ACollider();
-			void    start(void);
+			virtual void    start(void);
 
 			virtual void    physicUpdate(void);
 			virtual bool	hasException(ACollider *other);
@@ -49,6 +49,9 @@ namespace BeerEngine
 			glm::vec2	_offset;
 			bool		_isTrigger;
 			RigidBody2D *rb2d;
+
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
 		};
 	}
 }

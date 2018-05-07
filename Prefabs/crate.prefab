@@ -1,0 +1,84 @@
+{
+    "components": [
+        {
+            "componentClass": "N10BeerEngine9Component12MeshRendererE",
+            "material": {
+                "albedo": {
+                    "sourceFile": "assets/textures/crate1_diffuse.png"
+                },
+                "bump": null,
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "normal": null,
+                "shader": "defaultShader"
+            },
+            "mesh": {
+                "sourceFile": "",
+                "type": "cube"
+            },
+            "pivot": [
+                [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "size": [
+                1.0,
+                1.0
+            ]
+        }
+    ],
+    "id": 0,
+    "name": "map block",
+    "transform": {
+        "parent": null,
+        "pivot": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "position": [
+            10.0,
+            0.0,
+            5.0
+        ],
+        "rotation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "scale": [
+            1.0,
+            1.0,
+            1.0
+        ]
+    }
+}

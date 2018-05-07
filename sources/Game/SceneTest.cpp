@@ -24,7 +24,7 @@
 #include "Game/Assets.hpp"
 
 template<typename T>
-BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 {
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	auto mapBlocGO = instantiate<BeerEngine::GameObject>();
@@ -53,6 +53,7 @@ void    SceneTest::init(void)
 	// this->load("test2.scene");
 	// this->save("destest.scene");
 
+
 	// return;
 
 	std::cout << "init test scene" << "\n";
@@ -69,6 +70,15 @@ void    SceneTest::init(void)
 	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
+	// prefab test
+	// auto crateGO = addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(10, 0, 5), true);
+	// crateGO->save("Prefabs/crate.prefab");
+
+	// auto crate2 = instantiate<BeerEngine::GameObject>("Prefabs/crate.prefab");
+	// crate2->transform.position.x += 2;
+	// crate2->save("Prefabs/reserializedCrate.prefab");
+
+	// return;
 	// cube 1
 	// Texture
 	BeerEngine::Graphics::Texture *crate = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
@@ -125,7 +135,7 @@ void    SceneTest::init(void)
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	playerRB2D->kinematic = false;
+	playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -147,9 +157,19 @@ void    SceneTest::init(void)
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 
+	auto mapCrateGO = map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), BeerEngine::Component::RBType::Kinematic);
+	mapCrateGO->save("Prefabs/mapCrate.prefab");
+	auto itemGO = map->addItem(shader, glm::vec3(0, 0, 0));
+	itemGO->save("Prefabs/item.prefab");
+
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
 
+	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), RBType::Kinematic);
+	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
+	mapCrateGO2->save("Prefabs/reMapCrate.prefab");
+	
 	// IA
 	auto iaGO = instantiate<BeerEngine::GameObject>();
 	iaGO->name = "IA";
@@ -168,7 +188,7 @@ void    SceneTest::init(void)
 	settings = iaGO->AddComponent<Game::Component::Settings>();
 	auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	iaRB2D->kinematic = false;
+	iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
 
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();
@@ -182,7 +202,6 @@ void    SceneTest::init(void)
 	objet->transform.position = glm::vec3(-5.5, 0, 16.5);
 	objet->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	objet->transform.rotation = glm::vec3(0, 0, 0);
-
 
 	auto house2 = instantiate<BeerEngine::GameObject>();
 	house2->name = "house2";
@@ -221,4 +240,5 @@ void    SceneTest::init(void)
 
 
 	this->save("test2.scene");
+	std::cout << "init end" << "\n";
 }
