@@ -69,11 +69,15 @@ void    SceneMain::init(void)
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto uiManager = menuGO->AddComponent<Game::Component::UIThemeManager>();
 	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
-	bgDrawer->uiManager = uiManager;
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
+	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
+	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
-	auto settings = menuGO->AddComponent<Game::Component::SettingsMenu>();
-	settings->_isActive = false;
+	mainMenu->settingsMenu = settingsMenu;
+	settingsMenu->uiManager = uiManager;
+	settingsMenu->mainMenu = mainMenu;
+	settingsMenu->setActive(false);
+	// mainMenu->_isActive = false;
 
 	this->save("main.scene");
 	std::cout << "init end" << "\n";

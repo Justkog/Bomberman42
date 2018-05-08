@@ -21,12 +21,15 @@ namespace Game
 								public BeerEngine::Component::IStart,
 								public BeerEngine::Component::IStartUI,
 								public BeerEngine::Component::IUI
-
 		{
 		public:
 
 			nk_style_window defaultWindow;
 			nk_style_button defaultButton;
+			nk_style_property defaultProperty;
+			nk_style_text defaultText;
+			nk_style_slider defaultSlider;
+
 			std::map<std::string, nk_font *> available_fonts;
 
 			nk_style_button themeButton;

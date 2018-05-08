@@ -67,6 +67,11 @@ namespace BeerEngine
         {
             (it->second)->componentStart();
         }
+		for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentDisable();
+            (it->second)->componentEnable();
+        }
     }
 
     void    AScene::fixedUpdate(void)

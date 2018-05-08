@@ -71,12 +71,18 @@ void UIThemeManager::saveDefaultUI(struct nk_context *ctx)
 {
 	defaultWindow = ctx->style.window;
 	defaultButton = ctx->style.button;
+	defaultProperty = ctx->style.property;
+	defaultText = ctx->style.text;
+	defaultSlider = ctx->style.slider;
 }
 
 void UIThemeManager::resetToDefaultUI(struct nk_context *ctx)
 {
 	ctx->style.window = defaultWindow;
 	ctx->style.button = defaultButton;
+	ctx->style.property = defaultProperty;
+	ctx->style.text = defaultText;
+	ctx->style.slider = defaultSlider;
 	nk_style_set_font(ctx, &available_fonts["default"]->handle);
 }
 

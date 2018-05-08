@@ -18,6 +18,8 @@ namespace BeerEngine
 		std::vector<Component::Component *> _components;
 		std::vector<Component::Component *> _toStart;
 		std::vector<Component::Component *> _toStartUI;
+		std::vector<Component::Component *> _toEnable;
+		std::vector<Component::Component *> _toDisable;
 		std::vector<Component::Component *> _toDestroy;
 
 	public:
@@ -73,6 +75,9 @@ namespace BeerEngine
 			_toStartUI.push_back(comp);
 		}
 
+		void enableComponent(Component::Component *comp);
+		void disableComponent(Component::Component *comp);
+
 		template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*GetComponent(void)
 		{
@@ -97,6 +102,8 @@ namespace BeerEngine
 		}
 
 		void    componentStart(void);
+		void    componentEnable(void);
+		void    componentDisable(void);
 		void    componentFixedUpdate(void);
         void    componentUpdate(void);
         void    componentRenderUpdate(void);

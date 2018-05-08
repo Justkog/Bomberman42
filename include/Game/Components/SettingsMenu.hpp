@@ -10,14 +10,29 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
+#include "Core/Component/IUI.hpp"
+#include "Core/Component/IStartUI.hpp"
 
 namespace Game
 {
 	namespace Component
 	{
-		class SettingsMenu : public BeerEngine::Component::Component, public BeerEngine::Component::IUpdate, public BeerEngine::Component::IStart
+		class MainMenu;		
+		class UIThemeManager;
+
+		class SettingsMenu : public BeerEngine::Component::Component, 
+								public BeerEngine::Component::IStart,
+								public BeerEngine::Component::IStartUI,
+								public BeerEngine::Component::IUI
 		{
 		public:
+			float		windowHeight;
+			float		windowWidth;
+
+			MainMenu	*mainMenu;
+			UIThemeManager	*uiManager;
+
+			nk_style_window mWindow;
 
 			// SettingsMenu( void );
 			// SettingsMenu( SettingsMenu const & src );
@@ -29,8 +44,10 @@ namespace Game
 			friend std::ostream & operator<<(std::ostream & o, SettingsMenu const & i);
 
 			virtual void start();
-			virtual void update();
-			virtual void fixedUpdate();
+			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
+			virtual void renderUI(struct nk_context *ctx);
+
+			void setUI(struct nk_context *ctx);
 	
 		};
 

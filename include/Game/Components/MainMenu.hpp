@@ -17,6 +17,7 @@ namespace Game
 	namespace Component
 	{
 		class UIThemeManager;
+		class SettingsMenu;
 
 		class MainMenu : public BeerEngine::Component::Component, 
 						public BeerEngine::Component::IStart,
@@ -25,12 +26,10 @@ namespace Game
 
 		{
 		public:
+			SettingsMenu	*settingsMenu;
 			UIThemeManager	*uiManager;
 
 			nk_style_window mWindow;
-			// nk_style_button mButton;
-
-			// nk_style_window mBackWindow;
 
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );

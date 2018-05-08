@@ -71,6 +71,42 @@ namespace BeerEngine
         _toDestroy.clear();
 	}
 
+	void GameObject::enableComponent(Component::Component *comp)
+	{
+		// std::cout << "attempting to enable" << std::endl;
+		
+		auto it = std::find(_toDisable.begin(), _toDisable.end(), comp);
+		if (it != _toDisable.end())
+		{
+			// std::cout << "comp was about to be disabled" << std::endl;
+			_toDisable.erase(it);
+			return;
+		}
+		else if (comp->_isActive)
+			return;
+		// std::cout << "added to enable" << std::endl;
+		_toEnable.push_back(comp);
+	}
+
+	void GameObject::disableComponent(Component::Component *comp)
+	{
+		// std::cout << "attempting to disable" << std::endl;
+		auto it = std::find(_toEnable.begin(), _toEnable.end(), comp);
+		if (it != _toEnable.end())
+		{
+			// std::cout << "comp was about to be enabled" << std::endl;
+			_toEnable.erase(it);
+			return;
+		}
+		else if (!comp->_isActive)
+		{
+			// std::cout << "component is already disabled" << std::endl;
+			return;
+		}
+		// std::cout << "added to disable" << std::endl;
+		_toDisable.push_back(comp);
+	}
+
 	void    GameObject::destroy(GameObject *go)
     {
         _scene.destroy(go);
@@ -86,6 +122,26 @@ namespace BeerEngine
 			// _components.push_back(c);
 		}
 		_toStart.clear();
+	}
+
+	void    GameObject::componentEnable(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentEnable" << std::endl;
+		for (Component::Component *c : _toEnable)
+		{
+			c->_isActive = true;
+		}
+		_toEnable.clear();
+	}
+
+	void    GameObject::componentDisable(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentDisable" << std::endl;
+		for (Component::Component *c : _toDisable)
+		{
+			c->_isActive = false;
+		}
+		_toDisable.clear();
 	}
 
 	void    GameObject::componentFixedUpdate(void)

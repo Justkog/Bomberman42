@@ -3,6 +3,7 @@
 #include "Core/Graphics/Texture.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/MainMenu.hpp"
+#include "Game/Components/SettingsMenu.hpp"
 #include "Core/Window.hpp"
 
 namespace Game
@@ -108,7 +109,8 @@ void MainMenu::renderUI(struct nk_context *ctx)
 			fprintf(stdout, "Versus pressed\n");
 		if (nk_button_label(ctx, "Settings"))
 		{
-			fprintf(stdout, "Settings pressed\n");
+			this->setActive(false);
+			settingsMenu->setActive(true);
 		}
 		if (nk_button_label(ctx, "Credits"))
 			fprintf(stdout, "Credits pressed\n");

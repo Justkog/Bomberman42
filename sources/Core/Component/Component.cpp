@@ -16,9 +16,17 @@ namespace BeerEngine
 		add_component_type Component::typeToAddComponent = Component::createAddMap();
 
 		Component::Component(GameObject *gameObject) :
-			_gameObject(gameObject), _isActive(true)
+			_gameObject(gameObject), _isActive(false)
 		{
+			setActive(true);
+		}
 
+		void	Component::setActive(bool state)
+		{
+			if (state)
+				_gameObject->enableComponent(this);
+			else if (!state)
+				_gameObject->disableComponent(this);
 		}
 
 		nlohmann::json	Component::serialize()
