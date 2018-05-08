@@ -1,0 +1,4 @@
+<map id="BeerEngine::Component::IColliderEnter" name="BeerEngine::Component::IColliderEnter">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="Game::Component::Character" alt="" coords="5,92,205,117"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_player.html" title="Game::Component::Player" alt="" coords="229,92,408,117"/>
+</map>

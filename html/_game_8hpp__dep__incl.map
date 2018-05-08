@@ -1,0 +1,7 @@
+<map id="include/Game/Game.hpp" name="include/Game/Game.hpp">
+<area shape="rect" id="node2" href="$_bomb_8hpp.html" title="include/Game/Components\l/Bomb.hpp" alt="" coords="5,79,188,117"/>
+<area shape="rect" id="node3" href="$_character_8hpp.html" title="include/Game/Components\l/Character.hpp" alt="" coords="212,79,395,117"/>
+<area shape="rect" id="node4" href="$_i_a_8hpp.html" title="include/Game/Components\l/IA.hpp" alt="" coords="419,79,602,117"/>
+<area shape="rect" id="node5" href="$_item_8hpp.html" title="include/Game/Components\l/Item.hpp" alt="" coords="625,79,808,117"/>
+<area shape="rect" id="node6" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="689,165,872,204"/>
+</map>

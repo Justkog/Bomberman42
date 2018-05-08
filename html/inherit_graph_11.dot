@@ -1,7 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="BeerEngine::Mathf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_mathf.html",tooltip="classe permettent d&#39;acceder a des fonctions mathematique personnaliser pour le moteur ..."];
-}

@@ -1,9 +1,0 @@
-digraph "include/Core/Physics" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_8213943ce0b792be39d34390845932ae {
-    graph [ bgcolor="#ddddee", pencolor="black", label="Core" fontname="Helvetica", fontsize="10", URL="dir_8213943ce0b792be39d34390845932ae.html"]
-  dir_00ce6bc01b34356c018f6a91831a5612 [shape=box, label="Physics", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_00ce6bc01b34356c018f6a91831a5612.html"];
-  }
-}

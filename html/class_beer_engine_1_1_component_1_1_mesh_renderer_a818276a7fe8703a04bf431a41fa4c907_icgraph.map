@@ -1,0 +1,4 @@
+<map id="BeerEngine::Component::MeshRenderer::setMesh" name="BeerEngine::Component::MeshRenderer::setMesh">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_map.html#a860f2c45a23d20303aa5e04261ac462d" title="Game::Component::Map\l::addCrate" alt="" coords="228,5,395,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_map.html#ab7d5bd531fc73fa3c4697e6d7fd909f2" title="Game::Component::Map\l::addDestoyableCrate" alt="" coords="228,68,395,107"/>
+</map>

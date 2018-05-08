@@ -1,0 +1,6 @@
+<map id="BeerEngine::Component::IUI" name="BeerEngine::Component::IUI">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html" title="Game::Component::IA" alt="" coords="270,5,424,31"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_main_menu.html" title="Game::Component::MainMenu" alt="" coords="245,55,449,80"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_map.html" title="Game::Component::Map" alt="" coords="263,104,431,129"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_player.html" title="Game::Component::Player" alt="" coords="257,153,437,179"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="BeerEngine::JsonDeserializable" name="BeerEngine::JsonDeserializable">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_a_scene.html" title="BeerEngine::AScene" alt="" coords="50,79,195,104"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="BeerEngine::GameObject" alt="" coords="219,79,392,104"/>
+<area shape="rect" id="node3" href="$class_scene_main.html" title="SceneMain" alt="" coords="5,152,93,177"/>
+<area shape="rect" id="node4" href="$class_scene_test.html" title="SceneTest" alt="" coords="117,152,200,177"/>
+<area shape="rect" id="node6" href="$class_camera_test.html" title="CameraTest" alt="" coords="259,152,352,177"/>
+</map>

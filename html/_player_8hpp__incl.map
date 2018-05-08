@@ -1,0 +1,19 @@
+<map id="include/Game/Components/Player.hpp" name="include/Game/Components/Player.hpp">
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1713,472,1822,497"/>
+<area shape="rect" id="node31" href="$_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1939,179,2161,204"/>
+<area shape="rect" id="node36" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="1449,325,1633,351"/>
+<area shape="rect" id="node37" href="$_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="1377,179,1577,204"/>
+<area shape="rect" id="node38" href="$_i_trigger_stay_8hpp.html" title="Core/Component/ITriggerStay.hpp" alt="" coords="1770,99,1994,124"/>
+<area shape="rect" id="node39" href="$_i_trigger_enter_8hpp.html" title="Core/Component/ITriggerEnter.hpp" alt="" coords="2018,99,2247,124"/>
+<area shape="rect" id="node40" href="$_i_trigger_exit_8hpp.html" title="Core/Component/ITriggerExit.hpp" alt="" coords="2271,99,2491,124"/>
+<area shape="rect" id="node41" href="$_i_collider_stay_8hpp.html" title="Core/Component/ICollider\lStay.hpp" alt="" coords="2514,92,2690,131"/>
+<area shape="rect" id="node42" href="$_i_collider_enter_8hpp.html" title="Core/Component/ICollider\lEnter.hpp" alt="" coords="2714,92,2890,131"/>
+<area shape="rect" id="node43" href="$_i_collider_exit_8hpp.html" title="Core/Component/ICollider\lExit.hpp" alt="" coords="2914,92,3090,131"/>
+<area shape="rect" id="node44" href="$_i_u_i_8hpp.html" title="Core/Component/IUI.hpp" alt="" coords="1204,252,1374,277"/>
+<area shape="rect" id="node45" href="$_audio_source_8hpp.html" title="Core/Audio/AudioSource.hpp" alt="" coords="1552,99,1746,124"/>
+<area shape="rect" id="node50" href="$_audio_clip_8hpp.html" title="Core/Audio/AudioClip.hpp" alt="" coords="3166,99,3340,124"/>
+<area shape="rect" id="node32" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1791,399,2000,424"/>
+<area shape="rect" id="node33" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1702,252,1857,277"/>
+<area shape="rect" id="node34" href="$_a_scene_8hpp.html" title="Core/AScene.hpp" alt="" coords="1974,325,2100,351"/>
+<area shape="rect" id="node35" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1708,325,1848,351"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="include/Core/GameObject.hpp" name="include/Core/GameObject.hpp">
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,225,2013,251"/>
+<area shape="rect" id="node31" href="$_a_scene_8hpp.html" title="Core/AScene.hpp" alt="" coords="1870,79,1997,104"/>
+<area shape="rect" id="node32" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1925,152,2134,177"/>
+<area shape="rect" id="node33" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2072,79,2212,104"/>
+<area shape="rect" id="node34" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="2236,79,2421,104"/>
+</map>

@@ -7,3 +7,126 @@
 
 
 Collaboration diagram for Assets\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{class_assets__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_assets_a4e848364b8e24434ec5be20c28106dbd}{autoload}} (std\+::string path)
+\item 
+void \mbox{\hyperlink{class_assets_a39f25e7a1853ac52ca5fcfdb676ace04}{load}} (void)
+\item 
+void \mbox{\hyperlink{class_assets_a7c382091adff219150cbd067d646fe16}{unload}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_assets}{Assets}} $\ast$ \mbox{\hyperlink{class_assets_a1ec0f88affb09ed018d3f8026f64c15b}{Get\+Instance}} (void)
+\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_audio_1_1_audio_clip}{Beer\+Engine\+::\+Audio\+::\+Audio\+Clip}} $\ast$ \mbox{\hyperlink{class_assets_a8f344169002807c95cb543d1116ea2bb}{Get\+Audio\+Clip}} (std\+::string path)
+\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_texture}{Beer\+Engine\+::\+Graphics\+::\+Texture}} $\ast$ \mbox{\hyperlink{class_assets_a1dc713408638d18566ec35221a0ede24}{Get\+Texture}} (std\+::string path)
+\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Beer\+Engine\+::\+Graphics\+::\+Mesh}} $\ast$ \mbox{\hyperlink{class_assets_a2fcfb2c8c5a0ca4630230f4086b010f6}{Get\+Model}} (std\+::string path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_beer_engine_1_1_audio_1_1_audio_clip}{Beer\+Engine\+::\+Audio\+::\+Audio\+Clip}} $\ast$ $>$ \mbox{\hyperlink{class_assets_a74f01d64e94c8e26e8187d189cd018dc}{audioclips}}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_texture}{Beer\+Engine\+::\+Graphics\+::\+Texture}} $\ast$ $>$ \mbox{\hyperlink{class_assets_a973029267b9ab6da8c326f2f7b1404c2}{textures}}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Beer\+Engine\+::\+Graphics\+::\+Mesh}} $\ast$ $>$ \mbox{\hyperlink{class_assets_a83d7f0d79376b56cf2c3ca78d4f01df4}{models}}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Beer\+Engine\+::\+Graphics\+::\+A\+Material}} $\ast$ \mbox{\hyperlink{class_assets_a3888adb2654159b9791da38233467632}{bomb\+Material}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_assets_a4e848364b8e24434ec5be20c28106dbd}\label{class_assets_a4e848364b8e24434ec5be20c28106dbd}} 
+\index{Assets@{Assets}!autoload@{autoload}}
+\index{autoload@{autoload}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{autoload()}{autoload()}}
+{\footnotesize\ttfamily void Assets\+::autoload (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_assets_a8f344169002807c95cb543d1116ea2bb}\label{class_assets_a8f344169002807c95cb543d1116ea2bb}} 
+\index{Assets@{Assets}!Get\+Audio\+Clip@{Get\+Audio\+Clip}}
+\index{Get\+Audio\+Clip@{Get\+Audio\+Clip}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{Get\+Audio\+Clip()}{GetAudioClip()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_audio_1_1_audio_clip}{Beer\+Engine\+::\+Audio\+::\+Audio\+Clip}}$\ast$ Assets\+::\+Get\+Audio\+Clip (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_assets_a1ec0f88affb09ed018d3f8026f64c15b}\label{class_assets_a1ec0f88affb09ed018d3f8026f64c15b}} 
+\index{Assets@{Assets}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_assets}{Assets}}$\ast$ Assets\+::\+Get\+Instance (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_assets_a2fcfb2c8c5a0ca4630230f4086b010f6}\label{class_assets_a2fcfb2c8c5a0ca4630230f4086b010f6}} 
+\index{Assets@{Assets}!Get\+Model@{Get\+Model}}
+\index{Get\+Model@{Get\+Model}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{Get\+Model()}{GetModel()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Beer\+Engine\+::\+Graphics\+::\+Mesh}}$\ast$ Assets\+::\+Get\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_assets_a1dc713408638d18566ec35221a0ede24}\label{class_assets_a1dc713408638d18566ec35221a0ede24}} 
+\index{Assets@{Assets}!Get\+Texture@{Get\+Texture}}
+\index{Get\+Texture@{Get\+Texture}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{Get\+Texture()}{GetTexture()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_texture}{Beer\+Engine\+::\+Graphics\+::\+Texture}}$\ast$ Assets\+::\+Get\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_assets_a1dc713408638d18566ec35221a0ede24_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_assets_a39f25e7a1853ac52ca5fcfdb676ace04}\label{class_assets_a39f25e7a1853ac52ca5fcfdb676ace04}} 
+\index{Assets@{Assets}!load@{load}}
+\index{load@{load}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Assets\+::load (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_assets_a7c382091adff219150cbd067d646fe16}\label{class_assets_a7c382091adff219150cbd067d646fe16}} 
+\index{Assets@{Assets}!unload@{unload}}
+\index{unload@{unload}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{unload()}{unload()}}
+{\footnotesize\ttfamily void Assets\+::unload (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_assets_a74f01d64e94c8e26e8187d189cd018dc}\label{class_assets_a74f01d64e94c8e26e8187d189cd018dc}} 
+\index{Assets@{Assets}!audioclips@{audioclips}}
+\index{audioclips@{audioclips}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{audioclips}{audioclips}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{class_beer_engine_1_1_audio_1_1_audio_clip}{Beer\+Engine\+::\+Audio\+::\+Audio\+Clip}} $\ast$$>$ Assets\+::audioclips}
+
+\mbox{\Hypertarget{class_assets_a3888adb2654159b9791da38233467632}\label{class_assets_a3888adb2654159b9791da38233467632}} 
+\index{Assets@{Assets}!bomb\+Material@{bomb\+Material}}
+\index{bomb\+Material@{bomb\+Material}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{bomb\+Material}{bombMaterial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Beer\+Engine\+::\+Graphics\+::\+A\+Material}}$\ast$ Assets\+::bomb\+Material}
+
+\mbox{\Hypertarget{class_assets_a83d7f0d79376b56cf2c3ca78d4f01df4}\label{class_assets_a83d7f0d79376b56cf2c3ca78d4f01df4}} 
+\index{Assets@{Assets}!models@{models}}
+\index{models@{models}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{models}{models}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Beer\+Engine\+::\+Graphics\+::\+Mesh}} $\ast$$>$ Assets\+::models}
+
+\mbox{\Hypertarget{class_assets_a973029267b9ab6da8c326f2f7b1404c2}\label{class_assets_a973029267b9ab6da8c326f2f7b1404c2}} 
+\index{Assets@{Assets}!textures@{textures}}
+\index{textures@{textures}!Assets@{Assets}}
+\subsubsection{\texorpdfstring{textures}{textures}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_texture}{Beer\+Engine\+::\+Graphics\+::\+Texture}} $\ast$$>$ Assets\+::textures}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Game/\mbox{\hyperlink{_assets_8hpp}{Assets.\+hpp}}\end{DoxyCompactItemize}

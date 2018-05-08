@@ -1,0 +1,7 @@
+<map id="BeerEngine::Component::ACollider" name="BeerEngine::Component::ACollider">
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_box_collider2_d.html" title="BeerEngine::Component\l::BoxCollider2D" alt="" coords="103,252,271,291"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_component_1_1_circle_collider.html" title="BeerEngine::Component\l::CircleCollider" alt="" coords="295,252,463,291"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="BeerEngine::Component\l::Component" alt="" coords="103,79,271,117"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="BeerEngine::JsonSerializable" alt="" coords="5,5,201,31"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="BeerEngine::Component\l::IStart" alt="" coords="295,79,463,117"/>
+</map>

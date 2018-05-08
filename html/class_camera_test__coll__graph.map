@@ -1,0 +1,7 @@
+<map id="CameraTest" name="CameraTest">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_game_object.html" title="BeerEngine::GameObject" alt="" coords="532,91,705,117"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="BeerEngine::JsonSerializable" alt="" coords="13,66,208,91"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="265,66,424,91"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_a_scene.html" title="BeerEngine::AScene" alt="" coords="272,115,417,141"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_json_deserializable.html" title="BeerEngine::JsonDeserializable" alt="" coords="5,149,216,174"/>
+</map>
