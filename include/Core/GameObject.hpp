@@ -8,6 +8,8 @@
 #include "Core/Component/IStart.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
+struct nk_font;
+
 namespace BeerEngine
 {
     class GameObject : public JsonSerializable, public JsonDeserializable
@@ -37,7 +39,7 @@ namespace BeerEngine
         virtual void    update(void);
         virtual void    renderUpdate(void);
         virtual void    render(void);
-        virtual void    startUI(struct nk_context *ctx);
+        virtual void    startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         virtual void    renderUI(struct nk_context *ctx);
 
 		void    destroy(Component::Component *comp);
@@ -101,7 +103,7 @@ namespace BeerEngine
         void    componentRender(void);
         void    componentRenderAlpha(void);
         void    componentPhysicUpdate(void);
-        void    componentStartUI(struct nk_context *ctx);
+        void    componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         void    componentRenderUI(struct nk_context *ctx);
 
 		std::vector<Component::Component *> GetComponents(void);

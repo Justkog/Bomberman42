@@ -1,6 +1,8 @@
-#include "Game/Components/MainMenu.hpp"
+#define NK_INCLUDE_FONT_BAKING
+#include <nuklear.h>
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Texture.hpp"
+#include "Game/Components/MainMenu.hpp"
 
 namespace Game
 {
@@ -78,13 +80,14 @@ void MainMenu::setUI(struct nk_context *ctx)
 {
 	ctx->style.window = mWindow;
 	ctx->style.button = mButton;
-
+	nk_style_set_font(ctx, &available_fonts["main"]->handle);
 }
 
 void MainMenu::resetToDefaultUI(struct nk_context *ctx)
 {
 	ctx->style.window = defaultWindow;
 	ctx->style.button = defaultButton;
+	nk_style_set_font(ctx, &available_fonts["default"]->handle);
 }
 
 nk_style_item loadSprite(std::string spritePath)
@@ -98,17 +101,21 @@ nk_style_item loadSprite(std::string spritePath)
 	return (nk_style_item_image(nk_image));
 }
 
-void MainMenu::startUI(struct nk_context *ctx)
+void MainMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
 	std::cout << "start UI" << std::endl;
 	saveDefaultUI(ctx);
-	// mWindow.fixed_background = loadSprite("assets/textures/crate1_diffuse.png");
+	available_fonts = fonts;
 	mWindow.fixed_background = nk_style_item_hide();
-	// mWindow.background = nk_style_item_hide();
 	// mWindow.padding = nk_vec2(0, 0);
 	mWindow.spacing = nk_vec2(0, 10);
 	// mButton.normal = 
 	mButton.normal = loadSprite("assets/textures/button_normal.png");
+	mButton.text_normal = nk_rgb(0,0,0);
+	mButton.hover = loadSprite("assets/textures/button_hover.png");
+	mButton.text_hover = nk_rgb(0,0,0);
+	mButton.active = loadSprite("assets/textures/button_active.png");
+	mButton.text_active = nk_rgb(0,0,0);
 }
 
 void MainMenu::renderUI(struct nk_context *ctx)
@@ -143,15 +150,15 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		nk_layout_row_dynamic(ctx, 75, 1);
 
 		if (nk_button_label(ctx, "Adventure"))
-			fprintf(stdout, "button pressed\n");
-		if (nk_button_label(ctx, "Quick Match"))
-			fprintf(stdout, "button 2 pressed\n");
+			fprintf(stdout, "Adventure pressed\n");
+		if (nk_button_label(ctx, "Versus"))
+			fprintf(stdout, "Versus pressed\n");
 		if (nk_button_label(ctx, "Settings"))
-			fprintf(stdout, "button 2 pressed\n");
+			fprintf(stdout, "Settings pressed\n");
 		if (nk_button_label(ctx, "Credits"))
-			fprintf(stdout, "button 2 pressed\n");
+			fprintf(stdout, "Credits pressed\n");
 		if (nk_button_label(ctx, "Exit"))
-			fprintf(stdout, "button 2 pressed\n");
+			fprintf(stdout, "Exit pressed\n");
 	}
 	nk_end(ctx);
 	resetToDefaultUI(ctx);

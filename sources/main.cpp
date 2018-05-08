@@ -18,6 +18,7 @@
 #include "Game/SceneTest.hpp"
 #include "Game/SceneMain.hpp"
 #include "Game/Assets.hpp"
+// #include <nuklear.h>
 
 static int      frameCount = 0;
 static int      FPS = 60;
@@ -92,11 +93,20 @@ int main(void)
     // Nuklear
     struct nk_context *ctx;
     ctx = nk_glfw3_init(window->getWindow(), NK_GLFW3_INSTALL_CALLBACKS);
+
+	std::map<std::string, nk_font *> fonts;
     struct nk_font_atlas *atlas;
     nk_glfw3_font_stash_begin(&atlas);
 
-    nk_glfw3_font_stash_end();
+	struct nk_font_config cfg = nk_font_config(13);
+	cfg.pixel_snap = true;
+	auto font = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 48, &cfg);
+	fonts["main"] = font;
 
+	fonts["default"] = nk_font_atlas_add_default(atlas, 13.0f, 0);
+
+    nk_glfw3_font_stash_end();
+	nk_style_set_font(ctx, &fonts["default"]->handle);
     // Audio
     BeerEngine::Audio::AudioListener::init();
     // BeerEngine::Audio::AudioListener audio;
@@ -130,8 +140,8 @@ int main(void)
     // Game Assets
     Assets::GetInstance()->load();
     // First Scene
-    BeerEngine::SceneManager::LoadScene<SceneTest>();
-    // BeerEngine::SceneManager::LoadScene<SceneMain>();
+    // BeerEngine::SceneManager::LoadScene<SceneTest>();
+    BeerEngine::SceneManager::LoadScene<SceneMain>();
 	
     // Thread Update
     std::thread updateLoop (updateThread, window);
@@ -144,14 +154,14 @@ int main(void)
         scene = BeerEngine::SceneManager::GetCurrent();
         nk_glfw3_new_frame();
 
-        if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-        {
-            std::stringstream ss;
-            ss << "FPS: " << FPS << " / UPS: " << UPS;
-            nk_layout_row_dynamic(ctx, 20, 1);
-            nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-        }
-        nk_end(ctx);
+        // if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+        // {
+        //     std::stringstream ss;
+        //     ss << "FPS: " << FPS << " / UPS: " << UPS;
+        //     nk_layout_row_dynamic(ctx, 20, 1);
+        //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+        // }
+        // nk_end(ctx);
 
         // Draw
         glEnable(GL_DEPTH_TEST);
@@ -166,12 +176,22 @@ int main(void)
             scene->mutexLock(true);
             scene->renderUpdate();
             scene->render();
-            scene->startUI(ctx);
+            scene->startUI(ctx, fonts);
             scene->renderUI(ctx);
             scene->destroyGameObjects();
             scene->mutexLock(false);
         }
         glDisable(GL_DEPTH_TEST);
+
+		if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+        {
+            std::stringstream ss;
+            ss << "FPS: " << FPS << " / UPS: " << UPS;
+            nk_layout_row_dynamic(ctx, 20, 1);
+            nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+        }
+        nk_end(ctx);
+
         nk_glfw3_render(NK_ANTI_ALIASING_ON, MAX_VERTEX_BUFFER, MAX_ELEMENT_BUFFER);
         window->swapBuffer();
         frameCount++;

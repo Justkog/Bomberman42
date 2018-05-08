@@ -31,6 +31,8 @@ namespace Game
 
 			nk_style_window mBackWindow;
 
+			std::map<std::string, nk_font *> available_fonts;
+
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );
 			MainMenu(BeerEngine::GameObject *gameObject);
@@ -41,7 +43,7 @@ namespace Game
 			friend std::ostream & operator<<(std::ostream & o, MainMenu const & i);
 
 			virtual void start();
-			virtual void startUI(struct nk_context *ctx);
+			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
 
 			void saveDefaultUI(struct nk_context *ctx);

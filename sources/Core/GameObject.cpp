@@ -46,7 +46,7 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
-    void    GameObject::startUI(struct nk_context *ctx) {}
+    void    GameObject::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) {}
     void    GameObject::renderUI(struct nk_context *ctx) {}
 
 	void     GameObject::destroy(Component::Component *comp)
@@ -164,13 +164,13 @@ namespace BeerEngine
 		}
 	}
 
-	void    GameObject::componentStartUI(struct nk_context *ctx)
+	void    GameObject::componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 	{
 		// std::cout << "DEBUG: GameObject::componentStart" << std::endl;
 		for (Component::Component *c : _toStartUI)
 		{
 			if (auto u = dynamic_cast<Component::IStartUI*>(c))
-				u->startUI(ctx);
+				u->startUI(ctx, fonts);
 			// _components.push_back(c);
 		}
 		_toStartUI.clear();
