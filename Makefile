@@ -1,4 +1,4 @@
-CC = g++ -g3
+CC = g++
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 MKDIR = /bin/mkdir -p
@@ -81,7 +81,8 @@ SRC = \
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
-
+# -g
+# -Ofast -march=native -flto
 CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
 	`pkg-config glfw3 --cflags-only-I` \
 	`pkg-config glew --cflags-only-I` \

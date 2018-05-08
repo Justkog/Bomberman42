@@ -14,12 +14,22 @@ namespace Game
 {
 	namespace Component
 	{
+		std::vector<Bomb*> Bomb::bombs;
+
 		Bomb::Bomb(BeerEngine::GameObject *gameObject) :
 			Component(gameObject)
 		{
 			timer = 0.0f;
 			power = 1.0f;
+			bombs.push_back(this);
         }
+
+		Bomb::~Bomb(void)
+		{
+			auto it = std::find(bombs.begin(), bombs.end(), this);
+			if (it != bombs.end())
+				bombs.erase(it);
+		}
 
 		void    Bomb::start(void)
 		{

@@ -127,7 +127,7 @@ namespace Game
 
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 100, 220, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			if (nk_begin(ctx, "Map", nk_rect(10, 100, 270, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
 				nk_layout_row_dynamic(ctx, 20, 1);
 				// if (_player)
@@ -142,7 +142,7 @@ namespace Game
 				{
 					std::stringstream ss;
 					for (int col = 0; col < _sizeX; col++)
-						ss << _map[row][col];
+						ss << std::setw(2) << _map[row][col];
 					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
 
 				}
@@ -159,6 +159,15 @@ namespace Game
 		{
 			int x = static_cast<int>(pos.x);
 			int y = static_cast<int>(pos.y);
+			if (_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9)
+				return true;
+			return false;
+		}
+
+		bool			Map::canWalk(glm::vec3 pos)
+		{
+			int x = static_cast<int>(worldToMap(pos).x);
+			int y = static_cast<int>(worldToMap(pos).y);
 			if (_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9)
 				return true;
 			return false;

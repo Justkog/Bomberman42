@@ -17,6 +17,7 @@ namespace Game
 
         void    Player::start(void)
         {
+            std::cout << "PLAYER STARTED \n";
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");

@@ -38,8 +38,10 @@ namespace Game
 
 			std::vector<glm::vec2> _path;
 
+			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir);
+			bool    avoidAllExplosions(glm::vec2 pos);
 			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir);
-			int     checkExplosionZone(glm::vec3 pos);
+			int     checkExplosionZone(glm::vec2 pos);
 			void    getObjective(void);
 			bool    moveToObjective(void);
 			void    moveToNextCell(void);

@@ -21,6 +21,7 @@
 
 #define S -1 //spawn position
 #define I 9 //Item
+#define B 3 //Item
 
 namespace Game
 {
@@ -45,6 +46,7 @@ namespace Game
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
 			bool			canWalk(glm::vec2 pos);
+			bool			canWalk(glm::vec3 pos);
 
 			int								**_map;
 			int	_sizeX;
