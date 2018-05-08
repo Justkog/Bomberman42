@@ -1,0 +1,181 @@
+\hypertarget{class_beer_engine_1_1_window}{}\section{Beer\+Engine\+:\+:Window Class Reference}
+\label{class_beer_engine_1_1_window}\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+
+
+classe representant la fenetre du moteur  
+
+
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_window_a3ae0fe522cf721377047b1027d591d33}{$\sim$\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur Destructeur de la classe \mbox{\hyperlink{class_beer_engine_1_1_window}{Window}}. \end{DoxyCompactList}\item 
+G\+L\+F\+Wwindow $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_window_af7a6662e99bb0d07787014adacb8db33}{get\+Window}} (void)
+\begin{DoxyCompactList}\small\item\em recuperer les contexts G\+L\+FW Methode qui permet de recuperer le context G\+L\+FW de la fenetre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_window_a7417b4c023c22a9641a1b94cd0cfee93}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em appel du nettoyage du rendu Methode qui permet de nettoyer le rendu de la fenetre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_window_abc6524b9b96a88e3427dce738bfe9d4a}{update}} (void)
+\begin{DoxyCompactList}\small\item\em mise a jour des evenements Methode qui permet de mettre a jour les evenements de la fenetre telle que les inputs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_window_a3b2c31a149ed0b90ac292d88f87fd369}{swap\+Buffer}} (void)
+\begin{DoxyCompactList}\small\item\em changement de buffer Methode qui permet de changer de buffer graphique pour l\textquotesingle{}optimisation du rendu \end{DoxyCompactList}\item 
+glm\+::mat4 \& \mbox{\hyperlink{class_beer_engine_1_1_window_a5f6872e397ddae51b61d0d140d3dca82}{get\+Projection3D}} (void)
+\begin{DoxyCompactList}\small\item\em recupere la projection 3d Methode qui permet de recuperer la matrice de perspective pour les rendu 3D \end{DoxyCompactList}\item 
+glm\+::mat4 \& \mbox{\hyperlink{class_beer_engine_1_1_window_a69da83af4143505f1e2c14649a854bd5}{get\+Projection2D}} (void)
+\begin{DoxyCompactList}\small\item\em recupere la projection 2d Methode qui permet de recuperer la matrice de orthographique pour les rendu 2D \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_window_a0ff67069f460adb018b1050da62d8a54}{close\+Request}} (void)
+\begin{DoxyCompactList}\small\item\em requete de fermeture Methode qui permet de demander au programme de se fermer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_window_a5b29d76b11e9f7457a92e6465939b71d}{is\+Close}} (void)
+\begin{DoxyCompactList}\small\item\em status de la fenetre Methode qui permet de savoir si la fenetre est fermer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_window}{Window}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_window_a630b8f5eca39a184818b876b1eb0374d}{Create\+Window}} (std\+::string title, int width, int height)
+\begin{DoxyCompactList}\small\item\em creer la fenetre Methode qui permet de creer la fenetre et de la recuperer. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_window}{Window}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_window_a9a73331ffd93866e83e766540e3891fb}{Get\+Instance}} (void)
+\begin{DoxyCompactList}\small\item\em recuperer la fenetre Methode qui permet de recuperer la fenetre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+classe representant la fenetre du moteur 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a3ae0fe522cf721377047b1027d591d33}\label{class_beer_engine_1_1_window_a3ae0fe522cf721377047b1027d591d33}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!````~Window@{$\sim$\+Window}}
+\index{````~Window@{$\sim$\+Window}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{$\sim$\+Window()}{~Window()}}
+{\footnotesize\ttfamily Beer\+Engine\+::\+Window\+::$\sim$\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructeur Destructeur de la classe \mbox{\hyperlink{class_beer_engine_1_1_window}{Window}}. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a7417b4c023c22a9641a1b94cd0cfee93}\label{class_beer_engine_1_1_window_a7417b4c023c22a9641a1b94cd0cfee93}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!clear@{clear}}
+\index{clear@{clear}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Window\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+appel du nettoyage du rendu Methode qui permet de nettoyer le rendu de la fenetre 
+
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a0ff67069f460adb018b1050da62d8a54}\label{class_beer_engine_1_1_window_a0ff67069f460adb018b1050da62d8a54}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!close\+Request@{close\+Request}}
+\index{close\+Request@{close\+Request}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{close\+Request()}{closeRequest()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Window\+::close\+Request (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+requete de fermeture Methode qui permet de demander au programme de se fermer. 
+
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a630b8f5eca39a184818b876b1eb0374d}\label{class_beer_engine_1_1_window_a630b8f5eca39a184818b876b1eb0374d}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!Create\+Window@{Create\+Window}}
+\index{Create\+Window@{Create\+Window}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{Create\+Window()}{CreateWindow()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_window}{Window}}$\ast$ Beer\+Engine\+::\+Window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{std\+::string}]{title,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+creer la fenetre Methode qui permet de creer la fenetre et de la recuperer. 
+
+\begin{DoxyReturn}{Returns}
+la fenetre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a9a73331ffd93866e83e766540e3891fb}\label{class_beer_engine_1_1_window_a9a73331ffd93866e83e766540e3891fb}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_window}{Window}}$\ast$ Beer\+Engine\+::\+Window\+::\+Get\+Instance (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+recuperer la fenetre Methode qui permet de recuperer la fenetre. 
+
+\begin{DoxyReturn}{Returns}
+la fenetre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a69da83af4143505f1e2c14649a854bd5}\label{class_beer_engine_1_1_window_a69da83af4143505f1e2c14649a854bd5}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!get\+Projection2D@{get\+Projection2D}}
+\index{get\+Projection2D@{get\+Projection2D}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{get\+Projection2\+D()}{getProjection2D()}}
+{\footnotesize\ttfamily glm\+::mat4\& Beer\+Engine\+::\+Window\+::get\+Projection2D (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recupere la projection 2d Methode qui permet de recuperer la matrice de orthographique pour les rendu 2D 
+
+\begin{DoxyReturn}{Returns}
+matrice 4 x 4 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a5f6872e397ddae51b61d0d140d3dca82}\label{class_beer_engine_1_1_window_a5f6872e397ddae51b61d0d140d3dca82}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!get\+Projection3D@{get\+Projection3D}}
+\index{get\+Projection3D@{get\+Projection3D}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{get\+Projection3\+D()}{getProjection3D()}}
+{\footnotesize\ttfamily glm\+::mat4\& Beer\+Engine\+::\+Window\+::get\+Projection3D (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recupere la projection 3d Methode qui permet de recuperer la matrice de perspective pour les rendu 3D 
+
+\begin{DoxyReturn}{Returns}
+matrice 4 x 4 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_af7a6662e99bb0d07787014adacb8db33}\label{class_beer_engine_1_1_window_af7a6662e99bb0d07787014adacb8db33}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!get\+Window@{get\+Window}}
+\index{get\+Window@{get\+Window}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{get\+Window()}{getWindow()}}
+{\footnotesize\ttfamily G\+L\+F\+Wwindow$\ast$ Beer\+Engine\+::\+Window\+::get\+Window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recuperer les contexts G\+L\+FW Methode qui permet de recuperer le context G\+L\+FW de la fenetre 
+
+\begin{DoxyReturn}{Returns}
+context G\+L\+FW 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a5b29d76b11e9f7457a92e6465939b71d}\label{class_beer_engine_1_1_window_a5b29d76b11e9f7457a92e6465939b71d}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!is\+Close@{is\+Close}}
+\index{is\+Close@{is\+Close}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{is\+Close()}{isClose()}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Window\+::is\+Close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+status de la fenetre Methode qui permet de savoir si la fenetre est fermer 
+
+\begin{DoxyReturn}{Returns}
+true, si la fenetre est femer et false si elle est ouverte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_window_a3b2c31a149ed0b90ac292d88f87fd369}\label{class_beer_engine_1_1_window_a3b2c31a149ed0b90ac292d88f87fd369}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!swap\+Buffer@{swap\+Buffer}}
+\index{swap\+Buffer@{swap\+Buffer}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{swap\+Buffer()}{swapBuffer()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Window\+::swap\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+changement de buffer Methode qui permet de changer de buffer graphique pour l\textquotesingle{}optimisation du rendu 
+
+\mbox{\Hypertarget{class_beer_engine_1_1_window_abc6524b9b96a88e3427dce738bfe9d4a}\label{class_beer_engine_1_1_window_abc6524b9b96a88e3427dce738bfe9d4a}} 
+\index{Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}!update@{update}}
+\index{update@{update}!Beer\+Engine\+::\+Window@{Beer\+Engine\+::\+Window}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Window\+::update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+mise a jour des evenements Methode qui permet de mettre a jour les evenements de la fenetre telle que les inputs. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Core/\mbox{\hyperlink{_window_8hpp}{Window.\+hpp}}\end{DoxyCompactItemize}

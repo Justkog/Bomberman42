@@ -1,0 +1,147 @@
+\hypertarget{class_game_1_1_component_1_1_camera_controller}{}\section{Game\+:\+:Component\+:\+:Camera\+Controller Class Reference}
+\label{class_game_1_1_component_1_1_camera_controller}\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+
+
+{\ttfamily \#include $<$Camera\+Controller.\+hpp$>$}
+
+Inheritance diagram for Game\+:\+:Component\+:\+:Camera\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.850220cm]{class_game_1_1_component_1_1_camera_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_ac9ced75e848e973c4a2f25e25059a4f7}{Camera\+Controller}} (\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$game\+Object)
+\item 
+virtual \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a6cbf885ec5705638f392a40bb762bd9c}{$\sim$\+Camera\+Controller}} (void)
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller}{Camera\+Controller}} \& \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a5b4d4521b4ceeba0f98ba3663015725c}{operator=}} (\mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller}{Camera\+Controller}} const \&rhs)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_afe64421588babbf921d77756fa38a48b}{start}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a0bdce3356bde07f277e0c58409c1f55d}{fixed\+Update}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a675655ee2e18382203f1afa2329a1739}{update}} (void)
+\item 
+nlohmann\+::json \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a1a7f36bf3f1f25b0edd404146f0c3289}{serialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a8076e01593ef38a83c708854906abb3b}{deserialize}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_camera}{Beer\+Engine\+::\+Camera}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a5e619d2b8d42b5b55e743392bdd18ebd}{cam}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_ab87262dadb4c07a9777393d85ad0ed28}{last\+Mouse\+Pos}}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller_a5746cb5b8916dd3839a38b83018ae1ac}{operator$<$$<$}} (std\+::ostream \&o, \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller}{Camera\+Controller}} const \&i)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_ac9ced75e848e973c4a2f25e25059a4f7}\label{class_game_1_1_component_1_1_camera_controller_ac9ced75e848e973c4a2f25e25059a4f7}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!Camera\+Controller@{Camera\+Controller}}
+\index{Camera\+Controller@{Camera\+Controller}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{Camera\+Controller()}{CameraController()}}
+{\footnotesize\ttfamily Game\+::\+Component\+::\+Camera\+Controller\+::\+Camera\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$}]{game\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a6cbf885ec5705638f392a40bb762bd9c}\label{class_game_1_1_component_1_1_camera_controller_a6cbf885ec5705638f392a40bb762bd9c}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!````~Camera\+Controller@{$\sim$\+Camera\+Controller}}
+\index{````~Camera\+Controller@{$\sim$\+Camera\+Controller}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{$\sim$\+Camera\+Controller()}{~CameraController()}}
+{\footnotesize\ttfamily virtual Game\+::\+Component\+::\+Camera\+Controller\+::$\sim$\+Camera\+Controller (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a8076e01593ef38a83c708854906abb3b}\label{class_game_1_1_component_1_1_camera_controller_a8076e01593ef38a83c708854906abb3b}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Camera\+Controller\+::deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a044d30f65879a1467f44aa3eb8ad7bce}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a0bdce3356bde07f277e0c58409c1f55d}\label{class_game_1_1_component_1_1_camera_controller_a0bdce3356bde07f277e0c58409c1f55d}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!fixed\+Update@{fixed\+Update}}
+\index{fixed\+Update@{fixed\+Update}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{fixed\+Update()}{fixedUpdate()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Camera\+Controller\+::fixed\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_update_a615c127a4729f73713e5eaeee538854b}{Beer\+Engine\+::\+Component\+::\+I\+Update}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a5b4d4521b4ceeba0f98ba3663015725c}\label{class_game_1_1_component_1_1_camera_controller_a5b4d4521b4ceeba0f98ba3663015725c}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!operator=@{operator=}}
+\index{operator=@{operator=}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller}{Camera\+Controller}}\& Game\+::\+Component\+::\+Camera\+Controller\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller}{Camera\+Controller}} const \&}]{rhs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a1a7f36bf3f1f25b0edd404146f0c3289}\label{class_game_1_1_component_1_1_camera_controller_a1a7f36bf3f1f25b0edd404146f0c3289}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!serialize@{serialize}}
+\index{serialize@{serialize}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily nlohmann\+::json Game\+::\+Component\+::\+Camera\+Controller\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a4d82d8a6b22b93514e0585fa4073041f}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_afe64421588babbf921d77756fa38a48b}\label{class_game_1_1_component_1_1_camera_controller_afe64421588babbf921d77756fa38a48b}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!start@{start}}
+\index{start@{start}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Camera\+Controller\+::start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_start_aa3e25e86e20c46cdaefc6f6d7f21e495}{Beer\+Engine\+::\+Component\+::\+I\+Start}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a675655ee2e18382203f1afa2329a1739}\label{class_game_1_1_component_1_1_camera_controller_a675655ee2e18382203f1afa2329a1739}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!update@{update}}
+\index{update@{update}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Camera\+Controller\+::update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_update_aeeda0aa303175720e449b4c51d9867dd}{Beer\+Engine\+::\+Component\+::\+I\+Update}}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a5746cb5b8916dd3839a38b83018ae1ac}\label{class_game_1_1_component_1_1_camera_controller_a5746cb5b8916dd3839a38b83018ae1ac}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{o,  }\item[{\mbox{\hyperlink{class_game_1_1_component_1_1_camera_controller}{Camera\+Controller}} const \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_a5e619d2b8d42b5b55e743392bdd18ebd}\label{class_game_1_1_component_1_1_camera_controller_a5e619d2b8d42b5b55e743392bdd18ebd}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!cam@{cam}}
+\index{cam@{cam}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{cam}{cam}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_camera}{Beer\+Engine\+::\+Camera}}$\ast$ Game\+::\+Component\+::\+Camera\+Controller\+::cam}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_camera_controller_ab87262dadb4c07a9777393d85ad0ed28}\label{class_game_1_1_component_1_1_camera_controller_ab87262dadb4c07a9777393d85ad0ed28}} 
+\index{Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}!last\+Mouse\+Pos@{last\+Mouse\+Pos}}
+\index{last\+Mouse\+Pos@{last\+Mouse\+Pos}!Game\+::\+Component\+::\+Camera\+Controller@{Game\+::\+Component\+::\+Camera\+Controller}}
+\subsubsection{\texorpdfstring{last\+Mouse\+Pos}{lastMousePos}}
+{\footnotesize\ttfamily glm\+::vec2 Game\+::\+Component\+::\+Camera\+Controller\+::last\+Mouse\+Pos}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Game/\+Components/\mbox{\hyperlink{_camera_controller_8hpp}{Camera\+Controller.\+hpp}}\end{DoxyCompactItemize}

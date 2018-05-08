@@ -1,0 +1,262 @@
+\hypertarget{class_game_1_1_component_1_1_map}{}\section{Game\+:\+:Component\+:\+:Map Class Reference}
+\label{class_game_1_1_component_1_1_map}\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+
+
+{\ttfamily \#include $<$Map.\+hpp$>$}
+
+Inheritance diagram for Game\+:\+:Component\+:\+:Map\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.875000cm]{class_game_1_1_component_1_1_map}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_map_acf6edbdd27dc4bc20c47718bcdf9cb3d}{Map}} (\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$game\+Object)
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_map_a275fd057bb57bdfc5c35651d8cc3a464}{$\sim$\+Map}} ()
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_map_a76e2153b5f69646ba7cf77b6cd0f5096}{start}} (void)
+\item 
+void \mbox{\hyperlink{class_game_1_1_component_1_1_map_aaa3da00869732537ac17430774fd8357}{set\+Map}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$map, size\+\_\+t sizeX, size\+\_\+t sizeY)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_map_ae1900809e3369230a8dd3678a397ba98}{map\+Update}} (int x, int y, int value)
+\item 
+void \mbox{\hyperlink{class_game_1_1_component_1_1_map_ace1c03291889d1240e2c531496878c9f}{draw\+Map}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$shader)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_map_af062dd2c3e677c1d3d9204cac8508dde}{render\+UI}} (struct nk\+\_\+context $\ast$ctx)
+\item 
+glm\+::vec2 \mbox{\hyperlink{class_game_1_1_component_1_1_map_a0d11f1fd95d17f380ffdc65e7ef9dec9}{world\+To\+Map}} (glm\+::vec3 pos)
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_game_1_1_component_1_1_map_ad138a7749f15feeba72af1707befc6ff}{map\+To\+World}} (glm\+::vec2 pos, float y=0.\+5)
+\item 
+bool \mbox{\hyperlink{class_game_1_1_component_1_1_map_a9d6733cf76fdff6d66c5154f43c688ea}{has\+Character}} (glm\+::vec2 pos)
+\item 
+bool \mbox{\hyperlink{class_game_1_1_component_1_1_map_ad0e98473333fa6cc7d153802b7669b34}{has\+Bomb}} (glm\+::vec3 pos)
+\item 
+bool \mbox{\hyperlink{class_game_1_1_component_1_1_map_a58dde006ce5b554a6ac63dc59bb480e1}{can\+Walk}} (glm\+::vec2 pos)
+\item 
+bool \mbox{\hyperlink{class_game_1_1_component_1_1_map_a7a6621502aa66db7afdb6c63494c6790}{can\+Walk}} (glm\+::vec3 pos)
+\item 
+void \mbox{\hyperlink{class_game_1_1_component_1_1_map_aa62669035c53c17e1a7b680d28514575}{map\+Update}} (glm\+::vec3 pos, int value)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_a9630a4fd7c1ba8e2d463bb4f8f1ce4e9}{create\+Crate}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$shader, glm\+::vec3 scale, glm\+::vec3 pos, \mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}} kinematic)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_ace1a6fc80c32206aea8ffc382a30e879}{add\+Item}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$shader, glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_a89581e53a7780b1ee3edffc15f5880cd}{create\+Item}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$shader, glm\+::vec3 pos)
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_a860f2c45a23d20303aa5e04261ac462d}{add\+Crate}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$shader, glm\+::vec3 scale, glm\+::vec3 pos, \mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}} kinematic)
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_ab7d5bd531fc73fa3c4697e6d7fd909f2}{add\+Destoyable\+Crate}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$shader, glm\+::vec3 scale, glm\+::vec3 pos, \mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}} kinematic)
+\item 
+virtual nlohmann\+::json \mbox{\hyperlink{class_game_1_1_component_1_1_map_a220f971266cc2b3c5f7b6a10639ec8e6}{serialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_map_a5f4f196675adfac9690cc2009734d516}{deserialize}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$$\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_abf30ae805d38999899c93e65227bf32d}{\+\_\+map}}
+\item 
+int \mbox{\hyperlink{class_game_1_1_component_1_1_map_af11ce6d26c4abbdf935e953083ee0f8b}{\+\_\+sizeX}}
+\item 
+int \mbox{\hyperlink{class_game_1_1_component_1_1_map_a723aed0311377486a73e7828ca91dddf}{\+\_\+sizeY}}
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_player}{Game\+::\+Component\+::\+Player}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_map_a4f9d90187680d88e8e8c3f1496e70eb5}{\+\_\+player}}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_transform}{Beer\+Engine\+::\+Transform}} \& \mbox{\hyperlink{class_game_1_1_component_1_1_map_a6e39d4388ddedb36803dd483ec22acda}{\+\_\+transform}}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_acf6edbdd27dc4bc20c47718bcdf9cb3d}\label{class_game_1_1_component_1_1_map_acf6edbdd27dc4bc20c47718bcdf9cb3d}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!Map@{Map}}
+\index{Map@{Map}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Game\+::\+Component\+::\+Map\+::\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$}]{game\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a275fd057bb57bdfc5c35651d8cc3a464}\label{class_game_1_1_component_1_1_map_a275fd057bb57bdfc5c35651d8cc3a464}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!````~Map@{$\sim$\+Map}}
+\index{````~Map@{$\sim$\+Map}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{$\sim$\+Map()}{~Map()}}
+{\footnotesize\ttfamily Game\+::\+Component\+::\+Map\+::$\sim$\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a860f2c45a23d20303aa5e04261ac462d}\label{class_game_1_1_component_1_1_map_a860f2c45a23d20303aa5e04261ac462d}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!add\+Crate@{add\+Crate}}
+\index{add\+Crate@{add\+Crate}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{add\+Crate()}{addCrate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}}$\ast$ Game\+::\+Component\+::\+Map\+::add\+Crate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$}]{shader,  }\item[{glm\+::vec3}]{scale,  }\item[{glm\+::vec3}]{pos,  }\item[{\mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}}}]{kinematic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_ab7d5bd531fc73fa3c4697e6d7fd909f2}\label{class_game_1_1_component_1_1_map_ab7d5bd531fc73fa3c4697e6d7fd909f2}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!add\+Destoyable\+Crate@{add\+Destoyable\+Crate}}
+\index{add\+Destoyable\+Crate@{add\+Destoyable\+Crate}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{add\+Destoyable\+Crate()}{addDestoyableCrate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}}$\ast$ Game\+::\+Component\+::\+Map\+::add\+Destoyable\+Crate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$}]{shader,  }\item[{glm\+::vec3}]{scale,  }\item[{glm\+::vec3}]{pos,  }\item[{\mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}}}]{kinematic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_ace1a6fc80c32206aea8ffc382a30e879}\label{class_game_1_1_component_1_1_map_ace1a6fc80c32206aea8ffc382a30e879}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{add\+Item()}{addItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}}$\ast$ Game\+::\+Component\+::\+Map\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$}]{shader,  }\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a58dde006ce5b554a6ac63dc59bb480e1}\label{class_game_1_1_component_1_1_map_a58dde006ce5b554a6ac63dc59bb480e1}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!can\+Walk@{can\+Walk}}
+\index{can\+Walk@{can\+Walk}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{can\+Walk()}{canWalk()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Game\+::\+Component\+::\+Map\+::can\+Walk (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a7a6621502aa66db7afdb6c63494c6790}\label{class_game_1_1_component_1_1_map_a7a6621502aa66db7afdb6c63494c6790}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!can\+Walk@{can\+Walk}}
+\index{can\+Walk@{can\+Walk}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{can\+Walk()}{canWalk()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Game\+::\+Component\+::\+Map\+::can\+Walk (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a9630a4fd7c1ba8e2d463bb4f8f1ce4e9}\label{class_game_1_1_component_1_1_map_a9630a4fd7c1ba8e2d463bb4f8f1ce4e9}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!create\+Crate@{create\+Crate}}
+\index{create\+Crate@{create\+Crate}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{create\+Crate()}{createCrate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}}$\ast$ Game\+::\+Component\+::\+Map\+::create\+Crate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$}]{shader,  }\item[{glm\+::vec3}]{scale,  }\item[{glm\+::vec3}]{pos,  }\item[{\mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}}}]{kinematic }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a89581e53a7780b1ee3edffc15f5880cd}\label{class_game_1_1_component_1_1_map_a89581e53a7780b1ee3edffc15f5880cd}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!create\+Item@{create\+Item}}
+\index{create\+Item@{create\+Item}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{create\+Item()}{createItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}}$\ast$ Game\+::\+Component\+::\+Map\+::create\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$}]{shader,  }\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a5f4f196675adfac9690cc2009734d516}\label{class_game_1_1_component_1_1_map_a5f4f196675adfac9690cc2009734d516}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Map\+::deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a044d30f65879a1467f44aa3eb8ad7bce}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_ace1c03291889d1240e2c531496878c9f}\label{class_game_1_1_component_1_1_map_ace1c03291889d1240e2c531496878c9f}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!draw\+Map@{draw\+Map}}
+\index{draw\+Map@{draw\+Map}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{draw\+Map()}{drawMap()}}
+{\footnotesize\ttfamily void Game\+::\+Component\+::\+Map\+::draw\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_shader_program}{Beer\+Engine\+::\+Graphics\+::\+Shader\+Program}} $\ast$}]{shader }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_ad0e98473333fa6cc7d153802b7669b34}\label{class_game_1_1_component_1_1_map_ad0e98473333fa6cc7d153802b7669b34}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!has\+Bomb@{has\+Bomb}}
+\index{has\+Bomb@{has\+Bomb}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{has\+Bomb()}{hasBomb()}}
+{\footnotesize\ttfamily bool Game\+::\+Component\+::\+Map\+::has\+Bomb (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a9d6733cf76fdff6d66c5154f43c688ea}\label{class_game_1_1_component_1_1_map_a9d6733cf76fdff6d66c5154f43c688ea}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!has\+Character@{has\+Character}}
+\index{has\+Character@{has\+Character}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{has\+Character()}{hasCharacter()}}
+{\footnotesize\ttfamily bool Game\+::\+Component\+::\+Map\+::has\+Character (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_ad138a7749f15feeba72af1707befc6ff}\label{class_game_1_1_component_1_1_map_ad138a7749f15feeba72af1707befc6ff}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!map\+To\+World@{map\+To\+World}}
+\index{map\+To\+World@{map\+To\+World}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{map\+To\+World()}{mapToWorld()}}
+{\footnotesize\ttfamily glm\+::vec3 Game\+::\+Component\+::\+Map\+::map\+To\+World (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{pos,  }\item[{float}]{y = {\ttfamily 0.5} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_ae1900809e3369230a8dd3678a397ba98}\label{class_game_1_1_component_1_1_map_ae1900809e3369230a8dd3678a397ba98}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!map\+Update@{map\+Update}}
+\index{map\+Update@{map\+Update}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{map\+Update()}{mapUpdate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Map\+::map\+Update (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_aa62669035c53c17e1a7b680d28514575}\label{class_game_1_1_component_1_1_map_aa62669035c53c17e1a7b680d28514575}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!map\+Update@{map\+Update}}
+\index{map\+Update@{map\+Update}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{map\+Update()}{mapUpdate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Game\+::\+Component\+::\+Map\+::map\+Update (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_af062dd2c3e677c1d3d9204cac8508dde}\label{class_game_1_1_component_1_1_map_af062dd2c3e677c1d3d9204cac8508dde}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!render\+UI@{render\+UI}}
+\index{render\+UI@{render\+UI}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{render\+U\+I()}{renderUI()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Map\+::render\+UI (\begin{DoxyParamCaption}\item[{struct nk\+\_\+context $\ast$}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_u_i_a4a049b1749c1bce80e1fd63538e9fae3}{Beer\+Engine\+::\+Component\+::\+I\+UI}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a220f971266cc2b3c5f7b6a10639ec8e6}\label{class_game_1_1_component_1_1_map_a220f971266cc2b3c5f7b6a10639ec8e6}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!serialize@{serialize}}
+\index{serialize@{serialize}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily virtual nlohmann\+::json Game\+::\+Component\+::\+Map\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a4d82d8a6b22b93514e0585fa4073041f}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_aaa3da00869732537ac17430774fd8357}\label{class_game_1_1_component_1_1_map_aaa3da00869732537ac17430774fd8357}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!set\+Map@{set\+Map}}
+\index{set\+Map@{set\+Map}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{set\+Map()}{setMap()}}
+{\footnotesize\ttfamily void Game\+::\+Component\+::\+Map\+::set\+Map (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{map,  }\item[{size\+\_\+t}]{sizeX,  }\item[{size\+\_\+t}]{sizeY }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a76e2153b5f69646ba7cf77b6cd0f5096}\label{class_game_1_1_component_1_1_map_a76e2153b5f69646ba7cf77b6cd0f5096}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!start@{start}}
+\index{start@{start}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Map\+::start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_start_aa3e25e86e20c46cdaefc6f6d7f21e495}{Beer\+Engine\+::\+Component\+::\+I\+Start}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a0d11f1fd95d17f380ffdc65e7ef9dec9}\label{class_game_1_1_component_1_1_map_a0d11f1fd95d17f380ffdc65e7ef9dec9}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!world\+To\+Map@{world\+To\+Map}}
+\index{world\+To\+Map@{world\+To\+Map}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{world\+To\+Map()}{worldToMap()}}
+{\footnotesize\ttfamily glm\+::vec2 Game\+::\+Component\+::\+Map\+::world\+To\+Map (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_abf30ae805d38999899c93e65227bf32d}\label{class_game_1_1_component_1_1_map_abf30ae805d38999899c93e65227bf32d}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!\+\_\+map@{\+\_\+map}}
+\index{\+\_\+map@{\+\_\+map}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{\+\_\+map}{\_map}}
+{\footnotesize\ttfamily int$\ast$$\ast$ Game\+::\+Component\+::\+Map\+::\+\_\+map}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a4f9d90187680d88e8e8c3f1496e70eb5}\label{class_game_1_1_component_1_1_map_a4f9d90187680d88e8e8c3f1496e70eb5}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!\+\_\+player@{\+\_\+player}}
+\index{\+\_\+player@{\+\_\+player}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{\+\_\+player}{\_player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_1_1_component_1_1_player}{Game\+::\+Component\+::\+Player}}$\ast$ Game\+::\+Component\+::\+Map\+::\+\_\+player}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_af11ce6d26c4abbdf935e953083ee0f8b}\label{class_game_1_1_component_1_1_map_af11ce6d26c4abbdf935e953083ee0f8b}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!\+\_\+sizeX@{\+\_\+sizeX}}
+\index{\+\_\+sizeX@{\+\_\+sizeX}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{\+\_\+sizeX}{\_sizeX}}
+{\footnotesize\ttfamily int Game\+::\+Component\+::\+Map\+::\+\_\+sizeX}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a723aed0311377486a73e7828ca91dddf}\label{class_game_1_1_component_1_1_map_a723aed0311377486a73e7828ca91dddf}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!\+\_\+sizeY@{\+\_\+sizeY}}
+\index{\+\_\+sizeY@{\+\_\+sizeY}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{\+\_\+sizeY}{\_sizeY}}
+{\footnotesize\ttfamily int Game\+::\+Component\+::\+Map\+::\+\_\+sizeY}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_map_a6e39d4388ddedb36803dd483ec22acda}\label{class_game_1_1_component_1_1_map_a6e39d4388ddedb36803dd483ec22acda}} 
+\index{Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}!\+\_\+transform@{\+\_\+transform}}
+\index{\+\_\+transform@{\+\_\+transform}!Game\+::\+Component\+::\+Map@{Game\+::\+Component\+::\+Map}}
+\subsubsection{\texorpdfstring{\+\_\+transform}{\_transform}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_transform}{Beer\+Engine\+::\+Transform}}\& Game\+::\+Component\+::\+Map\+::\+\_\+transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Game/\+Components/\mbox{\hyperlink{_map_8hpp}{Map.\+hpp}}\end{DoxyCompactItemize}

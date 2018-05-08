@@ -1,0 +1,169 @@
+\hypertarget{class_game_1_1_component_1_1_item}{}\section{Game\+:\+:Component\+:\+:Item Class Reference}
+\label{class_game_1_1_component_1_1_item}\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+
+
+{\ttfamily \#include $<$Item.\+hpp$>$}
+
+Inheritance diagram for Game\+:\+:Component\+:\+:Item\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.021277cm]{class_game_1_1_component_1_1_item}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_item_a55d47753d2ea3338e02453a2aeab78ff}{Item}} (\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$game\+Object)
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_item_a1ffc774ac5086f6f918d913f70e0322f}{$\sim$\+Item}} ()
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_a69276f0e6bbd44144a5618cfe89f526a}{start}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_a3402bfd1509d12eb16fadbc37222406d}{fixed\+Update}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_ac4e5deede6846817d6c818f8c8404fdc}{update}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_a02230f3771a83e4a77035cb0ec4c04be}{on\+Trigger\+Stay}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{Beer\+Engine\+::\+Component\+::\+A\+Collider}} $\ast$other)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_ae5369b261c5d6212de4b3f21ce02c672}{on\+Trigger\+Enter}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{Beer\+Engine\+::\+Component\+::\+A\+Collider}} $\ast$other)
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_a33c72fb48b46ce7b67b924472d0f3456}{on\+Trigger\+Exit}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{Beer\+Engine\+::\+Component\+::\+A\+Collider}} $\ast$other)
+\item 
+nlohmann\+::json \mbox{\hyperlink{class_game_1_1_component_1_1_item_a8aae88fd10b852e81fbaa16b5912a4ab}{serialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_game_1_1_component_1_1_item_a3a9cb5ba936a644f23976d9c9e9bbdce}{deserialize}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_transform}{Beer\+Engine\+::\+Transform}} \& \mbox{\hyperlink{class_game_1_1_component_1_1_item_a8fc387420298a557380ec1d9a39c964c}{\+\_\+transform}}
+\item 
+\mbox{\hyperlink{namespace_game_1_1_component_a95e2dc2d86d1c4789cc068f51d59ec29}{Item\+Type}} \mbox{\hyperlink{class_game_1_1_component_1_1_item_a4cb117bf44cb719e75921b7a4489646d}{\+\_\+type}}
+\item 
+\mbox{\hyperlink{class_game_1_1_component_1_1_map}{Game\+::\+Component\+::\+Map}} $\ast$ \mbox{\hyperlink{class_game_1_1_component_1_1_item_a4c483cc36f7f36b79cf1d0e13cd73afc}{map}}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a55d47753d2ea3338e02453a2aeab78ff}\label{class_game_1_1_component_1_1_item_a55d47753d2ea3338e02453a2aeab78ff}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!Item@{Item}}
+\index{Item@{Item}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{Item()}{Item()}}
+{\footnotesize\ttfamily Game\+::\+Component\+::\+Item\+::\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Beer\+Engine\+::\+Game\+Object}} $\ast$}]{game\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a1ffc774ac5086f6f918d913f70e0322f}\label{class_game_1_1_component_1_1_item_a1ffc774ac5086f6f918d913f70e0322f}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!````~Item@{$\sim$\+Item}}
+\index{````~Item@{$\sim$\+Item}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{$\sim$\+Item()}{~Item()}}
+{\footnotesize\ttfamily Game\+::\+Component\+::\+Item\+::$\sim$\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a3a9cb5ba936a644f23976d9c9e9bbdce}\label{class_game_1_1_component_1_1_item_a3a9cb5ba936a644f23976d9c9e9bbdce}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a044d30f65879a1467f44aa3eb8ad7bce}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a3402bfd1509d12eb16fadbc37222406d}\label{class_game_1_1_component_1_1_item_a3402bfd1509d12eb16fadbc37222406d}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!fixed\+Update@{fixed\+Update}}
+\index{fixed\+Update@{fixed\+Update}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{fixed\+Update()}{fixedUpdate()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::fixed\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_update_a615c127a4729f73713e5eaeee538854b}{Beer\+Engine\+::\+Component\+::\+I\+Update}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_ae5369b261c5d6212de4b3f21ce02c672}\label{class_game_1_1_component_1_1_item_ae5369b261c5d6212de4b3f21ce02c672}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!on\+Trigger\+Enter@{on\+Trigger\+Enter}}
+\index{on\+Trigger\+Enter@{on\+Trigger\+Enter}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{on\+Trigger\+Enter()}{onTriggerEnter()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::on\+Trigger\+Enter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{Beer\+Engine\+::\+Component\+::\+A\+Collider}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_trigger_enter_aab0d007cc2a256bc5aa542cd7dfdeef0}{Beer\+Engine\+::\+Component\+::\+I\+Trigger\+Enter}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a33c72fb48b46ce7b67b924472d0f3456}\label{class_game_1_1_component_1_1_item_a33c72fb48b46ce7b67b924472d0f3456}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!on\+Trigger\+Exit@{on\+Trigger\+Exit}}
+\index{on\+Trigger\+Exit@{on\+Trigger\+Exit}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{on\+Trigger\+Exit()}{onTriggerExit()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::on\+Trigger\+Exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{Beer\+Engine\+::\+Component\+::\+A\+Collider}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_trigger_exit_ad5bc744f738cb2c52de40b243954967f}{Beer\+Engine\+::\+Component\+::\+I\+Trigger\+Exit}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a02230f3771a83e4a77035cb0ec4c04be}\label{class_game_1_1_component_1_1_item_a02230f3771a83e4a77035cb0ec4c04be}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!on\+Trigger\+Stay@{on\+Trigger\+Stay}}
+\index{on\+Trigger\+Stay@{on\+Trigger\+Stay}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{on\+Trigger\+Stay()}{onTriggerStay()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::on\+Trigger\+Stay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{Beer\+Engine\+::\+Component\+::\+A\+Collider}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_trigger_stay_ae0b762108ab5484071657e13f7a2cbd7}{Beer\+Engine\+::\+Component\+::\+I\+Trigger\+Stay}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a8aae88fd10b852e81fbaa16b5912a4ab}\label{class_game_1_1_component_1_1_item_a8aae88fd10b852e81fbaa16b5912a4ab}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!serialize@{serialize}}
+\index{serialize@{serialize}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily nlohmann\+::json Game\+::\+Component\+::\+Item\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a4d82d8a6b22b93514e0585fa4073041f}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a69276f0e6bbd44144a5618cfe89f526a}\label{class_game_1_1_component_1_1_item_a69276f0e6bbd44144a5618cfe89f526a}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!start@{start}}
+\index{start@{start}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_start_aa3e25e86e20c46cdaefc6f6d7f21e495}{Beer\+Engine\+::\+Component\+::\+I\+Start}}.
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_ac4e5deede6846817d6c818f8c8404fdc}\label{class_game_1_1_component_1_1_item_ac4e5deede6846817d6c818f8c8404fdc}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!update@{update}}
+\index{update@{update}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Game\+::\+Component\+::\+Item\+::update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_update_aeeda0aa303175720e449b4c51d9867dd}{Beer\+Engine\+::\+Component\+::\+I\+Update}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a8fc387420298a557380ec1d9a39c964c}\label{class_game_1_1_component_1_1_item_a8fc387420298a557380ec1d9a39c964c}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!\+\_\+transform@{\+\_\+transform}}
+\index{\+\_\+transform@{\+\_\+transform}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{\+\_\+transform}{\_transform}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_transform}{Beer\+Engine\+::\+Transform}}\& Game\+::\+Component\+::\+Item\+::\+\_\+transform}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a4cb117bf44cb719e75921b7a4489646d}\label{class_game_1_1_component_1_1_item_a4cb117bf44cb719e75921b7a4489646d}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!\+\_\+type@{\+\_\+type}}
+\index{\+\_\+type@{\+\_\+type}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{\+\_\+type}{\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_game_1_1_component_a95e2dc2d86d1c4789cc068f51d59ec29}{Item\+Type}} Game\+::\+Component\+::\+Item\+::\+\_\+type}
+
+\mbox{\Hypertarget{class_game_1_1_component_1_1_item_a4c483cc36f7f36b79cf1d0e13cd73afc}\label{class_game_1_1_component_1_1_item_a4c483cc36f7f36b79cf1d0e13cd73afc}} 
+\index{Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}!map@{map}}
+\index{map@{map}!Game\+::\+Component\+::\+Item@{Game\+::\+Component\+::\+Item}}
+\subsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_1_1_component_1_1_map}{Game\+::\+Component\+::\+Map}}$\ast$ Game\+::\+Component\+::\+Item\+::map}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Game/\+Components/\mbox{\hyperlink{_item_8hpp}{Item.\+hpp}}\end{DoxyCompactItemize}

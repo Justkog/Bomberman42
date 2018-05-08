@@ -1,0 +1,276 @@
+\hypertarget{class_beer_engine_1_1_transform}{}\section{Beer\+Engine\+:\+:Transform Class Reference}
+\label{class_beer_engine_1_1_transform}\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+
+
+classe representant la transformation d\textquotesingle{}un object, position, rotation...  
+
+
+
+
+{\ttfamily \#include $<$Transform.\+hpp$>$}
+
+Inheritance diagram for Beer\+Engine\+:\+:Transform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_beer_engine_1_1_transform}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_transform_aef3a2967a1503883c86bd74a3c6921fc}{Transform}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur Constructeur de la classe \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_transform_aaca147072f231beb5a0fe8b32f23b85d}{translate}} (glm\+::vec3 pos)
+\begin{DoxyCompactList}\small\item\em deplacer l\textquotesingle{}objet Methode qui permet de deplacer l\textquotesingle{}objet grace a un vecteur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_transform_a5f07e949bf65200de14b97f8c850bd43}{translate}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em deplacer l\textquotesingle{}objet Methode qui permet de deplacer l\textquotesingle{}objet grace au axe x, y et z \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_a82f0d0d75290c73e5ae8267e2d76f83b}{forward}} (void)
+\begin{DoxyCompactList}\small\item\em recuperer le vecteur d\textquotesingle{}avancement Methode qui permet de recuperer le vecteur d\textquotesingle{}avancement par rapport a la rotation de l\textquotesingle{}objet, \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_a5344e1be69d47951f434efdd7788ab4b}{left}} (void)
+\begin{DoxyCompactList}\small\item\em recuperer le vecteur de gauche Methode qui permet de recuperer le vecteur de gauche par rapport a la rotation de l\textquotesingle{}objet, \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_afcd8cfe1fcd321abcb0950127ee4f76d}{right}} (void)
+\begin{DoxyCompactList}\small\item\em recuperer le vecteur de droite Methode qui permet de recuperer le vecteur de par rapport a la rotation de l\textquotesingle{}objet, \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_a5fbee07c1e2151d649d2eb82ec854ac0}{top}} (void)
+\begin{DoxyCompactList}\small\item\em recuperer le vecteur du haut Methode qui permet de recuperer le vecteur du haut par rapport a la rotation de l\textquotesingle{}objet, \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_a2699038279b5b41831ff706c5ccc9348}{get\+World\+Position}} ()
+\begin{DoxyCompactList}\small\item\em recuperer la position dans le monde Methode qui permet de recuperer le vecteur de position de l\textquotesingle{}objet dans le monde, en prenant en compte le parents \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_a7aaf81b4672307edc39e9b208430ec59}{get\+World\+Rotate}} (glm\+::vec3 v)
+\begin{DoxyCompactList}\small\item\em effecteur une rotation Methode qui permet d\textquotesingle{}effecter une rotation sur le vecteur donner par rapport a l\textquotesingle{}objet et ses parents. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_beer_engine_1_1_transform_a9b7d3168270eb800c3e40af55c55fdc5}{get\+Mat4}} (bool is\+Camera=false)
+\begin{DoxyCompactList}\small\item\em recupere la matrice de l\textquotesingle{}objet Methode qui permet de recuperer la matrice de l\textquotesingle{}objet \end{DoxyCompactList}\item 
+virtual nlohmann\+::json \mbox{\hyperlink{class_beer_engine_1_1_transform_aafa05f7ad8f420d5aa35671fd1f65d37}{serialize}} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}} \mbox{\hyperlink{class_beer_engine_1_1_transform_a886b373a8708f3ea638925d49c51fff4}{Deserialize}} (const nlohmann\+::json \&j)
+\item 
+static \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_transform_ad3a0ee89fdc0113a71de681ae099dd52}{Deserialize\+Ptr}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_transform_a1096d0e1363f83258f60cbf766f7443f}{parent}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_ae27065923507f46d0257c9f77e37161e}{pivot}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_ab5d559938ee0d636faaf10750733d974}{position}}
+\item 
+glm\+::quat \mbox{\hyperlink{class_beer_engine_1_1_transform_a0b2499263e149d0d25ad0661f7f26069}{rotation}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_beer_engine_1_1_transform_aec3b8b1a22e1b01b36f483cf7684d721}{scale}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+classe representant la transformation d\textquotesingle{}un object, position, rotation... 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_aef3a2967a1503883c86bd74a3c6921fc}\label{class_beer_engine_1_1_transform_aef3a2967a1503883c86bd74a3c6921fc}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!Transform@{Transform}}
+\index{Transform@{Transform}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{Transform()}{Transform()}}
+{\footnotesize\ttfamily Beer\+Engine\+::\+Transform\+::\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur Constructeur de la classe \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}}. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a886b373a8708f3ea638925d49c51fff4}\label{class_beer_engine_1_1_transform_a886b373a8708f3ea638925d49c51fff4}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}} Beer\+Engine\+::\+Transform\+::\+Deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_ad3a0ee89fdc0113a71de681ae099dd52}\label{class_beer_engine_1_1_transform_ad3a0ee89fdc0113a71de681ae099dd52}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!Deserialize\+Ptr@{Deserialize\+Ptr}}
+\index{Deserialize\+Ptr@{Deserialize\+Ptr}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{Deserialize\+Ptr()}{DeserializePtr()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}}$\ast$ Beer\+Engine\+::\+Transform\+::\+Deserialize\+Ptr (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a82f0d0d75290c73e5ae8267e2d76f83b}\label{class_beer_engine_1_1_transform_a82f0d0d75290c73e5ae8267e2d76f83b}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!forward@{forward}}
+\index{forward@{forward}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::forward (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recuperer le vecteur d\textquotesingle{}avancement Methode qui permet de recuperer le vecteur d\textquotesingle{}avancement par rapport a la rotation de l\textquotesingle{}objet, 
+
+\begin{DoxyReturn}{Returns}
+vecteur d\textquotesingle{}avancement 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a9b7d3168270eb800c3e40af55c55fdc5}\label{class_beer_engine_1_1_transform_a9b7d3168270eb800c3e40af55c55fdc5}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!get\+Mat4@{get\+Mat4}}
+\index{get\+Mat4@{get\+Mat4}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{get\+Mat4()}{getMat4()}}
+{\footnotesize\ttfamily glm\+::mat4 Beer\+Engine\+::\+Transform\+::get\+Mat4 (\begin{DoxyParamCaption}\item[{bool}]{is\+Camera = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+recupere la matrice de l\textquotesingle{}objet Methode qui permet de recuperer la matrice de l\textquotesingle{}objet 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Camera} & \+: permet de savoir si c\textquotesingle{}est une camera pour inverser la formule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+matrice 4 x 4 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a2699038279b5b41831ff706c5ccc9348}\label{class_beer_engine_1_1_transform_a2699038279b5b41831ff706c5ccc9348}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!get\+World\+Position@{get\+World\+Position}}
+\index{get\+World\+Position@{get\+World\+Position}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{get\+World\+Position()}{getWorldPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::get\+World\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+recuperer la position dans le monde Methode qui permet de recuperer le vecteur de position de l\textquotesingle{}objet dans le monde, en prenant en compte le parents 
+
+\begin{DoxyReturn}{Returns}
+vecteur de position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a7aaf81b4672307edc39e9b208430ec59}\label{class_beer_engine_1_1_transform_a7aaf81b4672307edc39e9b208430ec59}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!get\+World\+Rotate@{get\+World\+Rotate}}
+\index{get\+World\+Rotate@{get\+World\+Rotate}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{get\+World\+Rotate()}{getWorldRotate()}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::get\+World\+Rotate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{v }\end{DoxyParamCaption})}
+
+
+
+effecteur une rotation Methode qui permet d\textquotesingle{}effecter une rotation sur le vecteur donner par rapport a l\textquotesingle{}objet et ses parents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \+: vecteur qui subira la rotation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vecteur tourné 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a5344e1be69d47951f434efdd7788ab4b}\label{class_beer_engine_1_1_transform_a5344e1be69d47951f434efdd7788ab4b}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!left@{left}}
+\index{left@{left}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{left()}{left()}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recuperer le vecteur de gauche Methode qui permet de recuperer le vecteur de gauche par rapport a la rotation de l\textquotesingle{}objet, 
+
+\begin{DoxyReturn}{Returns}
+vecteur de gauche 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_afcd8cfe1fcd321abcb0950127ee4f76d}\label{class_beer_engine_1_1_transform_afcd8cfe1fcd321abcb0950127ee4f76d}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!right@{right}}
+\index{right@{right}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{right()}{right()}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::right (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recuperer le vecteur de droite Methode qui permet de recuperer le vecteur de par rapport a la rotation de l\textquotesingle{}objet, 
+
+\begin{DoxyReturn}{Returns}
+vecteur de droite 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_aafa05f7ad8f420d5aa35671fd1f65d37}\label{class_beer_engine_1_1_transform_aafa05f7ad8f420d5aa35671fd1f65d37}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!serialize@{serialize}}
+\index{serialize@{serialize}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily virtual nlohmann\+::json Beer\+Engine\+::\+Transform\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_json_serializable_a17689cbd8fe282c570bd026cc1be5b3b}{Beer\+Engine\+::\+Json\+Serializable}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a5fbee07c1e2151d649d2eb82ec854ac0}\label{class_beer_engine_1_1_transform_a5fbee07c1e2151d649d2eb82ec854ac0}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!top@{top}}
+\index{top@{top}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{top()}{top()}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::top (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+recuperer le vecteur du haut Methode qui permet de recuperer le vecteur du haut par rapport a la rotation de l\textquotesingle{}objet, 
+
+\begin{DoxyReturn}{Returns}
+vecteur du haut 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_aaca147072f231beb5a0fe8b32f23b85d}\label{class_beer_engine_1_1_transform_aaca147072f231beb5a0fe8b32f23b85d}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!translate@{translate}}
+\index{translate@{translate}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{translate()}{translate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Transform\+::translate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+
+
+deplacer l\textquotesingle{}objet Methode qui permet de deplacer l\textquotesingle{}objet grace a un vecteur 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \+: vecteur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a5f07e949bf65200de14b97f8c850bd43}\label{class_beer_engine_1_1_transform_a5f07e949bf65200de14b97f8c850bd43}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!translate@{translate}}
+\index{translate@{translate}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{translate()}{translate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Transform\+::translate (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})}
+
+
+
+deplacer l\textquotesingle{}objet Methode qui permet de deplacer l\textquotesingle{}objet grace au axe x, y et z 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \+: axe x \\
+\hline
+{\em y} & \+: axe y \\
+\hline
+{\em z} & \+: axe z \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_transform_a1096d0e1363f83258f60cbf766f7443f}\label{class_beer_engine_1_1_transform_a1096d0e1363f83258f60cbf766f7443f}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!parent@{parent}}
+\index{parent@{parent}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}}$\ast$ Beer\+Engine\+::\+Transform\+::parent}
+
+\mbox{\hyperlink{class_beer_engine_1_1_transform}{Transform}} parent d\textquotesingle{}un objet \mbox{\Hypertarget{class_beer_engine_1_1_transform_ae27065923507f46d0257c9f77e37161e}\label{class_beer_engine_1_1_transform_ae27065923507f46d0257c9f77e37161e}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!pivot@{pivot}}
+\index{pivot@{pivot}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{pivot}{pivot}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::pivot}
+
+Offset du point de rotation de l\textquotesingle{}objet \mbox{\Hypertarget{class_beer_engine_1_1_transform_ab5d559938ee0d636faaf10750733d974}\label{class_beer_engine_1_1_transform_ab5d559938ee0d636faaf10750733d974}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!position@{position}}
+\index{position@{position}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::position}
+
+Position de l\textquotesingle{}objet dans l\textquotesingle{}espace \mbox{\Hypertarget{class_beer_engine_1_1_transform_a0b2499263e149d0d25ad0661f7f26069}\label{class_beer_engine_1_1_transform_a0b2499263e149d0d25ad0661f7f26069}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!rotation@{rotation}}
+\index{rotation@{rotation}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily glm\+::quat Beer\+Engine\+::\+Transform\+::rotation}
+
+Rotation de l\textquotesingle{}objetr \mbox{\Hypertarget{class_beer_engine_1_1_transform_aec3b8b1a22e1b01b36f483cf7684d721}\label{class_beer_engine_1_1_transform_aec3b8b1a22e1b01b36f483cf7684d721}} 
+\index{Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}!scale@{scale}}
+\index{scale@{scale}!Beer\+Engine\+::\+Transform@{Beer\+Engine\+::\+Transform}}
+\subsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily glm\+::vec3 Beer\+Engine\+::\+Transform\+::scale}
+
+Taille de l\textquotesingle{}objet 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Core/\mbox{\hyperlink{_transform_8hpp}{Transform.\+hpp}}\end{DoxyCompactItemize}

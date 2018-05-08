@@ -1,0 +1,124 @@
+\hypertarget{_core_8hpp}{}\section{include/\+Core/\+Core.hpp File Reference}
+\label{_core_8hpp}\index{include/\+Core/\+Core.\+hpp@{include/\+Core/\+Core.\+hpp}}
+{\ttfamily \#include $<$G\+L/glew.\+h$>$}\newline
+{\ttfamily \#include $<$G\+L\+F\+W/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/ext.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/vec2.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/vec3.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/vec4.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/mat4x4.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/matrix\+\_\+transform.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/geometric.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/type\+\_\+ptr.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/quaternion.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtx/quaternion.\+hpp$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$nuklear.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}demo/glfw\+\_\+opengl3/nuklear\+\_\+glfw\+\_\+gl3.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_beer_engine}{Beer\+Engine}}
+\item 
+ \mbox{\hyperlink{namespace_beer_engine_1_1_audio}{Beer\+Engine\+::\+Audio}}
+\item 
+ \mbox{\hyperlink{namespace_beer_engine_1_1_component}{Beer\+Engine\+::\+Component}}
+\item 
+ \mbox{\hyperlink{namespace_beer_engine_1_1_graphics}{Beer\+Engine\+::\+Graphics}}
+\item 
+ \mbox{\hyperlink{namespace_beer_engine_1_1_physics}{Beer\+Engine\+::\+Physics}}
+\item 
+ \mbox{\hyperlink{namespace_beer_engine_1_1_beer_routine}{Beer\+Engine\+::\+Beer\+Routine}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_core_8hpp_af7db913837a64f00eb71a079b4b79c90}{B\+E\+\_\+\+D\+E\+B\+UG}}~1
+\item 
+\#define \mbox{\hyperlink{_core_8hpp_abcde84ea0ef5f934384e4620f092c85a}{G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC}}
+\item 
+\#define \mbox{\hyperlink{_core_8hpp_a498d9f026138406895e9a34b504ac6a6}{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH}}~1280
+\item 
+\#define \mbox{\hyperlink{_core_8hpp_a5473cf64fa979b48335079c99532e243}{W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT}}~720
+\item 
+\#define \mbox{\hyperlink{_core_8hpp_a895cfc16b36b6c309f80b98ded63df4f}{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP}}
+\item 
+\#define \mbox{\hyperlink{_core_8hpp_a244603647ab0995b4a9f190cfa9c195a}{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP}}(Class)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33}{Beer\+Engine\+::\+Component\+::\+R\+B\+Type}} \{ \mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33acb34c3e689c3481039b827066b82b0fe}{Beer\+Engine\+::\+Component\+::\+None}}, 
+\mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33ad7c835b3b41a70a283c8341e42bfb0d7}{Beer\+Engine\+::\+Component\+::\+Kinematic}}, 
+\mbox{\hyperlink{namespace_beer_engine_1_1_component_a2cfe279cc309b6420e792597940b8a33a203b46f3390c5d8151a1a235c8a6d26f}{Beer\+Engine\+::\+Component\+::\+Static}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_core_8hpp_af7db913837a64f00eb71a079b4b79c90}\label{_core_8hpp_af7db913837a64f00eb71a079b4b79c90}} 
+\index{Core.\+hpp@{Core.\+hpp}!B\+E\+\_\+\+D\+E\+B\+UG@{B\+E\+\_\+\+D\+E\+B\+UG}}
+\index{B\+E\+\_\+\+D\+E\+B\+UG@{B\+E\+\_\+\+D\+E\+B\+UG}!Core.\+hpp@{Core.\+hpp}}
+\subsubsection{\texorpdfstring{B\+E\+\_\+\+D\+E\+B\+UG}{BE\_DEBUG}}
+{\footnotesize\ttfamily \#define B\+E\+\_\+\+D\+E\+B\+UG~1}
+
+\mbox{\Hypertarget{_core_8hpp_abcde84ea0ef5f934384e4620f092c85a}\label{_core_8hpp_abcde84ea0ef5f934384e4620f092c85a}} 
+\index{Core.\+hpp@{Core.\+hpp}!G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC@{G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC}}
+\index{G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC@{G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC}!Core.\+hpp@{Core.\+hpp}}
+\subsubsection{\texorpdfstring{G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC}{GLEW\_STATIC}}
+{\footnotesize\ttfamily \#define G\+L\+E\+W\+\_\+\+S\+T\+A\+T\+IC}
+
+\mbox{\Hypertarget{_core_8hpp_a244603647ab0995b4a9f190cfa9c195a}\label{_core_8hpp_a244603647ab0995b4a9f190cfa9c195a}} 
+\index{Core.\+hpp@{Core.\+hpp}!R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP@{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP}}
+\index{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP@{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP}!Core.\+hpp@{Core.\+hpp}}
+\subsubsection{\texorpdfstring{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP}{REGISTER\_COMPONENT\_CPP}}
+{\footnotesize\ttfamily \#define R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+C\+PP(\begin{DoxyParamCaption}\item[{}]{Class }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} Class::RegisterComponentType() \(\backslash\)
+        \{\(\backslash\)
+            Component::typeToAddComponent[\textcolor{keyword}{typeid}(Class).name()] = &Component::addComponent<Class>;\(\backslash\)
+            return (1);\(\backslash\)
+        \}\(\backslash\)
+        \(\backslash\)
+        int Class::componentRegisterer = Class::RegisterComponentType();\(\backslash\)
+        std::string Class::type = \textcolor{keyword}{typeid}(Class).name();
+\end{DoxyCode}
+\mbox{\Hypertarget{_core_8hpp_a895cfc16b36b6c309f80b98ded63df4f}\label{_core_8hpp_a895cfc16b36b6c309f80b98ded63df4f}} 
+\index{Core.\+hpp@{Core.\+hpp}!R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP@{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP}}
+\index{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP@{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP}!Core.\+hpp@{Core.\+hpp}}
+\subsubsection{\texorpdfstring{R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP}{REGISTER\_COMPONENT\_HPP}}
+{\footnotesize\ttfamily \#define R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+H\+PP}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{static} \textcolor{keywordtype}{int} RegisterComponentType(); \(\backslash\)
+                            static  \textcolor{keywordtype}{int} componentRegisterer;\(\backslash\)
+                            static std::string type;
+\end{DoxyCode}
+\mbox{\Hypertarget{_core_8hpp_a5473cf64fa979b48335079c99532e243}\label{_core_8hpp_a5473cf64fa979b48335079c99532e243}} 
+\index{Core.\+hpp@{Core.\+hpp}!W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT@{W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT}}
+\index{W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT@{W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT}!Core.\+hpp@{Core.\+hpp}}
+\subsubsection{\texorpdfstring{W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT}{WINDOW\_HEIGHT}}
+{\footnotesize\ttfamily \#define W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT~720}
+
+\mbox{\Hypertarget{_core_8hpp_a498d9f026138406895e9a34b504ac6a6}\label{_core_8hpp_a498d9f026138406895e9a34b504ac6a6}} 
+\index{Core.\+hpp@{Core.\+hpp}!W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH@{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH}}
+\index{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH@{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH}!Core.\+hpp@{Core.\+hpp}}
+\subsubsection{\texorpdfstring{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH}{WINDOW\_WIDTH}}
+{\footnotesize\ttfamily \#define W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH~1280}
+

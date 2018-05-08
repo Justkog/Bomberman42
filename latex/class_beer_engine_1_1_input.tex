@@ -1,0 +1,135 @@
+\hypertarget{class_beer_engine_1_1_input}{}\section{Beer\+Engine\+:\+:Input Class Reference}
+\label{class_beer_engine_1_1_input}\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+
+
+{\ttfamily \#include $<$Input.\+hpp$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_beer_engine_1_1_input_a8c64719adc226a57caf45ce63a0dddee}{Set\+Key}} (int keycode, int status)
+\item 
+static bool \mbox{\hyperlink{class_beer_engine_1_1_input_aef391d62eeafff68a8b33d232e38c324}{Get\+Key}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
+\item 
+static bool \mbox{\hyperlink{class_beer_engine_1_1_input_ab3093c905099025b3dcd0c67dc31ed82}{Get\+Key\+Down}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
+\item 
+static bool \mbox{\hyperlink{class_beer_engine_1_1_input_aace9501b3e8bde001dc46dea904504b0}{Get\+Key\+Up}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
+\item 
+static int \mbox{\hyperlink{class_beer_engine_1_1_input_a36af1091a677481607d7a197585fd379}{Get\+Key\+Status}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
+\item 
+static void \mbox{\hyperlink{class_beer_engine_1_1_input_a8761deb95726518ed5871a38aca6451d}{Set\+Mouse\+Button}} (int mouse\+Button, int status)
+\item 
+static bool \mbox{\hyperlink{class_beer_engine_1_1_input_a5f1cf046547a086a7f44d7c18ad6776d}{Get\+Mouse\+Button}} (int mouse\+Button)
+\item 
+static bool \mbox{\hyperlink{class_beer_engine_1_1_input_ad04218c44ce0ef21ed6a5cf65259653f}{Get\+Mouse\+Button\+Down}} (int mouse\+Button)
+\item 
+static bool \mbox{\hyperlink{class_beer_engine_1_1_input_a82dc5f380752307d5cb5b284488da5ef}{Get\+Mouse\+Button\+Up}} (int mouse\+Button)
+\item 
+static void \mbox{\hyperlink{class_beer_engine_1_1_input_af7f3c17ce4e2483d03a169894e06851d}{Set\+Axis}} (std\+::string name, float value)
+\item 
+static float \mbox{\hyperlink{class_beer_engine_1_1_input_ac21c03c4b7d417941034e935af481f2c}{Get\+Axis}} (std\+::string name)
+\item 
+static void \mbox{\hyperlink{class_beer_engine_1_1_input_a8a5a3a1a4b5fdedf20fc66c40d8e98bb}{Update}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static glm\+::vec2 \mbox{\hyperlink{class_beer_engine_1_1_input_ae232daf7243afe948422d0b3bb14d2d2}{mouse\+Position}}
+\item 
+static glm\+::vec2 \mbox{\hyperlink{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}{mouse\+Scroll}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_input_ac21c03c4b7d417941034e935af481f2c}\label{class_beer_engine_1_1_input_ac21c03c4b7d417941034e935af481f2c}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Axis@{Get\+Axis}}
+\index{Get\+Axis@{Get\+Axis}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Axis()}{GetAxis()}}
+{\footnotesize\ttfamily static float Beer\+Engine\+::\+Input\+::\+Get\+Axis (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_aef391d62eeafff68a8b33d232e38c324}\label{class_beer_engine_1_1_input_aef391d62eeafff68a8b33d232e38c324}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key@{Get\+Key}}
+\index{Get\+Key@{Get\+Key}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Key()}{GetKey()}}
+{\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_ab3093c905099025b3dcd0c67dc31ed82}\label{class_beer_engine_1_1_input_ab3093c905099025b3dcd0c67dc31ed82}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key\+Down@{Get\+Key\+Down}}
+\index{Get\+Key\+Down@{Get\+Key\+Down}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Key\+Down()}{GetKeyDown()}}
+{\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Key\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_a36af1091a677481607d7a197585fd379}\label{class_beer_engine_1_1_input_a36af1091a677481607d7a197585fd379}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key\+Status@{Get\+Key\+Status}}
+\index{Get\+Key\+Status@{Get\+Key\+Status}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Key\+Status()}{GetKeyStatus()}}
+{\footnotesize\ttfamily static int Beer\+Engine\+::\+Input\+::\+Get\+Key\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_aace9501b3e8bde001dc46dea904504b0}\label{class_beer_engine_1_1_input_aace9501b3e8bde001dc46dea904504b0}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key\+Up@{Get\+Key\+Up}}
+\index{Get\+Key\+Up@{Get\+Key\+Up}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Key\+Up()}{GetKeyUp()}}
+{\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Key\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_a5f1cf046547a086a7f44d7c18ad6776d}\label{class_beer_engine_1_1_input_a5f1cf046547a086a7f44d7c18ad6776d}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Mouse\+Button@{Get\+Mouse\+Button}}
+\index{Get\+Mouse\+Button@{Get\+Mouse\+Button}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Button()}{GetMouseButton()}}
+{\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Mouse\+Button (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_ad04218c44ce0ef21ed6a5cf65259653f}\label{class_beer_engine_1_1_input_ad04218c44ce0ef21ed6a5cf65259653f}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Mouse\+Button\+Down@{Get\+Mouse\+Button\+Down}}
+\index{Get\+Mouse\+Button\+Down@{Get\+Mouse\+Button\+Down}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Button\+Down()}{GetMouseButtonDown()}}
+{\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Mouse\+Button\+Down (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_a82dc5f380752307d5cb5b284488da5ef}\label{class_beer_engine_1_1_input_a82dc5f380752307d5cb5b284488da5ef}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Mouse\+Button\+Up@{Get\+Mouse\+Button\+Up}}
+\index{Get\+Mouse\+Button\+Up@{Get\+Mouse\+Button\+Up}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Button\+Up()}{GetMouseButtonUp()}}
+{\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Mouse\+Button\+Up (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_af7f3c17ce4e2483d03a169894e06851d}\label{class_beer_engine_1_1_input_af7f3c17ce4e2483d03a169894e06851d}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Set\+Axis@{Set\+Axis}}
+\index{Set\+Axis@{Set\+Axis}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Set\+Axis()}{SetAxis()}}
+{\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Set\+Axis (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{float}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_a8c64719adc226a57caf45ce63a0dddee}\label{class_beer_engine_1_1_input_a8c64719adc226a57caf45ce63a0dddee}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Set\+Key@{Set\+Key}}
+\index{Set\+Key@{Set\+Key}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Set\+Key()}{SetKey()}}
+{\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Set\+Key (\begin{DoxyParamCaption}\item[{int}]{keycode,  }\item[{int}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_a8761deb95726518ed5871a38aca6451d}\label{class_beer_engine_1_1_input_a8761deb95726518ed5871a38aca6451d}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Set\+Mouse\+Button@{Set\+Mouse\+Button}}
+\index{Set\+Mouse\+Button@{Set\+Mouse\+Button}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Set\+Mouse\+Button()}{SetMouseButton()}}
+{\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Set\+Mouse\+Button (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button,  }\item[{int}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_a8a5a3a1a4b5fdedf20fc66c40d8e98bb}\label{class_beer_engine_1_1_input_a8a5a3a1a4b5fdedf20fc66c40d8e98bb}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Update@{Update}}
+\index{Update@{Update}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_input_ae232daf7243afe948422d0b3bb14d2d2}\label{class_beer_engine_1_1_input_ae232daf7243afe948422d0b3bb14d2d2}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!mouse\+Position@{mouse\+Position}}
+\index{mouse\+Position@{mouse\+Position}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{mouse\+Position}{mousePosition}}
+{\footnotesize\ttfamily glm\+::vec2 Beer\+Engine\+::\+Input\+::mouse\+Position\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}\label{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}} 
+\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!mouse\+Scroll@{mouse\+Scroll}}
+\index{mouse\+Scroll@{mouse\+Scroll}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
+\subsubsection{\texorpdfstring{mouse\+Scroll}{mouseScroll}}
+{\footnotesize\ttfamily glm\+::vec2 Beer\+Engine\+::\+Input\+::mouse\+Scroll\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Core/\mbox{\hyperlink{_input_8hpp}{Input.\+hpp}}\end{DoxyCompactItemize}

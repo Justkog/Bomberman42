@@ -1,0 +1,180 @@
+\hypertarget{class_beer_engine_1_1_component_1_1_circle_collider}{}\section{Beer\+Engine\+:\+:Component\+:\+:Circle\+Collider Class Reference}
+\label{class_beer_engine_1_1_component_1_1_circle_collider}\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+
+
+{\ttfamily \#include $<$Circle\+Collider.\+hpp$>$}
+
+Inheritance diagram for Beer\+Engine\+:\+:Component\+:\+:Circle\+Collider\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.124128cm]{class_beer_engine_1_1_component_1_1_circle_collider}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_ae79d96d3b73a4a43d9305da69e739ac0}{Circle\+Collider}} (\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$game\+Object)
+\item 
+virtual \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_ad5e2682e2e9bed78717933e4201326bd}{$\sim$\+Circle\+Collider}} ()
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a7443f2cadac6ae282025a6757ad2b3c8}{check\+Collision}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{A\+Collider}} $\ast$other)
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a0660c296e993b8bfbebb8524bca4cea7}{contain}} (glm\+::vec2 other)
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a60737b2c9898672d28aa09b56c7fa07c}{intersect}} (glm\+::vec2 origin, glm\+::vec2 dir)
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a0402e8e6605a5c2c7aefa9befdcd15e5}{intersect}} (glm\+::vec2 origin, glm\+::vec2 dir, glm\+::vec2 \&out\+Position)
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a20e45eaf7bb9ca22573e0fda117ae274}{collide\+\_\+\+A\+A\+B\+B2D}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider}{Circle\+Collider}} $\ast$other)
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a9e88d5908734005d0141a75b8b02fd78}{collide\+\_\+\+A\+A\+B\+B2D}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_box_collider2_d}{Box\+Collider2D}} $\ast$other)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_aeec35819ad13cf21e80745d3a1ae9651}{response\+\_\+\+A\+A\+B\+B2D}} (\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider}{Circle\+Collider}} $\ast$other, glm\+::vec2 \&this\+Pos, glm\+::vec2 \&other\+Pos)
+\item 
+virtual nlohmann\+::json \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a9898927635bb575aa2895cc5516433fc}{serialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a25651d52d7b584deb7f82b09037124d5}{deserialize}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_abbf603985bff01588e81fdf689925f25}{\+\_\+radius}}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_aa22028b1fe83dd484df5bbf4679e4fa0}{line\+Collision}} (glm\+::vec2 \mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53ab506e1e75f82c0416b75881bbe0946aa}{A}}, glm\+::vec2 \mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53ad312fd34bf6e7f057de8b8391e3ea76d}{B}}, glm\+::vec2 \mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53afc52c023535c7df9670484281809b3f8}{C}})
+\item 
+bool \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider_a550fcf999e3e8560ba1592df2afa69d0}{segment\+Collision}} (glm\+::vec2 \mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53ab506e1e75f82c0416b75881bbe0946aa}{A}}, glm\+::vec2 \mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53ad312fd34bf6e7f057de8b8391e3ea76d}{B}}, glm\+::vec2 \mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53afc52c023535c7df9670484281809b3f8}{C}})
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_ae79d96d3b73a4a43d9305da69e739ac0}\label{class_beer_engine_1_1_component_1_1_circle_collider_ae79d96d3b73a4a43d9305da69e739ac0}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!Circle\+Collider@{Circle\+Collider}}
+\index{Circle\+Collider@{Circle\+Collider}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{Circle\+Collider()}{CircleCollider()}}
+{\footnotesize\ttfamily Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::\+Circle\+Collider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$}]{game\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_ad5e2682e2e9bed78717933e4201326bd}\label{class_beer_engine_1_1_component_1_1_circle_collider_ad5e2682e2e9bed78717933e4201326bd}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!````~Circle\+Collider@{$\sim$\+Circle\+Collider}}
+\index{````~Circle\+Collider@{$\sim$\+Circle\+Collider}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{$\sim$\+Circle\+Collider()}{~CircleCollider()}}
+{\footnotesize\ttfamily virtual Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::$\sim$\+Circle\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a7443f2cadac6ae282025a6757ad2b3c8}\label{class_beer_engine_1_1_component_1_1_circle_collider_a7443f2cadac6ae282025a6757ad2b3c8}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!check\+Collision@{check\+Collision}}
+\index{check\+Collision@{check\+Collision}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider}{A\+Collider}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_ad9367c0e75c941509322fb984d16de00}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a20e45eaf7bb9ca22573e0fda117ae274}\label{class_beer_engine_1_1_component_1_1_circle_collider_a20e45eaf7bb9ca22573e0fda117ae274}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!collide\+\_\+\+A\+A\+B\+B2D@{collide\+\_\+\+A\+A\+B\+B2D}}
+\index{collide\+\_\+\+A\+A\+B\+B2D@{collide\+\_\+\+A\+A\+B\+B2D}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{collide\+\_\+\+A\+A\+B\+B2\+D()}{collide\_AABB2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::collide\+\_\+\+A\+A\+B\+B2D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider}{Circle\+Collider}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_ab9acc12bf6017b81f3515264238ce3d5}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a9e88d5908734005d0141a75b8b02fd78}\label{class_beer_engine_1_1_component_1_1_circle_collider_a9e88d5908734005d0141a75b8b02fd78}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!collide\+\_\+\+A\+A\+B\+B2D@{collide\+\_\+\+A\+A\+B\+B2D}}
+\index{collide\+\_\+\+A\+A\+B\+B2D@{collide\+\_\+\+A\+A\+B\+B2D}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{collide\+\_\+\+A\+A\+B\+B2\+D()}{collide\_AABB2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::collide\+\_\+\+A\+A\+B\+B2D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_box_collider2_d}{Box\+Collider2D}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_ae972d39620da804c72fb9799c167bf4b}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a0660c296e993b8bfbebb8524bca4cea7}\label{class_beer_engine_1_1_component_1_1_circle_collider_a0660c296e993b8bfbebb8524bca4cea7}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!contain@{contain}}
+\index{contain@{contain}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{contain()}{contain()}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::contain (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_a3d7b4784b8ba49a9d0fe72e8ff00ad1e}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a25651d52d7b584deb7f82b09037124d5}\label{class_beer_engine_1_1_component_1_1_circle_collider_a25651d52d7b584deb7f82b09037124d5}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily virtual void Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_ac6bad21e0cfe7f95c431b9a7a59c550c}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a60737b2c9898672d28aa09b56c7fa07c}\label{class_beer_engine_1_1_component_1_1_circle_collider_a60737b2c9898672d28aa09b56c7fa07c}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!intersect@{intersect}}
+\index{intersect@{intersect}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{intersect()}{intersect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::intersect (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{origin,  }\item[{glm\+::vec2}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_a84f924f6c0631f5f17b4e1852495a505}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a0402e8e6605a5c2c7aefa9befdcd15e5}\label{class_beer_engine_1_1_component_1_1_circle_collider_a0402e8e6605a5c2c7aefa9befdcd15e5}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!intersect@{intersect}}
+\index{intersect@{intersect}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{intersect()}{intersect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::intersect (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{origin,  }\item[{glm\+::vec2}]{dir,  }\item[{glm\+::vec2 \&}]{out\+Position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_a2ffff777d86ac72aee0c0586ab651db8}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_aa22028b1fe83dd484df5bbf4679e4fa0}\label{class_beer_engine_1_1_component_1_1_circle_collider_aa22028b1fe83dd484df5bbf4679e4fa0}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!line\+Collision@{line\+Collision}}
+\index{line\+Collision@{line\+Collision}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{line\+Collision()}{lineCollision()}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::line\+Collision (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{A,  }\item[{glm\+::vec2}]{B,  }\item[{glm\+::vec2}]{C }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_aeec35819ad13cf21e80745d3a1ae9651}\label{class_beer_engine_1_1_component_1_1_circle_collider_aeec35819ad13cf21e80745d3a1ae9651}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!response\+\_\+\+A\+A\+B\+B2D@{response\+\_\+\+A\+A\+B\+B2D}}
+\index{response\+\_\+\+A\+A\+B\+B2D@{response\+\_\+\+A\+A\+B\+B2D}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{response\+\_\+\+A\+A\+B\+B2\+D()}{response\_AABB2D()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::response\+\_\+\+A\+A\+B\+B2D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_circle_collider}{Circle\+Collider}} $\ast$}]{other,  }\item[{glm\+::vec2 \&}]{this\+Pos,  }\item[{glm\+::vec2 \&}]{other\+Pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a550fcf999e3e8560ba1592df2afa69d0}\label{class_beer_engine_1_1_component_1_1_circle_collider_a550fcf999e3e8560ba1592df2afa69d0}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!segment\+Collision@{segment\+Collision}}
+\index{segment\+Collision@{segment\+Collision}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{segment\+Collision()}{segmentCollision()}}
+{\footnotesize\ttfamily bool Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::segment\+Collision (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{A,  }\item[{glm\+::vec2}]{B,  }\item[{glm\+::vec2}]{C }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_a9898927635bb575aa2895cc5516433fc}\label{class_beer_engine_1_1_component_1_1_circle_collider_a9898927635bb575aa2895cc5516433fc}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!serialize@{serialize}}
+\index{serialize@{serialize}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily virtual nlohmann\+::json Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_a_collider_aecc5eb364d52beede07428ba1b668e09}{Beer\+Engine\+::\+Component\+::\+A\+Collider}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_circle_collider_abbf603985bff01588e81fdf689925f25}\label{class_beer_engine_1_1_component_1_1_circle_collider_abbf603985bff01588e81fdf689925f25}} 
+\index{Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}!\+\_\+radius@{\+\_\+radius}}
+\index{\+\_\+radius@{\+\_\+radius}!Beer\+Engine\+::\+Component\+::\+Circle\+Collider@{Beer\+Engine\+::\+Component\+::\+Circle\+Collider}}
+\subsubsection{\texorpdfstring{\+\_\+radius}{\_radius}}
+{\footnotesize\ttfamily float Beer\+Engine\+::\+Component\+::\+Circle\+Collider\+::\+\_\+radius}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Core/\+Component/\mbox{\hyperlink{_circle_collider_8hpp}{Circle\+Collider.\+hpp}}\end{DoxyCompactItemize}

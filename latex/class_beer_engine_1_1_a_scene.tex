@@ -1,0 +1,231 @@
+\hypertarget{class_beer_engine_1_1_a_scene}{}\section{Beer\+Engine\+:\+:A\+Scene Class Reference}
+\label{class_beer_engine_1_1_a_scene}\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+
+
+{\ttfamily \#include $<$A\+Scene.\+hpp$>$}
+
+Inheritance diagram for Beer\+Engine\+:\+:A\+Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_beer_engine_1_1_a_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_a_scene_a811f775c81c6d46b267e1926450a7c32}{A\+Scene}} (void)
+\item 
+virtual \mbox{\hyperlink{class_beer_engine_1_1_a_scene_abaa7995756d22d36008d4b541b6b20ca}{$\sim$\+A\+Scene}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a7a55b4e506ae618e6596ae812ad48db0}{init}} (void)=0
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a5c1cc3e869d48b92331fe606eb86497c}{mutex\+Lock}} (bool lock)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a332808581c9141259a6acdc2fa8e0e5c}{start}} (void)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a444a7a1321f9c8c14a2d3821f649c85e}{start\+UI}} (struct nk\+\_\+context $\ast$ctx)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a98c0b2bca184f5ba2c7a1660bead32cf}{fixed\+Update}} (void)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_aee4c99b65b3e54bdcb62cc1096dcb397}{update}} (void)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_accb108fe6723d99c36a85eb51a25820e}{render\+Update}} (void)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a445ef1917ea393ebea9be85bf0aa37f1}{render}} (void)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a93d3ef94fbd5201f10e9185833bc3e0c}{render\+UI}} (struct nk\+\_\+context $\ast$ctx)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a1b9cff7ce753a578cdd1b95308a22fec}{physic\+Update}} (void)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_af40b9c9c30c3c55991792d45867c022b}{destroy}} (\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$go)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a3f8b7e31b089fd39ed8c6d1505a91c16}{destroy\+Game\+Objects}} (void)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+base\+\_\+of$<$ Game\+Object, T $>$\+::value $>$\+::type $\ast$  = nullptr$>$ }\\\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664}{T}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a2bd087ae22796d1e286c867f4f1ecc38}{instantiate}} (void)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+base\+\_\+of$<$ Game\+Object, T $>$\+::value $>$\+::type $\ast$  = nullptr$>$ }\\\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664}{T}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_a_scene_acf89d3198589c3e3007b0bc0579dd9ab}{instantiate}} (std\+::string prefab\+Path)
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a44f55dbd991eb07e425ca163f4773766}{debug\+Test}} (void)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$ $>$ \mbox{\hyperlink{class_beer_engine_1_1_a_scene_ae551bf1b3e7cf87cc2de4b6859732e81}{get\+Game\+Objects}} ()
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a65e03ade02de4673cd25544d4843c6d8}{save}} (std\+::string \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a2edf1030b7232a5f703d327976f1d4ea}{file\+Path}})
+\item 
+void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_aeedbe75eeef457353645d61a68bc2949}{load}} (std\+::string \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a2edf1030b7232a5f703d327976f1d4ea}{file\+Path}})
+\item 
+virtual nlohmann\+::json \mbox{\hyperlink{class_beer_engine_1_1_a_scene_ae876ec81592c80e7346f05c56bdaa929}{serialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a3db491adb7ff57a3a527024fd0a6001f}{deserialize}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_beer_engine_1_1_a_scene_a2edf1030b7232a5f703d327976f1d4ea}{file\+Path}}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a811f775c81c6d46b267e1926450a7c32}\label{class_beer_engine_1_1_a_scene_a811f775c81c6d46b267e1926450a7c32}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!A\+Scene@{A\+Scene}}
+\index{A\+Scene@{A\+Scene}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{A\+Scene()}{AScene()}}
+{\footnotesize\ttfamily Beer\+Engine\+::\+A\+Scene\+::\+A\+Scene (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_abaa7995756d22d36008d4b541b6b20ca}\label{class_beer_engine_1_1_a_scene_abaa7995756d22d36008d4b541b6b20ca}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!````~A\+Scene@{$\sim$\+A\+Scene}}
+\index{````~A\+Scene@{$\sim$\+A\+Scene}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{$\sim$\+A\+Scene()}{~AScene()}}
+{\footnotesize\ttfamily virtual Beer\+Engine\+::\+A\+Scene\+::$\sim$\+A\+Scene (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a44f55dbd991eb07e425ca163f4773766}\label{class_beer_engine_1_1_a_scene_a44f55dbd991eb07e425ca163f4773766}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!debug\+Test@{debug\+Test}}
+\index{debug\+Test@{debug\+Test}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{debug\+Test()}{debugTest()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::debug\+Test (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a3db491adb7ff57a3a527024fd0a6001f}\label{class_beer_engine_1_1_a_scene_a3db491adb7ff57a3a527024fd0a6001f}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily virtual void Beer\+Engine\+::\+A\+Scene\+::deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_json_deserializable_ae1ce96bc441e544e7339641d80925726}{Beer\+Engine\+::\+Json\+Deserializable}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_af40b9c9c30c3c55991792d45867c022b}\label{class_beer_engine_1_1_a_scene_af40b9c9c30c3c55991792d45867c022b}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!destroy@{destroy}}
+\index{destroy@{destroy}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$}]{go }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a3f8b7e31b089fd39ed8c6d1505a91c16}\label{class_beer_engine_1_1_a_scene_a3f8b7e31b089fd39ed8c6d1505a91c16}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!destroy\+Game\+Objects@{destroy\+Game\+Objects}}
+\index{destroy\+Game\+Objects@{destroy\+Game\+Objects}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{destroy\+Game\+Objects()}{destroyGameObjects()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::destroy\+Game\+Objects (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a98c0b2bca184f5ba2c7a1660bead32cf}\label{class_beer_engine_1_1_a_scene_a98c0b2bca184f5ba2c7a1660bead32cf}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!fixed\+Update@{fixed\+Update}}
+\index{fixed\+Update@{fixed\+Update}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{fixed\+Update()}{fixedUpdate()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::fixed\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_ae551bf1b3e7cf87cc2de4b6859732e81}\label{class_beer_engine_1_1_a_scene_ae551bf1b3e7cf87cc2de4b6859732e81}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!get\+Game\+Objects@{get\+Game\+Objects}}
+\index{get\+Game\+Objects@{get\+Game\+Objects}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{get\+Game\+Objects()}{getGameObjects()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$$>$ Beer\+Engine\+::\+A\+Scene\+::get\+Game\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a7a55b4e506ae618e6596ae812ad48db0}\label{class_beer_engine_1_1_a_scene_a7a55b4e506ae618e6596ae812ad48db0}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!init@{init}}
+\index{init@{init}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily virtual void Beer\+Engine\+::\+A\+Scene\+::init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_scene_main_a4406dc5cf9807edcf360ba416de928e2}{Scene\+Main}}, and \mbox{\hyperlink{class_scene_test_aedded03410798c3705fb3fb028e56ab5}{Scene\+Test}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a2bd087ae22796d1e286c867f4f1ecc38}\label{class_beer_engine_1_1_a_scene_a2bd087ae22796d1e286c867f4f1ecc38}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!instantiate@{instantiate}}
+\index{instantiate@{instantiate}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{instantiate()}{instantiate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+base\+\_\+of$<$ Game\+Object, T $>$\+::value $>$\+::type $\ast$  = nullptr$>$ \\
+\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664}{T}}$\ast$ Beer\+Engine\+::\+A\+Scene\+::instantiate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_acf89d3198589c3e3007b0bc0579dd9ab}\label{class_beer_engine_1_1_a_scene_acf89d3198589c3e3007b0bc0579dd9ab}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!instantiate@{instantiate}}
+\index{instantiate@{instantiate}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{instantiate()}{instantiate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+base\+\_\+of$<$ Game\+Object, T $>$\+::value $>$\+::type $\ast$  = nullptr$>$ \\
+\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664}{T}}$\ast$ Beer\+Engine\+::\+A\+Scene\+::instantiate (\begin{DoxyParamCaption}\item[{std\+::string}]{prefab\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_aeedbe75eeef457353645d61a68bc2949}\label{class_beer_engine_1_1_a_scene_aeedbe75eeef457353645d61a68bc2949}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!load@{load}}
+\index{load@{load}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a5c1cc3e869d48b92331fe606eb86497c}\label{class_beer_engine_1_1_a_scene_a5c1cc3e869d48b92331fe606eb86497c}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!mutex\+Lock@{mutex\+Lock}}
+\index{mutex\+Lock@{mutex\+Lock}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{mutex\+Lock()}{mutexLock()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::mutex\+Lock (\begin{DoxyParamCaption}\item[{bool}]{lock }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a1b9cff7ce753a578cdd1b95308a22fec}\label{class_beer_engine_1_1_a_scene_a1b9cff7ce753a578cdd1b95308a22fec}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!physic\+Update@{physic\+Update}}
+\index{physic\+Update@{physic\+Update}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{physic\+Update()}{physicUpdate()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::physic\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a445ef1917ea393ebea9be85bf0aa37f1}\label{class_beer_engine_1_1_a_scene_a445ef1917ea393ebea9be85bf0aa37f1}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!render@{render}}
+\index{render@{render}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::render (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a93d3ef94fbd5201f10e9185833bc3e0c}\label{class_beer_engine_1_1_a_scene_a93d3ef94fbd5201f10e9185833bc3e0c}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!render\+UI@{render\+UI}}
+\index{render\+UI@{render\+UI}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{render\+U\+I()}{renderUI()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::render\+UI (\begin{DoxyParamCaption}\item[{struct nk\+\_\+context $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_accb108fe6723d99c36a85eb51a25820e}\label{class_beer_engine_1_1_a_scene_accb108fe6723d99c36a85eb51a25820e}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!render\+Update@{render\+Update}}
+\index{render\+Update@{render\+Update}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{render\+Update()}{renderUpdate()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::render\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a65e03ade02de4673cd25544d4843c6d8}\label{class_beer_engine_1_1_a_scene_a65e03ade02de4673cd25544d4843c6d8}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!save@{save}}
+\index{save@{save}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::save (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_ae876ec81592c80e7346f05c56bdaa929}\label{class_beer_engine_1_1_a_scene_ae876ec81592c80e7346f05c56bdaa929}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!serialize@{serialize}}
+\index{serialize@{serialize}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily virtual nlohmann\+::json Beer\+Engine\+::\+A\+Scene\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_json_serializable_a17689cbd8fe282c570bd026cc1be5b3b}{Beer\+Engine\+::\+Json\+Serializable}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a332808581c9141259a6acdc2fa8e0e5c}\label{class_beer_engine_1_1_a_scene_a332808581c9141259a6acdc2fa8e0e5c}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!start@{start}}
+\index{start@{start}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a444a7a1321f9c8c14a2d3821f649c85e}\label{class_beer_engine_1_1_a_scene_a444a7a1321f9c8c14a2d3821f649c85e}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!start\+UI@{start\+UI}}
+\index{start\+UI@{start\+UI}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{start\+U\+I()}{startUI()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::start\+UI (\begin{DoxyParamCaption}\item[{struct nk\+\_\+context $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_aee4c99b65b3e54bdcb62cc1096dcb397}\label{class_beer_engine_1_1_a_scene_aee4c99b65b3e54bdcb62cc1096dcb397}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!update@{update}}
+\index{update@{update}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Beer\+Engine\+::\+A\+Scene\+::update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_a_scene_a2edf1030b7232a5f703d327976f1d4ea}\label{class_beer_engine_1_1_a_scene_a2edf1030b7232a5f703d327976f1d4ea}} 
+\index{Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}!file\+Path@{file\+Path}}
+\index{file\+Path@{file\+Path}!Beer\+Engine\+::\+A\+Scene@{Beer\+Engine\+::\+A\+Scene}}
+\subsubsection{\texorpdfstring{file\+Path}{filePath}}
+{\footnotesize\ttfamily std\+::string Beer\+Engine\+::\+A\+Scene\+::file\+Path}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Core/\mbox{\hyperlink{_a_scene_8hpp}{A\+Scene.\+hpp}}\end{DoxyCompactItemize}

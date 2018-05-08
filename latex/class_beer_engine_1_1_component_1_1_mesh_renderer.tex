@@ -1,0 +1,176 @@
+\hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer}{}\section{Beer\+Engine\+:\+:Component\+:\+:Mesh\+Renderer Class Reference}
+\label{class_beer_engine_1_1_component_1_1_mesh_renderer}\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+
+
+{\ttfamily \#include $<$Mesh\+Renderer.\+hpp$>$}
+
+Inheritance diagram for Beer\+Engine\+:\+:Component\+:\+:Mesh\+Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.047619cm]{class_beer_engine_1_1_component_1_1_mesh_renderer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a9597f09757bac34c6f5c00d4cb18add3}{Mesh\+Renderer}} (\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$game\+Object)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Graphics\+::\+Mesh}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_ac819f6d8c1791174fa7b9f060a8b8204}{get\+Mesh}} (void)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer}{Mesh\+Renderer}} \& \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a818276a7fe8703a04bf431a41fa4c907}{set\+Mesh}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Graphics\+::\+Mesh}} $\ast$mesh)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer}{Mesh\+Renderer}} \& \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a0bc2f51937864cfb8a470cd9a19321e6}{set\+Mesh}} (std\+::string inputfile)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Graphics\+::\+A\+Material}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_ae3ce0ffa128f92e36e9c09fc6349ddf6}{get\+Material}} (void)
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer}{Mesh\+Renderer}} \& \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a9d4408a8c5e670c130394c59eeb5ccf2}{set\+Material}} (\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Graphics\+::\+A\+Material}} $\ast$material)
+\item 
+virtual void \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_abca4caa865363fdccb1b0c6fc6f7c81d}{render\+Update}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_ace87e6038f061bf1815f047f4bc0c6e8}{render}} (void)
+\item 
+nlohmann\+::json \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a65c6c22ae40b5b94f590c3a8bf14d0d0}{serialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a19b2d1dd25274ea7af898af2bc305a7b}{deserialize}} (const nlohmann\+::json \&j)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+G\+Lenum \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a77ba18c709e434a79615a35aec7d31e4}{render\+Mode}}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Graphics\+::\+Mesh}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a34c2edf3787d59b0d608524ccaa4938f}{\+\_\+mesh}}
+\item 
+\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Graphics\+::\+A\+Material}} $\ast$ \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a46919455807496f2bdd92bcfa6cacc75}{\+\_\+material}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a1b3d3cc5f1df80dd8850881cb6597d78}{\+\_\+mat}}
+\item 
+std\+::string \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer_a635e9ce507be213618738690212af983}{\+\_\+source\+File}}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a9597f09757bac34c6f5c00d4cb18add3}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a9597f09757bac34c6f5c00d4cb18add3}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!Mesh\+Renderer@{Mesh\+Renderer}}
+\index{Mesh\+Renderer@{Mesh\+Renderer}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{Mesh\+Renderer()}{MeshRenderer()}}
+{\footnotesize\ttfamily Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::\+Mesh\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_game_object}{Game\+Object}} $\ast$}]{game\+Object }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a19b2d1dd25274ea7af898af2bc305a7b}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a19b2d1dd25274ea7af898af2bc305a7b}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily virtual void Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::deserialize (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a044d30f65879a1467f44aa3eb8ad7bce}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_ae3ce0ffa128f92e36e9c09fc6349ddf6}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_ae3ce0ffa128f92e36e9c09fc6349ddf6}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!get\+Material@{get\+Material}}
+\index{get\+Material@{get\+Material}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{get\+Material()}{getMaterial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Graphics\+::\+A\+Material}}$\ast$ Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::get\+Material (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_ac819f6d8c1791174fa7b9f060a8b8204}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_ac819f6d8c1791174fa7b9f060a8b8204}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!get\+Mesh@{get\+Mesh}}
+\index{get\+Mesh@{get\+Mesh}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{get\+Mesh()}{getMesh()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Graphics\+::\+Mesh}}$\ast$ Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::get\+Mesh (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_ace87e6038f061bf1815f047f4bc0c6e8}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_ace87e6038f061bf1815f047f4bc0c6e8}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!render@{render}}
+\index{render@{render}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily virtual void Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::render (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_render_a021864acc1288b34b13f8766735ebcc0}{Beer\+Engine\+::\+Component\+::\+I\+Render}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_abca4caa865363fdccb1b0c6fc6f7c81d}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_abca4caa865363fdccb1b0c6fc6f7c81d}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!render\+Update@{render\+Update}}
+\index{render\+Update@{render\+Update}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{render\+Update()}{renderUpdate()}}
+{\footnotesize\ttfamily virtual void Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::render\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_i_render_aef1ff4ddcdf216d290c747edd86bd99e}{Beer\+Engine\+::\+Component\+::\+I\+Render}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_rays_renderer_a1647c9a5f40fc9186ccb6d55b7ebfe5e}{Beer\+Engine\+::\+Component\+::\+Rays\+Renderer}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a65c6c22ae40b5b94f590c3a8bf14d0d0}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a65c6c22ae40b5b94f590c3a8bf14d0d0}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!serialize@{serialize}}
+\index{serialize@{serialize}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily nlohmann\+::json Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_component_a4d82d8a6b22b93514e0585fa4073041f}{Beer\+Engine\+::\+Component\+::\+Component}}.
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a9d4408a8c5e670c130394c59eeb5ccf2}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a9d4408a8c5e670c130394c59eeb5ccf2}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!set\+Material@{set\+Material}}
+\index{set\+Material@{set\+Material}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{set\+Material()}{setMaterial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer}{Mesh\+Renderer}}\& Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::set\+Material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Graphics\+::\+A\+Material}} $\ast$}]{material }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a818276a7fe8703a04bf431a41fa4c907}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a818276a7fe8703a04bf431a41fa4c907}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!set\+Mesh@{set\+Mesh}}
+\index{set\+Mesh@{set\+Mesh}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{set\+Mesh()}{setMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer}{Mesh\+Renderer}}\& Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::set\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Graphics\+::\+Mesh}} $\ast$}]{mesh }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a0bc2f51937864cfb8a470cd9a19321e6}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a0bc2f51937864cfb8a470cd9a19321e6}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!set\+Mesh@{set\+Mesh}}
+\index{set\+Mesh@{set\+Mesh}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{set\+Mesh()}{setMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_component_1_1_mesh_renderer}{Mesh\+Renderer}}\& Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::set\+Mesh (\begin{DoxyParamCaption}\item[{std\+::string}]{inputfile }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a1b3d3cc5f1df80dd8850881cb6597d78}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a1b3d3cc5f1df80dd8850881cb6597d78}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!\+\_\+mat@{\+\_\+mat}}
+\index{\+\_\+mat@{\+\_\+mat}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{\+\_\+mat}{\_mat}}
+{\footnotesize\ttfamily glm\+::mat4 Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::\+\_\+mat\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a46919455807496f2bdd92bcfa6cacc75}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a46919455807496f2bdd92bcfa6cacc75}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!\+\_\+material@{\+\_\+material}}
+\index{\+\_\+material@{\+\_\+material}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{\+\_\+material}{\_material}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_a_material}{Graphics\+::\+A\+Material}}$\ast$ Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::\+\_\+material\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a34c2edf3787d59b0d608524ccaa4938f}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a34c2edf3787d59b0d608524ccaa4938f}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!\+\_\+mesh@{\+\_\+mesh}}
+\index{\+\_\+mesh@{\+\_\+mesh}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{\+\_\+mesh}{\_mesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_beer_engine_1_1_graphics_1_1_mesh}{Graphics\+::\+Mesh}}$\ast$ Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a635e9ce507be213618738690212af983}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a635e9ce507be213618738690212af983}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!\+\_\+source\+File@{\+\_\+source\+File}}
+\index{\+\_\+source\+File@{\+\_\+source\+File}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{\+\_\+source\+File}{\_sourceFile}}
+{\footnotesize\ttfamily std\+::string Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::\+\_\+source\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_beer_engine_1_1_component_1_1_mesh_renderer_a77ba18c709e434a79615a35aec7d31e4}\label{class_beer_engine_1_1_component_1_1_mesh_renderer_a77ba18c709e434a79615a35aec7d31e4}} 
+\index{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}!render\+Mode@{render\+Mode}}
+\index{render\+Mode@{render\+Mode}!Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer@{Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer}}
+\subsubsection{\texorpdfstring{render\+Mode}{renderMode}}
+{\footnotesize\ttfamily G\+Lenum Beer\+Engine\+::\+Component\+::\+Mesh\+Renderer\+::render\+Mode}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Core/\+Component/\mbox{\hyperlink{_mesh_renderer_8hpp}{Mesh\+Renderer.\+hpp}}\end{DoxyCompactItemize}
