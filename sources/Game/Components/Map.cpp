@@ -155,11 +155,32 @@ namespace Game
 			return glm::vec2(round((pos.x - (_sizeX / 2)) * (-1)), round(_sizeY - pos.z));
 		}
 
+		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
+		{
+			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);
+		}
+
+		bool			Map::hasCharacter(glm::vec2 pos)
+		{
+			if (_player && worldToMap(_player->_gameObject->transform.position) == pos)
+				return (true);
+			return (false);
+		}
+
+		bool			Map::hasBomb(glm::vec3 pos)
+		{
+			int x = static_cast<int>(worldToMap(pos).x);
+			int y = static_cast<int>(worldToMap(pos).y);
+			if (_map[y][x] != B)
+				return (true);
+			return (false);
+		}
+
 		bool			Map::canWalk(glm::vec2 pos)
 		{
 			int x = static_cast<int>(pos.x);
 			int y = static_cast<int>(pos.y);
-			if (_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9)
+			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9) && !hasCharacter(glm::vec2(x, y)))
 				return true;
 			return false;
 		}
@@ -168,7 +189,7 @@ namespace Game
 		{
 			int x = static_cast<int>(worldToMap(pos).x);
 			int y = static_cast<int>(worldToMap(pos).y);
-			if (_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9)
+			if (canWalk(glm::vec2(x, y)))
 				return true;
 			return false;
 		}
@@ -186,10 +207,5 @@ namespace Game
 		}
 
 		REGISTER_COMPONENT_CPP(Map)
-
-		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
-		{
-			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);
-		}
     }
 }

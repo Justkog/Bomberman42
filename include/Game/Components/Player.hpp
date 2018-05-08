@@ -34,6 +34,7 @@ namespace Game
 
 		public:
             Player(BeerEngine::GameObject *gameObject);
+			virtual ~Player(void);
 
             virtual void    start(void);
             virtual void    fixedUpdate(void);

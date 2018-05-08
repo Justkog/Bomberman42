@@ -5,6 +5,7 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Game/Components/Item.hpp"
+#include "Game/Components/Map.hpp"
 
 namespace Game
 {
@@ -15,9 +16,13 @@ namespace Game
             _transform(gameObject->transform)
 		{ }
 
+		Player::~Player(void)
+		{
+			_character->map->_player = nullptr;
+		}
+
         void    Player::start(void)
         {
-            std::cout << "PLAYER STARTED \n";
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");

@@ -96,7 +96,7 @@ namespace Game
 
         void    Character::dropBomb(void)
         {
-            if (_bombNb <= 0 || !map->canWalk(_gameObject->transform.position))
+            if (_bombNb <= 0 || !map->hasBomb(_gameObject->transform.position))
                 return;
             BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
             go->transform.position = glm::round(_gameObject->transform.position);

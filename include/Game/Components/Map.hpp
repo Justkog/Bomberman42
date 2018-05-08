@@ -45,6 +45,8 @@ namespace Game
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
+			bool			hasCharacter(glm::vec2 pos);
+			bool			hasBomb(glm::vec3 pos);
 			bool			canWalk(glm::vec2 pos);
 			bool			canWalk(glm::vec3 pos);
 

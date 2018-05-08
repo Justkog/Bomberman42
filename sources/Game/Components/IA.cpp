@@ -26,7 +26,6 @@ namespace Game
 
         void    IA::start(void)
         {
-            std::cout << "IA STARTED \n";
             _character = _gameObject->GetComponent<Game::Component::Character>();
         }
 
@@ -61,28 +60,28 @@ namespace Game
             }
         }
 
-        bool    IA::avoidExplosion(glm::vec3 pos, glm::vec3 dir)
+        bool    IA::avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset)
         {
             std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(pos, dir);
             Game::Component::Bomb *bomb;
 
-            if (hits.size() > 0)
+            if (hits.size() > 0 + offset)
             {
-                bomb = hits[0].collider->_gameObject->GetComponent<Game::Component::Bomb>();
-                if (!bomb && hits[0].collider->_gameObject->GetComponent<Game::Component::IA>() == this)
-                    bomb = hits[1].collider->_gameObject->GetComponent<Game::Component::Bomb>();
+                bomb = hits[0 + offset].collider->_gameObject->GetComponent<Game::Component::Bomb>();
+                if (!bomb && hits[0 + offset].collider->_gameObject->GetComponent<Game::Component::IA>() == this && hits.size() > 1 + offset)
+                    bomb = hits[1 + offset].collider->_gameObject->GetComponent<Game::Component::Bomb>();
                 if (bomb && bomb->power >= std::abs(pos.z - bomb->_gameObject->transform.position.z) + std::abs(pos.x - bomb->_gameObject->transform.position.x))
                     return (false);
             }
             return (true);
         }
 
-        bool    IA::avoidAllExplosions(glm::vec2 pos)
+        bool    IA::avoidAllExplosions(glm::vec2 pos, int offset)
         {
-            if (!avoidExplosion(map->mapToWorld(pos), glm::vec3(50, 0, 0))
-            || !avoidExplosion(map->mapToWorld(pos), glm::vec3(-50, 0, 0))
-            || !avoidExplosion(map->mapToWorld(pos), glm::vec3(0, 0, 50))
-            || !avoidExplosion(map->mapToWorld(pos), glm::vec3(0, 0, -50)))
+            if (!avoidExplosion(map->mapToWorld(pos), glm::vec3(50, 0, 0), offset)
+            || !avoidExplosion(map->mapToWorld(pos), glm::vec3(-50, 0, 0), offset)
+            || !avoidExplosion(map->mapToWorld(pos), glm::vec3(0, 0, 50), offset)
+            || !avoidExplosion(map->mapToWorld(pos), glm::vec3(0, 0, -50), offset))
                 return (false);
             return (true);
         }
@@ -94,12 +93,18 @@ namespace Game
 
             if (BeerEngine::Physics::Physics::Raycast(pos, dir, hit, 0))
             {
-                if (hit.collider->_gameObject->GetComponent<Game::Component::Breakable>() && hit.collider->_gameObject != _gameObject)
-                    val += 2;
-                if (hit.collider->_gameObject->GetComponent<Game::Component::Character>() && hit.collider->_gameObject != _gameObject)
-                    val += 2;
-                if (hit.collider->_gameObject->GetComponent<Game::Component::Item>())
-                    val -= 3;
+                auto breakable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
+                auto character = hit.collider->_gameObject->GetComponent<Game::Component::Character>();
+                auto item = hit.collider->_gameObject->GetComponent<Game::Component::Item>();
+
+                if (breakable && !character && !avoidAllExplosions(map->worldToMap(hit.collider->_gameObject->transform.position), 1))
+                    val -= 6;
+                if (breakable && hit.collider->_gameObject != _gameObject)
+                    val += 4;
+                if (character && hit.collider->_gameObject != _gameObject)
+                    val += 6;
+                if (item)
+                    val -= 6;
             }
             return (val);
         }
@@ -131,14 +136,14 @@ namespace Game
 
                     if (map->canWalk(glm::vec2(x, y)) && avoidAllExplosions(glm::vec2(x, y)) && findPath(glm::vec2(x, y)))
                     {
-                        tmpVal -= _path.size();
                         if (map->_map[y][x] == 9)
-                            tmpVal += 5;
+                            tmpVal += 10;
                         else if (_character->_bombNb > 0)
                         {
                             tmpVal += checkExplosionZone(glm::vec2(x, y));
-                            tmpObj = Objective::DropBomb;
+                            tmpObj = tmpVal > 0 ? Objective::DropBomb : Objective::MoveTo;
                         }
+                        tmpVal -= _path.size();
                         if (target == glm::vec2(0) || tmpVal > val)
                         {
                             target = glm::vec2(x, y);
@@ -184,13 +189,17 @@ namespace Game
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
                 _path.erase(_path.begin());
             dir = map->mapToWorld(_path[0]) - _transform.position;
-            if (dir.z > 0.01)
+            if (std::abs(dir.z) <= 0.015)
+                _transform.position.z = map->mapToWorld(_path[0]).z;
+            else if (dir.z > 0.015)
                     _character->move(Character::Direction::Up);
-            else if (dir.z < -0.01)
+            else if (dir.z < -0.015)
                     _character->move(Character::Direction::Down);
-            if (dir.x > 0.01)
+            if (std::abs(dir.x) <= 0.015)
+                _transform.position.x = map->mapToWorld(_path[0]).x;
+            else if (dir.x > 0.015)
                     _character->move(Character::Direction::Left);
-            else if (dir.x < -0.01)
+            else if (dir.x < -0.015)
                     _character->move(Character::Direction::Right);
         }
 
