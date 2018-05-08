@@ -1,0 +1,15 @@
+digraph "include/Game" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d44c64559bbebec7f509842c48db8b23 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="include" fontname="Helvetica", fontsize="10", URL="dir_d44c64559bbebec7f509842c48db8b23.html"]
+  subgraph clusterdir_42f88387b2411e5d672af5da212cf282 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_42f88387b2411e5d672af5da212cf282.html"];
+    dir_42f88387b2411e5d672af5da212cf282 [shape=plaintext label="Game"];
+    dir_0e8e20bfd1ed48a4c17ba834f1da6499 [shape=box label="Components" color="black" fillcolor="white" style="filled" URL="dir_0e8e20bfd1ed48a4c17ba834f1da6499.html"];
+  }
+  }
+  dir_8213943ce0b792be39d34390845932ae [shape=box label="Core" fillcolor="white" style="filled" color="red" URL="dir_8213943ce0b792be39d34390845932ae.html"];
+  dir_0e8e20bfd1ed48a4c17ba834f1da6499->dir_8213943ce0b792be39d34390845932ae [headlabel="86", labeldistance=1.5 headhref="dir_000010_000001.html"];
+}

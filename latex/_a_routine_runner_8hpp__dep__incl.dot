@@ -1,0 +1,8 @@
+digraph "include/Core/BeerRoutine/ARoutineRunner.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node30 [label="include/Core/BeerRoutine\l/ARoutineRunner.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node30 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node31 [label="include/Game/Components\l/BeerRoutineTester.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_beer_routine_tester_8hpp.html"];
+}

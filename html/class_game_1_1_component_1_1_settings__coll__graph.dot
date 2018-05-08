@@ -1,0 +1,30 @@
+digraph "Game::Component::Settings"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node5 [label="Game::Component::Settings",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="BeerEngine::Component\l::Component",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_component_1_1_component.html"];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="BeerEngine::JsonSerializable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_json_serializable.html"];
+  Node8 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="SigSlotBase",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _gameObject" ,fontname="Helvetica"];
+  Node9 [label="BeerEngine::GameObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_game_object.html"];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="BeerEngine::JsonDeserializable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_json_deserializable.html"];
+  Node11 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" transform" ,fontname="Helvetica"];
+  Node11 [label="BeerEngine::Transform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_transform.html",tooltip="classe representant la transformation d&#39;un object, position, rotation... "];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" parent" ,fontname="Helvetica"];
+  Node12 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _scene" ,fontname="Helvetica"];
+  Node12 [label="BeerEngine::AScene",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_a_scene.html"];
+  Node7 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="BeerEngine::Component\l::IStart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_component_1_1_i_start.html"];
+  Node14 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" settingsContainer" ,fontname="Helvetica"];
+  Node14 [label="Game::SettingsContainer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_1_1_settings_container.html"];
+}

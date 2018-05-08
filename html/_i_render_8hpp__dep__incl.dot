@@ -1,0 +1,17 @@
+digraph "include/Core/Component/IRender.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="include/Core/Component\l/IRender.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="include/Core/Component\l/MeshRenderer.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_mesh_renderer_8hpp.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="include/Core/Component\l/RaysRenderer.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_rays_renderer_8hpp.html"];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="include/Game/Components\l/Bomb.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_bomb_8hpp.html"];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="include/Game/Components\l/Map.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_map_8hpp.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="include/Game/Components\l/MouseRayTest.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_mouse_ray_test_8hpp.html"];
+}

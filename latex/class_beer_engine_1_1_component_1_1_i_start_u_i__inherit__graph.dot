@@ -1,0 +1,8 @@
+digraph "BeerEngine::Component::IStartUI"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="BeerEngine::Component\l::IStartUI",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 [label="Game::Component::MainMenu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_1_1_component_1_1_main_menu.html"];
+}

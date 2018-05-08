@@ -1,0 +1,18 @@
+digraph "BeerEngine::Component::ACollider"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="BeerEngine::Component\l::ACollider",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="BeerEngine::Component\l::Component",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_component_1_1_component.html"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BeerEngine::JsonSerializable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_json_serializable.html"];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="SigSlotBase",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="BeerEngine::Component\l::IStart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_component_1_1_i_start.html"];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="BeerEngine::Component\l::BoxCollider2D",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_component_1_1_box_collider2_d.html"];
+  Node0 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="BeerEngine::Component\l::CircleCollider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_beer_engine_1_1_component_1_1_circle_collider.html"];
+}
