@@ -112,6 +112,15 @@
             "components": [
                 {
                     "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
                 }
             ],
             "id": 2,

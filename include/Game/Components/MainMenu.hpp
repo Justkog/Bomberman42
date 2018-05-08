@@ -16,6 +16,8 @@ namespace Game
 {
 	namespace Component
 	{
+		class UIThemeManager;
+
 		class MainMenu : public BeerEngine::Component::Component, 
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IStartUI,
@@ -23,15 +25,12 @@ namespace Game
 
 		{
 		public:
-			nk_style_window defaultWindow;
-			nk_style_button defaultButton;
+			UIThemeManager	*uiManager;
 
 			nk_style_window mWindow;
-			nk_style_button mButton;
+			// nk_style_button mButton;
 
-			nk_style_window mBackWindow;
-
-			std::map<std::string, nk_font *> available_fonts;
+			// nk_style_window mBackWindow;
 
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );
@@ -46,9 +45,7 @@ namespace Game
 			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
 
-			void saveDefaultUI(struct nk_context *ctx);
 			void setUI(struct nk_context *ctx);
-			void resetToDefaultUI(struct nk_context *ctx);
 		};
 
 	};

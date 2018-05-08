@@ -21,6 +21,7 @@ namespace BeerEngine
 			void    destroy(GameObject *go = nullptr);
 
 			GameObject		*_gameObject;
+			bool			_isActive;
 
 			virtual nlohmann::json	serialize();
 

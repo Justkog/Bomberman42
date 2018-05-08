@@ -93,6 +93,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentFixedUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
 				u->fixedUpdate();
 		}
@@ -103,6 +105,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
 				u->update();
 		}
@@ -113,6 +117,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->renderUpdate();
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
@@ -125,6 +131,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRender" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->render();
 		}
@@ -134,6 +142,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderAlpha" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->renderAlpha();
 		}
@@ -144,11 +154,15 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentPhysicUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
 				p->physicUpdate();
 		}
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}
@@ -159,6 +173,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderUI" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUI *r = dynamic_cast<Component::IUI*>(c))
 				r->renderUI(ctx);
 		}

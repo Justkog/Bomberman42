@@ -16,7 +16,7 @@ namespace BeerEngine
 		add_component_type Component::typeToAddComponent = Component::createAddMap();
 
 		Component::Component(GameObject *gameObject) :
-			_gameObject(gameObject)
+			_gameObject(gameObject), _isActive(true)
 		{
 
 		}

@@ -14,6 +14,9 @@
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
 #include "Game/Components/MainMenu.hpp"
+#include "Game/Components/SettingsMenu.hpp"
+#include "Game/Components/BackgroundDrawer.hpp"
+#include "Game/Components/UIThemeManager.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -64,8 +67,13 @@ void    SceneMain::init(void)
 	bkgdGO->transform.scale = glm::vec3(40, 1, 40);
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
-	menuGO->AddComponent<Game::Component::MainMenu>();
-
+	auto uiManager = menuGO->AddComponent<Game::Component::UIThemeManager>();
+	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
+	bgDrawer->uiManager = uiManager;
+	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
+	mainMenu->uiManager = uiManager;
+	auto settings = menuGO->AddComponent<Game::Component::SettingsMenu>();
+	settings->_isActive = false;
 
 	this->save("main.scene");
 	std::cout << "init end" << "\n";
