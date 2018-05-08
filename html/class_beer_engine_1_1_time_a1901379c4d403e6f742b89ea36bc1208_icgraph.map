@@ -1,0 +1,10 @@
+<map id="BeerEngine::Time::GetDeltaTime" name="BeerEngine::Time::GetDeltaTime">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_beer_routine_1_1_beer_routine.html#af210700097e82efb5c60ef68c73cb900" title="BeerEngine::BeerRoutine\l::BeerRoutine::update" alt="" coords="307,5,480,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_particle_base.html#a2aad03916144a503ca8aee36637a5f76" title="BeerEngine::Component\l::ParticleBase::update" alt="" coords="310,68,477,107"/>
+<area shape="rect" id="node4" href="$class_camera_test.html#a5bacc3399e57aa311e8d5ea39c9865bf" title="CameraTest::update" alt="" coords="323,131,464,156"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_camera_controller.html#afcf6461289c7a58a20f7a91acf8dd17f" title="Game::Component::CameraController\l::update" alt="" coords="270,180,517,219"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_character.html#a1c5583b4e0fa4c9a38810e67dd247371" title="Game::Component::Character\l::translate" alt="" coords="293,243,493,281"/>
+<area shape="rect" id="node7" href="$class_game_1_1_component_1_1_item.html#acca37787e7dcbddc8dc8e651f6d089ff" title="Game::Component::Item\l::update" alt="" coords="310,305,477,344"/>
+<area shape="rect" id="node8" href="$main_8cpp.html#a2f1a62e55eab2a147abd1afee9be470d" title="updateThread" alt="" coords="341,368,446,393"/>
+<area shape="rect" id="node9" href="$main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="565,368,615,393"/>
+</map>

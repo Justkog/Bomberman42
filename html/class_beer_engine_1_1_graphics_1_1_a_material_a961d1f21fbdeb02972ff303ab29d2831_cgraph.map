@@ -1,0 +1,9 @@
+<map id="BeerEngine::Graphics::AMaterial::deserialize" name="BeerEngine::Graphics::AMaterial::deserialize">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_a_material.html#a51bdeeb2d33ec7409a733c85f216a0a8" title="BeerEngine::Graphics\l::AMaterial::setAlbedo" alt="" coords="210,5,362,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_graphics_1_1_texture.html#ab5ac74f0e6611b002b3013703e767749" title="BeerEngine::Graphics\l::Texture::Deserialize" alt="" coords="210,68,362,107"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_graphics_1_1_a_material.html#ae19f7b8d64b456c024efe68e12500022" title="BeerEngine::Graphics\l::AMaterial::setNormal" alt="" coords="210,131,363,169"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_graphics_1_1_a_material.html#a5e78bdc4a7da0efd113f678a862cc317" title="BeerEngine::Graphics\l::AMaterial::setBump" alt="" coords="210,193,362,232"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_graphics_1_1_a_material.html#a21f1976d414bf0b113d8c6e3bfac0e60" title="BeerEngine::Graphics\l::AMaterial::setColor" alt="" coords="210,256,362,295"/>
+<area shape="rect" id="node4" href="$class_assets.html#a61be9fdfabc9e831899a6f1abaf6240b" title="Assets::GetTexture" alt="" coords="411,75,545,100"/>
+<area shape="rect" id="node5" href="$class_assets.html#a69ba722168ad458cdf84cbd468df13ec" title="Assets::GetInstance" alt="" coords="593,75,733,100"/>
+</map>

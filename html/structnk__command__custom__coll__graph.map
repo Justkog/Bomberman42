@@ -1,0 +1,4 @@
+<map id="nk_command_custom" name="nk_command_custom">
+<area shape="rect" id="node2" href="$structnk__command.html" title="{nk_command\n|+ type\l+ next\l|}" alt="" coords="5,5,107,92"/>
+<area shape="rect" id="node3" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="131,5,213,92"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="nk_command_buffer" name="nk_command_buffer">
+<area shape="rect" id="node2" href="$structnk__rect.html" title="{nk_rect\n|+ x\l+ y\l+ w\l+ h\l|}" alt="" coords="5,341,70,455"/>
+<area shape="rect" id="node3" href="$structnk__buffer.html" title="{nk_buffer\n|+ type\l+ grow_factor\l+ allocated\l+ needed\l+ calls\l+ size\l|}" alt="" coords="225,328,328,468"/>
+<area shape="rect" id="node4" href="$structnk__allocator.html" title="{nk_allocator\n||}" alt="" coords="145,187,238,260"/>
+<area shape="rect" id="node5" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="87,5,170,92"/>
+<area shape="rect" id="node6" href="$structnk__buffer__marker.html" title="{nk_buffer_marker\n|+ active\l+ offset\l|}" alt="" coords="262,180,387,267"/>
+<area shape="rect" id="node7" href="$structnk__memory.html" title="{nk_memory\n|+ ptr\l+ size\l|}" alt="" coords="411,180,502,267"/>
+</map>

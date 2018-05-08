@@ -1,0 +1,9 @@
+<map id="include/Core/Component/BoxCollider2D.hpp" name="include/Core/Component/BoxCollider2D.hpp">
+<area shape="rect" id="node2" href="$_a_collider_8cpp.html" title="sources/Core/Component\l/ACollider.cpp" alt="" coords="5,92,179,131"/>
+<area shape="rect" id="node3" href="$_box_collider2_d_8cpp.html" title="sources/Core/Component\l/BoxCollider2D.cpp" alt="" coords="203,92,376,131"/>
+<area shape="rect" id="node4" href="$_circle_collider_8cpp.html" title="sources/Core/Component\l/CircleCollider.cpp" alt="" coords="400,92,573,131"/>
+<area shape="rect" id="node5" href="$_character_8cpp.html" title="sources/Game/Components\l/Character.cpp" alt="" coords="597,92,784,131"/>
+<area shape="rect" id="node6" href="$_map_8cpp.html" title="sources/Game/Components\l/Map.cpp" alt="" coords="809,92,996,131"/>
+<area shape="rect" id="node7" href="$_scene_main_8cpp.html" title="sources/Game/SceneMain.cpp" alt="" coords="1021,99,1224,124"/>
+<area shape="rect" id="node8" href="$_scene_test_8cpp.html" title="sources/Game/SceneTest.cpp" alt="" coords="1248,99,1448,124"/>
+</map>

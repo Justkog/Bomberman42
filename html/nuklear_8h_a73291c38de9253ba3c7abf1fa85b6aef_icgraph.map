@@ -1,0 +1,5 @@
+<map id="nk_label" name="nk_label">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html#aa047234df2a59f850b469b72ed5aac59" title="Game::Component::IA\l::renderUI" alt="" coords="137,5,291,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_map.html#a3fbb843d8138214039cf320b3af4d9b6" title="Game::Component::Map\l::renderUI" alt="" coords="130,68,298,107"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_player.html#a6ceac2fc95569461fc3f6be5d1be64df" title="Game::Component::Player\l::renderUI" alt="" coords="124,131,304,169"/>
+</map>

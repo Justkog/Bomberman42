@@ -1,0 +1,7 @@
+<map id="BeerEngine::GameObject::load" name="BeerEngine::GameObject::load">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_i_o_1_1_file_utils.html#af2f9aa1fded4e7d73b771d3a2b5d2a51" title="BeerEngine::IO::FileUtils\l::LoadFile" alt="" coords="230,5,397,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_game_object.html#a9981f356a1a5262e54fd078000e6de40" title="BeerEngine::GameObject\l::deserialize" alt="" coords="227,68,400,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_transform.html#ab9369afdb8bc62caf7fb0829b88834c8" title="BeerEngine::Transform\l::Deserialize" alt="" coords="454,36,613,75"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_component.html#a38ceb068d48a5e2fc74a25d6e18de852" title="BeerEngine::Component\l::Component::Deserialize" alt="" coords="448,99,619,137"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_transform.html#ac41ca618a369ce6b989e7a317efd2910" title="BeerEngine::Transform\l::DeserializePtr" alt="" coords="667,36,826,75"/>
+</map>

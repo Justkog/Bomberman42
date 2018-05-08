@@ -1,0 +1,4 @@
+<map id="Game::Component::IA::moveToNextCell" name="Game::Component::IA::moveToNextCell">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_map.html#ad138a7749f15feeba72af1707befc6ff" title="Game::Component::Map\l::mapToWorld" alt="" coords="224,5,391,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_character.html#aa5b5758f8c232ac08ebbccf2cfb05142" title="Game::Component::Character\l::move" alt="" coords="207,68,407,107"/>
+</map>

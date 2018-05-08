@@ -1,0 +1,7 @@
+<map id="BeerEngine::GameObject::destroy" name="BeerEngine::GameObject::destroy">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html#a185d4b4ebe7135ce55222b94e3fdd8bf" title="BeerEngine::Component\l::Component::destroy" alt="" coords="231,11,398,49"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_player.html#a90fd5207a5c264ec9c3c623e3f2684c9" title="Game::Component::Player\l::update" alt="" coords="451,68,630,107"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_bomb.html#a1fae40758c4c846e1b9406081d9e5eb8" title="Game::Component::Bomb\l::fixedUpdate" alt="" coords="452,153,629,192"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_bomb.html#aac712a604337a08ce89f88782cae5df9" title="Game::Component::Bomb\l::explode" alt="" coords="227,176,403,215"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html#a198cb81c4194e5bb57056ee550eb9583" title="Game::Component::Item\l::onTriggerEnter" alt="" coords="457,5,624,44"/>
+</map>

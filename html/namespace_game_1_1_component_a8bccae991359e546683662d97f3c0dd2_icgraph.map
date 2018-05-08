@@ -1,0 +1,4 @@
+<map id="Game::Component::loadSprite" name="Game::Component::loadSprite">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_main_menu.html#abcf18bc2f0d9108279ea2530379c27e0" title="Game::Component::MainMenu\l::startUI" alt="" coords="255,5,458,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_main_menu.html#a1210312521933c7c2492d9393ac04cbf" title="Game::Component::MainMenu\l::renderUI" alt="" coords="255,68,458,107"/>
+</map>

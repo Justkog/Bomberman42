@@ -1,0 +1,6 @@
+<map id="BeerEngine::AScene::load" name="BeerEngine::AScene::load">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_i_o_1_1_file_utils.html#af2f9aa1fded4e7d73b771d3a2b5d2a51" title="BeerEngine::IO::FileUtils\l::LoadFile" alt="" coords="198,5,366,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_a_scene.html#aea7555790f85000d3c5ca6fc34955e49" title="BeerEngine::AScene\l::deserialize" alt="" coords="210,68,355,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_game_object.html#a737be8361bf0aafa2ca0d2746bf06d6e" title="BeerEngine::GameObject\l::Deserialize" alt="" coords="414,68,587,107"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html#a4b23814e19c3dabc407594419d396a41" title="BeerEngine::GameObject\l::GameObject" alt="" coords="635,68,808,107"/>
+</map>

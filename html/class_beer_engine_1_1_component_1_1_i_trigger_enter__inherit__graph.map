@@ -1,4 +1,4 @@
 <map id="BeerEngine::Component::ITriggerEnter" name="BeerEngine::Component::ITriggerEnter">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="Game::Component::Character" alt="" coords="5,92,205,117"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html" title="Game::Component::Item" alt="" coords="230,92,397,117"/>
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="{Game::Component::Character\n|+ _speed\l+ _bombNb\l+ _explosionSize\l+ _direction\l+ map\l# _transform\l|+ Character()\l+ start()\l+ fixedUpdate()\l+ update()\l+ translate()\l+ move()\l+ increaseSpeed()\l+ addBomb()\l+ increaseExplosionSize()\l+ dropBomb()\land 8 more...\l}" alt="" coords="5,140,205,413"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html" title="{Game::Component::Item\n|+ _transform\l+ _type\l+ map\l|+ Item()\l+ ~Item()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onTriggerStay()\l+ onTriggerEnter()\l+ onTriggerExit()\l+ serialize()\l+ deserialize()\l}" alt="" coords="230,167,397,387"/>
 </map>

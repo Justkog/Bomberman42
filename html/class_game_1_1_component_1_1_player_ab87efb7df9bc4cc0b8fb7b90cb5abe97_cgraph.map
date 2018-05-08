@@ -1,0 +1,5 @@
+<map id="Game::Component::Player::start" name="Game::Component::Player::start">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_game_object.html#a70a24bb3e511f2ff0488b80c65e88f9f" title="BeerEngine::GameObject\l::GetComponent" alt="" coords="233,5,406,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_audio_1_1_audio_source.html#a4e8bd4f802eed9ee3cca487ec01e584e" title="BeerEngine::Audio::\lAudioSource::setBuffer" alt="" coords="240,68,398,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_audio_1_1_audio_clip.html#a02ffa4d4a75311f1a4d59b49e236a07e" title="BeerEngine::Audio::\lAudioClip::getBuffer" alt="" coords="249,131,389,169"/>
+</map>

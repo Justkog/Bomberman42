@@ -1,0 +1,4 @@
+<map id="BeerEngine::Physics::Physics::ScreenToWorldRay" name="BeerEngine::Physics::Physics::ScreenToWorldRay">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_window.html#ae1674e98ddc57e4960c89912dcd7b16a" title="recuperer la fenetre Methode qui permet de recuperer la fenetre. " alt="" coords="250,5,396,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_window.html#a0edfa7a84d705d126e07655e174ee492" title="recupere la projection 3d Methode qui permet de recuperer la matrice de perspective pour les rendu 3D..." alt="" coords="250,68,396,107"/>
+</map>

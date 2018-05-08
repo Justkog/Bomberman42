@@ -1,0 +1,4 @@
+<map id="BeerEngine::Component::ParticleBase::ParticleBase" name="BeerEngine::Component::ParticleBase::ParticleBase">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_particle_base.html#ae1be2f62f4e4089367285b90e6dd7b10" title="BeerEngine::Component\l::ParticleBase::serialize" alt="" coords="239,5,407,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_particle_explode.html#a9965db0d069aba113511069c137af37e" title="BeerEngine::Component\l::ParticleExplode::serialize" alt="" coords="455,5,632,44"/>
+</map>

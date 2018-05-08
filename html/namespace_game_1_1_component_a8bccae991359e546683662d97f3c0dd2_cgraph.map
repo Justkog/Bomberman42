@@ -1,0 +1,7 @@
+<map id="Game::Component::loadSprite" name="Game::Component::loadSprite">
+<area shape="rect" id="node2" href="$class_assets.html#a61be9fdfabc9e831899a6f1abaf6240b" title="Assets::GetTexture" alt="" coords="261,5,395,31"/>
+<area shape="rect" id="node4" href="$nuklear_8h.html#a1c4e110e209074683bb6eb477373f00d" title="nk_subimage_id" alt="" coords="269,55,387,80"/>
+<area shape="rect" id="node5" href="$nuklear_8h.html#aedba0cd2ec170c1f95f3396953982bc1" title="nk_rect" alt="" coords="296,104,361,129"/>
+<area shape="rect" id="node6" href="$nuklear_8h.html#a1de0362610f6087ea11f0d9a4ada16e4" title="nk_style_item_image" alt="" coords="255,153,401,179"/>
+<area shape="rect" id="node3" href="$class_assets.html#a69ba722168ad458cdf84cbd468df13ec" title="Assets::GetInstance" alt="" coords="449,5,590,31"/>
+</map>

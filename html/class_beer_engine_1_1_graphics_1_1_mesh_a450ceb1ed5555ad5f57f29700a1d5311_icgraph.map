@@ -1,0 +1,4 @@
+<map id="BeerEngine::Graphics::Mesh::render" name="BeerEngine::Graphics::Mesh::render">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a23576093fc5f8204122f45338f1648fd" title="BeerEngine::Component\l::MeshRenderer::render" alt="" coords="213,5,381,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_particle_base.html#ab891afa6a5b2c99ffe94691bb5419588" title="BeerEngine::Component\l::ParticleBase::renderAlpha" alt="" coords="205,68,389,107"/>
+</map>

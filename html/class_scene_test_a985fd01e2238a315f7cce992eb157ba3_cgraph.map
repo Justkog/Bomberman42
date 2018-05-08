@@ -1,0 +1,6 @@
+<map id="SceneTest::addCrate" name="SceneTest::addCrate">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a71d644125d6eceb95a90ab106db04640" title="BeerEngine::Component\l::MeshRenderer::setMesh" alt="" coords="207,5,381,44"/>
+<area shape="rect" id="node3" href="$class_assets.html#a61be9fdfabc9e831899a6f1abaf6240b" title="Assets::GetTexture" alt="" coords="227,68,361,93"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a1853d2f61ed7e2a60f21ee4992f64684" title="BeerEngine::Component\l::MeshRenderer::setMaterial" alt="" coords="199,117,389,156"/>
+<area shape="rect" id="node4" href="$class_assets.html#a69ba722168ad458cdf84cbd468df13ec" title="Assets::GetInstance" alt="" coords="437,68,577,93"/>
+</map>

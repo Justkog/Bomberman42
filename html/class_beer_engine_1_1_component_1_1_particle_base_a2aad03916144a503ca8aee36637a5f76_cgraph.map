@@ -1,0 +1,9 @@
+<map id="BeerEngine::Component::ParticleBase::update" name="BeerEngine::Component::ParticleBase::update">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_time.html#a1901379c4d403e6f742b89ea36bc1208" title="recuperer les delta time Methode qui permet de recuperer le delta time (ecart entre deux cycle de l&#39;u..." alt="" coords="221,12,437,37"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_particle_base.html#a6191ae1cb301a45bbf7414fedc5e1b05" title="BeerEngine::Component\l::ParticleBase::addParticle" alt="" coords="240,61,418,100"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_component_1_1_particle_base.html#a3c63ad7b03d1acf01c64dfb8526a8764" title="BeerEngine::Component\l::ParticleBase::upgradeParticle" alt="" coords="227,124,431,163"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_component_1_1_particle_base.html#a694ef07f1547ddc9608aa91548dfe6a3" title="BeerEngine::Component\l::ParticleBase::initParticle" alt="" coords="485,61,658,100"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_transform.html#a2699038279b5b41831ff706c5ccc9348" title="recuperer la position dans le monde Methode qui permet de recuperer le vecteur de position de l&#39;objet..." alt="" coords="706,29,865,68"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_transform.html#a7aaf81b4672307edc39e9b208430ec59" title="effecteur une rotation Methode qui permet d&#39;effecter une rotation sur le vecteur donner par rapport a..." alt="" coords="706,92,865,131"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_transform.html#a9b7d3168270eb800c3e40af55c55fdc5" title="recupere la matrice de l&#39;objet Methode qui permet de recuperer la matrice de l&#39;objet ..." alt="" coords="913,29,1071,68"/>
+</map>

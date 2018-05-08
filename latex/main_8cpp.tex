@@ -1,0 +1,208 @@
+\hypertarget{main_8cpp}{}\section{sources/main.cpp File Reference}
+\label{main_8cpp}\index{sources/main.\+cpp@{sources/main.\+cpp}}
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include \char`\"{}Core/\+Beer\+Engine.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Game/\+Scene\+Test.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Game/\+Scene\+Main.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Game/\+Assets.\+hpp\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a4e30c99b0f20f7155adebf2cb2219b03}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a2ab99de094ad4c244260062426e5caa0}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a13b5abd58c2a82dcf6a5f7ddfcf112aa}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_adf1c808d169071b73cb46f7538bf1721}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_ac67be0ee8bc7f08530c891cbfa14b788}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a7ad0c2aa5bf98a3302a170b7ce2fb9d2}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_af0847faa9e18a4865944c2f5fb093be0}{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_aae11ce91efbb99ec40b279ddc84c050f}{N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_afcbe59ecb36abfe68316d9e74d5889b8}{N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_aa241b98421197a51c39906e4b36091b8}{M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER}}~512 $\ast$ 1024
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a0dad45ec2df924c6dcc218703572a0ad}{M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER}}~128 $\ast$ 1024
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a2f1a62e55eab2a147abd1afee9be470d}{update\+Thread}} (\mbox{\hyperlink{class_beer_engine_1_1_window}{Beer\+Engine\+::\+Window}} $\ast$window)
+\item 
+int \mbox{\hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_a0dad45ec2df924c6dcc218703572a0ad}\label{main_8cpp_a0dad45ec2df924c6dcc218703572a0ad}} 
+\index{main.\+cpp@{main.\+cpp}!M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER@{M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER}}
+\index{M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER@{M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER}{MAX\_ELEMENT\_BUFFER}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+B\+U\+F\+F\+ER~128 $\ast$ 1024}
+
+
+
+Definition at line 15 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_aa241b98421197a51c39906e4b36091b8}\label{main_8cpp_aa241b98421197a51c39906e4b36091b8}} 
+\index{main.\+cpp@{main.\+cpp}!M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER@{M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER}}
+\index{M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER@{M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER}{MAX\_VERTEX\_BUFFER}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+ER~512 $\ast$ 1024}
+
+
+
+Definition at line 14 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_afcbe59ecb36abfe68316d9e74d5889b8}\label{main_8cpp_afcbe59ecb36abfe68316d9e74d5889b8}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON@{N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\index{N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON@{N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}{NK\_GLFW\_GL3\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+G\+L\+F\+W\+\_\+\+G\+L3\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+
+
+
+Definition at line 12 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_aae11ce91efbb99ec40b279ddc84c050f}\label{main_8cpp_aae11ce91efbb99ec40b279ddc84c050f}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON@{N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\index{N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON@{N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}{NK\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+
+
+
+Definition at line 11 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_adf1c808d169071b73cb46f7538bf1721}\label{main_8cpp_adf1c808d169071b73cb46f7538bf1721}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR}{NK\_INCLUDE\_DEFAULT\_ALLOCATOR}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+L\+O\+C\+A\+T\+OR}
+
+
+
+Definition at line 7 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_af0847faa9e18a4865944c2f5fb093be0}\label{main_8cpp_af0847faa9e18a4865944c2f5fb093be0}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT}{NK\_INCLUDE\_DEFAULT\_FONT}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+O\+NT}
+
+
+
+Definition at line 10 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a4e30c99b0f20f7155adebf2cb2219b03}\label{main_8cpp_a4e30c99b0f20f7155adebf2cb2219b03}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES}{NK\_INCLUDE\_FIXED\_TYPES}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+I\+X\+E\+D\+\_\+\+T\+Y\+P\+ES}
+
+
+
+Definition at line 4 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a7ad0c2aa5bf98a3302a170b7ce2fb9d2}\label{main_8cpp_a7ad0c2aa5bf98a3302a170b7ce2fb9d2}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG}{NK\_INCLUDE\_FONT\_BAKING}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+O\+N\+T\+\_\+\+B\+A\+K\+I\+NG}
+
+
+
+Definition at line 9 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a2ab99de094ad4c244260062426e5caa0}\label{main_8cpp_a2ab99de094ad4c244260062426e5caa0}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO}{NK\_INCLUDE\_STANDARD\_IO}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+IO}
+
+
+
+Definition at line 5 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a13b5abd58c2a82dcf6a5f7ddfcf112aa}\label{main_8cpp_a13b5abd58c2a82dcf6a5f7ddfcf112aa}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS}{NK\_INCLUDE\_STANDARD\_VARARGS}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+V\+A\+R\+A\+R\+GS}
+
+
+
+Definition at line 6 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_ac67be0ee8bc7f08530c891cbfa14b788}\label{main_8cpp_ac67be0ee8bc7f08530c891cbfa14b788}} 
+\index{main.\+cpp@{main.\+cpp}!N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT}}
+\index{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT@{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT}{NK\_INCLUDE\_VERTEX\_BUFFER\_OUTPUT}}
+{\footnotesize\ttfamily \#define N\+K\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+U\+T\+P\+UT}
+
+
+
+Definition at line 8 of file main.\+cpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 87 of file main.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8cpp_a2f1a62e55eab2a147abd1afee9be470d}\label{main_8cpp_a2f1a62e55eab2a147abd1afee9be470d}} 
+\index{main.\+cpp@{main.\+cpp}!update\+Thread@{update\+Thread}}
+\index{update\+Thread@{update\+Thread}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{update\+Thread()}{updateThread()}}
+{\footnotesize\ttfamily void update\+Thread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_beer_engine_1_1_window}{Beer\+Engine\+::\+Window}} $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file main.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a2f1a62e55eab2a147abd1afee9be470d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{main_8cpp_a2f1a62e55eab2a147abd1afee9be470d_icgraph}
+\end{center}
+\end{figure}

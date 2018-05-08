@@ -1,0 +1,9 @@
+<map id="nk_style_tab" name="nk_style_tab">
+<area shape="rect" id="node2" href="$structnk__style__item.html" title="{nk_style_item\n|+ type\l|}" alt="" coords="113,523,215,596"/>
+<area shape="rect" id="node7" href="$structnk__style__button.html" title="{nk_style_button\n|+ text_alignment\l+ border\l+ rounding\l+ draw_begin\l+ draw_end\l|}" alt="" coords="247,691,366,817"/>
+<area shape="rect" id="node3" href="$unionnk__style__item__data.html" title="{nk_style_item_data\n||}" alt="" coords="80,328,216,401"/>
+<area shape="rect" id="node4" href="$structnk__color.html" title="{nk_color\n|+ r\l+ g\l+ b\l+ a\l|}" alt="" coords="179,153,251,267"/>
+<area shape="rect" id="node5" href="$structnk__image.html" title="{nk_image\n|+ w\l+ h\l+ region\l|}" alt="" coords="75,160,154,260"/>
+<area shape="rect" id="node6" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="207,5,289,92"/>
+<area shape="rect" id="node8" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="463,516,534,603"/>
+</map>

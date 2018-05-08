@@ -1,0 +1,7 @@
+<map id="BeerEngine::Graphics::Texture::Texture" name="BeerEngine::Graphics::Texture::Texture">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_texture.html#a7f74fcae89b3ebbf4b4688b8ec7ebc6a" title="BeerEngine::Graphics\l::Texture::LoadBMP" alt="" coords="205,5,357,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_graphics_1_1_texture.html#a12fcb3dba4e2899f9fdbc68f908d0254" title="BeerEngine::Graphics\l::Texture::LoadPNG" alt="" coords="205,68,357,107"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_graphics_1_1_texture.html#a4133f1cb84dad55352e84863553df8db" title="BeerEngine::Graphics\l::Texture::LoadJPG" alt="" coords="205,131,357,169"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_graphics_1_1_texture.html#aa45b3e4585fad12c1c8a3d34cf630d1f" title="BeerEngine::Graphics\l::Texture::LoadTGA" alt="" coords="205,193,357,232"/>
+<area shape="rect" id="node4" href="$class_scene_test.html#aedded03410798c3705fb3fb028e56ab5" title="SceneTest::init" alt="" coords="405,137,513,163"/>
+</map>

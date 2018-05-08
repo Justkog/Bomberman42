@@ -1,0 +1,5 @@
+<map id="BeerEngine::Graphics::ShaderProgram::uniform1i" name="BeerEngine::Graphics::ShaderProgram::uniform1i">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_particle_base.html#ab891afa6a5b2c99ffe94691bb5419588" title="BeerEngine::Component\l::ParticleBase::renderAlpha" alt="" coords="238,5,422,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_graphics_1_1_a_material.html#a76f00cba384a903ea7db5e7558d481fe" title="BeerEngine::Graphics\l::AMaterial::bind" alt="" coords="254,68,406,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a23576093fc5f8204122f45338f1648fd" title="BeerEngine::Component\l::MeshRenderer::render" alt="" coords="470,68,637,107"/>
+</map>

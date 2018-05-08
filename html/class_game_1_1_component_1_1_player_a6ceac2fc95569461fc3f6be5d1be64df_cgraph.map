@@ -1,0 +1,7 @@
+<map id="Game::Component::Player::renderUI" name="Game::Component::Player::renderUI">
+<area shape="rect" id="node2" href="$nuklear_8h.html#a321e62b21505a6329ab3fc5fda073dfb" title="nk_begin" alt="" coords="277,5,352,31"/>
+<area shape="rect" id="node3" href="$nuklear_8h.html#aedba0cd2ec170c1f95f3396953982bc1" title="nk_rect" alt="" coords="282,55,347,80"/>
+<area shape="rect" id="node4" href="$nuklear_8h.html#a76e65dc775c0bd5efaa3c8f38f96823f" title="nk_layout_row_dynamic" alt="" coords="233,104,397,129"/>
+<area shape="rect" id="node5" href="$nuklear_8h.html#a73291c38de9253ba3c7abf1fa85b6aef" title="nk_label" alt="" coords="279,153,350,179"/>
+<area shape="rect" id="node6" href="$nuklear_8h.html#ae0ade48c4c8df72456b9d97ab3d195e3" title="nk_end" alt="" coords="282,203,347,228"/>
+</map>

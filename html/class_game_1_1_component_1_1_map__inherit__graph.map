@@ -1,6 +1,6 @@
 <map id="Game::Component::Map" name="Game::Component::Map">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="BeerEngine::Component\l::Component" alt="" coords="261,23,428,61"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="BeerEngine::JsonSerializable" alt="" coords="5,5,201,31"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="BeerEngine::Component\l::IStart" alt="" coords="261,85,428,124"/>
-<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="BeerEngine::Component::IUI" alt="" coords="249,148,441,173"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="{BeerEngine::Component\l::Component\n|+ _gameObject\l+ typeToAddComponent\l|+ Component()\l+ ~Component()\l+ destroy()\l+ serialize()\l+ deserialize()\l+ createInstance()\l+ addComponent()\l+ Deserialize()\l+ createAddMap()\l}" alt="" coords="103,167,271,373"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,119"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="{BeerEngine::Component\l::IStart\n||+ start()\l}" alt="" coords="295,227,463,313"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="{BeerEngine::Component::IUI\n||+ renderUI()\l}" alt="" coords="487,233,679,307"/>
 </map>

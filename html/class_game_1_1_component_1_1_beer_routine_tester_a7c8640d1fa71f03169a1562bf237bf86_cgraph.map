@@ -1,0 +1,6 @@
+<map id="Game::Component::BeerRoutineTester::createTestRoutine" name="Game::Component::BeerRoutineTester::createTestRoutine">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_beer_routine_1_1_beer_routine.html#a42d9b94c0bebacc8b235a8d21b8c1e68" title="BeerEngine::BeerRoutine\l::BeerRoutine::CreateRoutine" alt="" coords="278,5,475,44"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_beer_routine_1_1_beer_routine.html#a20ef71c350b9f25080a2afdee7d70b1c" title="BeerEngine::BeerRoutine\l::BeerRoutine::addAction" alt="" coords="290,68,463,107"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_beer_routine_tester.html#a08fca7a8e15f6e207f14e9ae2b984d62" title="Game::Component::BeerRoutine\lTester::testDisplay" alt="" coords="269,131,484,169"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_beer_routine_1_1_beer_routine.html#ad3cedf2bbe2719e1a8b951f16a416ca9" title="BeerEngine::BeerRoutine\l::BeerRoutine::BeerRoutine" alt="" coords="532,5,717,44"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Game::Component::Character::move" name="Game::Component::Character::move">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html#ac3951dbcb02fd5f34160becaad1bb962" title="Game::Component::IA\l::moveToNextCell" alt="" coords="266,5,420,44"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_player.html#a90fd5207a5c264ec9c3c623e3f2684c9" title="Game::Component::Player\l::update" alt="" coords="253,68,432,107"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_i_a.html#a18e08cf56c2cd6a6d57aeb7eff48bb4c" title="Game::Component::IA\l::moveToObjective" alt="" coords="480,5,634,44"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_i_a.html#aed6273e3aa9317d671fd3acdf682b70b" title="Game::Component::IA\l::update" alt="" coords="682,5,836,44"/>
+</map>

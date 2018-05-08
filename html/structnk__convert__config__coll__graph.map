@@ -1,0 +1,5 @@
+<map id="nk_convert_config" name="nk_convert_config">
+<area shape="rect" id="node2" href="$structnk__draw__null__texture.html" title="{nk_draw_null_texture\n||}" alt="" coords="17,153,166,227"/>
+<area shape="rect" id="node3" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="5,5,76,92"/>
+<area shape="rect" id="node4" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="101,5,184,92"/>
+</map>

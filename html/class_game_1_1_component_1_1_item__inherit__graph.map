@@ -1,9 +1,9 @@
 <map id="Game::Component::Item" name="Game::Component::Item">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="BeerEngine::Component\l::Component" alt="" coords="249,23,416,61"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="BeerEngine::JsonSerializable" alt="" coords="5,5,201,31"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="BeerEngine::Component\l::IStart" alt="" coords="249,85,416,124"/>
-<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_update.html" title="BeerEngine::Component\l::IUpdate" alt="" coords="249,148,416,187"/>
-<area shape="rect" id="node7" href="$class_beer_engine_1_1_component_1_1_i_trigger_stay.html" title="BeerEngine::Component\l::ITriggerStay" alt="" coords="249,211,416,249"/>
-<area shape="rect" id="node8" href="$class_beer_engine_1_1_component_1_1_i_trigger_enter.html" title="BeerEngine::Component\l::ITriggerEnter" alt="" coords="249,273,416,312"/>
-<area shape="rect" id="node9" href="$class_beer_engine_1_1_component_1_1_i_trigger_exit.html" title="BeerEngine::Component\l::ITriggerExit" alt="" coords="249,336,416,375"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="{BeerEngine::Component\l::Component\n|+ _gameObject\l+ typeToAddComponent\l|+ Component()\l+ ~Component()\l+ destroy()\l+ serialize()\l+ deserialize()\l+ createInstance()\l+ addComponent()\l+ Deserialize()\l+ createAddMap()\l}" alt="" coords="103,167,271,373"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,119"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="{BeerEngine::Component\l::IStart\n||+ start()\l}" alt="" coords="295,227,463,313"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_update.html" title="{BeerEngine::Component\l::IUpdate\n||+ fixedUpdate()\l+ update()\l}" alt="" coords="487,220,655,320"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_component_1_1_i_trigger_stay.html" title="{BeerEngine::Component\l::ITriggerStay\n||+ onTriggerStay()\l}" alt="" coords="679,227,847,313"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_component_1_1_i_trigger_enter.html" title="{BeerEngine::Component\l::ITriggerEnter\n||+ onTriggerEnter()\l}" alt="" coords="871,227,1039,313"/>
+<area shape="rect" id="node9" href="$class_beer_engine_1_1_component_1_1_i_trigger_exit.html" title="{BeerEngine::Component\l::ITriggerExit\n||+ onTriggerExit()\l}" alt="" coords="1063,227,1231,313"/>
 </map>

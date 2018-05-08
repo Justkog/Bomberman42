@@ -1,0 +1,4 @@
+<map id="Game::Component::Map::canWalk" name="Game::Component::Map::canWalk">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_map.html#a9d6733cf76fdff6d66c5154f43c688ea" title="Game::Component::Map\l::hasCharacter" alt="" coords="221,5,388,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_map.html#a0d11f1fd95d17f380ffdc65e7ef9dec9" title="Game::Component::Map\l::worldToMap" alt="" coords="436,5,603,44"/>
+</map>

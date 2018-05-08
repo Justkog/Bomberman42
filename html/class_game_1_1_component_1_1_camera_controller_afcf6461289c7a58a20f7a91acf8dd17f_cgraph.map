@@ -1,0 +1,9 @@
+<map id="Game::Component::CameraController::update" name="Game::Component::CameraController::update">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_input.html#ac9d7048338beb478532cf25e5c946e33" title="BeerEngine::Input::\lGetKey" alt="" coords="341,5,476,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_transform.html#aaca147072f231beb5a0fe8b32f23b85d" title="deplacer l&#39;objet Methode qui permet de deplacer l&#39;objet grace a un vecteur " alt="" coords="329,68,488,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_transform.html#a82f0d0d75290c73e5ae8267e2d76f83b" title="recuperer le vecteur d&#39;avancement Methode qui permet de recuperer le vecteur d&#39;avancement par rapport..." alt="" coords="329,131,488,169"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_time.html#a1901379c4d403e6f742b89ea36bc1208" title="recuperer les delta time Methode qui permet de recuperer le delta time (ecart entre deux cycle de l&#39;u..." alt="" coords="300,193,517,219"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_transform.html#a5344e1be69d47951f434efdd7788ab4b" title="recuperer le vecteur de gauche Methode qui permet de recuperer le vecteur de gauche par rapport a la ..." alt="" coords="329,243,488,281"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_transform.html#afcd8cfe1fcd321abcb0950127ee4f76d" title="recuperer le vecteur de droite Methode qui permet de recuperer le vecteur de par rapport a la rotatio..." alt="" coords="329,305,488,344"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_transform.html#a5fbee07c1e2151d649d2eb82ec854ac0" title="recuperer le vecteur du haut Methode qui permet de recuperer le vecteur du haut par rapport a la rota..." alt="" coords="316,368,501,393"/>
+</map>

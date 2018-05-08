@@ -1,0 +1,4 @@
+<map id="nk_mouse" name="nk_mouse">
+<area shape="rect" id="node2" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="11,5,82,92"/>
+<area shape="rect" id="node3" href="$structnk__mouse__button.html" title="{nk_mouse_button\n|+ down\l+ clicked\l|}" alt="" coords="128,153,256,240"/>
+</map>

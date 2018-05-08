@@ -1,0 +1,9 @@
+<map id="nk_rect" name="nk_rect">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html#aa047234df2a59f850b469b72ed5aac59" title="Game::Component::IA\l::renderUI" alt="" coords="142,5,296,44"/>
+<area shape="rect" id="node3" href="$namespace_game_1_1_component.html#a8bccae991359e546683662d97f3c0dd2" title="Game::Component::loadSprite" alt="" coords="118,68,320,93"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_main_menu.html#a1210312521933c7c2492d9393ac04cbf" title="Game::Component::MainMenu\l::renderUI" alt="" coords="368,112,571,151"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_map.html#a3fbb843d8138214039cf320b3af4d9b6" title="Game::Component::Map\l::renderUI" alt="" coords="135,169,303,208"/>
+<area shape="rect" id="node7" href="$class_game_1_1_component_1_1_player.html#a6ceac2fc95569461fc3f6be5d1be64df" title="Game::Component::Player\l::renderUI" alt="" coords="130,232,309,271"/>
+<area shape="rect" id="node8" href="$main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="194,295,244,320"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_main_menu.html#abcf18bc2f0d9108279ea2530379c27e0" title="Game::Component::MainMenu\l::startUI" alt="" coords="368,49,571,88"/>
+</map>

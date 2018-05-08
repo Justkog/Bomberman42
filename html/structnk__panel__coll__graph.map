@@ -1,0 +1,16 @@
+<map id="nk_panel" name="nk_panel">
+<area shape="rect" id="node2" href="$structnk__command__buffer.html" title="{nk_command_buffer\n|+ use_clipping\l+ begin\l+ end\l+ last\l|}" alt="" coords="240,623,382,736"/>
+<area shape="rect" id="node3" href="$structnk__rect.html" title="{nk_rect\n|+ x\l+ y\l+ w\l+ h\l|}" alt="" coords="128,381,193,495"/>
+<area shape="rect" id="node9" href="$structnk__row__layout.html" title="{nk_row_layout\n|+ type\l+ index\l+ height\l+ min_height\l+ columns\l+ ratio\l+ item_width\l+ item_height\l+ item_offset\l+ filled\l+ tree_depth\l+ templates\l|}" alt="" coords="5,569,113,789"/>
+<area shape="rect" id="node4" href="$structnk__buffer.html" title="{nk_buffer\n|+ type\l+ grow_factor\l+ allocated\l+ needed\l+ calls\l+ size\l|}" alt="" coords="300,368,402,508"/>
+<area shape="rect" id="node5" href="$structnk__allocator.html" title="{nk_allocator\n||}" alt="" coords="294,200,387,273"/>
+<area shape="rect" id="node6" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="236,5,319,92"/>
+<area shape="rect" id="node7" href="$structnk__buffer__marker.html" title="{nk_buffer_marker\n|+ active\l+ offset\l|}" alt="" coords="411,193,536,280"/>
+<area shape="rect" id="node8" href="$structnk__memory.html" title="{nk_memory\n|+ ptr\l+ size\l|}" alt="" coords="560,193,651,280"/>
+<area shape="rect" id="node10" href="$structnk__menu__state.html" title="{nk_menu_state\n|+ x\l+ y\l+ w\l+ h\l|}" alt="" coords="407,623,519,736"/>
+<area shape="rect" id="node11" href="$structnk__scroll.html" title="{nk_scroll\n|+ x\l+ y\l|}" alt="" coords="426,395,500,481"/>
+<area shape="rect" id="node12" href="$structnk__chart.html" title="{nk_chart\n|+ slot\l+ x\l+ y\l+ w\l+ h\l|}" alt="" coords="608,616,681,743"/>
+<area shape="rect" id="node13" href="$structnk__chart__slot.html" title="{nk_chart_slot\n|+ type\l+ min\l+ max\l+ range\l+ count\l+ index\l|}" alt="" coords="661,368,761,508"/>
+<area shape="rect" id="node14" href="$structnk__color.html" title="{nk_color\n|+ r\l+ g\l+ b\l+ a\l|}" alt="" coords="675,180,747,293"/>
+<area shape="rect" id="node15" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="771,193,842,280"/>
+</map>

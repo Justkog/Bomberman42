@@ -1,0 +1,8 @@
+<map id="Game::Component::Map::hasCharacter" name="Game::Component::Map::hasCharacter">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_map.html#a58dde006ce5b554a6ac63dc59bb480e1" title="Game::Component::Map\l::canWalk" alt="" coords="221,63,388,101"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_i_a.html#a01c2575295fff1a6c3c0314d4edc0266" title="Game::Component::IA\l::getObjective" alt="" coords="651,5,805,44"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_i_a.html#aa7027727099c16dc0727459382858631" title="Game::Component::IA\l::findPath" alt="" coords="443,63,597,101"/>
+<area shape="rect" id="node7" href="$class_game_1_1_component_1_1_map.html#a7a6621502aa66db7afdb6c63494c6790" title="Game::Component::Map\l::canWalk" alt="" coords="436,125,603,164"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_i_a.html#aed6273e3aa9317d671fd3acdf682b70b" title="Game::Component::IA\l::update" alt="" coords="853,37,1007,76"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_i_a.html#a18e08cf56c2cd6a6d57aeb7eff48bb4c" title="Game::Component::IA\l::moveToObjective" alt="" coords="651,68,805,107"/>
+</map>

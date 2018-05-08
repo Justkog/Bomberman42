@@ -1,0 +1,274 @@
+\hypertarget{structnk__context}{}\section{nk\+\_\+context Struct Reference}
+\label{structnk__context}\index{nk\+\_\+context@{nk\+\_\+context}}
+
+
+{\ttfamily \#include $<$nuklear.\+h$>$}
+
+
+
+Collaboration diagram for nk\+\_\+context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structnk__context__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnk__input}{nk\+\_\+input}} \mbox{\hyperlink{structnk__context_abee1c200e8e185fe718556c0ddff31ad}{input}}
+\item 
+struct \mbox{\hyperlink{structnk__style}{nk\+\_\+style}} \mbox{\hyperlink{structnk__context_a39208175c061b8486ee8fb51e50a243e}{style}}
+\item 
+struct \mbox{\hyperlink{structnk__buffer}{nk\+\_\+buffer}} \mbox{\hyperlink{structnk__context_a678e6980553a5f32f7b59f2fbcebebe9}{memory}}
+\item 
+struct \mbox{\hyperlink{structnk__clipboard}{nk\+\_\+clipboard}} \mbox{\hyperlink{structnk__context_a834f5a5fad2919a354472381b013a81f}{clip}}
+\item 
+\mbox{\hyperlink{nuklear_8h_a19e0e2f6db4862891d9801de3c3da323}{nk\+\_\+flags}} \mbox{\hyperlink{structnk__context_a15a7e828c4fb1ac317c72f00ff278b95}{last\+\_\+widget\+\_\+state}}
+\item 
+enum \mbox{\hyperlink{nuklear_8h_aa9c50dd424dfcd57bab32dea3505ea26}{nk\+\_\+button\+\_\+behavior}} \mbox{\hyperlink{structnk__context_a1b37f5fdd034ad23c79f90a0094ac349}{button\+\_\+behavior}}
+\item 
+struct \mbox{\hyperlink{structnk__configuration__stacks}{nk\+\_\+configuration\+\_\+stacks}} \mbox{\hyperlink{structnk__context_a86bc92d9133c81f3dd85c8ae99d612dc}{stacks}}
+\item 
+float \mbox{\hyperlink{structnk__context_a400eeefb70eab5d544831b856300ac06}{delta\+\_\+time\+\_\+seconds}}
+\item 
+struct \mbox{\hyperlink{structnk__text__edit}{nk\+\_\+text\+\_\+edit}} \mbox{\hyperlink{structnk__context_aca8a2124af97661372f7b35d636c9bc6}{text\+\_\+edit}}
+\item 
+struct \mbox{\hyperlink{structnk__command__buffer}{nk\+\_\+command\+\_\+buffer}} \mbox{\hyperlink{structnk__context_ae51cac633c54b94a63c8fe77b9558f4a}{overlay}}
+\item 
+int \mbox{\hyperlink{structnk__context_a0d0f953ef2b6c56b046e4e5488d074e6}{build}}
+\item 
+int \mbox{\hyperlink{structnk__context_a10afb1419df73de41b2be1d0bff8523c}{use\+\_\+pool}}
+\item 
+struct \mbox{\hyperlink{structnk__pool}{nk\+\_\+pool}} \mbox{\hyperlink{structnk__context_a84dcedd9a6418f47d22f39e2b20d741d}{pool}}
+\item 
+struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}} $\ast$ \mbox{\hyperlink{structnk__context_a43a1c4cf1a69b90ad33b78789915d4eb}{begin}}
+\item 
+struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}} $\ast$ \mbox{\hyperlink{structnk__context_a70f3687079206d314b2006db5fc3da05}{end}}
+\item 
+struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}} $\ast$ \mbox{\hyperlink{structnk__context_ab8d399ddadeb71a3d68fe6ec063a4eaf}{active}}
+\item 
+struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}} $\ast$ \mbox{\hyperlink{structnk__context_a63efcbf544ff88f819f4d7e03927d7c6}{current}}
+\item 
+struct \mbox{\hyperlink{structnk__page__element}{nk\+\_\+page\+\_\+element}} $\ast$ \mbox{\hyperlink{structnk__context_aa66b352c5a05615e844a4e065186aa85}{freelist}}
+\item 
+unsigned int \mbox{\hyperlink{structnk__context_a332f044ac74fd5450fa61097ea45be65}{count}}
+\item 
+unsigned int \mbox{\hyperlink{structnk__context_a4ca2377a51d98a451bdcc61ccd967820}{seq}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 5489 of file nuklear.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structnk__context_ab8d399ddadeb71a3d68fe6ec063a4eaf}\label{structnk__context_ab8d399ddadeb71a3d68fe6ec063a4eaf}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!active@{active}}
+\index{active@{active}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}}$\ast$ nk\+\_\+context\+::active}
+
+
+
+Definition at line 5523 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a43a1c4cf1a69b90ad33b78789915d4eb}\label{structnk__context_a43a1c4cf1a69b90ad33b78789915d4eb}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!begin@{begin}}
+\index{begin@{begin}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{begin}{begin}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}}$\ast$ nk\+\_\+context\+::begin}
+
+
+
+Definition at line 5521 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a0d0f953ef2b6c56b046e4e5488d074e6}\label{structnk__context_a0d0f953ef2b6c56b046e4e5488d074e6}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!build@{build}}
+\index{build@{build}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{build}{build}}
+{\footnotesize\ttfamily int nk\+\_\+context\+::build}
+
+
+
+Definition at line 5518 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a1b37f5fdd034ad23c79f90a0094ac349}\label{structnk__context_a1b37f5fdd034ad23c79f90a0094ac349}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!button\+\_\+behavior@{button\+\_\+behavior}}
+\index{button\+\_\+behavior@{button\+\_\+behavior}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{button\+\_\+behavior}{button\_behavior}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{nuklear_8h_aa9c50dd424dfcd57bab32dea3505ea26}{nk\+\_\+button\+\_\+behavior}} nk\+\_\+context\+::button\+\_\+behavior}
+
+
+
+Definition at line 5496 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a834f5a5fad2919a354472381b013a81f}\label{structnk__context_a834f5a5fad2919a354472381b013a81f}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!clip@{clip}}
+\index{clip@{clip}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{clip}{clip}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__clipboard}{nk\+\_\+clipboard}} nk\+\_\+context\+::clip}
+
+
+
+Definition at line 5494 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a332f044ac74fd5450fa61097ea45be65}\label{structnk__context_a332f044ac74fd5450fa61097ea45be65}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!count@{count}}
+\index{count@{count}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily unsigned int nk\+\_\+context\+::count}
+
+
+
+Definition at line 5526 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a63efcbf544ff88f819f4d7e03927d7c6}\label{structnk__context_a63efcbf544ff88f819f4d7e03927d7c6}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!current@{current}}
+\index{current@{current}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{current}{current}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}}$\ast$ nk\+\_\+context\+::current}
+
+
+
+Definition at line 5524 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a400eeefb70eab5d544831b856300ac06}\label{structnk__context_a400eeefb70eab5d544831b856300ac06}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!delta\+\_\+time\+\_\+seconds@{delta\+\_\+time\+\_\+seconds}}
+\index{delta\+\_\+time\+\_\+seconds@{delta\+\_\+time\+\_\+seconds}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{delta\+\_\+time\+\_\+seconds}{delta\_time\_seconds}}
+{\footnotesize\ttfamily float nk\+\_\+context\+::delta\+\_\+time\+\_\+seconds}
+
+
+
+Definition at line 5498 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a70f3687079206d314b2006db5fc3da05}\label{structnk__context_a70f3687079206d314b2006db5fc3da05}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!end@{end}}
+\index{end@{end}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__window}{nk\+\_\+window}}$\ast$ nk\+\_\+context\+::end}
+
+
+
+Definition at line 5522 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_aa66b352c5a05615e844a4e065186aa85}\label{structnk__context_aa66b352c5a05615e844a4e065186aa85}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!freelist@{freelist}}
+\index{freelist@{freelist}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{freelist}{freelist}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__page__element}{nk\+\_\+page\+\_\+element}}$\ast$ nk\+\_\+context\+::freelist}
+
+
+
+Definition at line 5525 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_abee1c200e8e185fe718556c0ddff31ad}\label{structnk__context_abee1c200e8e185fe718556c0ddff31ad}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!input@{input}}
+\index{input@{input}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__input}{nk\+\_\+input}} nk\+\_\+context\+::input}
+
+
+
+Definition at line 5491 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a15a7e828c4fb1ac317c72f00ff278b95}\label{structnk__context_a15a7e828c4fb1ac317c72f00ff278b95}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!last\+\_\+widget\+\_\+state@{last\+\_\+widget\+\_\+state}}
+\index{last\+\_\+widget\+\_\+state@{last\+\_\+widget\+\_\+state}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{last\+\_\+widget\+\_\+state}{last\_widget\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nuklear_8h_a19e0e2f6db4862891d9801de3c3da323}{nk\+\_\+flags}} nk\+\_\+context\+::last\+\_\+widget\+\_\+state}
+
+
+
+Definition at line 5495 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a678e6980553a5f32f7b59f2fbcebebe9}\label{structnk__context_a678e6980553a5f32f7b59f2fbcebebe9}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!memory@{memory}}
+\index{memory@{memory}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{memory}{memory}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__buffer}{nk\+\_\+buffer}} nk\+\_\+context\+::memory}
+
+
+
+Definition at line 5493 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_ae51cac633c54b94a63c8fe77b9558f4a}\label{structnk__context_ae51cac633c54b94a63c8fe77b9558f4a}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!overlay@{overlay}}
+\index{overlay@{overlay}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{overlay}{overlay}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__command__buffer}{nk\+\_\+command\+\_\+buffer}} nk\+\_\+context\+::overlay}
+
+
+
+Definition at line 5515 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a84dcedd9a6418f47d22f39e2b20d741d}\label{structnk__context_a84dcedd9a6418f47d22f39e2b20d741d}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!pool@{pool}}
+\index{pool@{pool}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{pool}{pool}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__pool}{nk\+\_\+pool}} nk\+\_\+context\+::pool}
+
+
+
+Definition at line 5520 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a4ca2377a51d98a451bdcc61ccd967820}\label{structnk__context_a4ca2377a51d98a451bdcc61ccd967820}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!seq@{seq}}
+\index{seq@{seq}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{seq}{seq}}
+{\footnotesize\ttfamily unsigned int nk\+\_\+context\+::seq}
+
+
+
+Definition at line 5527 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a86bc92d9133c81f3dd85c8ae99d612dc}\label{structnk__context_a86bc92d9133c81f3dd85c8ae99d612dc}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!stacks@{stacks}}
+\index{stacks@{stacks}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{stacks}{stacks}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__configuration__stacks}{nk\+\_\+configuration\+\_\+stacks}} nk\+\_\+context\+::stacks}
+
+
+
+Definition at line 5497 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a39208175c061b8486ee8fb51e50a243e}\label{structnk__context_a39208175c061b8486ee8fb51e50a243e}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!style@{style}}
+\index{style@{style}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{style}{style}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__style}{nk\+\_\+style}} nk\+\_\+context\+::style}
+
+
+
+Definition at line 5492 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_aca8a2124af97661372f7b35d636c9bc6}\label{structnk__context_aca8a2124af97661372f7b35d636c9bc6}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!text\+\_\+edit@{text\+\_\+edit}}
+\index{text\+\_\+edit@{text\+\_\+edit}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{text\+\_\+edit}{text\_edit}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnk__text__edit}{nk\+\_\+text\+\_\+edit}} nk\+\_\+context\+::text\+\_\+edit}
+
+
+
+Definition at line 5513 of file nuklear.\+h.
+
+\mbox{\Hypertarget{structnk__context_a10afb1419df73de41b2be1d0bff8523c}\label{structnk__context_a10afb1419df73de41b2be1d0bff8523c}} 
+\index{nk\+\_\+context@{nk\+\_\+context}!use\+\_\+pool@{use\+\_\+pool}}
+\index{use\+\_\+pool@{use\+\_\+pool}!nk\+\_\+context@{nk\+\_\+context}}
+\subsubsection{\texorpdfstring{use\+\_\+pool}{use\_pool}}
+{\footnotesize\ttfamily int nk\+\_\+context\+::use\+\_\+pool}
+
+
+
+Definition at line 5519 of file nuklear.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+nuklear/\mbox{\hyperlink{nuklear_8h}{nuklear.\+h}}\end{DoxyCompactItemize}
