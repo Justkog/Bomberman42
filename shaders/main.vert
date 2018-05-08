@@ -16,6 +16,7 @@ uniform mat4 model;
 uniform vec3 viewPos;
 uniform vec3 viewDir;
 uniform mat4 bonesTransforms[MAX_BONES];
+uniform int hasBones;
 
 out vec3 vNormal;
 out vec2 vTexture;
@@ -26,10 +27,16 @@ out vec4 vWeight;
 
 void main()
 {
-    mat4 boneTransform =  bonesTransforms[vertexBoneIDs[0]] * vertexWeights[0];
-         boneTransform += bonesTransforms[vertexBoneIDs[1]] * vertexWeights[1];
-         boneTransform += bonesTransforms[vertexBoneIDs[2]] * vertexWeights[2];
-         boneTransform += bonesTransforms[vertexBoneIDs[3]] * vertexWeights[3];
+
+    mat4 boneTransform = mat4(1.0); 
+    
+    if (hasBones == 1)
+    {
+        boneTransform = bonesTransforms[vertexBoneIDs[0]] * vertexWeights[0];
+        boneTransform += bonesTransforms[vertexBoneIDs[1]] * vertexWeights[1];
+        boneTransform += bonesTransforms[vertexBoneIDs[2]] * vertexWeights[2];
+        boneTransform += bonesTransforms[vertexBoneIDs[3]] * vertexWeights[3];
+    }
 
     vWeight = vertexWeights;
 

@@ -37,7 +37,6 @@ SRC = \
 	Core/Component/ParticleBase.cpp \
 	Core/Component/ParticleExplode.cpp \
 	Core/Component/ModelRenderer.cpp \
-	Core/Component/ModelRenderer2.cpp \
 	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \

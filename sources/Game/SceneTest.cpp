@@ -8,7 +8,6 @@
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
 #include "Core/Component/ModelRenderer.hpp"
-#include "Core/Component/ModelRenderer2.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
@@ -106,7 +105,6 @@ void    SceneTest::init(void)
 	BeerEngine::GameObject *gameObject;
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
-	BeerEngine::Component::Model *modelRenderer2;
 
 	auto linesGO = instantiate<BeerEngine::GameObject>();
 	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
@@ -221,18 +219,18 @@ void    SceneTest::init(void)
 
  // test obj old
 
-	auto Old = instantiate<BeerEngine::GameObject>();
-	Old->name = "old";
-	modelRenderer = Old->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Old_man/muro.obj");
-	// modelRenderer->loadMaterials(shader);
-	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
-	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
-	OldMat->setAlbedo(OldTex);
-	modelRenderer->addMaterial(0, OldMat);
-	Old->transform.position = glm::vec3(1, 0.5, 10);
-	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
-	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+	// auto Old = instantiate<BeerEngine::GameObject>();
+	// Old->name = "old";
+	// modelRenderer = Old->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Old_man/muro.obj");
+	// // modelRenderer->loadMaterials(shader);
+	// auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
+	// auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
+	// OldMat->setAlbedo(OldTex);
+	// modelRenderer->addMaterial(0, OldMat);
+	// Old->transform.position = glm::vec3(1, 0.5, 10);
+	// Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
+	// Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
 	// plane
 	BeerEngine::GameObject *mapGO;
@@ -258,17 +256,27 @@ void    SceneTest::init(void)
 
 	auto dragon = instantiate<BeerEngine::GameObject>();
 	dragon->name = "dragon";
-	modelRenderer2 = dragon->AddComponent<BeerEngine::Component::Model>();
-	modelRenderer2->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
-	// modelRenderer2->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
-	// modelRenderer->loadMaterials(shader);
+	modelRenderer = dragon->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
 	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
 	auto *dragonMat = new BeerEngine::Graphics::AMaterial(animShader);
 	dragonMat->setAlbedo(dragonTex);
-	modelRenderer2->addMaterial(0, dragonMat);
+	modelRenderer->addMaterial(0, dragonMat);
 	dragon->transform.position = glm::vec3(0, 8, 5);
 	dragon->transform.scale = glm::vec3(0.0005, 0.0005, 0.0005);
 	dragon->transform.rotation = glm::vec3(0, 0, 0);
+
+	auto Old = instantiate<BeerEngine::GameObject>();
+	Old->name = "old";
+	modelRenderer = Old->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Old_man/muro.obj");
+	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
+	auto *OldMat = new BeerEngine::Graphics::AMaterial(animShader);
+	OldMat->setAlbedo(OldTex);
+	modelRenderer->addMaterial(0, OldMat);
+	Old->transform.position = glm::vec3(1, 0.5, 10);
+	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
+	Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
 	// ==================
 	// =/= ANIMATIONS =\=

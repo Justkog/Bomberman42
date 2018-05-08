@@ -396,7 +396,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 1
+                    "type": 0
                 }
             ],
             "id": 5,
@@ -4149,7 +4149,7 @@
                 },
                 {
                     "componentClass": "N4Game9Component4ItemE",
-                    "type": 1
+                    "type": 0
                 }
             ],
             "id": 49,
@@ -9483,65 +9483,6 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                }
-            ],
-            "id": 112,
-            "name": "old",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
-                    1.0,
-                    0.5,
-                    10.0
-                ],
-                "rotation": [
-                    0.0007962742820382118,
-                    0.0,
-                    -0.9999997019767761,
-                    0.0
-                ],
-                "scale": [
-                    0.012000000104308128,
-                    0.012000000104308128,
-                    0.012000000104308128
-                ]
-            }
-        },
-        {
-            "components": [
-                {
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "material": {
                         "albedo": null,
@@ -9587,7 +9528,7 @@
                     ]
                 }
             ],
-            "id": 113,
+            "id": 112,
             "name": "",
             "transform": {
                 "parent": null,
@@ -9617,7 +9558,66 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component5ModelE",
+                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                }
+            ],
+            "id": 113,
+            "name": "dragon",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    8.0,
+                    5.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.0005000000237487257,
+                    0.0005000000237487257,
+                    0.0005000000237487257
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
                     "pivot": [
                         [
                             1.0,
@@ -9647,7 +9647,7 @@
                 }
             ],
             "id": 114,
-            "name": "dragon",
+            "name": "old",
             "transform": {
                 "parent": null,
                 "pivot": [
@@ -9656,20 +9656,20 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
-                    8.0,
-                    5.0
+                    1.0,
+                    0.5,
+                    10.0
                 ],
                 "rotation": [
-                    1.0,
+                    0.0007962742820382118,
                     0.0,
-                    0.0,
+                    -0.9999997019767761,
                     0.0
                 ],
                 "scale": [
-                    0.0005000000237487257,
-                    0.0005000000237487257,
-                    0.0005000000237487257
+                    0.012000000104308128,
+                    0.012000000104308128,
+                    0.012000000104308128
                 ]
             }
         }
