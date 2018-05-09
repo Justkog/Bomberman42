@@ -20,6 +20,7 @@ namespace Game
 		class MainMenu;		
 		class InputsMenu;		
 		class UIThemeManager;
+		class Settings;
 
 		enum {FULL_SCREEN, WINDOWED};
 
@@ -39,6 +40,7 @@ namespace Game
 			MainMenu	*mainMenu;
 			InputsMenu	*inputsMenu;
 			UIThemeManager	*uiManager;
+			Settings		*settingsManager;
 
 			nk_style_window mWindow;
 
@@ -56,6 +58,7 @@ namespace Game
 			virtual void renderUI(struct nk_context *ctx);
 
 			void setUI(struct nk_context *ctx);
+			void saveSettings();
 	
 		};
 

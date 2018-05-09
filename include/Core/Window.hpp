@@ -29,6 +29,9 @@ namespace BeerEngine
 		int     		*getYPos(void);
 		int				getWidth();
 		int				getHeight();
+		int				getWindowedWidth();
+		int				getWindowedHeight();
+		bool			isFullScreen();
 		void			setWindowProperties(int x, int y, int width, int height);
 		void            clear(void);
 		void            update(void);

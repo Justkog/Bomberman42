@@ -73,12 +73,14 @@ void    SceneMain::init(void)
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
+	auto settings = menuGO->AddComponent<Game::Component::Settings>();
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
 	mainMenu->settingsMenu = settingsMenu;
 	settingsMenu->uiManager = uiManager;
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
+	settingsMenu->settingsManager = settings;
 	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
 	settingsMenu->setActive(false);

@@ -141,6 +141,18 @@ namespace BeerEngine
 		BeerEngine::Input::mouseScroll[1] = yoffset;
 	}
 
+	static void		window_focus_callback(GLFWwindow* window, int focused)
+	{
+		if (focused)
+		{
+			std::cout << "The window gained input focus" << std::endl;
+		}
+		else
+		{
+			std::cout << "The window lost input focus" << std::endl;
+		}
+	}
+
 	Window          *Window::CreateWindow(std::string title, int width, int height)
 	{
 		if (_Instance != nullptr)
@@ -173,6 +185,7 @@ namespace BeerEngine
 				glfwSetMouseButtonCallback(win->getWindow(), win_mouse_button_callback);
 				glfwSetScrollCallback(win->getWindow(), win_scroll_callback);
 				glfwGetWindowPos(win->getWindow(), win->getXPos(), win->getYPos());
+				glfwSetWindowFocusCallback(win->getWindow(), window_focus_callback);
 				glfwSwapInterval(0);
 				glewExperimental = true;
 				if (glewInit() != GLEW_OK)
@@ -210,6 +223,16 @@ namespace BeerEngine
 	int		Window::getHeight()
 	{
 		return _height;
+	}
+
+	int		Window::getWindowedWidth()
+	{
+		return _windowWidth;
+	}
+
+	int		Window::getWindowedHeight()
+	{
+		return _windowHeight;
 	}
 
 	void	Window::setFullScreen(void)
@@ -255,4 +278,10 @@ namespace BeerEngine
 		_height = _windowHeight;
 		glfwSetWindowSize(_window, _width, _height);
 	}
+
+	bool Window::isFullScreen()
+	{
+		return (glfwGetWindowMonitor(_window) != nullptr);
+	}
+
 }

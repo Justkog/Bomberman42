@@ -111,7 +111,6 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		{
 			fprintf(stdout, "Versus pressed\n");
 			BeerEngine::SceneManager::LoadScene<SceneTest>();
-			std::cout << "good!" << std::endl;
 		}
 		if (nk_button_label(ctx, "Settings"))
 		{

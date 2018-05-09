@@ -1,6 +1,7 @@
 #define NK_INCLUDE_FONT_BAKING
 
 #include "Game/Components/SettingsMenu.hpp"
+#include "Game/Components/Settings.hpp"
 #include "Game/Components/MainMenu.hpp"
 #include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/UIThemeManager.hpp"
@@ -68,9 +69,8 @@ std::ostream &				operator<<(std::ostream & o, SettingsMenu const & i)
 void SettingsMenu::start()
 {
 	std::cout << "SettingsMenu start" << std::endl;
-	windowHeight = WINDOW_HEIGHT;
-	windowWidth = WINDOW_WIDTH;
-	mode = WINDOWED;
+	// windowHeight = WINDOW_HEIGHT;
+	// windowWidth = WINDOW_WIDTH;
 	musicVolume = 50.0f;
 	soundVolume = 50.0f;
 }
@@ -100,6 +100,11 @@ void SettingsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font
 	mWindow.spacing = nk_vec2(0, 10);
 }
 
+void SettingsMenu::saveSettings()
+{
+	settingsManager->saveSettings();
+}
+
 void SettingsMenu::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
@@ -118,19 +123,21 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 	{
 		nk_layout_row_dynamic(ctx, 50, 2);
 
+		mode = BeerEngine::Window::GetInstance()->isFullScreen() ? FULL_SCREEN : WINDOWED;
+
 		std::stringstream ssHeight;
 		ssHeight << "Height: " << windowHeight;
 		windowHeight = BeerEngine::Window::GetInstance()->getHeight();
 		int height = windowHeight;
 		nk_label(ctx, ssHeight.str().c_str(), NK_TEXT_LEFT);
-		nk_slider_float(ctx, 0, &windowHeight, 2304.0f, 10.0f);
+		nk_slider_float(ctx, 0, &windowHeight, 1440.0f, 10.0f);
 
 		std::stringstream ssWidth;
 		ssWidth << "Width: " << windowWidth;
 		windowWidth = BeerEngine::Window::GetInstance()->getWidth();
 		int width = windowWidth;
 		nk_label(ctx, ssWidth.str().c_str(), NK_TEXT_LEFT);
-		nk_slider_float(ctx, 0, &windowWidth, 4096.0f, 10.0f);
+		nk_slider_float(ctx, 0, &windowWidth, 2560.0f, 10.0f);
 
 		if (width != static_cast<int>(windowWidth) || height != static_cast<int>(windowHeight))
 			BeerEngine::Window::GetInstance()->resize(windowWidth, windowHeight);
@@ -167,7 +174,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		}
 		if (nk_button_label(ctx, "Back"))
 		{
-			// TODO save settings (json serialized) using the settings component
+			saveSettings();
 			this->setActive(false);
 			mainMenu->setActive(true);
 		}

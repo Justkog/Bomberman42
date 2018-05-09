@@ -64,9 +64,11 @@ std::ostream &				operator<<(std::ostream & o, InputsMenu const & i)
 
 // PUBLIC METHOD #################################################
 
-void InputsMenu::setMapKey(std::string label, std::string key)
+void InputsMenu::setMapKey(std::string label)
 {
-	strcpy(inputs[label].text, key.c_str());
+	auto key = Game::Input::keyBindings[label];
+	std::string keyStr(1, key);
+	strcpy(inputs[label].text, keyStr.c_str());
 	inputs[label].text_len = 1;
 	inputs[label].waitingBind = false;
 	inputsList.push_back(label);
@@ -75,21 +77,11 @@ void InputsMenu::setMapKey(std::string label, std::string key)
 void InputsMenu::start()
 {
 	std::cout << "InputsMenu start" << std::endl;
-	setMapKey("move up", "w");
-	setMapKey("move down", "s");
-	setMapKey("move left", "a");
-	setMapKey("move right", "d");
-	setMapKey("bomb", " ");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	// setMapKey("move right", "d");
-	
+	setMapKey("move up");
+	setMapKey("move down");
+	setMapKey("move left");
+	setMapKey("move right");
+	setMapKey("bomb");
 }
 
 void InputsMenu::setUI(struct nk_context *ctx)
