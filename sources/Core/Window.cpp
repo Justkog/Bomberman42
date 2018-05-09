@@ -168,6 +168,8 @@ namespace BeerEngine
 			glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 			glfwWindowHint(GLFW_DEPTH_BITS, 32);
+			// glfwWindowHint(GLFW_FOCUSED, GLFW_TRUE);
+			glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 			win = new Window(title, width, height);
 			if (win->getWindow() == NULL)
 			{

@@ -74,7 +74,7 @@ void			Assets::autoload(std::string path)
 
 void			Assets::load(void)
 {
-	autoload("assets");
+	// autoload("assets");
 	bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
 }
 
@@ -99,7 +99,14 @@ BeerEngine::Audio::AudioClip		*Assets::GetAudioClip(std::string path)
 	// std::string name("assets/");
 	// name.append(path);
 	std::string name(path);
-	return (Assets::GetInstance()->audioclips[name]);
+	// return (Assets::GetInstance()->audioclips[name]);
+	if (Assets::GetInstance()->audioclips.find(name) != Assets::GetInstance()->audioclips.end())
+		return (Assets::GetInstance()->audioclips[name]);
+	else
+	{
+		std::cout << "[SOUND] " << name << std::endl;
+		return Assets::GetInstance()->audioclips[name] = new BeerEngine::Audio::AudioClip(name);
+	}
 }
 
 BeerEngine::Graphics::Texture		*Assets::GetTexture(std::string path)
@@ -107,7 +114,34 @@ BeerEngine::Graphics::Texture		*Assets::GetTexture(std::string path)
 	// std::string name("assets/");
 	// name.append(path);
 	std::string name(path);
-	return (Assets::GetInstance()->textures[name]);
+	// return (Assets::GetInstance()->textures[name]);
+	if (Assets::GetInstance()->textures.find(name) != Assets::GetInstance()->textures.end())
+		return (Assets::GetInstance()->textures[name]);
+	else
+	{
+		if (has_suffix(name, ".png"))
+		{
+			std::cout << "[TEXTURE] " << name << std::endl;
+			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadPNG(name.c_str());
+		}
+		else if (has_suffix(name, ".bmp"))
+		{
+			std::cout << "[TEXTURE] " << name << std::endl;
+			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadBMP(name.c_str());
+		}
+		else if (has_suffix(name, ".tga"))
+		{
+			std::cout << "[TEXTURE] " << name << std::endl;
+			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadTGA(name.c_str());
+		}
+		else if (has_suffix(name, ".jpg") || has_suffix(name, ".jpeg"))
+		{
+			std::cout << "[TEXTURE] " << name << std::endl;
+			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadJPG(name.c_str());
+		}
+		else
+			return NULL;
+	}
 }
 
 BeerEngine::Graphics::Mesh			*Assets::GetModel(std::string path)
@@ -115,6 +149,13 @@ BeerEngine::Graphics::Mesh			*Assets::GetModel(std::string path)
 	// std::string name("assets/");
 	// name.append(path);
 	std::string name(path);
-	return (Assets::GetInstance()->models[name]);
+	// return (Assets::GetInstance()->models[name]);
+	if (Assets::GetInstance()->models.find(name) != Assets::GetInstance()->models.end())
+		return (Assets::GetInstance()->models[name]);
+	else
+	{
+		std::cout << "[SOUND] " << name << std::endl;
+		return Assets::GetInstance()->models[name] = BeerEngine::Graphics::Graphics::OBJLoader(name);
+	}
 }
 

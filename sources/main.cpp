@@ -147,8 +147,8 @@ int main(void)
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
     // FPS
-    glfwFocusWindow(window->getWindow());
-	std::cout << "focused : " << glfwGetWindowAttrib(window->getWindow(), GLFW_FOCUSED) << std::endl;
+    // glfwFocusWindow(window->getWindow());
+	glfwShowWindow(window->getWindow());
 
     while (!window->isClose())
     {
