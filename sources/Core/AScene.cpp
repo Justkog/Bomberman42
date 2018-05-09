@@ -72,6 +72,7 @@ namespace BeerEngine
             (it->second)->componentDisable();
             (it->second)->componentEnable();
         }
+		std::cout << "All started and enabled" << std::endl;
     }
 
     void    AScene::fixedUpdate(void)

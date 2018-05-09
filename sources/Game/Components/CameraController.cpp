@@ -87,17 +87,17 @@ namespace Game
 			float cam_speed = 1;
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_SHIFT))
 				cam_speed = 10;
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
-				_gameObject->transform.translate(_gameObject->transform.forward() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::Input::keyBindings["move up"]))
+				_gameObject->transform.translate(_gameObject->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
-				_gameObject->transform.translate(-_gameObject->transform.forward() * BeerEngine::Time::GetDeltaTime());
+				_gameObject->transform.translate(-_gameObject->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
-				_gameObject->transform.translate(_gameObject->transform.left() * BeerEngine::Time::GetDeltaTime());
+				_gameObject->transform.translate(_gameObject->transform.left() * cam_speed * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
-				_gameObject->transform.translate(_gameObject->transform.right() * BeerEngine::Time::GetDeltaTime());
+				_gameObject->transform.translate(_gameObject->transform.right() * cam_speed * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::SPACE))
 				_gameObject->transform.translate(_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_CONTROL))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::X))
 				_gameObject->transform.translate(-_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT))
 				rotation_y = -1 * BeerEngine::Time::GetDeltaTime();

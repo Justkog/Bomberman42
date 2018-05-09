@@ -14,6 +14,8 @@ namespace BeerEngine
 		static std::map<std::string, float> axis;
 
 	public:
+		static std::map<std::string, KeyCode>	keyBindings;
+
 		static glm::vec2	mousePosition;
 		static glm::vec2	mouseScroll;
 		static void			SetKey(int keycode, int status);

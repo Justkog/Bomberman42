@@ -42,6 +42,7 @@ namespace BeerEngine
 
 		void    ACollider::start(void)
 		{
+			std::cout << "Acollider start" << std::endl;
 			rb2d = _gameObject->GetComponent<RigidBody2D>();
 		}
 

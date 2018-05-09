@@ -5,6 +5,8 @@
 #include "Game/Components/MainMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Core/Window.hpp"
+#include "Core/SceneManager.hpp"
+#include "Game/SceneTest.hpp"
 
 namespace Game
 {
@@ -106,7 +108,11 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		if (nk_button_label(ctx, "Adventure"))
 			fprintf(stdout, "Adventure pressed\n");
 		if (nk_button_label(ctx, "Versus"))
+		{
 			fprintf(stdout, "Versus pressed\n");
+			BeerEngine::SceneManager::LoadScene<SceneTest>();
+			std::cout << "good!" << std::endl;
+		}
 		if (nk_button_label(ctx, "Settings"))
 		{
 			this->setActive(false);

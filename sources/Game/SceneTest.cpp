@@ -191,8 +191,8 @@ void    SceneTest::init(void)
 	auto *ia = iaGO->AddComponent<Game::Component::IA>();
 	iaGO->AddComponent<Game::Component::Breakable>();
 	ia->map = map;
-	routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
-	settings = iaGO->AddComponent<Game::Component::Settings>();
+	// routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
+	// settings = iaGO->AddComponent<Game::Component::Settings>();
 	auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
@@ -258,4 +258,5 @@ void    SceneTest::init(void)
 
 	this->save("test2.scene");
 	std::cout << "init end" << "\n";
+	std::cout << "GameObject List Size : " << getGameObjects().size() << std::endl;
 }

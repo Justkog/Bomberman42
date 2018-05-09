@@ -2,6 +2,7 @@
 #include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Game/Components/UIThemeManager.hpp"
+#include "Core/Input.hpp"
 
 namespace Game
 {
@@ -127,6 +128,15 @@ void InputsMenu::drawInputsUI(struct nk_context *ctx)
 		drawInputUI(ctx, *it, inputs[*it]);
 }
 
+void InputsMenu::updateKeyBindings()
+{
+	std::cout << "key bindings update" << std::endl;
+	for (auto it = inputsList.begin(); it != inputsList.end(); it++)
+	{
+		BeerEngine::Input::keyBindings[*it] = static_cast<BeerEngine::KeyCode>(inputs[*it].text[0]);
+	}
+}
+
 void InputsMenu::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
@@ -168,6 +178,7 @@ void InputsMenu::renderUI(struct nk_context *ctx)
 
 		if (nk_button_label(ctx, "Back"))
 		{
+			updateKeyBindings();
 			this->setActive(false);
 			settingsMenu->setActive(true);
 		}
