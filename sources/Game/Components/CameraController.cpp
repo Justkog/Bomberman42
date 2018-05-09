@@ -68,8 +68,6 @@ namespace Game
 			std::cout << "cam start" << "\n";
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
-			// this->cam->transform.position = glm::vec3(0, 10, 0);
-			// this->cam->transform.rotation = this->cam->transform.rotation * glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.0f, glm::vec3(1, 0, 0));
 			this->_gameObject->transform.position = glm::vec3(0, 10, 0);
 			this->_gameObject->transform.rotation = this->_gameObject->transform.rotation * glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.0f, glm::vec3(1, 0, 0));
 

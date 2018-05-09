@@ -8,9 +8,18 @@ namespace BeerEngine
 	glm::vec2				Input::mousePosition;
 	glm::vec2				Input::mouseScroll;
 
+	std::function<void (int)> Input::onKeyPushedDefault()
+	{
+		return [] (int i) { };
+	}
+
+	std::function<void (int)>	Input::onKeyPushed = Input::onKeyPushedDefault();
+
 	void			Input::SetKey(int keycode, int status)
 	{
 		key[keycode] = status;
+		if (status == 1)
+			onKeyPushed(keycode);
 	}
 
 	bool			Input::GetKey(KeyCode keycode)

@@ -119,7 +119,15 @@ void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInf
 	nk_layout_row_push(ctx, (menuWidth - 30 * 2 - 10 * 3) / 2 - 40 * 2);
 	nk_label(ctx, label.c_str(), NK_TEXT_CENTERED);
 	nk_layout_row_push(ctx, 40);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, inputInfo.text, &inputInfo.text_len, 2, nk_filter_default);
+	// nk_edit_string(ctx, NK_EDIT_SIMPLE, inputInfo.text, &inputInfo.text_len, 2, nk_filter_default);
+	if (nk_button_label(ctx, inputInfo.text))
+	{
+		BeerEngine::Input::onKeyPushed = [label, &inputInfo] (int key) {
+			Game::Input::keyBindings[label] = static_cast<BeerEngine::KeyCode>(key);
+			inputInfo.text[0] = key;
+			BeerEngine::Input::onKeyPushed = BeerEngine::Input::onKeyPushedDefault();
+		};
+	}
 }
 
 void InputsMenu::drawInputsUI(struct nk_context *ctx)
@@ -129,6 +137,7 @@ void InputsMenu::drawInputsUI(struct nk_context *ctx)
 		drawInputUI(ctx, *it, inputs[*it]);
 }
 
+// not used anymore after input capture method change
 void InputsMenu::updateKeyBindings()
 {
 	std::cout << "key bindings update" << std::endl;
@@ -183,7 +192,7 @@ void InputsMenu::renderUI(struct nk_context *ctx)
 
 		if (nk_button_label(ctx, "Back"))
 		{
-			updateKeyBindings();
+			// updateKeyBindings();
 			this->setActive(false);
 			settingsMenu->setActive(true);
 		}
