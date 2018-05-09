@@ -2,6 +2,7 @@
 #define BE_GAME_COMPONENT_ITEM_HPP 1
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
@@ -13,7 +14,6 @@ namespace Game
 {
 	namespace Component
 	{
-		enum ItemType { SpeedBoost, Bomb, ExplosionBoost };
 
 		class Item : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
@@ -26,7 +26,8 @@ namespace Game
 
 		public:
             Item(BeerEngine::GameObject *gameObject);
-
+			~Item();
+			
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
@@ -39,6 +40,8 @@ namespace Game
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
+
+			Game::Component::Map	*map;
 
 			REGISTER_COMPONENT_HPP
 

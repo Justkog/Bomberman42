@@ -2,6 +2,7 @@
 #define BE_GAME_COMPONENT_BOMB_HPP 1
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
@@ -20,11 +21,12 @@ namespace Game
 		{
 		protected:
 			BeerEngine::Component::MeshRenderer		*render;
-			float	power;
 			float	timer;
 
 		public:
             Bomb(BeerEngine::GameObject *gameObject);
+			virtual ~Bomb(void);
+
 			virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
@@ -32,6 +34,10 @@ namespace Game
 			void			explode(void);
 			
 			void			setPower(float pow);
+
+			static std::vector<Bomb*> bombs;
+			Game::Component::Map *map;
+			float power;
 		};
 	}
 }

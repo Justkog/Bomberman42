@@ -16,5 +16,6 @@ rm -rf stb/.git
 rm -rf sigslot
 git clone https://github.com/supergrover/sigslot.git sources/sigslot
 rm -rf sigslot/.git
+rm -rf nuklear
 git clone https://github.com/vurtun/nuklear.git
 rm -rf nuklear/.git

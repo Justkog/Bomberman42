@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
+#include "Game/Components/Map.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -31,7 +32,12 @@ namespace Game
         {
             BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
             if (rb2d)
-                rb2d->velocity = glm::normalize(_direction) * _speed;
+            {
+                if (_direction == glm::vec2(0))
+                    rb2d->velocity = glm::vec2(0);
+                else
+                    rb2d->velocity = glm::normalize(_direction) * _speed;
+            }
             _direction = glm::vec2(0, 0);
         }
 
@@ -90,6 +96,8 @@ namespace Game
 
         void    Character::dropBomb(void)
         {
+            if (_bombNb <= 0 || !map->hasBomb(_gameObject->transform.position))
+                return;
             BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
             go->transform.position = glm::round(_gameObject->transform.position);
             go->transform.position.y = 0.25f;
@@ -100,7 +108,9 @@ namespace Game
             render->setMesh(BeerEngine::Graphics::Graphics::cube);
             render->setMaterial(Assets::GetInstance()->bombMaterial);
             Bomb *bomb = go->AddComponent<Bomb>();
+            bomb->map = map;
             bomb->setPower(_explosionSize);
+            --_bombNb;
         }
 
         void   Character::onTriggerStay(BeerEngine::Component::ACollider *other)

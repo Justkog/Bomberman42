@@ -6,6 +6,7 @@
 #include "Core/Physics/Physics.hpp"
 #include "Game/Assets.hpp"
 #include "Game/Components/Breakable.hpp"
+#include "Game/Components/Map.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
 
@@ -13,16 +14,28 @@ namespace Game
 {
 	namespace Component
 	{
+		std::vector<Bomb*> Bomb::bombs;
+
 		Bomb::Bomb(BeerEngine::GameObject *gameObject) :
 			Component(gameObject)
 		{
 			timer = 0.0f;
 			power = 1.0f;
+			bombs.push_back(this);
         }
+
+		Bomb::~Bomb(void)
+		{
+			auto it = std::find(bombs.begin(), bombs.end(), this);
+			if (it != bombs.end())
+				bombs.erase(it);
+		}
 
 		void    Bomb::start(void)
 		{
 			render = _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>();
+			glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+			map->mapUpdate(mapPos.x, mapPos.y, 3);
 		}
 
 		void    Bomb::fixedUpdate(void)
@@ -165,6 +178,9 @@ namespace Game
 				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
 				// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 				// srcAudio.play();
+
+				glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+				map->mapUpdate(mapPos.x, mapPos.y, 0);
 
 				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);

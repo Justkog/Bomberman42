@@ -2,12 +2,12 @@
 #define BE_GAME_COMPONENT_MAP_HPP
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Transform.hpp"
 #include "Core/BeerEngine.hpp"
 #include "Game/Assets.hpp"
-#include "Game/Components/Character.hpp"
 #include "Game/Components/Settings.hpp"
 #include "Core/Component/CircleCollider.hpp"
 #include "Core/Component/RigidBody2D.hpp"
@@ -21,6 +21,7 @@
 
 #define S -1 //spawn position
 #define I 9 //Item
+#define B 3 //Item
 
 namespace Game
 {
@@ -39,18 +40,22 @@ namespace Game
 
             virtual void    start(void);
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
-       		virtual void    mapUpdate(int x, int y);
+       		virtual void    mapUpdate(int x, int y, int value);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
+			bool			hasCharacter(glm::vec2 pos);
+			bool			hasBomb(glm::vec3 pos);
+			bool			canWalk(glm::vec2 pos);
+			bool			canWalk(glm::vec3 pos);
 
 			int								**_map;
 			int	_sizeX;
 			int	_sizeY;
 			Game::Component::Player			*_player;
 
-			void setDestruction(float posX, float posY);
+			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
 			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
@@ -98,7 +103,7 @@ namespace Game
 				mapBlocGO->transform.scale = scale;
 				mapBlocGO->AddComponent<T>();
 				auto destroyable = mapBlocGO->AddComponent<Game::Component::Breakable>();
-				destroyable->onDestruction.bind(&Map::setDestruction, this);
+				destroyable->onDestruction.bind(&Map::mapUpdate, this);
 				if (kinematic != BeerEngine::Component::RBType::Kinematic)
 				{
 					auto rb2d = mapBlocGO->AddComponent<BeerEngine::Component::RigidBody2D>();

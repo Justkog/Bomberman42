@@ -85,7 +85,8 @@ SRC = \
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
-#-Ofast -march=native -flto
+# -g
+# -Ofast -march=native -flto
 CFLAGS = -g -std=c++11 -Wc++11-extensions \
 	`pkg-config glfw3 --cflags-only-I` \
 	`pkg-config glew --cflags-only-I` \
