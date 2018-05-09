@@ -76,6 +76,7 @@ SRC = \
 	Game/Components/BeerRoutineTester.cpp \
 	Game/Components/MainMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
+	Game/Components/InputsMenu.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
 	Game/CameraTest.cpp

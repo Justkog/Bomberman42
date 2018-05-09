@@ -15,6 +15,7 @@
 #include "Game/Components/Map.hpp"
 #include "Game/Components/MainMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
+#include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/BackgroundDrawer.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 
@@ -71,13 +72,18 @@ void    SceneMain::init(void)
 	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
+	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
 	mainMenu->settingsMenu = settingsMenu;
 	settingsMenu->uiManager = uiManager;
 	settingsMenu->mainMenu = mainMenu;
+	settingsMenu->inputsMenu = inputsMenu;
+	inputsMenu->uiManager = uiManager;
+	inputsMenu->settingsMenu = settingsMenu;
 	settingsMenu->setActive(false);
-	// mainMenu->_isActive = false;
+	mainMenu->setActive(false);
+	// inputsMenu->setActive(false);
 
 	this->save("main.scene");
 	std::cout << "init end" << "\n";

@@ -121,6 +121,9 @@
                 },
                 {
                     "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
                 }
             ],
             "id": 2,

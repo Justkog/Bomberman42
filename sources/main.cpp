@@ -100,8 +100,8 @@ int main(void)
 
 	struct nk_font_config cfg = nk_font_config(13);
 	cfg.pixel_snap = true;
-	auto font = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 48, &cfg);
-	fonts["main"] = font;
+	fonts["main"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 48, &cfg);
+	fonts["smallMain"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 26, &cfg);
 
 	fonts["default"] = nk_font_atlas_add_default(atlas, 13.0f, 0);
 

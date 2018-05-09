@@ -3,8 +3,8 @@
 //																//
 // ------------------------------------------------------------	//
 
-#ifndef SETTINGSMENU_HPP
-# define SETTINGSMENU_HPP
+#ifndef INPUTSMENU_HPP
+# define INPUTSMENU_HPP
 
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
@@ -17,46 +17,50 @@ namespace Game
 {
 	namespace Component
 	{
-		class MainMenu;		
-		class InputsMenu;		
+		class SettingsMenu;
 		class UIThemeManager;
 
-		enum {FULL_SCREEN, WINDOWED};
+		struct InputInfo
+		{
+			char text[2];
+			int text_len;
+		};
 
-
-		class SettingsMenu : public BeerEngine::Component::Component, 
+		class InputsMenu : public BeerEngine::Component::Component, 
 								public BeerEngine::Component::IStart,
 								public BeerEngine::Component::IStartUI,
 								public BeerEngine::Component::IUI
 		{
 		public:
-			float		windowHeight;
-			float		windowWidth;
-			float		musicVolume;
-			float		soundVolume;
-			int			mode;
 
-			MainMenu	*mainMenu;
-			InputsMenu	*inputsMenu;
+			std::map<std::string, InputInfo> inputs;
+			std::vector<std::string> inputsList;
+
+			SettingsMenu	*settingsMenu;
 			UIThemeManager	*uiManager;
 
-			nk_style_window mWindow;
+			float menuWidth;
+			float menuHeight;
 
-			// SettingsMenu( void );
-			// SettingsMenu( SettingsMenu const & src );
-			SettingsMenu(BeerEngine::GameObject *gameObject);
+			// InputsMenu( void );
+			// InputsMenu( InputsMenu const & src );
+			InputsMenu(BeerEngine::GameObject *gameObject);
 
-			virtual ~SettingsMenu( void );
+			virtual ~InputsMenu( void );
 
-			SettingsMenu & operator=( SettingsMenu const & rhs );
-			friend std::ostream & operator<<(std::ostream & o, SettingsMenu const & i);
+			InputsMenu & operator=( InputsMenu const & rhs );
+			friend std::ostream & operator<<(std::ostream & o, InputsMenu const & i);
 
 			virtual void start();
 			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
 
 			void setUI(struct nk_context *ctx);
-	
+
+			void setMapKey(std::string label, std::string key);
+			void drawInputsUI(struct nk_context *ctx);
+			void drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo);
+
 		};
 
 	};
