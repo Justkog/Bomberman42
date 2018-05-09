@@ -153,6 +153,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		}
 		if (nk_button_label(ctx, "Back"))
 		{
+			// TODO save settings (json serialized) using the settings component
 			this->setActive(false);
 			mainMenu->setActive(true);
 		}
