@@ -96,8 +96,8 @@ void MainMenu::renderUI(struct nk_context *ctx)
 	float xOffset = 0;
 	float yOffset = 100;
 	auto window_rect = nk_rect(
-		WINDOW_WIDTH / 2 - menuWidth / 2 + xOffset, 
-		WINDOW_HEIGHT / 2 - menuHeight / 2 + yOffset, 
+		BeerEngine::Window::GetInstance()->getWidth() / 2 - menuWidth / 2 + xOffset, 
+		BeerEngine::Window::GetInstance()->getHeight() / 2 - menuHeight / 2 + yOffset, 
 		menuWidth, 
 		menuHeight
 	);

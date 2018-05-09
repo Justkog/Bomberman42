@@ -105,6 +105,12 @@ void SettingsMenu::saveSettings()
 	settingsManager->saveSettings();
 }
 
+void SettingsMenu::resetSettings()
+{
+	settingsManager->resetSettings();
+	inputsMenu->updateDisplayedInputKeys();
+}
+
 void SettingsMenu::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
@@ -114,8 +120,8 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 	float xOffset = 150;
 	float yOffset = 100;
 	auto window_rect = nk_rect(
-		WINDOW_WIDTH / 2 - menuWidth / 2 + xOffset, 
-		WINDOW_HEIGHT / 2 - menuHeight / 2 + yOffset, 
+		BeerEngine::Window::GetInstance()->getWidth() / 2 - menuWidth / 2 + xOffset, 
+		BeerEngine::Window::GetInstance()->getHeight() / 2 - menuHeight / 2 + yOffset, 
 		menuWidth, 
 		menuHeight
 	);
@@ -165,12 +171,17 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		nk_slider_float(ctx, 0, &soundVolume, 100.0f, 1.0f);
 
 		uiManager->setThemeUI(ctx);
+		ctx->style.window.spacing = nk_vec2(10, 0);
 
-		nk_layout_row_dynamic(ctx, 75, 2);
+		nk_layout_row_dynamic(ctx, 75, 3);
 		if (nk_button_label(ctx, "Inputs"))
 		{
 			this->setActive(false);
 			inputsMenu->setActive(true);
+		}
+		if (nk_button_label(ctx, "Reset"))
+		{
+			this->resetSettings();
 		}
 		if (nk_button_label(ctx, "Back"))
 		{

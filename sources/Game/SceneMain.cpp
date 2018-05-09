@@ -68,12 +68,12 @@ void    SceneMain::init(void)
 	bkgdGO->transform.scale = glm::vec3(40, 1, 40);
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
+	auto settings = menuGO->AddComponent<Game::Component::Settings>();
 	auto uiManager = menuGO->AddComponent<Game::Component::UIThemeManager>();
 	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
-	auto settings = menuGO->AddComponent<Game::Component::Settings>();
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
 	mainMenu->settingsMenu = settingsMenu;

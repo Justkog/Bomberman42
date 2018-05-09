@@ -43,6 +43,9 @@ namespace Game
 
 			void loadSettings();
 			void saveSettings();
+			void resetSettings();
+			void applyCurrentSettings();
+			void gatherCurrentSettings();
 			void start(void);
 
 			static SettingsContainer defaultSettings();

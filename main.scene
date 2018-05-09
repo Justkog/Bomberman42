@@ -111,23 +111,23 @@
         {
             "components": [
                 {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
-                    "componentClass": "Component"
-                },
-                {
                     "componentClass": "N4Game9Component8SettingsE",
                     "filePath": "testSettings.json"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
                 }
             ],
             "id": 2,

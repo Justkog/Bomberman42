@@ -59,6 +59,7 @@ namespace Game
 
 			void setUI(struct nk_context *ctx);
 			void saveSettings();
+			void resetSettings();
 	
 		};
 

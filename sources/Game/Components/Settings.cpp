@@ -79,24 +79,33 @@ Game::SettingsContainer Game::Component::Settings::defaultSettings()
 	return settings;
 }
 
-void Game::Component::Settings::loadSettings() {
-	std::string content = BeerEngine::IO::FileUtils::LoadFile(this->filePath);
-	auto j = nlohmann::json::parse(content);
-	this->settingsContainer = j;
-
+void Game::Component::Settings::applyCurrentSettings() {
 	for (auto it = this->settingsContainer.keyBindings.begin(); it != this->settingsContainer.keyBindings.end(); it++)
 		Game::Input::keyBindings[it->first] = static_cast<BeerEngine::KeyCode>(this->settingsContainer.keyBindings[it->first]);
 	BeerEngine::Window::GetInstance()->resize(this->settingsContainer.windowWidth, this->settingsContainer.windowHeight);
 	if (this->settingsContainer.fullScreen)
 		BeerEngine::Window::GetInstance()->setFullScreen();
+	else
+		BeerEngine::Window::GetInstance()->setWindowed();
 }
 
-void Game::Component::Settings::saveSettings() {
+void Game::Component::Settings::gatherCurrentSettings() {
 	for (auto it = Game::Input::keyBindings.begin(); it != Game::Input::keyBindings.end(); it++)
 		this->settingsContainer.keyBindings[it->first] = static_cast<BeerEngine::KeyCode>(Game::Input::keyBindings[it->first]);
 	this->settingsContainer.windowWidth = BeerEngine::Window::GetInstance()->getWindowedWidth();
 	this->settingsContainer.windowHeight = BeerEngine::Window::GetInstance()->getWindowedHeight();
 	this->settingsContainer.fullScreen = BeerEngine::Window::GetInstance()->isFullScreen();
+}
+
+void Game::Component::Settings::loadSettings() {
+	std::string content = BeerEngine::IO::FileUtils::LoadFile(this->filePath);
+	auto j = nlohmann::json::parse(content);
+	this->settingsContainer = j;
+	this->applyCurrentSettings();
+}
+
+void Game::Component::Settings::saveSettings() {
+	this->gatherCurrentSettings();
 
 	nlohmann::json j = this->settingsContainer;
 	std::string content = j.dump(4);
@@ -104,10 +113,18 @@ void Game::Component::Settings::saveSettings() {
 	// std::cout << content << std::endl;
 }
 
+void Game::Component::Settings::resetSettings() {
+	this->settingsContainer = Game::Component::Settings::defaultSettings();
+	this->applyCurrentSettings();
+
+	nlohmann::json j = this->settingsContainer;
+	std::string content = j.dump(4);
+	BeerEngine::IO::FileUtils::WriteFile(this->filePath, content);
+}
+
 void    Game::Component::Settings::start(void) {
 	this->loadSettings();
 	// std::cout << "Settings: " << "\n" << *this << "\n";
-	// this->saveSettings();
 }
 
 nlohmann::json	Game::Component::Settings::serialize()
@@ -155,9 +172,6 @@ namespace Game {
 			{"fullScreen", s.fullScreen},
 			{"keyBindings", s.keyBindings},
 			{"unlockedLevels", s.unlockedLevels},
-			// {"stringSetting", s.stringSetting},
-			// {"intSetting", s.intSetting},
-			// {"listSettings", s.listSettings},
 		};
     }
 
@@ -177,9 +191,9 @@ namespace Game {
 	        s.keyBindings = j.at("keyBindings").get<std::map<std::string, int>>();
 		if (j.find("unlockedLevels") != j.end())
 	        s.unlockedLevels = j.at("unlockedLevels").get<std::vector<std::string>>();
-		// s.stringSetting = j.at("stringSetting").get<std::string>();
-		// s.intSetting = j.at("intSetting").get<int>();
-		// s.listSettings = j.at("listSettings").get<std::vector<std::string>>();
+
+		// for (auto it = s.keyBindings.begin(); it != s.keyBindings.end(); it++)
+		// 	std::cout << "loaded key " << it->first << " / " << it->second << std::endl;
     }
 }
 

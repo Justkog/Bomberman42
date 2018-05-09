@@ -4,6 +4,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Input.hpp"
 #include "Core/Input.hpp"
+#include "Core/Window.hpp"
 
 namespace Game
 {
@@ -68,10 +69,21 @@ void InputsMenu::setMapKey(std::string label)
 {
 	auto key = Game::Input::keyBindings[label];
 	std::string keyStr(1, key);
+	// std::cout << "label : " << label << " / key : " << keyStr << std::endl;
 	strcpy(inputs[label].text, keyStr.c_str());
 	inputs[label].text_len = 1;
 	inputs[label].waitingBind = false;
 	inputsList.push_back(label);
+}
+
+void InputsMenu::updateDisplayedInputKeys()
+{
+	for (auto it = inputsList.begin(); it != inputsList.end(); it++)
+	{
+		auto key = Game::Input::keyBindings[*it];
+		std::string keyStr(1, key);
+		strcpy(inputs[*it].text, keyStr.c_str());
+	}
 }
 
 void InputsMenu::start()
@@ -160,8 +172,8 @@ void InputsMenu::renderUI(struct nk_context *ctx)
 	float xOffset = 150;
 	float yOffset = 50;
 	auto window_rect = nk_rect(
-		WINDOW_WIDTH / 2 - menuWidth / 2 + xOffset, 
-		WINDOW_HEIGHT / 2 - menuHeight / 2 + yOffset, 
+		BeerEngine::Window::GetInstance()->getWidth() / 2 - menuWidth / 2 + xOffset, 
+		BeerEngine::Window::GetInstance()->getHeight() / 2 - menuHeight / 2 + yOffset, 
 		menuWidth, 
 		menuHeight
 	);
@@ -181,8 +193,8 @@ void InputsMenu::renderUI(struct nk_context *ctx)
 	xOffset = 150;
 	yOffset = 275;
 	window_rect = nk_rect(
-		WINDOW_WIDTH / 2 - menuWidth / 2 + xOffset, 
-		WINDOW_HEIGHT / 2 - menuHeight / 2 + yOffset, 
+		BeerEngine::Window::GetInstance()->getWidth() / 2 - menuWidth / 2 + xOffset, 
+		BeerEngine::Window::GetInstance()->getHeight() / 2 - menuHeight / 2 + yOffset, 
 		menuWidth, 
 		menuHeight
 	);
