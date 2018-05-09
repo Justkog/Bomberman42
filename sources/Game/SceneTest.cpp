@@ -13,6 +13,7 @@
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/Bomb.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -257,6 +258,9 @@ void    SceneTest::init(void)
 	mapMeshRenderer->setMaterial(material);
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
+
+	// loaded here because it cannot be loaded in the start of a later instantiated object
+	Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 
 
 	this->save("test2.scene");
