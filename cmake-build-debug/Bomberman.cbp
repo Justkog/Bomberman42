@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Bomberman"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\42\;CMake Files\..\42\42_Run\;CMake Files\..\42\42_Run\cmake-build-debug\;CMake Files\..\42\42_Run\cmake-build-debug\deps\;CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-3.2\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\nlohmann_json\;CMake Files\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/mploux/dev/Bomberman42/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/mploux/dev/Bomberman42/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/mploux/dev/Bomberman42/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Bomberman">
+				<Option output="/home/mploux/dev/Bomberman42/cmake-build-debug/Bomberman" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/mploux/dev/Bomberman42/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 Bomberman"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Bomberman/fast">
+				<Option output="/home/mploux/dev/Bomberman42/cmake-build-debug/Bomberman" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/mploux/dev/Bomberman42/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 Bomberman/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/mploux/dev/Bomberman42/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/AScene.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Audio/AudioClip.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Audio/AudioListener.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Audio/AudioSource.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/BeerRoutine/ARoutineRunner.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/BeerRoutine/BeerRoutine.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Camera.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/ACollider.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/BoxCollider2D.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/CircleCollider.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/Component.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/MeshRenderer.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/ModelRenderer.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/ParticleBase.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/ParticleExplode.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/RaysRenderer.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Component/RigidBody2D.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/GameObject.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Graphics/AMaterial.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Graphics/Graphics.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Graphics/Mesh.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Graphics/MeshBuilder.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Graphics/ShaderProgram.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Graphics/Texture.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/IO/FileUtils.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Input.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Json/Json.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Json/JsonSerializable.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Mathf.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Physics/Physics.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/SceneManager.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Time.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Transform.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Core/Window.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Assets.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/CameraTest.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/BeerRoutineTester.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Bomb.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Breakable.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/CameraController.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Character.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/IA.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Item.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Map.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/MouseRayTest.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Player.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/Components/Settings.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/Game/SceneTest.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/sources/main.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../42/42_Run/cmake-build-debug/deps/glm/glmConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../42/42_Run/cmake-build-debug/deps/glm/glmConfig.cmake">
+			<Option virtualFolder="CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../42/42_Run/cmake-build-debug/deps/glm/glmTargets.cmake">
+			<Option virtualFolder="CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../42/42_Run/cmake-build-debug/deps/glm/glmConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../42/42_Run/cmake-build-debug/deps/glm/glmConfig.cmake">
+			<Option virtualFolder="CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../42/42_Run/cmake-build-debug/deps/glm/glmTargets.cmake">
+			<Option virtualFolder="CMake Files\..\42\42_Run\cmake-build-debug\deps\glm\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-3.2/assimp-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-3.2\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-3.2/assimp-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-3.2\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-3.2/assimp-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-3.2\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-3.2/assimp-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-3.2\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/cmake/FindLibSndFile.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/mploux/dev/Bomberman42/cmake/FindLibSndFile.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
