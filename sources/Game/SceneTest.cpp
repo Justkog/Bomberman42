@@ -149,17 +149,17 @@ void    SceneTest::init(void)
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
 	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
-	std::vector<int>  line1{1,S,0,0,0,0,0,I,0,0,0,0,0,0,0,S,1};
-	std::vector<int>  line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line3{1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,1};
-	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line5{1,0,0,2,0,0,0,I,0,0,0,2,0,0,0,0,1};
-	std::vector<int>  line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line7{1,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,1};
-	std::vector<int>  line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line9{1,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,1};
-	std::vector<int> line10{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line11{1,S,0,0,0,0,0,2,0,0,0,0,0,0,0,S,1};
+	std::vector<int>  line1{1,S,0,2,2,2,2,2,2,2,2,2,2,2,0,S,1};
+	std::vector<int>  line2{1,0,1,2,1,2,1,2,1,2,1,2,1,2,1,0,1};
+	std::vector<int>  line3{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int>  line4{1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+	std::vector<int>  line5{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int>  line6{1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+	std::vector<int>  line7{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int>  line8{1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+	std::vector<int>  line9{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int> line10{1,0,1,2,1,2,1,2,1,2,1,2,1,2,1,0,1};
+	std::vector<int> line11{1,S,0,2,2,2,2,2,2,2,2,2,2,2,0,S,1};
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 
@@ -179,26 +179,26 @@ void    SceneTest::init(void)
 	// mapCrateGO2->save("Prefabs/reMapCrate.prefab");
 
 	// IA
-	auto iaGO = instantiate<BeerEngine::GameObject>();
-	iaGO->name = "IA";
-	meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-	auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
-	iaMat->setAlbedo(iaTex);
-	meshRenderer->setMaterial(iaMat);
-	iaGO->transform.position = glm::vec3(0, 0.5, 2);
-	iaGO->transform.scale = glm::vec3(1, 1, 1);
-	character = iaGO->AddComponent<Game::Component::Character>();
-	character->map = map;
-	auto *ia = iaGO->AddComponent<Game::Component::IA>();
-	iaGO->AddComponent<Game::Component::Breakable>();
-	ia->map = map;
-	routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
-	settings = iaGO->AddComponent<Game::Component::Settings>();
-	auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
+	// auto iaGO = instantiate<BeerEngine::GameObject>();
+	// iaGO->name = "IA";
+	// meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+	// auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+	// auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
+	// iaMat->setAlbedo(iaTex);
+	// meshRenderer->setMaterial(iaMat);
+	// iaGO->transform.position = glm::vec3(-7, 0.5, 2);
+	// iaGO->transform.scale = glm::vec3(1, 1, 1);
+	// character = iaGO->AddComponent<Game::Component::Character>();
+	// character->map = map;
+	// auto *ia = iaGO->AddComponent<Game::Component::IA>();
+	// iaGO->AddComponent<Game::Component::Breakable>();
+	// ia->map = map;
+	// routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
+	// settings = iaGO->AddComponent<Game::Component::Settings>();
+	// auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	// auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	// iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
 
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();

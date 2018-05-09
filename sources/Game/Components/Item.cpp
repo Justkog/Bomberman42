@@ -70,7 +70,7 @@ namespace Game
                         character->increaseSpeed(0.25);
                         break;
                     case ItemType::AddBomb:
-                        character->addBomb(1);
+                        character->increaseMaxBomb();
                         break;
                     case ItemType::ExplosionBoost:
                         character->increaseExplosionSize(1);

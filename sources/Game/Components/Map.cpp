@@ -77,7 +77,13 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			_map[y][x] = value;
+			if (_map[y][x] == 2 && value == 0 && !(rand() % 10))
+			{
+				_map[y][x] = I;
+				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
+			}
+			else
+				_map[y][x] = value;
         }
 
 		void Map::mapUpdate(glm::vec3 pos, int value)
@@ -90,7 +96,9 @@ namespace Game
 		{
 			int type = 0;
 			bool playerSpawn = false;
+			int IASpawned = 0;
 
+			_shader = shader;
 			for (int row = 0; row < _sizeY; row++)
 			{
 				for (int col = 0; col < _sizeX; col++)
@@ -109,8 +117,9 @@ namespace Game
 							if (playerSpawn)
 							{
 								//addIA
+								++IASpawned;
 							}
-							else
+							else if (!(rand() % 4) || IASpawned == 3)
 							{
 								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
 								playerSpawn = true;
@@ -171,7 +180,7 @@ namespace Game
 		{
 			int x = static_cast<int>(worldToMap(pos).x);
 			int y = static_cast<int>(worldToMap(pos).y);
-			if (_map[y][x] != B)
+			if (_map[y][x] == B)
 				return (true);
 			return (false);
 		}

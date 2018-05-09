@@ -38,6 +38,8 @@ namespace Game
 			static std::vector<Bomb*> bombs;
 			Game::Component::Map *map;
 			float power;
+
+			Signal<> onExplode;
 		};
 	}
 }

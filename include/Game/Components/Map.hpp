@@ -53,7 +53,8 @@ namespace Game
 			int								**_map;
 			int	_sizeX;
 			int	_sizeY;
-			Game::Component::Player			*_player;
+			Game::Component::Player				*_player;
+			BeerEngine::Graphics::ShaderProgram	*_shader;
 
 			void mapUpdate(glm::vec3 pos, int value);
 
@@ -69,7 +70,7 @@ namespace Game
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate0_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				meshRenderer->setMaterial(mapBlocMat);
