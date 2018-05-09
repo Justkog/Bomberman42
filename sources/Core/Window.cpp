@@ -156,6 +156,7 @@ namespace BeerEngine
 				glfwSetCursorPosCallback(win->getWindow(), win_cursor_position_callback);
 				glfwSetMouseButtonCallback(win->getWindow(), win_mouse_button_callback);
 				glfwSetScrollCallback(win->getWindow(), win_scroll_callback);
+				glfwGetWindowPos(win->getWindow(), win->getXPos(), win->getYPos());
 				glfwSwapInterval(0);
 				glewExperimental = true;
 				if (glewInit() != GLEW_OK)
@@ -173,5 +174,39 @@ namespace BeerEngine
 	Window	*Window::GetInstance(void)
 	{
 		return (_Instance);
+	}
+
+	int		*Window::getXPos()
+	{
+		return &this->_xPos;
+	}
+
+	int		*Window::getYPos()
+	{
+		return &this->_yPos;
+	}
+
+	void	Window::setFullScreen(void)
+	{
+		auto monitor = glfwGetPrimaryMonitor();
+		auto videoMode = glfwGetVideoMode(monitor);
+		glfwGetWindowPos(_window, &_xPos, &_yPos);
+		glfwSetWindowMonitor(_window, monitor, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, videoMode->refreshRate);
+	}
+
+	void Window::CallbackResize(GLFWwindow* window, int cx, int cy)
+	{
+		// std::cout << "resize call back" << std::endl;
+		glfwSetWindowSize(window, WINDOW_WIDTH, WINDOW_HEIGHT);
+		glfwSetWindowPos(window, *GetInstance()->getXPos(), *GetInstance()->getYPos());
+	}
+
+	void	Window::setWindowed(void)
+	{
+		auto monitor = glfwGetPrimaryMonitor();
+		auto videoMode = glfwGetVideoMode(monitor);
+		glfwSetWindowSizeCallback(_window, Window::CallbackResize);
+		// std::cout << "setting windowed x = " << _xPos << " / y = " << _yPos << " / width = " << WINDOW_WIDTH << std::endl;
+		glfwSetWindowMonitor(_window, NULL, _xPos, _yPos, WINDOW_WIDTH, WINDOW_HEIGHT, videoMode->refreshRate);
 	}
 }

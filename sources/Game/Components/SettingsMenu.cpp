@@ -129,9 +129,17 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		nk_slider_float(ctx, 0, &windowWidth, 4096.0f, 10.0f);
 
 		if (nk_option_label(ctx, "windowed", mode == WINDOWED))
+		{
+			if (mode != WINDOWED)
+				BeerEngine::Window::GetInstance()->setWindowed();
 			mode = WINDOWED;
+		}
     	if (nk_option_label(ctx, "full screen", mode == FULL_SCREEN))
+		{
+			if (mode != FULL_SCREEN)
+				BeerEngine::Window::GetInstance()->setFullScreen();
 			mode = FULL_SCREEN;
+		}
 
 		std::stringstream ssMusic;
 		ssMusic << "Music volume: " << musicVolume;

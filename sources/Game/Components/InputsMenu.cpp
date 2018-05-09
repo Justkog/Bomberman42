@@ -68,6 +68,7 @@ void InputsMenu::setMapKey(std::string label, std::string key)
 {
 	strcpy(inputs[label].text, key.c_str());
 	inputs[label].text_len = 1;
+	inputs[label].waitingBind = false;
 	inputsList.push_back(label);
 }
 
@@ -120,14 +121,21 @@ void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInf
 	nk_label(ctx, label.c_str(), NK_TEXT_CENTERED);
 	nk_layout_row_push(ctx, 40);
 	// nk_edit_string(ctx, NK_EDIT_SIMPLE, inputInfo.text, &inputInfo.text_len, 2, nk_filter_default);
+	auto normalButton = ctx->style.button.normal;
+	if (inputInfo.waitingBind)
+		ctx->style.button.normal = ctx->style.button.active;
 	if (nk_button_label(ctx, inputInfo.text))
 	{
+		inputInfo.waitingBind = true;
 		BeerEngine::Input::onKeyPushed = [label, &inputInfo] (int key) {
 			Game::Input::keyBindings[label] = static_cast<BeerEngine::KeyCode>(key);
 			inputInfo.text[0] = key;
+			inputInfo.waitingBind = false;
 			BeerEngine::Input::onKeyPushed = BeerEngine::Input::onKeyPushedDefault();
 		};
 	}
+	if (inputInfo.waitingBind)
+		ctx->style.button.normal = normalButton;
 }
 
 void InputsMenu::drawInputsUI(struct nk_context *ctx)

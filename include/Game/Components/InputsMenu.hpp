@@ -24,6 +24,7 @@ namespace Game
 		{
 			char text[2];
 			int text_len;
+			bool waitingBind;
 		};
 
 		class InputsMenu : public BeerEngine::Component::Component, 
