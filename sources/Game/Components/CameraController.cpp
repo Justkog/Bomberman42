@@ -1,5 +1,6 @@
 #include "Game/Components/CameraController.hpp"
 #include "Core/Input.hpp"
+#include "Game/Input.hpp"
 #include "Core/Time.hpp"
 #include "Core/Camera.hpp"
 
@@ -87,15 +88,15 @@ namespace Game
 			float cam_speed = 1;
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_SHIFT))
 				cam_speed = 10;
-			if (BeerEngine::Input::GetKey(BeerEngine::Input::keyBindings["move up"]))
+			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move up"]))
 				_gameObject->transform.translate(_gameObject->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
+			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move down"]))
 				_gameObject->transform.translate(-_gameObject->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move left"]))
 				_gameObject->transform.translate(_gameObject->transform.left() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move right"]))
 				_gameObject->transform.translate(_gameObject->transform.right() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::SPACE))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::C))
 				_gameObject->transform.translate(_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::X))
 				_gameObject->transform.translate(-_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());

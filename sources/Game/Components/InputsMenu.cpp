@@ -2,6 +2,7 @@
 #include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Game/Components/UIThemeManager.hpp"
+#include "Game/Input.hpp"
 #include "Core/Input.hpp"
 
 namespace Game
@@ -78,15 +79,15 @@ void InputsMenu::start()
 	setMapKey("move left", "a");
 	setMapKey("move right", "d");
 	setMapKey("bomb", " ");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
-	setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
+	// setMapKey("move right", "d");
 	
 }
 
@@ -133,7 +134,11 @@ void InputsMenu::updateKeyBindings()
 	std::cout << "key bindings update" << std::endl;
 	for (auto it = inputsList.begin(); it != inputsList.end(); it++)
 	{
-		BeerEngine::Input::keyBindings[*it] = static_cast<BeerEngine::KeyCode>(inputs[*it].text[0]);
+		char c = inputs[*it].text[0];
+		if (c >= 97 && c <= 122)
+			c -= 32;
+		Game::Input::keyBindings[*it] = static_cast<BeerEngine::KeyCode>(c);
+		std::cout << "input of " << *it << " is now " << Game::Input::keyBindings[*it] << std::endl;
 	}
 }
 

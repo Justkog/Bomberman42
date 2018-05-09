@@ -6,6 +6,7 @@
 #include "Core/Component/ACollider.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Input.hpp"
 
 namespace Game
 {
@@ -61,7 +62,7 @@ namespace Game
 			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
+            if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))
                 _character->dropBomb();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);

@@ -8,19 +8,6 @@ namespace BeerEngine
 	glm::vec2				Input::mousePosition;
 	glm::vec2				Input::mouseScroll;
 
-	std::map<std::string, KeyCode> setDefaultKeyBindings()
-	{
-		std::map<std::string, KeyCode> defaultBindings;
-		defaultBindings["move up"] = KeyCode::W;
-		defaultBindings["move down"] = KeyCode::S;
-		defaultBindings["move left"] = KeyCode::A;
-		defaultBindings["move right"] = KeyCode::D;
-		defaultBindings["bomb"] = KeyCode::SPACE;
-		return defaultBindings;
-	}
-
-	std::map<std::string, KeyCode> Input::keyBindings = setDefaultKeyBindings();
-
 	void			Input::SetKey(int keycode, int status)
 	{
 		key[keycode] = status;

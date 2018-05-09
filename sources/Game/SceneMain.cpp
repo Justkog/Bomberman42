@@ -82,8 +82,8 @@ void    SceneMain::init(void)
 	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
 	settingsMenu->setActive(false);
-	mainMenu->setActive(false);
-	// inputsMenu->setActive(false);
+	// mainMenu->setActive(false);
+	inputsMenu->setActive(false);
 
 	this->save("main.scene");
 	std::cout << "init end" << "\n";

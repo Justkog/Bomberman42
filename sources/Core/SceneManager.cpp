@@ -16,7 +16,7 @@ namespace BeerEngine
 		}
 		else if (_Old)
 		{
-			// delete _Old;
+			delete _Old;
 			_Old = nullptr;
 		}
 		return (_Current);
