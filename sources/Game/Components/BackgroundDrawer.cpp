@@ -1,6 +1,7 @@
 #include "Game/Components/BackgroundDrawer.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 #include "Core/Graphics/Texture.hpp"
+#include "Core/Window.hpp"
 #include "Game/Assets.hpp"
 
 namespace Game
@@ -78,13 +79,13 @@ void BackgroundDrawer::renderUI(struct nk_context *ctx)
 	auto back_window_rect = nk_rect(
 		0, 
 		0, 
-		WINDOW_WIDTH, 
-		WINDOW_HEIGHT
+		BeerEngine::Window::GetInstance()->getWidth(), 
+		BeerEngine::Window::GetInstance()->getHeight()
 	);
 
 	if (nk_begin(ctx, "Background", back_window_rect, NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE))
 	{
-		// just the background window
+		// just the background image
 	}
 	nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);

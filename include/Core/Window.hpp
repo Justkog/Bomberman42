@@ -13,6 +13,8 @@ namespace BeerEngine
 		int             _height;
 		int				_xPos;
 		int 			_yPos;
+		int 			_windowWidth;
+		int 			_windowHeight;
 		GLFWwindow      *_window;
 		glm::mat4       _perspective;
 		glm::mat4       _ortho;
@@ -25,6 +27,9 @@ namespace BeerEngine
 		GLFWwindow      *getWindow(void);
 		int     		*getXPos(void);
 		int     		*getYPos(void);
+		int				getWidth();
+		int				getHeight();
+		void			setWindowProperties(int x, int y, int width, int height);
 		void            clear(void);
 		void            update(void);
 		void            swapBuffer(void);
@@ -34,6 +39,7 @@ namespace BeerEngine
 		bool			isClose(void);
 		void			setFullScreen(void);
 		void			setWindowed(void);
+		void			resize(int width, int height);
 
 		static Window   *CreateWindow(std::string title, int width, int height);
 		static Window	*GetInstance(void);

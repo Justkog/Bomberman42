@@ -5,7 +5,7 @@ namespace BeerEngine
 {
 	Window	*Window::_Instance = nullptr;
 	Window::Window(std::string title, int width, int height) :
-		_title(title), _width(width), _height(height)
+		_title(title), _width(width), _height(height), _windowWidth(width), _windowHeight(height)
 	{
 		_window = glfwCreateWindow(_width, _height, _title.c_str(), NULL, NULL);
 		_perspective = glm::perspective(glm::radians(60.0f), (float)_width / (float)_height, 0.01f, 1000.0f);
@@ -65,30 +65,46 @@ namespace BeerEngine
 		return (glfwWindowShouldClose(_window) || _close);
 	}
 
+	void			Window::setWindowProperties(int x, int y, int width, int height)
+	{
+		_xPos = x;
+		_yPos = y;
+		_windowWidth = width;
+		_windowHeight = height;
+		_width = width;
+		_height = height;
+	}
 
 	static void     win_resize_callback(GLFWwindow *window, int width, int height)
 	{
+		// std::cout << "FramebufferSizeCallback" << std::endl;
 		static const float aspect = 16.0f / 9.0f;
 		Window  *win = (Window *)glfwGetWindowUserPointer(window);
-		if (win)
-		{
-			float a = (float)width / (float)height;
-			int minX = 0;
-			int minY = 0;
-			int maxX = width;
-			int maxY = height;
-			if (a < aspect)
-			{
-				maxY = (int)std::round((float)width * 9.0f / 16.0f);
-				minY = (height - maxY) / 2;
-			}
-			else if (a > aspect)
-			{
-				maxX = (int)std::round((float)height * 16.0f / 9.0f);
-				minX = (width - maxX) / 2;
-			}
-			glViewport(minX, minY, maxX, maxY);
-		}
+		// if (win)
+		// {
+		// 	float a = (float)width / (float)height;
+		// 	int minX = 0;
+		// 	int minY = 0;
+		// 	int maxX = width;
+		// 	int maxY = height;
+		// 	if (a < aspect)
+		// 	{
+		// 		maxY = (int)std::round((float)width * 9.0f / 16.0f);
+		// 		minY = (height - maxY) / 2;
+		// 	}
+		// 	else if (a > aspect)
+		// 	{
+		// 		maxX = (int)std::round((float)height * 16.0f / 9.0f);
+		// 		minX = (width - maxX) / 2;
+		// 	}
+		// 	glViewport(minX, minY, maxX, maxY);
+		// }
+		glViewport(0, 0, width, height);
+		if (glfwGetWindowMonitor(window) != nullptr) // full screen is set
+			return;
+		int x, y;
+		glfwGetWindowPos(window, &x, &y);
+		Window::GetInstance()->setWindowProperties(x, y, width, height);
 	}
 
 	static void     win_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -186,19 +202,35 @@ namespace BeerEngine
 		return &this->_yPos;
 	}
 
+	int		Window::getWidth()
+	{
+		return _width;
+	}
+
+	int		Window::getHeight()
+	{
+		return _height;
+	}
+
 	void	Window::setFullScreen(void)
 	{
 		auto monitor = glfwGetPrimaryMonitor();
 		auto videoMode = glfwGetVideoMode(monitor);
+		glfwSetWindowSizeCallback(_window, nullptr);
 		glfwGetWindowPos(_window, &_xPos, &_yPos);
-		glfwSetWindowMonitor(_window, monitor, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, videoMode->refreshRate);
+		_width = videoMode->width;
+		_height = videoMode->height;
+		// std::cout << "Set full screen at " << videoMode->width << " * " << videoMode->height <<  std::endl;
+		glfwSetWindowMonitor(_window, monitor, 0, 0, _width, _height, videoMode->refreshRate);
 	}
 
+	// call back used to force a resize after coming back from full screen mode due to a bug on macos
 	void Window::CallbackResize(GLFWwindow* window, int cx, int cy)
 	{
-		// std::cout << "resize call back" << std::endl;
-		glfwSetWindowSize(window, WINDOW_WIDTH, WINDOW_HEIGHT);
+		// std::cout << "SetWindowSizeCallback" << std::endl;
+		glfwSetWindowSize(window, GetInstance()->getWidth(), GetInstance()->getHeight());
 		glfwSetWindowPos(window, *GetInstance()->getXPos(), *GetInstance()->getYPos());
+		glfwSetWindowSizeCallback(window, nullptr);
 	}
 
 	void	Window::setWindowed(void)
@@ -206,7 +238,21 @@ namespace BeerEngine
 		auto monitor = glfwGetPrimaryMonitor();
 		auto videoMode = glfwGetVideoMode(monitor);
 		glfwSetWindowSizeCallback(_window, Window::CallbackResize);
+		_width = _windowWidth;
+		_height = _windowHeight;
 		// std::cout << "setting windowed x = " << _xPos << " / y = " << _yPos << " / width = " << WINDOW_WIDTH << std::endl;
-		glfwSetWindowMonitor(_window, NULL, _xPos, _yPos, WINDOW_WIDTH, WINDOW_HEIGHT, videoMode->refreshRate);
+		glfwSetWindowMonitor(_window, NULL, _xPos, _yPos, _width, _height, videoMode->refreshRate);
+	}
+
+	void Window::resize(int width, int height)
+	{
+		// std::cout << "resizing window" << std::endl;
+		_windowWidth = width;
+		_windowHeight = height;
+		if (glfwGetWindowMonitor(_window) != nullptr) // full screen is set
+			return;
+		_width = _windowWidth;
+		_height = _windowHeight;
+		glfwSetWindowSize(_window, _width, _height);
 	}
 }
