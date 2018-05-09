@@ -120,12 +120,14 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 
 		std::stringstream ssHeight;
 		ssHeight << "Height: " << windowHeight;
+		windowHeight = BeerEngine::Window::GetInstance()->getHeight();
 		int height = windowHeight;
 		nk_label(ctx, ssHeight.str().c_str(), NK_TEXT_LEFT);
 		nk_slider_float(ctx, 0, &windowHeight, 2304.0f, 10.0f);
 
 		std::stringstream ssWidth;
 		ssWidth << "Width: " << windowWidth;
+		windowWidth = BeerEngine::Window::GetInstance()->getWidth();
 		int width = windowWidth;
 		nk_label(ctx, ssWidth.str().c_str(), NK_TEXT_LEFT);
 		nk_slider_float(ctx, 0, &windowWidth, 4096.0f, 10.0f);
