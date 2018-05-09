@@ -1,5 +1,5 @@
 <map id="include/Core/Core.hpp" name="include/Core/Core.hpp">
-<area shape="rect" id="node2" href="$_a_scene_8hpp.html" title="include/Core/AScene.hpp" alt="" coords="1832,172,2005,197"/>
+<area shape="rect" id="node2" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1832,172,2005,197"/>
 <area shape="rect" id="node4" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="2397,599,2580,637"/>
 <area shape="rect" id="node5" href="$_scene_manager_8hpp.html" title="Gestionaire des Scene du projet. " alt="" coords="1005,259,1221,284"/>
 <area shape="rect" id="node6" href="$_game_object_8hpp.html" title="include/Core/GameObject.hpp" alt="" coords="1781,259,1981,284"/>
@@ -29,14 +29,14 @@
 <area shape="rect" id="node31" href="$_time_8hpp.html" title="gestion du temps " alt="" coords="129,85,284,111"/>
 <area shape="rect" id="node32" href="$_mesh_8hpp.html" title="include/Core/Graphics\l/Mesh.hpp" alt="" coords="686,165,839,204"/>
 <area shape="rect" id="node33" href="$_mesh_builder_8hpp.html" title="include/Core/Graphics\l/MeshBuilder.hpp" alt="" coords="354,252,507,291"/>
-<area shape="rect" id="node34" href="$_graphics_8hpp.html" title="include/Core/Graphics\l/Graphics.hpp" alt="" coords="631,252,784,291"/>
+<area shape="rect" id="node34" href="$_graphics_8hpp.html" title="Graphics predefini. " alt="" coords="631,252,784,291"/>
 <area shape="rect" id="node35" href="$_shader_program_8hpp.html" title="include/Core/Graphics\l/ShaderProgram.hpp" alt="" coords="459,165,612,204"/>
 <area shape="rect" id="node36" href="$_texture_8hpp.html" title="include/Core/Graphics\l/Texture.hpp" alt="" coords="1014,165,1167,204"/>
-<area shape="rect" id="node37" href="$_a_material_8hpp.html" title="include/Core/Graphics\l/AMaterial.hpp" alt="" coords="1191,165,1344,204"/>
+<area shape="rect" id="node37" href="$_a_material_8hpp.html" title="Compisition des scenes. " alt="" coords="1191,165,1344,204"/>
 <area shape="rect" id="node38" href="$_file_utils_8hpp.html" title="include/Core/IO/FileUtils.hpp" alt="" coords="308,85,499,111"/>
 <area shape="rect" id="node39" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1419,172,1605,197"/>
-<area shape="rect" id="node40" href="$_camera_8hpp.html" title="include/Core/Camera.hpp" alt="" coords="808,259,981,284"/>
-<area shape="rect" id="node41" href="$_input_8hpp.html" title="include/Core/Input.hpp" alt="" coords="630,85,785,111"/>
+<area shape="rect" id="node40" href="$_camera_8hpp.html" title="Camera du projet. " alt="" coords="808,259,981,284"/>
+<area shape="rect" id="node41" href="$_input_8hpp.html" title="Gestion des entrees, clavier, souris... " alt="" coords="630,85,785,111"/>
 <area shape="rect" id="node42" href="$_a_routine_runner_8hpp.html" title="include/Core/BeerRoutine\l/ARoutineRunner.hpp" alt="" coords="4421,339,4595,377"/>
 <area shape="rect" id="node43" href="$_beer_routine_8hpp.html" title="include/Core/BeerRoutine\l/BeerRoutine.hpp" alt="" coords="4619,339,4793,377"/>
 <area shape="rect" id="node44" href="$_i_start_u_i_8hpp.html" title="include/Core/Component\l/IStartUI.hpp" alt="" coords="4818,339,4987,377"/>

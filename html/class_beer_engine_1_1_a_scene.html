@@ -76,6 +76,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes.  
+ <a href="class_beer_engine_1_1_a_scene.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_a_scene_8hpp_source.html">AScene.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BeerEngine::AScene:</div>
@@ -101,42 +104,58 @@ Collaboration diagram for BeerEngine::AScene:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a811f775c81c6d46b267e1926450a7c32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a811f775c81c6d46b267e1926450a7c32">AScene</a> (void)</td></tr>
+<tr class="memdesc:a811f775c81c6d46b267e1926450a7c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur Constructeur de la classe <a class="el" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes...">AScene</a>.  <a href="#a811f775c81c6d46b267e1926450a7c32">More...</a><br /></td></tr>
 <tr class="separator:a811f775c81c6d46b267e1926450a7c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaa7995756d22d36008d4b541b6b20ca"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#abaa7995756d22d36008d4b541b6b20ca">~AScene</a> (void)</td></tr>
+<tr class="memdesc:abaa7995756d22d36008d4b541b6b20ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur Destructeur de la classe <a class="el" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes...">AScene</a>.  <a href="#abaa7995756d22d36008d4b541b6b20ca">More...</a><br /></td></tr>
 <tr class="separator:abaa7995756d22d36008d4b541b6b20ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a55b4e506ae618e6596ae812ad48db0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a7a55b4e506ae618e6596ae812ad48db0">init</a> (void)=0</td></tr>
+<tr class="memdesc:a7a55b4e506ae618e6596ae812ad48db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation Initialisation de la classe heritante.  <a href="#a7a55b4e506ae618e6596ae812ad48db0">More...</a><br /></td></tr>
 <tr class="separator:a7a55b4e506ae618e6596ae812ad48db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c1cc3e869d48b92331fe606eb86497c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a5c1cc3e869d48b92331fe606eb86497c">mutexLock</a> (bool lock)</td></tr>
+<tr class="memdesc:a5c1cc3e869d48b92331fe606eb86497c"><td class="mdescLeft">&#160;</td><td class="mdescRight">gestion de la protection Activer ou desactiver la protection de la classe pour le multi thread  <a href="#a5c1cc3e869d48b92331fe606eb86497c">More...</a><br /></td></tr>
 <tr class="separator:a5c1cc3e869d48b92331fe606eb86497c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a332808581c9141259a6acdc2fa8e0e5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a332808581c9141259a6acdc2fa8e0e5c">start</a> (void)</td></tr>
+<tr class="memdesc:a332808581c9141259a6acdc2fa8e0e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation des objets Methode permettant d'initialiser les objets creer.  <a href="#a332808581c9141259a6acdc2fa8e0e5c">More...</a><br /></td></tr>
 <tr class="separator:a332808581c9141259a6acdc2fa8e0e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444a7a1321f9c8c14a2d3821f649c85e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a444a7a1321f9c8c14a2d3821f649c85e">startUI</a> (struct nk_context *ctx)</td></tr>
 <tr class="separator:a444a7a1321f9c8c14a2d3821f649c85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98c0b2bca184f5ba2c7a1660bead32cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a98c0b2bca184f5ba2c7a1660bead32cf">fixedUpdate</a> (void)</td></tr>
+<tr class="memdesc:a98c0b2bca184f5ba2c7a1660bead32cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">update fix des objets Methode permettant de mettre a jour les objets de maniere fixe (60 fois pas seconde par defaut).  <a href="#a98c0b2bca184f5ba2c7a1660bead32cf">More...</a><br /></td></tr>
 <tr class="separator:a98c0b2bca184f5ba2c7a1660bead32cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee4c99b65b3e54bdcb62cc1096dcb397"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#aee4c99b65b3e54bdcb62cc1096dcb397">update</a> (void)</td></tr>
+<tr class="memdesc:aee4c99b65b3e54bdcb62cc1096dcb397"><td class="mdescLeft">&#160;</td><td class="mdescRight">update des objets Methode permettant de mettre a jour les objets.  <a href="#aee4c99b65b3e54bdcb62cc1096dcb397">More...</a><br /></td></tr>
 <tr class="separator:aee4c99b65b3e54bdcb62cc1096dcb397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accb108fe6723d99c36a85eb51a25820e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#accb108fe6723d99c36a85eb51a25820e">renderUpdate</a> (void)</td></tr>
+<tr class="memdesc:accb108fe6723d99c36a85eb51a25820e"><td class="mdescLeft">&#160;</td><td class="mdescRight">data de rendu des objets Methode permettant de mettre a jour les données de rendu des objets  <a href="#accb108fe6723d99c36a85eb51a25820e">More...</a><br /></td></tr>
 <tr class="separator:accb108fe6723d99c36a85eb51a25820e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a445ef1917ea393ebea9be85bf0aa37f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a445ef1917ea393ebea9be85bf0aa37f1">render</a> (void)</td></tr>
+<tr class="memdesc:a445ef1917ea393ebea9be85bf0aa37f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">rendu des objets Methode permettant de rendre l'objet a l'ecran  <a href="#a445ef1917ea393ebea9be85bf0aa37f1">More...</a><br /></td></tr>
 <tr class="separator:a445ef1917ea393ebea9be85bf0aa37f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93d3ef94fbd5201f10e9185833bc3e0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a93d3ef94fbd5201f10e9185833bc3e0c">renderUI</a> (struct nk_context *ctx)</td></tr>
+<tr class="memdesc:a93d3ef94fbd5201f10e9185833bc3e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">rendu de l'UI Methode permettant de rendre UI de l'objet a l'ecran  <a href="#a93d3ef94fbd5201f10e9185833bc3e0c">More...</a><br /></td></tr>
 <tr class="separator:a93d3ef94fbd5201f10e9185833bc3e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b9cff7ce753a578cdd1b95308a22fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a1b9cff7ce753a578cdd1b95308a22fec">physicUpdate</a> (void)</td></tr>
+<tr class="memdesc:a1b9cff7ce753a578cdd1b95308a22fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mise a jour physique Methode permettant de mettre a jour la physique des objets (collision ...)  <a href="#a1b9cff7ce753a578cdd1b95308a22fec">More...</a><br /></td></tr>
 <tr class="separator:a1b9cff7ce753a578cdd1b95308a22fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af40b9c9c30c3c55991792d45867c022b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#af40b9c9c30c3c55991792d45867c022b">destroy</a> (<a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> *go)</td></tr>
+<tr class="memdesc:af40b9c9c30c3c55991792d45867c022b"><td class="mdescLeft">&#160;</td><td class="mdescRight">demande de destruction d'un objet Methode permettant d'ajouter dans la pile des destruction un objet  <a href="#af40b9c9c30c3c55991792d45867c022b">More...</a><br /></td></tr>
 <tr class="separator:af40b9c9c30c3c55991792d45867c022b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8b7e31b089fd39ed8c6d1505a91c16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a3f8b7e31b089fd39ed8c6d1505a91c16">destroyGameObjects</a> (void)</td></tr>
+<tr class="memdesc:a3f8b7e31b089fd39ed8c6d1505a91c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">destruction des objets Methode permettant de detruire les objets de la pile de destruction, puis vite la pile  <a href="#a3f8b7e31b089fd39ed8c6d1505a91c16">More...</a><br /></td></tr>
 <tr class="separator:a3f8b7e31b089fd39ed8c6d1505a91c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bd087ae22796d1e286c867f4f1ecc38"><td class="memTemplParams" colspan="2">template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObject, T &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
 <tr class="memitem:a2bd087ae22796d1e286c867f4f1ecc38"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664">T</a> *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a2bd087ae22796d1e286c867f4f1ecc38">instantiate</a> (void)</td></tr>
+<tr class="memdesc:a2bd087ae22796d1e286c867f4f1ecc38"><td class="mdescLeft">&#160;</td><td class="mdescRight">instancie un objet Methode permettant de creer un nouvelle objet dans la scene  <a href="#a2bd087ae22796d1e286c867f4f1ecc38">More...</a><br /></td></tr>
 <tr class="separator:a2bd087ae22796d1e286c867f4f1ecc38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf89d3198589c3e3007b0bc0579dd9ab"><td class="memTemplParams" colspan="2">template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObject, T &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
 <tr class="memitem:acf89d3198589c3e3007b0bc0579dd9ab"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664">T</a> *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#acf89d3198589c3e3007b0bc0579dd9ab">instantiate</a> (std::string prefabPath)</td></tr>
+<tr class="memdesc:acf89d3198589c3e3007b0bc0579dd9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">instancie un objet Methode permettant de creer un nouvelle objet dans la scene par rapport a un objet predefini  <a href="#acf89d3198589c3e3007b0bc0579dd9ab">More...</a><br /></td></tr>
 <tr class="separator:acf89d3198589c3e3007b0bc0579dd9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44f55dbd991eb07e425ca163f4773766"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a44f55dbd991eb07e425ca163f4773766">debugTest</a> (void)</td></tr>
 <tr class="separator:a44f55dbd991eb07e425ca163f4773766"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae551bf1b3e7cf87cc2de4b6859732e81"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#ae551bf1b3e7cf87cc2de4b6859732e81">getGameObjects</a> ()</td></tr>
+<tr class="memdesc:ae551bf1b3e7cf87cc2de4b6859732e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">list d'objet Methode permettant de retourner la liste des objet  <a href="#ae551bf1b3e7cf87cc2de4b6859732e81">More...</a><br /></td></tr>
 <tr class="separator:ae551bf1b3e7cf87cc2de4b6859732e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65e03ade02de4673cd25544d4843c6d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_a_scene.html#a65e03ade02de4673cd25544d4843c6d8">save</a> (std::string <a class="el" href="class_beer_engine_1_1_a_scene.html#a2edf1030b7232a5f703d327976f1d4ea">filePath</a>)</td></tr>
 <tr class="separator:a65e03ade02de4673cd25544d4843c6d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,7 +186,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:af4c5582f75eb96988c5d4ff546218e1e inherit pub_static_methods_class_beer_engine_1_1_json_deserializable"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_deserializable.html#af4c5582f75eb96988c5d4ff546218e1e">Deserialize</a> (const nlohmann::json &amp;j)</td></tr>
 <tr class="separator:af4c5582f75eb96988c5d4ff546218e1e inherit pub_static_methods_class_beer_engine_1_1_json_deserializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a811f775c81c6d46b267e1926450a7c32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a811f775c81c6d46b267e1926450a7c32">&#9670;&nbsp;</a></span>AScene()</h2>
 
@@ -183,6 +204,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructeur Constructeur de la classe <a class="el" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes...">AScene</a>. </p>
 
 </div>
 </div>
@@ -209,6 +232,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destructeur Destructeur de la classe <a class="el" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes...">AScene</a>. </p>
 
 </div>
 </div>
@@ -283,6 +308,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>demande de destruction d'un objet Methode permettant d'ajouter dans la pile des destruction un objet </p>
+
 </div>
 </div>
 <a id="a3f8b7e31b089fd39ed8c6d1505a91c16"></a>
@@ -300,6 +327,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>destruction des objets Methode permettant de detruire les objets de la pile de destruction, puis vite la pile </p>
 
 </div>
 </div>
@@ -319,6 +348,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>update fix des objets Methode permettant de mettre a jour les objets de maniere fixe (60 fois pas seconde par defaut). </p>
+
 </div>
 </div>
 <a id="ae551bf1b3e7cf87cc2de4b6859732e81"></a>
@@ -335,6 +366,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>list d'objet Methode permettant de retourner la liste des objet </p>
+<dl class="section return"><dt>Returns</dt><dd>list des objets </dd></dl>
 
 </div>
 </div>
@@ -361,6 +395,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>initialisation Initialisation de la classe heritante. </p>
 
 <p>Implemented in <a class="el" href="class_scene_main.html#a4406dc5cf9807edcf360ba416de928e2">SceneMain</a>, and <a class="el" href="class_scene_test.html#aedded03410798c3705fb3fb028e56ab5">SceneTest</a>.</p>
 <div class="dynheader">
@@ -399,6 +435,9 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>instancie un objet Methode permettant de creer un nouvelle objet dans la scene </p>
+<dl class="section return"><dt>Returns</dt><dd>l'objet venant d'etre creer </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -438,6 +477,9 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
 </table>
 </div><div class="memdoc">
 
+<p>instancie un objet Methode permettant de creer un nouvelle objet dans la scene par rapport a un objet predefini </p>
+<dl class="section return"><dt>Returns</dt><dd>l'objet venant d'etre creer </dd></dl>
+
 </div>
 </div>
 <a id="aeedbe75eeef457353645d61a68bc2949"></a>
@@ -474,6 +516,14 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
       </table>
 </div><div class="memdoc">
 
+<p>gestion de la protection Activer ou desactiver la protection de la classe pour le multi thread </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lock</td><td>: status du mutex </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a1b9cff7ce753a578cdd1b95308a22fec"></a>
@@ -491,6 +541,8 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Mise a jour physique Methode permettant de mettre a jour la physique des objets (collision ...) </p>
 
 </div>
 </div>
@@ -510,6 +562,8 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
       </table>
 </div><div class="memdoc">
 
+<p>rendu des objets Methode permettant de rendre l'objet a l'ecran </p>
+
 </div>
 </div>
 <a id="a93d3ef94fbd5201f10e9185833bc3e0c"></a>
@@ -528,6 +582,8 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
       </table>
 </div><div class="memdoc">
 
+<p>rendu de l'UI Methode permettant de rendre UI de l'objet a l'ecran </p>
+
 </div>
 </div>
 <a id="accb108fe6723d99c36a85eb51a25820e"></a>
@@ -545,6 +601,8 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>data de rendu des objets Methode permettant de mettre a jour les données de rendu des objets </p>
 
 </div>
 </div>
@@ -609,6 +667,8 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
       </table>
 </div><div class="memdoc">
 
+<p>initialisation des objets Methode permettant d'initialiser les objets creer. </p>
+
 </div>
 </div>
 <a id="a444a7a1321f9c8c14a2d3821f649c85e"></a>
@@ -645,6 +705,8 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
       </table>
 </div><div class="memdoc">
 
+<p>update des objets Methode permettant de mettre a jour les objets. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -659,6 +721,7 @@ template&lt;typename T , typename std::enable_if&lt; std::is_base_of&lt; GameObj
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Chemin du fichier ou la scene est sauvegarder </p>
 
 </div>
 </div>

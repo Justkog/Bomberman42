@@ -2,6 +2,11 @@
 \label{class_beer_engine_1_1_input}\index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 
 
+classe contenant tout les inputs  
+
+
+
+
 {\ttfamily \#include $<$Input.\+hpp$>$}
 
 
@@ -17,29 +22,29 @@ Collaboration diagram for Beer\+Engine\+:\+:Input\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{class_beer_engine_1_1_input_a8c64719adc226a57caf45ce63a0dddee}{Set\+Key}} (int keycode, int status)
-\item 
+\begin{DoxyCompactList}\small\item\em Evenement Clavier Defini le status de la touche du clavier. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_beer_engine_1_1_input_aef391d62eeafff68a8b33d232e38c324}{Get\+Key}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
-\item 
+\begin{DoxyCompactList}\small\item\em Touche appuyer retourne le status d\textquotesingle{}un touche. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_beer_engine_1_1_input_ab3093c905099025b3dcd0c67dc31ed82}{Get\+Key\+Down}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
-\item 
+\begin{DoxyCompactList}\small\item\em Touche presser retourne le status d\textquotesingle{}un touche. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_beer_engine_1_1_input_aace9501b3e8bde001dc46dea904504b0}{Get\+Key\+Up}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
-\item 
+\begin{DoxyCompactList}\small\item\em Touche relacher retourne le status d\textquotesingle{}un touche. \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{class_beer_engine_1_1_input_a36af1091a677481607d7a197585fd379}{Get\+Key\+Status}} (\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}} keycode)
-\item 
+\begin{DoxyCompactList}\small\item\em Touche appuyer retourne le status d\textquotesingle{}un touche. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_beer_engine_1_1_input_a8761deb95726518ed5871a38aca6451d}{Set\+Mouse\+Button}} (int mouse\+Button, int status)
-\item 
+\begin{DoxyCompactList}\small\item\em Evenement Souris Defini le status du bouton de la souris. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_beer_engine_1_1_input_a5f1cf046547a086a7f44d7c18ad6776d}{Get\+Mouse\+Button}} (int mouse\+Button)
-\item 
+\begin{DoxyCompactList}\small\item\em bouton appuyer retourne le status d\textquotesingle{}un bouton \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_beer_engine_1_1_input_ad04218c44ce0ef21ed6a5cf65259653f}{Get\+Mouse\+Button\+Down}} (int mouse\+Button)
-\item 
+\begin{DoxyCompactList}\small\item\em bouton presser retourne le status d\textquotesingle{}un bouton \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_beer_engine_1_1_input_a82dc5f380752307d5cb5b284488da5ef}{Get\+Mouse\+Button\+Up}} (int mouse\+Button)
-\item 
+\begin{DoxyCompactList}\small\item\em bouton relacher retourne le status d\textquotesingle{}un bouton \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_beer_engine_1_1_input_af7f3c17ce4e2483d03a169894e06851d}{Set\+Axis}} (std\+::string name, float value)
-\item 
+\begin{DoxyCompactList}\small\item\em Evenement des axes Defini le status de l\textquotesingle{}axe. \end{DoxyCompactList}\item 
 static float \mbox{\hyperlink{class_beer_engine_1_1_input_ac21c03c4b7d417941034e935af481f2c}{Get\+Axis}} (std\+::string name)
-\item 
+\begin{DoxyCompactList}\small\item\em valeur d\textquotesingle{}un axe retourne la valeur d\textquotesingle{}un axe \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_beer_engine_1_1_input_a8a5a3a1a4b5fdedf20fc66c40d8e98bb}{Update}} (void)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em mise a jour des entrer Methode appeler pour mettre a jour les entree. appeler une fois par boucle principal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,6 +54,9 @@ static glm\+::vec2 \mbox{\hyperlink{class_beer_engine_1_1_input_aaba670f7f093d65
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+classe contenant tout les inputs 
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_ac21c03c4b7d417941034e935af481f2c}\label{class_beer_engine_1_1_input_ac21c03c4b7d417941034e935af481f2c}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Axis@{Get\+Axis}}
@@ -56,71 +64,180 @@ static glm\+::vec2 \mbox{\hyperlink{class_beer_engine_1_1_input_aaba670f7f093d65
 \subsubsection{\texorpdfstring{Get\+Axis()}{GetAxis()}}
 {\footnotesize\ttfamily static float Beer\+Engine\+::\+Input\+::\+Get\+Axis (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+valeur d\textquotesingle{}un axe retourne la valeur d\textquotesingle{}un axe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: nom de l\textquotesingle{}axe  la valeur floatante de l\textquotesingle{}axe \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_aef391d62eeafff68a8b33d232e38c324}\label{class_beer_engine_1_1_input_aef391d62eeafff68a8b33d232e38c324}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key@{Get\+Key}}
 \index{Get\+Key@{Get\+Key}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Key()}{GetKey()}}
 {\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Touche appuyer retourne le status d\textquotesingle{}un touche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keycode} & \+: touche du clavier  true si la touche est appuyer \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_ab3093c905099025b3dcd0c67dc31ed82}\label{class_beer_engine_1_1_input_ab3093c905099025b3dcd0c67dc31ed82}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key\+Down@{Get\+Key\+Down}}
 \index{Get\+Key\+Down@{Get\+Key\+Down}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Key\+Down()}{GetKeyDown()}}
 {\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Key\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Touche presser retourne le status d\textquotesingle{}un touche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keycode} & \+: touche du clavier  true si la touche vien d\textquotesingle{}etre presser \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_a36af1091a677481607d7a197585fd379}\label{class_beer_engine_1_1_input_a36af1091a677481607d7a197585fd379}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key\+Status@{Get\+Key\+Status}}
 \index{Get\+Key\+Status@{Get\+Key\+Status}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Key\+Status()}{GetKeyStatus()}}
 {\footnotesize\ttfamily static int Beer\+Engine\+::\+Input\+::\+Get\+Key\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Touche appuyer retourne le status d\textquotesingle{}un touche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keycode} & \+: touche du clavier  true si la touche est appuyer \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_aace9501b3e8bde001dc46dea904504b0}\label{class_beer_engine_1_1_input_aace9501b3e8bde001dc46dea904504b0}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Key\+Up@{Get\+Key\+Up}}
 \index{Get\+Key\+Up@{Get\+Key\+Up}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Key\+Up()}{GetKeyUp()}}
 {\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Key\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_beer_engine_a94f0b552f6dc910de8cdb44207981f53}{Key\+Code}}}]{keycode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Touche relacher retourne le status d\textquotesingle{}un touche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keycode} & \+: touche du clavier  true si la touche d\textquotesingle{}etre relacher \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_a5f1cf046547a086a7f44d7c18ad6776d}\label{class_beer_engine_1_1_input_a5f1cf046547a086a7f44d7c18ad6776d}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Mouse\+Button@{Get\+Mouse\+Button}}
 \index{Get\+Mouse\+Button@{Get\+Mouse\+Button}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Mouse\+Button()}{GetMouseButton()}}
 {\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Mouse\+Button (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+bouton appuyer retourne le status d\textquotesingle{}un bouton 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Button} & \+: bouton de la souris  true si le bouton est appuyer \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_ad04218c44ce0ef21ed6a5cf65259653f}\label{class_beer_engine_1_1_input_ad04218c44ce0ef21ed6a5cf65259653f}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Mouse\+Button\+Down@{Get\+Mouse\+Button\+Down}}
 \index{Get\+Mouse\+Button\+Down@{Get\+Mouse\+Button\+Down}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Mouse\+Button\+Down()}{GetMouseButtonDown()}}
 {\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Mouse\+Button\+Down (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+bouton presser retourne le status d\textquotesingle{}un bouton 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Button} & \+: bouton de la souris  true si le bouton est presser \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_a82dc5f380752307d5cb5b284488da5ef}\label{class_beer_engine_1_1_input_a82dc5f380752307d5cb5b284488da5ef}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Get\+Mouse\+Button\+Up@{Get\+Mouse\+Button\+Up}}
 \index{Get\+Mouse\+Button\+Up@{Get\+Mouse\+Button\+Up}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Get\+Mouse\+Button\+Up()}{GetMouseButtonUp()}}
 {\footnotesize\ttfamily static bool Beer\+Engine\+::\+Input\+::\+Get\+Mouse\+Button\+Up (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+bouton relacher retourne le status d\textquotesingle{}un bouton 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Button} & \+: bouton de la souris  true si le bouton est relacher \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_af7f3c17ce4e2483d03a169894e06851d}\label{class_beer_engine_1_1_input_af7f3c17ce4e2483d03a169894e06851d}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Set\+Axis@{Set\+Axis}}
 \index{Set\+Axis@{Set\+Axis}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Set\+Axis()}{SetAxis()}}
 {\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Set\+Axis (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{float}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Evenement des axes Defini le status de l\textquotesingle{}axe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: nom de l\textquotesingle{}axe \\
+\hline
+{\em value} & \+: status de l\textquotesingle{}axe \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_a8c64719adc226a57caf45ce63a0dddee}\label{class_beer_engine_1_1_input_a8c64719adc226a57caf45ce63a0dddee}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Set\+Key@{Set\+Key}}
 \index{Set\+Key@{Set\+Key}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Set\+Key()}{SetKey()}}
 {\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Set\+Key (\begin{DoxyParamCaption}\item[{int}]{keycode,  }\item[{int}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Evenement Clavier Defini le status de la touche du clavier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keycode} & \+: touche du clavier \\
+\hline
+{\em status} & \+: status de la touche \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_a8761deb95726518ed5871a38aca6451d}\label{class_beer_engine_1_1_input_a8761deb95726518ed5871a38aca6451d}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Set\+Mouse\+Button@{Set\+Mouse\+Button}}
 \index{Set\+Mouse\+Button@{Set\+Mouse\+Button}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Set\+Mouse\+Button()}{SetMouseButton()}}
 {\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Set\+Mouse\+Button (\begin{DoxyParamCaption}\item[{int}]{mouse\+Button,  }\item[{int}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Evenement Souris Defini le status du bouton de la souris. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Button} & \+: bouton de la souris \\
+\hline
+{\em status} & \+: status du bouton \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_beer_engine_1_1_input_a8a5a3a1a4b5fdedf20fc66c40d8e98bb}\label{class_beer_engine_1_1_input_a8a5a3a1a4b5fdedf20fc66c40d8e98bb}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!Update@{Update}}
 \index{Update@{Update}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{Update()}{Update()}}
 {\footnotesize\ttfamily static void Beer\+Engine\+::\+Input\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+mise a jour des entrer Methode appeler pour mettre a jour les entree. appeler une fois par boucle principal. 
 
 
 
@@ -131,13 +248,13 @@ static glm\+::vec2 \mbox{\hyperlink{class_beer_engine_1_1_input_aaba670f7f093d65
 \subsubsection{\texorpdfstring{mouse\+Position}{mousePosition}}
 {\footnotesize\ttfamily glm\+::vec2 Beer\+Engine\+::\+Input\+::mouse\+Position\hspace{0.3cm}{\ttfamily [static]}}
 
-\mbox{\Hypertarget{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}\label{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}} 
+Position de la souris \mbox{\Hypertarget{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}\label{class_beer_engine_1_1_input_aaba670f7f093d65462f47cb46f8810bc}} 
 \index{Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}!mouse\+Scroll@{mouse\+Scroll}}
 \index{mouse\+Scroll@{mouse\+Scroll}!Beer\+Engine\+::\+Input@{Beer\+Engine\+::\+Input}}
 \subsubsection{\texorpdfstring{mouse\+Scroll}{mouseScroll}}
 {\footnotesize\ttfamily glm\+::vec2 Beer\+Engine\+::\+Input\+::mouse\+Scroll\hspace{0.3cm}{\ttfamily [static]}}
 
-
+roulette de la souris 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

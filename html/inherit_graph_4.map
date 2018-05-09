@@ -34,13 +34,13 @@
 <area shape="rect" id="node32" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="BeerEngine::Component::IUI" alt="" coords="479,1423,671,1448"/>
 <area shape="rect" id="node33" href="$class_beer_engine_1_1_component_1_1_i_update.html" title="BeerEngine::Component\l::IUpdate" alt="" coords="491,802,659,840"/>
 <area shape="rect" id="node34" href="$class_beer_engine_1_1_json_deserializable.html" title="BeerEngine::JsonDeserializable" alt="" coords="221,1899,431,1924"/>
-<area shape="rect" id="node35" href="$class_beer_engine_1_1_a_scene.html" title="BeerEngine::AScene" alt="" coords="502,1924,647,1950"/>
+<area shape="rect" id="node35" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="502,1924,647,1950"/>
 <area shape="rect" id="node38" href="$class_beer_engine_1_1_game_object.html" title="BeerEngine::GameObject" alt="" coords="488,1875,662,1900"/>
 <area shape="rect" id="node36" href="$class_scene_main.html" title="SceneMain" alt="" coords="798,1974,886,1999"/>
 <area shape="rect" id="node37" href="$class_scene_test.html" title="SceneTest" alt="" coords="800,1924,884,1950"/>
 <area shape="rect" id="node39" href="$class_camera_test.html" title="CameraTest" alt="" coords="796,1875,889,1900"/>
 <area shape="rect" id="node40" href="$class_beer_engine_1_1_json_serializable.html" title="BeerEngine::JsonSerializable" alt="" coords="228,1604,424,1630"/>
-<area shape="rect" id="node44" href="$class_beer_engine_1_1_graphics_1_1_a_material.html" title="BeerEngine::Graphics\l::AMaterial" alt="" coords="499,1472,651,1511"/>
+<area shape="rect" id="node44" href="$class_beer_engine_1_1_graphics_1_1_a_material.html" title="class de material, pour le rendu " alt="" coords="499,1472,651,1511"/>
 <area shape="rect" id="node45" href="$class_beer_engine_1_1_graphics_1_1_mesh.html" title="BeerEngine::Graphics\l::Mesh" alt="" coords="499,1535,651,1574"/>
 <area shape="rect" id="node46" href="$class_beer_engine_1_1_graphics_1_1_texture.html" title="BeerEngine::Graphics\l::Texture" alt="" coords="499,1598,651,1636"/>
 <area shape="rect" id="node47" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="496,1660,654,1686"/>

@@ -42,7 +42,7 @@ var searchData=
   ['getworldrotate',['getWorldRotate',['../class_beer_engine_1_1_transform.html#a7aaf81b4672307edc39e9b208430ec59',1,'BeerEngine::Transform']]],
   ['glew_5fstatic',['GLEW_STATIC',['../_core_8hpp.html#abcde84ea0ef5f934384e4620f092c85a',1,'Core.hpp']]],
   ['glm',['glm',['../namespaceglm.html',1,'']]],
-  ['graphics',['Graphics',['../class_beer_engine_1_1_graphics_1_1_graphics.html',1,'BeerEngine::Graphics']]],
+  ['graphics',['Graphics',['../class_beer_engine_1_1_graphics_1_1_graphics.html',1,'BeerEngine::Graphics::Graphics'],['../namespace_graphics.html',1,'Graphics']]],
   ['graphics_2ehpp',['Graphics.hpp',['../_graphics_8hpp.html',1,'']]],
   ['grave_5faccent',['GRAVE_ACCENT',['../namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a0ce591590b4eb5b57ebf7110299ff7e9',1,'BeerEngine']]]
 ];

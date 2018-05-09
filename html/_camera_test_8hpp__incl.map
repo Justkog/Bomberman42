@@ -1,7 +1,7 @@
 <map id="include/Game/CameraTest.hpp" name="include/Game/CameraTest.hpp">
 <area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,299,2013,324"/>
 <area shape="rect" id="node31" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1980,79,2135,104"/>
-<area shape="rect" id="node32" href="$_a_scene_8hpp.html" title="Core/AScene.hpp" alt="" coords="1945,152,2072,177"/>
+<area shape="rect" id="node32" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1945,152,2072,177"/>
 <area shape="rect" id="node33" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1996,225,2205,251"/>
 <area shape="rect" id="node34" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2146,152,2286,177"/>
 <area shape="rect" id="node35" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="2311,152,2495,177"/>
