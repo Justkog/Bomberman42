@@ -197,6 +197,11 @@ namespace Game
 		{
 			if (_player && worldToMap(_player->_gameObject->transform.position) == pos)
 				return (true);
+			for (Game::Component::IA *ia : _IAs)
+			{
+				if (worldToMap(ia->_gameObject->transform.position) == pos)
+					return (true);
+			}
 			return (false);
 		}
 

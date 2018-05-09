@@ -47,10 +47,11 @@ namespace Game
 			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
 			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target);
 			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
-			bool    findPath(glm::vec2 target);
+			bool    findPath(glm::vec2 target, bool save = true);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
+			~IA(void);
 
             virtual void    start(void);
             virtual void    fixedUpdate(void);

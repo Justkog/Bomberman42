@@ -24,6 +24,14 @@ namespace Game
 		{
         }
 
+        IA::~IA(void)
+        {
+            auto it = std::find(_character->map->_IAs.begin(), _character->map->_IAs.end(), this);
+
+            if (it != _character->map->_IAs.end())
+                _character->map->_IAs.erase(it);
+        }
+
         void    IA::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
@@ -104,7 +112,7 @@ namespace Game
                 if (character && hit.collider->_gameObject != _gameObject)
                     val += 6;
                 if (item)
-                    val -= 12;
+                    val -= 15;
             }
             return (val);
         }
@@ -138,7 +146,7 @@ namespace Game
                     {
                         if (map->_map[y][x] == 9)
                         {
-                            tmpVal += 10;
+                            tmpVal += 15;
                             tmpObj = Objective::TakeBonus;
                         }
                         else if (_character->_bombNb > 0)
@@ -167,19 +175,18 @@ namespace Game
 
         bool    IA::moveToObjective(void)
         {
-            if (_path.empty() && glm::distance2(map->mapToWorld(_target), _transform.position) > 0.001)
-            {
-                if (findPath(_target))
-                {
-                    //PATH FIND WOUHOU
-                }
-                else
-                {
-                    //DO SOMETHING ELSE
-                }
-            }
-            else if (glm::distance2(map->mapToWorld(_target), _transform.position) < 0.001)
+            if (glm::distance2(map->mapToWorld(_target), _transform.position) < 0.001)
                 return (true);
+            if (_path.empty())
+            {
+                if (!findPath(_target))
+                    _hasObjective = false;
+            }
+            else if (map->worldToMap(_transform.position) != _target && !findPath(_target, false))//TO DEBUG
+            {
+                _path.clear();
+                _hasObjective = false;
+            }
             if (!_path.empty())
                 moveToNextCell();
             return (false);
@@ -189,7 +196,8 @@ namespace Game
         {
             glm::vec3 dir;
 
-            // if (avoidAllExplosions(_path[0]))
+            if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
+                return;
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
                 _path.erase(_path.begin());
             dir = map->mapToWorld(_path[0]) - _transform.position;
@@ -289,7 +297,7 @@ namespace Game
             return (path);
         }
 
-        bool    IA::findPath(glm::vec2 target)
+        bool    IA::findPath(glm::vec2 target, bool save)
         {
             std::vector<std::vector<int>> mapCopy;
             glm::vec2 start = map->worldToMap(_transform.position);
@@ -300,7 +308,7 @@ namespace Game
                 mapCopy[y].resize(map->_sizeX);
                 for (int x = 0; x < map->_sizeX; ++x)
                 {
-                    if (!map->canWalk(glm::vec2(x, y)))
+                    if (!map->canWalk(glm::vec2(x, y)) && start != glm::vec2(x, y))
                         mapCopy[y][x] = -1;
                     else
                         mapCopy[y][x] = 0;
@@ -310,10 +318,13 @@ namespace Game
             }
             if (analyzeMap(start, mapCopy, target))
             {
-                for (glm::vec2 cur(start); cur != target;)
+                if (save)
                 {
-                    cur = getPath(cur, mapCopy);
-                    _path.push_back(cur);
+                    for (glm::vec2 cur(start); cur != target;)
+                    {
+                        cur = getPath(cur, mapCopy);
+                        _path.push_back(cur);
+                    }
                 }
                 return (true);
             }
