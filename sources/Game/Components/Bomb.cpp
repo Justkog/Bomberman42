@@ -36,9 +36,7 @@ namespace Game
 		{
 			render = _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>();
 			glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
-			map->mapUpdate(mapPos.x, mapPos.y, 3);
-
-			// explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
+			map->mapUpdate(mapPos.x, mapPos.y, B);
 		}
 
 		void    Bomb::fixedUpdate(void)
@@ -192,6 +190,7 @@ namespace Game
 
 				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);
+				onExplode.emit();
 				render = nullptr;
 				timer = 5.0f;
 			}

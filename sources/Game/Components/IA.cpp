@@ -24,6 +24,14 @@ namespace Game
 		{
         }
 
+        IA::~IA(void)
+        {
+            auto it = std::find(_character->map->_IAs.begin(), _character->map->_IAs.end(), this);
+
+            if (it != _character->map->_IAs.end())
+                _character->map->_IAs.erase(it);
+        }
+
         void    IA::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
@@ -37,7 +45,7 @@ namespace Game
         void    IA::update(void)
         {
             if (!_hasObjective)
-                getObjective();
+                findObjective();
             if (_hasObjective)
             {
                 if (moveToObjective())
@@ -100,11 +108,11 @@ namespace Game
                 if (breakable && !character && !avoidAllExplosions(map->worldToMap(hit.collider->_gameObject->transform.position), 1))
                     val -= 6;
                 if (breakable && hit.collider->_gameObject != _gameObject)
-                    val += 4;
+                    val += 6;
                 if (character && hit.collider->_gameObject != _gameObject)
                     val += 6;
                 if (item)
-                    val -= 6;
+                    val -= 15;
             }
             return (val);
         }
@@ -121,11 +129,11 @@ namespace Game
             return (val);
         }
 
-        void    IA::getObjective(void)
+        void    IA::findObjective(void)
         {
             Objective objective = Objective::MoveTo;
 			glm::vec2 target(0);
-            int val = 0;
+            int val = avoidAllExplosions(map->worldToMap(_gameObject->transform.position)) ? 0 : -100;
 
             for (int y = 0; y < map->_sizeY; ++y)
             {
@@ -137,14 +145,17 @@ namespace Game
                     if (map->canWalk(glm::vec2(x, y)) && avoidAllExplosions(glm::vec2(x, y)) && findPath(glm::vec2(x, y)))
                     {
                         if (map->_map[y][x] == 9)
-                            tmpVal += 10;
+                        {
+                            tmpVal += 15;
+                            tmpObj = Objective::TakeBonus;
+                        }
                         else if (_character->_bombNb > 0)
                         {
                             tmpVal += checkExplosionZone(glm::vec2(x, y));
                             tmpObj = tmpVal > 0 ? Objective::DropBomb : Objective::MoveTo;
                         }
                         tmpVal -= _path.size();
-                        if (target == glm::vec2(0) || tmpVal > val)
+                        if (tmpVal > val)
                         {
                             target = glm::vec2(x, y);
                             objective = tmpObj;
@@ -164,28 +175,29 @@ namespace Game
 
         bool    IA::moveToObjective(void)
         {
-            if (_path.empty() && glm::distance2(map->mapToWorld(_target), _transform.position) > 0.001)
-            {
-                if (findPath(_target))
-                {
-                    //PATH FIND WOUHOU
-                }
-                else
-                {
-                    //DO SOMETHING ELSE
-                }
-            }
-            else if (glm::distance2(map->mapToWorld(_target), _transform.position) < 0.001)
+            if (glm::distance2(map->mapToWorld(_target), _transform.position) < 0.001)
                 return (true);
-            else
+            if (_path.empty())
+            {
+                if (!findPath(_target))
+                    _hasObjective = false;
+            }
+            else if (map->worldToMap(_transform.position) != _target && !findPath(_target, false))//TO DEBUG
+            {
+                _path.clear();
+                _hasObjective = false;
+            }
+            if (!_path.empty())
                 moveToNextCell();
             return (false);
         }
 
         void    IA::moveToNextCell(void)
         {
-            // glm::vec2 dir;
+            glm::vec3 dir;
 
+            if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
+                return;
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
                 _path.erase(_path.begin());
             dir = map->mapToWorld(_path[0]) - _transform.position;
@@ -285,7 +297,7 @@ namespace Game
             return (path);
         }
 
-        bool    IA::findPath(glm::vec2 target)
+        bool    IA::findPath(glm::vec2 target, bool save)
         {
             std::vector<std::vector<int>> mapCopy;
             glm::vec2 start = map->worldToMap(_transform.position);
@@ -296,7 +308,7 @@ namespace Game
                 mapCopy[y].resize(map->_sizeX);
                 for (int x = 0; x < map->_sizeX; ++x)
                 {
-                    if (!map->canWalk(glm::vec2(x, y)))
+                    if (!map->canWalk(glm::vec2(x, y)) && start != glm::vec2(x, y))
                         mapCopy[y][x] = -1;
                     else
                         mapCopy[y][x] = 0;
@@ -306,10 +318,13 @@ namespace Game
             }
             if (analyzeMap(start, mapCopy, target))
             {
-                for (glm::vec2 cur(start); cur != target;)
+                if (save)
                 {
-                    cur = getPath(cur, mapCopy);
-                    _path.push_back(cur);
+                    for (glm::vec2 cur(start); cur != target;)
+                    {
+                        cur = getPath(cur, mapCopy);
+                        _path.push_back(cur);
+                    }
                 }
                 return (true);
             }
@@ -328,7 +343,9 @@ namespace Game
 
         void    IA::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            std::stringstream winName;
+            winName << "IA " << this;
+            if (nk_begin(ctx, winName.str().c_str(), nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
                 ss << "Target: " << glm::to_string(_target);
@@ -336,7 +353,26 @@ namespace Game
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
                 ss.str(std::string());
                 ss.clear();
-                ss << "Dir: " << glm::to_string(dir);
+                ss << "hasObjective: " << (_hasObjective ? "true" : "false");
+                nk_layout_row_dynamic(ctx, 20, 1);
+                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+                ss.str(std::string());
+                ss.clear();
+                ss << "Objective: ";
+                switch (_objective)
+                {
+                    case Objective::DropBomb:
+                        ss << "DropBomb";
+                    break;
+
+                    case Objective::MoveTo:
+                        ss << "MoveTo";
+                    break;
+
+                    case Objective::TakeBonus:
+                        ss << "TakeBonus";
+                    break;
+                }
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
                 ss.str(std::string());
@@ -349,11 +385,6 @@ namespace Game
                     ss.str(std::string());
                     ss.clear();
                 }
-                ss << "hasObjective: " << (_hasObjective ? "true" : "false");
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
             }
             nk_end(ctx);
         }

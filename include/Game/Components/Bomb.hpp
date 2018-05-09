@@ -40,6 +40,7 @@ namespace Game
 			float power;
 
 			static BeerEngine::Graphics::Texture *explosionTexture;
+			Signal<> onExplode;
 		};
 	}
 }

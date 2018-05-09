@@ -23,7 +23,6 @@ namespace BeerEngine
 
 	GameObject::~GameObject(void)
 	{
-		std::cout << "boom" << "\n";
 		for (Component::Component *c : _components)
 		{
 			delete c;

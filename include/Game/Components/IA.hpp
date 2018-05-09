@@ -33,16 +33,13 @@ namespace Game
 			bool _hasObjective;
 			glm::vec2 _target;
 			Objective _objective;
-
-			glm::vec3 dir;//DEBUG
-
 			std::vector<glm::vec2> _path;
 
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);
 			bool    avoidAllExplosions(glm::vec2 pos, int offset = 0);
 			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir);
 			int     checkExplosionZone(glm::vec2 pos);
-			void    getObjective(void);
+			void    findObjective(void);
 			bool    moveToObjective(void);
 			void    moveToNextCell(void);
 
@@ -50,10 +47,11 @@ namespace Game
 			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
 			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target);
 			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
-			bool    findPath(glm::vec2 target);
+			bool    findPath(glm::vec2 target, bool save = true);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
+			~IA(void);
 
             virtual void    start(void);
             virtual void    fixedUpdate(void);
