@@ -332,7 +332,9 @@ namespace Game
 
         void    IA::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            std::stringstream winName;
+            winName << "IA " << this;
+            if (nk_begin(ctx, winName.str().c_str(), nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
                 ss << "Target: " << glm::to_string(_target);

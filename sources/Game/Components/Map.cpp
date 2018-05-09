@@ -1,7 +1,10 @@
 #include "Game/Components/Map.hpp"
+#include "Game/Components/IA.hpp"
+#include "Game/Components/Character.hpp"
 // #include "Game/Components/Breakable.hpp"
 
 #include "Core/Component/BoxCollider2D.hpp"
+#include "Core/GameObject.hpp"
 #include <sstream>
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Audio/AudioSource.hpp"
@@ -62,6 +65,29 @@ namespace Game
 			return (mapBlocGO);
 		}
 
+		Game::Component::IA *Map::addIA(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		{
+			auto iaGO = BeerEngine::SceneManager::GetCurrent()->instantiate<BeerEngine::GameObject>();
+				iaGO->name = "IA";
+				iaGO->transform.position = pos;
+				iaGO->transform.scale = glm::vec3(1, 1, 1);
+				iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+				iaGO->AddComponent<Game::Component::Breakable>();
+				auto meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+					meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+					auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+					auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
+						iaMat->setAlbedo(iaTex);
+					meshRenderer->setMaterial(iaMat);
+				auto character = iaGO->AddComponent<Game::Component::Character>();
+					character->map = this;
+				auto *ia = iaGO->AddComponent<Game::Component::IA>();
+					ia->map = this;
+				auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+					iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
+			return (ia);
+		}
+
 		void	Map::setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
 		{
 			_sizeX = sizeX;
@@ -96,13 +122,13 @@ namespace Game
 		{
 			int type = 0;
 			bool playerSpawn = false;
-			int IASpawned = 0;
 
 			_shader = shader;
 			for (int row = 0; row < _sizeY; row++)
 			{
 				for (int col = 0; col < _sizeX; col++)
 				{
+					bool spawnIA;
 					type = _map[row][col];
 					switch (type)
 					{
@@ -114,12 +140,10 @@ namespace Game
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case S:
-							if (playerSpawn)
-							{
-								//addIA
-								++IASpawned;
-							}
-							else if (!(rand() % 4) || IASpawned == 3)
+							spawnIA = (rand() % 4 != 0 || playerSpawn ? true : false);
+							if (spawnIA && _IAs.size() < 3)
+								_IAs.push_back(addIA(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
+							else
 							{
 								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
 								playerSpawn = true;

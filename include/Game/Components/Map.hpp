@@ -18,6 +18,7 @@
 #include "Game/Components/Player.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Game/Components/Breakable.hpp"
+#include <vector>
 
 #define S -1 //spawn position
 #define I 9 //Item
@@ -54,6 +55,7 @@ namespace Game
 			int	_sizeX;
 			int	_sizeY;
 			Game::Component::Player				*_player;
+			std::vector<Game::Component::IA*>	_IAs;
 			BeerEngine::Graphics::ShaderProgram	*_shader;
 
 			void mapUpdate(glm::vec3 pos, int value);
@@ -61,6 +63,7 @@ namespace Game
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
 			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 			BeerEngine::GameObject *createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
+			Game::Component::IA *addIA(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)

@@ -162,43 +162,14 @@ void    SceneTest::init(void)
 	std::vector<int> line11{1,S,0,2,2,2,2,2,2,2,2,2,2,2,0,S,1};
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
-
-	auto mapCrateGO = map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), BeerEngine::Component::RBType::Kinematic);
-	mapCrateGO->save("Prefabs/mapCrate.prefab");
-	auto itemGO = map->addItem(shader, glm::vec3(0, 0, 0));
-	itemGO->save("Prefabs/item.prefab");
-
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
-
 	character->map = map;
 
 	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), BeerEngine::Component::RBType::Kinematic);
 	// auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
 	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
 	// mapCrateGO2->save("Prefabs/reMapCrate.prefab");
-
-	// IA
-	// auto iaGO = instantiate<BeerEngine::GameObject>();
-	// iaGO->name = "IA";
-	// meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	// auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-	// auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
-	// iaMat->setAlbedo(iaTex);
-	// meshRenderer->setMaterial(iaMat);
-	// iaGO->transform.position = glm::vec3(-7, 0.5, 2);
-	// iaGO->transform.scale = glm::vec3(1, 1, 1);
-	// character = iaGO->AddComponent<Game::Component::Character>();
-	// character->map = map;
-	// auto *ia = iaGO->AddComponent<Game::Component::IA>();
-	// iaGO->AddComponent<Game::Component::Breakable>();
-	// ia->map = map;
-	// routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
-	// settings = iaGO->AddComponent<Game::Component::Settings>();
-	// auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	// auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	// iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
 
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();
@@ -224,20 +195,6 @@ void    SceneTest::init(void)
 	house2->transform.position = glm::vec3(4.5, 0, 14.4);
 	house2->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	house2->transform.rotation = glm::vec3(0, 3.14, 0);
-
- // test obj old
-
-	auto Old = instantiate<BeerEngine::GameObject>();
-	Old->name = "old";
-	meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh("assets/models/Old_man/muro.obj");
-	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
-	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
-	OldMat->setAlbedo(OldTex);
-	meshRenderer->setMaterial(OldMat);
-	Old->transform.position = glm::vec3(1, 0.5, 10);
-	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
-	Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
 	// Audio test
 	// auto al = cameraGO->AddComponent<BeerEngine::Audio::AudioListener>();
