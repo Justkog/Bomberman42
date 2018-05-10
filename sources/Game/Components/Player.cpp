@@ -19,7 +19,8 @@ namespace Game
 
 		Player::~Player(void)
 		{
-			_character->map->_player = nullptr;
+			// segfault when the character or the map gets destroyed before the player
+			// _character->map->_player = nullptr;
 		}
 
         void    Player::start(void)

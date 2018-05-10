@@ -31,11 +31,12 @@ void updateThread(BeerEngine::Window *window)
     double  fixedTimer = 0.0;
     double  timer = 0.0;
     int     fixeUpdateNumber = 0;
-    BeerEngine::AScene  *scene;
+    BeerEngine::AScene  *scene = nullptr;
     std::cout << "Thread Update: Started" << std::endl;
     while (!window->isClose())
     {
-        scene = BeerEngine::SceneManager::GetCurrent();
+        scene = BeerEngine::SceneManager::GetCurrent(false);
+
         if (scene != nullptr)
         {
             scene->mutexLock(true);
@@ -57,8 +58,8 @@ void updateThread(BeerEngine::Window *window)
             fixeUpdateNumber++;
             fixedTimer -= fixedUpdateTime;
         }
-        if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
-            window->closeRequest();
+        // if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
+        //     window->closeRequest();
         if (scene != nullptr)
         {
             scene->mutexLock(true);
@@ -81,6 +82,7 @@ void updateThread(BeerEngine::Window *window)
 
 		BeerEngine::Input::Update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		// std::cout << "update thread" << std::endl;
     }
     std::cout << "Thread Update: Finish" << std::endl;
 }
@@ -153,7 +155,14 @@ int main(void)
     while (!window->isClose())
     {
         window->update();
-        scene = BeerEngine::SceneManager::GetCurrent();
+
+		// if scene changes, it has to be loaded in this thread
+		// it needs to set a variable to a specific value and wait
+		// so that the other thread detects it and also sets another variable to a specific value and wait
+		// once this value has changed this thread changes the scene and reset the variable
+		// so that the other thread can stop waiting
+        scene = BeerEngine::SceneManager::GetCurrent(true);
+
         nk_glfw3_new_frame();
 
         // Draw
@@ -188,6 +197,7 @@ int main(void)
         nk_glfw3_render(NK_ANTI_ALIASING_ON, MAX_VERTEX_BUFFER, MAX_ELEMENT_BUFFER);
         window->swapBuffer();
         frameCount++;
+		// std::cout << "render thread" << std::endl;
     }
     nk_glfw3_shutdown();
     // srcAudio.Delete();

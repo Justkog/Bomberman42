@@ -64,6 +64,7 @@ SRC = \
 	Game/Input.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
+	Game/Components/GameManager.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
@@ -78,6 +79,7 @@ SRC = \
 	Game/Components/MainMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
+	Game/Components/InGameMenu.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
 	Game/CameraTest.cpp

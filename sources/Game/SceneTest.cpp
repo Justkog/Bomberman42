@@ -14,6 +14,9 @@
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
 #include "Game/Components/Bomb.hpp"
+#include "Game/Components/GameManager.hpp"
+#include "Game/Components/UIThemeManager.hpp"
+#include "Game/Components/InGameMenu.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -115,10 +118,15 @@ void    SceneTest::init(void)
 	cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
-	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
+	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
-
+	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
+	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
+	gameManager->inGameMenu = inGameMenu;
+	inGameMenu->uiManager = uiManager;
+	inGameMenu->setActive(false);
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();

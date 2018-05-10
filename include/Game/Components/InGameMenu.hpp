@@ -3,8 +3,8 @@
 //																//
 // ------------------------------------------------------------	//
 
-#ifndef MAINMENU_HPP
-# define MAINMENU_HPP
+#ifndef INGAMEMENU_HPP
+# define INGAMEMENU_HPP
 
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
@@ -17,32 +17,30 @@ namespace Game
 {
 	namespace Component
 	{
-		class MainMenu : public BeerEngine::Component::Component, 
+
+		class InGameMenu : public BeerEngine::Component::Component, 
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IStartUI,
 						public BeerEngine::Component::IUI
-
 		{
 		public:
-			SettingsMenu	*settingsMenu;
 			UIThemeManager	*uiManager;
 
-			nk_style_window mWindow;
+			// InGameMenu( void );
+			// InGameMenu( InGameMenu const & src );
+			InGameMenu(BeerEngine::GameObject *gameObject);
 
-			// MainMenu( void );
-			// MainMenu( MainMenu const & src );
-			MainMenu(BeerEngine::GameObject *gameObject);
+			virtual ~InGameMenu( void );
 
-			virtual ~MainMenu( void );
-
-			MainMenu & operator=( MainMenu const & rhs );
-			friend std::ostream & operator<<(std::ostream & o, MainMenu const & i);
+			InGameMenu & operator=( InGameMenu const & rhs );
+			friend std::ostream & operator<<(std::ostream & o, InGameMenu const & i);
 
 			virtual void start();
 			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
 
 			void setUI(struct nk_context *ctx);
+	
 		};
 
 	};

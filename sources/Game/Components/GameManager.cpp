@@ -1,8 +1,6 @@
-#include "Game/Components/BackgroundDrawer.hpp"
-#include "Game/Components/UIThemeManager.hpp"
-#include "Core/Graphics/Texture.hpp"
-#include "Core/Window.hpp"
-#include "Game/Assets.hpp"
+#include "Game/Components/GameManager.hpp"
+#include "Core/Input.hpp"
+#include "Game/Components/InGameMenu.hpp"
 
 namespace Game
 {
@@ -10,22 +8,29 @@ namespace Game
 	{
 // STATIC ########################################################
 
+GameManager * GameManager::instance = nullptr;
+
+GameManager & GameManager::GetInstance()
+{
+	return *GameManager::instance;
+}
+
 // ###############################################################
 
 // CANONICAL #####################################################
 
-/*BackgroundDrawer::BackgroundDrawer ( void )
+/*GameManager::GameManager ( void )
 {
 	return ;
 }*/
 
-/*BackgroundDrawer::BackgroundDrawer ( BackgroundDrawer const & src )
+/*GameManager::GameManager ( GameManager const & src )
 {
 	*this = src;
 	return ;
 }*/
 
-BackgroundDrawer &				BackgroundDrawer::operator=( BackgroundDrawer const & rhs )
+GameManager &				GameManager::operator=( GameManager const & rhs )
 {
 	if (this != &rhs)
 	{
@@ -34,7 +39,7 @@ BackgroundDrawer &				BackgroundDrawer::operator=( BackgroundDrawer const & rhs 
 	return (*this);
 }
 
-BackgroundDrawer::~BackgroundDrawer ( void )
+GameManager::~GameManager ( void )
 {
 	return ;
 }
@@ -43,17 +48,17 @@ BackgroundDrawer::~BackgroundDrawer ( void )
 
 // CONSTRUCTOR POLYMORPHISM ######################################
 
-BackgroundDrawer::BackgroundDrawer(BeerEngine::GameObject *gameObject) :
+GameManager::GameManager(BeerEngine::GameObject *gameObject) :
 Component(gameObject)
 {
-	
+	instance = this;
 }
 
 // ###############################################################
 
 // OVERLOAD OPERATOR #############################################
 
-std::ostream &				operator<<(std::ostream & o, BackgroundDrawer const & i)
+std::ostream &				operator<<(std::ostream & o, GameManager const & i)
 {
 	(void)i;
 	return (o);
@@ -63,32 +68,27 @@ std::ostream &				operator<<(std::ostream & o, BackgroundDrawer const & i)
 
 // PUBLIC METHOD #################################################
 
-void BackgroundDrawer::start()
+
+void GameManager::start()
 {
-	std::cout << "BackgroundDrawer start" << std::endl;
+	std::cout << "GameManager start" << std::endl;
 }
 
-void BackgroundDrawer::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
+void GameManager::update()
 {
-	std::cout << "start UI background drawer" << std::endl;
-}
-
-void BackgroundDrawer::renderUI(struct nk_context *ctx)
-{
-	ctx->style.window.fixed_background = uiManager->loadSprite("assets/textures/MainScreen.png");
-	auto back_window_rect = nk_rect(
-		0, 
-		0, 
-		BeerEngine::Window::GetInstance()->getWidth(), 
-		BeerEngine::Window::GetInstance()->getHeight()
-	);
-
-	if (nk_begin(ctx, "Background", back_window_rect, NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE | NK_WINDOW_BACKGROUND))
+	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
 	{
-		// just the background image
+		std::cout << "escape pushed" << std::endl;
+		if (inGameMenu->_isActive)
+			inGameMenu->setActive(false);
+		else
+			inGameMenu->setActive(true);
 	}
-	nk_end(ctx);
-	uiManager->resetToDefaultUI(ctx);
+}
+
+void GameManager::fixedUpdate()
+{
+	
 }
 
 // ###############################################################

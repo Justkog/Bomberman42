@@ -1,12 +1,9 @@
 #define NK_INCLUDE_FONT_BAKING
-#include "Game/Assets.hpp"
-#include "Core/Graphics/Texture.hpp"
+#include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/UIThemeManager.hpp"
-#include "Game/Components/MainMenu.hpp"
-#include "Game/Components/SettingsMenu.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
-#include "Game/SceneTest.hpp"
+#include "Game/SceneMain.hpp"
 
 namespace Game
 {
@@ -18,18 +15,18 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*MainMenu::MainMenu ( void )
+/*InGameMenu::InGameMenu ( void )
 {
 	return ;
 }*/
 
-/*MainMenu::MainMenu ( MainMenu const & src )
+/*InGameMenu::InGameMenu ( InGameMenu const & src )
 {
 	*this = src;
 	return ;
 }*/
 
-MainMenu &				MainMenu::operator=( MainMenu const & rhs )
+InGameMenu &				InGameMenu::operator=( InGameMenu const & rhs )
 {
 	if (this != &rhs)
 	{
@@ -38,7 +35,7 @@ MainMenu &				MainMenu::operator=( MainMenu const & rhs )
 	return (*this);
 }
 
-MainMenu::~MainMenu ( void )
+InGameMenu::~InGameMenu ( void )
 {
 	return ;
 }
@@ -47,7 +44,7 @@ MainMenu::~MainMenu ( void )
 
 // CONSTRUCTOR POLYMORPHISM ######################################
 
-MainMenu::MainMenu(BeerEngine::GameObject *gameObject) :
+InGameMenu::InGameMenu(BeerEngine::GameObject *gameObject) :
 Component(gameObject)
 {
 	
@@ -57,7 +54,7 @@ Component(gameObject)
 
 // OVERLOAD OPERATOR #############################################
 
-std::ostream &				operator<<(std::ostream & o, MainMenu const & i)
+std::ostream &				operator<<(std::ostream & o, InGameMenu const & i)
 {
 	(void)i;
 	return (o);
@@ -67,27 +64,22 @@ std::ostream &				operator<<(std::ostream & o, MainMenu const & i)
 
 // PUBLIC METHOD #################################################
 
-void MainMenu::start()
+void InGameMenu::start()
 {
-	std::cout << "MainMenu start" << std::endl;
+	std::cout << "InGameMenu start" << std::endl;
 }
 
-void MainMenu::setUI(struct nk_context *ctx)
+void InGameMenu::setUI(struct nk_context *ctx)
 {
-	ctx->style.window = mWindow;
+	nk_style_set_font(ctx, &uiManager->available_fonts["smallMain"]->handle);
 }
 
-void MainMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
+void InGameMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
 	std::cout << "start UI main menu" << std::endl;
-	mWindow = uiManager->defaultWindow;
-
-	mWindow.fixed_background = nk_style_item_hide();
-	// mWindow.padding = nk_vec2(0, 0);
-	mWindow.spacing = nk_vec2(0, 10);
 }
 
-void MainMenu::renderUI(struct nk_context *ctx)
+void InGameMenu::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
 	setUI(ctx);
@@ -101,29 +93,16 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		menuWidth, 
 		menuHeight
 	);
-	if (nk_begin(ctx, "Map", window_rect, NK_WINDOW_NO_SCROLLBAR))
+	if (nk_begin(ctx, "Menu", window_rect, NK_WINDOW_NO_SCROLLBAR))
 	{
 		nk_layout_row_dynamic(ctx, 75, 1);
 
-		if (nk_button_label(ctx, "Adventure"))
-			fprintf(stdout, "Adventure pressed\n");
-		if (nk_button_label(ctx, "Versus"))
-		{
-			fprintf(stdout, "Versus pressed\n");
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
-		}
-		if (nk_button_label(ctx, "Settings"))
-		{
-			this->setActive(false);
-			settingsMenu->setActive(true);
-		}
-		if (nk_button_label(ctx, "Credits"))
-			fprintf(stdout, "Credits pressed\n");
-		if (nk_button_label(ctx, "Exit"))
-			BeerEngine::Window::GetInstance()->closeRequest();
+		if (nk_button_label(ctx, "Resume"))
+			fprintf(stdout, "Resume pressed\n");
+		if (nk_button_label(ctx, "Back to Main Menu"))
+			BeerEngine::SceneManager::LoadScene<SceneMain>();
 	}
 	nk_end(ctx);
-
 	uiManager->resetToDefaultUI(ctx);
 }
 
