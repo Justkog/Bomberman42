@@ -22,8 +22,14 @@ namespace Game
 						public BeerEngine::Component::IStartUI,
 						public BeerEngine::Component::IUI
 		{
+		private:
+			double 			_startTimeSinceStartup;
+
 		public:
 			UIThemeManager	*uiManager;
+			nk_style_item	backGround;
+			nk_style_item	tvScreen;
+			double timeSinceGameStart;
 
 			// TimeUI( void );
 			// TimeUI( TimeUI const & src );

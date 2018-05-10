@@ -10,12 +10,15 @@ namespace BeerEngine
     private:
         static double   _LastTime;
         static double   _DeltaTime;
+        static double   _TimeSinceStartup;
     
     public:
         static double   gameSpeed;
 		
         static void     Update(void);
         static double   GetDeltaTime(void);
+		static double   GetTimeSinceStartup(void);
+
     };
 }
 
