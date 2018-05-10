@@ -131,6 +131,7 @@ namespace Game
 				{
 					bool spawnIA;
 					type = _map[row][col];
+					std::cout << "MAAP: " << type << std::endl;
 					switch (type)
 					{
 						case 1:

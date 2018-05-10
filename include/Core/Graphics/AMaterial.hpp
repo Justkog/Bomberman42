@@ -30,11 +30,17 @@ namespace BeerEngine
 			GLint	_modelShaderID;
 			GLint	_viewPosID;
 			GLint	_viewDirID;
+
+			GLint	_lightPosID;
+			GLint	_lightDirID;
+			GLint	_lightIntensityID;
+			GLint	_lightColorID;
 		
 		public:
 			AMaterial(ShaderProgram *shader, glm::vec4 color = glm::vec4(1.0f));
 			virtual ~AMaterial() {};
 			virtual void	bind(glm::mat4 &model);
+			virtual void	bind(glm::mat4 &model, const ALight &light);
 			AMaterial		&setColor(glm::vec4 color);
 			AMaterial		&setAlbedo(Texture *tex);
 			AMaterial		&setNormal(Texture *tex);

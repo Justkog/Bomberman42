@@ -21,8 +21,12 @@ namespace BeerEngine
 			static ShaderProgram	*particleShader;
 			static ShaderProgram	*defaultShader;
 			static AMaterial		*defaultMaterial;
+			static ALight			*defaultLight;
 			static void Load(void);
 			static void UnLoad(void);
+
+			static void EnableForwardBlend();
+			static void DisableForwardBlend();
 
 			static ShaderProgram *loadLineShader();
 

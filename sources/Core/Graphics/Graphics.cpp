@@ -1,6 +1,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
 #include "tiny_obj_loader.h"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Graphics/ALight.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/IO/FileUtils.hpp"
 
@@ -15,6 +16,7 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::particleShader = nullptr;
 		ShaderProgram	*Graphics::defaultShader = nullptr;
 		AMaterial		*Graphics::defaultMaterial = nullptr;
+		ALight			*Graphics::defaultLight = nullptr;
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -194,6 +196,7 @@ namespace BeerEngine
 			);
 			defaultShader->compile();
 			defaultMaterial = new AMaterial(defaultShader);
+			defaultLight = new ALight(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), 1.0f, glm::vec4(1.0, 1.0, 1.0, 1.0));
 		}
 
 		void Graphics::UnLoad(void)
@@ -319,6 +322,21 @@ namespace BeerEngine
 			auto mesh = builder.build();
 			mesh->setSourcefile(path);
 			return (mesh);
+		}
+
+		void Graphics::EnableForwardBlend()
+		{
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE);
+			glDepthMask(false);
+			glDepthFunc(GL_EQUAL);
+		}
+
+		void Graphics::DisableForwardBlend()
+		{
+			glDepthFunc(GL_LESS);
+			glDepthMask(true);
+			glDisable(GL_BLEND);
 		}
 	}
 }

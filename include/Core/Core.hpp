@@ -76,6 +76,7 @@ namespace BeerEngine
 		class ShaderProgram;
 		class Mesh;
 		class AMaterial;
+		class ALight;
 		class Texture;
 		class MeshBuilder;
 	}

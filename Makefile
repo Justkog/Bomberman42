@@ -47,6 +47,7 @@ SRC = \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
+	Core/Graphics/ALight.cpp \
 	Core/Graphics/Texture.cpp \
 	\
 	Core/Physics/Physics.cpp \

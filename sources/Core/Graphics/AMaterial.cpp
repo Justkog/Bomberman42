@@ -1,4 +1,5 @@
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Graphics/ALight.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Window.hpp"
 #include "Core/Camera.hpp"
@@ -33,6 +34,11 @@ namespace BeerEngine
 			_hasNormalID = _shader->getUniformLocation("hasNormal");
 			_bumpID = _shader->getUniformLocation("bump");
 			_hasBumpID = _shader->getUniformLocation("hasBump");
+
+			_lightPosID = _shader->getUniformLocation("light.position");
+			_lightDirID = _shader->getUniformLocation("light.direction");
+			_lightIntensityID = _shader->getUniformLocation("light.intensity");
+			_lightColorID = _shader->getUniformLocation("light.color");
 		}
 
 		void	AMaterial::bind(glm::mat4 &model)
@@ -80,6 +86,15 @@ namespace BeerEngine
 			}
 			else
 				_shader->uniform1i(_hasAlbedoID, 0);
+		}
+
+		void	AMaterial::bind(glm::mat4 &model, const ALight &light)
+		{
+			bind(model);
+			_shader->uniform3f(_lightPosID, light.getPosition());
+			_shader->uniform3f(_lightDirID, light.getDirection());
+			_shader->uniform4f(_lightColorID, light.getColor());
+			_shader->uniform1f(_lightIntensityID, light.getIntensity());
 		}
 
 		AMaterial		&AMaterial::setColor(glm::vec4 color)

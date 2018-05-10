@@ -33,9 +33,13 @@ BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram 
 	mapBlocGO->name = "map block";
 	meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+	auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png");
+	auto *mapBlocBump = Assets::GetTexture("assets/textures/crate1_bump.png");
+	auto *mapBlocNormal = Assets::GetTexture("assets/textures/crate1_normal.png");
 	auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 	mapBlocMat->setAlbedo(mapBlocTex);
+	mapBlocMat->setBump(mapBlocBump);
+	mapBlocMat->setNormal(mapBlocNormal);
 	meshRenderer->setMaterial(mapBlocMat);
 	mapBlocGO->transform.position = pos;
 	mapBlocGO->transform.scale = scale;
@@ -83,28 +87,30 @@ void    SceneTest::init(void)
 	// return;
 	// cube 1
 	// Texture
+	std::cout << "LOOOOOOL" << std::endl;
 	BeerEngine::Graphics::Texture *crate = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
-	BeerEngine::Graphics::Texture *crate_normal = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_normal.png");
-	BeerEngine::Graphics::Texture *crate_bump = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_bump.png");
+	BeerEngine::Graphics::Texture *crate_normal = Assets::GetTexture("assets/textures/crate1_normal.png");
+	BeerEngine::Graphics::Texture *crate_bump = Assets::GetTexture("assets/textures/crate1_bump.png");
 
 	// Material
 	BeerEngine::Graphics::AMaterial *materialA = new BeerEngine::Graphics::AMaterial(shader);
 	materialA->setAlbedo(crate);
 	materialA->setNormal(crate_normal);
 	materialA->setBump(crate_bump);
-	BeerEngine::Graphics::AMaterial *materialB = new BeerEngine::Graphics::AMaterial(shader);
-	materialB->setAlbedo(crate);
-	materialB->setNormal(crate_normal);
-	BeerEngine::Graphics::AMaterial *materialC = new BeerEngine::Graphics::AMaterial(shader);
-	materialC->setAlbedo(crate);
-	BeerEngine::Graphics::AMaterial *material2 = new BeerEngine::Graphics::AMaterial(shader);
-	material2->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
+	// BeerEngine::Graphics::AMaterial *materialB = new BeerEngine::Graphics::AMaterial(shader);
+	// materialB->setAlbedo(crate);
+	// materialB->setNormal(crate_normal);
+	// BeerEngine::Graphics::AMaterial *materialC = new BeerEngine::Graphics::AMaterial(shader);
+	// materialC->setAlbedo(crate);
+	// BeerEngine::Graphics::AMaterial *material2 = new BeerEngine::Graphics::AMaterial(shader);
+	// material2->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 	// material2->setAlbedo(crate);
 
 	// GameObject
 	//
 	BeerEngine::GameObject *gameObject;
 	BeerEngine::Component::MeshRenderer *meshRenderer;
+	BeerEngine::Graphics::ALight *light;
 
 	auto linesGO = instantiate<BeerEngine::GameObject>();
 	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
@@ -206,6 +212,9 @@ void    SceneTest::init(void)
 	// as->setPitch(1);
 	// as->setLooping(true);
 	// as->play();
+
+	light = instantiate<BeerEngine::Graphics::ALight>();
+	light->setPosition(glm::vec3(0, 0, 0));
 
 	// plane
 	BeerEngine::GameObject *mapGO;

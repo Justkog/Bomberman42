@@ -98,6 +98,20 @@ namespace Game
 				_gameObject->transform.translate(_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::X))
 				_gameObject->transform.translate(-_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());
+
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
+				cam->transform.translate(cam->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
+				cam->transform.translate(-cam->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
+				cam->transform.translate(cam->transform.left() * cam_speed * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
+				cam->transform.translate(cam->transform.right() * cam_speed * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::SPACE))
+				cam->transform.translate(cam->transform.top() * BeerEngine::Time::GetDeltaTime());
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::X))
+				cam->transform.translate(-cam->transform.top() * BeerEngine::Time::GetDeltaTime());
+			
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT))
 				rotation_y = -1 * BeerEngine::Time::GetDeltaTime();
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::RIGHT))
@@ -108,14 +122,16 @@ namespace Game
 				rotation_x = -1 * BeerEngine::Time::GetDeltaTime();
 
 			glm::vec2 mouseDelta = BeerEngine::Input::mousePosition - this->lastMousePos;
-			_gameObject->transform.rotation = _gameObject->transform.rotation * glm::angleAxis(rotation_y, glm::vec3(0, 1, 0));
-			_gameObject->transform.rotation = _gameObject->transform.rotation * glm::angleAxis(rotation_x, _gameObject->transform.left());
+			cam->transform.rotation = cam->transform.rotation * glm::angleAxis(rotation_y, glm::vec3(0, 1, 0));
+			cam->transform.rotation = cam->transform.rotation * glm::angleAxis(rotation_x, cam->transform.left());
+			// _gameObject->transform.rotation = _gameObject->transform.rotation * glm::angleAxis(rotation_y, glm::vec3(0, 1, 0));
+			// _gameObject->transform.rotation = _gameObject->transform.rotation * glm::angleAxis(rotation_x, _gameObject->transform.left());
 			this->lastMousePos = BeerEngine::Input::mousePosition;
 
 
 			// TEST :
 			// std::cout << "Mouse X: " << BeerEngine::Input::GetAxis("Mouse X") << std::endl;
-			syncCam();
+			// syncCam();
 		}
 
 		nlohmann::json	CameraController::serialize()

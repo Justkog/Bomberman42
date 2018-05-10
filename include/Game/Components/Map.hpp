@@ -74,8 +74,12 @@ namespace Game
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate0_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocBump = Assets::GetTexture("assets/textures/crate0_bump.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocNormal = Assets::GetTexture("assets/textures/crate0_normal.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
+				mapBlocMat->setBump(mapBlocBump);
+				mapBlocMat->setNormal(mapBlocNormal);
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;

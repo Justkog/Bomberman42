@@ -6,14 +6,18 @@
                 "albedo": {
                     "sourceFile": "assets/textures/crate0_diffuse.png"
                 },
-                "bump": null,
+                "bump": {
+                    "sourceFile": "assets/textures/crate0_bump.png"
+                },
+                "normal": {
+                    "sourceFile": "assets/textures/crate0_normal.png"
+                },
                 "color": [
                     1.0,
                     1.0,
                     1.0,
                     1.0
                 ],
-                "normal": null,
                 "shader": "defaultShader"
             },
             "mesh": {

@@ -1,6 +1,7 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/SceneManager.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -53,11 +54,19 @@ namespace BeerEngine
 		{
 			if (_mesh != nullptr)
 			{
+				std::vector<Graphics::ALight*> lights = SceneManager::GetCurrent()->getLights();
+				Graphics::AMaterial *mat = Graphics::Graphics::defaultMaterial;
 				if (_material != nullptr)
-					_material->bind(_mat);
-				else
-					Graphics::Graphics::defaultMaterial->bind(_mat);
-				_mesh->render(renderMode);
+					mat = _material;
+				mat->bind(_mat);
+				_mesh->render(renderMode, Graphics::Graphics::defaultLight);
+				Graphics::Graphics::EnableForwardBlend();
+				for (Graphics::ALight *light : lights)
+				{
+					mat->bind(_mat);
+					_mesh->render(renderMode, light);
+				}
+				Graphics::Graphics::DisableForwardBlend();
 			}
 		}
 

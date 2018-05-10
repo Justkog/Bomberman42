@@ -10,28 +10,41 @@ uniform int hasNormal;
 uniform sampler2D bump;
 uniform int hasBump;
 
+uniform vec3 cameraPosition;
+
 in vec3 vNormal;
 in vec2 vTexture;
 in mat3 TBN;
 in vec3 vTangentViewPos;
 in vec3 vTangentFragPos;
+in vec3 viewPosition;
+in vec3 viewDirection;
+in vec3 fragPos;
 
 vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
 { 
-    float height =  texture(bump, texCoords).r;    
-    vec2 p = viewDir.xy / viewDir.z * (height * 1.0);
-    return texCoords - p;    
+    float height =  texture(bump, texCoords).r;
+    vec2 p = viewDir.xy / viewDir.z;
+    return texCoords - p * height * 0.01;
 } 
+
+float calcFresnel(vec3 cameraPosition, vec3 normal, float factor)
+{
+    vec3 dir = normalize(fragPos - cameraPosition);
+    return dot(-dir, normal) * factor;
+}
 
 void main()
 {
     vec3 lightDir = normalize(vec3(0, -1, 0.5));
 
+    float fresnel = calcFresnel(viewPosition, vNormal, 1);
+
     vec2 texCoords;
     if (hasBump == 1)
     {
         vec3 viewDir = normalize(vTangentViewPos - vTangentFragPos);
-        vec2 texCoords = ParallaxMapping(vTexture, viewDir);
+        texCoords = ParallaxMapping(vTexture, viewDir);
         // if(texCoords.x > 1.0 || texCoords.y > 1.0 || texCoords.x < 0.0 || texCoords.y < 0.0)
         //     discard;
     }
@@ -43,9 +56,9 @@ void main()
     vec3 tNormal;
     if (hasNormal == 1)
     {
-        tNormal = texture(normal, texCoords).rgb;
-        tNormal = normalize(tNormal * 2.0 - 1.0);   
-        tNormal = normalize(TBN * tNormal);
+        tNormal = normalize(TBN * (texture(normal, texCoords).rgb * 2.0 - 1.0));
+        // tNormal = normalize(tNormal * 2.0 - 1.0);   
+        // tNormal = normalize(TBN * tNormal);
     }
     else
     {
@@ -61,5 +74,6 @@ void main()
     {
         outColor = color * vec4(l, l, l, 1.0f);
     }
-   
+
+    // outColor = texture(normal, texCoords); //vec4(fresnel, fresnel, fresnel, 1);
 }

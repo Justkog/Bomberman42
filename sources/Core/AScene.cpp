@@ -41,6 +41,17 @@ namespace BeerEngine
         return (res);
     }
 
+    std::vector<Graphics::ALight *> AScene::getLights()
+    {
+        std::vector<Graphics::ALight *> res;
+
+        // populate map somehow
+        for(auto it = _lights.begin(); it != _lights.end(); ++it) {
+            res.push_back( it->second );
+        }
+        return (res);
+    }
+
     void AScene::debugTest(void)
     {
         std::cout << "GameObject List Size : " << _gameObjects.size() << std::endl;
