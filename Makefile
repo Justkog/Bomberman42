@@ -80,6 +80,7 @@ SRC = \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
 	Game/Components/InGameMenu.cpp \
+	Game/Components/TimeUI.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
 	Game/CameraTest.cpp
