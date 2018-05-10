@@ -47,7 +47,7 @@ Game::Component::Settings::~Settings ( void )
 
 // OVERLOAD OPERATOR #############################################
 
-std::ostream &				Game::Component::operator<<(std::ostream & o, Game::Component::Settings const & i)
+std::ostream &				operator<<(std::ostream & o, Game::Component::Settings const & i)
 {
 	nlohmann::json j = i.settingsContainer;
 	o << j.dump(4);

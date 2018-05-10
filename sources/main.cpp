@@ -14,10 +14,13 @@
 #define MAX_VERTEX_BUFFER 512 * 1024
 #define MAX_ELEMENT_BUFFER 128 * 1024
 
+#include "Core/Core.hpp"
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "Core/BeerEngine.hpp"
 #include "Game/SceneTest.hpp"
 #include "Game/Assets.hpp"
-
 
 static int      frameCount = 0;
 static int      FPS = 60;

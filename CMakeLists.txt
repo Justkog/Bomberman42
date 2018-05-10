@@ -4,22 +4,51 @@ set(NAME Bomberman)
 
 project(${NAME})
 
+SET(CMAKE_CXX_STANDARD 11)
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -march=native -flto")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 find_package(glm REQUIRED)
 find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
-find_package(GLEW REQUIRED)
 find_package(PNG REQUIRED)
 find_package(OpenAL REQUIRED)
 find_package(LibSndFile REQUIRED)
-find_package(nlohmann_json REQUIRED)
-find_package(assimp REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(assimp 4.1.0 REQUIRED)
+
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+add_subdirectory(dependencies/glfw)
+set(GLFW3_LIBRARY glfw)
+set(GLFW3_INCLUDE_DIR dependencies/glfw/include)
+
+set(BUILD_UTILS OFF CACHE BOOL "" FORCE)
+add_subdirectory(dependencies/glew/build/cmake)
+set(GLEW_LIBRARY glew)
+set(GLEW_INCLUDE_DIR dependencies/glew/include)
+
+add_subdirectory(dependencies/tinyobjloader)
+set(TINYOBJLOADER_LIBRARY tinyobjloader)
+set(TINYOBJLOADER_INCLUDE_DIR dependencies/tinyobjloader)
+
+set(JSON_INCLUDE_DIRS dependencies/json/single_include)
+
+set(STB_INCLUDE_DIR dependencies/stb)
 
 set(SOURCES
         sources/main.cpp
 
-#        sources/sigslot/src/signal.cpp
+        dependencies/sigslot/src/signal.cpp
 
         sources/Core/Window.cpp
         sources/Core/Time.cpp
@@ -75,25 +104,159 @@ set(SOURCES
         sources/Game/Components/Map.cpp
         sources/Game/Components/Breakable.cpp
         sources/Game/Components/BeerRoutineTester.cpp
-        sources/Game/CameraTest.cpp)
+        sources/Game/CameraTest.cpp
+        )
 
-add_executable(${NAME} ${SOURCES})
+set(HEADERS
+        include/Game
+        include/Game/Components
+        include/Game/Components/Item.hpp
+        include/Game/Components/Character.hpp
+        include/Game/Components/CameraController.hpp
+        include/Game/Components/Breakable.hpp
+        include/Game/Components/Settings.hpp
+        include/Game/Components/BeerRoutineTester.hpp
+        include/Game/Components/Map.hpp
+        include/Game/Components/IA.hpp
+        include/Game/Components/Bomb.hpp
+        include/Game/Components/Player.hpp
+        include/Game/Components/MouseRayTest.hpp
+        include/Game/SceneTest.hpp
+        include/Game/CameraTest.hpp
+        include/Game/Assets.hpp
+        include/Core
+        include/Core/Camera.hpp
+        include/Core/Mathf.hpp
+        include/Core/GameObject.hpp
+        include/Core/Time.hpp
+        include/Core/Json
+        include/Core/Json/Json.hpp
+        include/Core/Json/JsonSerializable.hpp
+        include/Core/IO
+        include/Core/IO/FileUtils.hpp
+        include/Core/Audio
+        include/Core/Audio/AudioListener.hpp
+        include/Core/Audio/AudioClip.hpp
+        include/Core/Audio/AudioSource.hpp
+        include/Core/Graphics
+        include/Core/Graphics/AMaterial.hpp
+        include/Core/Graphics/Texture.hpp
+        include/Core/Graphics/ShaderProgram.hpp
+        include/Core/Graphics/Mesh.hpp
+        include/Core/Graphics/Graphics.hpp
+        include/Core/Graphics/MeshBuilder.hpp
+        include/Core/Window.hpp
+        include/Core/Physics
+        include/Core/Physics/Physics.hpp
+        include/Core/BeerRoutine
+        include/Core/BeerRoutine/BeerRoutine.hpp
+        include/Core/BeerRoutine/ARoutineRunner.hpp
+        include/Core/KeyCode.hpp
+        include/Core/AScene.hpp
+        include/Core/Input.hpp
+        include/Core/BeerEngine.hpp
+        include/Core/Core.hpp
+        include/Core/Transform.hpp
+        include/Core/Component
+        include/Core/Component/RigidBody2D.hpp
+        include/Core/Component/Component.hpp
+        include/Core/Component/ModelAnimator.hpp
+        include/Core/Component/IRender.hpp
+        include/Core/Component/IColliderStay.hpp
+        include/Core/Component/ITriggerExit.hpp
+        include/Core/Component/IColliderEnter.hpp
+        include/Core/Component/BoxCollider2D.hpp
+        include/Core/Component/RaysRenderer.hpp
+        include/Core/Component/IRenderAlpha.hpp
+        include/Core/Component/ACollider.hpp
+        include/Core/Component/IUI.hpp
+        include/Core/Component/IColliderExit.hpp
+        include/Core/Component/MeshRenderer.hpp
+        include/Core/Component/ITriggerEnter.hpp
+        include/Core/Component/ParticleExplode.hpp
+        include/Core/Component/ModelRenderer.hpp
+        include/Core/Component/CircleCollider.hpp
+        include/Core/Component/ITriggerStay.hpp
+        include/Core/Component/IUpdate.hpp
+        include/Core/Component/IStart.hpp
+        include/Core/Component/ParticleBase.hpp
+        include/Core/SceneManager.hpp
+        )
 
-find_package(glm REQUIRED)
-find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(PNG REQUIRED)
-find_package(OpenAL REQUIRED)
-find_package(LibSndFile REQUIRED)
-find_package(nlohmann_json REQUIRED)
-find_package(assimp REQUIRED)
+add_executable(${NAME} ${SOURCES} ${HEADERS})
 
-message("glm includes: " ${GLM_INCLUDE_DIRS})
+message("-- OpenGL --")
 message("OpenGL librarie: " ${OPENGL_gl_LIBRARY})
-message("GLFW librarie: " ${GLFW3_LIBRARY})
-message("GLEW librarie: " ${GLEW_LIBRARY})
-message("PNG librarie: " ${PNG_LIBRARY})
-message("OpenAL librarie: " ${OpenAL_LIBRARY})
 
-target_include_directories(${NAME} PUBLIC ${glm_INCLUDE_DIR})
+message("-- GLM --")
+message("glm includes: " ${GLM_INCLUDE_DIRS})
+
+message("-- GLFW --")
+message("GLFW librarie: " ${GLFW3_LIBRARY})
+message("GLFW includes: " ${GLFW3_INCLUDE_DIR})
+
+message("-- GLEW --")
+message("GLEW librarie: " ${GLEW_LIBRARY})
+message("GLEW includes: " ${GLEW_INCLUDE_DIR})
+
+message("-- LibPNG --")
+message("PNG librarie: " ${PNG_LIBRARY})
+
+message("-- OpenAL --")
+message("OpenAL librarie: " ${OPENAL_LIBRARY})
+message("OpenAL include: " ${OPENAL_INCLUDE_DIR})
+
+message("-- LibSndFile --")
+message("LibSndFile librarie: " ${LIBSNDFILE_LIBRARIES})
+message("LibSndFile include: " ${LIBSNDFILE_INCLUDE_DIRS})
+
+message("-- Nlohmann Json --")
+message("Nlohmann_json librarie: " nlohmann_json)
+
+message("-- Assimp --")
+message("Assimp librarie: " ${ASSIMP_LIBRARIES})
+message("Assimp include: " ${ASSIMP_INCLUDE_DIRS})
+
+message("-- Tiny obj loader --")
+message("TinyObjLoader librarie: " ${TINYOBJLOADER_LIBRARY})
+message("TinyObjLoader include: " ${TINYOBJLOADER_INCLUDE_DIR})
+
+message("-- STB --")
+message("STB include: " ${STB_INCLUDE_DIR})
+
+message("-- JSON --")
+message("JSON include: " ${JSON_INCLUDE_DIRS})
+
+set(LIBRARIES
+        ${OPENGL_gl_LIBRARY}
+        ${GLFW3_LIBRARY}
+        ${GLEW_LIBRARY}
+        ${PNG_LIBRARY}
+        ${OPENAL_LIBRARY}
+        ${LIBSNDFILE_LIBRARIES}
+        /usr/local/lib/libassimp.so
+        ${TINYOBJLOADER_LIBRARY})
+
+set(INCLUDES
+        include/
+        nuklear/
+        dependencies/
+        ${GLM_INCLUDE_DIRS}
+        ${GLFW3_INCLUDE_DIR}
+        ${GLEW_INCLUDE_DIR}
+        ${OPENAL_INCLUDE_DIR}
+        ${LIBSNDFILE_INCLUDE_DIRS}
+        ${ASSIMP_INCLUDE_DIRS}
+        ${JSON_INCLUDE_DIRS}
+        ${TINYOBJLOADER_INCLUDE_DIR}
+        ${STB_INCLUDE_DIR})
+
+target_link_libraries(${NAME} PUBLIC ${LIBRARIES})
+target_include_directories(${NAME} PUBLIC ${INCLUDES})
+
+file(COPY assets DESTINATION .)
+file(COPY assets_boot DESTINATION .)
+file(COPY models DESTINATION .)
+file(COPY shaders DESTINATION .)
+file(COPY Prefabs DESTINATION .)
+file(COPY testSettings.json DESTINATION .)

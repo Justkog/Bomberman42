@@ -1,4 +1,5 @@
 
+#include <cstring>
 #include "Core/Audio/AudioListener.hpp"
 #include "Core/Audio/AudioSource.hpp"
 

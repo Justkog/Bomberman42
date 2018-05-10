@@ -34,6 +34,8 @@
 #include <vector>
 #include <fstream>
 #include <functional>
+#include <thread>
+#include <mutex>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720

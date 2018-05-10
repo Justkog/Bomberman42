@@ -47,3 +47,8 @@ stb/
 sigslot/
 sources/sigslot/
 test2.scene
+
+cmake-build-debug/
+cmake-build-release/
+Bomberman.dSYM
+.idea/
