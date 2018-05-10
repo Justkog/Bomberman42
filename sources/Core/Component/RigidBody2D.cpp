@@ -9,7 +9,7 @@ namespace BeerEngine
 		RigidBody2D::RigidBody2D(GameObject *gameObject) :
 			Component(gameObject),
 			velocity(0.0f, 0.0f),
-			kinematic(true),
+			kinematic(RBType::Kinematic),
 			mass(1.0f)
 		{}
 
@@ -17,7 +17,7 @@ namespace BeerEngine
 		{
 			float dist = glm::length(velocity);
 			if (dist == 0.0f)
-				return ;
+				return;
 			glm::vec3 move(velocity[0], 0.0f, velocity[1]);
 			_gameObject->transform.translate(move / 60.0f);
 

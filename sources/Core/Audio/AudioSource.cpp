@@ -5,17 +5,45 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-		AudioSource::AudioSource(ALuint buf): _Buffer(buf)
+		// AudioSource::AudioSource()
+		// {
+		// 	// Création d'une source
+		// 	alGenSources(1, &_Source);
+		// 	alSourcef(_Source, AL_ROLLOFF_FACTOR, 1);
+		// 	alSourcef(_Source, AL_REFERENCE_DISTANCE, 12);
+		// 	alSourcef(_Source, AL_MAX_DISTANCE, 30);
+		// }
+
+		// AudioSource::AudioSource(ALuint buf): _Buffer(buf)
+		// {
+		// 	// Création d'une source
+		// 	alGenSources(1, &_Source);
+		// 	alSourcef(_Source, AL_ROLLOFF_FACTOR, 1);
+		// 	alSourcef(_Source, AL_REFERENCE_DISTANCE, 12);
+		// 	alSourcef(_Source, AL_MAX_DISTANCE, 30);
+		// }
+
+		AudioSource::AudioSource(BeerEngine::GameObject *gameObject) :
+			Component(gameObject)
 		{
 			// Création d'une source
 			alGenSources(1, &_Source);
 			alSourcef(_Source, AL_ROLLOFF_FACTOR, 1);
-			alSourcef(_Source, AL_REFERENCE_DISTANCE, 12);
-			alSourcef(_Source, AL_MAX_DISTANCE, 30);
-		}
+			alSourcef(_Source, AL_REFERENCE_DISTANCE, 120);
+			alSourcef(_Source, AL_MAX_DISTANCE, 300);
+        }
+
+		// AudioSource::AudioSource(ALuint buf): _Buffer(buf)
+		// {
+		// 	// Création d'une source
+		// 	alGenSources(1, &_Source);
+
+		// }
 
 		AudioSource::~AudioSource()
-		{ }
+		{ 
+			Delete();
+		}
 
 		void	   AudioSource::play()
 		{
@@ -76,7 +104,7 @@ namespace BeerEngine
 		void	   AudioSource::setPosition(float x, float y, float z)
 		{
 		    //change la position de la source sonore
-		    alSource3f(_Source, AL_POSITION, x, y, z);
+		    alSource3f(_Source, AL_POSITION, -x, -y, -z);
 		}
 
 		void	   AudioSource::setVelocity(float x, float y, float z)
@@ -99,6 +127,21 @@ namespace BeerEngine
 		void		AudioSource::setSource(ALuint src)
 		{
 			_Source = src;
+		}
+
+		void		AudioSource::start(void)
+		{
+			setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+		}
+	
+		void		AudioSource::fixedUpdate(void)
+		{
+
+		}
+
+		void		AudioSource::update(void)
+		{
+			setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 		}
 	}
 }

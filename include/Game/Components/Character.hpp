@@ -2,6 +2,7 @@
 #define BE_GAME_COMPONENT_CHARACTER_HPP 1
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IStart.hpp"
@@ -15,7 +16,7 @@
 #include "Core/Transform.hpp"
 
 #define MAX_SPEED 4
-#define MAX_BOMBS 20
+#define MAX_BOMBS 10
 #define MAX_EXPLOSION_SIZE 8
 
 namespace Game
@@ -47,7 +48,8 @@ namespace Game
 			void	translate(glm::vec3 dir);
 			void    move(Direction dir);
 			void    increaseSpeed(float val);
-			void    addBomb(int nb);
+			void    addBomb(void);
+			void    increaseMaxBomb(void);
 			void    increaseExplosionSize(float val);
 			void    dropBomb(void);
 			
@@ -60,8 +62,10 @@ namespace Game
 
 			float _speed;
 			unsigned int _bombNb;
+			unsigned int _maxBomb;
 			float _explosionSize;
 			glm::vec2 _direction;
+			Game::Component::Map *map;
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);

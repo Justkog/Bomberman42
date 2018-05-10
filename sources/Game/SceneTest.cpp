@@ -8,11 +8,16 @@
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
 #include "Core/Component/ModelRenderer.hpp"
+#include "Core/Audio/AudioSource.hpp"
 #include "Game/Components/Player.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/Bomb.hpp"
+#include "Game/Components/GameManager.hpp"
+#include "Game/Components/UIThemeManager.hpp"
+#include "Game/Components/InGameMenu.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -25,7 +30,7 @@
 #include "Game/Assets.hpp"
 
 template<typename T>
-BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, bool kinematic)
+BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 {
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	auto mapBlocGO = instantiate<BeerEngine::GameObject>();
@@ -115,10 +120,15 @@ void    SceneTest::init(void)
 	cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
-	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
+	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
-
+	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
+	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
+	gameManager->inGameMenu = inGameMenu;
+	inGameMenu->uiManager = uiManager;
+	inGameMenu->setActive(false);
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
@@ -137,7 +147,12 @@ void    SceneTest::init(void)
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	playerRB2D->kinematic = false;
+	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
+	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	player->srcAudio = as2;
+	player->itemSrcAudio = itemAs;
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -145,52 +160,27 @@ void    SceneTest::init(void)
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
 	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
-	std::vector<int>  line1{1,S,0,0,0,0,0,0,0,0,0,0,0,0,0,S,1};
-	std::vector<int>  line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line3{1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,1};
-	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line5{1,0,0,2,0,0,0,I,0,0,0,2,0,0,0,0,1};
-	std::vector<int>  line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line7{1,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,1};
-	std::vector<int>  line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line9{1,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,1};
-	std::vector<int> line10{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line11{1,S,0,0,0,0,0,2,0,0,0,0,0,0,0,S,1};
+	std::vector<int>  line1{1,S,0,2,2,2,2,2,2,2,2,2,2,2,0,S,1};
+	std::vector<int>  line2{1,0,1,2,1,2,1,2,1,2,1,2,1,2,1,0,1};
+	std::vector<int>  line3{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int>  line4{1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+	std::vector<int>  line5{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int>  line6{1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+	std::vector<int>  line7{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int>  line8{1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+	std::vector<int>  line9{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1};
+	std::vector<int> line10{1,0,1,2,1,2,1,2,1,2,1,2,1,2,1,0,1};
+	std::vector<int> line11{1,S,0,2,2,2,2,2,2,2,2,2,2,2,0,S,1};
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
-
-	auto mapCrateGO = map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
-	mapCrateGO->save("Prefabs/mapCrate.prefab");
-	auto itemGO = map->addItem(shader, glm::vec3(0, 0, 0));
-	itemGO->save("Prefabs/item.prefab");
-
 	map->setMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
+	character->map = map;
 
-	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), true);
-	auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+	// map->addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(0, 0, 0), BeerEngine::Component::RBType::Kinematic);
+	// auto mapCrateGO2 = instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
 	// std::cout << "mapCrateGO2 name : " << mapCrateGO2->name << "\n";
-	mapCrateGO2->save("Prefabs/reMapCrate.prefab");
-	
-	// IA
-	auto iaGO = instantiate<BeerEngine::GameObject>();
-	iaGO->name = "IA";
-	meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *iaTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-	auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
-	iaMat->setAlbedo(iaTex);
-	meshRenderer->setMaterial(iaMat);
-	iaGO->transform.position = glm::vec3(0, 0.5, 2);
-	iaGO->transform.scale = glm::vec3(1, 1, 1);
-	character = iaGO->AddComponent<Game::Component::Character>();
-	auto *ia = iaGO->AddComponent<Game::Component::IA>();
-	ia->map = map;
-	routineTester = iaGO->AddComponent<Game::Component::BeerRoutineTester>();
-	settings = iaGO->AddComponent<Game::Component::Settings>();
-	auto iaColl = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	iaRB2D->kinematic = false;
+	// mapCrateGO2->save("Prefabs/reMapCrate.prefab");
 
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();
@@ -217,7 +207,8 @@ void    SceneTest::init(void)
 	house2->transform.scale = glm::vec3(0.05, 0.05, 0.05);
 	house2->transform.rotation = glm::vec3(0, 3.14, 0);
 
- // test obj old
+	// Audio test
+	// auto al = cameraGO->AddComponent<BeerEngine::Audio::AudioListener>();
 
 	// auto Old = instantiate<BeerEngine::GameObject>();
 	// Old->name = "old";
@@ -232,6 +223,13 @@ void    SceneTest::init(void)
 	// Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
 	// Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
+	// BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
+	// as->setBuffer(clip.getBuffer());
+	// as->setVolume(1);
+	// as->setPitch(1);
+	// as->setLooping(true);
+	// as->play();
+
 	// plane
 	BeerEngine::GameObject *mapGO;
 	mapGO = instantiate<BeerEngine::GameObject>();
@@ -240,6 +238,9 @@ void    SceneTest::init(void)
 	mapMeshRenderer->setMaterial(material);
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
+
+	// loaded here because it cannot be loaded in the start of a later instantiated object
+	Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 
 
 	// ==================
@@ -285,4 +286,5 @@ void    SceneTest::init(void)
 
 	this->save("test2.scene");
 	std::cout << "init end" << "\n";
+	std::cout << "GameObject List Size : " << getGameObjects().size() << std::endl;
 }

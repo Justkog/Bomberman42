@@ -1,4 +1,4 @@
-CC = g++ -g
+CC = g++
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 MKDIR = /bin/mkdir -p
@@ -57,7 +57,10 @@ SRC = \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
 	Game/Assets.cpp \
+	Game/Input.cpp \
 	Game/SceneTest.cpp \
+	Game/SceneMain.cpp \
+	Game/Components/GameManager.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
@@ -69,14 +72,21 @@ SRC = \
 	Game/Components/Map.cpp \
 	Game/Components/Breakable.cpp \
 	Game/Components/BeerRoutineTester.cpp \
+	Game/Components/MainMenu.cpp \
+	Game/Components/SettingsMenu.cpp \
+	Game/Components/InputsMenu.cpp \
+	Game/Components/InGameMenu.cpp \
+	Game/Components/UIThemeManager.cpp \
+	Game/Components/BackgroundDrawer.cpp \
 	Game/CameraTest.cpp
 
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
-
-CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
+# -g
+# -Ofast -march=native -flto
+CFLAGS = -g -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 

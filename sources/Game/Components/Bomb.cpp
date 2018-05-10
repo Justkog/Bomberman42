@@ -6,6 +6,7 @@
 #include "Core/Physics/Physics.hpp"
 #include "Game/Assets.hpp"
 #include "Game/Components/Breakable.hpp"
+#include "Game/Components/Map.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
 
@@ -13,16 +14,29 @@ namespace Game
 {
 	namespace Component
 	{
+		std::vector<Bomb*> Bomb::bombs;
+		BeerEngine::Graphics::Texture *Bomb::explosionTexture = nullptr;
+
 		Bomb::Bomb(BeerEngine::GameObject *gameObject) :
 			Component(gameObject)
 		{
 			timer = 0.0f;
 			power = 1.0f;
+			bombs.push_back(this);
         }
+
+		Bomb::~Bomb(void)
+		{
+			auto it = std::find(bombs.begin(), bombs.end(), this);
+			if (it != bombs.end())
+				bombs.erase(it);
+		}
 
 		void    Bomb::start(void)
 		{
 			render = _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>();
+			glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+			map->mapUpdate(mapPos.x, mapPos.y, B);
 		}
 
 		void    Bomb::fixedUpdate(void)
@@ -79,7 +93,8 @@ namespace Game
 				explodeDirs.push_back(glm::vec3(0.0f, 0.0f, -power));
 
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
-				playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				// playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				playerParticule->setTexture(explosionTexture);
 				playerParticule->setAnimate(true, 64, 8, 8);
 				playerParticule->setLifeTime(0.5f);
 				playerParticule->setSize(1.0f, 2.0f);
@@ -88,7 +103,8 @@ namespace Game
 				float lifeTime = 1.0f / 2.0f;
 				float sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag0 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				// playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				playerDeflag0->setTexture(explosionTexture);
 				playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag0->setAnimate(true, 64, 8, 8);
 				playerDeflag0->setLifeTime(lifeTime);
@@ -109,7 +125,8 @@ namespace Game
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag1 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				playerDeflag1->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				// playerDeflag1->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				playerDeflag1->setTexture(explosionTexture);
 				playerDeflag1->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag1->setAnimate(true, 64, 8, 8);
 				playerDeflag1->setLifeTime(lifeTime);
@@ -127,7 +144,8 @@ namespace Game
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag2 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				playerDeflag2->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				// playerDeflag2->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				playerDeflag2->setTexture(explosionTexture);
 				playerDeflag2->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag2->setAnimate(true, 64, 8, 8);
 				playerDeflag2->setLifeTime(lifeTime);
@@ -145,7 +163,8 @@ namespace Game
 
 				sizeDeflag = (power + 0.25f) * 2.0f;
 				auto playerDeflag3 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				playerDeflag3->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				// playerDeflag3->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				playerDeflag3->setTexture(explosionTexture);
 				playerDeflag3->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 				playerDeflag3->setAnimate(true, 64, 8, 8);
 				playerDeflag3->setLifeTime(lifeTime);
@@ -161,13 +180,17 @@ namespace Game
 				playerDeflag3->setSpawnTime(1.0f / 120.0f);
 				playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
 
-				BeerEngine::Audio::AudioClip   		clip("assets/sounds/Bomb+1.wav");
-				BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-				srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-				srcAudio.play();
+				// BeerEngine::Audio::AudioClip   		clip("assets/sounds/Bomb+1.wav");
+				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
+				// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+				// srcAudio.play();
+
+				glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+				map->mapUpdate(mapPos.x, mapPos.y, 0);
 
 				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);
+				onExplode.emit();
 				render = nullptr;
 				timer = 5.0f;
 			}

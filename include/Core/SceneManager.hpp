@@ -10,18 +10,17 @@ namespace BeerEngine
     {
     private:
         static AScene      *_Current;
+        static AScene      *_Next;
+		static bool			_updateThreadWaiting;
 
     public:
-        static AScene       *GetCurrent(void);
+        static AScene       *GetCurrent(bool isRenderThread);
         template<typename T, typename std::enable_if<std::is_base_of<AScene, T>::value>::type* = nullptr>
         static void         LoadScene(void)
         {
-            if (_Current != nullptr)
-                delete _Current;
-            _Current = new T();
-            _Current->init();
-            _Current->debugTest();
-            // _Current->start();
+			auto nextScene = new T();
+            nextScene->init();
+			_Next = nextScene;
         }
     };
 }

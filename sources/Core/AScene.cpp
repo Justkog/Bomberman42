@@ -67,6 +67,11 @@ namespace BeerEngine
         {
             (it->second)->componentStart();
         }
+		for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentDisable();
+            (it->second)->componentEnable();
+        }
     }
 
     void    AScene::fixedUpdate(void)
@@ -114,6 +119,20 @@ namespace BeerEngine
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->componentRenderAlpha();
+        }
+    }
+
+	void    AScene::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
+    {
+        for (GameObject *go : _toStartUI)
+        {
+            go->startUI(ctx, fonts);
+        }
+        _toStartUI.clear();
+        std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentStartUI(ctx, fonts);
         }
     }
 

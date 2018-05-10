@@ -4,6 +4,7 @@
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
+#include "Game/Components/Map.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -16,7 +17,8 @@ namespace Game
 			Component(gameObject),
             _transform(gameObject->transform),
             _speed(2),
-            _bombNb(5),
+            _bombNb(1),
+            _maxBomb(1),
             _explosionSize(2),
             _direction(0, 0)
 		{
@@ -31,7 +33,12 @@ namespace Game
         {
             BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
             if (rb2d)
-                rb2d->velocity = glm::normalize(_direction) * _speed;
+            {
+                if (_direction == glm::vec2(0))
+                    rb2d->velocity = glm::vec2(0);
+                else
+                    rb2d->velocity = glm::normalize(_direction) * _speed;
+            }
             _direction = glm::vec2(0, 0);
         }
 
@@ -74,11 +81,19 @@ namespace Game
                 _speed = MAX_SPEED;
         }
 
-        void    Character::addBomb(int nb)
+        void    Character::addBomb(void)
         {
-            _bombNb += nb;
-            if (_bombNb >= MAX_BOMBS)
-                _bombNb = MAX_BOMBS;
+            ++_bombNb;
+            if (_bombNb >= _maxBomb)
+                _bombNb = _maxBomb;
+        }
+
+        void    Character::increaseMaxBomb(void)
+        {
+            ++_maxBomb;
+            ++_bombNb;
+            if (_maxBomb >= MAX_BOMBS)
+                _maxBomb = MAX_BOMBS;
         }
 
         void    Character::increaseExplosionSize(float val)
@@ -90,6 +105,8 @@ namespace Game
 
         void    Character::dropBomb(void)
         {
+            if (_bombNb <= 0 || map->hasBomb(_gameObject->transform.position))
+                return;
             BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
             go->transform.position = glm::round(_gameObject->transform.position);
             go->transform.position.y = 0.25f;
@@ -100,7 +117,10 @@ namespace Game
             render->setMesh(BeerEngine::Graphics::Graphics::cube);
             render->setMaterial(Assets::GetInstance()->bombMaterial);
             Bomb *bomb = go->AddComponent<Bomb>();
+            bomb->map = map;
             bomb->setPower(_explosionSize);
+			bomb->onExplode.bind(&Character::addBomb, this);
+            --_bombNb;
         }
 
         void   Character::onTriggerStay(BeerEngine::Component::ACollider *other)

@@ -1,0 +1,161 @@
+{
+    "gameObjects": [
+        {
+            "components": [
+                {
+                    "componentClass": "N4Game9Component16CameraControllerE"
+                }
+            ],
+            "id": 900,
+            "name": "Camera",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": null,
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            0.5,
+                            0.0,
+                            0.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "plane"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                }
+            ],
+            "id": 901,
+            "name": "",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -3.0,
+                    0.0,
+                    6.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    40.0,
+                    1.0,
+                    40.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N4Game9Component8SettingsE",
+                    "filePath": "testSettings.json"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                },
+                {
+                    "componentClass": "Component"
+                }
+            ],
+            "id": 902,
+            "name": "",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        }
+    ]
+}

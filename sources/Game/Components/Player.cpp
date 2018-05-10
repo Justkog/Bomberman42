@@ -3,6 +3,10 @@
 #include "Core/Input.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
+#include "Core/Component/ACollider.hpp"
+#include "Game/Components/Item.hpp"
+#include "Game/Components/Map.hpp"
+#include "Game/Input.hpp"
 
 namespace Game
 {
@@ -11,20 +15,23 @@ namespace Game
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform)
+		{ }
+
+		Player::~Player(void)
 		{
-			// BeerEngine::Audio::AudioClip   		clip1("assets/sounds/footsteps1");
-			// srcAudio1(clip1.getBuffer());
-			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-			// srcAudio.play();
-			// BeerEngine::Audio::AudioClip   		clip2("assets/sounds/footsteps2.wav");
-			// srcAudio2(clip2.getBuffer());
-			// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-			// srcAudio.play();
-        }
+			// segfault when the character or the map gets destroyed before the player
+			// _character->map->_player = nullptr;
+		}
 
         void    Player::start(void)
         {
+			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
+			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
+			srcAudio->setBuffer(clip.getBuffer());
+
+			BeerEngine::Audio::AudioClip   		itemClip("assets/sounds/item.wav");
+			itemSrcAudio->setBuffer(itemClip.getBuffer());
         }
 
         void    Player::fixedUpdate(void)
@@ -34,20 +41,41 @@ namespace Game
 
         void    Player::update(void)
         {
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
-                    _character->move(Character::Direction::Up);
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
+            {
+				playStepSound();
+				_character->move(Character::Direction::Up);
+			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
-                    _character->move(Character::Direction::Down);
+			{
+				playStepSound();
+                _character->move(Character::Direction::Down);
+			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
-                    _character->move(Character::Direction::Left);
+            {
+				playStepSound();
+				_character->move(Character::Direction::Left);
+			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
-                    _character->move(Character::Direction::Right);
+            {
+				playStepSound();
+				_character->move(Character::Direction::Right);
+			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
+            if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))
                 _character->dropBomb();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
+			if (BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_8) &&
+				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_4) &&
+				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_5) &&
+				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_6))
+			{
+				srcAudio->setLooping(false);
+				play = false;
+			}
+
         }
 
         void            Player::renderUI(struct nk_context *ctx)
@@ -74,6 +102,15 @@ namespace Game
             nk_end(ctx);
         }
 
+		void    Player::onColliderEnter(BeerEngine::Component::ACollider *other)
+		{
+			if (other->_gameObject->GetComponent<Game::Component::Item>())
+			{
+				this->itemSrcAudio->play();
+			}
+		}
+
+
         nlohmann::json	Player::serialize()
 		{
 			return nlohmann::json {
@@ -84,6 +121,16 @@ namespace Game
         void Player::deserialize(const nlohmann::json & j)
     	{
 
+		}
+
+		void Player::playStepSound()
+		{
+			if (play == false)
+			{
+				play = true;
+				srcAudio->setLooping(true);
+				srcAudio->play();
+			}
 		}
 
 		REGISTER_COMPONENT_CPP(Player)

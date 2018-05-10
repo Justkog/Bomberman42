@@ -4,6 +4,8 @@
 #include "Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
+struct nk_font;
+
 namespace BeerEngine
 {
     class AScene : public JsonSerializable, public JsonDeserializable
@@ -13,6 +15,7 @@ namespace BeerEngine
         std::map<int, GameObject *> _gameObjects;
         std::vector<GameObject *>   _toDestroy;
         std::vector<GameObject *>   _toStart;
+        std::vector<GameObject *>   _toStartUI;
         std::mutex                  updateMutex;
 
         
@@ -27,6 +30,7 @@ namespace BeerEngine
         void    mutexLock(bool lock);
 
         void    start(void);
+        void    startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         void    fixedUpdate(void);
         void    update(void);
         void    renderUpdate(void);
@@ -44,6 +48,7 @@ namespace BeerEngine
 			T *c = new T(uniqueID, *this);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             _toStart.push_back(c);
+            _toStartUI.push_back(c);
             uniqueID++;
 			return (c);
 		}

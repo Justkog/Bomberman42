@@ -7,9 +7,7 @@ namespace Game
 
 		Breakable::Breakable(BeerEngine::GameObject *gameObject):
 		Component(gameObject),
-		_transform(gameObject->transform),
-		_posX(_transform.position.x),
-		_posY(_transform.position.z)
+		_transform(gameObject->transform)
 		{ }
 
 		Breakable::~Breakable(void)
@@ -19,7 +17,7 @@ namespace Game
 
 		void	Breakable::destroyed()
 		{
-			onDestruction.emit(_posX, _posY);
+			onDestruction.emit(_transform.position, 0);
 		}
 
 		nlohmann::json	Breakable::serialize()

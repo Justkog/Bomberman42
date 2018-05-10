@@ -8,11 +8,12 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+
 		class RigidBody2D : public Component
 		{
 		public:
 			glm::vec2	velocity;
-			bool		kinematic;
+			RBType		kinematic;
 			float		mass;
 
 		public:

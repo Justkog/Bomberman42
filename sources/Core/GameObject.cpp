@@ -4,6 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IRenderAlpha.hpp"
 #include "Core/Component/IUI.hpp"
+#include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Core/Transform.hpp"
@@ -22,7 +23,6 @@ namespace BeerEngine
 
 	GameObject::~GameObject(void)
 	{
-		std::cout << "boom" << "\n";
 		for (Component::Component *c : _components)
 		{
 			delete c;
@@ -45,6 +45,7 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
+    void    GameObject::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) {}
     void    GameObject::renderUI(struct nk_context *ctx) {}
 
 	void     GameObject::destroy(Component::Component *comp)
@@ -69,6 +70,42 @@ namespace BeerEngine
         _toDestroy.clear();
 	}
 
+	void GameObject::enableComponent(Component::Component *comp)
+	{
+		// std::cout << "attempting to enable" << std::endl;
+		
+		auto it = std::find(_toDisable.begin(), _toDisable.end(), comp);
+		if (it != _toDisable.end())
+		{
+			// std::cout << "comp was about to be disabled" << std::endl;
+			_toDisable.erase(it);
+			return;
+		}
+		else if (comp->_isActive)
+			return;
+		// std::cout << "added to enable" << std::endl;
+		_toEnable.push_back(comp);
+	}
+
+	void GameObject::disableComponent(Component::Component *comp)
+	{
+		// std::cout << "attempting to disable" << std::endl;
+		auto it = std::find(_toEnable.begin(), _toEnable.end(), comp);
+		if (it != _toEnable.end())
+		{
+			// std::cout << "comp was about to be enabled" << std::endl;
+			_toEnable.erase(it);
+			return;
+		}
+		else if (!comp->_isActive)
+		{
+			// std::cout << "component is already disabled" << std::endl;
+			return;
+		}
+		// std::cout << "added to disable" << std::endl;
+		_toDisable.push_back(comp);
+	}
+
 	void    GameObject::destroy(GameObject *go)
     {
         _scene.destroy(go);
@@ -86,11 +123,33 @@ namespace BeerEngine
 		_toStart.clear();
 	}
 
+	void    GameObject::componentEnable(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentEnable" << std::endl;
+		for (Component::Component *c : _toEnable)
+		{
+			c->_isActive = true;
+		}
+		_toEnable.clear();
+	}
+
+	void    GameObject::componentDisable(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentDisable" << std::endl;
+		for (Component::Component *c : _toDisable)
+		{
+			c->_isActive = false;
+		}
+		_toDisable.clear();
+	}
+
 	void    GameObject::componentFixedUpdate(void)
 	{
         // std::cout << "DEBUG: GameObject::componentFixedUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
 				u->fixedUpdate();
 		}
@@ -101,6 +160,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
 				u->update();
 		}
@@ -111,6 +172,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->renderUpdate();
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
@@ -123,6 +186,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRender" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->render();
 		}
@@ -132,6 +197,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderAlpha" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->renderAlpha();
 		}
@@ -142,11 +209,15 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentPhysicUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
 				p->physicUpdate();
 		}
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}
@@ -157,9 +228,23 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderUI" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUI *r = dynamic_cast<Component::IUI*>(c))
 				r->renderUI(ctx);
 		}
+	}
+
+	void    GameObject::componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
+	{
+		// std::cout << "DEBUG: GameObject::componentStart" << std::endl;
+		for (Component::Component *c : _toStartUI)
+		{
+			if (auto u = dynamic_cast<Component::IStartUI*>(c))
+				u->startUI(ctx, fonts);
+			// _components.push_back(c);
+		}
+		_toStartUI.clear();
 	}
 
 	nlohmann::json	GameObject::serialize()

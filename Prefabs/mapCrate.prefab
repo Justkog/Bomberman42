@@ -4,7 +4,7 @@
             "componentClass": "N10BeerEngine9Component12MeshRendererE",
             "material": {
                 "albedo": {
-                    "sourceFile": "assets/textures/crate1_diffuse.png"
+                    "sourceFile": "assets/textures/crate0_diffuse.png"
                 },
                 "bump": null,
                 "color": [
@@ -56,7 +56,7 @@
             ]
         }
     ],
-    "id": 4,
+    "id": 7,
     "name": "map block",
     "transform": {
         "parent": null,

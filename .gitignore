@@ -52,3 +52,5 @@ cmake-build-debug/
 cmake-build-release/
 Bomberman.dSYM
 .idea/
+/nuklear
+/Prefabs
