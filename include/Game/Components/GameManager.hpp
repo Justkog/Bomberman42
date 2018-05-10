@@ -37,8 +37,9 @@ namespace Game
 			virtual void update();
 			virtual void fixedUpdate();
 
-			static GameManager & GetInstance();
+			void setPause(bool state);
 	
+			static GameManager & GetInstance();
 		};
 
 	};

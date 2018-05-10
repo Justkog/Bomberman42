@@ -1,5 +1,6 @@
 #include "Game/Components/GameManager.hpp"
 #include "Core/Input.hpp"
+#include "Core/Time.hpp"
 #include "Game/Components/InGameMenu.hpp"
 
 namespace Game
@@ -77,18 +78,26 @@ void GameManager::start()
 void GameManager::update()
 {
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
-	{
-		std::cout << "escape pushed" << std::endl;
-		if (inGameMenu->_isActive)
-			inGameMenu->setActive(false);
-		else
-			inGameMenu->setActive(true);
-	}
+		inGameMenu->setActive(!inGameMenu->_isActive);
 }
 
 void GameManager::fixedUpdate()
 {
 	
+}
+
+void GameManager::setPause(bool state)
+{
+	if (state)
+	{
+		BeerEngine::Time::gameSpeed = 0.0f;
+		std::cout << "pausing game" << std::endl;
+	}
+	else
+	{
+		BeerEngine::Time::gameSpeed = 1.0f;
+		std::cout << "resuming game" << std::endl;
+	}
 }
 
 // ###############################################################

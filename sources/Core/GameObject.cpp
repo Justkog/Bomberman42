@@ -6,6 +6,8 @@
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IStart.hpp"
+#include "Core/Component/IEnable.hpp"
+#include "Core/Component/IDisable.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Core/Transform.hpp"
 #include "Core/Component/RigidBody2D.hpp"
@@ -129,6 +131,8 @@ namespace BeerEngine
 		for (Component::Component *c : _toEnable)
 		{
 			c->_isActive = true;
+			if (Component::IEnable *u = dynamic_cast<Component::IEnable*>(c))
+				u->enable();
 		}
 		_toEnable.clear();
 	}
@@ -139,6 +143,8 @@ namespace BeerEngine
 		for (Component::Component *c : _toDisable)
 		{
 			c->_isActive = false;
+			if (Component::IDisable *u = dynamic_cast<Component::IDisable*>(c))
+				u->disable();
 		}
 		_toDisable.clear();
 	}

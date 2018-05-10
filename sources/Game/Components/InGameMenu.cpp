@@ -4,6 +4,7 @@
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
 #include "Game/SceneMain.hpp"
+#include "Game/Components/GameManager.hpp"
 
 namespace Game
 {
@@ -69,6 +70,18 @@ void InGameMenu::start()
 	std::cout << "InGameMenu start" << std::endl;
 }
 
+void InGameMenu::enable()
+{
+	std::cout << "game menu enabled" << std::endl;
+	GameManager::GetInstance().setPause(true);
+}
+
+void InGameMenu::disable()
+{
+	std::cout << "game menu disabled" << std::endl;
+	GameManager::GetInstance().setPause(false);
+}
+
 void InGameMenu::setUI(struct nk_context *ctx)
 {
 	nk_style_set_font(ctx, &uiManager->available_fonts["smallMain"]->handle);
@@ -98,7 +111,7 @@ void InGameMenu::renderUI(struct nk_context *ctx)
 		nk_layout_row_dynamic(ctx, 75, 1);
 
 		if (nk_button_label(ctx, "Resume"))
-			fprintf(stdout, "Resume pressed\n");
+			this->setActive(false);
 		if (nk_button_label(ctx, "Back to Main Menu"))
 			BeerEngine::SceneManager::LoadScene<SceneMain>();
 	}

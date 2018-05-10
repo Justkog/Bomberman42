@@ -12,6 +12,8 @@ namespace BeerEngine
         static double   _DeltaTime;
     
     public:
+        static double   gameSpeed;
+		
         static void     Update(void);
         static double   GetDeltaTime(void);
     };
