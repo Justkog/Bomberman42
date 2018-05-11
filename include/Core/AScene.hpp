@@ -63,6 +63,7 @@ namespace BeerEngine
 		}
 
         void debugTest(void);
+		GameObject *find(std::string name);
 
         std::vector<GameObject *> getGameObjects();
         

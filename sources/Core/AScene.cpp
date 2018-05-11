@@ -46,6 +46,15 @@ namespace BeerEngine
         std::cout << "GameObject List Size : " << _gameObjects.size() << std::endl;
     }
 
+	GameObject *AScene::find(std::string name)
+	{
+		for(auto it = _gameObjects.begin(); it != _gameObjects.end(); ++it) {
+			if (it->second->name == name)
+				return it->second;
+        }
+		return NULL;
+	}
+
      void    AScene::mutexLock(bool lock)
      {
         if (lock)
