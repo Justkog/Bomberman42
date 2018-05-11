@@ -9,7 +9,6 @@
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
-#include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStartUI.hpp"
 

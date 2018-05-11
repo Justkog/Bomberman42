@@ -6,7 +6,11 @@
                     "componentClass": "N4Game9Component16CameraControllerE"
                 }
             ],
+<<<<<<< HEAD
             "id": 455,
+=======
+            "id": 222,
+>>>>>>> master
             "name": "Camera",
             "transform": {
                 "parent": null,
@@ -81,7 +85,11 @@
                     ]
                 }
             ],
+<<<<<<< HEAD
             "id": 456,
+=======
+            "id": 223,
+>>>>>>> master
             "name": "",
             "transform": {
                 "parent": null,
@@ -130,7 +138,11 @@
                     "componentClass": "Component"
                 }
             ],
+<<<<<<< HEAD
             "id": 457,
+=======
+            "id": 224,
+>>>>>>> master
             "name": "",
             "transform": {
                 "parent": null,
