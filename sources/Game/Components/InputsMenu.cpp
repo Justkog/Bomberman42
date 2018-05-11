@@ -65,13 +65,29 @@ std::ostream &				operator<<(std::ostream & o, InputsMenu const & i)
 
 // PUBLIC METHOD #################################################
 
+void keyToText(InputInfo & input, int key)
+{
+	if (key == ' ')
+	{
+		strcpy(input.text, "space");
+		input.text_len = strlen(input.text);
+		std::cout << "text len is now : " << input.text_len << std::endl;
+	}
+	else
+	{
+		input.text[0] = key;
+		input.text_len = 1;
+	}
+}
+
 void InputsMenu::setMapKey(std::string label)
 {
-	auto key = Game::Input::keyBindings[label];
-	std::string keyStr(1, key);
+	// auto key = Game::Input::keyBindings[label];
+	// std::string keyStr(1, key);
 	// std::cout << "label : " << label << " / key : " << keyStr << std::endl;
-	strcpy(inputs[label].text, keyStr.c_str());
-	inputs[label].text_len = 1;
+	// strcpy(inputs[label].text, keyStr.c_str());
+	// inputs[label].text_len = 1;
+	keyToText(inputs[label], Game::Input::keyBindings[label]);
 	inputs[label].waitingBind = false;
 	inputsList.push_back(label);
 }
@@ -80,9 +96,10 @@ void InputsMenu::updateDisplayedInputKeys()
 {
 	for (auto it = inputsList.begin(); it != inputsList.end(); it++)
 	{
-		auto key = Game::Input::keyBindings[*it];
-		std::string keyStr(1, key);
-		strcpy(inputs[*it].text, keyStr.c_str());
+		// auto key = Game::Input::keyBindings[*it];
+		// std::string keyStr(1, key);
+		// strcpy(inputs[*it].text, keyStr.c_str());
+		keyToText(inputs[*it], Game::Input::keyBindings[*it]);
 	}
 }
 
@@ -119,6 +136,7 @@ void InputsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *
 	std::cout << "start UI inputs menu" << std::endl;
 }
 
+
 void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo)
 {
 	nk_layout_row_push(ctx, (menuWidth - 30 * 2 - 10 * 3) / 2 - 40 * 2);
@@ -133,7 +151,8 @@ void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInf
 		inputInfo.waitingBind = true;
 		BeerEngine::Input::onKeyPushed = [label, &inputInfo] (int key) {
 			Game::Input::keyBindings[label] = static_cast<BeerEngine::KeyCode>(key);
-			inputInfo.text[0] = key;
+			keyToText(inputInfo, key);
+			// inputInfo.text[0] = key;
 			inputInfo.waitingBind = false;
 			BeerEngine::Input::onKeyPushed = BeerEngine::Input::onKeyPushedDefault();
 		};

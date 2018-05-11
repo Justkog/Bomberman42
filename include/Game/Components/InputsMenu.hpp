@@ -22,7 +22,7 @@ namespace Game
 
 		struct InputInfo
 		{
-			char text[2];
+			char text[15];
 			int text_len;
 			bool waitingBind;
 		};

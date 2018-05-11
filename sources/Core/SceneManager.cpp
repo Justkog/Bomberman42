@@ -13,7 +13,7 @@ namespace BeerEngine
 		{
 			while (_Next)
 			{
-				std::cout << "update thread waiting" << std::endl;
+				// std::cout << "update thread waiting" << std::endl;
 				_updateThreadWaiting = true;
 				std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			}
@@ -23,7 +23,7 @@ namespace BeerEngine
 		{
 			while (!_updateThreadWaiting)
 			{
-				std::cout << "render thread waiting for update thread to complete and wait" << std::endl;
+				// std::cout << "render thread waiting for update thread to complete and wait" << std::endl;
 				std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			}
 			delete _Current;
