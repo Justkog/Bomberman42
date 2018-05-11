@@ -157,6 +157,7 @@ void    SceneTest::init(void)
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;
 	player->itemSrcAudio = itemAs;
+	// itemsUI->player = player;
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();

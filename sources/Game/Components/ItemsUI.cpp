@@ -1,6 +1,9 @@
 #include "Game/Components/ItemsUI.hpp"
 #include "Core/Window.hpp"
 #include "Game/Components/UIThemeManager.hpp"
+#include "Game/Components/Player.hpp"
+#include "Game/Components/Character.hpp"
+#include "Game/Components/Breakable.hpp"
 
 namespace Game
 {
@@ -61,12 +64,20 @@ std::ostream &				operator<<(std::ostream & o, ItemsUI const & i)
 
 // PUBLIC METHOD #################################################
 
+void ItemsUI::acknowledgePlayerDeath(glm::vec3 pos, int value)
+{
+	player = NULL;
+}
+
 void ItemsUI::start()
 {
 	std::cout << "ItemsUI start" << std::endl;
 	shoeImage = uiManager->loadSprite("assets/textures/shoe.png");
 	bombImage = uiManager->loadSprite("assets/textures/bomb.png");
 	rangeImage = uiManager->loadSprite("assets/textures/range.png");
+	player = _gameObject->_scene.find("player")->GetComponent<Player>();
+	auto playerBreakable = _gameObject->_scene.find("player")->GetComponent<Breakable>();
+	playerBreakable->onDestruction.bind(&ItemsUI::acknowledgePlayerDeath, this);
 }
 
 void ItemsUI::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
@@ -122,6 +133,18 @@ void ItemsUI::drawItemInfo(struct nk_context *ctx, nk_style_item image, int item
 	}
 }
 
+void ItemsUI::update()
+{
+	if (player)
+	{
+		speed = player->_character->_speed;
+		bombs = player->_character->_bombNb;
+		range = player->_character->_explosionSize;
+	}
+}
+
+void ItemsUI::fixedUpdate() {}
+
 void ItemsUI::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
@@ -138,9 +161,9 @@ void ItemsUI::renderUI(struct nk_context *ctx)
 	);
 	if (nk_begin(ctx, "Items", window_rect, NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE | NK_WINDOW_BACKGROUND))
 	{
-		drawItemInfo(ctx, shoeImage, 0);
-		drawItemInfo(ctx, bombImage, 0);
-		drawItemInfo(ctx, rangeImage, 0);
+		drawItemInfo(ctx, shoeImage, speed);
+		drawItemInfo(ctx, bombImage, bombs);
+		drawItemInfo(ctx, rangeImage, range);
 	}
 	nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);

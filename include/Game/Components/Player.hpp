@@ -30,9 +30,10 @@ namespace Game
 		{
 		protected:
 			BeerEngine::Transform	&_transform;
-			Game::Component::Character *_character;
 
 		public:
+			Game::Component::Character *_character;
+			
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);
 
