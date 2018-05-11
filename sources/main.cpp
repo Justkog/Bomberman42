@@ -148,7 +148,7 @@ int main(void)
     // First Scene
     // BeerEngine::SceneManager::LoadScene<SceneTest>();
     BeerEngine::SceneManager::LoadScene<SceneMain>();
-	
+
     // Thread Update
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();

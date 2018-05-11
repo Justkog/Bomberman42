@@ -100,17 +100,33 @@ namespace BeerEngine
 	}
 }
 
-#define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
-							static 	int componentRegisterer;\
-							static std::string type;
+/* For some reason on linux those two preprcessor cause a segfault */
+# ifdef __APPLE__
+#  define REGISTER_COMPONENT_HPP																						\
+		static int RegisterComponentType();																				\
+		static 	int componentRegisterer;																				\
+		static std::string type;
 
-#define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
-		{\
-			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
-			return (1);\
-		}\
-		\
-		int Class::componentRegisterer = Class::RegisterComponentType();\
+#  define REGISTER_COMPONENT_CPP(Class)																					\
+		int	Class::RegisterComponentType()																				\
+		{																												\
+			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;						\
+			return (1);																									\
+		}																												\
+		int Class::componentRegisterer = Class::RegisterComponentType();												\
 		std::string Class::type = typeid(Class).name();
+# else
+#  define REGISTER_COMPONENT_HPP																						\
+		static int RegisterComponentType();																				\
+		static 	int componentRegisterer;																				\
+		static std::string type;
 
+#  define REGISTER_COMPONENT_CPP(Class)																					\
+		int	Class::RegisterComponentType()																				\
+		{																												\
+			return (1);																									\
+		}																												\
+		int Class::componentRegisterer = Class::RegisterComponentType();												\
+		std::string Class::type = typeid(Class).name();
+# endif
 #endif
