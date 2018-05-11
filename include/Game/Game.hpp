@@ -21,7 +21,9 @@ namespace Game
 		class Map;
         class Player;
 
+		class MainMenu;
 		class UIThemeManager;
+		class VersusMenu;
 		class SettingsMenu;
 		class InGameMenu;
 

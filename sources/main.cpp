@@ -143,8 +143,8 @@ int main(void)
     // Game Assets
     Assets::GetInstance()->load();
     // First Scene
-    BeerEngine::SceneManager::LoadScene<SceneTest>();
-    // BeerEngine::SceneManager::LoadScene<SceneMain>();
+    // BeerEngine::SceneManager::LoadScene<SceneTest>();
+    BeerEngine::SceneManager::LoadScene<SceneMain>();
 	
     // Thread Update
     std::thread updateLoop (updateThread, window);

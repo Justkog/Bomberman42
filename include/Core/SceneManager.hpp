@@ -22,6 +22,8 @@ namespace BeerEngine
             nextScene->init();
 			_Next = nextScene;
         }
+
+		static void         LoadScene(std::string path);
     };
 }
 
