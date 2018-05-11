@@ -25,12 +25,15 @@ namespace Game
         }
 
         IA::~IA(void)
-        {
-			// what if map or character got delete before ? => segfault
-            // auto it = std::find(_character->map->_IAs.begin(), _character->map->_IAs.end(), this);
+        {            
+        }
 
-            // if (it != _character->map->_IAs.end())
-            //     _character->map->_IAs.erase(it);
+        void    IA::onDestroy(void)
+        {
+            auto it = std::find(_character->map->_IAs.begin(), _character->map->_IAs.end(), this);
+
+            if (it != _character->map->_IAs.end())
+                _character->map->_IAs.erase(it);
         }
 
         void    IA::start(void)

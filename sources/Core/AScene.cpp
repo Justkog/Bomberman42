@@ -25,6 +25,10 @@ namespace BeerEngine
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
+            (it->second)->componentOnDestroy();
+        }
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
             delete (it->second);
         }
         _gameObjects.clear();
@@ -206,6 +210,12 @@ namespace BeerEngine
 
     void    AScene::destroyGameObjects(void)
     {
+        for (GameObject *go : _toDestroy)
+		{
+            std::map<int, GameObject *>::iterator it;
+			if ((it = _gameObjects.find(go->_uniqueID)) != _gameObjects.end())
+                (it->second)->componentOnDestroy();
+		}
         for (GameObject *go : _toDestroy)
 		{
             std::map<int, GameObject *>::iterator it;

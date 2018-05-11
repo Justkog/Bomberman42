@@ -9,6 +9,7 @@
 #include "Core/Component/IEnable.hpp"
 #include "Core/Component/IDisable.hpp"
 #include "Core/Component/ACollider.hpp"
+#include "Core/Component/IOnDestroy.hpp"
 #include "Core/Transform.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -57,6 +58,11 @@ namespace BeerEngine
 	}
 	void    GameObject::destroyComponent(void)
 	{
+		for (Component::Component *comp : _toDestroy)
+		{
+			if (auto *d = dynamic_cast<Component::IOnDestroy*>(comp))
+					d->onDestroy();
+		}
 		for (Component::Component *comp : _toDestroy)
 		{
 			for (int i = 0; i <_components.size(); i++)
@@ -251,6 +257,15 @@ namespace BeerEngine
 			// _components.push_back(c);
 		}
 		_toStartUI.clear();
+	}
+
+	void    GameObject::componentOnDestroy(void)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (auto *d = dynamic_cast<Component::IOnDestroy*>(c))
+				d->onDestroy();
+		}
 	}
 
 	nlohmann::json	GameObject::serialize()

@@ -112,6 +112,7 @@ namespace BeerEngine
         void    componentPhysicUpdate(void);
         void    componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         void    componentRenderUI(struct nk_context *ctx);
+        void    componentOnDestroy(void);
 
 		std::vector<Component::Component *> GetComponents(void);
 

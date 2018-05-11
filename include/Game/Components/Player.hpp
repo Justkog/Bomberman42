@@ -11,6 +11,7 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
+#include "Core/Component/IOnDestroy.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
@@ -25,7 +26,8 @@ namespace Game
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
 						public BeerEngine::Component::IUI,
-						public BeerEngine::Component::IColliderEnter
+						public BeerEngine::Component::IColliderEnter,
+						public BeerEngine::Component::IOnDestroy
 
 		{
 		protected:
@@ -36,6 +38,7 @@ namespace Game
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);
 
+       		virtual void    onDestroy(void);
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);

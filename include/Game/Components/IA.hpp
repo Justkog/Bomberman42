@@ -12,6 +12,7 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
+#include "Core/Component/IOnDestroy.hpp"
 #include "Core/Component/IUI.hpp"
 #include <queue>
 
@@ -25,7 +26,8 @@ namespace Game
 		class IA : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
-						public BeerEngine::Component::IUI
+						public BeerEngine::Component::IUI,
+						public BeerEngine::Component::IOnDestroy
 		{
 		protected:
 			BeerEngine::Transform	&_transform;
@@ -53,6 +55,7 @@ namespace Game
             IA(BeerEngine::GameObject *gameObject);
 			~IA(void);
 
+       		virtual void    onDestroy(void);
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
