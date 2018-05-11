@@ -86,8 +86,6 @@ void ItemsUI::drawItemInfo(struct nk_context *ctx, nk_style_item image, int item
 	float targetRatio = imageSpaceWidth / rowHeight;
 	float imageRatio = static_cast<float>(image.data.image.w) / static_cast<float>(image.data.image.h);
 
-	std::cout << "image ratio : " << imageRatio << std::endl;
-	std::cout << "target ratio : " << targetRatio << std::endl;
 	if (imageRatio < targetRatio)
 	{
 		// image height remains rowHeight
@@ -128,7 +126,6 @@ void ItemsUI::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
 	setUI(ctx);
-	// float ratio = 604.0f / 910.0f;
 	float panelWidth = 225;
 	float panelHeight = 400;
 	float xOffset = 0;
@@ -144,11 +141,6 @@ void ItemsUI::renderUI(struct nk_context *ctx)
 		drawItemInfo(ctx, shoeImage, 0);
 		drawItemInfo(ctx, bombImage, 0);
 		drawItemInfo(ctx, rangeImage, 0);
-		// nk_layout_row_dynamic(ctx, 100, 2);
-		// ctx->style.window.fixed_background = shoeImage;
-		// if (nk_group_begin(ctx, "shoeImageColumn", NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE)) { // column 1
-		// 	nk_group_end(ctx);
-		// }
 	}
 	nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);
