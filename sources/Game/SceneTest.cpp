@@ -18,6 +18,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/TimeUI.hpp"
+#include "Game/Components/ItemsUI.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -126,10 +127,12 @@ void    SceneTest::init(void)
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
 	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
+	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
 	gameManager->inGameMenu = inGameMenu;
 	inGameMenu->uiManager = uiManager;
 	inGameMenu->setActive(false);
 	timeUI->uiManager = uiManager;
+	itemsUI->uiManager = uiManager;
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
