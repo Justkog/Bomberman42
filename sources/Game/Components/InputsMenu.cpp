@@ -65,28 +65,34 @@ std::ostream &				operator<<(std::ostream & o, InputsMenu const & i)
 
 // PUBLIC METHOD #################################################
 
+void fillInputText(InputInfo & input, std::string text)
+{
+	strcpy(input.text, text.c_str());
+	input.text_len = text.size();
+}
+
 void keyToText(InputInfo & input, int key)
 {
 	if (key == ' ')
-	{
-		strcpy(input.text, "space");
-		input.text_len = strlen(input.text);
-		std::cout << "text len is now : " << input.text_len << std::endl;
-	}
+		fillInputText(input, "space");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::LEFT))
+		fillInputText(input, "left");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::RIGHT))
+		fillInputText(input, "right");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::UP))
+		fillInputText(input, "up");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::DOWN))
+		fillInputText(input, "down");
 	else
 	{
 		input.text[0] = key;
+		input.text[1] = 0;
 		input.text_len = 1;
 	}
 }
 
 void InputsMenu::setMapKey(std::string label)
 {
-	// auto key = Game::Input::keyBindings[label];
-	// std::string keyStr(1, key);
-	// std::cout << "label : " << label << " / key : " << keyStr << std::endl;
-	// strcpy(inputs[label].text, keyStr.c_str());
-	// inputs[label].text_len = 1;
 	keyToText(inputs[label], Game::Input::keyBindings[label]);
 	inputs[label].waitingBind = false;
 	inputsList.push_back(label);
@@ -95,12 +101,7 @@ void InputsMenu::setMapKey(std::string label)
 void InputsMenu::updateDisplayedInputKeys()
 {
 	for (auto it = inputsList.begin(); it != inputsList.end(); it++)
-	{
-		// auto key = Game::Input::keyBindings[*it];
-		// std::string keyStr(1, key);
-		// strcpy(inputs[*it].text, keyStr.c_str());
 		keyToText(inputs[*it], Game::Input::keyBindings[*it]);
-	}
 }
 
 void InputsMenu::start()
@@ -139,26 +140,41 @@ void InputsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *
 
 void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo)
 {
-	nk_layout_row_push(ctx, (menuWidth - 30 * 2 - 10 * 3) / 2 - 40 * 2);
+	float labelWidth = (menuWidth - 30 * 2 - 10 * 3) / 2 - 40 * 2;
+	float buttonWidth = 0;
+	if (inputInfo.text_len == 1)
+		buttonWidth = 40;
+	else
+	{
+		buttonWidth = 200;
+		nk_layout_row_begin(ctx, NK_STATIC, 50, 2);
+	}
+	// nk_layout_row_push(ctx, (menuWidth - 30 * 2 - 10 * 3) / 2 - 40 * 2);
+	nk_layout_row_push(ctx, labelWidth);
 	nk_label(ctx, label.c_str(), NK_TEXT_CENTERED);
-	nk_layout_row_push(ctx, 40);
+	// nk_layout_row_push(ctx, 40);
+	nk_layout_row_push(ctx, buttonWidth);
 	// nk_edit_string(ctx, NK_EDIT_SIMPLE, inputInfo.text, &inputInfo.text_len, 2, nk_filter_default);
 	auto normalButton = ctx->style.button.normal;
 	if (inputInfo.waitingBind)
 		ctx->style.button.normal = ctx->style.button.active;
 	if (nk_button_label(ctx, inputInfo.text))
 	{
+		for (auto it = inputsList.begin(); it != inputsList.end(); it++)
+			inputs[*it].waitingBind = false;
 		inputInfo.waitingBind = true;
 		BeerEngine::Input::onKeyPushed = [label, &inputInfo] (int key) {
 			Game::Input::keyBindings[label] = static_cast<BeerEngine::KeyCode>(key);
 			keyToText(inputInfo, key);
-			// inputInfo.text[0] = key;
 			inputInfo.waitingBind = false;
 			BeerEngine::Input::onKeyPushed = BeerEngine::Input::onKeyPushedDefault();
 		};
 	}
 	if (inputInfo.waitingBind)
 		ctx->style.button.normal = normalButton;
+
+	if (inputInfo.text_len != 1)
+		nk_layout_row_begin(ctx, NK_STATIC, 50, 4);
 }
 
 void InputsMenu::drawInputsUI(struct nk_context *ctx)
