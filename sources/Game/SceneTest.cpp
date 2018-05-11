@@ -235,7 +235,7 @@ void    SceneTest::init(void)
 	Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 
 
-	this->save("test2.scene");
+	this->save("assets/scenes/level1.scene");
 	std::cout << "init end" << "\n";
 	std::cout << "GameObject List Size : " << getGameObjects().size() << std::endl;
 }

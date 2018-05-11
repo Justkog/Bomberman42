@@ -21,7 +21,7 @@ namespace Game
 		{
 			std::string name;
 			std::string scenePath;
-		}
+		};
 
 		class VersusMenu : public BeerEngine::Component::Component, 
 						public BeerEngine::Component::IStart, 
@@ -29,7 +29,9 @@ namespace Game
 						public BeerEngine::Component::IUI
 		{
 		public:
-			std::vector<MapInfo> maps;
+			UIThemeManager			*uiManager;
+			MainMenu				*mainMenu;
+			std::vector<MapInfo> 	maps;
 
 			// VersusMenu( void );
 			// VersusMenu( VersusMenu const & src );

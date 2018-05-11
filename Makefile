@@ -26,6 +26,7 @@ SRC = \
 	Core/Json/Json.cpp \
 	Core/Json/JsonSerializable.cpp \
 	Core/AScene.cpp \
+	Core/GenericScene.cpp \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \
 	Core/Input.cpp \
@@ -77,6 +78,7 @@ SRC = \
 	Game/Components/Breakable.cpp \
 	Game/Components/BeerRoutineTester.cpp \
 	Game/Components/MainMenu.cpp \
+	Game/Components/VersusMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
 	Game/Components/InGameMenu.cpp \
