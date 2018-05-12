@@ -121,6 +121,8 @@ nk_style_item UIThemeManager::loadSprite(std::string spritePath)
 void UIThemeManager::setThemeUI(struct nk_context *ctx)
 {
 	ctx->style.button = themeButton;
+	ctx->style.window.fixed_background = nk_style_item_hide();
+	// ctx->style.window.spacing = nk_vec2(0, 10);
 	nk_style_set_font(ctx, &available_fonts["main"]->handle);
 }
 

@@ -83,7 +83,7 @@ void BackgroundDrawer::renderUI(struct nk_context *ctx)
 		BeerEngine::Window::GetInstance()->getHeight()
 	);
 
-	if (nk_begin(ctx, "Background", back_window_rect, NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE))
+	if (nk_begin(ctx, "Background", back_window_rect, NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_NOT_INTERACTIVE | NK_WINDOW_BACKGROUND))
 	{
 		// just the background image
 	}

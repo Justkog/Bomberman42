@@ -1,5 +1,5 @@
 #include "Core/Graphics/AMaterial.hpp"
-#include "Core/Graphics/ALight.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Window.hpp"
 #include "Core/Camera.hpp"
@@ -35,10 +35,10 @@ namespace BeerEngine
 			_bumpID = _shader->getUniformLocation("bump");
 			_hasBumpID = _shader->getUniformLocation("hasBump");
 
-			_lightPosID = _shader->getUniformLocation("light.position");
-			_lightDirID = _shader->getUniformLocation("light.direction");
-			_lightIntensityID = _shader->getUniformLocation("light.intensity");
-			_lightColorID = _shader->getUniformLocation("light.color");
+//			_lightPosID = _shader->getUniformLocation("light.position");
+//			_lightDirID = _shader->getUniformLocation("light.direction");
+//			_lightIntensityID = _shader->getUniformLocation("light.intensity");
+//			_lightColorID = _shader->getUniformLocation("light.color");
 		}
 
 		void	AMaterial::bind(glm::mat4 &model)
@@ -88,13 +88,52 @@ namespace BeerEngine
 				_shader->uniform1i(_hasAlbedoID, 0);
 		}
 
-		void	AMaterial::bind(glm::mat4 &model, const ALight &light)
+		void	AMaterial::bind(glm::mat4 &model, ALight &light)
 		{
-			bind(model);
-			_shader->uniform3f(_lightPosID, light.getPosition());
-			_shader->uniform3f(_lightDirID, light.getDirection());
-			_shader->uniform4f(_lightColorID, light.getColor());
-			_shader->uniform1f(_lightIntensityID, light.getIntensity());
+			light.getShader().bind();
+			light.getShader().uniformMat(light.get_projectionShaderID(), Window::GetInstance()->getProjection3D());
+			glm::mat4 view = Camera::main->transform.getMat4(true);
+			light.getShader().uniformMat(light.get_viewShaderID(), view);
+			light.getShader().uniformMat(light.get_modelShaderID(), model);
+			// View Pos
+			glm::vec3 viewPos = Camera::main->transform.position;
+			light.getShader().uniform3f(light.get_viewPosID(), viewPos[0], viewPos[1], viewPos[2]);
+			glm::vec3 viewDir = Camera::main->transform.forward();
+			light.getShader().uniform3f(light.get_viewDirID(), viewDir[0], viewDir[1], viewDir[2]);
+
+			light.getShader().uniform4f(light.get_colorShaderID(), _color[0], _color[1], _color[2], _color[3]);
+
+			light.getShader().uniform1i(light.get_bumpID(), 2);
+			glActiveTexture(GL_TEXTURE2);
+			if (_bump != nullptr)
+			{
+				light.getShader().uniform1i(light.get_hasBumpID(), 1);
+				_bump->bind();
+			}
+			else
+				light.getShader().uniform1i(light.get_hasBumpID(), 0);
+
+			light.getShader().uniform1i(light.get_normalID(), 1);
+			glActiveTexture(GL_TEXTURE1);
+			if (_normal != nullptr)
+			{
+				light.getShader().uniform1i(light.get_hasNormalID(), 1);
+				_normal->bind();
+			}
+			else
+				light.getShader().uniform1i(light.get_hasNormalID(), 0);
+
+			light.getShader().uniform1i(light.get_albedoID(), 0);
+			glActiveTexture(GL_TEXTURE0);
+			if (_albedo != nullptr)
+			{
+				light.getShader().uniform1i(light.get_hasAlbedoID(), 1);
+				_albedo->bind();
+			}
+			else
+				light.getShader().uniform1i(light.get_hasAlbedoID(), 0);
+
+			light.bind();
 		}
 
 		AMaterial		&AMaterial::setColor(glm::vec4 color)
@@ -119,6 +158,11 @@ namespace BeerEngine
 		{
 			_bump = tex;
 			return (*this);
+		}
+
+		ShaderProgram	&AMaterial::getShader()
+		{
+			return (*_shader);
 		}
 
 		nlohmann::json	AMaterial::serialize()

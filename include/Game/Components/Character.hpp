@@ -65,6 +65,7 @@ namespace Game
 			unsigned int _maxBomb;
 			float _explosionSize;
 			glm::vec2 _direction;
+			float _rotation;
 			Game::Component::Map *map;
 
 			nlohmann::json	serialize();

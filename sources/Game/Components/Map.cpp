@@ -25,7 +25,7 @@ namespace Game
 			{
 				delete[] _map[y];
 			}
-			delete[]_map;
+			delete[] _map;
 		}
 
         void    Map::start(void)
@@ -131,7 +131,6 @@ namespace Game
 				{
 					bool spawnIA;
 					type = _map[row][col];
-					std::cout << "MAAP: " << type << std::endl;
 					switch (type)
 					{
 						case 1:
@@ -201,7 +200,12 @@ namespace Game
 				return (true);
 			for (Game::Component::IA *ia : _IAs)
 			{
-				if (worldToMap(ia->_gameObject->transform.position) == pos)
+				if (!ia->_gameObject)
+				{
+					std::cerr << "Potential segfault !" << std::endl;
+					return (false);
+				}
+				if (worldToMap(ia->_gameObject->transform.position) == pos) // *******  Segfault ******* //
 					return (true);
 			}
 			return (false);

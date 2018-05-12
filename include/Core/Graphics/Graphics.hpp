@@ -1,6 +1,10 @@
 #ifndef BE_CORE_GRAPHICS_HPP
 #define BE_CORE_GRAPHICS_HPP 1
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include "Core/Core.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
@@ -22,6 +26,11 @@ namespace BeerEngine
 			static ShaderProgram	*defaultShader;
 			static AMaterial		*defaultMaterial;
 			static ALight			*defaultLight;
+
+			static ShaderProgram	*ambiantShader;
+			static ShaderProgram	*directionalShader;
+			static ShaderProgram	*spotShader;
+
 			static void Load(void);
 			static void UnLoad(void);
 
@@ -30,7 +39,12 @@ namespace BeerEngine
 
 			static ShaderProgram *loadLineShader();
 
+			static ShaderProgram *loadAmbiantShader();
+			static ShaderProgram *loadDirectionalShader();
+			static ShaderProgram *loadSpotShader();
+
 			static Mesh	*OBJLoader(std::string path);
+			static Mesh *ModelLoader(std::string path);
 		};
 	}
 }

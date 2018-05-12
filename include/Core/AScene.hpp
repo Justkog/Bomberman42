@@ -64,11 +64,11 @@ namespace BeerEngine
 		}
 
         template<typename T, typename std::enable_if<std::is_base_of<Graphics::ALight, T>::value>::type* = nullptr>
-		T	*instantiate(void)
+		T	*instantiateLight(void)
 		{
 			std::cout << "Light added : " << uniqueID << std::endl;
 			T *c = new T(uniqueID, *this);
-			_lights.insert(std::pair<int, Graphics::ALight *>(uniqueID, c));
+			_lights.insert(std::pair<int, Graphics::ALight *>(uniqueID, static_cast<Graphics::ALight *>(c)));
             // _toStart.push_back(c);
             // _toStartUI.push_back(c);
             uniqueID++;

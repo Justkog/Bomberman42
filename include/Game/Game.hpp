@@ -11,6 +11,8 @@ namespace Game
 		enum ItemType {SpeedBoost, AddBomb, ExplosionBoost};
 		enum Objective {MoveTo, DropBomb, TakeBonus};
 
+		class GameManager;
+
 		class Bomb;
         class Breakable;
         class Character;
@@ -18,6 +20,11 @@ namespace Game
 		class Item;
 		class Map;
         class Player;
+
+		class UIThemeManager;
+		class SettingsMenu;
+		class InGameMenu;
+
 	}
 }
 

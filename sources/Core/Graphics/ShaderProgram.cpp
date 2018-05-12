@@ -46,7 +46,7 @@ namespace BeerEngine
 			// TEST DEBUG
 			GLint	result;
 			glGetShaderiv(_shaders[shaderIndex], GL_COMPILE_STATUS, &result);
-			if (result == 0)
+			if (result == GL_FALSE)
 			{
 				int		log_length;
 				glGetShaderiv(_shaders[shaderIndex], GL_INFO_LOG_LENGTH, &log_length);
@@ -55,14 +55,14 @@ namespace BeerEngine
 				char	*log = new char[log_length];
 				glGetShaderInfoLog(_shaders[shaderIndex], log_length, NULL, log);
 				if (shaderType == GL_VERTEX_SHADER)
-					std::cout << "Vertex Shader:" << std::endl;
+					std::cerr << "Vertex Shader:" << std::endl;
 				else if (shaderType == GL_FRAGMENT_SHADER)
-					std::cout << "Fragment Shader:" << std::endl;
+					std::cerr << "Fragment Shader:" << std::endl;
 				else if (shaderType == GL_GEOMETRY_SHADER)
-					std::cout << "Geometry Shader:" << std::endl;
+					std::cerr << "Geometry Shader:" << std::endl;
 				else
-					std::cout << "Other Shader:" << std::endl;
-				std::cout << log;
+					std::cerr << "Other Shader:" << std::endl;
+				std::cerr << log;
 				delete[] log;
 			}
 		}
@@ -89,7 +89,7 @@ namespace BeerEngine
 				{
 					char	*log = new char[log_length];
 					glGetProgramInfoLog(_program, log_length, NULL, log);
-					std::cout << log;
+					std::cerr << log;
 					delete[] log;
 				}
 			}
@@ -179,6 +179,11 @@ namespace BeerEngine
 			glUniform3f(id, x, y, z);
 		}
 
+		void			ShaderProgram::uniform3f(GLint id, glm::vec3 const &vec)
+		{
+			glUniform3f(id, vec[0], vec[1],vec[2]);
+		}
+
 		void			ShaderProgram::uniform3f(std::string const &name, glm::vec3 const &vec)
 		{
 			uniform3f(name, vec[0], vec[1],vec[2]);
@@ -205,6 +210,11 @@ namespace BeerEngine
 			glUniform4f(id, x, y, z, w);
 		}
 
+		void			ShaderProgram::uniform4f(GLint id, glm::vec4 const &vec)
+		{
+			glUniform4f(id, vec[0], vec[1], vec[2], vec[3]);
+		}
+
 		void			ShaderProgram::uniform4f(std::string const &name, float *data)
 		{
 			uniform4f(name, data[0], data[1], data[2], data[3]);
@@ -212,6 +222,7 @@ namespace BeerEngine
 
 		void			ShaderProgram::uniformMat(std::string const &name, glm::mat4 &mat)
 		{
+			// std::cout << name << std::endl;
 			GLint id = glGetUniformLocation(_program, name.c_str());
 			uniformMat(id, mat);
 		}

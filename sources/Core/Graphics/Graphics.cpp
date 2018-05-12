@@ -1,7 +1,9 @@
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
+
+#include <Core/Graphics/Lights/AmbiantLight.hpp>
 #include "tiny_obj_loader.h"
 #include "Core/Graphics/Graphics.hpp"
-#include "Core/Graphics/ALight.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/IO/FileUtils.hpp"
 
@@ -17,6 +19,10 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::defaultShader = nullptr;
 		AMaterial		*Graphics::defaultMaterial = nullptr;
 		ALight			*Graphics::defaultLight = nullptr;
+
+		ShaderProgram	*Graphics::ambiantShader = nullptr;
+		ShaderProgram	*Graphics::directionalShader = nullptr;
+		ShaderProgram	*Graphics::spotShader = nullptr;
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -176,6 +182,45 @@ namespace BeerEngine
 			return (shader);
 		}
 
+		ShaderProgram *Graphics::loadAmbiantShader()
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/ambiant_light_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/ambiant_light_f.glsl").c_str()
+			);
+			shader->compile();
+			return (shader);
+		}
+
+		ShaderProgram *Graphics::loadDirectionalShader()
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/directional_light_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/directional_light_f.glsl").c_str()
+			);
+			shader->compile();
+			return (shader);
+		}
+
+		ShaderProgram *Graphics::loadSpotShader()
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+						 BeerEngine::IO::FileUtils::LoadFile("shaders/light/ambiant_light_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+						 BeerEngine::IO::FileUtils::LoadFile("shaders/light/ambiant_light_f.glsl").c_str()
+			);
+			shader->compile();
+			return (shader);
+		}
+
 		void Graphics::Load(void)
 		{
 			// PLANE
@@ -195,8 +240,12 @@ namespace BeerEngine
 				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
 			);
 			defaultShader->compile();
+
+			ambiantShader = loadAmbiantShader();
+			directionalShader = loadDirectionalShader();
+
 			defaultMaterial = new AMaterial(defaultShader);
-			defaultLight = new ALight(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), 1.0f, glm::vec4(1.0, 1.0, 1.0, 1.0));
+			defaultLight = new AmbiantLight(0.2f, glm::vec4(0.8, 0.9, 1.0, 1.0));
 		}
 
 		void Graphics::UnLoad(void)
@@ -207,6 +256,10 @@ namespace BeerEngine
 			delete particleShader;
 			delete defaultShader;
 			delete defaultMaterial;
+			delete defaultLight;
+
+			delete ambiantShader;
+			delete directionalShader;
 		}
 
 		Mesh	*Graphics::OBJLoader(std::string path)
@@ -337,6 +390,89 @@ namespace BeerEngine
 			glDepthFunc(GL_LESS);
 			glDepthMask(true);
 			glDisable(GL_BLEND);
+		}
+
+		/*
+		 *	Model loader using Assimp
+		 */
+
+		Mesh	*Graphics::ModelLoader(std::string path)
+		{
+			Assimp::Importer importer;
+			const aiScene *scene = importer.ReadFile(path.c_str(), 
+										aiProcess_Triangulate |
+										aiProcess_FlipUVs | 
+										aiProcess_JoinIdenticalVertices); 
+			if (!scene)
+			{
+				std::cerr << "Invalid model file !" << std::endl;
+				exit(EXIT_FAILURE);
+			}
+
+			BeerEngine::Graphics::MeshBuilder builder;
+
+			bool useTexCoords = false;
+			for (std::size_t k = 0; k < scene->mNumMeshes; k++)
+			{
+				aiMesh *mesh = scene->mMeshes[k];
+
+				std::vector<glm::vec3>	positions;
+				std::vector<glm::vec3>	normals;
+				std::vector<glm::vec2>	texcoords;
+				
+				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
+				{
+					glm::vec3 position;
+					position.x = mesh->mVertices[i].x;
+					position.y = mesh->mVertices[i].y;
+					position.z = mesh->mVertices[i].z;
+					positions.push_back(position);
+
+					glm::vec3 normal;
+					normal.x = mesh->mNormals[i].x;
+					normal.y = mesh->mNormals[i].y;
+					normal.z = mesh->mNormals[i].z;
+					normals.push_back(normal);
+
+					if(mesh->HasTextureCoords(0))
+					{
+						useTexCoords = true;
+						glm::vec2 texcoord;
+						texcoord.x = mesh->mTextureCoords[0][i].x;
+						texcoord.y = 1.0 - mesh->mTextureCoords[0][i].y;
+						texcoords.push_back(texcoord);
+					}
+				}
+
+				for (std::size_t i = 0; i < mesh->mNumFaces; i++)
+				{
+					aiFace face = mesh->mFaces[i];
+					for (std::size_t j = 0; j < face.mNumIndices; j++)
+					{
+						int index = face.mIndices[j];
+
+						glm::vec3 position = positions[index];
+						builder.addVertice(position);
+
+						glm::vec3 normal = normals[index];
+						builder.addNormal(normal);
+
+						if(mesh->HasTextureCoords(0))
+						{
+							glm::vec2 texcoord = texcoords[index];
+							builder.addUV(texcoord);
+						}
+					}
+				}
+			}
+
+			if (useTexCoords)
+				builder.calculTangent();
+			
+			auto builtMesh = builder.build();
+			builtMesh->setSourcefile(path);
+
+			return (builtMesh);
 		}
 	}
 }

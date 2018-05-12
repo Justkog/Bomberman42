@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "Core/Audio/AudioClip.hpp"
 
 namespace BeerEngine

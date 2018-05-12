@@ -7,6 +7,7 @@
 # define MAINMENU_HPP
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IStartUI.hpp"
@@ -16,9 +17,6 @@ namespace Game
 {
 	namespace Component
 	{
-		class UIThemeManager;
-		class SettingsMenu;
-
 		class MainMenu : public BeerEngine::Component::Component, 
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IStartUI,

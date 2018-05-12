@@ -22,7 +22,8 @@ namespace Game
 
 		Item::~Item()
 		{
-			map->mapUpdate(_gameObject->transform.position, 0);
+			// segfault when the map gets destroyed before the player
+			// map->mapUpdate(_gameObject->transform.position, 0);
 		}
 
         void    Item::start(void)

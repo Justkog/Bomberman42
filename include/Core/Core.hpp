@@ -6,6 +6,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+// GLM
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <glm/vec2.hpp> // glm::vec2
@@ -17,6 +18,10 @@
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
+// ASSIMP : Model loader
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 #include <cstdlib>
 #include <iostream>
@@ -29,6 +34,8 @@
 #include <vector>
 #include <fstream>
 #include <functional>
+#include <thread>
+#include <mutex>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -94,17 +101,33 @@ namespace BeerEngine
 	}
 }
 
-#define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
-							static 	int componentRegisterer;\
-							static std::string type;
+/* For some reason on linux those two preprcessor cause a segfault */
+# ifdef __APPLE__
+#  define REGISTER_COMPONENT_HPP																						\
+		static int RegisterComponentType();																				\
+		static 	int componentRegisterer;																				\
+		static std::string type;
 
-#define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
-		{\
-			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
-			return (1);\
-		}\
-		\
-		int Class::componentRegisterer = Class::RegisterComponentType();\
+#  define REGISTER_COMPONENT_CPP(Class)																					\
+		int	Class::RegisterComponentType()																				\
+		{																												\
+			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;						\
+			return (1);																									\
+		}																												\
+		int Class::componentRegisterer = Class::RegisterComponentType();												\
 		std::string Class::type = typeid(Class).name();
+# else
+#  define REGISTER_COMPONENT_HPP																						\
+		static int RegisterComponentType();																				\
+		static 	int componentRegisterer;																				\
+		static std::string type;
 
+#  define REGISTER_COMPONENT_CPP(Class)																					\
+		int	Class::RegisterComponentType()																				\
+		{																												\
+			return (1);																									\
+		}																												\
+		int Class::componentRegisterer = Class::RegisterComponentType();												\
+		std::string Class::type = typeid(Class).name();
+# endif
 #endif

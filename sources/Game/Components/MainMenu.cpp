@@ -123,6 +123,7 @@ void MainMenu::renderUI(struct nk_context *ctx)
 			BeerEngine::Window::GetInstance()->closeRequest();
 	}
 	nk_end(ctx);
+
 	uiManager->resetToDefaultUI(ctx);
 }
 

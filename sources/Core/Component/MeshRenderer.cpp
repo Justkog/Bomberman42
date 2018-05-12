@@ -33,7 +33,6 @@ namespace BeerEngine
 			return setMesh(BeerEngine::Graphics::Graphics::OBJLoader(inputfile));
 		}
 
-
 		Graphics::AMaterial	*MeshRenderer::getMaterial(void)
 		{
 			return (_material);
@@ -54,17 +53,17 @@ namespace BeerEngine
 		{
 			if (_mesh != nullptr)
 			{
-				std::vector<Graphics::ALight*> lights = SceneManager::GetCurrent()->getLights();
+				std::vector<Graphics::ALight*> lights = SceneManager::GetCurrent(true)->getLights();
 				Graphics::AMaterial *mat = Graphics::Graphics::defaultMaterial;
 				if (_material != nullptr)
 					mat = _material;
-				mat->bind(_mat);
-				_mesh->render(renderMode, Graphics::Graphics::defaultLight);
+				mat->bind(_mat, *Graphics::Graphics::defaultLight);
+				_mesh->render(renderMode);
 				Graphics::Graphics::EnableForwardBlend();
 				for (Graphics::ALight *light : lights)
 				{
-					mat->bind(_mat);
-					_mesh->render(renderMode, light);
+					mat->bind(_mat, *light);
+					_mesh->render(renderMode);
 				}
 				Graphics::Graphics::DisableForwardBlend();
 			}
