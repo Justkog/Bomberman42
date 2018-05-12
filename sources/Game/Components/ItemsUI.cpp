@@ -141,6 +141,12 @@ void ItemsUI::update()
 		bombs = player->_character->_bombNb;
 		range = player->_character->_explosionSize;
 	}
+	else
+	{
+		speed = 0;
+		bombs = 0;
+		range = 0;
+	}
 }
 
 void ItemsUI::fixedUpdate() {}

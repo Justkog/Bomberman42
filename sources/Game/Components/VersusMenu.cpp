@@ -1,13 +1,8 @@
-#define NK_INCLUDE_FONT_BAKING
-#include "Game/Assets.hpp"
-#include "Core/Graphics/Texture.hpp"
-#include "Game/Components/UIThemeManager.hpp"
-#include "Game/Components/MainMenu.hpp"
 #include "Game/Components/VersusMenu.hpp"
-#include "Game/Components/SettingsMenu.hpp"
+#include "Game/Components/MainMenu.hpp"
+#include "Game/Components/UIThemeManager.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
-#include "Game/SceneTest.hpp"
 
 namespace Game
 {
@@ -19,18 +14,18 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*MainMenu::MainMenu ( void )
+/*VersusMenu::VersusMenu ( void )
 {
 	return ;
 }*/
 
-/*MainMenu::MainMenu ( MainMenu const & src )
+/*VersusMenu::VersusMenu ( VersusMenu const & src )
 {
 	*this = src;
 	return ;
 }*/
 
-MainMenu &				MainMenu::operator=( MainMenu const & rhs )
+VersusMenu &				VersusMenu::operator=( VersusMenu const & rhs )
 {
 	if (this != &rhs)
 	{
@@ -39,7 +34,7 @@ MainMenu &				MainMenu::operator=( MainMenu const & rhs )
 	return (*this);
 }
 
-MainMenu::~MainMenu ( void )
+VersusMenu::~VersusMenu ( void )
 {
 	return ;
 }
@@ -48,7 +43,7 @@ MainMenu::~MainMenu ( void )
 
 // CONSTRUCTOR POLYMORPHISM ######################################
 
-MainMenu::MainMenu(BeerEngine::GameObject *gameObject) :
+VersusMenu::VersusMenu(BeerEngine::GameObject *gameObject) :
 Component(gameObject)
 {
 	
@@ -58,7 +53,7 @@ Component(gameObject)
 
 // OVERLOAD OPERATOR #############################################
 
-std::ostream &				operator<<(std::ostream & o, MainMenu const & i)
+std::ostream &				operator<<(std::ostream & o, VersusMenu const & i)
 {
 	(void)i;
 	return (o);
@@ -68,30 +63,23 @@ std::ostream &				operator<<(std::ostream & o, MainMenu const & i)
 
 // PUBLIC METHOD #################################################
 
-void MainMenu::start()
+void VersusMenu::start()
 {
-	std::cout << "MainMenu start" << std::endl;
+	std::cout << "VersusMenu start" << std::endl;
+	maps.push_back({"level 1", "assets/scenes/level1.scene"});
+	maps.push_back({"level 2", "assets/scenes/level2.scene"});
+	maps.push_back({"level 3", "assets/scenes/level3.scene"});
 }
 
-void MainMenu::setUI(struct nk_context *ctx)
+void VersusMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
-	ctx->style.window = mWindow;
+	
 }
 
-void MainMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
-{
-	std::cout << "start UI main menu" << std::endl;
-	mWindow = uiManager->defaultWindow;
-
-	mWindow.fixed_background = nk_style_item_hide();
-	// mWindow.padding = nk_vec2(0, 0);
-	mWindow.spacing = nk_vec2(0, 10);
-}
-
-void MainMenu::renderUI(struct nk_context *ctx)
+void VersusMenu::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
-	setUI(ctx);
+
 	float menuWidth = 320;
 	float menuHeight = 375 + 5 * 10;
 	float xOffset = 0;
@@ -102,29 +90,25 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		menuWidth, 
 		menuHeight
 	);
-	if (nk_begin(ctx, "Map", window_rect, NK_WINDOW_NO_SCROLLBAR))
+	ctx->style.window.spacing = nk_vec2(0, 10);
+	if (nk_begin(ctx, "Versus", window_rect, NK_WINDOW_NO_SCROLLBAR))
 	{
 		nk_layout_row_dynamic(ctx, 75, 1);
 
-		if (nk_button_label(ctx, "Adventure"))
+		for (auto it = maps.begin(); it != maps.end(); it++)
 		{
-			fprintf(stdout, "Adventure pressed\n");
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
+			if (nk_button_label(ctx, it->name.c_str()))
+				BeerEngine::SceneManager::LoadScene(it->scenePath);
 		}
-		if (nk_button_label(ctx, "Versus"))
+		if (nk_button_label(ctx, "Random"))
+		{
+			// TODO
+		}
+		if (nk_button_label(ctx, "Back"))
 		{
 			this->setActive(false);
-			versusMenu->setActive(true);
+			mainMenu->setActive(true);
 		}
-		if (nk_button_label(ctx, "Settings"))
-		{
-			this->setActive(false);
-			settingsMenu->setActive(true);
-		}
-		if (nk_button_label(ctx, "Credits"))
-			fprintf(stdout, "Credits pressed\n");
-		if (nk_button_label(ctx, "Exit"))
-			BeerEngine::Window::GetInstance()->closeRequest();
 	}
 	nk_end(ctx);
 

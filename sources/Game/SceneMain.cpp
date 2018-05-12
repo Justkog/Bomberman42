@@ -14,6 +14,7 @@
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
 #include "Game/Components/MainMenu.hpp"
+#include "Game/Components/VersusMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/BackgroundDrawer.hpp"
@@ -72,19 +73,24 @@ void    SceneMain::init(void)
 	auto uiManager = menuGO->AddComponent<Game::Component::UIThemeManager>();
 	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
+	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
+	mainMenu->versusMenu = versusMenu;
 	mainMenu->settingsMenu = settingsMenu;
+	versusMenu->uiManager = uiManager;
+	versusMenu->mainMenu = mainMenu;
 	settingsMenu->uiManager = uiManager;
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
 	settingsMenu->settingsManager = settings;
 	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
-	settingsMenu->setActive(false);
 	// mainMenu->setActive(false);
+	versusMenu->setActive(false);
+	settingsMenu->setActive(false);
 	inputsMenu->setActive(false);
 
 	this->save("main.scene");

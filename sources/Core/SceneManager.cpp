@@ -1,5 +1,6 @@
 #include "Core/SceneManager.hpp"
 #include <thread>
+#include "Core/GenericScene.hpp"
 
 namespace BeerEngine
 {
@@ -32,5 +33,13 @@ namespace BeerEngine
 			_Next = nullptr;
 		}
 		return (_Current);
+	}
+
+	void         SceneManager::LoadScene(std::string path)
+	{
+		auto nextScene = new GenericScene();
+		nextScene->load(path);
+		nextScene->init();
+		_Next = nextScene;
 	}
 }
