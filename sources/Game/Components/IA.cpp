@@ -58,8 +58,8 @@ namespace Game
                     switch (_type)
                     {
                         case ObjectiveType::DropBomb:
+                        case ObjectiveType::KillEnemy:
                             _character->dropBomb();
-
                         break;
 
                         case ObjectiveType::MoveTo:
@@ -117,7 +117,7 @@ namespace Game
             return (true);
         }
 
-        int     IA::checkExplosionRay(glm::vec3 pos, glm::vec3 dir)
+        int     IA::checkExplosionRay(glm::vec3 pos, glm::vec3 dir, ObjectiveType &type)
         {
             BeerEngine::Physics::RaycastHit hit;
             int val = 0;
@@ -131,59 +131,40 @@ namespace Game
                 if (breakable && !character && !avoidAllExplosions(map->worldToMap(hit.collider->_gameObject->transform.position), 1))
                     val -= 6;
                 if (breakable && hit.collider->_gameObject != _gameObject)
+                {
                     val += 6;
+                    type = ObjectiveType::DropBomb;
+                }
                 if (character && hit.collider->_gameObject != _gameObject)
-                    val += 6;
+                {
+                    val += 12;
+                    type = ObjectiveType::KillEnemy;
+                }
                 if (item)
                     val -= 15;
             }
             return (val);
         }
 
-        int     IA::checkExplosionZone(glm::vec2 pos)
+        int     IA::checkExplosionZone(glm::vec2 pos, ObjectiveType &type)
         {
             BeerEngine::Physics::RaycastHit hit;
             int val = 0;
 
-            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(_character->_explosionSize, 0, 0));
-            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(-_character->_explosionSize, 0, 0));
-            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(0, 0, _character->_explosionSize));
-            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(0, 0, -_character->_explosionSize));
+            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(_character->_explosionSize, 0, 0), type);
+            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(-_character->_explosionSize, 0, 0), type);
+            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(0, 0, _character->_explosionSize), type);
+            val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(0, 0, -_character->_explosionSize), type);
             return (val);
         }
-
-        // int     IA::getObjectiveValue(glm::vec2 pos, std::vector<glm::vec2> *path)
-        // {
-        //     if (map->canWalk(pos) && avoidAllExplosions(pos) && findPath(pos, path))
-        //     {
-        //         if (map->_map[y][x] == 9)
-        //         {
-        //             tmpVal += 15;
-        //             tmpObj = ObjectiveType::TakeBonus;
-        //         }
-        //         else if (_character->_bombNb > 0)
-        //         {
-        //             tmpVal += checkExplosionZone(pos);
-        //             tmpObj = tmpVal > 0 ? ObjectiveType::DropBomb : ObjectiveType::MoveTo;
-        //         }
-        //         tmpVal -= path.size();
-        //         if (tmpVal > val)
-        //         {
-        //             target = pos;
-        //             objective = tmpObj;
-        //             val = tmpVal;
-        //         }
-        //         else
-        //             path.clear();
-        //     }
-        // }
 
         int    IA::findObjective(bool save)
         {
             ObjectiveType objective = ObjectiveType::MoveTo;
             std::vector<glm::vec2> path;
 			glm::vec2 target(0);
-            int val = avoidAllExplosions(map->worldToMap(_gameObject->transform.position)) ? 0 : -1000;
+            glm::vec2 mapPos(map->worldToMap(_gameObject->transform.position));
+            int val = avoidAllExplosions(mapPos) ? 0 : -1000;
 
             for (int y = 0; y < map->_sizeY; ++y)
             {
@@ -192,7 +173,7 @@ namespace Game
                     int tmpVal = 0;
                     ObjectiveType tmpObj = ObjectiveType::MoveTo;
 
-                    if (map->canWalk(glm::vec2(x, y)) && avoidAllExplosions(glm::vec2(x, y)) && findPath(glm::vec2(x, y), &path))
+                    if (map->canWalk(glm::vec2(x, y)) && avoidAllExplosions(glm::vec2(x, y)))
                     {
                         if (map->_map[y][x] == 9)
                         {
@@ -200,10 +181,9 @@ namespace Game
                             tmpObj = ObjectiveType::TakeBonus;
                         }
                         else if (_character->_bombNb > 0)
-                        {
-                            tmpVal += checkExplosionZone(glm::vec2(x, y));
-                            tmpObj = tmpVal > 0 ? ObjectiveType::DropBomb : ObjectiveType::MoveTo;
-                        }
+                            tmpVal += checkExplosionZone(glm::vec2(x, y), tmpObj);
+                        if (tmpVal > val - (std::abs(mapPos.x - target.x) + std::abs(mapPos.y - target.y)) && !findPath(glm::vec2(x, y), &path))
+                            continue;
                         tmpVal -= path.size();
                         if (tmpVal > val)
                         {
@@ -261,6 +241,8 @@ namespace Game
             {
                 _val++;
                 _path.erase(_path.begin());
+                if (_type == ObjectiveType::KillEnemy)
+                    return (false);
             }
             dir = map->mapToWorld(_path[0]) - _transform.position;
             if (!canMove(dir))
@@ -441,6 +423,10 @@ namespace Game
 
                     case ObjectiveType::TakeBonus:
                         ss << "TakeBonus";
+                    break;
+
+                    case ObjectiveType::KillEnemy:
+                        ss << "KillEnemy";
                     break;
                 }
                 nk_layout_row_dynamic(ctx, 20, 1);

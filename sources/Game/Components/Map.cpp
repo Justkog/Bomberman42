@@ -104,7 +104,7 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			if (_map[y][x] == 2 && value == 0 && !(rand() % 2))
+			if (_map[y][x] == 2 && value == 0 && !(rand() % 10))
 			{
 				_map[y][x] = I;
 				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));

@@ -179,7 +179,7 @@
                         0.0,
                         0.0
                     ],
-                    "explosionSize": 2.0,
+                    "explosionSize": 1.0,
                     "speed": 2.0
                 },
                 {
@@ -229,7 +229,7 @@
                     0.0
                 ],
                 "position": [
-                    -7.0,
+                    7.0,
                     0.5,
                     12.0
                 ],
@@ -1815,113 +1815,6 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
-                    "isTrigger": false,
-                    "radius": 0.5
-                },
-                {
-                    "componentClass": "N4Game9Component9BreakableE"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/player2.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "bombNB": 1,
-                    "componentClass": "N4Game9Component9CharacterE",
-                    "direction": [
-                        0.0,
-                        0.0
-                    ],
-                    "explosionSize": 2.0,
-                    "speed": 2.0
-                },
-                {
-                    "componentClass": "N4Game9Component2IAE"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
-                    "kinematic": 2,
-                    "mass": 1.0,
-                    "velocity": [
-                        0.0,
-                        0.0
-                    ]
-                }
-            ],
-            "id": 25,
-            "name": "IA",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
-                    7.0,
-                    0.5,
-                    12.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "material": {
                         "albedo": {
@@ -1980,7 +1873,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 26,
+            "id": 25,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -2068,7 +1961,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 27,
+            "id": 26,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -2156,7 +2049,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 28,
+            "id": 27,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -2244,7 +2137,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 29,
+            "id": 28,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -2332,7 +2225,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 30,
+            "id": 29,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -2343,6 +2236,94 @@
                 ],
                 "position": [
                     1.0,
+                    0.5,
+                    12.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "isTrigger": false,
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                }
+            ],
+            "id": 30,
+            "name": "destroyable block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
                     0.5,
                     12.0
                 ],
@@ -2430,7 +2411,7 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
+                    -1.0,
                     0.5,
                     12.0
                 ],
@@ -2518,7 +2499,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    -2.0,
                     0.5,
                     12.0
                 ],
@@ -2606,7 +2587,7 @@
                     0.0
                 ],
                 "position": [
-                    -2.0,
+                    -3.0,
                     0.5,
                     12.0
                 ],
@@ -2694,7 +2675,7 @@
                     0.0
                 ],
                 "position": [
-                    -3.0,
+                    -4.0,
                     0.5,
                     12.0
                 ],
@@ -2782,7 +2763,7 @@
                     0.0
                 ],
                 "position": [
-                    -4.0,
+                    -5.0,
                     0.5,
                     12.0
                 ],
@@ -2802,10 +2783,18 @@
         {
             "components": [
                 {
+                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
+                    "isTrigger": false,
+                    "radius": 0.5
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                },
+                {
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "material": {
                         "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                            "sourceFile": "assets/textures/player2.png"
                         },
                         "bump": null,
                         "color": [
@@ -2849,19 +2838,30 @@
                     ]
                 },
                 {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "isTrigger": false,
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
+                    "bombNB": 1,
+                    "componentClass": "N4Game9Component9CharacterE",
+                    "direction": [
+                        0.0,
+                        0.0
+                    ],
+                    "explosionSize": 1.0,
+                    "speed": 2.0
                 },
                 {
-                    "componentClass": "N4Game9Component9BreakableE"
+                    "componentClass": "N4Game9Component2IAE"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": 2,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 36,
-            "name": "destroyable block",
+            "name": "IA",
             "transform": {
                 "parent": null,
                 "pivot": [
@@ -2870,7 +2870,7 @@
                     0.0
                 ],
                 "position": [
-                    -5.0,
+                    -7.0,
                     0.5,
                     12.0
                 ],
@@ -16074,7 +16074,7 @@
                         0.0,
                         0.0
                     ],
-                    "explosionSize": 2.0,
+                    "explosionSize": 1.0,
                     "speed": 2.0
                 },
                 {
@@ -17149,7 +17149,7 @@
                         0.0,
                         0.0
                     ],
-                    "explosionSize": 2.0,
+                    "explosionSize": 1.0,
                     "speed": 2.0
                 },
                 {

@@ -20,15 +20,6 @@ namespace Game
 {
 	namespace Component
 	{
-
-		struct Objective
-		{
-			glm::vec2 pos;
-			ObjectiveType type;
-			std::vector<glm::vec2> path;
-			int val;
-		};
-
 		class IA : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
@@ -47,8 +38,8 @@ namespace Game
 			bool    canMove(glm::vec3 dir);
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);
 			bool    avoidAllExplosions(glm::vec2 pos, int offset = 0);
-			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir);
-			int     checkExplosionZone(glm::vec2 pos);
+			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir, ObjectiveType &type);
+			int     checkExplosionZone(glm::vec2 pos, ObjectiveType &type);
 			int		findObjective(bool save = true);
 			bool    moveToObjective(void);
 			bool    moveToNextCell(void);
