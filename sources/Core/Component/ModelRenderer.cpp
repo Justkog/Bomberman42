@@ -19,7 +19,9 @@ namespace BeerEngine
 		ModelRenderer::ModelRenderer(GameObject *gameObject) :
 			Component(gameObject),
 			renderMode(GL_TRIANGLES),
-			_assimpScene(nullptr)
+			_assimpScene(nullptr),
+			_animationTime(0),
+			_playAnimation(false)
 		{}
 
 		ModelRenderer	&ModelRenderer::load(const std::string &file)
@@ -33,7 +35,10 @@ namespace BeerEngine
 			}
 
 			for (int i = 0; i < _scene->mNumAnimations; i++)
+			{
+				_animations[_scene->mAnimations[i]->mName.data] = i;
 				std::cout << "Animation: " << _scene->mAnimations[i]->mName.data << std::endl;
+			}
 
 			aiMatrix4x4 globalInverseTransform = _scene->mRootNode->mTransformation;
 			globalInverseTransform = globalInverseTransform.Inverse();
@@ -151,7 +156,9 @@ namespace BeerEngine
 
 			float ticksPerSecond = _scene->mAnimations[_currentAnimation]->mTicksPerSecond != 0 ? _scene->mAnimations[_currentAnimation]->mTicksPerSecond : 25.0f;
 			float timeInTicks = timeInSeconds * ticksPerSecond;
-			float animationTime = fmod(timeInTicks, _scene->mAnimations[_currentAnimation]->mDuration);
+			float animationTime = timeInTicks >= _scene->mAnimations[_currentAnimation]->mDuration ? _scene->mAnimations[_currentAnimation]->mDuration - 1 : timeInTicks;
+			if (_loopAnimation)
+				animationTime = fmod(timeInTicks, _scene->mAnimations[_currentAnimation]->mDuration);
 			readNodes(animationTime, _scene->mRootNode, identity);
 			transforms.resize(_numBones);
 			for (uint i = 0 ; i < _numBones ; i++)
@@ -286,6 +293,52 @@ namespace BeerEngine
 			delete[] wBuffer;
 		}
 
+		void ModelRenderer::setAnimation(const std::string &animation)
+		{
+			if (_animations.find(animation) == _animations.end())
+				return;
+			_currentAnimation = _animations[animation];
+		}
+
+		void ModelRenderer::setAnimation(int id)
+		{
+			if (id >= _scene->mNumAnimations)
+				return;
+			_currentAnimation = id;
+		}
+
+		void ModelRenderer::setLoopAnimation(bool loop)
+		{
+			_loopAnimation = loop;
+		}
+
+		void ModelRenderer::playAnimation()
+		{
+			_playAnimation = true;
+		}
+
+		void ModelRenderer::stopAnimation()
+		{
+			_playAnimation = false;
+		}
+
+		void ModelRenderer::resetAnimation()
+		{
+			_animationTime = 0;
+		}
+
+		double ModelRenderer::getAnimationDuration()
+		{
+			if (!_scene->HasAnimations())
+				return 0.0;
+			return _scene->mAnimations[_currentAnimation]->mDuration;
+		}
+
+		void ModelRenderer::setAnimationTime(double time)
+		{
+			_animationTime = time;
+		}
+
 		void ModelRenderer::renderUpdate(void)
 		{
 			_mat = _gameObject->transform.getMat4();
@@ -293,23 +346,21 @@ namespace BeerEngine
 
 		void ModelRenderer::render(void)
 		{
+			if (_materials.empty())
+				return;
+
 			if (_scene->HasAnimations())
 			{
-				static float t = 0;
-				t += Time::GetDeltaTime() * 3;
-
-				static float t2 = 0;
-				t2 += Time::GetDeltaTime() * 3;
-
-				float ticksPerSecond = _scene->mAnimations[_currentAnimation]->mTicksPerSecond != 0 ?
-									_scene->mAnimations[_currentAnimation]->mTicksPerSecond : 25.0f;
-
-				if (t2 * ticksPerSecond >= _scene->mAnimations[_currentAnimation]->mDuration)
+				if (_playAnimation)
 				{
-					_currentAnimation = (_currentAnimation + 1) % _scene->mNumAnimations;
-					t2 = 0;
+					_animationTime += Time::GetDeltaTime();
 				}
-				boneTransform(t, _transforms);
+				static float lastAnimationTime = _animationTime;
+				if (_playAnimation || _animationTime != lastAnimationTime)
+				{
+					boneTransform(_animationTime, _transforms);
+					lastAnimationTime = _animationTime;
+				}
 			}
 
 			_materials[0]->bind(_mat);

@@ -1,3 +1,4 @@
+#include <Core/Component/ModelRenderer.hpp>
 #include "Game/Components/Character.hpp"
 #include "Core/Time.hpp"
 #include "Core/GameObject.hpp"
@@ -32,12 +33,29 @@ namespace Game
         void    Character::fixedUpdate(void)
         {
             BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
-            if (rb2d)
+			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
+
+			if (rb2d)
             {
                 if (_direction == glm::vec2(0))
-                    rb2d->velocity = glm::vec2(0);
+				{
+					rb2d->velocity = glm::vec2(0);
+					if (model)
+					{
+//						model->stopAnimation();
+					}
+				}
                 else
-                    rb2d->velocity = glm::normalize(_direction) * _speed;
+				{
+					rb2d->velocity = glm::normalize(_direction) * _speed;
+					if (model)
+					{
+//						model->setAnimation(2);
+//						model->setLoopAnimation(true);
+//						model->playAnimation();
+						_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
+					}
+				}
             }
             _direction = glm::vec2(0, 0);
         }
@@ -58,18 +76,22 @@ namespace Game
             {
                 case Direction::Up:
                     _direction += glm::vec2(0, 1);
+					_rotation = 0;
                     break;
                 
                 case Direction::Down:
                     _direction += glm::vec2(0, -1);
-                    break;
+					_rotation = 180;
+					break;
                 
                 case Direction::Left:
                     _direction += glm::vec2(1, 0);
-                    break;
+					_rotation = 90;
+					break;
                 
                 case Direction::Right:
                     _direction += glm::vec2(-1, 0);
+					_rotation = 270;
                     break;
             }
         }

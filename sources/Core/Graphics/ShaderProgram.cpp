@@ -46,7 +46,7 @@ namespace BeerEngine
 			// TEST DEBUG
 			GLint	result;
 			glGetShaderiv(_shaders[shaderIndex], GL_COMPILE_STATUS, &result);
-			if (result == 0)
+			if (result == GL_FALSE)
 			{
 				int		log_length;
 				glGetShaderiv(_shaders[shaderIndex], GL_INFO_LOG_LENGTH, &log_length);
@@ -55,14 +55,14 @@ namespace BeerEngine
 				char	*log = new char[log_length];
 				glGetShaderInfoLog(_shaders[shaderIndex], log_length, NULL, log);
 				if (shaderType == GL_VERTEX_SHADER)
-					std::cout << "Vertex Shader:" << std::endl;
+					std::cerr << "Vertex Shader:" << std::endl;
 				else if (shaderType == GL_FRAGMENT_SHADER)
-					std::cout << "Fragment Shader:" << std::endl;
+					std::cerr << "Fragment Shader:" << std::endl;
 				else if (shaderType == GL_GEOMETRY_SHADER)
-					std::cout << "Geometry Shader:" << std::endl;
+					std::cerr << "Geometry Shader:" << std::endl;
 				else
-					std::cout << "Other Shader:" << std::endl;
-				std::cout << log;
+					std::cerr << "Other Shader:" << std::endl;
+				std::cerr << log;
 				delete[] log;
 			}
 		}
@@ -89,7 +89,7 @@ namespace BeerEngine
 				{
 					char	*log = new char[log_length];
 					glGetProgramInfoLog(_program, log_length, NULL, log);
-					std::cout << log;
+					std::cerr << log;
 					delete[] log;
 				}
 			}

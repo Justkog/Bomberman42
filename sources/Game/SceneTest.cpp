@@ -73,6 +73,14 @@ void    SceneTest::init(void)
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
 	);
 	shader->compile();
+	BeerEngine::Graphics::ShaderProgram *animShader = new BeerEngine::Graphics::ShaderProgram(2);
+	animShader->load(0, GL_VERTEX_SHADER,
+		BeerEngine::IO::FileUtils::LoadFile("../shaders/model_v.glsl").c_str()
+	);
+	animShader->load(1, GL_FRAGMENT_SHADER,
+		BeerEngine::IO::FileUtils::LoadFile("../shaders/model_f.glsl").c_str()
+	);
+	animShader->compile();
 	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
@@ -133,15 +141,24 @@ void    SceneTest::init(void)
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";
-	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+//	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/castle_guard.fbx");
+//	modelRenderer->load("assets/models/test.fbx");
+	modelRenderer->setAnimation(1);
+	modelRenderer->setLoopAnimation(true);
+	modelRenderer->playAnimation();
+//	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
-	meshRenderer->setMaterial(playerMat);
-	playerGO->transform.scale = glm::vec3(1, 1, 1);
+	modelRenderer->addMaterial(0, playerMat);
+//	meshRenderer->setMaterial(playerMat);
+//	playerGO->transform.position = glm::vec3(0, 0, 0);
+	playerGO->transform.scale = glm::vec3(0.006, 0.006, 0.006);
+//	playerGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
-	playerGO->AddComponent<Game::Component::Breakable>();
+	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
@@ -153,6 +170,9 @@ void    SceneTest::init(void)
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;
 	player->itemSrcAudio = itemAs;
+	modelRenderer->setAnimation(0);
+	modelRenderer->setLoopAnimation(true);
+	modelRenderer->playAnimation();
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -245,26 +265,21 @@ void    SceneTest::init(void)
 	// ==================
 	// === ANIMATIONS ===
 	// ==================
-	BeerEngine::Graphics::ShaderProgram *animShader = new BeerEngine::Graphics::ShaderProgram(2);
-	animShader->load(0, GL_VERTEX_SHADER,
-		BeerEngine::IO::FileUtils::LoadFile("shaders/main.vert").c_str()
-	);
-	animShader->load(1, GL_FRAGMENT_SHADER,
-		BeerEngine::IO::FileUtils::LoadFile("shaders/main.frag").c_str()
-	);
-	animShader->compile();
 
 	auto dragon = instantiate<BeerEngine::GameObject>();
 	dragon->name = "dragon";
 	modelRenderer = dragon->AddComponent<BeerEngine::Component::ModelRenderer>();
 	modelRenderer->load("assets/models/BlackDragon/Dragon_Baked_Actions.fbx");
-	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_col2.jpg");
+	auto *dragonTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/BlackDragon/textures/Dragon_Bump_Col2.jpg");
 	auto *dragonMat = new BeerEngine::Graphics::AMaterial(animShader);
 	dragonMat->setAlbedo(dragonTex);
 	modelRenderer->addMaterial(0, dragonMat);
 	dragon->transform.position = glm::vec3(0, 8, 5);
 	dragon->transform.scale = glm::vec3(0.0005, 0.0005, 0.0005);
 	dragon->transform.rotation = glm::vec3(0, 0, 0);
+	modelRenderer->setAnimation(1);
+	modelRenderer->playAnimation();
+	modelRenderer->setLoopAnimation(true);
 
 	auto Old = instantiate<BeerEngine::GameObject>();
 	Old->name = "old";

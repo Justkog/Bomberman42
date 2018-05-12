@@ -8,14 +8,6 @@
 #include "Core/Mathf.hpp"
 #include "Core/Time.hpp"
 
-// #include <maths/Vec3.hpp>
-// #include <maths/Vec2.hpp>
-// #include <vector>
-// #include <maths/Mat4.hpp>
-// #include "Shader.hpp"
-// #include "ModelSkeleton.hpp"
-// #include "ModelAnimation.hpp"
-
 namespace BeerEngine
 {
 	namespace Component
@@ -61,7 +53,11 @@ namespace BeerEngine
 			std::map<int, Graphics::AMaterial*>	_materials;
 			std::map<Graphics::Mesh*, int>		_materialIndices;
 			glm::mat4							_mat;
+			std::map<std::string, int>			_animations;
 			int									_currentAnimation;
+			bool 								_playAnimation;
+			bool 								_loopAnimation;
+			float 								_animationTime;
 
 			const aiScene		*_scene;
 
@@ -95,6 +91,15 @@ namespace BeerEngine
 			ModelRenderer	&addMaterial(const int &index, Graphics::AMaterial *material);
 			Graphics::AMaterial	*getMaterial(const int &index);
 			const aiScene	*getScene() const { return _scene; };
+
+			void setAnimation(const std::string &animation);
+			void setAnimation(int id);
+			void setLoopAnimation(bool loop);
+			void playAnimation();
+			void stopAnimation();
+			void resetAnimation();
+			double getAnimationDuration();
+			void setAnimationTime(double time);
 
 			virtual void renderUpdate();
 			virtual void render();

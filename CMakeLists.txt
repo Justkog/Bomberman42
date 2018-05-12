@@ -46,6 +46,7 @@ set(JSON_INCLUDE_DIRS dependencies/json/single_include)
 set(STB_INCLUDE_DIR dependencies/stb)
 
 set(SOURCES
+        sources/
         dependencies/sigslot/src/signal.cpp
         sources/Game/SceneMain.cpp
         sources/Game/Components/CameraController.cpp
@@ -91,7 +92,6 @@ set(SOURCES
         sources/Core/SceneManager.cpp
         sources/Core/Input.cpp
         sources/Core/Physics/Physics.cpp
-        sources/Core/BeerRoutine
         sources/Core/BeerRoutine/ARoutineRunner.cpp
         sources/Core/BeerRoutine/BeerRoutine.cpp
         sources/Core/AScene.cpp
@@ -109,6 +109,7 @@ set(SOURCES
         )
 
 set(HEADERS
+        include/
         dependencies/sigslot/src/signal.h
         include/Game/Components/BackgroundDrawer.hpp
         include/Game/Components/Item.hpp
@@ -263,3 +264,10 @@ file(COPY models DESTINATION .)
 file(COPY shaders DESTINATION .)
 file(COPY Prefabs DESTINATION .)
 file(COPY testSettings.json DESTINATION .)
+
+add_custom_command(TARGET ${NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:${NAME}>/assets)
+add_custom_command(TARGET ${NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/shaders $<TARGET_FILE_DIR:${NAME}>/shaders)

@@ -6,6 +6,7 @@ namespace BeerEngine
 	{
 		std::string  FileUtils::LoadFile(std::string const &path)
 		{
+			std::cout << "Loading: " << path << "\n";
 			std::ifstream ifs(path);
 			return std::string((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
 		}

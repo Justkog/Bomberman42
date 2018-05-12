@@ -200,7 +200,12 @@ namespace Game
 				return (true);
 			for (Game::Component::IA *ia : _IAs)
 			{
-				if (worldToMap(ia->_gameObject->transform.position) == pos)
+				if (!ia->_gameObject)
+				{
+					std::cerr << "Potential segfault !" << std::endl;
+					return (false);
+				}
+				if (worldToMap(ia->_gameObject->transform.position) == pos) // *******  Segfault ******* //
 					return (true);
 			}
 			return (false);
