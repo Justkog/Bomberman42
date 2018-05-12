@@ -86,6 +86,7 @@ namespace BeerEngine
 		if (it != _toDisable.end())
 		{
 			// std::cout << "comp was about to be disabled" << std::endl;
+			comp->_isActive = true;
 			_toDisable.erase(it);
 			return;
 		}
@@ -101,7 +102,8 @@ namespace BeerEngine
 		auto it = std::find(_toEnable.begin(), _toEnable.end(), comp);
 		if (it != _toEnable.end())
 		{
-			// std::cout << "comp was about to be enabled" << std::endl;
+			std::cout << "comp was about to be enabled" << std::endl;
+			comp->_isActive = false;
 			_toEnable.erase(it);
 			return;
 		}
@@ -280,6 +282,7 @@ namespace BeerEngine
 
 	void GameObject::deserialize(const nlohmann::json & j)
     {
+		this->_uniqueID = j.at("id");
 		this->name = j.at("name");
 		this->transform = Transform::Deserialize(j.at("transform"));
 		auto components = j.at("components");
@@ -290,8 +293,9 @@ namespace BeerEngine
 
 	GameObject * GameObject::Deserialize(const nlohmann::json & j, AScene &scene)
     {
-		int id = j.at("id");
-		auto go = new GameObject(id, scene);
+		// int id = j.at("id");
+		auto go = scene.instantiate<GameObject>();
+		// auto go = new GameObject(id, scene);
 		go->deserialize(j);
 		return go;
     }

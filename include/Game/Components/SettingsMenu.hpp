@@ -31,14 +31,14 @@ namespace Game
 								public BeerEngine::Component::IUI
 		{
 		public:
-			float		windowHeight;
-			float		windowWidth;
-			float		musicVolume;
-			float		soundVolume;
-			int			mode;
+			float			windowHeight;
+			float			windowWidth;
+			float			musicVolume;
+			float			soundVolume;
+			int				mode;
 
-			MainMenu	*mainMenu;
-			InputsMenu	*inputsMenu;
+			MainMenu		*mainMenu;
+			InputsMenu		*inputsMenu;
 			UIThemeManager	*uiManager;
 			Settings		*settingsManager;
 
@@ -61,6 +61,10 @@ namespace Game
 			void saveSettings();
 			void resetSettings();
 	
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 
 	};

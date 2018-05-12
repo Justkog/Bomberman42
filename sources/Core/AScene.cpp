@@ -182,6 +182,7 @@ namespace BeerEngine
         std::cout << "deserializing " << filePath << "\n";
         auto j = nlohmann::json::parse(content);
         this->deserialize(j);
+		JsonSerializable::ExecuteCallBacks();
     }
 
     nlohmann::json	AScene::serialize()
@@ -198,8 +199,7 @@ namespace BeerEngine
 		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 			auto goJson = it.value();
 			auto go = GameObject::Deserialize(goJson, *this);
-			this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
-			go->start();
+			// this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
 		}
 	}
 

@@ -113,17 +113,24 @@ namespace Game
 			}
 		}
 
-
         nlohmann::json	Player::serialize()
 		{
-			return nlohmann::json {
-				{"componentClass", typeid(Player).name()},
-			};
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+				// {"character", _character},
+				// {"srcAudio", srcAudio},
+				// {"itemSrcAudio", itemSrcAudio},
+			});
+			return j;
 		}
 
         void Player::deserialize(const nlohmann::json & j)
     	{
-
+			Component::deserialize(j);
+			// this->_character = j.at("character");
+			// this->srcAudio = j.at("srcAudio");
+			// this->itemSrcAudio = j.at("itemSrcAudio");
 		}
 
 		void Player::playStepSound()

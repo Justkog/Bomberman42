@@ -129,15 +129,18 @@ void    Game::Component::Settings::start(void) {
 
 nlohmann::json	Game::Component::Settings::serialize()
 {
-	return nlohmann::json {
-		{"componentClass", typeid(Game::Component::Settings).name()},
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
 		{"filePath", filePath},
-	};
+	});
+	return j;
 }
 
 void Game::Component::Settings::deserialize(const nlohmann::json & j)
 {
-	
+	Component::deserialize(j);
+	this->filePath = j.at("filePath");
 }
 
 REGISTER_COMPONENT_CPP(Game::Component::Settings)

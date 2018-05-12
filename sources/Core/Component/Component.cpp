@@ -16,9 +16,9 @@ namespace BeerEngine
 		add_component_type Component::typeToAddComponent = Component::createAddMap();
 
 		Component::Component(GameObject *gameObject) :
-			_gameObject(gameObject), _isActive(false)
+			_gameObject(gameObject), _isActive(true)
 		{
-			setActive(true);
+			// setActive(true);
 		}
 
 		void	Component::setActive(bool state)
@@ -31,21 +31,24 @@ namespace BeerEngine
 
 		nlohmann::json	Component::serialize()
 		{
-			return nlohmann::json {
-				{"componentClass", "Component"}
-			};
+			auto j = JsonSerializable::serialize();
+			j.merge_patch({
+				{"componentClass", "Component"},
+				{"enabled", _isActive},
+			});
+			return j;
 		}
 
 		void Component::deserialize(const nlohmann::json & j)
 		{
-
+			JsonSerializable::deserialize(j);
+			this->setActive(j.at("enabled"));
 		}
 
 		Component * Component::Deserialize(const nlohmann::json & j, GameObject *go)
 		{
 			// std::cout << "deserialize component : " << j << "\n";
 			std::string type = j.at("componentClass");
-			// std::cout << "after" << "\n";
 			auto mapIt = Component::Component::typeToAddComponent.find(type);
 			if(mapIt != Component::Component::typeToAddComponent.end())
 			{

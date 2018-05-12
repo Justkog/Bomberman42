@@ -136,6 +136,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		windowHeight = BeerEngine::Window::GetInstance()->getHeight();
 		int height = windowHeight;
 		nk_label(ctx, ssHeight.str().c_str(), NK_TEXT_LEFT);
+		// TODO update value after no change in amount of time
 		nk_slider_float(ctx, 0, &windowHeight, 1440.0f, 10.0f);
 
 		std::stringstream ssWidth;
@@ -143,6 +144,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		windowWidth = BeerEngine::Window::GetInstance()->getWidth();
 		int width = windowWidth;
 		nk_label(ctx, ssWidth.str().c_str(), NK_TEXT_LEFT);
+		// TODO update value after no change in amount of time
 		nk_slider_float(ctx, 0, &windowWidth, 2560.0f, 10.0f);
 
 		if (width != static_cast<int>(windowWidth) || height != static_cast<int>(windowHeight))
@@ -214,6 +216,35 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 	nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);
 }
+
+nlohmann::json	SettingsMenu::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"mainMenu", mainMenu->_serializationID},
+		{"inputsMenu", inputsMenu->_serializationID},
+		{"uiManager", uiManager->_serializationID},
+		{"settingsManager", settingsManager->_serializationID},
+	});
+	return j;
+}
+
+void SettingsMenu::deserialize(const nlohmann::json & j)
+{
+	Component::deserialize(j);
+	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu");
+	DESERIALIZE_BY_ID(this->inputsMenu, InputsMenu, "inputsMenu");
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+	DESERIALIZE_BY_ID(this->settingsManager, Settings, "settingsManager");
+	// JsonSerializable::serializationCallBacks.push(
+	// 	[this, j]() {
+	// 		Dest = dynamic_cast<Class *>(JsonSerializable::GetSerializableByID(j.at("settingsManager")));
+	// 	}
+	// )
+}
+
+REGISTER_COMPONENT_CPP(SettingsMenu)
 
 // ###############################################################
 

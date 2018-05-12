@@ -31,10 +31,13 @@ namespace Game
 
 		{
 		protected:
-			BeerEngine::Transform	&_transform;
+			BeerEngine::Transform				&_transform;
 
 		public:
-			Game::Component::Character *_character;
+			Game::Component::Character 			*_character;
+			BeerEngine::Audio::AudioSource      *srcAudio;
+			BeerEngine::Audio::AudioSource      *itemSrcAudio;
+			bool								play;
 			
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);
@@ -59,11 +62,6 @@ namespace Game
 			REGISTER_COMPONENT_HPP
 
 			Signal<float, float> createCrateSignal;
-
-			BeerEngine::Audio::AudioSource      *srcAudio;
-			BeerEngine::Audio::AudioSource      *itemSrcAudio;
-			bool								play;
-
 		};
 	}
 }

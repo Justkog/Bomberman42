@@ -126,6 +126,16 @@ void UIThemeManager::setThemeUI(struct nk_context *ctx)
 	nk_style_set_font(ctx, &available_fonts["main"]->handle);
 }
 
+nlohmann::json	UIThemeManager::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+	});
+	return j;
+}
+
+REGISTER_COMPONENT_CPP(UIThemeManager)
 
 // ###############################################################
 

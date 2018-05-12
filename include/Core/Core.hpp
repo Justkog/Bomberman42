@@ -27,6 +27,7 @@
 #include <sstream>
 #include <map>
 #include <vector>
+#include <stack>
 #include <fstream>
 #include <functional>
 
@@ -105,5 +106,14 @@ namespace BeerEngine
 		\
 		int Class::componentRegisterer = Class::RegisterComponentType();\
 		std::string Class::type = typeid(Class).name();
+
+#define DESERIALIZE_BY_ID(Dest, Class, Key) \
+	JsonSerializable::serializationCallBacks.push( \
+		[this, j]() { \
+			std::cout << "callback of " << #Dest << " on " << Key << std::endl; \
+			std::cout << "json is " << j << std::endl; \
+			Dest = dynamic_cast<Class *>(JsonSerializable::GetSerializableByID(j.at(Key))); \
+		} \
+	)
 
 #endif

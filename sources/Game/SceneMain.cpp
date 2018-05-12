@@ -60,13 +60,13 @@ void    SceneMain::init(void)
 	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// plane
-	BeerEngine::GameObject *bkgdGO;
-	bkgdGO = instantiate<BeerEngine::GameObject>();
-	BeerEngine::Component::MeshRenderer *bkgdMeshRenderer = bkgdGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	bkgdMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
-	bkgdMeshRenderer->setMaterial(material);
-	bkgdGO->transform.position = glm::vec3(-3, 0, 6);
-	bkgdGO->transform.scale = glm::vec3(40, 1, 40);
+	// BeerEngine::GameObject *bkgdGO;
+	// bkgdGO = instantiate<BeerEngine::GameObject>();
+	// BeerEngine::Component::MeshRenderer *bkgdMeshRenderer = bkgdGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// bkgdMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
+	// bkgdMeshRenderer->setMaterial(material);
+	// bkgdGO->transform.position = glm::vec3(-3, 0, 6);
+	// bkgdGO->transform.scale = glm::vec3(40, 1, 40);
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto settings = menuGO->AddComponent<Game::Component::Settings>();

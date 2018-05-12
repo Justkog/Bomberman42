@@ -72,6 +72,7 @@ namespace BeerEngine
 		{
 			_components.push_back(comp);
 			_toStart.push_back(comp);
+			_toEnable.push_back(comp);
 			_toStartUI.push_back(comp);
 		}
 

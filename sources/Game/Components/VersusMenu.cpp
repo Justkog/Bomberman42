@@ -115,6 +115,26 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 	uiManager->resetToDefaultUI(ctx);
 }
 
+nlohmann::json	VersusMenu::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"mainMenu", mainMenu->_serializationID},
+		{"uiManager", uiManager->_serializationID},
+	});
+	return j;
+}
+
+void VersusMenu::deserialize(const nlohmann::json & j)
+{
+	Component::deserialize(j);
+	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu");
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+}
+
+REGISTER_COMPONENT_CPP(VersusMenu)
+
 // ###############################################################
 
 // GETTER METHOD #################################################

@@ -44,6 +44,11 @@ namespace Game
 			virtual void renderUI(struct nk_context *ctx);
 
 			void setUI(struct nk_context *ctx);
+
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 
 	};

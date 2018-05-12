@@ -33,14 +33,14 @@ namespace Game
 		{
 		public:
 
-			std::map<std::string, InputInfo> inputs;
-			std::vector<std::string> inputsList;
+			std::map<std::string, InputInfo> 	inputs;
+			std::vector<std::string> 			inputsList;
 
-			SettingsMenu	*settingsMenu;
-			UIThemeManager	*uiManager;
+			SettingsMenu						*settingsMenu;
+			UIThemeManager						*uiManager;
 
-			float menuWidth;
-			float menuHeight;
+			float 								menuWidth;
+			float 								menuHeight;
 
 			// InputsMenu( void );
 			// InputsMenu( InputsMenu const & src );
@@ -63,6 +63,10 @@ namespace Game
 			void updateKeyBindings();
 			void updateDisplayedInputKeys();
 
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j);
+
+			REGISTER_COMPONENT_HPP
 		};
 	};
 };

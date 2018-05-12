@@ -15,6 +15,7 @@ namespace BeerEngine
 		{
 		protected:
 		public:
+
 			Component(GameObject *gameObject);
 			virtual ~Component(void) {}
 
@@ -39,7 +40,9 @@ namespace BeerEngine
 
 			virtual nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
+			// virtual void deserializeLinks(const nlohmann::json & j);
 			static Component * Deserialize(const nlohmann::json & j, GameObject *go);
+
 			static add_component_type typeToAddComponent;
 			static add_component_type createAddMap();
 		};

@@ -120,14 +120,16 @@ namespace Game
 
 		nlohmann::json	CameraController::serialize()
 		{
-			return nlohmann::json {
-				{"componentClass", typeid(CameraController).name()},
-			};
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+			});
+			return j;
 		}
 
 		void CameraController::deserialize(const nlohmann::json & j)
 		{
-			// this->_size = j.at("size");
+			Component::deserialize(j);
 		}
 
 		REGISTER_COMPONENT_CPP(CameraController)

@@ -91,6 +91,24 @@ void BackgroundDrawer::renderUI(struct nk_context *ctx)
 	uiManager->resetToDefaultUI(ctx);
 }
 
+nlohmann::json	BackgroundDrawer::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"uiManager", uiManager->_serializationID},
+	});
+	return j;
+}
+
+void BackgroundDrawer::deserialize(const nlohmann::json & j)
+{
+	Component::deserialize(j);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+}
+
+REGISTER_COMPONENT_CPP(BackgroundDrawer)
+
 // ###############################################################
 
 // GETTER METHOD #################################################

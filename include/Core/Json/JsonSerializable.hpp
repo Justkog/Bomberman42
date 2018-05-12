@@ -7,8 +7,24 @@ namespace BeerEngine
 {
     class JsonSerializable
     {
+	private:
+		static int idCounter;
+		static std::map<int, JsonSerializable *> serializables;
+
     public:
-        virtual nlohmann::json	serialize() = 0;
+		int			_serializationID;
+		static std::stack<std::function<void (void)>> serializationCallBacks;
+
+		JsonSerializable();
+		JsonSerializable(int id);
+
+        virtual nlohmann::json	serialize();
+		virtual void deserialize(const nlohmann::json & j);
+		// virtual void deserializeLinks(const nlohmann::json & j);
+        static void Deserialize(const nlohmann::json & j);
+		static JsonSerializable *GetSerializableByID(int id);
+		static void ExecuteCallBacks();
+
         static JsonSerializable &toSerializable(JsonSerializable & item);
         static JsonSerializable *toSerializable(JsonSerializable * item);
 

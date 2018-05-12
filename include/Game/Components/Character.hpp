@@ -67,7 +67,7 @@ namespace Game
 			glm::vec2 _direction;
 			Game::Component::Map *map;
 
-			nlohmann::json	serialize();
+			virtual nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);
 
 			REGISTER_COMPONENT_HPP

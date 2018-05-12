@@ -131,6 +131,28 @@ void MainMenu::renderUI(struct nk_context *ctx)
 	uiManager->resetToDefaultUI(ctx);
 }
 
+nlohmann::json	MainMenu::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"settingsMenu", settingsMenu->_serializationID},
+		{"versusMenu", versusMenu->_serializationID},
+		{"uiManager", uiManager->_serializationID},
+	});
+	return j;
+}
+
+void MainMenu::deserialize(const nlohmann::json & j)
+{
+	Component::deserialize(j);
+	DESERIALIZE_BY_ID(this->settingsMenu, SettingsMenu, "settingsMenu");
+	DESERIALIZE_BY_ID(this->versusMenu, VersusMenu, "versusMenu");
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+}
+
+REGISTER_COMPONENT_CPP(MainMenu)
+
 // ###############################################################
 
 // GETTER METHOD #################################################
