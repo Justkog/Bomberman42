@@ -39,6 +39,7 @@ namespace Game
 
             virtual void    start(void);
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
+			void			setRandomMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
        		virtual void    mapUpdate(int x, int y, int value);
 			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
 			virtual void    renderUI(struct nk_context *ctx);
@@ -50,7 +51,7 @@ namespace Game
 			int	_sizeX;
 			int	_sizeY;
 			Game::Component::Player			*_player;
-
+			// Game::Component::IA				*_IA;
 			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);

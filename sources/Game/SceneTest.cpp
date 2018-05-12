@@ -148,18 +148,18 @@ void    SceneTest::init(void)
 		MapGO->name = "map";
 	auto	map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
-	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
-	std::vector<int>  line1{1,S,0,0,0,0,0,I,0,0,0,0,0,0,0,S,1};
-	std::vector<int>  line2{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line3{1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,1};
+	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+	std::vector<int>  line1{1,S,8,0,0,0,0,I,0,0,0,0,0,0,8,S,1};
+	std::vector<int>  line2{1,8,1,0,1,0,1,0,1,0,1,0,1,0,1,8,1};
+	std::vector<int>  line3{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line5{1,0,0,2,0,0,0,I,0,0,0,2,0,0,0,0,1};
+	std::vector<int>  line5{1,0,0,0,0,0,0,I,0,0,0,0,0,0,0,0,1};
 	std::vector<int>  line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line7{1,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,1};
+	std::vector<int>  line7{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int>  line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line9{1,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,1};
-	std::vector<int> line10{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int> line11{1,S,0,0,0,0,0,2,0,0,0,0,0,0,0,S,1};
+	std::vector<int>  line9{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+	std::vector<int> line10{1,8,1,0,1,0,1,0,1,0,1,0,1,0,1,8,1};
+	std::vector<int> line11{1,S,8,0,0,0,0,0,0,0,0,0,0,0,8,S,1};
 	std::vector<int> line12{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 
@@ -168,7 +168,7 @@ void    SceneTest::init(void)
 	auto itemGO = map->addItem(shader, glm::vec3(0, 0, 0));
 	itemGO->save("Prefabs/item.prefab");
 
-	map->setMap(tab, line0.size(), tab.size());
+	map->setRandomMap(tab, line0.size(), tab.size());
 	map->drawMap(shader);
 
 	character->map = map;
@@ -200,6 +200,8 @@ void    SceneTest::init(void)
 	auto iaRB2D = iaGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	iaRB2D->kinematic = BeerEngine::Component::RBType::Static;
 
+	// map->_IA = ia;
+
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();
 	objet->name = "house";
@@ -227,17 +229,17 @@ void    SceneTest::init(void)
 
  // test obj old
 
-	auto Old = instantiate<BeerEngine::GameObject>();
-	Old->name = "old";
-	meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
-	meshRenderer->setMesh("assets/models/Old_man/muro.obj");
-	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
-	auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
-	OldMat->setAlbedo(OldTex);
-	meshRenderer->setMaterial(OldMat);
-	Old->transform.position = glm::vec3(1, 0.5, 10);
-	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
-	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+	// auto Old = instantiate<BeerEngine::GameObject>();
+	// Old->name = "old";
+	// meshRenderer = Old->AddComponent<BeerEngine::Component::MeshRenderer>();
+	// meshRenderer->setMesh("assets/models/Old_man/muro.obj");
+	// auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
+	// auto *OldMat = new BeerEngine::Graphics::AMaterial(shader);
+	// OldMat->setAlbedo(OldTex);
+	// meshRenderer->setMaterial(OldMat);
+	// Old->transform.position = glm::vec3(1, 0.5, 10);
+	// Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
+	// Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
 	// Audio test
 	// auto al = cameraGO->AddComponent<BeerEngine::Audio::AudioListener>();

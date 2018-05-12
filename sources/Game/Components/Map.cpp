@@ -5,6 +5,7 @@
 #include <sstream>
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Audio/AudioSource.hpp"
+#include "Game/Game.hpp"
 
 namespace Game
 {
@@ -75,6 +76,32 @@ namespace Game
 				}
 		}
 
+		void	Map::setRandomMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY)
+		{
+			_sizeX = sizeX;
+			_sizeY = sizeY;
+
+				_map = new int*[sizeY];
+				for (int y = 0; y < sizeY; y++)
+				{
+					_map[y] = new int[sizeX];
+					for (int x = 0; x < sizeX; x++)
+					{
+						if (map[y][x] == 0)
+						{
+							if ((rand() % 2 + 1) == 2)
+								map[y][x] = 2;
+						// 	// else
+						// 	// 	_map[y][x] = 0;
+						// 	// std::cout << y*10+x << std::endl;
+						}
+						// else
+							_map[y][x] = map[y][x];
+						// std::cout << y << " " << x << " = " << _map[y][x] << std::endl;
+					}
+				}
+		}
+
         void    Map::mapUpdate(int x, int y, int value)
         {
 			_map[y][x] = value;
@@ -108,7 +135,7 @@ namespace Game
 						case S:
 							if (playerSpawn)
 							{
-								//addIA
+								// _IA->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
 							}
 							else
 							{

@@ -286,31 +286,31 @@ namespace Game
 
         void    IA::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-            {
-                std::stringstream ss;
-                ss << "Target: " << glm::to_string(_target);
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Dir: " << glm::to_string(dir);
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Next: " << glm::to_string(_path[0]);
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "hasObjective: " << (_hasObjective ? "true" : "false");
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-            }
-            nk_end(ctx);
+            // if (nk_begin(ctx, "IA", nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            // {
+            //     std::stringstream ss;
+            //     ss << "Target: " << glm::to_string(_target);
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "Dir: " << glm::to_string(dir);
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "Next: " << glm::to_string(_path[0]);
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "hasObjective: " << (_hasObjective ? "true" : "false");
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            // }
+            // nk_end(ctx);
         }
 
         nlohmann::json	IA::serialize()
