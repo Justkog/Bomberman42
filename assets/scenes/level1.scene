@@ -231,7 +231,7 @@
                 "position": [
                     -7.0,
                     0.5,
-                    2.0
+                    12.0
                 ],
                 "rotation": [
                     1.0,
@@ -2890,113 +2890,6 @@
         {
             "components": [
                 {
-                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
-                    "isTrigger": false,
-                    "radius": 0.5
-                },
-                {
-                    "componentClass": "N4Game9Component9BreakableE"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/player2.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "bombNB": 1,
-                    "componentClass": "N4Game9Component9CharacterE",
-                    "direction": [
-                        0.0,
-                        0.0
-                    ],
-                    "explosionSize": 2.0,
-                    "speed": 2.0
-                },
-                {
-                    "componentClass": "N4Game9Component2IAE"
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
-                    "kinematic": 2,
-                    "mass": 1.0,
-                    "velocity": [
-                        0.0,
-                        0.0
-                    ]
-                }
-            ],
-            "id": 37,
-            "name": "IA",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
-                    -7.0,
-                    0.5,
-                    12.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "material": {
                         "albedo": {
@@ -3052,7 +2945,7 @@
                     ]
                 }
             ],
-            "id": 38,
+            "id": 37,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -3137,7 +3030,7 @@
                     ]
                 }
             ],
-            "id": 39,
+            "id": 38,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -3222,7 +3115,7 @@
                     ]
                 }
             ],
-            "id": 40,
+            "id": 39,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -3310,7 +3203,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 41,
+            "id": 40,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -3395,7 +3288,7 @@
                     ]
                 }
             ],
-            "id": 42,
+            "id": 41,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -3483,7 +3376,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 43,
+            "id": 42,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -3568,7 +3461,7 @@
                     ]
                 }
             ],
-            "id": 44,
+            "id": 43,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -3656,7 +3549,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 45,
+            "id": 44,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -3741,7 +3634,7 @@
                     ]
                 }
             ],
-            "id": 46,
+            "id": 45,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -3829,7 +3722,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 47,
+            "id": 46,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -3914,7 +3807,7 @@
                     ]
                 }
             ],
-            "id": 48,
+            "id": 47,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -4002,7 +3895,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 49,
+            "id": 48,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -4087,7 +3980,7 @@
                     ]
                 }
             ],
-            "id": 50,
+            "id": 49,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -4175,7 +4068,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 51,
+            "id": 50,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -4260,7 +4153,7 @@
                     ]
                 }
             ],
-            "id": 52,
+            "id": 51,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -4345,7 +4238,7 @@
                     ]
                 }
             ],
-            "id": 53,
+            "id": 52,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -4430,7 +4323,7 @@
                     ]
                 }
             ],
-            "id": 54,
+            "id": 53,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -4441,6 +4334,94 @@
                 ],
                 "position": [
                     8.0,
+                    0.5,
+                    10.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "isTrigger": false,
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                }
+            ],
+            "id": 54,
+            "name": "destroyable block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    7.0,
                     0.5,
                     10.0
                 ],
@@ -4528,7 +4509,7 @@
                     0.0
                 ],
                 "position": [
-                    7.0,
+                    6.0,
                     0.5,
                     10.0
                 ],
@@ -4616,7 +4597,7 @@
                     0.0
                 ],
                 "position": [
-                    6.0,
+                    5.0,
                     0.5,
                     10.0
                 ],
@@ -4704,7 +4685,7 @@
                     0.0
                 ],
                 "position": [
-                    5.0,
+                    4.0,
                     0.5,
                     10.0
                 ],
@@ -4792,7 +4773,7 @@
                     0.0
                 ],
                 "position": [
-                    4.0,
+                    3.0,
                     0.5,
                     10.0
                 ],
@@ -4880,7 +4861,7 @@
                     0.0
                 ],
                 "position": [
-                    3.0,
+                    2.0,
                     0.5,
                     10.0
                 ],
@@ -4968,7 +4949,7 @@
                     0.0
                 ],
                 "position": [
-                    2.0,
+                    1.0,
                     0.5,
                     10.0
                 ],
@@ -5056,7 +5037,7 @@
                     0.0
                 ],
                 "position": [
-                    1.0,
+                    0.0,
                     0.5,
                     10.0
                 ],
@@ -5144,7 +5125,7 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
+                    -1.0,
                     0.5,
                     10.0
                 ],
@@ -5232,7 +5213,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    -2.0,
                     0.5,
                     10.0
                 ],
@@ -5320,7 +5301,7 @@
                     0.0
                 ],
                 "position": [
-                    -2.0,
+                    -3.0,
                     0.5,
                     10.0
                 ],
@@ -5408,7 +5389,7 @@
                     0.0
                 ],
                 "position": [
-                    -3.0,
+                    -4.0,
                     0.5,
                     10.0
                 ],
@@ -5496,7 +5477,7 @@
                     0.0
                 ],
                 "position": [
-                    -4.0,
+                    -5.0,
                     0.5,
                     10.0
                 ],
@@ -5584,7 +5565,7 @@
                     0.0
                 ],
                 "position": [
-                    -5.0,
+                    -6.0,
                     0.5,
                     10.0
                 ],
@@ -5672,94 +5653,6 @@
                     0.0
                 ],
                 "position": [
-                    -6.0,
-                    0.5,
-                    10.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "isTrigger": false,
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
-                },
-                {
-                    "componentClass": "N4Game9Component9BreakableE"
-                }
-            ],
-            "id": 69,
-            "name": "destroyable block",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
                     -7.0,
                     0.5,
                     10.0
@@ -5835,7 +5728,7 @@
                     ]
                 }
             ],
-            "id": 70,
+            "id": 69,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -5920,7 +5813,7 @@
                     ]
                 }
             ],
-            "id": 71,
+            "id": 70,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -6008,7 +5901,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 72,
+            "id": 71,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -6093,7 +5986,7 @@
                     ]
                 }
             ],
-            "id": 73,
+            "id": 72,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -6181,7 +6074,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 74,
+            "id": 73,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -6266,7 +6159,7 @@
                     ]
                 }
             ],
-            "id": 75,
+            "id": 74,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -6354,7 +6247,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 76,
+            "id": 75,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -6439,7 +6332,7 @@
                     ]
                 }
             ],
-            "id": 77,
+            "id": 76,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -6527,7 +6420,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 78,
+            "id": 77,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -6612,7 +6505,7 @@
                     ]
                 }
             ],
-            "id": 79,
+            "id": 78,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -6700,7 +6593,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 80,
+            "id": 79,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -6785,7 +6678,7 @@
                     ]
                 }
             ],
-            "id": 81,
+            "id": 80,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -6873,7 +6766,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 82,
+            "id": 81,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -6958,7 +6851,7 @@
                     ]
                 }
             ],
-            "id": 83,
+            "id": 82,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -7046,7 +6939,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 84,
+            "id": 83,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -7131,7 +7024,7 @@
                     ]
                 }
             ],
-            "id": 85,
+            "id": 84,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -7219,7 +7112,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 86,
+            "id": 85,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -7304,7 +7197,7 @@
                     ]
                 }
             ],
-            "id": 87,
+            "id": 86,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -7389,7 +7282,7 @@
                     ]
                 }
             ],
-            "id": 88,
+            "id": 87,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -7400,6 +7293,94 @@
                 ],
                 "position": [
                     8.0,
+                    0.5,
+                    8.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "isTrigger": false,
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                }
+            ],
+            "id": 88,
+            "name": "destroyable block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    7.0,
                     0.5,
                     8.0
                 ],
@@ -7487,7 +7468,7 @@
                     0.0
                 ],
                 "position": [
-                    7.0,
+                    6.0,
                     0.5,
                     8.0
                 ],
@@ -7575,7 +7556,7 @@
                     0.0
                 ],
                 "position": [
-                    6.0,
+                    5.0,
                     0.5,
                     8.0
                 ],
@@ -7663,7 +7644,7 @@
                     0.0
                 ],
                 "position": [
-                    5.0,
+                    4.0,
                     0.5,
                     8.0
                 ],
@@ -7751,7 +7732,7 @@
                     0.0
                 ],
                 "position": [
-                    4.0,
+                    3.0,
                     0.5,
                     8.0
                 ],
@@ -7839,7 +7820,7 @@
                     0.0
                 ],
                 "position": [
-                    3.0,
+                    2.0,
                     0.5,
                     8.0
                 ],
@@ -7927,7 +7908,7 @@
                     0.0
                 ],
                 "position": [
-                    2.0,
+                    1.0,
                     0.5,
                     8.0
                 ],
@@ -8015,7 +7996,7 @@
                     0.0
                 ],
                 "position": [
-                    1.0,
+                    0.0,
                     0.5,
                     8.0
                 ],
@@ -8103,7 +8084,7 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
+                    -1.0,
                     0.5,
                     8.0
                 ],
@@ -8191,7 +8172,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    -2.0,
                     0.5,
                     8.0
                 ],
@@ -8279,7 +8260,7 @@
                     0.0
                 ],
                 "position": [
-                    -2.0,
+                    -3.0,
                     0.5,
                     8.0
                 ],
@@ -8367,7 +8348,7 @@
                     0.0
                 ],
                 "position": [
-                    -3.0,
+                    -4.0,
                     0.5,
                     8.0
                 ],
@@ -8455,7 +8436,7 @@
                     0.0
                 ],
                 "position": [
-                    -4.0,
+                    -5.0,
                     0.5,
                     8.0
                 ],
@@ -8543,7 +8524,7 @@
                     0.0
                 ],
                 "position": [
-                    -5.0,
+                    -6.0,
                     0.5,
                     8.0
                 ],
@@ -8631,94 +8612,6 @@
                     0.0
                 ],
                 "position": [
-                    -6.0,
-                    0.5,
-                    8.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "isTrigger": false,
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
-                },
-                {
-                    "componentClass": "N4Game9Component9BreakableE"
-                }
-            ],
-            "id": 103,
-            "name": "destroyable block",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
                     -7.0,
                     0.5,
                     8.0
@@ -8794,7 +8687,7 @@
                     ]
                 }
             ],
-            "id": 104,
+            "id": 103,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -8879,7 +8772,7 @@
                     ]
                 }
             ],
-            "id": 105,
+            "id": 104,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -8967,7 +8860,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 106,
+            "id": 105,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -9052,7 +8945,7 @@
                     ]
                 }
             ],
-            "id": 107,
+            "id": 106,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -9140,7 +9033,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 108,
+            "id": 107,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -9225,7 +9118,7 @@
                     ]
                 }
             ],
-            "id": 109,
+            "id": 108,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -9313,7 +9206,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 110,
+            "id": 109,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -9398,7 +9291,7 @@
                     ]
                 }
             ],
-            "id": 111,
+            "id": 110,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -9486,7 +9379,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 112,
+            "id": 111,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -9571,7 +9464,7 @@
                     ]
                 }
             ],
-            "id": 113,
+            "id": 112,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -9659,7 +9552,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 114,
+            "id": 113,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -9744,7 +9637,7 @@
                     ]
                 }
             ],
-            "id": 115,
+            "id": 114,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -9832,7 +9725,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 116,
+            "id": 115,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -9917,7 +9810,7 @@
                     ]
                 }
             ],
-            "id": 117,
+            "id": 116,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -10005,7 +9898,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 118,
+            "id": 117,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -10090,7 +9983,7 @@
                     ]
                 }
             ],
-            "id": 119,
+            "id": 118,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -10178,7 +10071,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 120,
+            "id": 119,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -10263,7 +10156,7 @@
                     ]
                 }
             ],
-            "id": 121,
+            "id": 120,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -10348,7 +10241,7 @@
                     ]
                 }
             ],
-            "id": 122,
+            "id": 121,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -10359,6 +10252,94 @@
                 ],
                 "position": [
                     8.0,
+                    0.5,
+                    6.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "isTrigger": false,
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                }
+            ],
+            "id": 122,
+            "name": "destroyable block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    7.0,
                     0.5,
                     6.0
                 ],
@@ -10446,7 +10427,7 @@
                     0.0
                 ],
                 "position": [
-                    7.0,
+                    6.0,
                     0.5,
                     6.0
                 ],
@@ -10534,7 +10515,7 @@
                     0.0
                 ],
                 "position": [
-                    6.0,
+                    5.0,
                     0.5,
                     6.0
                 ],
@@ -10622,7 +10603,7 @@
                     0.0
                 ],
                 "position": [
-                    5.0,
+                    4.0,
                     0.5,
                     6.0
                 ],
@@ -10710,7 +10691,7 @@
                     0.0
                 ],
                 "position": [
-                    4.0,
+                    3.0,
                     0.5,
                     6.0
                 ],
@@ -10798,7 +10779,7 @@
                     0.0
                 ],
                 "position": [
-                    3.0,
+                    2.0,
                     0.5,
                     6.0
                 ],
@@ -10886,7 +10867,7 @@
                     0.0
                 ],
                 "position": [
-                    2.0,
+                    1.0,
                     0.5,
                     6.0
                 ],
@@ -10974,7 +10955,7 @@
                     0.0
                 ],
                 "position": [
-                    1.0,
+                    0.0,
                     0.5,
                     6.0
                 ],
@@ -11062,7 +11043,7 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
+                    -1.0,
                     0.5,
                     6.0
                 ],
@@ -11150,7 +11131,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    -2.0,
                     0.5,
                     6.0
                 ],
@@ -11238,7 +11219,7 @@
                     0.0
                 ],
                 "position": [
-                    -2.0,
+                    -3.0,
                     0.5,
                     6.0
                 ],
@@ -11326,7 +11307,7 @@
                     0.0
                 ],
                 "position": [
-                    -3.0,
+                    -4.0,
                     0.5,
                     6.0
                 ],
@@ -11414,7 +11395,7 @@
                     0.0
                 ],
                 "position": [
-                    -4.0,
+                    -5.0,
                     0.5,
                     6.0
                 ],
@@ -11502,7 +11483,7 @@
                     0.0
                 ],
                 "position": [
-                    -5.0,
+                    -6.0,
                     0.5,
                     6.0
                 ],
@@ -11590,94 +11571,6 @@
                     0.0
                 ],
                 "position": [
-                    -6.0,
-                    0.5,
-                    6.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "isTrigger": false,
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
-                },
-                {
-                    "componentClass": "N4Game9Component9BreakableE"
-                }
-            ],
-            "id": 137,
-            "name": "destroyable block",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
                     -7.0,
                     0.5,
                     6.0
@@ -11753,7 +11646,7 @@
                     ]
                 }
             ],
-            "id": 138,
+            "id": 137,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -11838,7 +11731,7 @@
                     ]
                 }
             ],
-            "id": 139,
+            "id": 138,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -11926,7 +11819,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 140,
+            "id": 139,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -12011,7 +11904,7 @@
                     ]
                 }
             ],
-            "id": 141,
+            "id": 140,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -12099,7 +11992,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 142,
+            "id": 141,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -12184,7 +12077,7 @@
                     ]
                 }
             ],
-            "id": 143,
+            "id": 142,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -12272,7 +12165,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 144,
+            "id": 143,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -12357,7 +12250,7 @@
                     ]
                 }
             ],
-            "id": 145,
+            "id": 144,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -12445,7 +12338,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 146,
+            "id": 145,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -12530,7 +12423,7 @@
                     ]
                 }
             ],
-            "id": 147,
+            "id": 146,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -12618,7 +12511,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 148,
+            "id": 147,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -12703,7 +12596,7 @@
                     ]
                 }
             ],
-            "id": 149,
+            "id": 148,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -12791,7 +12684,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 150,
+            "id": 149,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -12876,7 +12769,7 @@
                     ]
                 }
             ],
-            "id": 151,
+            "id": 150,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -12964,7 +12857,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 152,
+            "id": 151,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -13049,7 +12942,7 @@
                     ]
                 }
             ],
-            "id": 153,
+            "id": 152,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -13137,7 +13030,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 154,
+            "id": 153,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -13222,7 +13115,7 @@
                     ]
                 }
             ],
-            "id": 155,
+            "id": 154,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -13307,7 +13200,7 @@
                     ]
                 }
             ],
-            "id": 156,
+            "id": 155,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -13318,6 +13211,94 @@
                 ],
                 "position": [
                     8.0,
+                    0.5,
+                    4.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "isTrigger": false,
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                }
+            ],
+            "id": 156,
+            "name": "destroyable block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    7.0,
                     0.5,
                     4.0
                 ],
@@ -13405,7 +13386,7 @@
                     0.0
                 ],
                 "position": [
-                    7.0,
+                    6.0,
                     0.5,
                     4.0
                 ],
@@ -13493,7 +13474,7 @@
                     0.0
                 ],
                 "position": [
-                    6.0,
+                    5.0,
                     0.5,
                     4.0
                 ],
@@ -13581,7 +13562,7 @@
                     0.0
                 ],
                 "position": [
-                    5.0,
+                    4.0,
                     0.5,
                     4.0
                 ],
@@ -13669,7 +13650,7 @@
                     0.0
                 ],
                 "position": [
-                    4.0,
+                    3.0,
                     0.5,
                     4.0
                 ],
@@ -13757,7 +13738,7 @@
                     0.0
                 ],
                 "position": [
-                    3.0,
+                    2.0,
                     0.5,
                     4.0
                 ],
@@ -13845,7 +13826,7 @@
                     0.0
                 ],
                 "position": [
-                    2.0,
+                    1.0,
                     0.5,
                     4.0
                 ],
@@ -13933,7 +13914,7 @@
                     0.0
                 ],
                 "position": [
-                    1.0,
+                    0.0,
                     0.5,
                     4.0
                 ],
@@ -14021,7 +14002,7 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
+                    -1.0,
                     0.5,
                     4.0
                 ],
@@ -14109,7 +14090,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    -2.0,
                     0.5,
                     4.0
                 ],
@@ -14197,7 +14178,7 @@
                     0.0
                 ],
                 "position": [
-                    -2.0,
+                    -3.0,
                     0.5,
                     4.0
                 ],
@@ -14285,7 +14266,7 @@
                     0.0
                 ],
                 "position": [
-                    -3.0,
+                    -4.0,
                     0.5,
                     4.0
                 ],
@@ -14373,7 +14354,7 @@
                     0.0
                 ],
                 "position": [
-                    -4.0,
+                    -5.0,
                     0.5,
                     4.0
                 ],
@@ -14461,7 +14442,7 @@
                     0.0
                 ],
                 "position": [
-                    -5.0,
+                    -6.0,
                     0.5,
                     4.0
                 ],
@@ -14549,94 +14530,6 @@
                     0.0
                 ],
                 "position": [
-                    -6.0,
-                    0.5,
-                    4.0
-                ],
-                "rotation": [
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "components": [
-                {
-                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
-                    "material": {
-                        "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
-                        },
-                        "bump": null,
-                        "color": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "normal": null,
-                        "shader": "defaultShader"
-                    },
-                    "mesh": {
-                        "sourceFile": "",
-                        "type": "cube"
-                    },
-                    "pivot": [
-                        [
-                            1.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            1.0,
-                            0.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            1.0,
-                            0.0
-                        ],
-                        [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    ]
-                },
-                {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "isTrigger": false,
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
-                },
-                {
-                    "componentClass": "N4Game9Component9BreakableE"
-                }
-            ],
-            "id": 171,
-            "name": "destroyable block",
-            "transform": {
-                "parent": null,
-                "pivot": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "position": [
                     -7.0,
                     0.5,
                     4.0
@@ -14712,7 +14605,7 @@
                     ]
                 }
             ],
-            "id": 172,
+            "id": 171,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -14797,7 +14690,7 @@
                     ]
                 }
             ],
-            "id": 173,
+            "id": 172,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -14882,7 +14775,7 @@
                     ]
                 }
             ],
-            "id": 174,
+            "id": 173,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -14970,7 +14863,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 175,
+            "id": 174,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -15055,7 +14948,7 @@
                     ]
                 }
             ],
-            "id": 176,
+            "id": 175,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -15143,7 +15036,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 177,
+            "id": 176,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -15228,7 +15121,7 @@
                     ]
                 }
             ],
-            "id": 178,
+            "id": 177,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -15316,7 +15209,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 179,
+            "id": 178,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -15401,7 +15294,7 @@
                     ]
                 }
             ],
-            "id": 180,
+            "id": 179,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -15489,7 +15382,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 181,
+            "id": 180,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -15574,7 +15467,7 @@
                     ]
                 }
             ],
-            "id": 182,
+            "id": 181,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -15662,7 +15555,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 183,
+            "id": 182,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -15747,7 +15640,7 @@
                     ]
                 }
             ],
-            "id": 184,
+            "id": 183,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -15835,7 +15728,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 185,
+            "id": 184,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -15920,7 +15813,7 @@
                     ]
                 }
             ],
-            "id": 186,
+            "id": 185,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -16005,7 +15898,7 @@
                     ]
                 }
             ],
-            "id": 187,
+            "id": 186,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -16090,7 +15983,7 @@
                     ]
                 }
             ],
-            "id": 188,
+            "id": 187,
             "name": "map block",
             "transform": {
                 "parent": null,
@@ -16197,7 +16090,7 @@
                     ]
                 }
             ],
-            "id": 189,
+            "id": 188,
             "name": "IA",
             "transform": {
                 "parent": null,
@@ -16285,7 +16178,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 190,
+            "id": 189,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -16373,7 +16266,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 191,
+            "id": 190,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -16461,7 +16354,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 192,
+            "id": 191,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -16549,7 +16442,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 193,
+            "id": 192,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -16637,7 +16530,7 @@
                     "componentClass": "N4Game9Component9BreakableE"
                 }
             ],
-            "id": 194,
+            "id": 193,
             "name": "destroyable block",
             "transform": {
                 "parent": null,
@@ -16648,6 +16541,94 @@
                 ],
                 "position": [
                     1.0,
+                    0.5,
+                    2.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "material": {
+                        "albedo": {
+                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                        },
+                        "bump": null,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normal": null,
+                        "shader": "defaultShader"
+                    },
+                    "mesh": {
+                        "sourceFile": "",
+                        "type": "cube"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+                    "isTrigger": false,
+                    "size": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                }
+            ],
+            "id": 194,
+            "name": "destroyable block",
+            "transform": {
+                "parent": null,
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
                     0.5,
                     2.0
                 ],
@@ -16735,7 +16716,7 @@
                     0.0
                 ],
                 "position": [
-                    0.0,
+                    -1.0,
                     0.5,
                     2.0
                 ],
@@ -16823,7 +16804,7 @@
                     0.0
                 ],
                 "position": [
-                    -1.0,
+                    -2.0,
                     0.5,
                     2.0
                 ],
@@ -16911,7 +16892,7 @@
                     0.0
                 ],
                 "position": [
-                    -2.0,
+                    -3.0,
                     0.5,
                     2.0
                 ],
@@ -16999,7 +16980,7 @@
                     0.0
                 ],
                 "position": [
-                    -3.0,
+                    -4.0,
                     0.5,
                     2.0
                 ],
@@ -17087,7 +17068,7 @@
                     0.0
                 ],
                 "position": [
-                    -4.0,
+                    -5.0,
                     0.5,
                     2.0
                 ],
@@ -17107,10 +17088,18 @@
         {
             "components": [
                 {
+                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
+                    "isTrigger": false,
+                    "radius": 0.5
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE"
+                },
+                {
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "material": {
                         "albedo": {
-                            "sourceFile": "assets/textures/crate1_diffuse.png"
+                            "sourceFile": "assets/textures/player2.png"
                         },
                         "bump": null,
                         "color": [
@@ -17154,19 +17143,30 @@
                     ]
                 },
                 {
-                    "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
-                    "isTrigger": false,
-                    "size": [
-                        1.0,
-                        1.0
-                    ]
+                    "bombNB": 1,
+                    "componentClass": "N4Game9Component9CharacterE",
+                    "direction": [
+                        0.0,
+                        0.0
+                    ],
+                    "explosionSize": 2.0,
+                    "speed": 2.0
                 },
                 {
-                    "componentClass": "N4Game9Component9BreakableE"
+                    "componentClass": "N4Game9Component2IAE"
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "kinematic": 2,
+                    "mass": 1.0,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
                 }
             ],
             "id": 200,
-            "name": "destroyable block",
+            "name": "IA",
             "transform": {
                 "parent": null,
                 "pivot": [
@@ -17175,7 +17175,7 @@
                     0.0
                 ],
                 "position": [
-                    -5.0,
+                    -7.0,
                     0.5,
                     2.0
                 ],

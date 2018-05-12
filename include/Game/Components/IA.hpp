@@ -20,8 +20,14 @@ namespace Game
 {
 	namespace Component
 	{
-		class Map;
-		class Character;
+
+		struct Objective
+		{
+			glm::vec2 pos;
+			ObjectiveType type;
+			std::vector<glm::vec2> path;
+			int val;
+		};
 
 		class IA : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
@@ -33,10 +39,10 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 			Game::Component::Character *_character;
 			bool _hasObjective;
-			glm::vec2 _target;
-			Objective _objective;
+			glm::vec2 _pos;
+			ObjectiveType _type;
 			std::vector<glm::vec2> _path;
-			int _objectiveVal;
+			int _val;
 
 			bool    canMove(glm::vec3 dir);
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);

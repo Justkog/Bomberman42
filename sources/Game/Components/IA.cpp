@@ -19,9 +19,9 @@ namespace Game
 			Component(gameObject),
             _transform(gameObject->transform),
             _hasObjective(false),
-            _target(0, 0),
-		    _objective(Objective::MoveTo),
-            _objectiveVal(0)
+            _pos(0, 0),
+		    _type(ObjectiveType::MoveTo),
+            _val(0)
 		{
         }
 
@@ -55,17 +55,17 @@ namespace Game
             {
                 if (moveToObjective())
                 {
-                    switch (_objective)
+                    switch (_type)
                     {
-                        case Objective::DropBomb:
+                        case ObjectiveType::DropBomb:
                             _character->dropBomb();
 
                         break;
 
-                        case Objective::MoveTo:
+                        case ObjectiveType::MoveTo:
                         break;
 
-                        case Objective::TakeBonus:
+                        case ObjectiveType::TakeBonus:
                         break;
                     }
                     _hasObjective = false;
@@ -152,9 +152,35 @@ namespace Game
             return (val);
         }
 
+        // int     IA::getObjectiveValue(glm::vec2 pos, std::vector<glm::vec2> *path)
+        // {
+        //     if (map->canWalk(pos) && avoidAllExplosions(pos) && findPath(pos, path))
+        //     {
+        //         if (map->_map[y][x] == 9)
+        //         {
+        //             tmpVal += 15;
+        //             tmpObj = ObjectiveType::TakeBonus;
+        //         }
+        //         else if (_character->_bombNb > 0)
+        //         {
+        //             tmpVal += checkExplosionZone(pos);
+        //             tmpObj = tmpVal > 0 ? ObjectiveType::DropBomb : ObjectiveType::MoveTo;
+        //         }
+        //         tmpVal -= path.size();
+        //         if (tmpVal > val)
+        //         {
+        //             target = pos;
+        //             objective = tmpObj;
+        //             val = tmpVal;
+        //         }
+        //         else
+        //             path.clear();
+        //     }
+        // }
+
         int    IA::findObjective(bool save)
         {
-            Objective objective = Objective::MoveTo;
+            ObjectiveType objective = ObjectiveType::MoveTo;
             std::vector<glm::vec2> path;
 			glm::vec2 target(0);
             int val = avoidAllExplosions(map->worldToMap(_gameObject->transform.position)) ? 0 : -1000;
@@ -164,19 +190,19 @@ namespace Game
                 for (int x = 0; x < map->_sizeX; ++x)
                 {
                     int tmpVal = 0;
-                    Objective tmpObj = Objective::MoveTo;
+                    ObjectiveType tmpObj = ObjectiveType::MoveTo;
 
                     if (map->canWalk(glm::vec2(x, y)) && avoidAllExplosions(glm::vec2(x, y)) && findPath(glm::vec2(x, y), &path))
                     {
                         if (map->_map[y][x] == 9)
                         {
                             tmpVal += 15;
-                            tmpObj = Objective::TakeBonus;
+                            tmpObj = ObjectiveType::TakeBonus;
                         }
                         else if (_character->_bombNb > 0)
                         {
                             tmpVal += checkExplosionZone(glm::vec2(x, y));
-                            tmpObj = tmpVal > 0 ? Objective::DropBomb : Objective::MoveTo;
+                            tmpObj = tmpVal > 0 ? ObjectiveType::DropBomb : ObjectiveType::MoveTo;
                         }
                         tmpVal -= path.size();
                         if (tmpVal > val)
@@ -194,25 +220,25 @@ namespace Game
                 return (-1000);
             if (save)
             {
-                _target = target;
-                _objective = objective;
+                _pos = target;
+                _type = objective;
                 _hasObjective = true;
                 _path = path;
-                _objectiveVal = val;
+                _val = val;
             }
             return (val);
         }
 
         bool    IA::moveToObjective(void)
         {
-            if (glm::distance2(map->mapToWorld(_target), _transform.position) < 0.001)
+            if (glm::distance2(map->mapToWorld(_pos), _transform.position) < 0.001)
                 return (true);
             if (_path.empty())
             {
-                if (!findPath(_target, &_path))
+                if (!findPath(_pos, &_path))
                     _hasObjective = false;
             }
-            else if (map->worldToMap(_transform.position) != _target && !findPath(_target))
+            else if (map->worldToMap(_transform.position) != _pos && !findPath(_pos))
             {
                 _path.clear();
                 _hasObjective = false;
@@ -233,7 +259,7 @@ namespace Game
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
             {
-                _objectiveVal++;
+                _val++;
                 _path.erase(_path.begin());
             }
             dir = map->mapToWorld(_path[0]) - _transform.position;
@@ -387,12 +413,12 @@ namespace Game
             if (nk_begin(ctx, winName.str().c_str(), nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
                 std::stringstream ss;
-                ss << "Target: " << glm::to_string(_target);
+                ss << "Target: " << glm::to_string(_pos);
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
                 ss.str(std::string());
                 ss.clear();
-                ss << "Val: " << _objectiveVal;
+                ss << "Val: " << _val;
                 nk_layout_row_dynamic(ctx, 20, 1);
                 nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
                 ss.str(std::string());
@@ -403,17 +429,17 @@ namespace Game
                 ss.str(std::string());
                 ss.clear();
                 ss << "Objective: ";
-                switch (_objective)
+                switch (_type)
                 {
-                    case Objective::DropBomb:
+                    case ObjectiveType::DropBomb:
                         ss << "DropBomb";
                     break;
 
-                    case Objective::MoveTo:
+                    case ObjectiveType::MoveTo:
                         ss << "MoveTo";
                     break;
 
-                    case Objective::TakeBonus:
+                    case ObjectiveType::TakeBonus:
                         ss << "TakeBonus";
                     break;
                 }
