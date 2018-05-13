@@ -84,26 +84,26 @@ namespace Game
 
         void            Player::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-            {
-                std::stringstream ss;
-                ss << "Speed: " << _character->_speed;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Bomb: " << _character->_bombNb;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Size: " << _character->_explosionSize;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
-            }
-            nk_end(ctx);
+            // if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            // {
+            //     std::stringstream ss;
+            //     ss << "Speed: " << _character->_speed;
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "Bomb: " << _character->_bombNb;
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "Size: " << _character->_explosionSize;
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
+            // }
+            // nk_end(ctx);
         }
 
 		void    Player::onColliderEnter(BeerEngine::Component::ACollider *other)

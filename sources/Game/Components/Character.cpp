@@ -19,7 +19,7 @@ namespace Game
             _speed(2),
             _bombNb(1),
             _maxBomb(1),
-            _explosionSize(2),
+            _explosionSize(1),
             _direction(0, 0)
 		{
 

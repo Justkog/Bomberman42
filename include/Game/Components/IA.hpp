@@ -20,9 +20,6 @@ namespace Game
 {
 	namespace Component
 	{
-		class Map;
-		class Character;
-
 		class IA : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
@@ -33,23 +30,25 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 			Game::Component::Character *_character;
 			bool _hasObjective;
-			glm::vec2 _target;
-			Objective _objective;
+			glm::vec2 _pos;
+			ObjectiveType _type;
 			std::vector<glm::vec2> _path;
+			int _val;
 
+			bool    canMove(glm::vec3 dir);
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);
 			bool    avoidAllExplosions(glm::vec2 pos, int offset = 0);
-			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir);
-			int     checkExplosionZone(glm::vec2 pos);
-			void    findObjective(void);
+			int     checkExplosionRay(glm::vec3 pos, glm::vec3 dir, ObjectiveType &type);
+			int     checkExplosionZone(glm::vec2 pos, ObjectiveType &type);
+			int		findObjective(bool save = true);
 			bool    moveToObjective(void);
-			void    moveToNextCell(void);
+			bool    moveToNextCell(void);
 
 			//PATHFINDER
 			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
 			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target);
 			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
-			bool    findPath(glm::vec2 target, bool save = true);
+			bool    findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
