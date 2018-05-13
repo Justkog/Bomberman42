@@ -31,6 +31,7 @@ namespace Game
 								public BeerEngine::Component::IUI
 		{
 		private:
+			bool			settingsReset;
 			int				mousePreviousStatus;
 			float			targetHeight;
 			float			targetWidth;

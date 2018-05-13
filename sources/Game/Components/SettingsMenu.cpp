@@ -48,7 +48,8 @@ SettingsMenu::~SettingsMenu ( void )
 
 SettingsMenu::SettingsMenu(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
-mousePreviousStatus(0)
+mousePreviousStatus(0),
+settingsReset(false)
 {
 	
 }
@@ -160,7 +161,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 			targetWidth = sliderWidth;
 
 		int currentMouseStatus = glfwGetMouseButton(BeerEngine::Window::GetInstance()->getWindow(), GLFW_MOUSE_BUTTON_LEFT);
-		if (currentMouseStatus == GLFW_RELEASE && mousePreviousStatus != GLFW_RELEASE)
+		if (currentMouseStatus == GLFW_RELEASE && mousePreviousStatus != GLFW_RELEASE && !settingsReset)
 		{
 			updateScreenResolution();
 		}
@@ -168,6 +169,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		{
 			targetHeight = BeerEngine::Window::GetInstance()->getWindowedHeight();
 			targetWidth = BeerEngine::Window::GetInstance()->getWindowedWidth();
+			settingsReset = false;
 		}
 
 		if (nk_option_label(ctx, "windowed", mode == WINDOWED))
@@ -205,6 +207,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		if (nk_button_label(ctx, "Reset"))
 		{
 			this->resetSettings();
+			settingsReset = true;
 		}
 		if (nk_button_label(ctx, "Back"))
 		{
