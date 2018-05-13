@@ -96,7 +96,9 @@ namespace BeerEngine
 
 #define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
 							static 	int componentRegisterer;\
-							static std::string type;
+							static std::string type;\
+							virtual nlohmann::json	serialize();\
+        					virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
 #define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
 		{\
@@ -107,12 +109,17 @@ namespace BeerEngine
 		int Class::componentRegisterer = Class::RegisterComponentType();\
 		std::string Class::type = typeid(Class).name();
 
-#define DESERIALIZE_BY_ID(Dest, Class, Key) \
-	JsonSerializable::serializationCallBacks.push( \
-		[this, j]() { \
+#define SERIALIZE_BY_ID(Src) !Src ? nlohmann::json(nullptr) : nlohmann::json(Src->_serializationID)
+
+#define DESERIALIZE_BY_ID(Dest, Class, Key, Loader) \
+	Loader.serializationCallBacks.push( \
+		[this, j, &loader]() { \
 			std::cout << "callback of " << #Dest << " on " << Key << std::endl; \
 			std::cout << "json is " << j << std::endl; \
-			Dest = dynamic_cast<Class *>(JsonSerializable::GetSerializableByID(j.at(Key))); \
+			if (j.find(Key) == j.end()) \
+				Dest = NULL; \
+			else \
+				Dest = dynamic_cast<Class *>(Loader.getSerializableByID(j.at(Key))); \
 		} \
 	)
 

@@ -42,7 +42,7 @@ namespace Game
             virtual void    start(void);
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
        		virtual void    mapUpdate(int x, int y, int value);
-			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
+			void			drawMap();
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
@@ -117,9 +117,6 @@ namespace Game
 
 				return (mapBlocGO);
 			}
-
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
 
 			REGISTER_COMPONENT_HPP
 		};

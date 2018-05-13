@@ -47,7 +47,9 @@ namespace Game
 			virtual void renderUI(struct nk_context *ctx);
 
 			void setUI(struct nk_context *ctx);
-	
+			
+			REGISTER_COMPONENT_HPP
+
 		};
 
 	};

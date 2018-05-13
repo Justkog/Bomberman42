@@ -253,17 +253,17 @@ nlohmann::json	InputsMenu::serialize()
 	auto j = Component::serialize();
 	j.merge_patch({
 		{"componentClass", type},
-		{"settingsMenu", settingsMenu->_serializationID},
-		{"uiManager", uiManager->_serializationID},
+		{"settingsMenu", SERIALIZE_BY_ID(settingsMenu)},
+		{"uiManager", SERIALIZE_BY_ID(uiManager)},
 	});
 	return j;
 }
 
-void InputsMenu::deserialize(const nlohmann::json & j)
+void InputsMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
-	Component::deserialize(j);
-	DESERIALIZE_BY_ID(this->settingsMenu, SettingsMenu, "settingsMenu");
-	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->settingsMenu, SettingsMenu, "settingsMenu", loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
 }
 
 REGISTER_COMPONENT_CPP(InputsMenu)

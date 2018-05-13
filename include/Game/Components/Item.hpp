@@ -41,9 +41,6 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 			ItemType				_type;
 
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			Game::Component::Map	*map;
 
 			REGISTER_COMPONENT_HPP

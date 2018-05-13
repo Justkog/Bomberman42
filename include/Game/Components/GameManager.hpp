@@ -40,6 +40,8 @@ namespace Game
 			void setPause(bool state);
 	
 			static GameManager & GetInstance();
+
+			REGISTER_COMPONENT_HPP
 		};
 
 	};

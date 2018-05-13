@@ -181,8 +181,10 @@ namespace BeerEngine
         std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
         std::cout << "deserializing " << filePath << "\n";
         auto j = nlohmann::json::parse(content);
-        this->deserialize(j);
-		JsonSerializable::ExecuteCallBacks();
+		BeerEngine::JsonLoader loader;
+        this->deserialize(j, loader);
+		// JsonSerializable::ExecuteCallBacks();
+		loader.executeCallBacks();
     }
 
     nlohmann::json	AScene::serialize()
@@ -192,13 +194,13 @@ namespace BeerEngine
         };
 	}
 
-    void AScene::deserialize(const nlohmann::json & j)
+    void AScene::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     {
 		std::cout << "deserializing scene" << "\n";
 		auto gameObjects = j.at("gameObjects");
 		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 			auto goJson = it.value();
-			auto go = GameObject::Deserialize(goJson, *this);
+			auto go = GameObject::Deserialize(goJson, loader, *this);
 			// this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
 		}
 	}

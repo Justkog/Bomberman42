@@ -40,9 +40,6 @@ namespace Game
 	
 			UIThemeManager	*uiManager;
 
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 		};
 

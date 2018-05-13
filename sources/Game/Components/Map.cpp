@@ -8,6 +8,8 @@
 #include <sstream>
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Audio/AudioSource.hpp"
+#include "Core/Json/Json.hpp"
+#include "Game/Components/Bomb.hpp"
 
 namespace Game
 {
@@ -30,13 +32,15 @@ namespace Game
 
         void    Map::start(void)
         {
-			// std::cout << "map start" << "\n";
+			std::cout << "map start" << "\n";
+			drawMap();
+			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 			// _player->createCrateSignal.bind(&Map::mapUpdate, this);
 		}
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 		{
-			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/mapCrate.prefab");
+			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("assets/Prefabs/mapCrate.prefab");
 			mapBlocGO->transform.position = pos;
 			mapBlocGO->transform.scale = scale;
 			return (mapBlocGO);
@@ -59,7 +63,7 @@ namespace Game
 
 		BeerEngine::GameObject *Map::createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
 		{
-			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("Prefabs/item.prefab");
+			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("assets/Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 			return (mapBlocGO);
@@ -93,13 +97,13 @@ namespace Game
 		{
 			_sizeX = sizeX;
 			_sizeY = sizeY;
-				_map = new int*[sizeY];
-				for (int y = 0; y < sizeY; y++)
-				{
-					_map[y] = new int[sizeX];
-					for (int x = 0; x < sizeX; x++)
-						_map[y][x] = map[y][x];
-				}
+			_map = new int*[sizeY];
+			for (int y = 0; y < sizeY; y++)
+			{
+				_map[y] = new int[sizeX];
+				for (int x = 0; x < sizeX; x++)
+					_map[y][x] = map[y][x];
+			}
 		}
 
         void    Map::mapUpdate(int x, int y, int value)
@@ -119,12 +123,11 @@ namespace Game
 			mapUpdate(static_cast<int>(Mpos.x), static_cast<int>(Mpos.y), value);
 		}
 
-		void	Map::drawMap(BeerEngine::Graphics::ShaderProgram *shader)
+		void	Map::drawMap()
 		{
 			int type = 0;
 			bool playerSpawn = false;
 
-			_shader = shader;
 			for (int row = 0; row < _sizeY; row++)
 			{
 				for (int col = 0; col < _sizeX; col++)
@@ -134,16 +137,16 @@ namespace Game
 					switch (type)
 					{
 						case 1:
-							addCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
-							// createCrate(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case 2:
-							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case S:
 							spawnIA = (rand() % 4 != 0 || playerSpawn ? true : false);
 							if (spawnIA && _IAs.size() < 3)
-								_IAs.push_back(addIA(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
+								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
 							else
 							{
 								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
@@ -151,8 +154,8 @@ namespace Game
 							}
 							break;
 						case I:
-							addItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
-							// createItem(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							// createItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}
 				}
@@ -235,14 +238,50 @@ namespace Game
 
 		nlohmann::json	Map::serialize()
 		{
-			return {
+			auto j = Component::serialize();
+
+			nlohmann::json map;
+			for(int y = 0; y < _sizeY; y++)
+			{
+				nlohmann::json mapLine;
+				for(int x = 0; x < _sizeX; x++)
+				{
+					mapLine.push_back(_map[y][x]);
+				}
+				map.push_back(mapLine);
+			}
+
+			j.merge_patch({
 				{"componentClass", type},
-			};
+				{"sizeX", _sizeX},
+				{"sizeY", _sizeY},
+				{"map", map},
+				{"player", SERIALIZE_BY_ID(this->_player)},
+				{"shader", _shader},
+			});
+			return j;
 		}
 
-		void Map::deserialize(const nlohmann::json & j)
+		void Map::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+			Component::deserialize(j, loader);
+			this->_sizeX = j.at("sizeX");
+			this->_sizeY = j.at("sizeY");
+			std::vector<std::vector<int>> map = j.at("map");
+			// std::cout << j.at("map") << std::endl;
+			// std::cout << "map : " << std::endl;
+			// for (int y = 0; y < _sizeY; y++)
+			// {
+			// 	for (int x = 0; x < _sizeX; x++)
+			// 	{
+			// 		std::cout << " " << map[y][x];
+			// 	}
+			// 	std::cout << std::endl;
+			// }
+			this->setMap(map, this->_sizeX, this->_sizeY);
 
+			DESERIALIZE_BY_ID(this->_player, Player, "player", loader);
+			this->_shader = BeerEngine::Graphics::ShaderProgram::Deserialize(j.at("shader"), loader);
 		}
 
 		REGISTER_COMPONENT_CPP(Map)

@@ -100,6 +100,24 @@ void GameManager::setPause(bool state)
 	}
 }
 
+nlohmann::json	GameManager::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"inGameMenu", SERIALIZE_BY_ID(inGameMenu)},
+	});
+	return j;
+}
+
+void GameManager::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->inGameMenu, InGameMenu, "inGameMenu", loader);
+}
+
+REGISTER_COMPONENT_CPP(GameManager)
+
 // ###############################################################
 
 // GETTER METHOD #################################################

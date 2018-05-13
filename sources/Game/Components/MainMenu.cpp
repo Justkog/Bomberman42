@@ -143,12 +143,12 @@ nlohmann::json	MainMenu::serialize()
 	return j;
 }
 
-void MainMenu::deserialize(const nlohmann::json & j)
+void MainMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
-	Component::deserialize(j);
-	DESERIALIZE_BY_ID(this->settingsMenu, SettingsMenu, "settingsMenu");
-	DESERIALIZE_BY_ID(this->versusMenu, VersusMenu, "versusMenu");
-	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->settingsMenu, SettingsMenu, "settingsMenu", loader);
+	DESERIALIZE_BY_ID(this->versusMenu, VersusMenu, "versusMenu", loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
 }
 
 REGISTER_COMPONENT_CPP(MainMenu)

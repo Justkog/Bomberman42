@@ -63,9 +63,6 @@ namespace Game
 			void updateKeyBindings();
 			void updateDisplayedInputKeys();
 
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 		};
 	};

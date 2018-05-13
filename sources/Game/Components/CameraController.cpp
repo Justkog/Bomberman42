@@ -127,9 +127,9 @@ namespace Game
 			return j;
 		}
 
-		void CameraController::deserialize(const nlohmann::json & j)
+		void CameraController::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			Component::deserialize(j);
+			Component::deserialize(j, loader);
 		}
 
 		REGISTER_COMPONENT_CPP(CameraController)

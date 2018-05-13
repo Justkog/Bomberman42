@@ -189,9 +189,9 @@ namespace BeerEngine
 			return j;
 		}
 
-		void BoxCollider2D::deserialize(const nlohmann::json & j)
+		void BoxCollider2D::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			this->ACollider::deserialize(j);
+			this->ACollider::deserialize(j, loader);
 			this->_size = j.at("size");
 		}
 

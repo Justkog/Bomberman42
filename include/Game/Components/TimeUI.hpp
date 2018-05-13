@@ -46,6 +46,8 @@ namespace Game
 
 			void setUI(struct nk_context *ctx);
 	
+			REGISTER_COMPONENT_HPP
+
 		};
 
 	};

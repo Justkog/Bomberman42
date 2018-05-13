@@ -118,8 +118,8 @@ namespace BeerEngine
 		std::vector<Component::Component *> GetComponents(void);
 
 		virtual nlohmann::json	serialize();
-        virtual void deserialize(const nlohmann::json & j);
-		static GameObject * Deserialize(const nlohmann::json & j, AScene & scene);
+        virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+		static GameObject * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, AScene & scene);
 
 		void save(std::string filePath);
         void load(std::string filePath);

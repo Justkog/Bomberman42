@@ -101,10 +101,10 @@ nlohmann::json	BackgroundDrawer::serialize()
 	return j;
 }
 
-void BackgroundDrawer::deserialize(const nlohmann::json & j)
+void BackgroundDrawer::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
-	Component::deserialize(j);
-	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
 }
 
 REGISTER_COMPONENT_CPP(BackgroundDrawer)

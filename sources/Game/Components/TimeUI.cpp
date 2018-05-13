@@ -137,6 +137,25 @@ void TimeUI::renderUI(struct nk_context *ctx)
 	// nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);
 }
+
+nlohmann::json	TimeUI::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"uiManager", SERIALIZE_BY_ID(uiManager)},
+	});
+	return j;
+}
+
+void TimeUI::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
+}
+
+REGISTER_COMPONENT_CPP(TimeUI)
+
 // ###############################################################
 
 // GETTER METHOD #################################################

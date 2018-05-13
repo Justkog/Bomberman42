@@ -80,29 +80,37 @@ namespace BeerEngine
 
 	nlohmann::json	Transform::serialize()
 	{
-		return nlohmann::json {
-            {"parent", JsonSerializable::toSerializable(this->parent)},
+		auto j = JsonSerializable::serialize();
+		j.merge_patch({
+            {"parent", SERIALIZE_BY_ID(this->parent)},
             {"pivot", this->pivot},
             {"position", this->position},
             {"rotation", this->rotation},
             {"scale", this->scale},
-		};
+		});
+		return j;
 	}
 
+	void Transform::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+    {
+		this->JsonSerializable::deserialize(j, loader);
+		DESERIALIZE_BY_ID(this->parent, Transform, "parent", loader);
+		this->pivot = j.at("pivot");
+		this->position = j.at("position");
+		this->rotation = j.at("rotation");
+		this->scale = j.at("scale");
+    }
+
 	// Not implemented
-	Transform * Transform::DeserializePtr(const nlohmann::json & j)
+	Transform * Transform::DeserializePtr(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 	{
 		return NULL;
 	}
 
-	Transform Transform::Deserialize(const nlohmann::json & j)
+	Transform Transform::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 	{
 		Transform t;
-		t.parent = DeserializePtr(j.at("parent"));
-		t.pivot = j.at("pivot");
-		t.position = j.at("position");
-		t.rotation = j.at("rotation");
-		t.scale = j.at("scale");
+		t.deserialize(j, loader);
 		return t;
 	}
 }

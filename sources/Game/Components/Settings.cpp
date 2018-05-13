@@ -137,9 +137,9 @@ nlohmann::json	Game::Component::Settings::serialize()
 	return j;
 }
 
-void Game::Component::Settings::deserialize(const nlohmann::json & j)
+void Game::Component::Settings::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
-	Component::deserialize(j);
+	Component::deserialize(j, loader);
 	this->filePath = j.at("filePath");
 }
 

@@ -27,7 +27,7 @@ namespace Game
 			};
 		}
 
-		void Breakable::deserialize(const nlohmann::json & j)
+		void Breakable::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			// std::cout << this->_sourceFile << "\n";
 			// this->_sourceFile = j.at("sourceFile");

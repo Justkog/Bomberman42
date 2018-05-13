@@ -61,9 +61,6 @@ namespace Game
        		virtual void    update(void);
 			virtual void    renderUI(struct nk_context *ctx);
 
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 
 			Game::Component::Map *map;

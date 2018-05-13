@@ -39,9 +39,8 @@ namespace BeerEngine
 			}
 
 			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-			// virtual void deserializeLinks(const nlohmann::json & j);
-			static Component * Deserialize(const nlohmann::json & j, GameObject *go);
+			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+			static Component * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, GameObject *go);
 
 			static add_component_type typeToAddComponent;
 			static add_component_type createAddMap();

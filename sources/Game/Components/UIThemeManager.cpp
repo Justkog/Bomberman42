@@ -135,6 +135,11 @@ nlohmann::json	UIThemeManager::serialize()
 	return j;
 }
 
+void UIThemeManager::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	Component::deserialize(j, loader);
+}
+
 REGISTER_COMPONENT_CPP(UIThemeManager)
 
 // ###############################################################

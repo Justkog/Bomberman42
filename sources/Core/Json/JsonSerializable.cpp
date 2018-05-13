@@ -3,31 +3,12 @@
 namespace BeerEngine
 {
 	int JsonSerializable::idCounter = 0;
-	std::map<int, JsonSerializable *> JsonSerializable::serializables;
-	std::stack<std::function<void (void)>> JsonSerializable::serializationCallBacks;
 
 	JsonSerializable::JsonSerializable()
 	{
 		_serializationID = idCounter++;
-		std::cout << "json serializable created with id " << _serializationID << std::endl;
-		serializables[_serializationID] = this;
+		// std::cout << "json serializable created with id " << _serializationID << std::endl;
 	}
-
-	// JsonSerializable::JsonSerializable(int id) :
-	// 	_serializationID(id)
-	// {
-	// 	std::cout << "json serializable created with id " << _serializationID << std::endl;
-	// 	serializables[_serializationID] = this;
-	// }
-
-	JsonSerializable *JsonSerializable::GetSerializableByID(int id)
-	{
-		auto it = serializables.find(id);
-  		if (it != serializables.end())
-    		return it->second;
-		return NULL;
-	}
-
 
     JsonSerializable &JsonSerializable::toSerializable(JsonSerializable & item)
     {
@@ -46,31 +27,35 @@ namespace BeerEngine
 		};
 	}
 
-	void JsonSerializable::deserialize(const nlohmann::json & j)
+	void JsonSerializable::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     {
 		_serializationID = j.at("serializationID");
-		serializables[_serializationID] = this;
+		loader.serializables[_serializationID] = this;
     }
 
-	void JsonSerializable::ExecuteCallBacks()
+
+
+
+
+
+	void JsonLoader::executeCallBacks()
 	{
+		// std::cout << "executing jsonLoader callbacks" << std::endl;
 		while (!serializationCallBacks.empty())
 		{
-			std::cout << "executing callback on " << std::endl;
 			serializationCallBacks.top()();
 			serializationCallBacks.pop();
 		}
 	}
 
-	// void JsonSerializable::deserializeLinks(const nlohmann::json & j)
-	// {
+	JsonSerializable *JsonLoader::getSerializableByID(int id)
+	{
+		auto it = serializables.find(id);
+  		if (it != serializables.end())
+    		return it->second;
+		return NULL;
+	}
 
-	// }
-    
-	
-	
-	
-	
 	
 	
 	

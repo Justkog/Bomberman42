@@ -5,25 +5,29 @@
 
 namespace BeerEngine
 {
+	struct JsonLoader
+	{
+		std::map<int, JsonSerializable *> serializables;
+		std::stack<std::function<void (void)>> serializationCallBacks;
+
+		JsonSerializable *getSerializableByID(int id);
+		void executeCallBacks();
+	};
+
     class JsonSerializable
     {
 	private:
 		static int idCounter;
-		static std::map<int, JsonSerializable *> serializables;
 
     public:
 		int			_serializationID;
-		static std::stack<std::function<void (void)>> serializationCallBacks;
 
 		JsonSerializable();
 		JsonSerializable(int id);
 
         virtual nlohmann::json	serialize();
-		virtual void deserialize(const nlohmann::json & j);
-		// virtual void deserializeLinks(const nlohmann::json & j);
-        static void Deserialize(const nlohmann::json & j);
-		static JsonSerializable *GetSerializableByID(int id);
-		static void ExecuteCallBacks();
+		virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+        static void Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
         static JsonSerializable &toSerializable(JsonSerializable & item);
         static JsonSerializable *toSerializable(JsonSerializable * item);

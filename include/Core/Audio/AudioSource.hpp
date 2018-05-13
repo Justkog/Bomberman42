@@ -49,6 +49,9 @@ namespace BeerEngine
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
 
+			REGISTER_COMPONENT_HPP
+
+
 		private:
 			ALuint		_Buffer;
 			ALuint		_Source;

@@ -230,18 +230,13 @@ nlohmann::json	SettingsMenu::serialize()
 	return j;
 }
 
-void SettingsMenu::deserialize(const nlohmann::json & j)
+void SettingsMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
-	Component::deserialize(j);
-	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu");
-	DESERIALIZE_BY_ID(this->inputsMenu, InputsMenu, "inputsMenu");
-	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
-	DESERIALIZE_BY_ID(this->settingsManager, Settings, "settingsManager");
-	// JsonSerializable::serializationCallBacks.push(
-	// 	[this, j]() {
-	// 		Dest = dynamic_cast<Class *>(JsonSerializable::GetSerializableByID(j.at("settingsManager")));
-	// 	}
-	// )
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu", loader);
+	DESERIALIZE_BY_ID(this->inputsMenu, InputsMenu, "inputsMenu", loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
+	DESERIALIZE_BY_ID(this->settingsManager, Settings, "settingsManager", loader);
 }
 
 REGISTER_COMPONENT_CPP(SettingsMenu)

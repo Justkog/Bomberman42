@@ -31,6 +31,9 @@ namespace BeerEngine
 			virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
+
+			REGISTER_COMPONENT_HPP
+
 		};
 	}
 }

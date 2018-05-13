@@ -272,31 +272,34 @@ namespace BeerEngine
 
 	nlohmann::json	GameObject::serialize()
 	{
-		return nlohmann::json {
+		auto j = JsonSerializable::serialize();
+		j.merge_patch({
             {"id", this->_uniqueID},
             {"name", this->name},
             {"transform", JsonSerializable::toSerializable(this->transform)},
             {"components", JsonSerializable::toSerializables<BeerEngine::Component::Component>(this->GetComponents())}
-		};
+		});
+		return j;
 	}
 
-	void GameObject::deserialize(const nlohmann::json & j)
+	void GameObject::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     {
+		this->JsonSerializable::deserialize(j, loader);
 		this->_uniqueID = j.at("id");
 		this->name = j.at("name");
-		this->transform = Transform::Deserialize(j.at("transform"));
+		this->transform = Transform::Deserialize(j.at("transform"), loader);
 		auto components = j.at("components");
         for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
-			auto comp = Component::Component::Deserialize(it.value(), this);
+			auto comp = Component::Component::Deserialize(it.value(), loader, this);
 		}
     }
 
-	GameObject * GameObject::Deserialize(const nlohmann::json & j, AScene &scene)
+	GameObject * GameObject::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, AScene &scene)
     {
 		// int id = j.at("id");
 		auto go = scene.instantiate<GameObject>();
 		// auto go = new GameObject(id, scene);
-		go->deserialize(j);
+		go->deserialize(j, loader);
 		return go;
     }
 
@@ -309,9 +312,11 @@ namespace BeerEngine
 
     void    GameObject::load(std::string filePath) {
         std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
-        // std::cout << "deserializing " << filePath << "\n";
+        // std::cout << "deserializing GO " << filePath << "\n";
         auto j = nlohmann::json::parse(content);
 		// std::cout << "json loaded" << "\n";
-        this->deserialize(j);
+		BeerEngine::JsonLoader loader;
+        this->deserialize(j, loader);
+		loader.executeCallBacks();
     }
 }

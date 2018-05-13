@@ -54,9 +54,6 @@ namespace Game
        		virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			void		playStepSound();
 			
 			REGISTER_COMPONENT_HPP

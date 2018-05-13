@@ -37,6 +37,8 @@ namespace Game
 
 			bool clicking;
 			BeerEngine::Component::RaysRenderer *linesRenderer;
+
+			REGISTER_COMPONENT_HPP
 		};
 
 	};

@@ -122,6 +122,24 @@ void InGameMenu::renderUI(struct nk_context *ctx)
 	uiManager->resetToDefaultUI(ctx);
 }
 
+nlohmann::json	InGameMenu::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"uiManager", SERIALIZE_BY_ID(uiManager)},
+	});
+	return j;
+}
+
+void InGameMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
+}
+
+REGISTER_COMPONENT_CPP(InGameMenu)
+
 // ###############################################################
 
 // GETTER METHOD #################################################

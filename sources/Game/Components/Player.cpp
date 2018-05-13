@@ -14,7 +14,8 @@ namespace Game
 	{
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
-            _transform(gameObject->transform)
+			_transform(gameObject->transform),
+			_character(nullptr)
 		{ }
 
 		Player::~Player(void)
@@ -118,19 +119,19 @@ namespace Game
 			auto j = Component::serialize();
 			j.merge_patch({
 				{"componentClass", type},
-				// {"character", _character},
-				// {"srcAudio", srcAudio},
-				// {"itemSrcAudio", itemSrcAudio},
+				{"character", SERIALIZE_BY_ID(_character)},
+				{"srcAudio", SERIALIZE_BY_ID(srcAudio)},
+				{"itemSrcAudio", SERIALIZE_BY_ID(itemSrcAudio)},
 			});
 			return j;
 		}
 
-        void Player::deserialize(const nlohmann::json & j)
+        void Player::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     	{
-			Component::deserialize(j);
-			// this->_character = j.at("character");
-			// this->srcAudio = j.at("srcAudio");
-			// this->itemSrcAudio = j.at("itemSrcAudio");
+			Component::deserialize(j, loader);
+			DESERIALIZE_BY_ID(this->_character, Character, "character", loader);
+			DESERIALIZE_BY_ID(this->srcAudio, BeerEngine::Audio::AudioSource, "srcAudio", loader);
+			DESERIALIZE_BY_ID(this->itemSrcAudio, BeerEngine::Audio::AudioSource, "itemSrcAudio", loader);
 		}
 
 		void Player::playStepSound()

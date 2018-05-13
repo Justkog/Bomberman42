@@ -54,6 +54,8 @@ namespace Game
 			void setUI(struct nk_context *ctx);
 
 			void acknowledgePlayerDeath(glm::vec3 pos, int value);
+
+			REGISTER_COMPONENT_HPP
 		};
 
 	};

@@ -96,7 +96,7 @@ namespace Game
 			};
 		}
 
-		void Item::deserialize(const nlohmann::json & j)
+		void Item::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
             this->_type = j.at("type");
 		}

@@ -120,17 +120,17 @@ nlohmann::json	VersusMenu::serialize()
 	auto j = Component::serialize();
 	j.merge_patch({
 		{"componentClass", type},
-		{"mainMenu", mainMenu->_serializationID},
-		{"uiManager", uiManager->_serializationID},
+		{"mainMenu", SERIALIZE_BY_ID(mainMenu)},
+		{"uiManager", SERIALIZE_BY_ID(uiManager)},
 	});
 	return j;
 }
 
-void VersusMenu::deserialize(const nlohmann::json & j)
+void VersusMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
-	Component::deserialize(j);
-	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu");
-	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager");
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu", loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
 }
 
 REGISTER_COMPONENT_CPP(VersusMenu)

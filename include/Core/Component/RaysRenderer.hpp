@@ -40,6 +40,9 @@ namespace BeerEngine
 	
 			std::vector<Physics::Ray> rays;
 			int old_size;
+
+			REGISTER_COMPONENT_HPP
+
 		};
 
 	};

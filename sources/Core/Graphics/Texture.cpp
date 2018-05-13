@@ -124,12 +124,14 @@ namespace BeerEngine
 
 		nlohmann::json	Texture::serialize()
 		{
-			return nlohmann::json {
+			auto j = JsonSerializable::serialize();
+			j.merge_patch({
 				{"sourceFile", _sourceFile},
-			};
+			});
+			return j;
 		}
 
-		Texture * Texture::Deserialize(const nlohmann::json & j)
+		Texture * Texture::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			if (j.is_null())
 				return NULL;

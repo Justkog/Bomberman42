@@ -27,6 +27,7 @@ namespace Game
 
         void    Character::start(void)
         {
+			
         }
 
         void    Character::fixedUpdate(void)
@@ -149,21 +150,26 @@ namespace Game
 
 		nlohmann::json	Character::serialize()
 		{
-			return nlohmann::json {
-				{"componentClass", typeid(Character).name()},
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
 				{"speed", _speed},
 				{"bombNB", _bombNb},
 				{"explosionSize", _explosionSize},
 				{"direction", _direction},
-			};
+				{"map", SERIALIZE_BY_ID(map)},
+			});
+			return j;
 		}
 
-        void Character::deserialize(const nlohmann::json & j)
+        void Character::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     	{
+			Component::deserialize(j, loader);
             this->_speed = j.at("speed");
             this->_bombNb = j.at("bombNB");
             this->_explosionSize = j.at("explosionSize");
             this->_direction = j.at("direction");
+			DESERIALIZE_BY_ID(this->map, Map, "map", loader);
 		}
 
 		REGISTER_COMPONENT_CPP(Character)

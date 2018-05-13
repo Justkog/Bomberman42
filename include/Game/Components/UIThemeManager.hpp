@@ -53,8 +53,6 @@ namespace Game
 
 			nk_style_item loadSprite(std::string spritePath);
 
-			virtual nlohmann::json	serialize();
-
 			REGISTER_COMPONENT_HPP
 		};
 

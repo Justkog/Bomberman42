@@ -37,7 +37,6 @@ namespace Game
 			Signal<glm::vec3, int> onDestruction;
 
 			void destroyed();
-			BeerEngine::GameObject	*_crateDestoyed;
 
 		private:
             // virtual void    start(void);
@@ -50,9 +49,6 @@ namespace Game
        		// virtual void    onColliderStay(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
-
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
 
 			REGISTER_COMPONENT_HPP
 		};

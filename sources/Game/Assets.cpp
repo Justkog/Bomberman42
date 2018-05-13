@@ -154,8 +154,24 @@ BeerEngine::Graphics::Mesh			*Assets::GetModel(std::string path)
 		return (Assets::GetInstance()->models[name]);
 	else
 	{
-		std::cout << "[SOUND] " << name << std::endl;
+		std::cout << "[MODEL] " << name << std::endl;
 		return Assets::GetInstance()->models[name] = BeerEngine::Graphics::Graphics::OBJLoader(name);
 	}
 }
+
+BeerEngine::Graphics::ShaderProgram			*Assets::GetShaderProgram(std::string pathVS, std::string pathFS)
+{
+	// std::string name("assets/");
+	// name.append(path);
+	std::string name = pathVS + pathFS;
+	// return (Assets::GetInstance()->ShaderPrograms[name]);
+	if (Assets::GetInstance()->shaderPrograms.find(name) != Assets::GetInstance()->shaderPrograms.end())
+		return (Assets::GetInstance()->shaderPrograms[name]);
+	else
+	{
+		std::cout << "[SHADER PROGRAM] " << name << std::endl;
+		return Assets::GetInstance()->shaderPrograms[name] = BeerEngine::Graphics::ShaderProgram::LoadShader(pathVS, pathFS);
+	}
+}
+
 

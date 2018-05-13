@@ -400,7 +400,7 @@ namespace Game
 			};
 		}
 
-        void IA::deserialize(const nlohmann::json & j)
+        void IA::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     	{
 
 		}

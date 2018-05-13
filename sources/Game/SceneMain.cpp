@@ -41,7 +41,7 @@ void    SceneMain::init(void)
 	std::cout << "init main scene" << "\n";
 
 	// Shader
-	BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+	auto shader = new BeerEngine::Graphics::ShaderProgram(2);
 	shader->load(0, GL_VERTEX_SHADER,
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
 	);
@@ -49,15 +49,14 @@ void    SceneMain::init(void)
 		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
 	);
 	shader->compile();
-	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
+	auto material = new BeerEngine::Graphics::AMaterial(shader);
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 	
 	// Camera
-	BeerEngine::GameObject *cameraGO;
-	cameraGO = instantiate<BeerEngine::GameObject>();
+	auto cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
-	Game::Component::CameraController *cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// plane
 	// BeerEngine::GameObject *bkgdGO;

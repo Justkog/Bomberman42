@@ -88,18 +88,20 @@ namespace BeerEngine
 
 		nlohmann::json	Mesh::serialize()
 		{
-			return nlohmann::json {
+			auto j = JsonSerializable::serialize();
+			j.merge_patch({
 				{"sourceFile", _sourceFile},
 				{"type", _type},
-			};
+			});
+			return j;
 		}
 
-		void Mesh::deserialize(const nlohmann::json & j)
+		void Mesh::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-
+			this->JsonSerializable::deserialize(j, loader);
 		}
 
-		Mesh * Mesh::Deserialize(const nlohmann::json & j)
+		Mesh * Mesh::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			if (j.is_null())
 				return NULL;

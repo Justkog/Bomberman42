@@ -3,6 +3,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Game/Assets.hpp"
 
 namespace BeerEngine
 {
@@ -147,31 +148,31 @@ namespace BeerEngine
 
 		static ShaderProgram *loadParticleShader(void)
 		{
-			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
-			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_v.glsl").c_str()
-			);
-			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_f.glsl").c_str()
-			);
-			// shader->load(2, GL_GEOMETRY_SHADER,
-			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_g.glsl").c_str()
+			// ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			// shader->load(0, GL_VERTEX_SHADER,
+			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_v.glsl").c_str()
 			// );
-			shader->compile();
-			return (shader);
+			// shader->load(1, GL_FRAGMENT_SHADER,
+			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_f.glsl").c_str()
+			// );
+			// // shader->load(2, GL_GEOMETRY_SHADER,
+			// // 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_g.glsl").c_str()
+			// // );
+			// shader->compile();
+			return (Assets::GetShaderProgram("shaders/particle_v.glsl", "shaders/particle_f.glsl"));
 		}
 
 		ShaderProgram *Graphics::loadLineShader(void)
 		{
-			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
-			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/line_v.glsl").c_str()
-			);
-			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/line_f.glsl").c_str()
-			);
-			shader->compile();
-			return (shader);
+			// ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			// shader->load(0, GL_VERTEX_SHADER,
+			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/line_v.glsl").c_str()
+			// );
+			// shader->load(1, GL_FRAGMENT_SHADER,
+			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/line_f.glsl").c_str()
+			// );
+			// shader->compile();
+			return (Assets::GetShaderProgram("shaders/line_v.glsl", "shaders/line_f.glsl"));
 		}
 
 		void Graphics::Load(void)
@@ -184,15 +185,7 @@ namespace BeerEngine
 			whiteTexture = loadWhiteTexture();
 			//Shader Particle;
 			particleShader = loadParticleShader();
-			// Default Material
-			defaultShader = new BeerEngine::Graphics::ShaderProgram(2);
-			defaultShader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
-			);
-			defaultShader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
-			);
-			defaultShader->compile();
+			defaultShader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
 			defaultMaterial = new AMaterial(defaultShader);
 		}
 

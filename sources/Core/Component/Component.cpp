@@ -39,13 +39,13 @@ namespace BeerEngine
 			return j;
 		}
 
-		void Component::deserialize(const nlohmann::json & j)
+		void Component::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			JsonSerializable::deserialize(j);
+			this->JsonSerializable::deserialize(j, loader);
 			this->setActive(j.at("enabled"));
 		}
 
-		Component * Component::Deserialize(const nlohmann::json & j, GameObject *go)
+		Component * Component::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, GameObject *go)
 		{
 			// std::cout << "deserialize component : " << j << "\n";
 			std::string type = j.at("componentClass");
@@ -53,7 +53,7 @@ namespace BeerEngine
 			if(mapIt != Component::Component::typeToAddComponent.end())
 			{
 				auto component = Component::Component::typeToAddComponent[type](go);
-				component->deserialize(j);
+				component->deserialize(j, loader);
 				// std::cout << "deserialize component done" << "\n";
 				return component;
 			}

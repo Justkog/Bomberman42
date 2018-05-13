@@ -45,7 +45,8 @@ ItemsUI::~ItemsUI ( void )
 // CONSTRUCTOR POLYMORPHISM ######################################
 
 ItemsUI::ItemsUI(BeerEngine::GameObject *gameObject) :
-Component(gameObject)
+Component(gameObject),
+player(nullptr)
 {
 	
 }
@@ -174,6 +175,26 @@ void ItemsUI::renderUI(struct nk_context *ctx)
 	nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);
 }
+
+nlohmann::json	ItemsUI::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"uiManager", SERIALIZE_BY_ID(uiManager)},
+		{"player", SERIALIZE_BY_ID(player)},
+	});
+	return j;
+}
+
+void ItemsUI::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
+	DESERIALIZE_BY_ID(this->player, Player, "player", loader);
+}
+
+REGISTER_COMPONENT_CPP(ItemsUI)
 
 // ###############################################################
 

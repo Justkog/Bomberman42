@@ -29,9 +29,6 @@ namespace BeerEngine
 
 			glm::vec2	_size;
 
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 		};
 	}
