@@ -47,7 +47,8 @@ SettingsMenu::~SettingsMenu ( void )
 // CONSTRUCTOR POLYMORPHISM ######################################
 
 SettingsMenu::SettingsMenu(BeerEngine::GameObject *gameObject) :
-Component(gameObject)
+Component(gameObject),
+mousePreviousStatus(0)
 {
 	
 }
@@ -69,8 +70,6 @@ std::ostream &				operator<<(std::ostream & o, SettingsMenu const & i)
 void SettingsMenu::start()
 {
 	std::cout << "SettingsMenu start" << std::endl;
-	// windowHeight = WINDOW_HEIGHT;
-	// windowWidth = WINDOW_WIDTH;
 	musicVolume = 50.0f;
 	soundVolume = 50.0f;
 }
@@ -86,8 +85,6 @@ void SettingsMenu::setUI(struct nk_context *ctx)
 	ctx->style.option.active = nk_style_item_color(nk_rgb(255,255,255));
 	ctx->style.option.normal = nk_style_item_color(nk_rgb(255,255,255));
 	ctx->style.option.hover = nk_style_item_color(nk_rgb(255,255,255));
-	// ctx->style.window.spacing = nk_vec2(0, 0);
-	// nk_style_set_font(ctx, &uiManager->available_fonts["smallMain"]->handle);
 }
 
 void SettingsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
@@ -96,8 +93,19 @@ void SettingsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font
 	mWindow = uiManager->defaultWindow;
 
 	mWindow.fixed_background = nk_style_item_hide();
-	// mWindow.padding = nk_vec2(0, 0);
 	mWindow.spacing = nk_vec2(0, 10);
+
+	targetHeight = BeerEngine::Window::GetInstance()->getWindowedHeight();
+	targetWidth = BeerEngine::Window::GetInstance()->getWindowedWidth();
+}
+
+void SettingsMenu::updateScreenResolution()
+{
+	if (BeerEngine::Window::GetInstance()->getWindowedHeight() != static_cast<int>(targetHeight) 
+		|| BeerEngine::Window::GetInstance()->getWindowedWidth() != static_cast<int>(targetWidth))
+	{
+		BeerEngine::Window::GetInstance()->resize(static_cast<int>(targetWidth), static_cast<int>(targetHeight));
+	}
 }
 
 void SettingsMenu::saveSettings()
@@ -132,23 +140,36 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		mode = BeerEngine::Window::GetInstance()->isFullScreen() ? FULL_SCREEN : WINDOWED;
 
 		std::stringstream ssHeight;
-		ssHeight << "Height: " << windowHeight;
-		windowHeight = BeerEngine::Window::GetInstance()->getHeight();
-		int height = windowHeight;
+		float sliderHeight = targetHeight;
+		if (mode == FULL_SCREEN)
+			sliderHeight = 1440.0f;
+		ssHeight << "Height: " << sliderHeight;
 		nk_label(ctx, ssHeight.str().c_str(), NK_TEXT_LEFT);
-		// TODO update value after no change in amount of time
-		nk_slider_float(ctx, 0, &windowHeight, 1440.0f, 10.0f);
+		nk_slider_float(ctx, 0, &sliderHeight, 1440.0f, 10.0f);
+		if (mode != FULL_SCREEN)
+			targetHeight = sliderHeight;
 
 		std::stringstream ssWidth;
-		ssWidth << "Width: " << windowWidth;
-		windowWidth = BeerEngine::Window::GetInstance()->getWidth();
-		int width = windowWidth;
+		float sliderWidth = targetWidth;
+		if (mode == FULL_SCREEN)
+			sliderWidth = 2560.0f;
+		ssWidth << "Width: " << sliderWidth;
 		nk_label(ctx, ssWidth.str().c_str(), NK_TEXT_LEFT);
-		// TODO update value after no change in amount of time
-		nk_slider_float(ctx, 0, &windowWidth, 2560.0f, 10.0f);
+		nk_slider_float(ctx, 0, &sliderWidth, 2560.0f, 10.0f);
+		if (mode != FULL_SCREEN)
+			targetWidth = sliderWidth;
 
-		if (width != static_cast<int>(windowWidth) || height != static_cast<int>(windowHeight))
-			BeerEngine::Window::GetInstance()->resize(windowWidth, windowHeight);
+		int currentMouseStatus = glfwGetMouseButton(BeerEngine::Window::GetInstance()->getWindow(), GLFW_MOUSE_BUTTON_LEFT);
+		if (currentMouseStatus == GLFW_RELEASE && mousePreviousStatus != GLFW_RELEASE)
+		{
+			updateScreenResolution();
+		}
+		else if (glfwGetMouseButton(BeerEngine::Window::GetInstance()->getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+		{
+			targetHeight = BeerEngine::Window::GetInstance()->getWindowedHeight();
+			targetWidth = BeerEngine::Window::GetInstance()->getWindowedWidth();
+		}
+
 		if (nk_option_label(ctx, "windowed", mode == WINDOWED))
 		{
 			if (mode != WINDOWED)
@@ -215,6 +236,8 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 	}
 	nk_end(ctx);
 	uiManager->resetToDefaultUI(ctx);
+
+	mousePreviousStatus = glfwGetMouseButton(BeerEngine::Window::GetInstance()->getWindow(), GLFW_MOUSE_BUTTON_LEFT);
 }
 
 nlohmann::json	SettingsMenu::serialize()

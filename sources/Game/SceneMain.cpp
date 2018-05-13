@@ -92,6 +92,6 @@ void    SceneMain::init(void)
 	settingsMenu->setActive(false);
 	inputsMenu->setActive(false);
 
-	this->save("main.scene");
+	this->save("assets/scenes/main.scene");
 	std::cout << "init end" << "\n";
 }

@@ -30,9 +30,12 @@ namespace Game
 								public BeerEngine::Component::IStartUI,
 								public BeerEngine::Component::IUI
 		{
+		private:
+			int				mousePreviousStatus;
+			float			targetHeight;
+			float			targetWidth;
+		
 		public:
-			float			windowHeight;
-			float			windowWidth;
 			float			musicVolume;
 			float			soundVolume;
 			int				mode;
@@ -60,6 +63,9 @@ namespace Game
 			void setUI(struct nk_context *ctx);
 			void saveSettings();
 			void resetSettings();
+
+			void updateScreenResolution();
+
 	
 			REGISTER_COMPONENT_HPP
 		};
