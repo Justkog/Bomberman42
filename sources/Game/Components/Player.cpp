@@ -68,7 +68,10 @@ namespace Game
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
             if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))
+			{
+				std::cout << "drop requested" << std::endl;
                 _character->dropBomb();
+			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
 			if (BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_8) &&

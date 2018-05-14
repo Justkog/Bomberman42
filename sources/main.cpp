@@ -80,7 +80,7 @@ void updateThread(BeerEngine::Window *window)
         }
         //  std::this_thread::sleep_for(sleepTime);
 
-		BeerEngine::Input::Update();
+		// BeerEngine::Input::Update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		// std::cout << "update thread" << std::endl;
     }
@@ -197,6 +197,7 @@ int main(void)
         nk_end(ctx);
 
         nk_glfw3_render(NK_ANTI_ALIASING_ON, MAX_VERTEX_BUFFER, MAX_ELEMENT_BUFFER);
+		BeerEngine::Input::Update();
         window->swapBuffer();
         frameCount++;
 		// std::cout << "render thread" << std::endl;

@@ -54,7 +54,6 @@ namespace BeerEngine
 		return (_ortho);
 	}
 
-
 	void			Window::closeRequest(void)
 	{
 		_close = true;
