@@ -5,12 +5,21 @@
                 {
                     "componentClass": "N4Game9Component16CameraControllerE",
                     "enabled": true,
+<<<<<<< HEAD
                     "serializationID": 1055
                 }
             ],
             "id": 156,
             "name": "Camera",
             "serializationID": 1053,
+=======
+                    "serializationID": 1556
+                }
+            ],
+            "id": 198,
+            "name": "Camera",
+            "serializationID": 1554,
+>>>>>>> master
             "transform": {
                 "pivot": [
                     0.0,
@@ -33,7 +42,11 @@
                     1.0,
                     1.0
                 ],
+<<<<<<< HEAD
                 "serializationID": 1054
+=======
+                "serializationID": 1555
+>>>>>>> master
             }
         },
         {
@@ -42,46 +55,81 @@
                     "componentClass": "N4Game9Component8SettingsE",
                     "enabled": true,
                     "filePath": "testSettings.json",
+<<<<<<< HEAD
                     "serializationID": 1058
+=======
+                    "serializationID": 1559
+>>>>>>> master
                 },
                 {
                     "componentClass": "N4Game9Component14UIThemeManagerE",
                     "enabled": true,
+<<<<<<< HEAD
                     "serializationID": 1059
+=======
+                    "serializationID": 1560
+>>>>>>> master
                 },
                 {
                     "componentClass": "N4Game9Component16BackgroundDrawerE",
                     "enabled": true,
+<<<<<<< HEAD
                     "serializationID": 1060,
                     "uiManager": 1059
+=======
+                    "serializationID": 1561,
+                    "uiManager": 1560
+>>>>>>> master
                 },
                 {
                     "componentClass": "N4Game9Component8MainMenuE",
                     "enabled": true,
+<<<<<<< HEAD
                     "serializationID": 1061,
                     "settingsMenu": 1063,
                     "uiManager": 1059,
                     "versusMenu": 1062
+=======
+                    "serializationID": 1562,
+                    "settingsMenu": 1564,
+                    "uiManager": 1560,
+                    "versusMenu": 1563
+>>>>>>> master
                 },
                 {
                     "componentClass": "N4Game9Component10VersusMenuE",
                     "enabled": false,
+<<<<<<< HEAD
                     "mainMenu": 1061,
                     "serializationID": 1062,
                     "uiManager": 1059
+=======
+                    "mainMenu": 1562,
+                    "serializationID": 1563,
+                    "uiManager": 1560
+>>>>>>> master
                 },
                 {
                     "componentClass": "N4Game9Component12SettingsMenuE",
                     "enabled": false,
+<<<<<<< HEAD
                     "inputsMenu": 1064,
                     "mainMenu": 1061,
                     "serializationID": 1063,
                     "settingsManager": 1058,
                     "uiManager": 1059
+=======
+                    "inputsMenu": 1565,
+                    "mainMenu": 1562,
+                    "serializationID": 1564,
+                    "settingsManager": 1559,
+                    "uiManager": 1560
+>>>>>>> master
                 },
                 {
                     "componentClass": "N4Game9Component10InputsMenuE",
                     "enabled": false,
+<<<<<<< HEAD
                     "serializationID": 1064,
                     "settingsMenu": 1063,
                     "uiManager": 1059
@@ -90,6 +138,16 @@
             "id": 157,
             "name": "",
             "serializationID": 1056,
+=======
+                    "serializationID": 1565,
+                    "settingsMenu": 1564,
+                    "uiManager": 1560
+                }
+            ],
+            "id": 199,
+            "name": "",
+            "serializationID": 1557,
+>>>>>>> master
             "transform": {
                 "pivot": [
                     0.0,
@@ -112,7 +170,11 @@
                     1.0,
                     1.0
                 ],
+<<<<<<< HEAD
                 "serializationID": 1057
+=======
+                "serializationID": 1558
+>>>>>>> master
             }
         }
     ]

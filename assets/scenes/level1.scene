@@ -81,57 +81,62 @@
                 {
                     "componentClass": "N4Game9Component11GameManagerE",
                     "enabled": true,
-                    "gameOverMenu": 29,
-                    "inGameMenu": 28,
-                    "playerBreakable": 39,
+                    "gameOverMenu": 30,
+                    "inGameMenu": 29,
+                    "playerBreakable": 40,
                     "serializationID": 24,
-                    "victoryMenu": 30
+                    "victoryMenu": 31
+                },
+                {
+                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
+                    "enabled": true,
+                    "serializationID": 25
                 },
                 {
                     "componentClass": "N4Game9Component16CameraControllerE",
                     "enabled": true,
-                    "serializationID": 25
+                    "serializationID": 26
                 },
                 {
                     "componentClass": "N4Game9Component12MouseRayTestE",
                     "enabled": true,
                     "linesRenderer": 19,
-                    "serializationID": 26
+                    "serializationID": 27
                 },
                 {
                     "componentClass": "N4Game9Component14UIThemeManagerE",
                     "enabled": true,
-                    "serializationID": 27
+                    "serializationID": 28
                 },
                 {
                     "componentClass": "N4Game9Component10InGameMenuE",
                     "enabled": false,
-                    "serializationID": 28,
-                    "uiManager": 27
+                    "serializationID": 29,
+                    "uiManager": 28
                 },
                 {
                     "componentClass": "N4Game9Component12GameOverMenuE",
                     "enabled": false,
-                    "serializationID": 29,
-                    "uiManager": 27
+                    "serializationID": 30,
+                    "uiManager": 28
                 },
                 {
                     "componentClass": "N4Game9Component11VictoryMenuE",
                     "enabled": false,
-                    "serializationID": 30,
-                    "uiManager": 27
+                    "serializationID": 31,
+                    "uiManager": 28
                 },
                 {
                     "componentClass": "N4Game9Component6TimeUIE",
                     "enabled": true,
-                    "serializationID": 31,
-                    "uiManager": 27
+                    "serializationID": 32,
+                    "uiManager": 28
                 },
                 {
                     "componentClass": "N4Game9Component7ItemsUIE",
                     "enabled": true,
-                    "serializationID": 32,
-                    "uiManager": 27
+                    "serializationID": 33,
+                    "uiManager": 28
                 }
             ],
             "id": 1,
@@ -169,7 +174,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 36,
+                            "serializationID": 37,
                             "sourceFile": "assets/textures/player2.png"
                         },
                         "color": [
@@ -178,7 +183,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 37,
+                        "serializationID": 38,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -216,7 +221,7 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 35
+                    "serializationID": 36
                 },
                 {
                     "bombNB": 1,
@@ -227,46 +232,46 @@
                     ],
                     "enabled": true,
                     "explosionSize": 1.0,
-                    "map": 50,
-                    "serializationID": 38,
+                    "map": 51,
+                    "serializationID": 39,
                     "speed": 2.0
                 },
                 {
                     "componentClass": "N4Game9Component9BreakableE",
                     "enabled": true,
-                    "serializationID": 39
+                    "serializationID": 40
                 },
                 {
                     "componentClass": "N4Game9Component6PlayerE",
                     "enabled": true,
-                    "itemSrcAudio": 47,
-                    "serializationID": 40,
-                    "srcAudio": 46
+                    "itemSrcAudio": 48,
+                    "serializationID": 41,
+                    "srcAudio": 47
                 },
                 {
                     "componentClass": "Component",
                     "enabled": true,
-                    "serializationID": 41
+                    "serializationID": 42
                 },
                 {
                     "componentClass": "N4Game9Component8SettingsE",
                     "enabled": true,
                     "filePath": "testSettings.json",
-                    "serializationID": 42
+                    "serializationID": 43
                 },
                 {
                     "componentClass": "N10BeerEngine9Component14CircleColliderE",
                     "enabled": true,
                     "isTrigger": false,
                     "radius": 0.5,
-                    "serializationID": 43
+                    "serializationID": 44
                 },
                 {
                     "componentClass": "N10BeerEngine9Component11RigidBody2DE",
                     "enabled": true,
                     "kinematic": 2,
                     "mass": 1.0,
-                    "serializationID": 44,
+                    "serializationID": 45,
                     "velocity": [
                         0.0,
                         0.0
@@ -275,22 +280,22 @@
                 {
                     "componentClass": "N10BeerEngine5Audio13AudioListenerE",
                     "enabled": true,
-                    "serializationID": 45
-                },
-                {
-                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
-                    "enabled": true,
                     "serializationID": 46
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
                     "serializationID": 47
+                },
+                {
+                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
+                    "enabled": true,
+                    "serializationID": 48
                 }
             ],
             "id": 2,
             "name": "player",
-            "serializationID": 33,
+            "serializationID": 34,
             "transform": {
                 "pivot": [
                     0.0,
@@ -313,7 +318,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 34
+                "serializationID": 35
             }
         },
         {
@@ -347,14 +352,21 @@
                             8,
                             0,
                             2,
-                            0,
                             2,
+                            0,
                             9,
                             2,
+<<<<<<< HEAD
                             0,
                             0,
                             0,
                             0,
+=======
+                            2,
+                            2,
+                            2,
+                            2,
+>>>>>>> master
                             0,
                             8,
                             -1,
@@ -364,7 +376,11 @@
                             1,
                             8,
                             1,
+<<<<<<< HEAD
                             0,
+=======
+                            2,
+>>>>>>> master
                             1,
                             2,
                             1,
@@ -374,7 +390,11 @@
                             1,
                             0,
                             1,
+<<<<<<< HEAD
                             2,
+=======
+                            0,
+>>>>>>> master
                             1,
                             8,
                             1
@@ -382,10 +402,19 @@
                         [
                             1,
                             2,
+                            0,
                             2,
+<<<<<<< HEAD
                             2,
                             0,
                             0,
+=======
+                            0,
+                            2,
+                            2,
+                            0,
+                            2,
+>>>>>>> master
                             2,
                             2,
                             2,
@@ -393,9 +422,13 @@
                             2,
                             2,
                             2,
+<<<<<<< HEAD
                             0,
                             2,
                             0,
+=======
+                            2,
+>>>>>>> master
                             1
                         ],
                         [
@@ -404,17 +437,19 @@
                             1,
                             0,
                             1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            0,
-                            1,
                             0,
                             1,
                             2,
                             1,
                             0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            2,
                             1
                         ],
                         [
@@ -423,14 +458,24 @@
                             0,
                             0,
                             2,
+<<<<<<< HEAD
                             0,
+=======
+                            2,
+>>>>>>> master
                             0,
                             9,
                             2,
                             0,
                             2,
                             2,
+<<<<<<< HEAD
+=======
+                            0,
+                            0,
+>>>>>>> master
                             2,
+                            0,
                             2,
                             2,
                             0,
@@ -444,62 +489,108 @@
                             1,
                             2,
                             1,
-                            0,
+                            2,
                             1,
+<<<<<<< HEAD
                             0,
+=======
+                            2,
                             1,
-                            0,
+                            2,
+>>>>>>> master
                             1,
                             2,
                             1,
+                            2,
+<<<<<<< HEAD
+                            1,
+                            0,
+=======
+>>>>>>> master
+                            1
+                        ],
+                        [
+                            1,
+<<<<<<< HEAD
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+=======
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+>>>>>>> master
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
                             0,
                             1
                         ],
                         [
                             1,
                             2,
+                            1,
                             0,
+                            1,
                             0,
-                            0,
-                            0,
-                            0,
-                            0,
+                            1,
                             2,
+                            1,
+                            0,
+<<<<<<< HEAD
+                            1,
+                            0,
+                            1,
                             2,
+                            1,
                             0,
+=======
+                            1,
+                            2,
+                            1,
+                            2,
+                            1,
                             0,
-                            0,
-                            0,
-                            0,
-                            0,
+>>>>>>> master
                             1
                         ],
                         [
                             1,
-                            2,
-                            1,
-                            0,
-                            1,
-                            0,
-                            1,
-                            2,
-                            1,
-                            0,
-                            1,
-                            0,
-                            1,
-                            2,
-                            1,
-                            0,
-                            1
-                        ],
-                        [
-                            1,
-                            2,
-                            0,
                             0,
                             2,
                             0,
+<<<<<<< HEAD
+                            0,
+=======
+                            2,
+>>>>>>> master
+                            2,
+                            2,
+                            0,
+<<<<<<< HEAD
+                            2,
+                            2,
+                            2,
+                            0,
+=======
                             0,
                             2,
                             2,
@@ -507,7 +598,8 @@
                             2,
                             2,
                             2,
-                            0,
+                            2,
+>>>>>>> master
                             2,
                             0,
                             1
@@ -520,9 +612,9 @@
                             1,
                             2,
                             1,
-                            2,
+                            0,
                             1,
-                            2,
+                            0,
                             1,
                             0,
                             1,
@@ -535,17 +627,27 @@
                             1,
                             -1,
                             8,
+<<<<<<< HEAD
                             0,
                             0,
                             0,
                             2,
                             2,
                             0,
+=======
+                            2,
+                            2,
+                            2,
+                            2,
+                            0,
+                            2,
+>>>>>>> master
                             0,
                             2,
                             0,
                             2,
                             0,
+                            2,
                             8,
                             -1,
                             1
@@ -570,8 +672,8 @@
                             1
                         ]
                     ],
-                    "player": 40,
-                    "serializationID": 50,
+                    "player": 41,
+                    "serializationID": 51,
                     "shader": {
                         "serializationID": 5,
                         "sourceFileFS": "shaders/basic_f.glsl",
@@ -583,7 +685,7 @@
             ],
             "id": 3,
             "name": "map",
-            "serializationID": 48,
+            "serializationID": 49,
             "transform": {
                 "pivot": [
                     0.0,
@@ -606,7 +708,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 49
+                "serializationID": 50
             }
         },
         {
@@ -616,7 +718,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 55,
+                            "serializationID": 56,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -625,7 +727,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 56,
+                        "serializationID": 57,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -633,7 +735,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 54,
+                        "serializationID": 55,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -663,12 +765,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 53
+                    "serializationID": 54
                 }
             ],
             "id": 4,
             "name": "house",
-            "serializationID": 51,
+            "serializationID": 52,
             "transform": {
                 "pivot": [
                     0.0,
@@ -691,7 +793,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 52
+                "serializationID": 53
             }
         },
         {
@@ -701,7 +803,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 61,
+                            "serializationID": 62,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -710,7 +812,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 62,
+                        "serializationID": 63,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -718,7 +820,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 60,
+                        "serializationID": 61,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -748,12 +850,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 59
+                    "serializationID": 60
                 }
             ],
             "id": 5,
             "name": "house2",
-            "serializationID": 57,
+            "serializationID": 58,
             "transform": {
                 "pivot": [
                     0.0,
@@ -776,7 +878,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 58
+                "serializationID": 59
             }
         },
         {
@@ -786,7 +888,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 66,
+                            "serializationID": 67,
                             "sourceFile": "assets/textures/ground_color.png"
                         },
                         "color": [
@@ -795,7 +897,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 67,
+                        "serializationID": 68,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -833,12 +935,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 65
+                    "serializationID": 66
                 }
             ],
             "id": 6,
             "name": "",
-            "serializationID": 63,
+            "serializationID": 64,
             "transform": {
                 "pivot": [
                     0.0,
@@ -861,7 +963,7 @@
                     1.0,
                     40.0
                 ],
-                "serializationID": 64
+                "serializationID": 65
             }
         }
     ]
