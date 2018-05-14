@@ -4,6 +4,8 @@
 #include "Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
+struct nk_font;
+
 namespace BeerEngine
 {
     class AScene : public JsonSerializable, public JsonDeserializable
@@ -28,7 +30,7 @@ namespace BeerEngine
         void    mutexLock(bool lock);
 
         void    start(void);
-        void    startUI(struct nk_context *ctx);
+        void    startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         void    fixedUpdate(void);
         void    update(void);
         void    renderUpdate(void);
@@ -61,6 +63,7 @@ namespace BeerEngine
 		}
 
         void debugTest(void);
+		GameObject *find(std::string name);
 
         std::vector<GameObject *> getGameObjects();
         
@@ -68,7 +71,7 @@ namespace BeerEngine
         void load(std::string filePath);
 
         virtual nlohmann::json	serialize();
-        virtual void deserialize(const nlohmann::json & j);
+        virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
     };
 }

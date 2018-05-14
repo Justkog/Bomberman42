@@ -21,11 +21,12 @@ namespace Game
 		{
 		protected:
 			BeerEngine::Component::MeshRenderer		*render;
-			float	power;
 			float	timer;
 
 		public:
             Bomb(BeerEngine::GameObject *gameObject);
+			virtual ~Bomb(void);
+
 			virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
@@ -34,7 +35,12 @@ namespace Game
 			
 			void			setPower(float pow);
 
+			static std::vector<Bomb*> bombs;
 			Game::Component::Map *map;
+			float power;
+
+			static BeerEngine::Graphics::Texture *explosionTexture;
+			Signal<> onExplode;
 		};
 	}
 }

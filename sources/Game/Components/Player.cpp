@@ -5,6 +5,8 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Component/ACollider.hpp"
 #include "Game/Components/Item.hpp"
+#include "Game/Components/Map.hpp"
+#include "Game/Input.hpp"
 
 namespace Game
 {
@@ -12,10 +14,20 @@ namespace Game
 	{
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
-            _transform(gameObject->transform)
+			_transform(gameObject->transform),
+			_character(nullptr)
 		{ }
 
-        void    Player::start(void)
+		Player::~Player(void)
+		{
+		}
+
+        void    Player::onDestroy(void)
+        {
+			_character->map->_player = nullptr;
+        }
+
+		void    Player::start(void)
         {
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
@@ -55,8 +67,11 @@ namespace Game
 			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_2))
+            if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))
+			{
+				std::cout << "drop requested" << std::endl;
                 _character->dropBomb();
+			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
 			if (BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_8) &&
@@ -72,26 +87,26 @@ namespace Game
 
         void            Player::renderUI(struct nk_context *ctx)
         {
-            if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-            {
-                std::stringstream ss;
-                ss << "Speed: " << _character->_speed;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Bomb: " << _character->_bombNb;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                ss.str(std::string());
-                ss.clear();
-                ss << "Size: " << _character->_explosionSize;
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-                nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
-            }
-            nk_end(ctx);
+            // if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            // {
+            //     std::stringstream ss;
+            //     ss << "Speed: " << _character->_speed;
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "Bomb: " << _character->_bombNb;
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     ss.str(std::string());
+            //     ss.clear();
+            //     ss << "Size: " << _character->_explosionSize;
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+            //     nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, glm::to_string(_gameObject->transform.position).c_str(), NK_TEXT_LEFT);
+            // }
+            // nk_end(ctx);
         }
 
 		void    Player::onColliderEnter(BeerEngine::Component::ACollider *other)
@@ -102,17 +117,24 @@ namespace Game
 			}
 		}
 
-
         nlohmann::json	Player::serialize()
 		{
-			return nlohmann::json {
-				{"componentClass", typeid(Player).name()},
-			};
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+				{"character", SERIALIZE_BY_ID(_character)},
+				{"srcAudio", SERIALIZE_BY_ID(srcAudio)},
+				{"itemSrcAudio", SERIALIZE_BY_ID(itemSrcAudio)},
+			});
+			return j;
 		}
 
-        void Player::deserialize(const nlohmann::json & j)
+        void Player::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     	{
-
+			Component::deserialize(j, loader);
+			DESERIALIZE_BY_ID(this->_character, Character, "character", loader);
+			DESERIALIZE_BY_ID(this->srcAudio, BeerEngine::Audio::AudioSource, "srcAudio", loader);
+			DESERIALIZE_BY_ID(this->itemSrcAudio, BeerEngine::Audio::AudioSource, "itemSrcAudio", loader);
 		}
 
 		void Player::playStepSound()

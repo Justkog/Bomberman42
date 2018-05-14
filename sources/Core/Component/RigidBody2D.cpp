@@ -17,7 +17,7 @@ namespace BeerEngine
 		{
 			float dist = glm::length(velocity);
 			if (dist == 0.0f)
-				return ;
+				return;
 			glm::vec3 move(velocity[0], 0.0f, velocity[1]);
 			_gameObject->transform.translate(move / 60.0f);
 
@@ -28,16 +28,19 @@ namespace BeerEngine
 
 		nlohmann::json	RigidBody2D::serialize()
 		{
-			return {
+			auto j = Component::serialize();
+			j.merge_patch({
 				{"componentClass", type},
 				{"velocity", velocity},
 				{"kinematic", kinematic},
 				{"mass", mass},
-			};
+			});
+			return j;
 		}
 
-		void RigidBody2D::deserialize(const nlohmann::json & j)
+		void RigidBody2D::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+			this->Component::deserialize(j, loader);
 			this->velocity = j.at("velocity");
 			this->kinematic = j.at("kinematic");
 			this->mass = j.at("mass");

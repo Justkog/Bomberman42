@@ -1,4 +1,6 @@
 #include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/IO/FileUtils.hpp"
+#include "Game/Assets.hpp"
 
 namespace BeerEngine
 {
@@ -219,6 +221,47 @@ namespace BeerEngine
 		void			ShaderProgram::uniformMat(GLint id, glm::mat4 &mat)
 		{
 			glUniformMatrix4fv(id, 1, GL_FALSE, glm::value_ptr(mat));
+		}
+
+		ShaderProgram	*ShaderProgram::LoadShader(std::string pathVS, std::string pathFS)
+		{
+			auto shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile(pathVS).c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+				BeerEngine::IO::FileUtils::LoadFile(pathFS).c_str()
+			);
+			shader->compile();
+			shader->_sourceFileVS = pathVS;
+			shader->_sourceFileFS = pathFS;
+			return shader;
+		}
+
+		nlohmann::json	ShaderProgram::serialize()
+		{
+			auto j = JsonSerializable::serialize();
+			j.merge_patch({
+				{"sourceFileVS", _sourceFileVS},
+				{"sourceFileFS", _sourceFileFS},
+			});
+			return j;
+		}
+
+		ShaderProgram * ShaderProgram::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+		{
+			if (j.is_null())
+				return NULL;
+			std::string pathVS = j.at("sourceFileVS");
+			std::string pathFS = j.at("sourceFileFS");
+			if (pathVS != "" && pathFS != "")
+			{
+				std::cout << "getting ShaderProgram VS at " << pathVS << "\n";
+				std::cout << "getting ShaderProgram FS at " << pathFS << "\n";
+				return (Assets::GetShaderProgram(pathVS, pathFS));
+			}
+			else
+				return NULL;
 		}
 	}
 }

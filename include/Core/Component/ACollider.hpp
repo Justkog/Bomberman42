@@ -51,7 +51,7 @@ namespace BeerEngine
 			RigidBody2D *rb2d;
 
 			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
+			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 		};
 	}
 }

@@ -15,14 +15,16 @@ namespace BeerEngine
 		{
 		protected:
 		public:
+
 			Component(GameObject *gameObject);
 			virtual ~Component(void) {}
 
 			void    destroy(GameObject *go = nullptr);
 
 			GameObject		*_gameObject;
+			bool			_isActive;
 
-			virtual nlohmann::json	serialize();
+			void	setActive(bool state);
 
 			template<typename T>
 			static Component * createInstance(GameObject *gameObject)
@@ -36,8 +38,10 @@ namespace BeerEngine
 				return (gameObject->AddComponent<T>()); 
 			}
 
-			virtual void deserialize(const nlohmann::json & j);
-			static Component * Deserialize(const nlohmann::json & j, GameObject *go);
+			virtual nlohmann::json	serialize();
+			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+			static Component * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, GameObject *go);
+
 			static add_component_type typeToAddComponent;
 			static add_component_type createAddMap();
 		};

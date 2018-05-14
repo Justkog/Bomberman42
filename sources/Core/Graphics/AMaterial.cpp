@@ -108,35 +108,33 @@ namespace BeerEngine
 
 		nlohmann::json	AMaterial::serialize()
 		{
-			return nlohmann::json {
+			auto j = JsonSerializable::serialize();
+			j.merge_patch({
 				{"albedo", _albedo},
 				{"normal", _normal},
 				{"bump", _bump},
 				{"color", _color},
-				{"shader", "defaultShader"},
-			};
+				{"shader", _shader},
+			});
+			return j;
 		}
 
-		void AMaterial::deserialize(const nlohmann::json & j)
+		void AMaterial::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			this->setAlbedo(Texture::Deserialize(j.at("albedo")));
-			this->setNormal(Texture::Deserialize(j.at("normal")));
-			this->setBump(Texture::Deserialize(j.at("bump")));
+			this->JsonSerializable::deserialize(j, loader);
+			if (j.find("albedo") != j.end())
+				this->setAlbedo(Texture::Deserialize(j.at("albedo"), loader));
+			if (j.find("normal") != j.end())
+				this->setNormal(Texture::Deserialize(j.at("normal"), loader));
+			if (j.find("bump") != j.end())
+				this->setBump(Texture::Deserialize(j.at("bump"), loader));
 			this->setColor(j.at("color"));
 		}
 
-		AMaterial * AMaterial::Deserialize(const nlohmann::json & j)
+		AMaterial * AMaterial::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
-			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
-			);
-			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
-			);
-			shader->compile();
-			auto material = new AMaterial(shader);
-			material->deserialize(j);
+			auto material = new AMaterial(ShaderProgram::Deserialize(j.at("shader"), loader));
+			material->deserialize(j, loader);
 			
 			return material;
 		}

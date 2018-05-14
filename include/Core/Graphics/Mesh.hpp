@@ -22,8 +22,8 @@ namespace BeerEngine
 			~Mesh();
 			void	add(unsigned int vboIndex, GLenum type, unsigned int width, void *data, unsigned int dataSize, GLenum usage = GL_STATIC_DRAW);
 			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-			static Mesh * Deserialize(const nlohmann::json & j);
+			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+			static Mesh * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 			void setSourcefile(std::string path);
 			void setType(std::string type);
 			void	render(GLenum mode = GL_TRIANGLES, bool instancing = false, int count = 0, int *divisor = NULL, int divisorCount = 0);

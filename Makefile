@@ -1,4 +1,4 @@
-CC = g++ -g3
+CC = g++
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 MKDIR = /bin/mkdir -p
@@ -26,6 +26,7 @@ SRC = \
 	Core/Json/Json.cpp \
 	Core/Json/JsonSerializable.cpp \
 	Core/AScene.cpp \
+	Core/GenericScene.cpp \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \
 	Core/Input.cpp \
@@ -61,8 +62,10 @@ SRC = \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
 	Game/Assets.cpp \
+	Game/Input.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
+	Game/Components/GameManager.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
@@ -75,14 +78,25 @@ SRC = \
 	Game/Components/Breakable.cpp \
 	Game/Components/BeerRoutineTester.cpp \
 	Game/Components/MainMenu.cpp \
+	Game/Components/VersusMenu.cpp \
+	Game/Components/SettingsMenu.cpp \
+	Game/Components/InputsMenu.cpp \
+	Game/Components/InGameMenu.cpp \
+	Game/Components/GameOverMenu.cpp \
+	Game/Components/VictoryMenu.cpp \
+	Game/Components/TimeUI.cpp \
+	Game/Components/ItemsUI.cpp \
+	Game/Components/UIThemeManager.cpp \
+	Game/Components/BackgroundDrawer.cpp \
 	Game/CameraTest.cpp
 
 
 DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
-
-CFLAGS = -Ofast -march=native -flto -std=c++11 -Wc++11-extensions \
+# -g
+# -Ofast -march=native -flto
+CFLAGS = -g -std=c++11 -Wc++11-extensions \
 	`pkg-config glfw3 --cflags-only-I` \
 	`pkg-config glew --cflags-only-I` \
 	`pkg-config glm --cflags-only-I` \

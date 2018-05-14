@@ -35,9 +35,9 @@ namespace BeerEngine
 			return j;
 		}
 
-		void ParticleExplode::deserialize(const nlohmann::json & j)
+		void ParticleExplode::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			this->ParticleBase::deserialize(j);
+			this->ParticleBase::deserialize(j, loader);
 		}
 
 		REGISTER_COMPONENT_CPP(ParticleExplode)

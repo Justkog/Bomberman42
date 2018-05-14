@@ -83,9 +83,6 @@ namespace BeerEngine
 			ParticleBase	&setSize(float s0, float s1);
 			ParticleBase	&setAnimate(bool a, int aTotalFrame = 1, int aFrameWidth = 1, int aFrameHeight = 1);
 
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 		};
 	}

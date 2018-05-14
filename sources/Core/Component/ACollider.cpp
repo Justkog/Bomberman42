@@ -226,13 +226,16 @@ namespace BeerEngine
 
 		nlohmann::json	ACollider::serialize()
 		{
-			return {
+			auto j = Component::serialize();
+			j.merge_patch({
 				{"isTrigger", _isTrigger},
-			};
+			});
+			return j;
 		}
 
-		void ACollider::deserialize(const nlohmann::json & j)
+		void ACollider::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+			this->Component::deserialize(j, loader);
 			this->_isTrigger = j.at("isTrigger");
 		}
 	}

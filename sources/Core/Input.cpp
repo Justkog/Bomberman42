@@ -8,9 +8,18 @@ namespace BeerEngine
 	glm::vec2				Input::mousePosition;
 	glm::vec2				Input::mouseScroll;
 
+	std::function<void (int)> Input::onKeyPushedDefault()
+	{
+		return [] (int i) { };
+	}
+
+	std::function<void (int)>	Input::onKeyPushed = Input::onKeyPushedDefault();
+
 	void			Input::SetKey(int keycode, int status)
 	{
 		key[keycode] = status;
+		if (status == 1)
+			onKeyPushed(keycode);
 	}
 
 	bool			Input::GetKey(KeyCode keycode)
@@ -20,7 +29,12 @@ namespace BeerEngine
 
 	bool			Input::GetKeyDown(KeyCode keycode)
 	{
-		return (key[keycode] == 1);
+		if (key[keycode] == 1)
+		{
+			key[keycode] = 2;
+			return true;
+		}
+		return false;
 	}
 
 	bool			Input::GetKeyUp(KeyCode keycode)
@@ -45,7 +59,12 @@ namespace BeerEngine
 
 	bool			Input::GetMouseButtonDown(int button)
 	{
-		return (mouseButton[button] == 1);
+		if (mouseButton[button] == 1)
+		{
+			mouseButton[button] = 2;
+			return true;
+		}
+		return false;
 	}
 
 	bool			Input::GetMouseButtonUp(int button)
@@ -71,13 +90,13 @@ namespace BeerEngine
 		}
 		for (std::map<int, int>::iterator it = key.begin(); it != key.end(); ++it)
 		{
-			if (it->second == 1)
-				it->second = 2;
+			// if (it->second == 1)
+			// 	it->second = 2;
 		}
 		for (std::map<int, int>::iterator it = mouseButton.begin(); it != mouseButton.end(); ++it)
 		{
-			if (it->second == 1)
-				it->second = 2;
+			// if (it->second == 1)
+			// 	it->second = 2;
 		}
 	}
 

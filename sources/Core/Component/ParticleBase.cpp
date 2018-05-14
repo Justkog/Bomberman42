@@ -268,14 +268,17 @@ namespace BeerEngine
 		nlohmann::json	ParticleBase::serialize()
 		{
 			// TODO
-			return {
-				{"componentClass", typeid(ParticleBase).name()},
-			};
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+			});
+			return j;
 		}
 
-		void ParticleBase::deserialize(const nlohmann::json & j)
+		void ParticleBase::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			// TODO
+			this->Component::deserialize(j, loader);
 		}
 
 		REGISTER_COMPONENT_CPP(ParticleBase)

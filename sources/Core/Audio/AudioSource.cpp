@@ -143,5 +143,21 @@ namespace BeerEngine
 		{
 			setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 		}
+
+		nlohmann::json	AudioSource::serialize()
+		{
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+			});
+			return j;
+		}
+
+		void AudioSource::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+		{
+			Component::deserialize(j, loader);
+		}
+
+		REGISTER_COMPONENT_CPP(AudioSource)
 	}
 }

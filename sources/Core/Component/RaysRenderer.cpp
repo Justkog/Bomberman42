@@ -109,6 +109,22 @@ void RaysRenderer::addRay(Physics::Ray ray)
 	rays.push_back(ray);
 }
 
+nlohmann::json	RaysRenderer::serialize()
+{
+	auto j = MeshRenderer::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+	});
+	return j;
+}
+
+void RaysRenderer::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	this->MeshRenderer::deserialize(j, loader);
+}
+
+REGISTER_COMPONENT_CPP(RaysRenderer)
+
 // ###############################################################
 
 // GETTER METHOD #################################################

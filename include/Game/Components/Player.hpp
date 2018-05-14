@@ -11,6 +11,7 @@
 #include "Core/Component/IColliderStay.hpp"
 #include "Core/Component/IColliderEnter.hpp"
 #include "Core/Component/IColliderExit.hpp"
+#include "Core/Component/IOnDestroy.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
@@ -25,16 +26,23 @@ namespace Game
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
 						public BeerEngine::Component::IUI,
-						public BeerEngine::Component::IColliderEnter
+						public BeerEngine::Component::IColliderEnter,
+						public BeerEngine::Component::IOnDestroy
 
 		{
 		protected:
-			BeerEngine::Transform	&_transform;
-			Game::Component::Character *_character;
+			BeerEngine::Transform				&_transform;
 
 		public:
+			Game::Component::Character 			*_character;
+			BeerEngine::Audio::AudioSource      *srcAudio;
+			BeerEngine::Audio::AudioSource      *itemSrcAudio;
+			bool								play;
+			
             Player(BeerEngine::GameObject *gameObject);
+			virtual ~Player(void);
 
+       		virtual void    onDestroy(void);
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
@@ -46,19 +54,11 @@ namespace Game
        		virtual void    onColliderEnter(BeerEngine::Component::ACollider *other);
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			void		playStepSound();
 			
 			REGISTER_COMPONENT_HPP
 
 			Signal<float, float> createCrateSignal;
-
-			BeerEngine::Audio::AudioSource      *srcAudio;
-			BeerEngine::Audio::AudioSource      *itemSrcAudio;
-			bool								play;
-
 		};
 	}
 }

@@ -1,0 +1,14 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl Material_#2
+Ns 19.607843
+Ka 1.000000 1.000000 1.000000
+Kd 0.470400 0.470400 0.470400
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump -bm 0.042005 /Users/qhonore/Project/github/Bomberman42/assets/models/Documents/ULSA/7mo semestre/modelado/Sam modelado examen parcial bota/botafinal2-NM_u0_v0.tif
+map_Kd /Users/qhonore/Project/github/Bomberman42/assets/models/Documents/ULSA/7mo semestre/modelado/Sam modelado examen parcial bota/botafinal2-TM_u0_v0.tif

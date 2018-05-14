@@ -63,22 +63,27 @@ namespace BeerEngine
 
 		nlohmann::json	MeshRenderer::serialize()
 		{
-			return nlohmann::json {
+			auto j = Component::serialize();
+			j.merge_patch({
 				{"componentClass", type},
 				{"mesh", _mesh},
 				{"material", _material},
 				{"pivot", _mat},
-			};
+			});
+			return j;
 		}
 
-		void MeshRenderer::deserialize(const nlohmann::json & j)
+		void MeshRenderer::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			// std::cout << this->_sourceFile << "\n";
 			// this->_sourceFile = j.at("sourceFile");
 			// if (this->_sourceFile != "")
 			// 	this->setMesh(this->_sourceFile);
-			this->setMesh(Graphics::Mesh::Deserialize(j.at("mesh")));
-			this->setMaterial(Graphics::AMaterial::Deserialize(j.at("material")));
+			this->Component::deserialize(j, loader);
+			if (j.find("mesh") != j.end())
+				this->setMesh(Graphics::Mesh::Deserialize(j.at("mesh"), loader));
+			if (j.find("material") != j.end())
+				this->setMaterial(Graphics::AMaterial::Deserialize(j.at("material"), loader));
 			this->_mat = j.at("pivot");
 		}
 

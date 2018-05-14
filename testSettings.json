@@ -1,9 +1,15 @@
 {
-    "intSetting": 42,
-    "listSettings": [
-        "one setting",
-        "another setting"
-    ],
-    "soundVolume": 0.5,
-    "stringSetting": "some setting"
+    "fullScreen": false,
+    "keyBindings": {
+        "bomb": 32,
+        "move down": 83,
+        "move left": 65,
+        "move right": 68,
+        "move up": 87
+    },
+    "musicVolume": 50.0,
+    "soundVolume": 50.0,
+    "unlockedLevels": [],
+    "windowHeight": 900,
+    "windowWidth": 1600
 }

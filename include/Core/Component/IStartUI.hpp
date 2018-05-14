@@ -10,7 +10,7 @@ namespace BeerEngine
 		class IStartUI
 		{
 		public:
-			 virtual void    startUI(struct nk_context *ctx) = 0;
+			 virtual void    startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) = 0;
 		};
 	}
 }

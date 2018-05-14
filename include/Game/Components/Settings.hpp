@@ -16,10 +16,16 @@ namespace Game
 	{
 		public:
 
+			float musicVolume;
 			float soundVolume;
-			std::string stringSetting;
-			int intSetting;
-			std::vector<std::string> listSettings;
+			int windowWidth;
+			int windowHeight;
+			bool fullScreen;
+			std::map<std::string, int>	keyBindings;
+			std::vector<std::string>	unlockedLevels;
+			// std::string stringSetting;
+			// int intSetting;
+			// std::vector<std::string> listSettings;
 	};
 
 	namespace Component	{		
@@ -37,10 +43,12 @@ namespace Game
 
 			void loadSettings();
 			void saveSettings();
+			void resetSettings();
+			void applyCurrentSettings();
+			void gatherCurrentSettings();
 			void start(void);
 
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
+			static SettingsContainer defaultSettings();
 
 			REGISTER_COMPONENT_HPP
 

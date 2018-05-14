@@ -18,21 +18,21 @@ namespace Game
 		void	Breakable::destroyed()
 		{
 			onDestruction.emit(_transform.position, 0);
+			onDestructionSelf.emit(this);
 		}
 
 		nlohmann::json	Breakable::serialize()
 		{
-			return nlohmann::json {
+			auto j = Component::serialize();
+			j.merge_patch({
 				{"componentClass", type},
-			};
+			});
+			return j;
 		}
 
-		void Breakable::deserialize(const nlohmann::json & j)
+		void Breakable::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			// std::cout << this->_sourceFile << "\n";
-			// this->_sourceFile = j.at("sourceFile");
-			// if (this->_sourceFile != "")
-			// 	this->setMesh(this->_sourceFile);
+			Component::deserialize(j, loader);
 		}
 
 		REGISTER_COMPONENT_CPP(Breakable)

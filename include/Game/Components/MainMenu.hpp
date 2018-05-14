@@ -7,6 +7,7 @@
 # define MAINMENU_HPP
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IStartUI.hpp"
@@ -23,13 +24,11 @@ namespace Game
 
 		{
 		public:
-			nk_style_window defaultWindow;
-			nk_style_button defaultButton;
+			SettingsMenu	*settingsMenu;
+			VersusMenu	*versusMenu;
+			UIThemeManager	*uiManager;
 
 			nk_style_window mWindow;
-			nk_style_button mButton;
-
-			nk_style_window mBackWindow;
 
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );
@@ -41,12 +40,12 @@ namespace Game
 			friend std::ostream & operator<<(std::ostream & o, MainMenu const & i);
 
 			virtual void start();
-			virtual void startUI(struct nk_context *ctx);
+			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
 
-			void saveDefaultUI(struct nk_context *ctx);
 			void setUI(struct nk_context *ctx);
-			void resetToDefaultUI(struct nk_context *ctx);
+
+			REGISTER_COMPONENT_HPP
 		};
 
 	};

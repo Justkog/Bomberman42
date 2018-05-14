@@ -9,6 +9,7 @@
 #include "Core/Component/ITriggerStay.hpp"
 #include "Core/Component/ITriggerEnter.hpp"
 #include "Core/Component/ITriggerExit.hpp"
+#include "Core/Component/IOnDestroy.hpp"
 
 namespace Game
 {
@@ -20,7 +21,8 @@ namespace Game
 						public BeerEngine::Component::IUpdate,
 						public BeerEngine::Component::ITriggerStay,
 						public BeerEngine::Component::ITriggerEnter,
-						public BeerEngine::Component::ITriggerExit
+						public BeerEngine::Component::ITriggerExit,
+						public BeerEngine::Component::IOnDestroy
 		{
 		protected:
 
@@ -28,6 +30,7 @@ namespace Game
             Item(BeerEngine::GameObject *gameObject);
 			~Item();
 			
+			virtual void    onDestroy(void);
             virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
@@ -37,9 +40,6 @@ namespace Game
 
 			BeerEngine::Transform	&_transform;
 			ItemType				_type;
-
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
 
 			Game::Component::Map	*map;
 
