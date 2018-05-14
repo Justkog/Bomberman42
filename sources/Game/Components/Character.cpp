@@ -22,7 +22,8 @@ namespace Game
             _explosionSize(1),
             _direction(0, 0),
 			bombMesh(nullptr),
-			bombMaterial(nullptr)
+			bombMaterial(nullptr),
+			map(nullptr)
 		{
 
         }
@@ -166,6 +167,8 @@ namespace Game
 				{"explosionSize", _explosionSize},
 				{"direction", _direction},
 				{"map", SERIALIZE_BY_ID(map)},
+				{"bombMesh", bombMesh},
+				{"bombMaterial", bombMaterial},
 			});
 			return j;
 		}
@@ -178,6 +181,10 @@ namespace Game
             this->_explosionSize = j.at("explosionSize");
             this->_direction = j.at("direction");
 			DESERIALIZE_BY_ID(this->map, Map, "map", loader);
+			if (j.find("bombMesh") != j.end())
+				this->bombMesh = BeerEngine::Graphics::Mesh::Deserialize(j.at("bombMesh"), loader);
+			if (j.find("bombMaterial") != j.end())
+				this->bombMaterial = BeerEngine::Graphics::AMaterial::Deserialize(j.at("bombMaterial"), loader);
 		}
 
 		REGISTER_COMPONENT_CPP(Character)
