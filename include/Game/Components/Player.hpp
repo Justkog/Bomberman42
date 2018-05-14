@@ -38,7 +38,7 @@ namespace Game
 			BeerEngine::Audio::AudioSource      *srcAudio;
 			BeerEngine::Audio::AudioSource      *itemSrcAudio;
 			bool								play;
-			
+
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);
 
@@ -55,7 +55,7 @@ namespace Game
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
 			void		playStepSound();
-			
+
 			REGISTER_COMPONENT_HPP
 
 			Signal<float, float> createCrateSignal;

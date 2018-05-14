@@ -5,23 +5,6 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-		// AudioSource::AudioSource()
-		// {
-		// 	// Création d'une source
-		// 	alGenSources(1, &_Source);
-		// 	alSourcef(_Source, AL_ROLLOFF_FACTOR, 1);
-		// 	alSourcef(_Source, AL_REFERENCE_DISTANCE, 12);
-		// 	alSourcef(_Source, AL_MAX_DISTANCE, 30);
-		// }
-
-		// AudioSource::AudioSource(ALuint buf): _Buffer(buf)
-		// {
-		// 	// Création d'une source
-		// 	alGenSources(1, &_Source);
-		// 	alSourcef(_Source, AL_ROLLOFF_FACTOR, 1);
-		// 	alSourcef(_Source, AL_REFERENCE_DISTANCE, 12);
-		// 	alSourcef(_Source, AL_MAX_DISTANCE, 30);
-		// }
 
 		AudioSource::AudioSource(BeerEngine::GameObject *gameObject) :
 			Component(gameObject)
@@ -33,21 +16,15 @@ namespace BeerEngine
 			alSourcef(_Source, AL_MAX_DISTANCE, 300);
         }
 
-		// AudioSource::AudioSource(ALuint buf): _Buffer(buf)
-		// {
-		// 	// Création d'une source
-		// 	alGenSources(1, &_Source);
-
-		// }
 
 		AudioSource::~AudioSource()
-		{ 
+		{
 			Delete();
 		}
 
 		void	   AudioSource::play()
 		{
-		    // arrete un son avant de jouant le suivant
+		    // arrete un son avant de jouer le suivant
 		    stop();
 		    //charge le son depuis le buffer source
 		    alSourcei(_Source, AL_BUFFER, _Buffer);
@@ -81,12 +58,18 @@ namespace BeerEngine
 		void	   AudioSource::Delete()
 		{
 		    stop();
-		    // Destruction du tampon
-		    alDeleteBuffers(1, &_Buffer);
 
+		    // Destruction du tampon
+		    // alDeleteBuffers(1, &_Buffer);
+				// if (alGetError() != AL_NO_ERROR)
+				// 	throw std::runtime_error("delete buffer error");
 		    // Destruction de la source
 		    alSourcei(_Source, AL_BUFFER, 0);
+				if (alGetError() != AL_NO_ERROR)
+					throw std::runtime_error("AudioSource delete sourcei error");
 		    alDeleteSources(1, &_Source);
+				if (alGetError() != AL_NO_ERROR)
+					throw std::runtime_error("AudioSource delete source error");
 		}
 
 		void	   AudioSource::setVolume(float volume)
@@ -129,11 +112,16 @@ namespace BeerEngine
 			_Source = src;
 		}
 
+		ALuint	AudioSource::getBuffer()
+		{
+			return _Buffer;
+		}
+
 		void		AudioSource::start(void)
 		{
 			setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 		}
-	
+
 		void		AudioSource::fixedUpdate(void)
 		{
 

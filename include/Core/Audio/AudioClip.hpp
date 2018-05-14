@@ -4,6 +4,7 @@
 #include <string>
 #include <sndfile.h>
 #include <AL/al.h>
+#include <AL/alc.h>
 #include <vector>
 
 namespace BeerEngine
@@ -18,6 +19,7 @@ namespace BeerEngine
 			AudioClip( const std::string& Filename );
 			virtual ~AudioClip();
 
+			void		cleanUp();
 			ALuint	getBuffer();
 
 		private:

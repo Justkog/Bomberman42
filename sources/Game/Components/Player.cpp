@@ -19,8 +19,7 @@ namespace Game
 		{ }
 
 		Player::~Player(void)
-		{
-		}
+		{ }
 
         void    Player::onDestroy(void)
         {
@@ -31,11 +30,13 @@ namespace Game
         {
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
-			BeerEngine::Audio::AudioClip   		clip("assets/sounds/footsteps.wav");
+
+			BeerEngine::Audio::AudioClip	clip("assets/sounds/footsteps.wav");
 			srcAudio->setBuffer(clip.getBuffer());
 
-			BeerEngine::Audio::AudioClip   		itemClip("assets/sounds/item.wav");
+			BeerEngine::Audio::AudioClip	itemClip("assets/sounds/item.wav");
 			itemSrcAudio->setBuffer(itemClip.getBuffer());
+
         }
 
         void    Player::fixedUpdate(void)
