@@ -10,6 +10,7 @@
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Json/Json.hpp"
 #include "Game/Components/Bomb.hpp"
+#include "Game/Components/GameManager.hpp"
 
 namespace Game
 {
@@ -77,7 +78,8 @@ namespace Game
 				iaGO->transform.position = pos;
 				iaGO->transform.scale = glm::vec3(1, 1, 1);
 				iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
-				iaGO->AddComponent<Game::Component::Breakable>();
+				auto breakable = iaGO->AddComponent<Game::Component::Breakable>();
+					GameManager::GetInstance().registerEnemy(breakable);
 				auto meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 					meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 					auto *iaTex = Assets::GetTexture("assets/textures/player2.png");

@@ -114,8 +114,8 @@ namespace BeerEngine
 #define DESERIALIZE_BY_ID(Dest, Class, Key, Loader) \
 	Loader.serializationCallBacks.push( \
 		[this, j, &loader]() { \
-			std::cout << "callback of " << #Dest << " on " << Key << std::endl; \
-			std::cout << "json is " << j << std::endl; \
+			/* std::cout << "callback of " << #Dest << " on " << Key << std::endl; */\
+			/* std::cout << "json is " << j << std::endl; */\
 			if (j.find(Key) == j.end()) \
 				Dest = NULL; \
 			else \

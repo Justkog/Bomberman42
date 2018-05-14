@@ -18,6 +18,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/GameOverMenu.hpp"
+#include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
 
@@ -90,14 +91,22 @@ void    SceneTest::init(void)
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
 	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
 	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
+	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
+
 	gameManager->inGameMenu = inGameMenu;
 	gameManager->gameOverMenu = gameOverMenu;
+	gameManager->victoryMenu = victoryMenu;
+
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
+	victoryMenu->uiManager = uiManager;
+
 	inGameMenu->setActive(false);
 	gameOverMenu->setActive(false);
+	victoryMenu->setActive(false);
+
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
@@ -203,7 +212,7 @@ void    SceneTest::init(void)
 	// loaded here because it cannot be loaded in the start of a later instantiated object
 	// Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 
-
+	std::cout << "saving scene.." << "\n";
 	this->save("assets/scenes/level1.scene");
 	std::cout << "init end" << "\n";
 	std::cout << "GameObject List Size : " << getGameObjects().size() << std::endl;

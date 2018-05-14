@@ -35,6 +35,7 @@ namespace Game
 			~Breakable(void);
 
 			Signal<glm::vec3, int> onDestruction;
+			Signal<Breakable *> onDestructionSelf;
 
 			void destroyed();
 

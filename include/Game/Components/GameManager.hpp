@@ -22,9 +22,11 @@ namespace Game
 			static GameManager * instance;
 
 		public:
-			InGameMenu 		*inGameMenu;
-			GameOverMenu	*gameOverMenu;
-			Breakable		*playerBreakable;
+			InGameMenu 					*inGameMenu;
+			GameOverMenu				*gameOverMenu;
+			VictoryMenu					*victoryMenu;
+			Breakable					*playerBreakable;
+			std::vector<Breakable *> 	enemyBreakables;
 
 			// GameManager( void );
 			// GameManager( GameManager const & src );
@@ -41,6 +43,10 @@ namespace Game
 
 			void setPause(bool state);
 			void setGameOver(glm::vec3 pos, int value);
+			void setVictory();
+			void acknowledgeEnemyDestruction(Breakable *enemyBreakable);
+
+			void registerEnemy(Breakable *enemyBreakable);
 	
 			static GameManager & GetInstance();
 
