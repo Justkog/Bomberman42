@@ -1,6 +1,7 @@
 #ifndef BE_CORE_ASCENE_HPP
 #define BE_CORE_ASCENE_HPP 1
 
+#include <Core/Graphics/Cubemap.hpp>
 #include "Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
@@ -18,7 +19,7 @@ namespace BeerEngine
         std::vector<GameObject *>           _toStart;
         std::vector<GameObject *>           _toStartUI;
         std::mutex                          updateMutex;
-
+		Graphics::Cubemap					*_skyboxCubemap;
         
     public:
         std::string                 filePath;
@@ -74,6 +75,8 @@ namespace BeerEngine
             uniqueID++;
 			return (c);
 		}
+
+		void setSkybox(Graphics::Cubemap *cubemap);
 
         void debugTest(void);
 

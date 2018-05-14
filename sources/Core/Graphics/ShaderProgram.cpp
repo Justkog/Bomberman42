@@ -1,4 +1,6 @@
 #include "Core/Graphics/ShaderProgram.hpp"
+#include <regex>
+#include <Core/IO/FileUtils.hpp>
 
 namespace BeerEngine
 {
@@ -103,6 +105,33 @@ namespace BeerEngine
 					_shaders[i] = 0;
 				}
 			}
+		}
+
+		std::string  ShaderProgram::LoadShader(std::string const &path)
+		{
+			std::string result = "";
+			std::string dir = BeerEngine::IO::FileUtils::GetDirectory(path);
+			std::cout << "Loading: " << path << "\n";
+			std::ifstream ifs("../" + path);
+			std::regex incMatch("#.*include.*\"(.*)\"");
+			std::smatch match;
+			if (ifs.is_open())
+			{
+				std::string line;
+				while (std::getline(ifs, line))
+				{
+					if (std::regex_match(line, match, incMatch))
+						result += LoadShader(dir + "/" + match[1].str());
+					else
+						result += line + "\n";
+				}
+				ifs.close();
+			}
+			else
+			{
+				std::cerr << "Failed to load: " << path << "\n";
+			}
+			return result;
 		}
 
 		void			ShaderProgram::bind(void)

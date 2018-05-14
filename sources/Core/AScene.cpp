@@ -16,9 +16,8 @@ namespace BeerEngine
     int     AScene::uniqueID = 0;
 
     AScene::AScene(void)
-    {
-        
-    }
+        : _skyboxCubemap(nullptr)
+    {}
 
     AScene::~AScene(void)
     {
@@ -116,11 +115,15 @@ namespace BeerEngine
             (it->second)->renderUpdate();
             (it->second)->componentRenderUpdate();
         }
+        if (_skyboxCubemap)
+            _skyboxCubemap->renderUpdate();
     }
 
     void    AScene::render(void)
     {
         // std::cout << "DEBUG: AScene::render" << std::endl;
+        if (_skyboxCubemap)
+            _skyboxCubemap->render();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
@@ -166,6 +169,11 @@ namespace BeerEngine
         {
             (it->second)->componentPhysicUpdate();
         }
+    }
+
+    void AScene::setSkybox(Graphics::Cubemap *cubemap)
+    {
+        _skyboxCubemap = cubemap;
     }
 
     void    AScene::save(std::string filePath) {

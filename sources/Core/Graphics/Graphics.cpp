@@ -19,10 +19,13 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::defaultShader = nullptr;
 		AMaterial		*Graphics::defaultMaterial = nullptr;
 		ALight			*Graphics::defaultLight = nullptr;
+		ShaderProgram	*Graphics::skyboxShader = nullptr;
+		Cubemap			*Graphics::defaultCubemap = nullptr;
 
 		ShaderProgram	*Graphics::ambiantShader = nullptr;
 		ShaderProgram	*Graphics::directionalShader = nullptr;
 		ShaderProgram	*Graphics::spotShader = nullptr;
+
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -157,10 +160,10 @@ namespace BeerEngine
 		{
 			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_v.glsl").c_str()
+				BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/particle_v.glsl").c_str()
 			);
 			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_f.glsl").c_str()
+				BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/particle_f.glsl").c_str()
 			);
 			// shader->load(2, GL_GEOMETRY_SHADER,
 			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_g.glsl").c_str()
@@ -173,10 +176,10 @@ namespace BeerEngine
 		{
 			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/line_v.glsl").c_str()
+				BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/line_v.glsl").c_str()
 			);
 			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/line_f.glsl").c_str()
+				BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/line_f.glsl").c_str()
 			);
 			shader->compile();
 			return (shader);
@@ -186,10 +189,10 @@ namespace BeerEngine
 		{
 			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 			shader->load(0, GL_VERTEX_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/ambiant_light_v.glsl").c_str()
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/lights/ambiant_light_v.glsl").c_str()
 			);
 			shader->load(1, GL_FRAGMENT_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/ambiant_light_f.glsl").c_str()
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/lights/ambiant_light_f.glsl").c_str()
 			);
 			shader->compile();
 			return (shader);
@@ -199,10 +202,10 @@ namespace BeerEngine
 		{
 			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 			shader->load(0, GL_VERTEX_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/directional_light_v.glsl").c_str()
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/lights/directional_light_v.glsl").c_str()
 			);
 			shader->load(1, GL_FRAGMENT_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/lights/directional_light_f.glsl").c_str()
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/lights/directional_light_f.glsl").c_str()
 			);
 			shader->compile();
 			return (shader);
@@ -212,10 +215,23 @@ namespace BeerEngine
 		{
 			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 			shader->load(0, GL_VERTEX_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/light/ambiant_light_v.glsl").c_str()
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/light/ambiant_light_v.glsl").c_str()
 			);
 			shader->load(1, GL_FRAGMENT_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/light/ambiant_light_f.glsl").c_str()
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/light/ambiant_light_f.glsl").c_str()
+			);
+			shader->compile();
+			return (shader);
+		}
+
+		ShaderProgram *Graphics::loadSkyboxShader()
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/skybox_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/skybox_f.glsl").c_str()
 			);
 			shader->compile();
 			return (shader);
@@ -234,15 +250,17 @@ namespace BeerEngine
 			// Default Material
 			defaultShader = new BeerEngine::Graphics::ShaderProgram(2);
 			defaultShader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
+				BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/basic_v.glsl").c_str()
 			);
 			defaultShader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
+				BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/basic_f.glsl").c_str()
 			);
 			defaultShader->compile();
 
 			ambiantShader = loadAmbiantShader();
 			directionalShader = loadDirectionalShader();
+			skyboxShader = loadSkyboxShader();
+			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 512);
 
 			defaultMaterial = new AMaterial(defaultShader);
 			defaultLight = new AmbiantLight(0.2f, glm::vec4(0.8, 0.9, 1.0, 1.0));
@@ -381,14 +399,14 @@ namespace BeerEngine
 		{
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_ONE, GL_ONE);
-			glDepthMask(false);
+			glDepthMask(GL_FALSE);
 			glDepthFunc(GL_EQUAL);
 		}
 
 		void Graphics::DisableForwardBlend()
 		{
 			glDepthFunc(GL_LESS);
-			glDepthMask(true);
+			glDepthMask(GL_TRUE);
 			glDisable(GL_BLEND);
 		}
 

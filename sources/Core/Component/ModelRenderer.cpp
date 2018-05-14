@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <Core/SceneManager.hpp>
 // #include <Core.hpp>
 // #include <maths/glmUtils.hpp>
 #include "Core/Component/ModelRenderer.hpp"
@@ -11,6 +12,7 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
 #include "Core/Mathf.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 
 namespace BeerEngine
 {
@@ -363,22 +365,51 @@ namespace BeerEngine
 				}
 			}
 
+			std::vector<Graphics::ALight*> lights = SceneManager::GetCurrent(true)->getLights();
+			Graphics::AMaterial *mat = Graphics::Graphics::defaultMaterial;
+			if (_materials[0] != nullptr)
+				mat = _materials[0];
+
+			mat->bind(_mat, *Graphics::Graphics::defaultLight);
 			_materials[0]->bind(_mat);
 			std::string uniform = "hasBones";
 			_materials[0]->getShader().uniform1i(uniform, _scene->HasAnimations() ? 1 : 0);
-
 			for (int i = 0; i < _transforms.size(); i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
 				_materials[0]->getShader().uniformMat(uniform, _transforms[i]);
 			}
-
 			for (int i = 0; i < _numMeshes; i++)
 			{
 				glBindVertexArray(_vao[i]);
 				glDrawArrays(GL_TRIANGLES, 0, _drawSize[i]);
 				glBindVertexArray(0);
 			}
+
+
+
+			Graphics::Graphics::EnableForwardBlend();
+			for (Graphics::ALight *light : lights)
+			{
+				mat->bind(_mat, *light);
+
+//				light->getShader().bind(_mat);
+				std::string uniform = "hasBones";
+				mat->getShader().uniform1i(uniform, _scene->HasAnimations() ? 1 : 0);
+				for (int i = 0; i < _transforms.size(); i++)
+				{
+					std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
+					mat->getShader().uniformMat(uniform, _transforms[i]);
+				}
+				for (int i = 0; i < _numMeshes; i++)
+				{
+					glBindVertexArray(_vao[i]);
+					glDrawArrays(GL_TRIANGLES, 0, _drawSize[i]);
+					glBindVertexArray(0);
+				}
+
+			}
+			Graphics::Graphics::DisableForwardBlend();
 		}
 
 		static uint findRotation(float animationTime, const aiNodeAnim *node)

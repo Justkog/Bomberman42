@@ -31,6 +31,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/ShaderProgram.hpp"
 #include "Game/Assets.hpp"
+#include "Core/Graphics/Cubemap.hpp"
 
 template<typename T>
 BeerEngine::GameObject *SceneTest::addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
@@ -71,6 +72,9 @@ void    SceneTest::init(void)
 
 	std::cout << "init test scene" << "\n";
 
+	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/pano_1.jpg", 512);
+	setSkybox(skyboxCubemap);
+
 	// Shader
 	BeerEngine::Graphics::ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
 	shader->load(0, GL_VERTEX_SHADER,
@@ -102,7 +106,6 @@ void    SceneTest::init(void)
 	// return;
 	// cube 1
 	// Texture
-	std::cout << "LOOOOOOL" << std::endl;
 	BeerEngine::Graphics::Texture *crate = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 	BeerEngine::Graphics::Texture *crate_normal = Assets::GetTexture("assets/textures/crate1_normal.png");
 	BeerEngine::Graphics::Texture *crate_bump = Assets::GetTexture("assets/textures/crate1_bump.png");

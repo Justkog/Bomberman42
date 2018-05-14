@@ -42,6 +42,8 @@ namespace BeerEngine
 			void			uniform4f(std::string const &name, float *data);
 			void			uniformMat(std::string const &name, glm::mat4 &mat);
 			void			uniformMat(GLint id, glm::mat4 &mat);
+
+			static std::string  	LoadShader(std::string const &path);
 		};
 	}
 }

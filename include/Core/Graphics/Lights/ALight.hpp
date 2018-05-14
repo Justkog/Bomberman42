@@ -42,6 +42,8 @@ namespace BeerEngine
 			GLint	_lightColorID;
 			GLint	_specularPowerID;
 			GLint	_specularIntensityID;
+			GLint	_envMapID;
+			GLint	_hasEnvMapID;
 
 			void setupUniformIds();
 
@@ -95,6 +97,10 @@ namespace BeerEngine
 			GLint get_specularePowerID() const;
 
 			GLint get_speculareIntensityID() const;
+
+			GLint get_envMapID() const;
+
+			GLint get_hasEnvMapID() const;
 
 			nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j);

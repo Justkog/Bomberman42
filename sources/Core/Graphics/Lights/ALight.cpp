@@ -31,6 +31,9 @@ namespace BeerEngine
 			_bumpID = _shader->getUniformLocation("bump");
 			_hasBumpID = _shader->getUniformLocation("hasBump");
 
+			_envMapID = _shader->getUniformLocation("envMap");
+			_hasEnvMapID = _shader->getUniformLocation("hasEnvMap");
+
 			_lightPosID = _shader->getUniformLocation("light.position");
 			_lightDirID = _shader->getUniformLocation("light.direction");
 			_lightIntensityID = _shader->getUniformLocation("light.intensity");
@@ -152,6 +155,14 @@ namespace BeerEngine
 
 		GLint ALight::get_speculareIntensityID() const {
 			return _specularIntensityID;
+		}
+
+		GLint ALight::get_envMapID() const {
+			return _envMapID;
+		}
+
+		GLint ALight::get_hasEnvMapID() const {
+			return _hasEnvMapID;
 		}
 	}
 }

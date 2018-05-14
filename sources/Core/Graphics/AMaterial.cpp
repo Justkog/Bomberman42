@@ -17,7 +17,8 @@ namespace BeerEngine
 			_color(color),
 			_albedo(nullptr),
 			_normal(nullptr),
-			_bump(nullptr)
+			_bump(nullptr),
+			_envMap(Graphics::defaultCubemap)
 		{
 			shader->bind();
 			_projectionShaderID = _shader->getUniformLocation("projection");
@@ -133,6 +134,17 @@ namespace BeerEngine
 			else
 				light.getShader().uniform1i(light.get_hasAlbedoID(), 0);
 
+			light.getShader().uniform1i(light.get_envMapID(), 3);
+			glActiveTexture(GL_TEXTURE3);
+			if (_envMap != nullptr)
+			{
+				light.getShader().uniform1i(light.get_hasEnvMapID(), 1);
+				_envMap->bind();
+			}
+			else
+				light.getShader().uniform1i(light.get_hasEnvMapID(), 0);
+
+
 			light.bind();
 		}
 
@@ -157,6 +169,12 @@ namespace BeerEngine
 		AMaterial		&AMaterial::setBump(Texture *tex)
 		{
 			_bump = tex;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setEnvmap(Cubemap *map)
+		{
+			_envMap = map;
 			return (*this);
 		}
 

@@ -190,11 +190,13 @@ set(HEADERS
 
         shaders/basic_f.glsl
         shaders/basic_v.glsl
+        shaders/cubemap_f.glsl
+        shaders/cubemap_v.glsl
         shaders/lights/ambiant_light_f.glsl
         shaders/lights/ambiant_light_v.glsl
         shaders/lights/directional_light_f.glsl
         shaders/lights/directional_light_v.glsl
-        sources/Core/Graphics/Lights/AmbiantLight.cpp include/Core/Graphics/Lights/AmbiantLight.hpp include/Core/Graphics/Lights/DirectionalLight.hpp)
+        sources/Core/Graphics/Lights/AmbiantLight.cpp include/Core/Graphics/Lights/AmbiantLight.hpp include/Core/Graphics/Lights/DirectionalLight.hpp sources/Core/Graphics/Cubemap.cpp include/Core/Graphics/Cubemap.hpp)
 
 add_executable(${NAME} ${SOURCES} ${HEADERS})
 
