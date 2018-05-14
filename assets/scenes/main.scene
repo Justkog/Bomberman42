@@ -5,12 +5,12 @@
                 {
                     "componentClass": "N4Game9Component16CameraControllerE",
                     "enabled": true,
-                    "serializationID": 1214
+                    "serializationID": 1270
                 }
             ],
-            "id": 171,
+            "id": 177,
             "name": "Camera",
-            "serializationID": 1212,
+            "serializationID": 1268,
             "transform": {
                 "pivot": [
                     0.0,
@@ -33,7 +33,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 1213
+                "serializationID": 1269
             }
         },
         {
@@ -42,54 +42,54 @@
                     "componentClass": "N4Game9Component8SettingsE",
                     "enabled": true,
                     "filePath": "testSettings.json",
-                    "serializationID": 1217
+                    "serializationID": 1273
                 },
                 {
                     "componentClass": "N4Game9Component14UIThemeManagerE",
                     "enabled": true,
-                    "serializationID": 1218
+                    "serializationID": 1274
                 },
                 {
                     "componentClass": "N4Game9Component16BackgroundDrawerE",
                     "enabled": true,
-                    "serializationID": 1219,
-                    "uiManager": 1218
+                    "serializationID": 1275,
+                    "uiManager": 1274
                 },
                 {
                     "componentClass": "N4Game9Component8MainMenuE",
                     "enabled": true,
-                    "serializationID": 1220,
-                    "settingsMenu": 1222,
-                    "uiManager": 1218,
-                    "versusMenu": 1221
+                    "serializationID": 1276,
+                    "settingsMenu": 1278,
+                    "uiManager": 1274,
+                    "versusMenu": 1277
                 },
                 {
                     "componentClass": "N4Game9Component10VersusMenuE",
                     "enabled": false,
-                    "mainMenu": 1220,
-                    "serializationID": 1221,
-                    "uiManager": 1218
+                    "mainMenu": 1276,
+                    "serializationID": 1277,
+                    "uiManager": 1274
                 },
                 {
                     "componentClass": "N4Game9Component12SettingsMenuE",
                     "enabled": false,
-                    "inputsMenu": 1223,
-                    "mainMenu": 1220,
-                    "serializationID": 1222,
-                    "settingsManager": 1217,
-                    "uiManager": 1218
+                    "inputsMenu": 1279,
+                    "mainMenu": 1276,
+                    "serializationID": 1278,
+                    "settingsManager": 1273,
+                    "uiManager": 1274
                 },
                 {
                     "componentClass": "N4Game9Component10InputsMenuE",
                     "enabled": false,
-                    "serializationID": 1223,
-                    "settingsMenu": 1222,
-                    "uiManager": 1218
+                    "serializationID": 1279,
+                    "settingsMenu": 1278,
+                    "uiManager": 1274
                 }
             ],
-            "id": 172,
+            "id": 178,
             "name": "",
-            "serializationID": 1215,
+            "serializationID": 1271,
             "transform": {
                 "pivot": [
                     0.0,
@@ -112,7 +112,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 1216
+                "serializationID": 1272
             }
         }
     ]

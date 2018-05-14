@@ -276,7 +276,7 @@ namespace Game
 		{
 			int x = static_cast<int>(pos.x);
 			int y = static_cast<int>(pos.y);
-			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 9) && !hasCharacter(glm::vec2(x, y)))
+			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 8 || _map[y][x] == 9) && !hasCharacter(glm::vec2(x, y)))
 				return true;
 			return false;
 		}
