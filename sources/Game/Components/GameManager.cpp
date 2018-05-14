@@ -92,6 +92,7 @@ void GameManager::registerEnemy(Breakable *enemyBreakable)
 
 void GameManager::setGameOver(glm::vec3 pos, int value)
 {
+	// srcAudio->Delete();
 	std::cout << "game over" << std::endl;
 	gameOverMenu->setActive(true);
 }
@@ -105,6 +106,10 @@ void GameManager::setVictory()
 void GameManager::start()
 {
 	std::cout << "GameManager start" << std::endl;
+	// BeerEngine::Audio::AudioClip	clip("assets/sounds/last_night.ogg");
+	// srcAudio->setBuffer(clip.getBuffer());
+	// srcAudio->setVolume(0.5);
+	// srcAudio->play();
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
 }
 
@@ -118,18 +123,20 @@ void GameManager::update()
 
 void GameManager::fixedUpdate()
 {
-	
+
 }
 
 void GameManager::setPause(bool state)
 {
 	if (state)
 	{
+		// srcAudio->pause();
 		std::cout << "pausing game" << std::endl;
 		BeerEngine::Time::gameSpeed = 0.0f;
 	}
 	else
 	{
+		// srcAudio->continuePlaying();
 		std::cout << "resuming game" << std::endl;
 		BeerEngine::Time::gameSpeed = 1.0f;
 	}

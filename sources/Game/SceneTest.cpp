@@ -85,6 +85,9 @@ void    SceneTest::init(void)
 	cameraGO->name = "Camera";
 
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
+	auto soundManager = cameraGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	gameManager->srcAudio = soundManager;
+	
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;

@@ -11,6 +11,8 @@
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
+#include "Core/Audio/AudioSource.hpp"
+#include "Core/Audio/AudioClip.hpp"
 
 namespace Game
 {
@@ -27,6 +29,8 @@ namespace Game
 			VictoryMenu					*victoryMenu;
 			Breakable					*playerBreakable;
 			std::vector<Breakable *> 	enemyBreakables;
+
+			BeerEngine::Audio::AudioSource      *srcAudio;
 
 			// GameManager( void );
 			// GameManager( GameManager const & src );
@@ -47,7 +51,7 @@ namespace Game
 			void acknowledgeEnemyDestruction(Breakable *enemyBreakable);
 
 			void registerEnemy(Breakable *enemyBreakable);
-	
+
 			static GameManager & GetInstance();
 
 			REGISTER_COMPONENT_HPP
