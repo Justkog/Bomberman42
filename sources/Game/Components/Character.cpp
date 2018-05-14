@@ -27,7 +27,9 @@ namespace Game
 
         void    Character::start(void)
         {
-			
+			bombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+			bombMaterial->setAlbedo(Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png"));
         }
 
         void    Character::fixedUpdate(void)
@@ -115,14 +117,11 @@ namespace Game
             auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
             collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
-            render->setMesh(BeerEngine::Graphics::Graphics::cube);
-            render->setMaterial(Assets::GetInstance()->bombMaterial);
+            // render->setMesh(BeerEngine::Graphics::Graphics::cube);
+            // render->setMaterial(Assets::GetInstance()->bombMaterial);
             //PUTAIN DE TRUC QUI SEGFAULT, MES COUILLES SUR TON FRONT DEMERDE TOI MASHALLAH
-			// render->setMesh("assets/models/Bomb/bomb.obj");
-			// auto *mapBlocTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
-			// auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(map->_shader);
-			// mapBlocMat->setAlbedo(mapBlocTex);
-            // render->setMaterial(mapBlocMat);
+			render->setMesh(bombMesh);
+            render->setMaterial(bombMaterial);
 
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;

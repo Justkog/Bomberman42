@@ -67,6 +67,9 @@ namespace Game
 			glm::vec2 _direction;
 			Game::Component::Map *map;
 
+			BeerEngine::Graphics::Mesh	*bombMesh;
+			BeerEngine::Graphics::AMaterial	*bombMaterial;
+
 			REGISTER_COMPONENT_HPP
 		};
 	}
