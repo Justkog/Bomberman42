@@ -160,6 +160,7 @@ nlohmann::json	GameOverMenu::serialize()
 	auto j = Component::serialize();
 	j.merge_patch({
 		{"componentClass", type},
+		{"uiManager", SERIALIZE_BY_ID(uiManager)},
 	});
 	return j;
 }
@@ -167,6 +168,7 @@ nlohmann::json	GameOverMenu::serialize()
 void GameOverMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
 	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
 }
 
 REGISTER_COMPONENT_CPP(GameOverMenu)

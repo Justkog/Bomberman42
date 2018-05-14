@@ -116,6 +116,7 @@ nlohmann::json	GameManager::serialize()
 		{"componentClass", type},
 		{"inGameMenu", SERIALIZE_BY_ID(inGameMenu)},
 		{"gameOverMenu", SERIALIZE_BY_ID(gameOverMenu)},
+		{"playerBreakable", SERIALIZE_BY_ID(playerBreakable)},
 	});
 	return j;
 }
@@ -125,6 +126,7 @@ void GameManager::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader &
 	Component::deserialize(j, loader);
 	DESERIALIZE_BY_ID(this->inGameMenu, InGameMenu, "inGameMenu", loader);
 	DESERIALIZE_BY_ID(this->gameOverMenu, GameOverMenu, "gameOverMenu", loader);
+	DESERIALIZE_BY_ID(this->playerBreakable, Breakable, "playerBreakable", loader);
 }
 
 REGISTER_COMPONENT_CPP(GameManager)

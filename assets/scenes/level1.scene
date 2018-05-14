@@ -12,7 +12,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 1355,
+                        "serializationID": 21,
                         "shader": {
                             "serializationID": 20,
                             "sourceFileFS": "shaders/line_f.glsl",
@@ -45,12 +45,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 1354
+                    "serializationID": 19
                 }
             ],
-            "id": 225,
+            "id": 0,
             "name": "lines Holder",
-            "serializationID": 1352,
+            "serializationID": 17,
             "transform": {
                 "pivot": [
                     0.0,
@@ -73,7 +73,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 1353
+                "serializationID": 18
             }
         },
         {
@@ -81,53 +81,55 @@
                 {
                     "componentClass": "N4Game9Component11GameManagerE",
                     "enabled": true,
-                    "gameOverMenu": 1363,
-                    "inGameMenu": 1362,
-                    "serializationID": 1358
+                    "gameOverMenu": 29,
+                    "inGameMenu": 28,
+                    "playerBreakable": 38,
+                    "serializationID": 24
                 },
                 {
                     "componentClass": "N4Game9Component16CameraControllerE",
                     "enabled": true,
-                    "serializationID": 1359
+                    "serializationID": 25
                 },
                 {
                     "componentClass": "N4Game9Component12MouseRayTestE",
                     "enabled": true,
-                    "linesRenderer": 1354,
-                    "serializationID": 1360
+                    "linesRenderer": 19,
+                    "serializationID": 26
                 },
                 {
                     "componentClass": "N4Game9Component14UIThemeManagerE",
                     "enabled": true,
-                    "serializationID": 1361
+                    "serializationID": 27
                 },
                 {
                     "componentClass": "N4Game9Component10InGameMenuE",
                     "enabled": false,
-                    "serializationID": 1362,
-                    "uiManager": 1361
+                    "serializationID": 28,
+                    "uiManager": 27
                 },
                 {
                     "componentClass": "N4Game9Component12GameOverMenuE",
                     "enabled": false,
-                    "serializationID": 1363
+                    "serializationID": 29,
+                    "uiManager": 27
                 },
                 {
                     "componentClass": "N4Game9Component6TimeUIE",
                     "enabled": true,
-                    "serializationID": 1364,
-                    "uiManager": 1361
+                    "serializationID": 30,
+                    "uiManager": 27
                 },
                 {
                     "componentClass": "N4Game9Component7ItemsUIE",
                     "enabled": true,
-                    "serializationID": 1365,
-                    "uiManager": 1361
+                    "serializationID": 31,
+                    "uiManager": 27
                 }
             ],
-            "id": 226,
+            "id": 1,
             "name": "Camera",
-            "serializationID": 1356,
+            "serializationID": 22,
             "transform": {
                 "pivot": [
                     0.0,
@@ -150,7 +152,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 1357
+                "serializationID": 23
             }
         },
         {
@@ -160,7 +162,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 1369,
+                            "serializationID": 35,
                             "sourceFile": "assets/textures/player2.png"
                         },
                         "color": [
@@ -169,7 +171,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 1370,
+                        "serializationID": 36,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -207,7 +209,7 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 1368
+                    "serializationID": 34
                 },
                 {
                     "bombNB": 1,
@@ -218,44 +220,46 @@
                     ],
                     "enabled": true,
                     "explosionSize": 1.0,
-                    "map": 1383,
-                    "serializationID": 1371,
+                    "map": 49,
+                    "serializationID": 37,
                     "speed": 2.0
                 },
                 {
-                    "componentClass": "N4Game9Component9BreakableE"
+                    "componentClass": "N4Game9Component9BreakableE",
+                    "enabled": true,
+                    "serializationID": 38
                 },
                 {
                     "componentClass": "N4Game9Component6PlayerE",
                     "enabled": true,
-                    "itemSrcAudio": 1380,
-                    "serializationID": 1373,
-                    "srcAudio": 1379
+                    "itemSrcAudio": 46,
+                    "serializationID": 39,
+                    "srcAudio": 45
                 },
                 {
                     "componentClass": "Component",
                     "enabled": true,
-                    "serializationID": 1374
+                    "serializationID": 40
                 },
                 {
                     "componentClass": "N4Game9Component8SettingsE",
                     "enabled": true,
                     "filePath": "testSettings.json",
-                    "serializationID": 1375
+                    "serializationID": 41
                 },
                 {
                     "componentClass": "N10BeerEngine9Component14CircleColliderE",
                     "enabled": true,
                     "isTrigger": false,
                     "radius": 0.5,
-                    "serializationID": 1376
+                    "serializationID": 42
                 },
                 {
                     "componentClass": "N10BeerEngine9Component11RigidBody2DE",
                     "enabled": true,
                     "kinematic": 2,
                     "mass": 1.0,
-                    "serializationID": 1377,
+                    "serializationID": 43,
                     "velocity": [
                         0.0,
                         0.0
@@ -264,22 +268,22 @@
                 {
                     "componentClass": "N10BeerEngine5Audio13AudioListenerE",
                     "enabled": true,
-                    "serializationID": 1378
+                    "serializationID": 44
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 1379
+                    "serializationID": 45
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 1380
+                    "serializationID": 46
                 }
             ],
-            "id": 227,
+            "id": 2,
             "name": "player",
-            "serializationID": 1366,
+            "serializationID": 32,
             "transform": {
                 "pivot": [
                     0.0,
@@ -302,7 +306,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 1367
+                "serializationID": 33
             }
         },
         {
@@ -559,8 +563,8 @@
                             1
                         ]
                     ],
-                    "player": 1373,
-                    "serializationID": 1383,
+                    "player": 39,
+                    "serializationID": 49,
                     "shader": {
                         "serializationID": 5,
                         "sourceFileFS": "shaders/basic_f.glsl",
@@ -570,9 +574,9 @@
                     "sizeY": 13
                 }
             ],
-            "id": 228,
+            "id": 3,
             "name": "map",
-            "serializationID": 1381,
+            "serializationID": 47,
             "transform": {
                 "pivot": [
                     0.0,
@@ -595,7 +599,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 1382
+                "serializationID": 48
             }
         },
         {
@@ -605,7 +609,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 1388,
+                            "serializationID": 54,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -614,7 +618,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 1389,
+                        "serializationID": 55,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -622,7 +626,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 1387,
+                        "serializationID": 53,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -652,12 +656,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 1386
+                    "serializationID": 52
                 }
             ],
-            "id": 229,
+            "id": 4,
             "name": "house",
-            "serializationID": 1384,
+            "serializationID": 50,
             "transform": {
                 "pivot": [
                     0.0,
@@ -680,7 +684,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 1385
+                "serializationID": 51
             }
         },
         {
@@ -690,7 +694,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 1394,
+                            "serializationID": 60,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -699,7 +703,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 1395,
+                        "serializationID": 61,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -707,7 +711,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 1393,
+                        "serializationID": 59,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -737,12 +741,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 1392
+                    "serializationID": 58
                 }
             ],
-            "id": 230,
+            "id": 5,
             "name": "house2",
-            "serializationID": 1390,
+            "serializationID": 56,
             "transform": {
                 "pivot": [
                     0.0,
@@ -765,7 +769,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 1391
+                "serializationID": 57
             }
         },
         {
@@ -780,7 +784,7 @@
                             0.0,
                             0.0
                         ],
-                        "serializationID": 1345,
+                        "serializationID": 9,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -818,12 +822,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 1398
+                    "serializationID": 64
                 }
             ],
-            "id": 231,
+            "id": 6,
             "name": "",
-            "serializationID": 1396,
+            "serializationID": 62,
             "transform": {
                 "pivot": [
                     0.0,
@@ -846,7 +850,7 @@
                     1.0,
                     40.0
                 ],
-                "serializationID": 1397
+                "serializationID": 63
             }
         }
     ]
