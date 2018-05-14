@@ -117,6 +117,13 @@ namespace Game
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
             render->setMesh(BeerEngine::Graphics::Graphics::cube);
             render->setMaterial(Assets::GetInstance()->bombMaterial);
+            //PUTAIN DE TRUC QUI SEGFAULT, MES COUILLES SUR TON FRONT DEMERDE TOI MASHALLAH
+			// render->setMesh("assets/models/Bomb/bomb.obj");
+			// auto *mapBlocTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+			// auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(map->_shader);
+			// mapBlocMat->setAlbedo(mapBlocTex);
+            // render->setMaterial(mapBlocMat);
+
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;
             bomb->setPower(_explosionSize);

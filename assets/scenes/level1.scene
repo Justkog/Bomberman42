@@ -785,13 +785,17 @@
                     "componentClass": "N10BeerEngine9Component12MeshRendererE",
                     "enabled": true,
                     "material": {
+                        "albedo": {
+                            "serializationID": 66,
+                            "sourceFile": "assets/textures/ground_color.png"
+                        },
                         "color": [
                             1.0,
-                            0.5,
-                            0.0,
-                            0.0
+                            1.0,
+                            1.0,
+                            1.0
                         ],
-                        "serializationID": 9,
+                        "serializationID": 67,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",

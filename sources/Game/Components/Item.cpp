@@ -31,22 +31,47 @@ namespace Game
 
         void    Item::start(void)
         {
-			// BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
-			// as->setBuffer(clip.getBuffer());
-			// as->setVolume(1);
-			// as->setPitch(1);
+            // auto meshRenderer = _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>();
+            // BeerEngine::Graphics::Texture *mapBlocTex;
+            // BeerEngine::Graphics::AMaterial *mapBlocMat;
 
+            // switch (_type)
+            // {
+            //     case ItemType::SpeedBoost:
+            //         meshRenderer->setMesh("assets/models/Shoes/Shoes.obj");
+            //         mapBlocTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+            //         mapBlocMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+            //         mapBlocMat->setAlbedo(mapBlocTex);
+            //         meshRenderer->setMaterial(mapBlocMat);
+			//         _gameObject->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+            //         break;
+            //     case ItemType::AddBomb:
+            //         meshRenderer->setMesh("assets/models/Bomb/bomb.obj");
+            //         mapBlocTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+            //         mapBlocMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+            //         mapBlocMat->setAlbedo(mapBlocTex);
+            //         meshRenderer->setMaterial(mapBlocMat);
+			//         _gameObject->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+            //         break;
+            //     case ItemType::ExplosionBoost:
+            //         meshRenderer->setMesh("assets/models/Shoes/Shoes.obj");
+            //         mapBlocTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+            //         mapBlocMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+            //         mapBlocMat->setAlbedo(mapBlocTex);
+            //         meshRenderer->setMaterial(mapBlocMat);
+			//         _gameObject->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+            //         break;
+            // }
         }
 
         void    Item::fixedUpdate(void)
         {
-
         }
 
         void    Item::update(void)
         {
             static float time = 0;
-            time += 0.3 * BeerEngine::Time::GetDeltaTime();
+            time += 0.8 * BeerEngine::Time::GetDeltaTime();
             _transform.rotation = glm::quat(glm::vec3(0, time, 0));
         }
 
@@ -58,14 +83,6 @@ namespace Game
         {
             auto character = other->_gameObject->GetComponent<Game::Component::Character>();
 
-			// if (other->_gameObject->GetComponent<Game::Component::Player>())
-			// {
-				// BeerEngine::Audio::AudioClip   		clip("assets/sounds/item.wav");
-				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-				// as->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-				// std::cout << "should play" << std::endl;
-				// as->play();
-			// }
             if (character)
             {
                 switch (_type)

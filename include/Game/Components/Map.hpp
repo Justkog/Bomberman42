@@ -72,8 +72,8 @@ namespace Game
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate0_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				meshRenderer->setMesh("assets/models/Crate/crate.obj");
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/stone_color.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				meshRenderer->setMaterial(mapBlocMat);
@@ -98,8 +98,8 @@ namespace Game
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "destroyable block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				meshRenderer->setMesh("assets/models/Rock/rock.obj");
+				auto *mapBlocTex = Assets::GetTexture("assets/models/Rock/rock_color.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				meshRenderer->setMaterial(mapBlocMat);

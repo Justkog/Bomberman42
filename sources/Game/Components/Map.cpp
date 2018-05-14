@@ -50,16 +50,42 @@ namespace Game
 		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
 		{
 			std::cout << "item start" << std::endl;
-			auto itemGO = addCrate<BeerEngine::Component::CircleCollider>(shader, glm::vec3(0.5, 0.5, 0.5), pos, BeerEngine::Component::RBType::Kinematic);
+			BeerEngine::Component::MeshRenderer *meshRenderer;
+			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 			itemGO->name = "item";
-			// auto as = itemGO->AddComponent<BeerEngine::Audio::AudioSource>();
+			itemGO->transform.position = pos;
+			itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
-			// item->as = as;
 			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
-			return itemGO;
+			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
+
+			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+            BeerEngine::Graphics::Texture *mapBlocTex;
+            BeerEngine::Graphics::AMaterial *mapBlocMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+			switch (item->_type)
+            {
+                case ItemType::SpeedBoost:
+                    meshRenderer->setMesh("assets/models/Shoes/Shoes.obj");
+                    mapBlocTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+                    break;
+                case ItemType::AddBomb:
+                    meshRenderer->setMesh("assets/models/Bomb/bomb.obj");
+                    mapBlocTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+                    break;
+                case ItemType::ExplosionBoost:
+                    meshRenderer->setMesh("assets/models/Fire/fire.obj");
+                    mapBlocTex = Assets::GetTexture("assets/textures/ground_color.png");
+			        itemGO->transform.scale = glm::vec3(1, 1, 1);
+                    break;
+            }
+			mapBlocMat->setAlbedo(mapBlocTex);
+			meshRenderer->setMaterial(mapBlocMat);
+			return (itemGO);
 		}
 
 		BeerEngine::GameObject *Map::createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)

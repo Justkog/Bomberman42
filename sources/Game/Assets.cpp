@@ -76,6 +76,8 @@ void			Assets::load(void)
 {
 	// autoload("assets");
 	bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+	// auto *bombTexture = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+	// bombMaterial->setAlbedo(bombTexture);
 }
 
 void			Assets::unload(void)

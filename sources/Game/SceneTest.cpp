@@ -206,6 +206,10 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
 	mapMeshRenderer->setMaterial(material);
+	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
+	planeMat->setAlbedo(planeTex);
+	mapMeshRenderer->setMaterial(planeMat);
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
 
