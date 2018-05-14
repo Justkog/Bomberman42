@@ -26,6 +26,7 @@ namespace Game
 		class VersusMenu;
 		class SettingsMenu;
 		class InGameMenu;
+		class GameOverMenu;
 
 	}
 }

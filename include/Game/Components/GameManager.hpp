@@ -22,7 +22,9 @@ namespace Game
 			static GameManager * instance;
 
 		public:
-			InGameMenu *inGameMenu;
+			InGameMenu 		*inGameMenu;
+			GameOverMenu	*gameOverMenu;
+			Breakable		*playerBreakable;
 
 			// GameManager( void );
 			// GameManager( GameManager const & src );
@@ -38,6 +40,7 @@ namespace Game
 			virtual void fixedUpdate();
 
 			void setPause(bool state);
+			void setGameOver(glm::vec3 pos, int value);
 	
 			static GameManager & GetInstance();
 

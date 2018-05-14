@@ -2,6 +2,8 @@
 #include "Core/Input.hpp"
 #include "Core/Time.hpp"
 #include "Game/Components/InGameMenu.hpp"
+#include "Game/Components/GameOverMenu.hpp"
+#include "Game/Components/Breakable.hpp"
 
 namespace Game
 {
@@ -50,7 +52,8 @@ GameManager::~GameManager ( void )
 // CONSTRUCTOR POLYMORPHISM ######################################
 
 GameManager::GameManager(BeerEngine::GameObject *gameObject) :
-Component(gameObject)
+Component(gameObject),
+gameOverMenu(nullptr)
 {
 	instance = this;
 }
@@ -69,10 +72,16 @@ std::ostream &				operator<<(std::ostream & o, GameManager const & i)
 
 // PUBLIC METHOD #################################################
 
+void GameManager::setGameOver(glm::vec3 pos, int value)
+{
+	std::cout << "game over" << std::endl;
+	gameOverMenu->setActive(true);
+}
 
 void GameManager::start()
 {
 	std::cout << "GameManager start" << std::endl;
+	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
 }
 
 void GameManager::update()
@@ -90,13 +99,13 @@ void GameManager::setPause(bool state)
 {
 	if (state)
 	{
-		BeerEngine::Time::gameSpeed = 0.0f;
 		std::cout << "pausing game" << std::endl;
+		BeerEngine::Time::gameSpeed = 0.0f;
 	}
 	else
 	{
-		BeerEngine::Time::gameSpeed = 1.0f;
 		std::cout << "resuming game" << std::endl;
+		BeerEngine::Time::gameSpeed = 1.0f;
 	}
 }
 
@@ -106,6 +115,7 @@ nlohmann::json	GameManager::serialize()
 	j.merge_patch({
 		{"componentClass", type},
 		{"inGameMenu", SERIALIZE_BY_ID(inGameMenu)},
+		{"gameOverMenu", SERIALIZE_BY_ID(gameOverMenu)},
 	});
 	return j;
 }
@@ -114,6 +124,7 @@ void GameManager::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader &
 {
 	Component::deserialize(j, loader);
 	DESERIALIZE_BY_ID(this->inGameMenu, InGameMenu, "inGameMenu", loader);
+	DESERIALIZE_BY_ID(this->gameOverMenu, GameOverMenu, "gameOverMenu", loader);
 }
 
 REGISTER_COMPONENT_CPP(GameManager)

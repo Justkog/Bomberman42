@@ -17,6 +17,7 @@
 #include "Game/Components/GameManager.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/InGameMenu.hpp"
+#include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
 
@@ -88,11 +89,15 @@ void    SceneTest::init(void)
 	mouseRay->linesRenderer = linesRenderer;
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
 	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
+	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
 	gameManager->inGameMenu = inGameMenu;
+	gameManager->gameOverMenu = gameOverMenu;
 	inGameMenu->uiManager = uiManager;
+	gameOverMenu->uiManager = uiManager;
 	inGameMenu->setActive(false);
+	gameOverMenu->setActive(false);
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
@@ -107,7 +112,7 @@ void    SceneTest::init(void)
 	meshRenderer->setMaterial(playerMat);
 	playerGO->transform.scale = glm::vec3(1, 1, 1);
 	auto character = playerGO->AddComponent<Game::Component::Character>();
-	playerGO->AddComponent<Game::Component::Breakable>();
+	auto playerBreakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto player = playerGO->AddComponent<Game::Component::Player>();
 	auto routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto settings = playerGO->AddComponent<Game::Component::Settings>();
@@ -120,6 +125,7 @@ void    SceneTest::init(void)
 	player->srcAudio = as2;
 	player->itemSrcAudio = itemAs;
 	// itemsUI->player = player;
+	gameManager->playerBreakable = playerBreakable;
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
