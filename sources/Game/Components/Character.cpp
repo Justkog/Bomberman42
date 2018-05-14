@@ -20,7 +20,9 @@ namespace Game
             _bombNb(1),
             _maxBomb(1),
             _explosionSize(1),
-            _direction(0, 0)
+            _direction(0, 0),
+			bombMesh(nullptr),
+			bombMaterial(nullptr)
 		{
 
         }
