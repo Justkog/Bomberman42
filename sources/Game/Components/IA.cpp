@@ -49,6 +49,7 @@ namespace Game
 
         void    IA::update(void)
         {
+			_character->_direction = glm::vec2(0, 0);
             if (!_hasObjective)
                 findObjective();
             if (_hasObjective)

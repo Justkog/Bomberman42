@@ -60,6 +60,13 @@ namespace Game
 			std::vector<Game::Component::IA*>	_IAs;
 			BeerEngine::Graphics::ShaderProgram	*_shader;
 
+			BeerEngine::Graphics::Texture 	*itemSpeedBoostTex;
+			BeerEngine::Graphics::Texture 	*itemBombTex;
+			BeerEngine::Graphics::Texture 	*itemRangeTex;
+			BeerEngine::Graphics::Mesh		*itemSpeedBoostMesh;
+			BeerEngine::Graphics::Mesh		*itemBombMesh;
+			BeerEngine::Graphics::Mesh		*itemRangeMesh;
+
 			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
