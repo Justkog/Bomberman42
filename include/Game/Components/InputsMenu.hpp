@@ -59,7 +59,9 @@ namespace Game
 
 			void setMapKey(std::string label);
 			void drawInputsUI(struct nk_context *ctx);
-			void drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo);
+			void drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo, InputInfo * prevInput);
+
+			// void drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo);
 			void updateKeyBindings();
 			void updateDisplayedInputKeys();
 

@@ -40,32 +40,11 @@ void    SceneMain::init(void)
 
 	std::cout << "init main scene" << "\n";
 
-	// Shader
-	auto shader = new BeerEngine::Graphics::ShaderProgram(2);
-	shader->load(0, GL_VERTEX_SHADER,
-		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
-	);
-	shader->load(1, GL_FRAGMENT_SHADER,
-		BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
-	);
-	shader->compile();
-	auto material = new BeerEngine::Graphics::AMaterial(shader);
-	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
-	
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
-
-	// plane
-	// BeerEngine::GameObject *bkgdGO;
-	// bkgdGO = instantiate<BeerEngine::GameObject>();
-	// BeerEngine::Component::MeshRenderer *bkgdMeshRenderer = bkgdGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	// bkgdMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
-	// bkgdMeshRenderer->setMaterial(material);
-	// bkgdGO->transform.position = glm::vec3(-3, 0, 6);
-	// bkgdGO->transform.scale = glm::vec3(40, 1, 40);
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto settings = menuGO->AddComponent<Game::Component::Settings>();
