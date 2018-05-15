@@ -1,8 +1,15 @@
 #ifndef GAME_ASSETS_HPP
 #define GAME_ASSETS_HPP 1
-
+/*!
+ * \file Assets.hpp
+ * \brief Classe permettant le chargements et sauvegardes les ressources
+ * \author mgallo
+ */
 #include "Core/Core.hpp"
 
+/*! \class Assets
+* \brief classe regroupant les assets/ressources du projet, les datas sont charger par le biais de fonction.
+*/
 class Assets
 {
 private:

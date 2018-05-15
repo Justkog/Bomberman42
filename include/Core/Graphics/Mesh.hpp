@@ -9,7 +9,6 @@
 #include "Core/Json/JsonSerializable.hpp"
 
 /*! \namespace BeerEngine
- * 
  * espace de nommage regroupant les fonctionnalité du moteur
  */
 namespace BeerEngine

@@ -10,7 +10,6 @@
 #include "Core.hpp"
 
 /*! \namespace BeerEngine
- * 
  * espace de nommage regroupant les fonctionnalité du moteur
  */
 namespace BeerEngine
