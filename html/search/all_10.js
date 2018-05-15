@@ -18,10 +18,12 @@ var searchData=
   ['pivot',['pivot',['../class_beer_engine_1_1_transform.html#ae27065923507f46d0257c9f77e37161e',1,'BeerEngine::Transform']]],
   ['plane',['plane',['../class_beer_engine_1_1_graphics_1_1_graphics.html#a016282a834c725e53a78ad677a4b0e92',1,'BeerEngine::Graphics::Graphics']]],
   ['play',['play',['../class_game_1_1_component_1_1_player.html#af1aa4677c3d843f722d502529dbe1192',1,'Game::Component::Player::play()'],['../class_beer_engine_1_1_audio_1_1_audio_source.html#a798250da977ddbbcc03ae35273a3386b',1,'BeerEngine::Audio::AudioSource::play()']]],
-  ['player',['Player',['../class_game_1_1_component_1_1_player.html',1,'Game::Component::Player'],['../class_game_1_1_component_1_1_player.html#a3568c25cf29f9931ed2c07208c98ee30',1,'Game::Component::Player::Player()']]],
+  ['playanimation',['playAnimation',['../class_beer_engine_1_1_component_1_1_model_renderer.html#a687d4cd6918387bcffa03d79a0905632',1,'BeerEngine::Component::ModelRenderer']]],
+  ['player',['Player',['../class_game_1_1_component_1_1_player.html',1,'Game::Component::Player'],['../class_game_1_1_component_1_1_player.html#a3568c25cf29f9931ed2c07208c98ee30',1,'Game::Component::Player::Player()'],['../class_game_1_1_component_1_1_items_u_i.html#aa894c79f827b4d2e886a17ed1945ad2b',1,'Game::Component::ItemsUI::player()']]],
   ['player_2ehpp',['Player.hpp',['../_player_8hpp.html',1,'']]],
+  ['playerbreakable',['playerBreakable',['../class_game_1_1_component_1_1_game_manager.html#a6e4c0b18813ea94a58c3f66ca61d20a2',1,'Game::Component::GameManager']]],
   ['playstepsound',['playStepSound',['../class_game_1_1_component_1_1_player.html#a87921f894ec75727bb1d83aa660573d1',1,'Game::Component::Player']]],
   ['position',['position',['../struct_beer_engine_1_1_component_1_1_particle.html#a23d67ee03aeae7d36af443d4a5073fc9',1,'BeerEngine::Component::Particle::position()'],['../class_beer_engine_1_1_transform.html#ab5d559938ee0d636faaf10750733d974',1,'BeerEngine::Transform::position()']]],
-  ['power',['power',['../class_game_1_1_component_1_1_bomb.html#a0e4068ea1fe8146c412c76f472db7087',1,'Game::Component::Bomb']]],
+  ['power',['power',['../struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html#a6fe8e1ecf04de78e253b61f19bda9465',1,'BeerEngine::Graphics::ALight::Specular::power()'],['../class_game_1_1_component_1_1_bomb.html#a0e4068ea1fe8146c412c76f472db7087',1,'Game::Component::Bomb::power()']]],
   ['print_5fscreen',['PRINT_SCREEN',['../namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a08811cd4b139b215aa623a18d815b446',1,'BeerEngine']]]
 ];

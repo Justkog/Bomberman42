@@ -1,9 +1,13 @@
 <map id="include/Game/Components/Settings.hpp" name="include/Game/Components/Settings.hpp">
-<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,385,2013,411"/>
-<area shape="rect" id="node31" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="2316,239,2501,264"/>
-<area shape="rect" id="node32" href="$_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1799,92,2020,117"/>
-<area shape="rect" id="node33" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1925,312,2134,337"/>
-<area shape="rect" id="node34" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="2039,165,2194,191"/>
-<area shape="rect" id="node35" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1900,239,2026,264"/>
-<area shape="rect" id="node36" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2101,239,2241,264"/>
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,532,2492,557"/>
+<area shape="rect" id="node37" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="1928,239,2113,264"/>
+<area shape="rect" id="node38" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2378,92,2599,117"/>
+<area shape="rect" id="node40" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2404,459,2613,484"/>
+<area shape="rect" id="node41" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2184,165,2339,191"/>
+<area shape="rect" id="node42" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2325,239,2452,264"/>
+<area shape="rect" id="node48" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2158,385,2298,411"/>
+<area shape="rect" id="node43" href="$_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="2610,312,2804,337"/>
+<area shape="rect" id="node44" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2691,385,2891,411"/>
+<area shape="rect" id="node45" href="$_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2526,385,2667,411"/>
+<area shape="rect" id="node46" href="$_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2915,385,3006,411"/>
 </map>

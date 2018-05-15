@@ -1,5 +1,6 @@
 <map id="include/Core/Audio/AudioSource.hpp" name="include/Core/Audio/AudioSource.hpp">
 <area shape="rect" id="node2" href="$_beer_engine_8hpp.html" title="include/Core/BeerEngine.hpp" alt="" coords="5,99,201,124"/>
-<area shape="rect" id="node4" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="225,92,408,131"/>
-<area shape="rect" id="node3" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="118,179,301,217"/>
+<area shape="rect" id="node4" href="$_game_manager_8hpp.html" title="include/Game/Components\l/GameManager.hpp" alt="" coords="225,92,408,131"/>
+<area shape="rect" id="node5" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="432,92,615,131"/>
+<area shape="rect" id="node3" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="221,179,404,217"/>
 </map>

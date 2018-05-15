@@ -1,27 +1,39 @@
 <map id="include/Core/GameObject.hpp" name="include/Core/GameObject.hpp">
-<area shape="rect" id="node2" href="$_audio_listener_8hpp.html" title="include/Core/Audio\l/AudioListener.hpp" alt="" coords="97,165,231,204"/>
-<area shape="rect" id="node4" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="594,339,777,377"/>
-<area shape="rect" id="node5" href="$_audio_source_8hpp.html" title="include/Core/Audio\l/AudioSource.hpp" alt="" coords="255,165,389,204"/>
-<area shape="rect" id="node7" href="$_component_8hpp.html" title="include/Core/Component\l/Component.hpp" alt="" coords="1018,79,1187,117"/>
-<area shape="rect" id="node20" href="$_character_8hpp.html" title="include/Game/Components\l/Character.hpp" alt="" coords="2742,165,2925,204"/>
-<area shape="rect" id="node26" href="$_camera_test_8hpp.html" title="include/Game/CameraTest.hpp" alt="" coords="1262,85,1467,111"/>
-<area shape="rect" id="node3" href="$_beer_engine_8hpp.html" title="include/Core/BeerEngine.hpp" alt="" coords="24,259,219,284"/>
-<area shape="rect" id="node6" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="243,252,426,291"/>
-<area shape="rect" id="node8" href="$_a_collider_8hpp.html" title="include/Core/Component\l/ACollider.hpp" alt="" coords="1080,165,1249,204"/>
-<area shape="rect" id="node11" href="$_bomb_8hpp.html" title="include/Game/Components\l/Bomb.hpp" alt="" coords="1751,252,1934,291"/>
-<area shape="rect" id="node12" href="$_mesh_renderer_8hpp.html" title="include/Core/Component\l/MeshRenderer.hpp" alt="" coords="1273,165,1442,204"/>
-<area shape="rect" id="node14" href="$_particle_base_8hpp.html" title="include/Core/Component\l/ParticleBase.hpp" alt="" coords="1516,165,1685,204"/>
-<area shape="rect" id="node16" href="$_rigid_body2_d_8hpp.html" title="include/Core/Component\l/RigidBody2D.hpp" alt="" coords="501,252,670,291"/>
-<area shape="rect" id="node17" href="$_beer_routine_tester_8hpp.html" title="include/Game/Components\l/BeerRoutineTester.hpp" alt="" coords="1709,165,1892,204"/>
-<area shape="rect" id="node18" href="$_breakable_8hpp.html" title="include/Game/Components\l/Breakable.hpp" alt="" coords="694,252,877,291"/>
-<area shape="rect" id="node19" href="$_camera_controller_8hpp.html" title="include/Game/Components\l/CameraController.hpp" alt="" coords="1915,165,2098,204"/>
-<area shape="rect" id="node21" href="$_i_a_8hpp.html" title="include/Game/Components\l/IA.hpp" alt="" coords="2122,165,2305,204"/>
-<area shape="rect" id="node22" href="$_item_8hpp.html" title="include/Game/Components\l/Item.hpp" alt="" coords="901,252,1084,291"/>
-<area shape="rect" id="node23" href="$_main_menu_8hpp.html" title="include/Game/Components\l/MainMenu.hpp" alt="" coords="2329,165,2512,204"/>
-<area shape="rect" id="node24" href="$_mouse_ray_test_8hpp.html" title="include/Game/Components\l/MouseRayTest.hpp" alt="" coords="2535,165,2718,204"/>
-<area shape="rect" id="node25" href="$_settings_8hpp.html" title="include/Game/Components\l/Settings.hpp" alt="" coords="1107,252,1290,291"/>
-<area shape="rect" id="node9" href="$_box_collider2_d_8hpp.html" title="include/Core/Component\l/BoxCollider2D.hpp" alt="" coords="1508,252,1677,291"/>
-<area shape="rect" id="node10" href="$_circle_collider_8hpp.html" title="include/Core/Component\l/CircleCollider.hpp" alt="" coords="1314,252,1483,291"/>
-<area shape="rect" id="node13" href="$_rays_renderer_8hpp.html" title="include/Core/Component\l/RaysRenderer.hpp" alt="" coords="1958,252,2127,291"/>
-<area shape="rect" id="node15" href="$_particle_explode_8hpp.html" title="include/Core/Component\l/ParticleExplode.hpp" alt="" coords="2152,252,2321,291"/>
+<area shape="rect" id="node2" href="$_audio_listener_8hpp.html" title="include/Core/Audio\l/AudioListener.hpp" alt="" coords="67,165,201,204"/>
+<area shape="rect" id="node4" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="1090,339,1273,377"/>
+<area shape="rect" id="node5" href="$_audio_source_8hpp.html" title="include/Core/Audio\l/AudioSource.hpp" alt="" coords="431,165,565,204"/>
+<area shape="rect" id="node8" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2020,79,2189,117"/>
+<area shape="rect" id="node23" href="$_character_8hpp.html" title="include/Game/Components\l/Character.hpp" alt="" coords="4869,165,5052,204"/>
+<area shape="rect" id="node38" href="$_camera_test_8hpp.html" title="include/Game/CameraTest.hpp" alt="" coords="2263,85,2468,111"/>
+<area shape="rect" id="node3" href="$_beer_engine_8hpp.html" title="include/Core/BeerEngine.hpp" alt="" coords="5,259,201,284"/>
+<area shape="rect" id="node6" href="$_game_manager_8hpp.html" title="include/Game/Components\l/GameManager.hpp" alt="" coords="276,252,459,291"/>
+<area shape="rect" id="node7" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="482,252,665,291"/>
+<area shape="rect" id="node9" href="$_a_collider_8hpp.html" title="include/Core/Component\l/ACollider.hpp" alt="" coords="740,165,909,204"/>
+<area shape="rect" id="node12" href="$_bomb_8hpp.html" title="include/Game/Components\l/Bomb.hpp" alt="" coords="1126,252,1309,291"/>
+<area shape="rect" id="node13" href="$_mesh_renderer_8hpp.html" title="Component permettent d&#39;ajouter un rendu au component. " alt="" coords="983,165,1152,204"/>
+<area shape="rect" id="node15" href="$_model_renderer_8hpp.html" title="include/Core/Component\l/ModelRenderer.hpp" alt="" coords="1176,165,1345,204"/>
+<area shape="rect" id="node16" href="$_particle_base_8hpp.html" title="Systeme de particule par defaut. " alt="" coords="1369,165,1538,204"/>
+<area shape="rect" id="node18" href="$_rigid_body2_d_8hpp.html" title="Component physique. " alt="" coords="1771,252,1940,291"/>
+<area shape="rect" id="node19" href="$_background_drawer_8hpp.html" title="include/Game/Components\l/BackgroundDrawer.hpp" alt="" coords="1613,165,1796,204"/>
+<area shape="rect" id="node20" href="$_beer_routine_tester_8hpp.html" title="include/Game/Components\l/BeerRoutineTester.hpp" alt="" coords="1820,165,2003,204"/>
+<area shape="rect" id="node21" href="$_breakable_8hpp.html" title="include/Game/Components\l/Breakable.hpp" alt="" coords="1964,252,2147,291"/>
+<area shape="rect" id="node22" href="$_camera_controller_8hpp.html" title="include/Game/Components\l/CameraController.hpp" alt="" coords="2078,165,2261,204"/>
+<area shape="rect" id="node24" href="$_game_over_menu_8hpp.html" title="include/Game/Components\l/GameOverMenu.hpp" alt="" coords="2285,165,2468,204"/>
+<area shape="rect" id="node25" href="$_i_a_8hpp.html" title="include/Game/Components\l/IA.hpp" alt="" coords="2492,165,2675,204"/>
+<area shape="rect" id="node26" href="$_in_game_menu_8hpp.html" title="include/Game/Components\l/InGameMenu.hpp" alt="" coords="2698,165,2881,204"/>
+<area shape="rect" id="node27" href="$_inputs_menu_8hpp.html" title="include/Game/Components\l/InputsMenu.hpp" alt="" coords="2905,165,3088,204"/>
+<area shape="rect" id="node28" href="$_item_8hpp.html" title="include/Game/Components\l/Item.hpp" alt="" coords="2602,252,2785,291"/>
+<area shape="rect" id="node29" href="$_items_u_i_8hpp.html" title="include/Game/Components\l/ItemsUI.hpp" alt="" coords="3164,165,3347,204"/>
+<area shape="rect" id="node30" href="$_main_menu_8hpp.html" title="include/Game/Components\l/MainMenu.hpp" alt="" coords="3370,165,3553,204"/>
+<area shape="rect" id="node31" href="$_mouse_ray_test_8hpp.html" title="include/Game/Components\l/MouseRayTest.hpp" alt="" coords="3577,165,3760,204"/>
+<area shape="rect" id="node32" href="$_settings_8hpp.html" title="include/Game/Components\l/Settings.hpp" alt="" coords="3257,252,3440,291"/>
+<area shape="rect" id="node33" href="$_settings_menu_8hpp.html" title="include/Game/Components\l/SettingsMenu.hpp" alt="" coords="3836,165,4019,204"/>
+<area shape="rect" id="node34" href="$_time_u_i_8hpp.html" title="include/Game/Components\l/TimeUI.hpp" alt="" coords="4042,165,4225,204"/>
+<area shape="rect" id="node35" href="$_u_i_theme_manager_8hpp.html" title="include/Game/Components\l/UIThemeManager.hpp" alt="" coords="4249,165,4432,204"/>
+<area shape="rect" id="node36" href="$_versus_menu_8hpp.html" title="include/Game/Components\l/VersusMenu.hpp" alt="" coords="4456,165,4639,204"/>
+<area shape="rect" id="node37" href="$_victory_menu_8hpp.html" title="include/Game/Components\l/VictoryMenu.hpp" alt="" coords="4662,165,4845,204"/>
+<area shape="rect" id="node10" href="$_box_collider2_d_8hpp.html" title="include/Core/Component\l/BoxCollider2D.hpp" alt="" coords="740,252,909,291"/>
+<area shape="rect" id="node11" href="$_circle_collider_8hpp.html" title="include/Core/Component\l/CircleCollider.hpp" alt="" coords="933,252,1102,291"/>
+<area shape="rect" id="node14" href="$_rays_renderer_8hpp.html" title="include/Core/Component\l/RaysRenderer.hpp" alt="" coords="1384,252,1553,291"/>
+<area shape="rect" id="node17" href="$_particle_explode_8hpp.html" title="Systeme de particule qui represente une explosion. " alt="" coords="1577,252,1746,291"/>
 </map>

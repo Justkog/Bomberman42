@@ -74,22 +74,31 @@ $(function() {
 <div class="title">MeshRenderer.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="namespace_component.html">Component</a> permettent d'ajouter un rendu au component.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_core_8hpp_source.html">Core/Core.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_component_8hpp_source.html">Component.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_i_render_8hpp_source.html">IRender.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_i_render_forward_8hpp_source.html">IRenderForward.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_a_light_8hpp_source.html">Core/Graphics/Lights/ALight.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MeshRenderer.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="_mesh_renderer_8hpp__incl.png" border="0" usemap="#include_2_core_2_component_2_mesh_renderer_8hpp" alt=""/></div>
 <map name="include_2_core_2_component_2_mesh_renderer_8hpp" id="include_2_core_2_component_2_mesh_renderer_8hpp">
-<area shape="rect" id="node2" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,385,2013,411"/>
-<area shape="rect" id="node31" href="_component_8hpp.html" title="Component.hpp" alt="" coords="1617,92,1733,117"/>
-<area shape="rect" id="node37" href="_i_render_8hpp.html" title="IRender.hpp" alt="" coords="1757,92,1851,117"/>
-<area shape="rect" id="node32" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1784,312,1993,337"/>
-<area shape="rect" id="node33" href="_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1779,165,1934,191"/>
-<area shape="rect" id="node34" href="_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1549,239,1676,264"/>
-<area shape="rect" id="node35" href="_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1960,239,2100,264"/>
-<area shape="rect" id="node36" href="_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="1700,239,1885,264"/>
+<area shape="rect" id="node2" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,545,2492,571"/>
+<area shape="rect" id="node37" href="_component_8hpp.html" title="Component de base. " alt="" coords="2029,92,2145,117"/>
+<area shape="rect" id="node49" href="_i_render_forward_8hpp.html" title="IRenderForward.hpp" alt="" coords="2945,92,3088,117"/>
+<area shape="rect" id="node50" href="_a_light_8hpp.html" title="Core/Graphics/Lights\l/ALight.hpp" alt="" coords="2894,385,3040,424"/>
+<area shape="rect" id="node39" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2192,472,2401,497"/>
+<area shape="rect" id="node40" href="_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2176,165,2331,191"/>
+<area shape="rect" id="node41" href="_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2288,239,2414,264"/>
+<area shape="rect" id="node47" href="_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2073,392,2213,417"/>
+<area shape="rect" id="node48" href="_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2439,239,2623,264"/>
+<area shape="rect" id="node42" href="_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="2396,312,2591,337"/>
+<area shape="rect" id="node43" href="_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2619,392,2819,417"/>
+<area shape="rect" id="node44" href="_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2339,392,2480,417"/>
+<area shape="rect" id="node45" href="_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2504,392,2595,417"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -108,16 +117,22 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html">BeerEngine::Component::MeshRenderer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti...">Component</a> d'ajouter et de rendre a l'ecran un mesh.  <a href="class_beer_engine_1_1_component_1_1_mesh_renderer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_beer_engine"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_beer_engine.html">BeerEngine</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_component"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_component.html">Component</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_beer_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_beer_engine_1_1_component.html">BeerEngine::Component</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="namespace_component.html">Component</a> permettent d'ajouter un rendu au component. </p>
+<dl class="section author"><dt>Author</dt><dd>mgallo </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

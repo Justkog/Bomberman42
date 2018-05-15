@@ -70,9 +70,10 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_beer_engine_1_1_json_serializable-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">BeerEngine::JsonSerializable Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">BeerEngine::JsonSerializable Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -82,64 +83,205 @@ Inheritance diagram for BeerEngine::JsonSerializable:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_json_serializable__inherit__graph.png" border="0" usemap="#_beer_engine_1_1_json_serializable_inherit__map" alt="Inheritance graph"/></div>
 <map name="_beer_engine_1_1_json_serializable_inherit__map" id="_beer_engine_1_1_json_serializable_inherit__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="93,220,238,427"/>
-<area shape="rect" id="node5" href="class_beer_engine_1_1_component_1_1_component.html" title="{BeerEngine::Component\l::Component\n|+ _gameObject\l+ typeToAddComponent\l|+ Component()\l+ ~Component()\l+ destroy()\l+ serialize()\l+ deserialize()\l+ createInstance()\l+ addComponent()\l+ Deserialize()\l+ createAddMap()\l}" alt="" coords="1915,220,2082,427"/>
-<area shape="rect" id="node28" href="class_beer_engine_1_1_game_object.html" title="{BeerEngine::GameObject\n|+ _uniqueID\l+ _scene\l+ transform\l+ name\l# _components\l# _toStart\l# _toStartUI\l# _toDestroy\l|+ GameObject()\l+ ~GameObject()\l+ getID()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUpdate()\l+ render()\l+ startUI()\l+ renderUI()\land 23 more...\l+ Deserialize()\l}" alt="" coords="2107,167,2280,480"/>
-<area shape="rect" id="node30" href="class_beer_engine_1_1_graphics_1_1_a_material.html" title="class de material, pour le rendu " alt="" coords="2304,220,2456,427"/>
-<area shape="rect" id="node31" href="class_beer_engine_1_1_graphics_1_1_mesh.html" title="{BeerEngine::Graphics\l::Mesh\n||+ Mesh()\l+ ~Mesh()\l+ add()\l+ serialize()\l+ deserialize()\l+ setSourcefile()\l+ setType()\l+ render()\l+ setSize()\l+ Deserialize()\l}" alt="" coords="2480,220,2632,427"/>
-<area shape="rect" id="node32" href="class_beer_engine_1_1_graphics_1_1_texture.html" title="{BeerEngine::Graphics\l::Texture\n||+ Texture()\l+ ~Texture()\l+ bind()\l+ getID()\l+ getWidth()\l+ getHeight()\l+ serialize()\l+ LoadBMP()\l+ LoadPNG()\l+ LoadJPG()\l+ LoadTGA()\l+ Deserialize()\l}" alt="" coords="2656,207,2808,440"/>
-<area shape="rect" id="node33" href="class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="2831,180,2990,467"/>
-<area shape="rect" id="node3" href="class_scene_main.html" title="{SceneMain\n||+ init()\l}" alt="" coords="5,688,93,761"/>
-<area shape="rect" id="node4" href="class_scene_test.html" title="{SceneTest\n||+ init()\l+ addCrate()\l}" alt="" coords="117,681,214,768"/>
-<area shape="rect" id="node6" href="class_beer_engine_1_1_audio_1_1_audio_listener.html" title="{BeerEngine::Audio::\lAudioListener\n||+ AudioListener()\l+ ~AudioListener()\l+ setListenerData()\l+ start()\l+ fixedUpdate()\l+ update()\l+ init()\l+ DestroyOpenAL()\l}" alt="" coords="238,635,378,815"/>
-<area shape="rect" id="node7" href="class_beer_engine_1_1_audio_1_1_audio_source.html" title="{BeerEngine::Audio::\lAudioSource\n||+ AudioSource()\l+ ~AudioSource()\l+ play()\l+ isPlaying()\l+ pause()\l+ continuePlaying()\l+ stop()\l+ Delete()\l+ setVolume()\l+ setPitch()\land 8 more...\l}" alt="" coords="402,615,542,835"/>
-<area shape="rect" id="node8" href="class_beer_engine_1_1_component_1_1_a_collider.html" title="{BeerEngine::Component\l::ACollider\n|+ _currentCollisions\l+ _exceptions\l+ _transform\l+ _offset\l+ _isTrigger\l+ rb2d\l+ _colliders\l|+ ACollider()\l+ ~ACollider()\l+ start()\l+ physicUpdate()\l+ hasException()\l+ checkCollision()\l+ collide_AABB2D()\l+ collide_AABB2D()\l+ contain()\l+ intersect()\land 11 more...\l}" alt="" coords="566,575,733,875"/>
-<area shape="rect" id="node11" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html" title="{BeerEngine::Component\l::MeshRenderer\n|+ renderMode\l# _mesh\l# _material\l# _mat\l# _sourceFile\l|+ MeshRenderer()\l+ getMesh()\l+ setMesh()\l+ setMesh()\l+ getMaterial()\l+ setMaterial()\l+ renderUpdate()\l+ render()\l+ serialize()\l+ deserialize()\l}" alt="" coords="758,595,925,855"/>
-<area shape="rect" id="node13" href="class_beer_engine_1_1_component_1_1_particle_base.html" title="{BeerEngine::Component\l::ParticleBase\n|# texture\l# spawnTime\l# lifeTime\l# color0\l# color1\l# velocity\l# size0\l# size1\l# anim\l# animTotalFrame\l# animFrameWidth\l# animFrameHeight\l|+ ParticleBase()\l+ ~ParticleBase()\l+ fixedUpdate()\l+ update()\l+ renderAlphaUpdate()\l+ renderAlpha()\l+ setTexture()\l+ initParticle()\l+ upgradeParticle()\l+ setSpawnTime()\land 9 more...\l# addParticle()\l}" alt="" coords="950,535,1117,915"/>
-<area shape="rect" id="node15" href="class_beer_engine_1_1_component_1_1_rigid_body2_d.html" title="{BeerEngine::Component\l::RigidBody2D\n|+ velocity\l+ kinematic\l+ mass\l|+ RigidBody2D()\l+ physicUpdate()\l+ serialize()\l+ deserialize()\l}" alt="" coords="1142,648,1309,801"/>
-<area shape="rect" id="node16" href="class_game_1_1_component_1_1_beer_routine_tester.html" title="{Game::Component::BeerRoutine\lTester\n||+ BeerRoutineTester()\l+ ~BeerRoutineTester()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ testDisplay()\l+ createTestRoutine()\l}" alt="" coords="1334,635,1549,815"/>
-<area shape="rect" id="node17" href="class_game_1_1_component_1_1_bomb.html" title="{Game::Component::Bomb\n|+ map\l+ power\l+ bombs\l# render\l# timer\l|+ Bomb()\l+ ~Bomb()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onColliderExit()\l+ explode()\l+ setPower()\l}" alt="" coords="1573,615,1749,835"/>
-<area shape="rect" id="node18" href="class_game_1_1_component_1_1_breakable.html" title="{Game::Component::Breakable\n|+ onDestruction\l+ _crateDestoyed\l# _transform\l|+ Breakable()\l+ ~Breakable()\l+ destroyed()\l}" alt="" coords="1774,661,1975,788"/>
-<area shape="rect" id="node19" href="class_game_1_1_component_1_1_camera_controller.html" title="{Game::Component::CameraController\n|+ cam\l+ lastMousePos\l|+ CameraController()\l+ ~CameraController()\l+ operator=()\l+ start()\l+ fixedUpdate()\l+ update()\l+ serialize()\l+ deserialize()\l}" alt="" coords="1999,635,2246,815"/>
-<area shape="rect" id="node20" href="class_game_1_1_component_1_1_character.html" title="{Game::Component::Character\n|+ _speed\l+ _bombNb\l+ _explosionSize\l+ _direction\l+ map\l# _transform\l|+ Character()\l+ start()\l+ fixedUpdate()\l+ update()\l+ translate()\l+ move()\l+ increaseSpeed()\l+ addBomb()\l+ increaseExplosionSize()\l+ dropBomb()\land 8 more...\l}" alt="" coords="2269,588,2469,861"/>
-<area shape="rect" id="node21" href="class_game_1_1_component_1_1_i_a.html" title="{Game::Component::IA\n|+ map\l# _transform\l# _character\l# _hasObjective\l# _target\l# _objective\l# dir\l# _path\l|+ IA()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUI()\l+ serialize()\l+ deserialize()\l# avoidExplosion()\l# avoidAllExplosions()\l# checkExplosionRay()\l# checkExplosionZone()\l# getObjective()\l# moveToObjective()\l# moveToNextCell()\l# checkCell()\l# analyzeMap()\l# getPath()\l# findPath()\l}" alt="" coords="2494,528,2658,921"/>
-<area shape="rect" id="node22" href="class_game_1_1_component_1_1_item.html" title="{Game::Component::Item\n|+ _transform\l+ _type\l+ map\l|+ Item()\l+ ~Item()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onTriggerStay()\l+ onTriggerEnter()\l+ onTriggerExit()\l+ serialize()\l+ deserialize()\l}" alt="" coords="2682,615,2849,835"/>
-<area shape="rect" id="node23" href="class_game_1_1_component_1_1_main_menu.html" title="{Game::Component::MainMenu\n|+ defaultWindow\l+ defaultButton\l+ mWindow\l+ mButton\l+ mBackWindow\l|+ MainMenu()\l+ ~MainMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ saveDefaultUI()\l+ setUI()\l+ resetToDefaultUI()\l}" alt="" coords="2873,608,3077,841"/>
-<area shape="rect" id="node24" href="class_game_1_1_component_1_1_map.html" title="{Game::Component::Map\n|+ _map\l+ _sizeX\l+ _sizeY\l+ _player\l# _transform\l|+ Map()\l+ ~Map()\l+ start()\l+ setMap()\l+ mapUpdate()\l+ drawMap()\l+ renderUI()\l+ worldToMap()\l+ mapToWorld()\l+ hasCharacter()\land 11 more...\l}" alt="" coords="3100,595,3268,855"/>
-<area shape="rect" id="node25" href="class_game_1_1_component_1_1_mouse_ray_test.html" title="{Game::Component::MouseRayTest\n|+ clicking\l+ linesRenderer\l|+ MouseRayTest()\l+ ~MouseRayTest()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l}" alt="" coords="3292,648,3521,801"/>
-<area shape="rect" id="node26" href="class_game_1_1_component_1_1_player.html" title="{Game::Component::Player\n|+ createCrateSignal\l+ srcAudio\l+ itemSrcAudio\l+ play\l# _transform\l# _character\l|+ Player()\l+ ~Player()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUI()\l+ onColliderEnter()\l+ serialize()\l+ deserialize()\l+ playStepSound()\l}" alt="" coords="3545,595,3724,855"/>
-<area shape="rect" id="node27" href="class_game_1_1_component_1_1_settings.html" title="{Game::Component::Settings\n|+ filePath\l+ settingsContainer\l|+ Settings()\l+ ~Settings()\l+ operator=()\l+ loadSettings()\l+ saveSettings()\l+ start()\l+ serialize()\l+ deserialize()\l}" alt="" coords="3748,635,3937,815"/>
-<area shape="rect" id="node9" href="class_beer_engine_1_1_component_1_1_box_collider2_d.html" title="{BeerEngine::Component\l::BoxCollider2D\n|+ _size\l|+ BoxCollider2D()\l+ ~BoxCollider2D()\l+ checkCollision()\l+ contain()\l+ intersect()\l+ intersect()\l+ collide_AABB2D()\l+ collide_AABB2D()\l+ response_AABB2D()\l+ response_AABB2D()\l+ serialize()\l+ deserialize()\l}" alt="" coords="374,976,541,1209"/>
-<area shape="rect" id="node10" href="class_beer_engine_1_1_component_1_1_circle_collider.html" title="{BeerEngine::Component\l::CircleCollider\n|+ _radius\l|+ CircleCollider()\l+ ~CircleCollider()\l+ checkCollision()\l+ contain()\l+ intersect()\l+ intersect()\l+ collide_AABB2D()\l+ collide_AABB2D()\l+ response_AABB2D()\l+ serialize()\l+ deserialize()\l# lineCollision()\l# segmentCollision()\l}" alt="" coords="566,969,733,1216"/>
-<area shape="rect" id="node12" href="class_beer_engine_1_1_component_1_1_rays_renderer.html" title="{BeerEngine::Component\l::RaysRenderer\n|+ rays\l+ old_size\l|+ RaysRenderer()\l+ ~RaysRenderer()\l+ operator=()\l+ start()\l+ renderUpdate()\l+ addRay()\l+ RebuildMesh()\l}" alt="" coords="758,1003,925,1183"/>
-<area shape="rect" id="node14" href="class_beer_engine_1_1_component_1_1_particle_explode.html" title="{BeerEngine::Component\l::ParticleExplode\n||+ ParticleExplode()\l+ initParticle()\l+ serialize()\l+ deserialize()\l}" alt="" coords="950,1029,1117,1156"/>
-<area shape="rect" id="node29" href="class_camera_test.html" title="{CameraTest\n||+ CameraTest()\l+ start()\l+ update()\l}" alt="" coords="3962,675,4075,775"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="166,307,311,513"/>
+<area shape="rect" id="node6" href="class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="3584,293,3751,527"/>
+<area shape="rect" id="node39" href="class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="6848,240,7021,580"/>
+<area shape="rect" id="node41" href="class_beer_engine_1_1_graphics_1_1_a_light.html" title="{BeerEngine::Graphics\l::ALight\n|# _shader\l# _intensity\l# _color\l# _specularity\l# _colorShaderID\l# _albedoID\l# _hasAlbedoID\l# _normalID\l# _hasNormalID\l# _bumpID\land 14 more...\l|+ ALight()\l+ ALight()\l+ ~ALight()\l+ bind()\l+ setColor()\l+ setIntensity()\l+ getColor()\l+ getIntensity()\l+ getShader()\l+ get_colorShaderID()\land 21 more...\l+ Deserialize()\l# setupUniformIds()\l}" alt="" coords="7044,220,7197,600"/>
+<area shape="rect" id="node44" href="class_beer_engine_1_1_graphics_1_1_a_material.html" title="class de material, pour le rendu " alt="" coords="7221,287,7373,533"/>
+<area shape="rect" id="node45" href="class_beer_engine_1_1_graphics_1_1_cubemap.html" title="{BeerEngine::Graphics\l::Cubemap\n||+ Cubemap()\l+ ~Cubemap()\l+ renderUpdate()\l+ render()\l+ bind()\l+ unbind()\l+ serialize()\l+ deserialize()\l+ Deserialize()\l}" alt="" coords="7397,313,7549,507"/>
+<area shape="rect" id="node46" href="class_beer_engine_1_1_graphics_1_1_mesh.html" title="classe representant les données de rendu " alt="" coords="7573,307,7725,513"/>
+<area shape="rect" id="node47" href="class_beer_engine_1_1_graphics_1_1_shader_program.html" title="Cette class permet de charger et compiler les scripts pour la carte graphique (glsl), puis de les utiliser pour le traitement des rendus. " alt="" coords="7749,273,7906,547"/>
+<area shape="rect" id="node48" href="class_beer_engine_1_1_graphics_1_1_texture.html" title="Cette class permet de charger les images pour en faire des textures lisable pour la carte graphique p..." alt="" coords="7930,293,8082,527"/>
+<area shape="rect" id="node49" href="class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="8106,260,8264,560"/>
+<area shape="rect" id="node3" href="class_generic_scene.html" title="{GenericScene\n||+ init()\l}" alt="" coords="5,848,111,921"/>
+<area shape="rect" id="node4" href="class_scene_main.html" title="{SceneMain\n||+ init()\l}" alt="" coords="136,848,224,921"/>
+<area shape="rect" id="node5" href="class_scene_test.html" title="{SceneTest\n||+ init()\l+ addCrate()\l}" alt="" coords="247,841,344,928"/>
+<area shape="rect" id="node7" href="class_beer_engine_1_1_audio_1_1_audio_listener.html" title="{BeerEngine::Audio::\lAudioListener\n||+ AudioListener()\l+ ~AudioListener()\l+ setListenerData()\l+ start()\l+ fixedUpdate()\l+ update()\l+ init()\l+ DestroyOpenAL()\l}" alt="" coords="368,795,508,975"/>
+<area shape="rect" id="node8" href="class_beer_engine_1_1_audio_1_1_audio_source.html" title="{BeerEngine::Audio::\lAudioSource\n||+ AudioSource()\l+ ~AudioSource()\l+ play()\l+ isPlaying()\l+ pause()\l+ continuePlaying()\l+ stop()\l+ delet()\l+ Delete()\l+ setVolume()\land 10 more...\l}" alt="" coords="532,775,672,995"/>
+<area shape="rect" id="node9" href="class_beer_engine_1_1_component_1_1_a_collider.html" title="{BeerEngine::Component\l::ACollider\n|+ _currentCollisions\l+ _exceptions\l+ _transform\l+ _offset\l+ _isTrigger\l+ rb2d\l+ _colliders\l|+ ACollider()\l+ ~ACollider()\l+ start()\l+ physicUpdate()\l+ hasException()\l+ checkCollision()\l+ collide_AABB2D()\l+ collide_AABB2D()\l+ contain()\l+ intersect()\land 11 more...\l}" alt="" coords="696,735,863,1035"/>
+<area shape="rect" id="node12" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html" title="Component d&#39;ajouter et de rendre a l&#39;ecran un mesh. " alt="" coords="888,768,1055,1001"/>
+<area shape="rect" id="node13" href="class_beer_engine_1_1_component_1_1_model_renderer.html" title="{BeerEngine::Component\l::ModelRenderer\n|+ renderMode\l# _importer\l# _assimpScene\l# _materials\l# _materialIndices\l# _mat\l# _animations\l# _currentAnimation\l# _playAnimation\l# _loopAnimation\l# _animationTime\land 15 more...\l|+ ModelRenderer()\l+ ~ModelRenderer()\l+ load()\l+ addMaterial()\l+ getMaterial()\l+ getScene()\l+ setAnimation()\l+ setAnimation()\l+ setLoopAnimation()\l+ playAnimation()\land 8 more...\l# build()\l# loadBones()\l# boneTransform()\l# fineNodeAnim()\l# readNodes()\l# interpolateNodeRotation()\l# interpolateNodePosition()\l# interpolateNodeScale()\l}" alt="" coords="1079,648,1264,1121"/>
+<area shape="rect" id="node14" href="class_beer_engine_1_1_component_1_1_particle_base.html" title="System de particule de base, traitement de ses derniere avec un composent par defaut, gestion de la vie... Cette classe sert de parent a toute autre particule qui voudrons utiliser un &quot;style de vie&quot; differente. " alt="" coords="1288,695,1455,1075"/>
+<area shape="rect" id="node15" href="class_beer_engine_1_1_component_1_1_rigid_body2_d.html" title="Permet a un objet ayant se component d&#39;avoir une velociter de s&#39;avoir s&#39;il est deplacable celon une c..." alt="" coords="1480,821,1647,948"/>
+<area shape="rect" id="node16" href="class_game_1_1_component_1_1_background_drawer.html" title="{Game::Component::Background\lDrawer\n|+ uiManager\l|+ BackgroundDrawer()\l+ ~BackgroundDrawer()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l}" alt="" coords="1671,808,1883,961"/>
+<area shape="rect" id="node17" href="class_game_1_1_component_1_1_beer_routine_tester.html" title="{Game::Component::BeerRoutine\lTester\n||+ BeerRoutineTester()\l+ ~BeerRoutineTester()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ testDisplay()\l+ createTestRoutine()\l}" alt="" coords="1908,795,2123,975"/>
+<area shape="rect" id="node18" href="class_game_1_1_component_1_1_bomb.html" title="{Game::Component::Bomb\n|+ map\l+ power\l+ onExplode\l+ bombs\l+ explosionTexture\l# render\l# timer\l|+ Bomb()\l+ ~Bomb()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onColliderExit()\l+ explode()\l+ setPower()\l}" alt="" coords="2147,761,2324,1008"/>
+<area shape="rect" id="node19" href="class_game_1_1_component_1_1_breakable.html" title="{Game::Component::Breakable\n|+ onDestruction\l+ onDestructionSelf\l# _transform\l|+ Breakable()\l+ ~Breakable()\l+ destroyed()\l}" alt="" coords="2348,821,2550,948"/>
+<area shape="rect" id="node20" href="class_game_1_1_component_1_1_camera_controller.html" title="{Game::Component::CameraController\n|+ cam\l+ lastMousePos\l|+ CameraController()\l+ ~CameraController()\l+ operator=()\l+ start()\l+ fixedUpdate()\l+ update()\l}" alt="" coords="2574,808,2820,961"/>
+<area shape="rect" id="node21" href="class_game_1_1_component_1_1_character.html" title="{Game::Component::Character\n|+ _speed\l+ _bombNb\l+ _maxBomb\l+ _explosionSize\l+ _direction\l+ _rotation\l+ map\l+ bombMesh\l+ bombMaterial\l# _transform\l|+ Character()\l+ start()\l+ fixedUpdate()\l+ update()\l+ translate()\l+ move()\l+ increaseSpeed()\l+ addBomb()\l+ increaseMaxBomb()\l+ increaseExplosionSize()\land 7 more...\l}" alt="" coords="2844,721,3044,1048"/>
+<area shape="rect" id="node22" href="class_game_1_1_component_1_1_game_manager.html" title="{Game::Component::GameManager\n|+ inGameMenu\l+ gameOverMenu\l+ victoryMenu\l+ playerBreakable\l+ enemyBreakables\l+ srcAudio\l|+ GameManager()\l+ ~GameManager()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ setPause()\l+ setGameOver()\l+ setVictory()\l+ acknowledgeEnemyDestruction()\l+ registerEnemy()\l+ GetInstance()\l}" alt="" coords="3067,741,3297,1028"/>
+<area shape="rect" id="node23" href="class_game_1_1_component_1_1_game_over_menu.html" title="{Game::Component::GameOverMenu\n|+ uiManager\l+ backgroundImage\l+ youLoseImage\l|+ GameOverMenu()\l+ ~GameOverMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ enable()\l}" alt="" coords="3321,795,3561,975"/>
+<area shape="rect" id="node24" href="class_game_1_1_component_1_1_i_a.html" title="{Game::Component::IA\n|+ map\l# _transform\l# _character\l# _hasObjective\l# _pos\l# _type\l# _path\l# _val\l|+ IA()\l+ ~IA()\l+ onDestroy()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUI()\l# canMove()\l# avoidExplosion()\l# avoidAllExplosions()\l# checkExplosionRay()\l# checkExplosionZone()\l# findObjective()\l# moveToObjective()\l# moveToNextCell()\l# checkCell()\l# analyzeMap()\l# getPath()\l# findPath()\l}" alt="" coords="3585,681,3750,1088"/>
+<area shape="rect" id="node25" href="class_game_1_1_component_1_1_in_game_menu.html" title="{Game::Component::InGameMenu\n|+ uiManager\l|+ InGameMenu()\l+ ~InGameMenu()\l+ operator=()\l+ start()\l+ enable()\l+ disable()\l+ startUI()\l+ renderUI()\l+ setUI()\l}" alt="" coords="3774,795,3996,975"/>
+<area shape="rect" id="node26" href="class_game_1_1_component_1_1_inputs_menu.html" title="{Game::Component::InputsMenu\n|+ inputs\l+ inputsList\l+ settingsMenu\l+ uiManager\l+ menuWidth\l+ menuHeight\l|+ InputsMenu()\l+ ~InputsMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ setUI()\l+ setMapKey()\l+ drawInputsUI()\l+ drawInputUI()\l+ updateKeyBindings()\l+ updateDisplayedInputKeys()\l}" alt="" coords="4019,741,4230,1028"/>
+<area shape="rect" id="node27" href="class_game_1_1_component_1_1_item.html" title="{Game::Component::Item\n|+ _transform\l+ _type\l+ map\l|+ Item()\l+ ~Item()\l+ onDestroy()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onTriggerStay()\l+ onTriggerEnter()\l+ onTriggerExit()\l}" alt="" coords="4255,781,4422,988"/>
+<area shape="rect" id="node28" href="class_game_1_1_component_1_1_items_u_i.html" title="{Game::Component::ItemsUI\n|+ uiManager\l+ shoeImage\l+ bombImage\l+ rangeImage\l+ player\l+ speed\l+ bombs\l+ range\l|+ ItemsUI()\l+ ~ItemsUI()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ startUI()\l+ renderUI()\l+ drawItemInfo()\l+ setUI()\l+ acknowledgePlayerDeath()\l}" alt="" coords="4446,735,4639,1035"/>
+<area shape="rect" id="node29" href="class_game_1_1_component_1_1_main_menu.html" title="{Game::Component::MainMenu\n|+ settingsMenu\l+ versusMenu\l+ uiManager\l+ mWindow\l|+ MainMenu()\l+ ~MainMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ setUI()\l}" alt="" coords="4663,788,4867,981"/>
+<area shape="rect" id="node30" href="class_game_1_1_component_1_1_map.html" title="{Game::Component::Map\n|+ _map\l+ _sizeX\l+ _sizeY\l+ _player\l+ _IAs\l+ _shader\l# _transform\l|+ Map()\l+ ~Map()\l+ start()\l+ setMap()\l+ setRandomMap()\l+ mapUpdate()\l+ drawMap()\l+ renderUI()\l+ worldToMap()\l+ mapToWorld()\land 11 more...\l}" alt="" coords="4891,741,5058,1028"/>
+<area shape="rect" id="node31" href="class_game_1_1_component_1_1_mouse_ray_test.html" title="{Game::Component::MouseRayTest\n|+ clicking\l+ linesRenderer\l|+ MouseRayTest()\l+ ~MouseRayTest()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l}" alt="" coords="5082,808,5312,961"/>
+<area shape="rect" id="node32" href="class_game_1_1_component_1_1_player.html" title="{Game::Component::Player\n|+ _character\l+ srcAudio\l+ itemSrcAudio\l+ play\l+ createCrateSignal\l# _transform\l|+ Player()\l+ ~Player()\l+ onDestroy()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUI()\l+ onColliderEnter()\l+ playStepSound()\l}" alt="" coords="5335,761,5515,1008"/>
+<area shape="rect" id="node33" href="class_game_1_1_component_1_1_settings.html" title="{Game::Component::Settings\n|+ filePath\l+ settingsContainer\l|+ Settings()\l+ ~Settings()\l+ operator=()\l+ loadSettings()\l+ saveSettings()\l+ resetSettings()\l+ applyCurrentSettings()\l+ gatherCurrentSettings()\l+ start()\l+ defaultSettings()\l}" alt="" coords="5538,781,5728,988"/>
+<area shape="rect" id="node34" href="class_game_1_1_component_1_1_settings_menu.html" title="{Game::Component::SettingsMenu\n|+ musicVolume\l+ soundVolume\l+ mode\l+ mainMenu\l+ inputsMenu\l+ uiManager\l+ settingsManager\l+ mWindow\l|+ SettingsMenu()\l+ ~SettingsMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ setUI()\l+ saveSettings()\l+ resetSettings()\l+ updateScreenResolution()\l}" alt="" coords="5752,741,5975,1028"/>
+<area shape="rect" id="node35" href="class_game_1_1_component_1_1_time_u_i.html" title="{Game::Component::TimeUI\n|+ uiManager\l+ backGround\l+ tvScreen\l+ timeSinceGameStart\l|+ TimeUI()\l+ ~TimeUI()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ setUI()\l}" alt="" coords="6000,788,6184,981"/>
+<area shape="rect" id="node36" href="class_game_1_1_component_1_1_u_i_theme_manager.html" title="{Game::Component::UITheme\lManager\n|+ defaultWindow\l+ defaultButton\l+ defaultProperty\l+ defaultText\l+ defaultSlider\l+ available_fonts\l+ themeButton\l|+ UIThemeManager()\l+ ~UIThemeManager()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ saveDefaultUI()\l+ setThemeUI()\l+ resetToDefaultUI()\l+ loadSprite()\l}" alt="" coords="6208,741,6404,1028"/>
+<area shape="rect" id="node37" href="class_game_1_1_component_1_1_versus_menu.html" title="{Game::Component::VersusMenu\n|+ uiManager\l+ mainMenu\l+ maps\l|+ VersusMenu()\l+ ~VersusMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l}" alt="" coords="6428,801,6643,968"/>
+<area shape="rect" id="node38" href="class_game_1_1_component_1_1_victory_menu.html" title="{Game::Component::VictoryMenu\n|+ uiManager\l+ backgroundImage\l+ titleImage\l|+ VictoryMenu()\l+ ~VictoryMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ enable()\l}" alt="" coords="6668,795,6883,975"/>
+<area shape="rect" id="node10" href="class_beer_engine_1_1_component_1_1_box_collider2_d.html" title="{BeerEngine::Component\l::BoxCollider2D\n|+ _size\l|+ BoxCollider2D()\l+ ~BoxCollider2D()\l+ checkCollision()\l+ contain()\l+ intersect()\l+ intersect()\l+ collide_AABB2D()\l+ collide_AABB2D()\l+ response_AABB2D()\l+ response_AABB2D()\l}" alt="" coords="600,1176,767,1383"/>
+<area shape="rect" id="node11" href="class_beer_engine_1_1_component_1_1_circle_collider.html" title="{BeerEngine::Component\l::CircleCollider\n|+ _radius\l|+ CircleCollider()\l+ ~CircleCollider()\l+ checkCollision()\l+ contain()\l+ intersect()\l+ intersect()\l+ collide_AABB2D()\l+ collide_AABB2D()\l+ response_AABB2D()\l# lineCollision()\l# segmentCollision()\l}" alt="" coords="792,1169,959,1389"/>
+<area shape="rect" id="node40" href="class_camera_test.html" title="{CameraTest\n||+ CameraTest()\l+ start()\l+ update()\l}" alt="" coords="6907,835,7020,935"/>
+<area shape="rect" id="node42" href="class_beer_engine_1_1_graphics_1_1_ambiant_light.html" title="{BeerEngine::Graphics\l::AmbiantLight\n||+ AmbiantLight()\l+ AmbiantLight()\l+ ~AmbiantLight()\l+ bind()\l+ serialize()\l+ deserialize()\l+ Deserialize()\l}" alt="" coords="7045,801,7197,968"/>
+<area shape="rect" id="node43" href="class_beer_engine_1_1_graphics_1_1_directional_light.html" title="{BeerEngine::Graphics\l::DirectionalLight\n||+ DirectionalLight()\l+ DirectionalLight()\l+ ~DirectionalLight()\l+ bind()\l+ setDirection()\l+ getDirection()\l+ serialize()\l+ deserialize()\l+ Deserialize()\l}" alt="" coords="7221,788,7373,981"/>
 </map>
 </div>
 <div class="dynheader">
 Collaboration diagram for BeerEngine::JsonSerializable:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_json_serializable__coll__graph.png" border="0" usemap="#_beer_engine_1_1_json_serializable_coll__map" alt="Collaboration graph"/></div>
+<map name="_beer_engine_1_1_json_serializable_coll__map" id="_beer_engine_1_1_json_serializable_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a17689cbd8fe282c570bd026cc1be5b3b"><td class="memItemLeft" align="right" valign="top">virtual nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a17689cbd8fe282c570bd026cc1be5b3b">serialize</a> ()=0</td></tr>
-<tr class="separator:a17689cbd8fe282c570bd026cc1be5b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0459f9f3600be9a429e3530361bf2d84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0459f9f3600be9a429e3530361bf2d84">JsonSerializable</a> ()</td></tr>
+<tr class="separator:a0459f9f3600be9a429e3530361bf2d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0105aad3ea70324a8327a6a48254a56b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0105aad3ea70324a8327a6a48254a56b">JsonSerializable</a> (int id)</td></tr>
+<tr class="separator:a0105aad3ea70324a8327a6a48254a56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a441cd7b316d78993e98d7ed89067f1a3"><td class="memItemLeft" align="right" valign="top">virtual nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a441cd7b316d78993e98d7ed89067f1a3">serialize</a> ()</td></tr>
+<tr class="separator:a441cd7b316d78993e98d7ed89067f1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9d9855209d7fefb985a47e7e1aa7c7d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ae9d9855209d7fefb985a47e7e1aa7c7d">deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="separator:ae9d9855209d7fefb985a47e7e1aa7c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a80649111ff7da289151d17201f9e1d19">toSerializables</a> (std::vector&lt; <a class="el" href="namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664">T</a> *&gt; items)</td></tr>
 <tr class="separator:a80649111ff7da289151d17201f9e1d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3493453acedb5c0668086d2ede8152e0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a3493453acedb5c0668086d2ede8152e0">Deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="separator:a3493453acedb5c0668086d2ede8152e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48f83f0e913d9a7f4962f30ac8ff450b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a48f83f0e913d9a7f4962f30ac8ff450b">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;item)</td></tr>
 <tr class="separator:a48f83f0e913d9a7f4962f30ac8ff450b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae56f6be872da47edbb9a1f25a2eccc0e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ae56f6be872da47edbb9a1f25a2eccc0e">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> *item)</td></tr>
 <tr class="separator:ae56f6be872da47edbb9a1f25a2eccc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:adad8d1ac99922c6c49ef9b92943a15a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#adad8d1ac99922c6c49ef9b92943a15a8">_serializationID</a></td></tr>
+<tr class="separator:adad8d1ac99922c6c49ef9b92943a15a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0459f9f3600be9a429e3530361bf2d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0459f9f3600be9a429e3530361bf2d84">&#9670;&nbsp;</a></span>JsonSerializable() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BeerEngine::JsonSerializable::JsonSerializable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0105aad3ea70324a8327a6a48254a56b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0105aad3ea70324a8327a6a48254a56b">&#9670;&nbsp;</a></span>JsonSerializable() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BeerEngine::JsonSerializable::JsonSerializable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a17689cbd8fe282c570bd026cc1be5b3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17689cbd8fe282c570bd026cc1be5b3b">&#9670;&nbsp;</a></span>serialize()</h2>
+<a id="ae9d9855209d7fefb985a47e7e1aa7c7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9d9855209d7fefb985a47e7e1aa7c7d">&#9670;&nbsp;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BeerEngine::JsonSerializable::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_beer_engine_1_1_a_scene.html#a969dfba905e8282910f37f7e40b6a1d6">BeerEngine::AScene</a>, <a class="el" href="class_beer_engine_1_1_game_object.html#aa547457ab921d29943c0ae120d19090c">BeerEngine::GameObject</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#aa5e1f8ab0e13d8698f847c25261d8d64">BeerEngine::Graphics::AMaterial</a>, <a class="el" href="class_beer_engine_1_1_transform.html#a25582ef54ecdf695f801b196ddbcfedf">BeerEngine::Transform</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_a_collider.html#adf7e56d15ed4470ea2bb22b04140fdc7">BeerEngine::Component::ACollider</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_component.html#ae3c7bf0d00f5e7bda2d0ae92477d3edd">BeerEngine::Component::Component</a>, and <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html#a45a2e60ea0d5cea63db79e417b62d2cf">BeerEngine::Graphics::Mesh</a>.</p>
+
+</div>
+</div>
+<a id="a3493453acedb5c0668086d2ede8152e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3493453acedb5c0668086d2ede8152e0">&#9670;&nbsp;</a></span>Deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void BeerEngine::JsonSerializable::Deserialize </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a441cd7b316d78993e98d7ed89067f1a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a441cd7b316d78993e98d7ed89067f1a3">&#9670;&nbsp;</a></span>serialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,12 +298,12 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_beer_engine_1_1_a_scene.html#ae876ec81592c80e7346f05c56bdaa929">BeerEngine::AScene</a>, <a class="el" href="class_game_1_1_component_1_1_map.html#a220f971266cc2b3c5f7b6a10639ec8e6">Game::Component::Map</a>, <a class="el" href="class_beer_engine_1_1_game_object.html#a4b1436f051194c385b9a82ad8fbb0c5b">BeerEngine::GameObject</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#aaf0626af4ae3a8e004dfd3f1a23bd7c4">BeerEngine::Graphics::AMaterial</a>, <a class="el" href="class_beer_engine_1_1_transform.html#aafa05f7ad8f420d5aa35671fd1f65d37">BeerEngine::Transform</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html#ac4ab484a5ef468cbb69cccdf39e6d9a8">BeerEngine::Component::ParticleBase</a>, <a class="el" href="class_game_1_1_component_1_1_character.html#a4f77e3bf02c40339350f47626d57dad8">Game::Component::Character</a>, <a class="el" href="class_game_1_1_component_1_1_i_a.html#a3d5af6c25e457a246fac8cbd63764223">Game::Component::IA</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_a_collider.html#aecc5eb364d52beede07428ba1b668e09">BeerEngine::Component::ACollider</a>, <a class="el" href="class_game_1_1_component_1_1_player.html#a164f1424c0ff3d603ee60301e0aee6a7">Game::Component::Player</a>, <a class="el" href="class_game_1_1_component_1_1_settings.html#a1e378dbe2c0c7a198eae234e5979e91f">Game::Component::Settings</a>, <a class="el" href="class_game_1_1_component_1_1_item.html#a8aae88fd10b852e81fbaa16b5912a4ab">Game::Component::Item</a>, <a class="el" href="class_game_1_1_component_1_1_camera_controller.html#a1a7f36bf3f1f25b0edd404146f0c3289">Game::Component::CameraController</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_texture.html#acb81c7ded6c7be42b0e901dd57dc8785">BeerEngine::Graphics::Texture</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_circle_collider.html#a9898927635bb575aa2895cc5516433fc">BeerEngine::Component::CircleCollider</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_box_collider2_d.html#a9172319becb9c609206265378ad04724">BeerEngine::Component::BoxCollider2D</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html#a65c6c22ae40b5b94f590c3a8bf14d0d0">BeerEngine::Component::MeshRenderer</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a4d82d8a6b22b93514e0585fa4073041f">BeerEngine::Component::Component</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html#a2bdd2912e84c9e2d686bdad2dbf6ec9e">BeerEngine::Graphics::Mesh</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_rigid_body2_d.html#afd6b6d4073e564a1c536243027bb8597">BeerEngine::Component::RigidBody2D</a>, and <a class="el" href="class_beer_engine_1_1_component_1_1_particle_explode.html#a194d098568efe69f8e8b62eec5863ae6">BeerEngine::Component::ParticleExplode</a>.</p>
+<p>Reimplemented in <a class="el" href="class_beer_engine_1_1_a_scene.html#ae876ec81592c80e7346f05c56bdaa929">BeerEngine::AScene</a>, <a class="el" href="class_beer_engine_1_1_game_object.html#a4b1436f051194c385b9a82ad8fbb0c5b">BeerEngine::GameObject</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#aaf0626af4ae3a8e004dfd3f1a23bd7c4">BeerEngine::Graphics::AMaterial</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html#ab482f73968bb326c91e875c481e3b5f8">BeerEngine::Graphics::ALight</a>, <a class="el" href="class_beer_engine_1_1_transform.html#aafa05f7ad8f420d5aa35671fd1f65d37">BeerEngine::Transform</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html#a00db13450efc5a70f062570686f288a4">BeerEngine::Graphics::ShaderProgram</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_a_collider.html#aecc5eb364d52beede07428ba1b668e09">BeerEngine::Component::ACollider</a>, <a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a4d82d8a6b22b93514e0585fa4073041f">BeerEngine::Component::Component</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_texture.html#acb81c7ded6c7be42b0e901dd57dc8785">BeerEngine::Graphics::Texture</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_cubemap.html#a6a633d130d31e1e829b34181570190d1">BeerEngine::Graphics::Cubemap</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html#a2bdd2912e84c9e2d686bdad2dbf6ec9e">BeerEngine::Graphics::Mesh</a>, <a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a450e3153652341450b16a4f1aa7bb79c">BeerEngine::Graphics::DirectionalLight</a>, and <a class="el" href="class_beer_engine_1_1_graphics_1_1_ambiant_light.html#ad6220e74a1ec23d743dbf012dfa15660">BeerEngine::Graphics::AmbiantLight</a>.</p>
 
 </div>
 </div>
@@ -241,6 +383,21 @@ template&lt;typename T &gt; </div>
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adad8d1ac99922c6c49ef9b92943a15a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adad8d1ac99922c6c49ef9b92943a15a8">&#9670;&nbsp;</a></span>_serializationID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BeerEngine::JsonSerializable::_serializationID</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

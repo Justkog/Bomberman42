@@ -1,6 +1,6 @@
 <map id="BeerEngine::GameObject" name="BeerEngine::GameObject">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="34,5,229,119"/>
-<area shape="rect" id="node4" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="52,168,211,441"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="307,201,452,408"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="348,19,558,105"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="32,5,228,172"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="51,221,209,508"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="306,261,451,468"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="346,45,557,132"/>
 </map>

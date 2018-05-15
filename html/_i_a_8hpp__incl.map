@@ -1,18 +1,15 @@
 <map id="include/Game/Components/IA.hpp" name="include/Game/Components/IA.hpp">
-<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,399,2013,424"/>
-<area shape="rect" id="node31" href="$_game_8hpp.html" title="Game/Game.hpp" alt="" coords="2276,99,2399,124"/>
-<area shape="rect" id="node32" href="$_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1862,99,2083,124"/>
-<area shape="rect" id="node37" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="2217,252,2402,277"/>
-<area shape="rect" id="node38" href="$_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="2423,99,2623,124"/>
-<area shape="rect" id="node39" href="$_i_trigger_stay_8hpp.html" title="Core/Component/ITriggerStay.hpp" alt="" coords="2647,99,2871,124"/>
-<area shape="rect" id="node40" href="$_i_trigger_enter_8hpp.html" title="Core/Component/ITriggerEnter.hpp" alt="" coords="2895,99,3124,124"/>
-<area shape="rect" id="node41" href="$_i_trigger_exit_8hpp.html" title="Core/Component/ITriggerExit.hpp" alt="" coords="3148,99,3368,124"/>
-<area shape="rect" id="node42" href="$_i_collider_stay_8hpp.html" title="Core/Component/ICollider\lStay.hpp" alt="" coords="3391,92,3567,131"/>
-<area shape="rect" id="node43" href="$_i_collider_enter_8hpp.html" title="Core/Component/ICollider\lEnter.hpp" alt="" coords="3591,92,3767,131"/>
-<area shape="rect" id="node44" href="$_i_collider_exit_8hpp.html" title="Core/Component/ICollider\lExit.hpp" alt="" coords="3791,92,3967,131"/>
-<area shape="rect" id="node45" href="$_i_u_i_8hpp.html" title="Core/Component/IUI.hpp" alt="" coords="2312,179,2481,204"/>
-<area shape="rect" id="node33" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1855,325,2063,351"/>
-<area shape="rect" id="node34" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1946,179,2100,204"/>
-<area shape="rect" id="node35" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2017,252,2144,277"/>
-<area shape="rect" id="node36" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1802,252,1942,277"/>
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,179,2492,204"/>
+<area shape="rect" id="node37" href="$_game_8hpp.html" title="Game/Game.hpp" alt="" coords="2277,99,2401,124"/>
+<area shape="rect" id="node38" href="$_component_8hpp.html" title="Component de base. " alt="" coords="4494,99,4715,124"/>
+<area shape="rect" id="node40" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="2475,99,2675,124"/>
+<area shape="rect" id="node41" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2699,99,2883,124"/>
+<area shape="rect" id="node42" href="$_i_trigger_stay_8hpp.html" title="Core/Component/ITriggerStay.hpp" alt="" coords="2907,99,3131,124"/>
+<area shape="rect" id="node43" href="$_i_trigger_enter_8hpp.html" title="Core/Component/ITriggerEnter.hpp" alt="" coords="3155,99,3384,124"/>
+<area shape="rect" id="node44" href="$_i_trigger_exit_8hpp.html" title="Core/Component/ITriggerExit.hpp" alt="" coords="3408,99,3628,124"/>
+<area shape="rect" id="node45" href="$_i_collider_stay_8hpp.html" title="Core/Component/ICollider\lStay.hpp" alt="" coords="3651,92,3827,131"/>
+<area shape="rect" id="node46" href="$_i_collider_enter_8hpp.html" title="Core/Component/ICollider\lEnter.hpp" alt="" coords="3851,92,4027,131"/>
+<area shape="rect" id="node47" href="$_i_collider_exit_8hpp.html" title="Core/Component/ICollider\lExit.hpp" alt="" coords="4051,92,4227,131"/>
+<area shape="rect" id="node48" href="$_i_on_destroy_8hpp.html" title="Core/Component/IOnDestroy.hpp" alt="" coords="4251,99,4470,124"/>
+<area shape="rect" id="node49" href="$_i_u_i_8hpp.html" title="Core/Component/IUI.hpp" alt="" coords="2084,99,2253,124"/>
 </map>

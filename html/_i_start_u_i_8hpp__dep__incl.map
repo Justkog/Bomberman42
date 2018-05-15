@@ -1,3 +1,13 @@
 <map id="include/Core/Component/IStartUI.hpp" name="include/Core/Component/IStartUI.hpp">
-<area shape="rect" id="node2" href="$_main_menu_8hpp.html" title="include/Game/Components\l/MainMenu.hpp" alt="" coords="5,92,188,131"/>
+<area shape="rect" id="node2" href="$_background_drawer_8hpp.html" title="include/Game/Components\l/BackgroundDrawer.hpp" alt="" coords="5,92,188,131"/>
+<area shape="rect" id="node3" href="$_game_over_menu_8hpp.html" title="include/Game/Components\l/GameOverMenu.hpp" alt="" coords="212,92,395,131"/>
+<area shape="rect" id="node4" href="$_in_game_menu_8hpp.html" title="include/Game/Components\l/InGameMenu.hpp" alt="" coords="419,92,602,131"/>
+<area shape="rect" id="node5" href="$_inputs_menu_8hpp.html" title="include/Game/Components\l/InputsMenu.hpp" alt="" coords="625,92,808,131"/>
+<area shape="rect" id="node6" href="$_items_u_i_8hpp.html" title="include/Game/Components\l/ItemsUI.hpp" alt="" coords="832,92,1015,131"/>
+<area shape="rect" id="node7" href="$_main_menu_8hpp.html" title="include/Game/Components\l/MainMenu.hpp" alt="" coords="1039,92,1222,131"/>
+<area shape="rect" id="node8" href="$_settings_menu_8hpp.html" title="include/Game/Components\l/SettingsMenu.hpp" alt="" coords="1245,92,1428,131"/>
+<area shape="rect" id="node9" href="$_time_u_i_8hpp.html" title="include/Game/Components\l/TimeUI.hpp" alt="" coords="1452,92,1635,131"/>
+<area shape="rect" id="node10" href="$_u_i_theme_manager_8hpp.html" title="include/Game/Components\l/UIThemeManager.hpp" alt="" coords="1659,92,1842,131"/>
+<area shape="rect" id="node11" href="$_versus_menu_8hpp.html" title="include/Game/Components\l/VersusMenu.hpp" alt="" coords="1865,92,2048,131"/>
+<area shape="rect" id="node12" href="$_victory_menu_8hpp.html" title="include/Game/Components\l/VictoryMenu.hpp" alt="" coords="2072,92,2255,131"/>
 </map>

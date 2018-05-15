@@ -81,10 +81,10 @@ Inheritance diagram for BeerEngine::Audio::AudioSource:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_audio_1_1_audio_source__inherit__graph.png" border="0" usemap="#_beer_engine_1_1_audio_1_1_audio_source_inherit__map" alt="Inheritance graph"/></div>
 <map name="_beer_engine_1_1_audio_1_1_audio_source_inherit__map" id="_beer_engine_1_1_audio_1_1_audio_source_inherit__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_component_1_1_component.html" title="{BeerEngine::Component\l::Component\n|+ _gameObject\l+ typeToAddComponent\l|+ Component()\l+ ~Component()\l+ destroy()\l+ serialize()\l+ deserialize()\l+ createInstance()\l+ addComponent()\l+ Deserialize()\l+ createAddMap()\l}" alt="" coords="103,167,271,373"/>
-<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,119"/>
-<area shape="rect" id="node5" href="class_beer_engine_1_1_component_1_1_i_start.html" title="{BeerEngine::Component\l::IStart\n||+ start()\l}" alt="" coords="295,227,463,313"/>
-<area shape="rect" id="node6" href="class_beer_engine_1_1_component_1_1_i_update.html" title="{BeerEngine::Component\l::IUpdate\n||+ fixedUpdate()\l+ update()\l}" alt="" coords="487,220,655,320"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="103,220,271,453"/>
+<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node5" href="class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="295,293,463,380"/>
+<area shape="rect" id="node6" href="class_beer_engine_1_1_component_1_1_i_update.html" title="Interface avec les fonctionnalités pour effectuer les updates. " alt="" coords="487,287,655,387"/>
 </map>
 </div>
 <div class="dynheader">
@@ -92,14 +92,14 @@ Collaboration diagram for BeerEngine::Audio::AudioSource:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_audio_1_1_audio_source__coll__graph.png" border="0" usemap="#_beer_engine_1_1_audio_1_1_audio_source_coll__map" alt="Collaboration graph"/></div>
 <map name="_beer_engine_1_1_audio_1_1_audio_source_coll__map" id="_beer_engine_1_1_audio_1_1_audio_source_coll__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_component_1_1_component.html" title="{BeerEngine::Component\l::Component\n|+ typeToAddComponent\l|+ Component()\l+ ~Component()\l+ destroy()\l+ serialize()\l+ deserialize()\l+ createInstance()\l+ addComponent()\l+ Deserialize()\l+ createAddMap()\l}" alt="" coords="98,851,265,1044"/>
-<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,119"/>
-<area shape="rect" id="node5" href="class_beer_engine_1_1_game_object.html" title="{BeerEngine::GameObject\n|+ _uniqueID\l+ name\l# _components\l# _toStart\l# _toStartUI\l# _toDestroy\l|+ GameObject()\l+ ~GameObject()\l+ getID()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUpdate()\l+ render()\l+ startUI()\l+ renderUI()\land 23 more...\l+ Deserialize()\l}" alt="" coords="95,503,268,789"/>
-<area shape="rect" id="node7" href="class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="102,168,261,441"/>
-<area shape="rect" id="node8" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="357,201,502,408"/>
-<area shape="rect" id="node6" href="class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="379,19,590,105"/>
-<area shape="rect" id="node9" href="class_beer_engine_1_1_component_1_1_i_start.html" title="{BeerEngine::Component\l::IStart\n||+ start()\l}" alt="" coords="290,904,457,991"/>
-<area shape="rect" id="node10" href="class_beer_engine_1_1_component_1_1_i_update.html" title="{BeerEngine::Component\l::IUpdate\n||+ fixedUpdate()\l+ update()\l}" alt="" coords="482,897,649,997"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="98,944,265,1164"/>
+<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node5" href="class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="95,569,268,883"/>
+<area shape="rect" id="node7" href="class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="102,221,261,508"/>
+<area shape="rect" id="node8" href="class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="357,261,502,468"/>
+<area shape="rect" id="node6" href="class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="379,45,590,132"/>
+<area shape="rect" id="node9" href="class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="290,1011,457,1097"/>
+<area shape="rect" id="node10" href="class_beer_engine_1_1_component_1_1_i_update.html" title="Interface avec les fonctionnalités pour effectuer les updates. " alt="" coords="482,1004,649,1104"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -119,6 +119,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a26d38a9a6e504074b9819416f4c9fa81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7885411b2161b1b0f4bfbd87a97cd899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a7885411b2161b1b0f4bfbd87a97cd899">stop</a> ()</td></tr>
 <tr class="separator:a7885411b2161b1b0f4bfbd87a97cd899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add6297c323a250950b37e98983e76172"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#add6297c323a250950b37e98983e76172">delet</a> ()</td></tr>
+<tr class="separator:add6297c323a250950b37e98983e76172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1a09dee4b97025ef4506897c2eb3979"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#ae1a09dee4b97025ef4506897c2eb3979">Delete</a> ()</td></tr>
 <tr class="separator:ae1a09dee4b97025ef4506897c2eb3979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a31f1aaf01219860cc6aeb7a3fe1619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a0a31f1aaf01219860cc6aeb7a3fe1619">setVolume</a> (float)</td></tr>
@@ -135,6 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4e8bd4f802eed9ee3cca487ec01e584e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37789c76130d45e6e6c807e5297e7ee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a37789c76130d45e6e6c807e5297e7ee7">setSource</a> (ALuint)</td></tr>
 <tr class="separator:a37789c76130d45e6e6c807e5297e7ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaaf676b84e823bae64e3177068bdb25"><td class="memItemLeft" align="right" valign="top">ALuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#aeaaf676b84e823bae64e3177068bdb25">getBuffer</a> ()</td></tr>
+<tr class="separator:aeaaf676b84e823bae64e3177068bdb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa50a60f2ff5540c9e4506b0ae001c98e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#aa50a60f2ff5540c9e4506b0ae001c98e">start</a> (void)</td></tr>
 <tr class="separator:aa50a60f2ff5540c9e4506b0ae001c98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a248900a46e559e0e085b2cb98a766cf2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a248900a46e559e0e085b2cb98a766cf2">fixedUpdate</a> (void)</td></tr>
@@ -148,11 +152,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1688651a7403f4ff4587185df0b1e8ed inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a185d4b4ebe7135ce55222b94e3fdd8bf inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a185d4b4ebe7135ce55222b94e3fdd8bf">destroy</a> (<a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> *go=nullptr)</td></tr>
 <tr class="separator:a185d4b4ebe7135ce55222b94e3fdd8bf inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a281033f258d3bf02061972a1d9d6fe38 inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a281033f258d3bf02061972a1d9d6fe38">setActive</a> (bool state)</td></tr>
+<tr class="separator:a281033f258d3bf02061972a1d9d6fe38 inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d82d8a6b22b93514e0585fa4073041f inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a4d82d8a6b22b93514e0585fa4073041f">serialize</a> ()</td></tr>
 <tr class="separator:a4d82d8a6b22b93514e0585fa4073041f inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a044d30f65879a1467f44aa3eb8ad7bce inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a044d30f65879a1467f44aa3eb8ad7bce">deserialize</a> (const nlohmann::json &amp;j)</td></tr>
-<tr class="separator:a044d30f65879a1467f44aa3eb8ad7bce inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3c7bf0d00f5e7bda2d0ae92477d3edd inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#ae3c7bf0d00f5e7bda2d0ae92477d3edd">deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="separator:ae3c7bf0d00f5e7bda2d0ae92477d3edd inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_beer_engine_1_1_json_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_beer_engine_1_1_json_serializable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_beer_engine_1_1_json_serializable.html">BeerEngine::JsonSerializable</a></td></tr>
+<tr class="memitem:a0459f9f3600be9a429e3530361bf2d84 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0459f9f3600be9a429e3530361bf2d84">JsonSerializable</a> ()</td></tr>
+<tr class="separator:a0459f9f3600be9a429e3530361bf2d84 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0105aad3ea70324a8327a6a48254a56b">JsonSerializable</a> (int id)</td></tr>
+<tr class="separator:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a80649111ff7da289151d17201f9e1d19">toSerializables</a> (std::vector&lt; <a class="el" href="namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664">T</a> *&gt; items)</td></tr>
 <tr class="separator:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,11 +176,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:aeab2d433593f452807e81d1ada9f4c17 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aeab2d433593f452807e81d1ada9f4c17 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">Component</a> *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#aeab2d433593f452807e81d1ada9f4c17">addComponent</a> (<a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> *gameObject)</td></tr>
 <tr class="separator:aeab2d433593f452807e81d1ada9f4c17 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d24810dfc25e70d8a1a9d59fdf518a4 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a9d24810dfc25e70d8a1a9d59fdf518a4">Deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> *go)</td></tr>
-<tr class="separator:a9d24810dfc25e70d8a1a9d59fdf518a4 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a20eb52ed7b38bdbeb4f6e8c800c64 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a44a20eb52ed7b38bdbeb4f6e8c800c64">Deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader, <a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> *go)</td></tr>
+<tr class="separator:a44a20eb52ed7b38bdbeb4f6e8c800c64 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a646c01f1d1d951e58431a80f68778b84 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_beer_engine_1_1_component.html#a58109916ff3e951c90c1dcd5ebba359b">add_component_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a646c01f1d1d951e58431a80f68778b84">createAddMap</a> ()</td></tr>
 <tr class="separator:a646c01f1d1d951e58431a80f68778b84 inherit pub_static_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_class_beer_engine_1_1_json_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_beer_engine_1_1_json_serializable')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_beer_engine_1_1_json_serializable.html">BeerEngine::JsonSerializable</a></td></tr>
+<tr class="memitem:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a3493453acedb5c0668086d2ede8152e0">Deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="separator:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a48f83f0e913d9a7f4962f30ac8ff450b">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;item)</td></tr>
 <tr class="separator:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae56f6be872da47edbb9a1f25a2eccc0e inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ae56f6be872da47edbb9a1f25a2eccc0e">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> *item)</td></tr>
@@ -178,6 +190,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_beer_engine_1_1_component_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_beer_engine_1_1_component_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">BeerEngine::Component::Component</a></td></tr>
 <tr class="memitem:a509b665dde3d7b2ff3163ad61c26e0de inherit pub_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a509b665dde3d7b2ff3163ad61c26e0de">_gameObject</a></td></tr>
 <tr class="separator:a509b665dde3d7b2ff3163ad61c26e0de inherit pub_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d203242fce3813fee58738af3cf5e2c inherit pub_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a0d203242fce3813fee58738af3cf5e2c">_isActive</a></td></tr>
+<tr class="separator:a0d203242fce3813fee58738af3cf5e2c inherit pub_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_beer_engine_1_1_json_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_beer_engine_1_1_json_serializable')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_beer_engine_1_1_json_serializable.html">BeerEngine::JsonSerializable</a></td></tr>
+<tr class="memitem:adad8d1ac99922c6c49ef9b92943a15a8 inherit pub_attribs_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#adad8d1ac99922c6c49ef9b92943a15a8">_serializationID</a></td></tr>
+<tr class="separator:adad8d1ac99922c6c49ef9b92943a15a8 inherit pub_attribs_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_beer_engine_1_1_component_1_1_component')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">BeerEngine::Component::Component</a></td></tr>
 <tr class="memitem:ae2a965d0f01f9bca16e5159f00a4f76e inherit pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_beer_engine_1_1_component.html#a58109916ff3e951c90c1dcd5ebba359b">add_component_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#ae2a965d0f01f9bca16e5159f00a4f76e">typeToAddComponent</a></td></tr>
 <tr class="separator:ae2a965d0f01f9bca16e5159f00a4f76e inherit pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,6 +254,23 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="add6297c323a250950b37e98983e76172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add6297c323a250950b37e98983e76172">&#9670;&nbsp;</a></span>delet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BeerEngine::Audio::AudioSource::delet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae1a09dee4b97025ef4506897c2eb3979"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae1a09dee4b97025ef4506897c2eb3979">&#9670;&nbsp;</a></span>Delete()</h2>
 
@@ -279,6 +313,23 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_beer_engine_1_1_component_1_1_i_update.html#a615c127a4729f73713e5eaeee538854b">BeerEngine::Component::IUpdate</a>.</p>
+
+</div>
+</div>
+<a id="aeaaf676b84e823bae64e3177068bdb25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaaf676b84e823bae64e3177068bdb25">&#9670;&nbsp;</a></span>getBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALuint BeerEngine::Audio::AudioSource::getBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 <map id="Game::Component::Settings" name="Game::Component::Settings">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="{BeerEngine::Component\l::Component\n|+ _gameObject\l+ typeToAddComponent\l|+ Component()\l+ ~Component()\l+ destroy()\l+ serialize()\l+ deserialize()\l+ createInstance()\l+ addComponent()\l+ Deserialize()\l+ createAddMap()\l}" alt="" coords="103,167,271,373"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,119"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="{BeerEngine::Component\l::IStart\n||+ start()\l}" alt="" coords="295,227,463,313"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="103,220,271,453"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="295,293,463,380"/>
 </map>

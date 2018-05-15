@@ -73,14 +73,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>classe regroupant les assets/ressources du projet, les datas sont charger par le biais de fonction.  
+ <a href="class_assets.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_assets_8hpp_source.html">Assets.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Assets:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_assets__coll__graph.png" border="0" usemap="#_assets_coll__map" alt="Collaboration graph"/></div>
 <map name="_assets_coll__map" id="_assets_coll__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_graphics_1_1_a_material.html" title="class de material, pour le rendu " alt="" coords="27,168,179,375"/>
-<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n||+ serialize()\l+ toSerializables()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,119"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_graphics_1_1_a_material.html" title="class de material, pour le rendu " alt="" coords="27,221,179,468"/>
+<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -103,6 +106,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a1dc713408638d18566ec35221a0ede24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fcfb2c8c5a0ca4630230f4086b010f6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html">BeerEngine::Graphics::Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_assets.html#a2fcfb2c8c5a0ca4630230f4086b010f6">GetModel</a> (std::string path)</td></tr>
 <tr class="separator:a2fcfb2c8c5a0ca4630230f4086b010f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11aa1525fc1b553ccc966f278ee69fa1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_assets.html#a11aa1525fc1b553ccc966f278ee69fa1">GetShaderProgram</a> (std::string pathVS, std::string pathFS)</td></tr>
+<tr class="separator:a11aa1525fc1b553ccc966f278ee69fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -112,10 +117,14 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a973029267b9ab6da8c326f2f7b1404c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83d7f0d79376b56cf2c3ca78d4f01df4"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html">BeerEngine::Graphics::Mesh</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_assets.html#a83d7f0d79376b56cf2c3ca78d4f01df4">models</a></td></tr>
 <tr class="separator:a83d7f0d79376b56cf2c3ca78d4f01df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866b93ef6f421311131bbeb09fb6c903"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_assets.html#a866b93ef6f421311131bbeb09fb6c903">shaderPrograms</a></td></tr>
+<tr class="separator:a866b93ef6f421311131bbeb09fb6c903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3888adb2654159b9791da38233467632"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html">BeerEngine::Graphics::AMaterial</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_assets.html#a3888adb2654159b9791da38233467632">bombMaterial</a></td></tr>
 <tr class="separator:a3888adb2654159b9791da38233467632"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>classe regroupant les assets/ressources du projet, les datas sont charger par le biais de fonction. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4e848364b8e24434ec5be20c28106dbd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e848364b8e24434ec5be20c28106dbd">&#9670;&nbsp;</a></span>autoload()</h2>
 
@@ -201,6 +210,42 @@ Public Attributes</h2></td></tr>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11aa1525fc1b553ccc966f278ee69fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11aa1525fc1b553ccc966f278ee69fa1">&#9670;&nbsp;</a></span>GetShaderProgram()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a>* Assets::GetShaderProgram </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>pathVS</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>pathFS</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -320,6 +365,20 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">std::map&lt;std::string, <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html">BeerEngine::Graphics::Mesh</a> *&gt; Assets::models</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a866b93ef6f421311131bbeb09fb6c903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a866b93ef6f421311131bbeb09fb6c903">&#9670;&nbsp;</a></span>shaderPrograms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *&gt; Assets::shaderPrograms</td>
         </tr>
       </table>
 </div><div class="memdoc">

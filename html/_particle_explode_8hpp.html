@@ -74,22 +74,29 @@ $(function() {
 <div class="title">ParticleExplode.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Systeme de particule qui represente une explosion.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_particle_base_8hpp_source.html">ParticleBase.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ParticleExplode.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="_particle_explode_8hpp__incl.png" border="0" usemap="#include_2_core_2_component_2_particle_explode_8hpp" alt=""/></div>
 <map name="include_2_core_2_component_2_particle_explode_8hpp" id="include_2_core_2_component_2_particle_explode_8hpp">
-<area shape="rect" id="node2" href="_particle_base_8hpp.html" title="ParticleBase.hpp" alt="" coords="1757,92,1879,117"/>
-<area shape="rect" id="node3" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,459,2013,484"/>
-<area shape="rect" id="node32" href="_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1590,165,1811,191"/>
-<area shape="rect" id="node38" href="_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="1835,165,2035,191"/>
-<area shape="rect" id="node39" href="_i_render_alpha_8hpp.html" title="Core/Component/IRenderAlpha.hpp" alt="" coords="2058,165,2292,191"/>
-<area shape="rect" id="node33" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1784,385,1993,411"/>
-<area shape="rect" id="node34" href="_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1779,239,1934,264"/>
-<area shape="rect" id="node35" href="_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1549,312,1676,337"/>
-<area shape="rect" id="node36" href="_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1960,312,2100,337"/>
-<area shape="rect" id="node37" href="_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="1700,312,1885,337"/>
+<area shape="rect" id="node2" href="_particle_base_8hpp.html" title="Systeme de particule par defaut. " alt="" coords="1850,92,1972,117"/>
+<area shape="rect" id="node3" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,605,2492,631"/>
+<area shape="rect" id="node38" href="_component_8hpp.html" title="Component de base. " alt="" coords="1683,165,1904,191"/>
+<area shape="rect" id="node49" href="_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="1929,165,2128,191"/>
+<area shape="rect" id="node50" href="_i_render_alpha_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu avec de la transparence. " alt="" coords="2151,165,2385,191"/>
+<area shape="rect" id="node40" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1956,532,2165,557"/>
+<area shape="rect" id="node41" href="_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="1983,239,2138,264"/>
+<area shape="rect" id="node42" href="_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2046,312,2173,337"/>
+<area shape="rect" id="node47" href="_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1832,459,1972,484"/>
+<area shape="rect" id="node48" href="_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2197,312,2382,337"/>
+<area shape="rect" id="node43" href="_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="2184,385,2379,411"/>
+<area shape="rect" id="node44" href="_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2098,459,2297,484"/>
+<area shape="rect" id="node45" href="_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2436,459,2578,484"/>
+<area shape="rect" id="node46" href="_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2321,459,2412,484"/>
 </map>
 </div>
 </div>
@@ -98,16 +105,22 @@ Include dependency graph for ParticleExplode.hpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_particle_explode.html">BeerEngine::Component::ParticleExplode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System de particule qui permet au particule de se generer vers des directions autour d'un point.  <a href="class_beer_engine_1_1_component_1_1_particle_explode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_beer_engine"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_beer_engine.html">BeerEngine</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_component"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_component.html">Component</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_beer_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_beer_engine_1_1_component.html">BeerEngine::Component</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Systeme de particule qui represente une explosion. </p>
+<dl class="section author"><dt>Author</dt><dd>mgallo </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

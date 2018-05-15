@@ -1,10 +1,12 @@
 <map id="include/Core/Audio/AudioSource.hpp" name="include/Core/Audio/AudioSource.hpp">
-<area shape="rect" id="node9" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1887,165,2042,191"/>
-<area shape="rect" id="node39" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="2109,239,2294,264"/>
-<area shape="rect" id="node40" href="$_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1723,92,1944,117"/>
-<area shape="rect" id="node41" href="$_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="2606,92,2805,117"/>
-<area shape="rect" id="node10" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1698,385,1807,411"/>
-<area shape="rect" id="node36" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1693,239,1820,264"/>
-<area shape="rect" id="node37" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1718,312,1927,337"/>
-<area shape="rect" id="node38" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1894,239,2034,264"/>
+<area shape="rect" id="node9" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2580,165,2735,191"/>
+<area shape="rect" id="node47" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2844,239,3028,264"/>
+<area shape="rect" id="node48" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2432,92,2654,117"/>
+<area shape="rect" id="node50" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="3341,92,3540,117"/>
+<area shape="rect" id="node10" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2411,385,2520,411"/>
+<area shape="rect" id="node42" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2693,239,2820,264"/>
+<area shape="rect" id="node45" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2528,312,2737,337"/>
+<area shape="rect" id="node46" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2478,239,2618,264"/>
+<area shape="rect" id="node43" href="$_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="2811,312,3006,337"/>
+<area shape="rect" id="node44" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2809,385,3008,411"/>
 </map>

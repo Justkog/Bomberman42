@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['s',['S',['../_map_8hpp.html#af933676109efed7ab34cea71d748a517',1,'Map.hpp']]]
+  ['num_5fbones_5fper_5fverex',['NUM_BONES_PER_VEREX',['../_model_renderer_8hpp.html#aca637a61f3923f9301471d3c9f31dfbe',1,'ModelRenderer.hpp']]]
 ];

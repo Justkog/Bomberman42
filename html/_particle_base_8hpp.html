@@ -75,6 +75,9 @@ $(function() {
 <div class="title">ParticleBase.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Systeme de particule par defaut.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_core_8hpp_source.html">Core/Core.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_component_8hpp_source.html">Core/Component/Component.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_i_update_8hpp_source.html">Core/Component/IUpdate.hpp</a>&quot;</code><br />
@@ -84,15 +87,19 @@ Include dependency graph for ParticleBase.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="_particle_base_8hpp__incl.png" border="0" usemap="#include_2_core_2_component_2_particle_base_8hpp" alt=""/></div>
 <map name="include_2_core_2_component_2_particle_base_8hpp" id="include_2_core_2_component_2_particle_base_8hpp">
-<area shape="rect" id="node2" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1905,385,2013,411"/>
-<area shape="rect" id="node31" href="_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1590,92,1811,117"/>
-<area shape="rect" id="node37" href="_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="1835,92,2035,117"/>
-<area shape="rect" id="node38" href="_i_render_alpha_8hpp.html" title="Core/Component/IRenderAlpha.hpp" alt="" coords="2058,92,2292,117"/>
-<area shape="rect" id="node32" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1784,312,1993,337"/>
-<area shape="rect" id="node33" href="_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1779,165,1934,191"/>
-<area shape="rect" id="node34" href="_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1549,239,1676,264"/>
-<area shape="rect" id="node35" href="_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1960,239,2100,264"/>
-<area shape="rect" id="node36" href="_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="1700,239,1885,264"/>
+<area shape="rect" id="node2" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,532,2492,557"/>
+<area shape="rect" id="node37" href="_component_8hpp.html" title="Component de base. " alt="" coords="2771,92,2992,117"/>
+<area shape="rect" id="node49" href="_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="3125,92,3324,117"/>
+<area shape="rect" id="node50" href="_i_render_alpha_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu avec de la transparence. " alt="" coords="3347,92,3581,117"/>
+<area shape="rect" id="node39" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2263,459,2471,484"/>
+<area shape="rect" id="node40" href="_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2148,165,2303,191"/>
+<area shape="rect" id="node41" href="_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2212,239,2338,264"/>
+<area shape="rect" id="node47" href="_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1997,385,2137,411"/>
+<area shape="rect" id="node48" href="_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2363,239,2547,264"/>
+<area shape="rect" id="node42" href="_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="2423,312,2618,337"/>
+<area shape="rect" id="node43" href="_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2479,385,2679,411"/>
+<area shape="rect" id="node44" href="_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2703,385,2844,411"/>
+<area shape="rect" id="node45" href="_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2364,385,2455,411"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -100,7 +107,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="_particle_base_8hpp__dep__incl.png" border="0" usemap="#include_2_core_2_component_2_particle_base_8hppdep" alt=""/></div>
 <map name="include_2_core_2_component_2_particle_base_8hppdep" id="include_2_core_2_component_2_particle_base_8hppdep">
-<area shape="rect" id="node2" href="_particle_explode_8hpp.html" title="include/Core/Component\l/ParticleExplode.hpp" alt="" coords="5,92,174,131"/>
+<area shape="rect" id="node2" href="_particle_explode_8hpp.html" title="Systeme de particule qui represente une explosion. " alt="" coords="5,92,174,131"/>
 </map>
 </div>
 </div>
@@ -109,13 +116,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_beer_engine_1_1_component_1_1_particle.html">BeerEngine::Component::Particle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure des donneées de base d'une particule, position, velociter ...  <a href="struct_beer_engine_1_1_component_1_1_particle.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html">BeerEngine::Component::ParticleBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System de particule de base, traitement de ses derniere avec un composent par defaut, gestion de la vie... Cette classe sert de parent a toute autre particule qui voudrons utiliser un "style de vie" differente.  <a href="class_beer_engine_1_1_component_1_1_particle_base.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_beer_engine"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_beer_engine.html">BeerEngine</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_component"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_component.html">Component</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_beer_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_beer_engine_1_1_component.html">BeerEngine::Component</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,7 +136,10 @@ Macros</h2></td></tr>
 <tr class="memitem:ac44fcff69eecb3c5be39ce2e4a78e544"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_particle_base_8hpp.html#ac44fcff69eecb3c5be39ce2e4a78e544">BE_PARTICLESSYSTEM_MAX</a>&#160;&#160;&#160;30000</td></tr>
 <tr class="separator:ac44fcff69eecb3c5be39ce2e4a78e544"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Systeme de particule par defaut. </p>
+<dl class="section author"><dt>Author</dt><dd>mgallo </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ac44fcff69eecb3c5be39ce2e4a78e544"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac44fcff69eecb3c5be39ce2e4a78e544">&#9670;&nbsp;</a></span>BE_PARTICLESSYSTEM_MAX</h2>
 

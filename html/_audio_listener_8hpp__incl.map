@@ -1,10 +1,14 @@
 <map id="include/Core/Audio/AudioListener.hpp" name="include/Core/Audio/AudioListener.hpp">
-<area shape="rect" id="node5" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1670,165,1825,191"/>
-<area shape="rect" id="node37" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="2002,239,2186,264"/>
-<area shape="rect" id="node38" href="$_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1485,92,1706,117"/>
-<area shape="rect" id="node39" href="$_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="1900,92,2099,117"/>
-<area shape="rect" id="node6" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1765,385,1874,411"/>
-<area shape="rect" id="node34" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="1586,239,1712,264"/>
-<area shape="rect" id="node35" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1644,312,1853,337"/>
-<area shape="rect" id="node36" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1787,239,1927,264"/>
+<area shape="rect" id="node5" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2255,165,2410,191"/>
+<area shape="rect" id="node47" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2415,239,2600,264"/>
+<area shape="rect" id="node48" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2519,92,2741,117"/>
+<area shape="rect" id="node50" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="2765,92,2964,117"/>
+<area shape="rect" id="node6" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2276,532,2385,557"/>
+<area shape="rect" id="node40" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2015,239,2141,264"/>
+<area shape="rect" id="node44" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2155,459,2364,484"/>
+<area shape="rect" id="node46" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2315,385,2455,411"/>
+<area shape="rect" id="node41" href="$_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="1930,312,2125,337"/>
+<area shape="rect" id="node42" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="1709,385,1908,411"/>
+<area shape="rect" id="node43" href="$_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2047,385,2189,411"/>
+<area shape="rect" id="node45" href="$_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="1933,385,2024,411"/>
 </map>

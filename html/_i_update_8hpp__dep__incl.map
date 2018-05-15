@@ -1,17 +1,22 @@
 <map id="include/Core/Component/IUpdate.hpp" name="include/Core/Component/IUpdate.hpp">
-<area shape="rect" id="node2" href="$_audio_listener_8hpp.html" title="include/Core/Audio\l/AudioListener.hpp" alt="" coords="12,92,146,131"/>
-<area shape="rect" id="node5" href="$_audio_source_8hpp.html" title="include/Core/Audio\l/AudioSource.hpp" alt="" coords="169,92,303,131"/>
-<area shape="rect" id="node6" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="225,179,408,217"/>
-<area shape="rect" id="node7" href="$_particle_base_8hpp.html" title="include/Core/Component\l/ParticleBase.hpp" alt="" coords="377,92,546,131"/>
-<area shape="rect" id="node9" href="$_rays_renderer_8hpp.html" title="include/Core/Component\l/RaysRenderer.hpp" alt="" coords="571,92,740,131"/>
-<area shape="rect" id="node10" href="$_beer_routine_tester_8hpp.html" title="include/Game/Components\l/BeerRoutineTester.hpp" alt="" coords="764,92,947,131"/>
-<area shape="rect" id="node11" href="$_bomb_8hpp.html" title="include/Game/Components\l/Bomb.hpp" alt="" coords="970,92,1153,131"/>
-<area shape="rect" id="node12" href="$_camera_controller_8hpp.html" title="include/Game/Components\l/CameraController.hpp" alt="" coords="1177,92,1360,131"/>
-<area shape="rect" id="node13" href="$_character_8hpp.html" title="include/Game/Components\l/Character.hpp" alt="" coords="1384,92,1567,131"/>
-<area shape="rect" id="node14" href="$_i_a_8hpp.html" title="include/Game/Components\l/IA.hpp" alt="" coords="1590,92,1773,131"/>
-<area shape="rect" id="node15" href="$_item_8hpp.html" title="include/Game/Components\l/Item.hpp" alt="" coords="1172,179,1355,217"/>
-<area shape="rect" id="node16" href="$_mouse_ray_test_8hpp.html" title="include/Game/Components\l/MouseRayTest.hpp" alt="" coords="1849,92,2032,131"/>
-<area shape="rect" id="node3" href="$_beer_engine_8hpp.html" title="include/Core/BeerEngine.hpp" alt="" coords="5,185,201,211"/>
-<area shape="rect" id="node4" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="225,265,408,304"/>
-<area shape="rect" id="node8" href="$_particle_explode_8hpp.html" title="include/Core/Component\l/ParticleExplode.hpp" alt="" coords="432,179,601,217"/>
+<area shape="rect" id="node2" href="$_audio_listener_8hpp.html" title="include/Core/Audio\l/AudioListener.hpp" alt="" coords="243,92,377,131"/>
+<area shape="rect" id="node5" href="$_audio_source_8hpp.html" title="include/Core/Audio\l/AudioSource.hpp" alt="" coords="400,92,534,131"/>
+<area shape="rect" id="node6" href="$_game_manager_8hpp.html" title="include/Game/Components\l/GameManager.hpp" alt="" coords="432,179,615,217"/>
+<area shape="rect" id="node7" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="639,179,822,217"/>
+<area shape="rect" id="node8" href="$_model_renderer_8hpp.html" title="include/Core/Component\l/ModelRenderer.hpp" alt="" coords="659,92,828,131"/>
+<area shape="rect" id="node9" href="$_particle_base_8hpp.html" title="Systeme de particule par defaut. " alt="" coords="852,92,1021,131"/>
+<area shape="rect" id="node11" href="$_rays_renderer_8hpp.html" title="include/Core/Component\l/RaysRenderer.hpp" alt="" coords="1046,92,1215,131"/>
+<area shape="rect" id="node12" href="$_beer_routine_tester_8hpp.html" title="include/Game/Components\l/BeerRoutineTester.hpp" alt="" coords="1239,92,1422,131"/>
+<area shape="rect" id="node13" href="$_bomb_8hpp.html" title="include/Game/Components\l/Bomb.hpp" alt="" coords="1445,92,1628,131"/>
+<area shape="rect" id="node14" href="$_camera_controller_8hpp.html" title="include/Game/Components\l/CameraController.hpp" alt="" coords="1652,92,1835,131"/>
+<area shape="rect" id="node15" href="$_character_8hpp.html" title="include/Game/Components\l/Character.hpp" alt="" coords="1859,92,2042,131"/>
+<area shape="rect" id="node16" href="$_i_a_8hpp.html" title="include/Game/Components\l/IA.hpp" alt="" coords="2065,92,2248,131"/>
+<area shape="rect" id="node17" href="$_item_8hpp.html" title="include/Game/Components\l/Item.hpp" alt="" coords="5,179,188,217"/>
+<area shape="rect" id="node18" href="$_items_u_i_8hpp.html" title="include/Game/Components\l/ItemsUI.hpp" alt="" coords="2272,92,2455,131"/>
+<area shape="rect" id="node19" href="$_mouse_ray_test_8hpp.html" title="include/Game/Components\l/MouseRayTest.hpp" alt="" coords="2479,92,2662,131"/>
+<area shape="rect" id="node20" href="$_settings_menu_8hpp.html" title="include/Game/Components\l/SettingsMenu.hpp" alt="" coords="2685,92,2868,131"/>
+<area shape="rect" id="node21" href="$_u_i_theme_manager_8hpp.html" title="include/Game/Components\l/UIThemeManager.hpp" alt="" coords="2892,92,3075,131"/>
+<area shape="rect" id="node3" href="$_beer_engine_8hpp.html" title="include/Core/BeerEngine.hpp" alt="" coords="212,185,408,211"/>
+<area shape="rect" id="node4" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="219,265,402,304"/>
+<area shape="rect" id="node10" href="$_particle_explode_8hpp.html" title="Systeme de particule qui represente une explosion. " alt="" coords="852,179,1021,217"/>
 </map>

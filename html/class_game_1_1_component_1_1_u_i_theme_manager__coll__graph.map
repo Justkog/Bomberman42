@@ -1,0 +1,11 @@
+<map id="Game::Component::UIThemeManager" name="Game::Component::UIThemeManager">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="98,944,265,1164"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="95,569,268,883"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="102,221,261,508"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="357,261,502,468"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="379,45,590,132"/>
+<area shape="rect" id="node9" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="290,1011,457,1097"/>
+<area shape="rect" id="node10" href="$class_beer_engine_1_1_component_1_1_i_start_u_i.html" title="{BeerEngine::Component\l::IStartUI\n||+ startUI()\l}" alt="" coords="482,1011,649,1097"/>
+<area shape="rect" id="node11" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="{BeerEngine::Component::IUI\n||+ renderUI()\l}" alt="" coords="674,1017,866,1091"/>
+</map>
