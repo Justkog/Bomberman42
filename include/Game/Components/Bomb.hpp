@@ -31,6 +31,7 @@ namespace Game
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
        		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
+			void			explodeToward(glm::vec3 dir);
 			void			explode(void);
 			
 			void			setPower(float pow);
