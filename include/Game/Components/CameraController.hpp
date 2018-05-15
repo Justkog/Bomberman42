@@ -37,9 +37,6 @@ namespace Game
 			BeerEngine::Camera	*cam;
 			glm::vec2			lastMousePos;
 
-			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 		};
 

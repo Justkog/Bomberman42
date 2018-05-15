@@ -160,6 +160,7 @@ namespace BeerEngine
 			if (_mesh == nullptr)
 				return ;
 			glEnable(GL_ALPHA_TEST);
+			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			glDepthMask(GL_FALSE);
 			
@@ -176,7 +177,8 @@ namespace BeerEngine
 			texture->bind();
 			_mesh->render(GL_TRIANGLES, true, _particleCount, (int *)divisor, 6);
 			glDepthMask(GL_TRUE);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			glDisable(GL_BLEND);
 		}
 
 
@@ -268,14 +270,17 @@ namespace BeerEngine
 		nlohmann::json	ParticleBase::serialize()
 		{
 			// TODO
-			return {
-				{"componentClass", typeid(ParticleBase).name()},
-			};
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
+			});
+			return j;
 		}
 
-		void ParticleBase::deserialize(const nlohmann::json & j)
+		void ParticleBase::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			// TODO
+			this->Component::deserialize(j, loader);
 		}
 
 		REGISTER_COMPONENT_CPP(ParticleBase)

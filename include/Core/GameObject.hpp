@@ -8,6 +8,8 @@
 #include "Core/Component/IStart.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
+struct nk_font;
+
 namespace BeerEngine
 {
     class GameObject : public JsonSerializable, public JsonDeserializable
@@ -16,6 +18,8 @@ namespace BeerEngine
 		std::vector<Component::Component *> _components;
 		std::vector<Component::Component *> _toStart;
 		std::vector<Component::Component *> _toStartUI;
+		std::vector<Component::Component *> _toEnable;
+		std::vector<Component::Component *> _toDisable;
 		std::vector<Component::Component *> _toDestroy;
 
 	public:
@@ -37,7 +41,7 @@ namespace BeerEngine
         virtual void    update(void);
         virtual void    renderUpdate(void);
         virtual void    render(void);
-        virtual void    startUI(struct nk_context *ctx);
+        virtual void    startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         virtual void    renderUI(struct nk_context *ctx);
 
 		void    destroy(Component::Component *comp);
@@ -68,8 +72,12 @@ namespace BeerEngine
 		{
 			_components.push_back(comp);
 			_toStart.push_back(comp);
+			_toEnable.push_back(comp);
 			_toStartUI.push_back(comp);
 		}
+
+		void enableComponent(Component::Component *comp);
+		void disableComponent(Component::Component *comp);
 
 		template<typename T, typename std::enable_if<std::is_base_of<Component::Component, T>::value>::type* = nullptr>
 		T	*GetComponent(void)
@@ -95,20 +103,24 @@ namespace BeerEngine
 		}
 
 		void    componentStart(void);
+		void    componentEnable(void);
+		void    componentDisable(void);
 		void    componentFixedUpdate(void);
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
         void    componentRender(void);
+		void    componentRenderForward(Graphics::ALight &light);
         void    componentRenderAlpha(void);
         void    componentPhysicUpdate(void);
-        void    componentStartUI(struct nk_context *ctx);
+        void    componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         void    componentRenderUI(struct nk_context *ctx);
+        void    componentOnDestroy(void);
 
 		std::vector<Component::Component *> GetComponents(void);
 
 		virtual nlohmann::json	serialize();
-        virtual void deserialize(const nlohmann::json & j);
-		static GameObject * Deserialize(const nlohmann::json & j, AScene & scene);
+        virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+		static GameObject * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, AScene & scene);
 
 		void save(std::string filePath);
         void load(std::string filePath);

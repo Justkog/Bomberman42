@@ -1,0 +1,848 @@
+{
+    "gameObjects": [
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12RaysRendererE",
+                    "enabled": true,
+                    "material": {
+                        "color": [
+                            1.0,
+                            0.5,
+                            1.0,
+                            1.0
+                        ],
+                        "serializationID": 26,
+                        "shader": {
+                            "serializationID": 25,
+                            "sourceFileFS": "shaders/line_f.glsl",
+                            "sourceFileVS": "shaders/line_v.glsl"
+                        }
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ],
+                    "serializationID": 24
+                }
+            ],
+            "id": 0,
+            "name": "lines Holder",
+            "serializationID": 22,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "serializationID": 23
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N4Game9Component11GameManagerE",
+                    "enabled": true,
+                    "gameOverMenu": 35,
+                    "inGameMenu": 34,
+                    "playerBreakable": 45,
+                    "serializationID": 29,
+                    "victoryMenu": 36
+                },
+                {
+                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
+                    "enabled": true,
+                    "serializationID": 30
+                },
+                {
+                    "componentClass": "N4Game9Component16CameraControllerE",
+                    "enabled": true,
+                    "serializationID": 31
+                },
+                {
+                    "componentClass": "N4Game9Component12MouseRayTestE",
+                    "enabled": true,
+                    "linesRenderer": 24,
+                    "serializationID": 32
+                },
+                {
+                    "componentClass": "N4Game9Component14UIThemeManagerE",
+                    "enabled": true,
+                    "serializationID": 33
+                },
+                {
+                    "componentClass": "N4Game9Component10InGameMenuE",
+                    "enabled": false,
+                    "serializationID": 34,
+                    "uiManager": 33
+                },
+                {
+                    "componentClass": "N4Game9Component12GameOverMenuE",
+                    "enabled": false,
+                    "serializationID": 35,
+                    "uiManager": 33
+                },
+                {
+                    "componentClass": "N4Game9Component11VictoryMenuE",
+                    "enabled": false,
+                    "serializationID": 36,
+                    "uiManager": 33
+                },
+                {
+                    "componentClass": "N4Game9Component6TimeUIE",
+                    "enabled": true,
+                    "serializationID": 37,
+                    "uiManager": 33
+                },
+                {
+                    "componentClass": "N4Game9Component7ItemsUIE",
+                    "enabled": true,
+                    "serializationID": 38,
+                    "uiManager": 33
+                }
+            ],
+            "id": 1,
+            "name": "Camera",
+            "serializationID": 27,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "serializationID": 28
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component13ModelRendererE",
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                },
+                {
+                    "bombNB": 1,
+                    "componentClass": "N4Game9Component9CharacterE",
+                    "direction": [
+                        0.0,
+                        0.0
+                    ],
+                    "enabled": true,
+                    "explosionSize": 1.0,
+                    "map": 56,
+                    "serializationID": 44,
+                    "speed": 2.0
+                },
+                {
+                    "componentClass": "N4Game9Component9BreakableE",
+                    "enabled": true,
+                    "serializationID": 45
+                },
+                {
+                    "componentClass": "N4Game9Component6PlayerE",
+                    "enabled": true,
+                    "itemSrcAudio": 53,
+                    "serializationID": 46,
+                    "srcAudio": 52
+                },
+                {
+                    "componentClass": "Component",
+                    "enabled": true,
+                    "serializationID": 47
+                },
+                {
+                    "componentClass": "N4Game9Component8SettingsE",
+                    "enabled": true,
+                    "filePath": "testSettings.json",
+                    "serializationID": 48
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component14CircleColliderE",
+                    "enabled": true,
+                    "isTrigger": false,
+                    "radius": 0.30000001192092896,
+                    "serializationID": 49
+                },
+                {
+                    "componentClass": "N10BeerEngine9Component11RigidBody2DE",
+                    "enabled": true,
+                    "kinematic": 2,
+                    "mass": 1.0,
+                    "serializationID": 50,
+                    "velocity": [
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "componentClass": "N10BeerEngine5Audio13AudioListenerE",
+                    "enabled": true,
+                    "serializationID": 51
+                },
+                {
+                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
+                    "enabled": true,
+                    "serializationID": 52
+                },
+                {
+                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
+                    "enabled": true,
+                    "serializationID": 53
+                }
+            ],
+            "id": 2,
+            "name": "player",
+            "serializationID": 39,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.029999999329447746,
+                    0.029999999329447746,
+                    0.029999999329447746
+                ],
+                "serializationID": 40
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N4Game9Component3MapE",
+                    "enabled": true,
+                    "map": [
+                        [
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        [
+                            1,
+                            -1,
+                            8,
+                            2,
+                            2,
+                            0,
+                            2,
+                            9,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            8,
+                            -1,
+                            1
+                        ],
+                        [
+                            1,
+                            8,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            8,
+                            1
+                        ],
+                        [
+                            1,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            2,
+                            0,
+                            0,
+                            1
+                        ],
+                        [
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            2,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1
+                        ],
+                        [
+                            1,
+                            2,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            9,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            2,
+                            2,
+                            1
+                        ],
+                        [
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            2,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1
+                        ],
+                        [
+                            1,
+                            2,
+                            0,
+                            0,
+                            2,
+                            0,
+                            2,
+                            2,
+                            0,
+                            2,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+                            0,
+                            1
+                        ],
+                        [
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1
+                        ],
+                        [
+                            1,
+                            2,
+                            2,
+                            0,
+                            2,
+                            2,
+                            2,
+                            0,
+                            0,
+                            2,
+                            2,
+                            2,
+                            0,
+                            2,
+                            2,
+                            2,
+                            1
+                        ],
+                        [
+                            1,
+                            8,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            8,
+                            1
+                        ],
+                        [
+                            1,
+                            -1,
+                            8,
+                            2,
+                            2,
+                            0,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+                            0,
+                            2,
+                            2,
+                            8,
+                            -1,
+                            1
+                        ],
+                        [
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1
+                        ]
+                    ],
+                    "player": 46,
+                    "serializationID": 56,
+                    "shader": {
+                        "serializationID": 5,
+                        "sourceFileFS": "shaders/basic_f.glsl",
+                        "sourceFileVS": "shaders/basic_v.glsl"
+                    },
+                    "sizeX": 17,
+                    "sizeY": 13
+                }
+            ],
+            "id": 3,
+            "name": "map",
+            "serializationID": 54,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "serializationID": 55
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "enabled": true,
+                    "material": {
+                        "albedo": {
+                            "serializationID": 61,
+                            "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
+                        },
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "serializationID": 62,
+                        "shader": {
+                            "serializationID": 5,
+                            "sourceFileFS": "shaders/basic_f.glsl",
+                            "sourceFileVS": "shaders/basic_v.glsl"
+                        }
+                    },
+                    "mesh": {
+                        "serializationID": 60,
+                        "sourceFile": "assets/models/HouseOBJ/house_01.obj",
+                        "type": ""
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ],
+                    "serializationID": 59
+                }
+            ],
+            "id": 4,
+            "name": "house",
+            "serializationID": 57,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -5.5,
+                    0.0,
+                    16.5
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.05000000074505806,
+                    0.05000000074505806,
+                    0.05000000074505806
+                ],
+                "serializationID": 58
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "enabled": true,
+                    "material": {
+                        "albedo": {
+                            "serializationID": 67,
+                            "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
+                        },
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "serializationID": 68,
+                        "shader": {
+                            "serializationID": 5,
+                            "sourceFileFS": "shaders/basic_f.glsl",
+                            "sourceFileVS": "shaders/basic_v.glsl"
+                        }
+                    },
+                    "mesh": {
+                        "serializationID": 66,
+                        "sourceFile": "assets/models/HouseOBJ/house_01.obj",
+                        "type": ""
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ],
+                    "serializationID": 65
+                }
+            ],
+            "id": 5,
+            "name": "house2",
+            "serializationID": 63,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    4.5,
+                    0.0,
+                    14.399999618530273
+                ],
+                "rotation": [
+                    0.0007962742820382118,
+                    0.0,
+                    0.9999997019767761,
+                    0.0
+                ],
+                "scale": [
+                    0.05000000074505806,
+                    0.05000000074505806,
+                    0.05000000074505806
+                ],
+                "serializationID": 64
+            }
+        },
+        {
+            "components": [
+                {
+                    "componentClass": "N10BeerEngine9Component12MeshRendererE",
+                    "enabled": true,
+                    "material": {
+                        "albedo": {
+                            "serializationID": 73,
+                            "sourceFile": "assets/textures/ground_color.png"
+                        },
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "serializationID": 74,
+                        "shader": {
+                            "serializationID": 5,
+                            "sourceFileFS": "shaders/basic_f.glsl",
+                            "sourceFileVS": "shaders/basic_v.glsl"
+                        }
+                    },
+                    "mesh": {
+                        "serializationID": 1,
+                        "sourceFile": "",
+                        "type": "plane"
+                    },
+                    "pivot": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ],
+                    "serializationID": 72
+                }
+            ],
+            "id": 7,
+            "name": "",
+            "serializationID": 70,
+            "transform": {
+                "pivot": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "position": [
+                    -3.0,
+                    0.0,
+                    6.0
+                ],
+                "rotation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    40.0,
+                    1.0,
+                    40.0
+                ],
+                "serializationID": 71
+            }
+        }
+    ]
+}

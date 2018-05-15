@@ -1,6 +1,7 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/SceneManager.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -32,7 +33,6 @@ namespace BeerEngine
 			return setMesh(BeerEngine::Graphics::Graphics::OBJLoader(inputfile));
 		}
 
-
 		Graphics::AMaterial	*MeshRenderer::getMaterial(void)
 		{
 			return (_material);
@@ -49,36 +49,42 @@ namespace BeerEngine
 			_mat = _gameObject->transform.getMat4();
 		}
 
-		void    		MeshRenderer::render(void)
+		void    		MeshRenderer::render(Graphics::ALight &light)
 		{
 			if (_mesh != nullptr)
 			{
 				if (_material != nullptr)
-					_material->bind(_mat);
+					_material->bind(_mat, light);
 				else
-					Graphics::Graphics::defaultMaterial->bind(_mat);
+					Graphics::Graphics::defaultMaterial->bind(_mat, light);
+				light.getShader().uniform1i("hasBones", 0);
 				_mesh->render(renderMode);
 			}
 		}
 
 		nlohmann::json	MeshRenderer::serialize()
 		{
-			return nlohmann::json {
+			auto j = Component::serialize();
+			j.merge_patch({
 				{"componentClass", type},
 				{"mesh", _mesh},
 				{"material", _material},
 				{"pivot", _mat},
-			};
+			});
+			return j;
 		}
 
-		void MeshRenderer::deserialize(const nlohmann::json & j)
+		void MeshRenderer::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			// std::cout << this->_sourceFile << "\n";
 			// this->_sourceFile = j.at("sourceFile");
 			// if (this->_sourceFile != "")
 			// 	this->setMesh(this->_sourceFile);
-			this->setMesh(Graphics::Mesh::Deserialize(j.at("mesh")));
-			this->setMaterial(Graphics::AMaterial::Deserialize(j.at("material")));
+			this->Component::deserialize(j, loader);
+			if (j.find("mesh") != j.end())
+				this->setMesh(Graphics::Mesh::Deserialize(j.at("mesh"), loader));
+			if (j.find("material") != j.end())
+				this->setMaterial(Graphics::AMaterial::Deserialize(j.at("material"), loader));
 			this->_mat = j.at("pivot");
 		}
 

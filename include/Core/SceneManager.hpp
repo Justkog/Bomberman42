@@ -19,6 +19,8 @@ namespace BeerEngine
     {
     private:
         static AScene      *_Current; /*!< Scene actuellement utiliser*/
+        static AScene      *_Next;
+		static bool			_updateThreadWaiting;
 
     public:
         /*!
@@ -26,7 +28,7 @@ namespace BeerEngine
 		*  Methode qui permet de recuperer la scene actuellement utiliser sur le projet
 		*  \return scene
 		*/
-        static AScene       *GetCurrent(void);
+        static AScene       *GetCurrent(bool isRenderThread);
         /*!
 		*  \brief changer de scene
 		*  Methode qui permet de changer de scene par le biais du template
@@ -34,13 +36,12 @@ namespace BeerEngine
         template<typename T, typename std::enable_if<std::is_base_of<AScene, T>::value>::type* = nullptr>
         static void         LoadScene(void)
         {
-            if (_Current != nullptr)
-                delete _Current;
-            _Current = new T();
-            _Current->init();
-            _Current->debugTest();
-            // _Current->start();
+			auto nextScene = new T();
+            nextScene->init();
+			_Next = nextScene;
         }
+
+		static void         LoadScene(std::string path);
     };
 }
 

@@ -8,5 +8,5 @@ in vec4 vColor;
 
 void main()
 {
-    color = (texture(sprite, vTexture) * vColor);
+    color = (texture(sprite, vTexture) * vColor) * 0.3;
 } 

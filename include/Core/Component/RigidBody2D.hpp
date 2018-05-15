@@ -20,9 +20,6 @@ namespace BeerEngine
 			RigidBody2D(GameObject *gameObject);
 			void    physicUpdate(void);
 
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-
 			REGISTER_COMPONENT_HPP
 		};
 	}

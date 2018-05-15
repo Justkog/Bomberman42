@@ -1,4 +1,7 @@
 #include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/IO/FileUtils.hpp"
+#include "Game/Assets.hpp"
+#include <regex>
 
 namespace BeerEngine
 {
@@ -46,7 +49,7 @@ namespace BeerEngine
 			// TEST DEBUG
 			GLint	result;
 			glGetShaderiv(_shaders[shaderIndex], GL_COMPILE_STATUS, &result);
-			if (result == 0)
+			if (result == GL_FALSE)
 			{
 				int		log_length;
 				glGetShaderiv(_shaders[shaderIndex], GL_INFO_LOG_LENGTH, &log_length);
@@ -55,14 +58,14 @@ namespace BeerEngine
 				char	*log = new char[log_length];
 				glGetShaderInfoLog(_shaders[shaderIndex], log_length, NULL, log);
 				if (shaderType == GL_VERTEX_SHADER)
-					std::cout << "Vertex Shader:" << std::endl;
+					std::cerr << "Vertex Shader:" << std::endl;
 				else if (shaderType == GL_FRAGMENT_SHADER)
-					std::cout << "Fragment Shader:" << std::endl;
+					std::cerr << "Fragment Shader:" << std::endl;
 				else if (shaderType == GL_GEOMETRY_SHADER)
-					std::cout << "Geometry Shader:" << std::endl;
+					std::cerr << "Geometry Shader:" << std::endl;
 				else
-					std::cout << "Other Shader:" << std::endl;
-				std::cout << log;
+					std::cerr << "Other Shader:" << std::endl;
+				std::cerr << log;
 				delete[] log;
 			}
 		}
@@ -89,7 +92,7 @@ namespace BeerEngine
 				{
 					char	*log = new char[log_length];
 					glGetProgramInfoLog(_program, log_length, NULL, log);
-					std::cout << log;
+					std::cerr << log;
 					delete[] log;
 				}
 			}
@@ -103,6 +106,32 @@ namespace BeerEngine
 					_shaders[i] = 0;
 				}
 			}
+		}
+
+		std::string  ShaderProgram::LoadShaderSource(std::string const &path)
+		{
+			std::string result = "";
+			std::string dir = BeerEngine::IO::FileUtils::GetDirectory(path);
+			std::ifstream ifs(path);
+			std::regex incMatch("#.*include.*\"(.*)\"");
+			std::smatch match;
+			if (ifs.is_open())
+			{
+				std::string line;
+				while (std::getline(ifs, line))
+				{
+					if (std::regex_match(line, match, incMatch))
+						result += LoadShaderSource(dir + "/" + match[1].str());
+					else
+						result += line + "\n";
+				}
+				ifs.close();
+			}
+			else
+			{
+				std::cerr << "Failed to load: " << path << "\n";
+			}
+			return result;
 		}
 
 		void			ShaderProgram::bind(void)
@@ -179,6 +208,11 @@ namespace BeerEngine
 			glUniform3f(id, x, y, z);
 		}
 
+		void			ShaderProgram::uniform3f(GLint id, glm::vec3 const &vec)
+		{
+			glUniform3f(id, vec[0], vec[1],vec[2]);
+		}
+
 		void			ShaderProgram::uniform3f(std::string const &name, glm::vec3 const &vec)
 		{
 			uniform3f(name, vec[0], vec[1],vec[2]);
@@ -205,6 +239,11 @@ namespace BeerEngine
 			glUniform4f(id, x, y, z, w);
 		}
 
+		void			ShaderProgram::uniform4f(GLint id, glm::vec4 const &vec)
+		{
+			glUniform4f(id, vec[0], vec[1], vec[2], vec[3]);
+		}
+
 		void			ShaderProgram::uniform4f(std::string const &name, float *data)
 		{
 			uniform4f(name, data[0], data[1], data[2], data[3]);
@@ -212,6 +251,7 @@ namespace BeerEngine
 
 		void			ShaderProgram::uniformMat(std::string const &name, glm::mat4 &mat)
 		{
+			// std::cout << name << std::endl;
 			GLint id = glGetUniformLocation(_program, name.c_str());
 			uniformMat(id, mat);
 		}
@@ -219,6 +259,47 @@ namespace BeerEngine
 		void			ShaderProgram::uniformMat(GLint id, glm::mat4 &mat)
 		{
 			glUniformMatrix4fv(id, 1, GL_FALSE, glm::value_ptr(mat));
+		}
+
+		ShaderProgram	*ShaderProgram::LoadShader(std::string pathVS, std::string pathFS)
+		{
+			auto shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+				LoadShaderSource(pathVS).c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+				LoadShaderSource(pathFS).c_str()
+			);
+			shader->compile();
+			shader->_sourceFileVS = pathVS;
+			shader->_sourceFileFS = pathFS;
+			return shader;
+		}
+
+		nlohmann::json	ShaderProgram::serialize()
+		{
+			auto j = JsonSerializable::serialize();
+			j.merge_patch({
+				{"sourceFileVS", _sourceFileVS},
+				{"sourceFileFS", _sourceFileFS},
+			});
+			return j;
+		}
+
+		ShaderProgram * ShaderProgram::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+		{
+			if (j.is_null())
+				return NULL;
+			std::string pathVS = j.at("sourceFileVS");
+			std::string pathFS = j.at("sourceFileFS");
+			if (pathVS != "" && pathFS != "")
+			{
+				std::cout << "getting ShaderProgram VS at " << pathVS << "\n";
+				std::cout << "getting ShaderProgram FS at " << pathFS << "\n";
+				return (Assets::GetShaderProgram(pathVS, pathFS));
+			}
+			else
+				return NULL;
 		}
 	}
 }

@@ -114,9 +114,9 @@ namespace BeerEngine
 			return j;
 		}
 
-		void CircleCollider::deserialize(const nlohmann::json & j)
+		void CircleCollider::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			this->ACollider::deserialize(j);
+			this->ACollider::deserialize(j, loader);
 			this->_radius = j.at("radius");
 		}
 

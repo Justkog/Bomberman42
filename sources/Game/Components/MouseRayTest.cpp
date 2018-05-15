@@ -91,11 +91,11 @@ void MouseRayTest::update()
 		ray.direction *= 2;
 
 		// BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction);
-		BeerEngine::Physics::RaycastHit hit;
-		if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, hit, 1))
-			std::cout << "hit: " << glm::to_string(hit.transform->position) << " | " << hit.distance << std::endl;
+		// BeerEngine::Physics::RaycastHit hit;
+		// if (BeerEngine::Physics::Physics::Raycast(ray.origin, ray.direction, hit, 1))
+		// 	std::cout << "hit: " << glm::to_string(hit.transform->position) << " | " << hit.distance << std::endl;
 		// BeerEngine::Physics::Physics::RaycastAll(ray.origin, ray.direction);
-		linesRenderer->addRay(ray);
+		// linesRenderer->addRay(ray);
 	}
 	else if (state == GLFW_RELEASE && clicking)
 	{
@@ -108,6 +108,24 @@ void MouseRayTest::fixedUpdate()
 	
 }
 
+nlohmann::json	MouseRayTest::serialize()
+{
+	auto j = Component::serialize();
+	j.merge_patch({
+		{"componentClass", type},
+		{"linesRenderer", SERIALIZE_BY_ID(linesRenderer)},
+	});
+	return j;
+}
+
+void MouseRayTest::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+{
+	Component::deserialize(j, loader);
+	DESERIALIZE_BY_ID(this->linesRenderer, BeerEngine::Component::RaysRenderer, "linesRenderer", loader);
+}
+
+REGISTER_COMPONENT_CPP(MouseRayTest)
+
 // ###############################################################
 
 // GETTER METHOD #################################################
@@ -119,29 +137,6 @@ void MouseRayTest::fixedUpdate()
 // ###############################################################
 
 // PRIVATE METHOD ################################################
-
-// BeerEngine::Component::Ray MouseRayTest::ScreenToWorldRay(glm::vec2 screenPosition) {
-// 	float pointX = screenPosition.x / (WINDOW_WIDTH  * 0.5f) - 1.0f;
-//     float pointY = screenPosition.y / (WINDOW_HEIGHT * 0.5f) - 1.0f;
-// 	glm::mat4 proj = BeerEngine::Window::GetInstance()->getProjection3D();
-// 	auto cam = BeerEngine::Camera::main;
-//     glm::mat4 view = glm::lookAt(glm::vec3(0.0f), cam->transform.forward(), cam->transform.top());
-
-//     glm::mat4 invVP = glm::inverse(proj * view);
-//     glm::vec4 screenPos = glm::vec4(pointX, -pointY, 1.0f, 1.0f);
-//     glm::vec4 worldPos = invVP * screenPos;
-
-//     glm::vec3 dir = glm::normalize(glm::vec3(worldPos));
-// 	BeerEngine::Component::Ray ray;
-// 	ray.origin = BeerEngine::Camera::main->transform.position;
-// 	ray.direction = dir;
-
-//     return ray;
-// }
-
-// BeerEngine::Component::Ray MouseRayTest::MouseToWorldRay() {
-//     return ScreenToWorldRay(BeerEngine::Input::mousePosition);
-// }
 
 // ###############################################################
 

@@ -22,8 +22,10 @@ namespace BeerEngine
     private:
         static double   _LastTime; /*!< Dernier temps sauvegarder*/
         static double   _DeltaTime; /*!< Delta time enregistrer au dernier tour de boucle*/
+        static double   _TimeSinceStartup;
     
     public:
+        static double   gameSpeed;
         /*!
 		*  \brief mettre a jour le temps
 		*  Methode qui permet de mettre a jour le delta time
@@ -35,6 +37,8 @@ namespace BeerEngine
 		*  \return delta time
 		*/
         static double   GetDeltaTime(void);
+		static double   GetTimeSinceStartup(void);
+
     };
 }
 

@@ -32,7 +32,7 @@ namespace BeerEngine
 			int		getHeight(void);
 
 			nlohmann::json	serialize();
-			static Texture * Deserialize(const nlohmann::json & j);
+			static Texture * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
 		};
 	}

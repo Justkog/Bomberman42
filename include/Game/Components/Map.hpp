@@ -18,6 +18,7 @@
 #include "Game/Components/Player.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Game/Components/Breakable.hpp"
+#include <vector>
 
 #define S -1 //spawn position
 #define I 9 //Item
@@ -40,8 +41,9 @@ namespace Game
 
             virtual void    start(void);
 			void			setMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
+			void			setRandomMap(std::vector<std::vector<int>>map, size_t sizeX, size_t sizeY);
        		virtual void    mapUpdate(int x, int y, int value);
-			void			drawMap(BeerEngine::Graphics::ShaderProgram *shader);
+			void			drawMap();
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
@@ -53,13 +55,17 @@ namespace Game
 			int								**_map;
 			int	_sizeX;
 			int	_sizeY;
-			Game::Component::Player			*_player;
+
+			Game::Component::Player				*_player;
+			std::vector<Game::Component::IA*>	_IAs;
+			BeerEngine::Graphics::ShaderProgram	*_shader;
 
 			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
 			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 			BeerEngine::GameObject *createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
+			Game::Component::IA *addIA(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 
 			template <typename T>
 			BeerEngine::GameObject *addCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
@@ -68,10 +74,12 @@ namespace Game
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				meshRenderer->setMesh("assets/models/Crate/crate.obj");
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/stone_color.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocNrm = Assets::GetTexture("assets/textures/stone_normal.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
+				mapBlocMat->setNormal(mapBlocNrm);
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
@@ -94,8 +102,8 @@ namespace Game
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "destroyable block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/crate1_diffuse.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				meshRenderer->setMesh("assets/models/Rock/rock.obj");
+				auto *mapBlocTex = Assets::GetTexture("assets/models/Rock/rock_color.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				meshRenderer->setMaterial(mapBlocMat);
@@ -113,9 +121,6 @@ namespace Game
 
 				return (mapBlocGO);
 			}
-
-			virtual nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
 
 			REGISTER_COMPONENT_HPP
 		};

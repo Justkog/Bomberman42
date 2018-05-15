@@ -1,4 +1,8 @@
+#include <stdexcept>
 #include "Core/Audio/AudioClip.hpp"
+// #include <AL/al.h>
+// #include <AL/alc.h>
+#include <iostream>
 
 namespace BeerEngine
 {
@@ -37,7 +41,6 @@ namespace BeerEngine
 			// CrÈation du tampon OpenAL
 			ALuint Buffer;
 			alGenBuffers(1, &Buffer);
-
 			// Remplissage avec les Èchantillons lus
 			alBufferData(Buffer, Format, &Samples[0], NbSamples * sizeof(ALushort), SampleRate);
 			// Verification des erreurs
@@ -47,7 +50,13 @@ namespace BeerEngine
 		}
 
 		AudioClip::~AudioClip()
-		{ }
+		{	}
+
+		void			AudioClip::cleanUp()
+		{
+			if (_buffer)
+				alDeleteBuffers(1, &_buffer);
+		}
 
 		ALuint		AudioClip::getBuffer()
 		{

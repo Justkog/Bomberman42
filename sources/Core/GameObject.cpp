@@ -3,10 +3,14 @@
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IRenderAlpha.hpp"
+#include "Core/Component/IRenderForward.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IStart.hpp"
+#include "Core/Component/IEnable.hpp"
+#include "Core/Component/IDisable.hpp"
 #include "Core/Component/ACollider.hpp"
+#include "Core/Component/IOnDestroy.hpp"
 #include "Core/Transform.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -23,7 +27,6 @@ namespace BeerEngine
 
 	GameObject::~GameObject(void)
 	{
-		std::cout << "boom" << "\n";
 		for (Component::Component *c : _components)
 		{
 			delete c;
@@ -46,7 +49,7 @@ namespace BeerEngine
 	void    GameObject::update(void) {}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
-    void    GameObject::startUI(struct nk_context *ctx) {}
+    void    GameObject::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) {}
     void    GameObject::renderUI(struct nk_context *ctx) {}
 
 	void     GameObject::destroy(Component::Component *comp)
@@ -56,6 +59,11 @@ namespace BeerEngine
 	}
 	void    GameObject::destroyComponent(void)
 	{
+		for (Component::Component *comp : _toDestroy)
+		{
+			if (auto *d = dynamic_cast<Component::IOnDestroy*>(comp))
+					d->onDestroy();
+		}
 		for (Component::Component *comp : _toDestroy)
 		{
 			for (int i = 0; i <_components.size(); i++)
@@ -69,6 +77,44 @@ namespace BeerEngine
 			delete comp;
 		}
         _toDestroy.clear();
+	}
+
+	void GameObject::enableComponent(Component::Component *comp)
+	{
+		// std::cout << "attempting to enable" << std::endl;
+		
+		auto it = std::find(_toDisable.begin(), _toDisable.end(), comp);
+		if (it != _toDisable.end())
+		{
+			// std::cout << "comp was about to be disabled" << std::endl;
+			comp->_isActive = true;
+			_toDisable.erase(it);
+			return;
+		}
+		else if (comp->_isActive)
+			return;
+		// std::cout << "added to enable" << std::endl;
+		_toEnable.push_back(comp);
+	}
+
+	void GameObject::disableComponent(Component::Component *comp)
+	{
+		// std::cout << "attempting to disable" << std::endl;
+		auto it = std::find(_toEnable.begin(), _toEnable.end(), comp);
+		if (it != _toEnable.end())
+		{
+			std::cout << "comp was about to be enabled" << std::endl;
+			comp->_isActive = false;
+			_toEnable.erase(it);
+			return;
+		}
+		else if (!comp->_isActive)
+		{
+			// std::cout << "component is already disabled" << std::endl;
+			return;
+		}
+		// std::cout << "added to disable" << std::endl;
+		_toDisable.push_back(comp);
 	}
 
 	void    GameObject::destroy(GameObject *go)
@@ -88,11 +134,37 @@ namespace BeerEngine
 		_toStart.clear();
 	}
 
+	void    GameObject::componentEnable(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentEnable" << std::endl;
+		for (Component::Component *c : _toEnable)
+		{
+			c->_isActive = true;
+			if (Component::IEnable *u = dynamic_cast<Component::IEnable*>(c))
+				u->enable();
+		}
+		_toEnable.clear();
+	}
+
+	void    GameObject::componentDisable(void)
+	{
+        // std::cout << "DEBUG: GameObject::componentDisable" << std::endl;
+		for (Component::Component *c : _toDisable)
+		{
+			c->_isActive = false;
+			if (Component::IDisable *u = dynamic_cast<Component::IDisable*>(c))
+				u->disable();
+		}
+		_toDisable.clear();
+	}
+
 	void    GameObject::componentFixedUpdate(void)
 	{
         // std::cout << "DEBUG: GameObject::componentFixedUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
 				u->fixedUpdate();
 		}
@@ -103,6 +175,8 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUpdate *u = dynamic_cast<Component::IUpdate*>(c))
 				u->update();
 		}
@@ -113,7 +187,11 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
+				r->renderUpdate();
+			if (Component::IRenderForward *r = dynamic_cast<Component::IRenderForward*>(c))
 				r->renderUpdate();
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->renderAlphaUpdate();
@@ -125,15 +203,32 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRender" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->render();
 		}
 	}
+
+	void    GameObject::componentRenderForward(Graphics::ALight &light)
+	{
+        // std::cout << "DEBUG: GameObject::componentRender" << std::endl;
+		for (Component::Component *c : _components)
+		{
+			if (!c->_isActive)
+				continue;
+			if (Component::IRenderForward *r = dynamic_cast<Component::IRenderForward*>(c))
+				r->render(light);
+		}
+	}
+
 	void    GameObject::componentRenderAlpha(void)
 	{
         // std::cout << "DEBUG: GameObject::componentRenderAlpha" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->renderAlpha();
 		}
@@ -144,11 +239,15 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentPhysicUpdate" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (auto *p = dynamic_cast<Component::RigidBody2D*>(c))
 				p->physicUpdate();
 		}
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (auto *p = dynamic_cast<Component::ACollider*>(c))
 				p->physicUpdate();
 		}
@@ -159,48 +258,64 @@ namespace BeerEngine
         // std::cout << "DEBUG: GameObject::componentRenderUI" << std::endl;
 		for (Component::Component *c : _components)
 		{
+			if (!c->_isActive)
+				continue;
 			if (Component::IUI *r = dynamic_cast<Component::IUI*>(c))
 				r->renderUI(ctx);
 		}
 	}
 
-	void    GameObject::componentStartUI(struct nk_context *ctx)
+	void    GameObject::componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 	{
 		// std::cout << "DEBUG: GameObject::componentStart" << std::endl;
 		for (Component::Component *c : _toStartUI)
 		{
 			if (auto u = dynamic_cast<Component::IStartUI*>(c))
-				u->startUI(ctx);
+				u->startUI(ctx, fonts);
 			// _components.push_back(c);
 		}
 		_toStartUI.clear();
 	}
 
+	void    GameObject::componentOnDestroy(void)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (auto *d = dynamic_cast<Component::IOnDestroy*>(c))
+				d->onDestroy();
+		}
+	}
+
 	nlohmann::json	GameObject::serialize()
 	{
-		return nlohmann::json {
+		auto j = JsonSerializable::serialize();
+		j.merge_patch({
             {"id", this->_uniqueID},
             {"name", this->name},
             {"transform", JsonSerializable::toSerializable(this->transform)},
             {"components", JsonSerializable::toSerializables<BeerEngine::Component::Component>(this->GetComponents())}
-		};
+		});
+		return j;
 	}
 
-	void GameObject::deserialize(const nlohmann::json & j)
+	void GameObject::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     {
+		this->JsonSerializable::deserialize(j, loader);
+		this->_uniqueID = j.at("id");
 		this->name = j.at("name");
-		this->transform = Transform::Deserialize(j.at("transform"));
+		this->transform = Transform::Deserialize(j.at("transform"), loader);
 		auto components = j.at("components");
         for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
-			auto comp = Component::Component::Deserialize(it.value(), this);
+			auto comp = Component::Component::Deserialize(it.value(), loader, this);
 		}
     }
 
-	GameObject * GameObject::Deserialize(const nlohmann::json & j, AScene &scene)
+	GameObject * GameObject::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader, AScene &scene)
     {
-		int id = j.at("id");
-		auto go = new GameObject(id, scene);
-		go->deserialize(j);
+		// int id = j.at("id");
+		auto go = scene.instantiate<GameObject>();
+		// auto go = new GameObject(id, scene);
+		go->deserialize(j, loader);
 		return go;
     }
 
@@ -213,9 +328,11 @@ namespace BeerEngine
 
     void    GameObject::load(std::string filePath) {
         std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
-        // std::cout << "deserializing " << filePath << "\n";
+        // std::cout << "deserializing GO " << filePath << "\n";
         auto j = nlohmann::json::parse(content);
 		// std::cout << "json loaded" << "\n";
-        this->deserialize(j);
+		BeerEngine::JsonLoader loader;
+        this->deserialize(j, loader);
+		loader.executeCallBacks();
     }
 }

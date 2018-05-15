@@ -10,6 +10,8 @@
 /*! \namespace BeerEngine
  * espace de nommage regroupant les fonctionnalité du moteur
  */
+#include "Cubemap.hpp"
+
 namespace BeerEngine
 {
 	/*! \namespace Graphics
@@ -28,6 +30,7 @@ namespace BeerEngine
 			Texture			*_albedo; /*!< Texture afficher sur le material*/
 			Texture			*_normal; /*!< Texture Normal utiliser sur la material*/
 			Texture			*_bump; /*!< Texture de profondeur utiliser sur le material*/
+			Cubemap			*_envMap;
 
 			// Shader ID
 			GLint	_colorShaderID; /*!< Identifiant pour bind au shader les divers composents*/
@@ -42,6 +45,13 @@ namespace BeerEngine
 			GLint	_modelShaderID; /*!< Identifiant pour bind au shader les divers composents*/
 			GLint	_viewPosID; /*!< Identifiant pour bind au shader les divers composents*/
 			GLint	_viewDirID; /*!< Identifiant pour bind au shader les divers composents*/
+			GLint	_envMapID;
+			GLint	_hasEnvMapID;
+
+			GLint	_lightPosID;
+			GLint	_lightDirID;
+			GLint	_lightIntensityID;
+			GLint	_lightColorID;
 		
 		public:
 			/*!
@@ -62,6 +72,7 @@ namespace BeerEngine
 			*  \param model : matrice de l'objet utilisant se material
 			*/
 			virtual void	bind(glm::mat4 &model);
+			virtual void	bind(glm::mat4 &model, ALight &light);
 			/*!
 			*  \brief Modifier les parametres de couleur
 			*  Methode permetant de modifier les couleur du material
@@ -90,10 +101,13 @@ namespace BeerEngine
 			*  \return le material lui même
 			*/
 			AMaterial		&setBump(Texture *tex);
+			AMaterial		&setEnvmap(Cubemap *map);
+
+			ShaderProgram	&getShader();
 
 			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
-			static AMaterial * Deserialize(const nlohmann::json & j);
+			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+			static AMaterial * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 		};
 	}
 }

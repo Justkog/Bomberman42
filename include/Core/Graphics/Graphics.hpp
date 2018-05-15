@@ -5,6 +5,11 @@
  * \brief Graphics predefini
  * \author mgallo
  */
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include "Core/Core.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
@@ -33,6 +38,14 @@ namespace BeerEngine
 			static ShaderProgram	*particleShader; /*!< Shader des particules par defaut*/
 			static ShaderProgram	*defaultShader; /*!< Shader par defaut des model*/
 			static AMaterial		*defaultMaterial; /*!< Material par defaut*/
+			static ALight			*defaultLight;
+			static ShaderProgram	*skyboxShader;
+			static Cubemap			*defaultCubemap;
+
+			static ShaderProgram	*ambiantShader;
+			static ShaderProgram	*directionalShader;
+			static ShaderProgram	*spotShader;
+			static ShaderProgram	*cubemapShader;
 			/*!
 			*  \brief Chargement
 			*  Chargement des composents predefini
@@ -44,7 +57,16 @@ namespace BeerEngine
 			*/
 			static void UnLoad(void);
 
+			static void EnableForwardBlend();
+			static void DisableForwardBlend();
+
 			static ShaderProgram *loadLineShader();
+
+			static ShaderProgram *loadAmbiantShader();
+			static ShaderProgram *loadDirectionalShader();
+			static ShaderProgram *loadSpotShader();
+			static ShaderProgram *loadSkyboxShader();
+			static ShaderProgram *loadCubemapShader();
 			/*!
 			*  \brief Chargeur de mdoel
 			*  Chargeur de model format obj
@@ -52,6 +74,7 @@ namespace BeerEngine
 			*  \return objet charger
 			*/
 			static Mesh	*OBJLoader(std::string path);
+			static Mesh *ModelLoader(std::string path);
 		};
 	}
 }

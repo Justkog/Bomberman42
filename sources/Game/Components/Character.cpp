@@ -1,3 +1,4 @@
+#include <Core/Component/ModelRenderer.hpp>
 #include "Game/Components/Character.hpp"
 #include "Core/Time.hpp"
 #include "Core/GameObject.hpp"
@@ -17,26 +18,50 @@ namespace Game
 			Component(gameObject),
             _transform(gameObject->transform),
             _speed(2),
-            _bombNb(5),
-            _explosionSize(2),
-            _direction(0, 0)
+            _bombNb(1),
+            _maxBomb(1),
+            _explosionSize(1),
+            _direction(0, 0),
+			bombMesh(nullptr),
+			bombMaterial(nullptr),
+			map(nullptr)
 		{
 
         }
 
         void    Character::start(void)
         {
+			bombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+			bombMaterial->setAlbedo(Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png"));
         }
 
         void    Character::fixedUpdate(void)
         {
             BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
-            if (rb2d)
+			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
+
+			if (rb2d)
             {
                 if (_direction == glm::vec2(0))
-                    rb2d->velocity = glm::vec2(0);
+				{
+					rb2d->velocity = glm::vec2(0);
+					if (model)
+					{
+						model->stopAnimation();
+					}
+				}
                 else
-                    rb2d->velocity = glm::normalize(_direction) * _speed;
+				{
+					rb2d->velocity = glm::normalize(_direction) * _speed;
+					if (model)
+					{
+						model->setAnimation(0);
+						model->setLoopAnimation(true);
+						model->playAnimation();
+						_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
+					}
+				}
             }
             _direction = glm::vec2(0, 0);
         }
@@ -57,18 +82,22 @@ namespace Game
             {
                 case Direction::Up:
                     _direction += glm::vec2(0, 1);
+					_rotation = 0;
                     break;
                 
                 case Direction::Down:
                     _direction += glm::vec2(0, -1);
-                    break;
+					_rotation = 180;
+					break;
                 
                 case Direction::Left:
                     _direction += glm::vec2(1, 0);
-                    break;
+					_rotation = 90;
+					break;
                 
                 case Direction::Right:
                     _direction += glm::vec2(-1, 0);
+					_rotation = 270;
                     break;
             }
         }
@@ -80,11 +109,19 @@ namespace Game
                 _speed = MAX_SPEED;
         }
 
-        void    Character::addBomb(int nb)
+        void    Character::addBomb(void)
         {
-            _bombNb += nb;
-            if (_bombNb >= MAX_BOMBS)
-                _bombNb = MAX_BOMBS;
+            ++_bombNb;
+            if (_bombNb >= _maxBomb)
+                _bombNb = _maxBomb;
+        }
+
+        void    Character::increaseMaxBomb(void)
+        {
+            ++_maxBomb;
+            ++_bombNb;
+            if (_maxBomb >= MAX_BOMBS)
+                _maxBomb = MAX_BOMBS;
         }
 
         void    Character::increaseExplosionSize(float val)
@@ -96,7 +133,7 @@ namespace Game
 
         void    Character::dropBomb(void)
         {
-            if (_bombNb <= 0 || !map->hasBomb(_gameObject->transform.position))
+            if (_bombNb <= 0 || map->hasBomb(_gameObject->transform.position))
                 return;
             BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
             go->transform.position = glm::round(_gameObject->transform.position);
@@ -105,11 +142,16 @@ namespace Game
             auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
             collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
-            render->setMesh(BeerEngine::Graphics::Graphics::cube);
-            render->setMaterial(Assets::GetInstance()->bombMaterial);
+            // render->setMesh(BeerEngine::Graphics::Graphics::cube);
+            // render->setMaterial(Assets::GetInstance()->bombMaterial);
+            //PUTAIN DE TRUC QUI SEGFAULT, MES COUILLES SUR TON FRONT DEMERDE TOI MASHALLAH
+			render->setMesh(bombMesh);
+            render->setMaterial(bombMaterial);
+
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;
             bomb->setPower(_explosionSize);
+			bomb->onExplode.bind(&Character::addBomb, this);
             --_bombNb;
         }
 
@@ -139,21 +181,32 @@ namespace Game
 
 		nlohmann::json	Character::serialize()
 		{
-			return nlohmann::json {
-				{"componentClass", typeid(Character).name()},
+			auto j = Component::serialize();
+			j.merge_patch({
+				{"componentClass", type},
 				{"speed", _speed},
 				{"bombNB", _bombNb},
 				{"explosionSize", _explosionSize},
 				{"direction", _direction},
-			};
+				{"map", SERIALIZE_BY_ID(map)},
+				{"bombMesh", bombMesh},
+				{"bombMaterial", bombMaterial},
+			});
+			return j;
 		}
 
-        void Character::deserialize(const nlohmann::json & j)
+        void Character::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     	{
+			Component::deserialize(j, loader);
             this->_speed = j.at("speed");
             this->_bombNb = j.at("bombNB");
             this->_explosionSize = j.at("explosionSize");
             this->_direction = j.at("direction");
+			DESERIALIZE_BY_ID(this->map, Map, "map", loader);
+			if (j.find("bombMesh") != j.end())
+				this->bombMesh = BeerEngine::Graphics::Mesh::Deserialize(j.at("bombMesh"), loader);
+			if (j.find("bombMaterial") != j.end())
+				this->bombMaterial = BeerEngine::Graphics::AMaterial::Deserialize(j.at("bombMaterial"), loader);
 		}
 
 		REGISTER_COMPONENT_CPP(Character)

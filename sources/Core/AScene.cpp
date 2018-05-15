@@ -8,6 +8,7 @@
 #include "Core/Graphics/ShaderProgram.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Json/Json.hpp"
 
@@ -16,13 +17,16 @@ namespace BeerEngine
     int     AScene::uniqueID = 0;
 
     AScene::AScene(void)
-    {
-        
-    }
+        : _skyboxCubemap(nullptr)
+    {}
 
     AScene::~AScene(void)
     {
         std::map<int, GameObject *>::iterator it;
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentOnDestroy();
+        }
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             delete (it->second);
@@ -41,10 +45,30 @@ namespace BeerEngine
         return (res);
     }
 
+    std::vector<Graphics::ALight *> AScene::getLights()
+    {
+        std::vector<Graphics::ALight *> res;
+
+        // populate map somehow
+        for(auto it = _lights.begin(); it != _lights.end(); ++it) {
+            res.push_back( it->second );
+        }
+        return (res);
+    }
+
     void AScene::debugTest(void)
     {
         std::cout << "GameObject List Size : " << _gameObjects.size() << std::endl;
     }
+
+	GameObject *AScene::find(std::string name)
+	{
+		for(auto it = _gameObjects.begin(); it != _gameObjects.end(); ++it) {
+			if (it->second->name == name)
+				return it->second;
+        }
+		return NULL;
+	}
 
      void    AScene::mutexLock(bool lock)
      {
@@ -66,6 +90,11 @@ namespace BeerEngine
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->componentStart();
+        }
+		for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentDisable();
+            (it->second)->componentEnable();
         }
     }
 
@@ -100,34 +129,63 @@ namespace BeerEngine
             (it->second)->renderUpdate();
             (it->second)->componentRenderUpdate();
         }
+        if (_skyboxCubemap)
+            _skyboxCubemap->renderUpdate();
     }
 
     void    AScene::render(void)
     {
         // std::cout << "DEBUG: AScene::render" << std::endl;
+        if (_skyboxCubemap)
+            _skyboxCubemap->render();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->render();
             (it->second)->componentRender();
         }
+
+        renderForward();
+
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->componentRenderAlpha();
         }
     }
 
-	void    AScene::startUI(struct nk_context *ctx)
+    void    AScene::renderForward(void)
+    {
+        std::map<int, GameObject *>::iterator it;
+        std::map<int, Graphics::ALight *>::iterator it2;
+
+        Graphics::Graphics::defaultLight->bind();
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentRenderForward(*Graphics::Graphics::defaultLight);
+        }
+        Graphics::Graphics::EnableForwardBlend();
+        for (it2 = _lights.begin(); it2 != _lights.end(); ++it2)
+        {
+            it2->second->bind();
+            for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+            {
+                (it->second)->componentRenderForward(*(it2->second));
+            } 
+        }
+        Graphics::Graphics::DisableForwardBlend();
+    }
+
+	void    AScene::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
     {
         for (GameObject *go : _toStartUI)
         {
-            go->startUI(ctx);
+            go->startUI(ctx, fonts);
         }
         _toStartUI.clear();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
-            (it->second)->componentStartUI(ctx);
+            (it->second)->componentStartUI(ctx, fonts);
         }
     }
 
@@ -152,6 +210,11 @@ namespace BeerEngine
         }
     }
 
+    void AScene::setSkybox(Graphics::Cubemap *cubemap)
+    {
+        _skyboxCubemap = cubemap;
+    }
+
     void    AScene::save(std::string filePath) {
         nlohmann::json j = dynamic_cast<JsonSerializable *>(this);
         std::string content = j.dump(4);
@@ -163,7 +226,10 @@ namespace BeerEngine
         std::string content = BeerEngine::IO::FileUtils::LoadFile(filePath);
         std::cout << "deserializing " << filePath << "\n";
         auto j = nlohmann::json::parse(content);
-        this->deserialize(j);
+		BeerEngine::JsonLoader loader;
+        this->deserialize(j, loader);
+		// JsonSerializable::ExecuteCallBacks();
+		loader.executeCallBacks();
     }
 
     nlohmann::json	AScene::serialize()
@@ -173,15 +239,14 @@ namespace BeerEngine
         };
 	}
 
-    void AScene::deserialize(const nlohmann::json & j)
+    void AScene::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     {
 		std::cout << "deserializing scene" << "\n";
 		auto gameObjects = j.at("gameObjects");
 		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 			auto goJson = it.value();
-			auto go = GameObject::Deserialize(goJson, *this);
-			this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
-			go->start();
+			auto go = GameObject::Deserialize(goJson, loader, *this);
+			// this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
 		}
 	}
 
@@ -201,6 +266,12 @@ namespace BeerEngine
 
     void    AScene::destroyGameObjects(void)
     {
+        for (GameObject *go : _toDestroy)
+		{
+            std::map<int, GameObject *>::iterator it;
+			if ((it = _gameObjects.find(go->_uniqueID)) != _gameObjects.end())
+                (it->second)->componentOnDestroy();
+		}
         for (GameObject *go : _toDestroy)
 		{
             std::map<int, GameObject *>::iterator it;

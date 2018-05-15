@@ -1,0 +1,89 @@
+{
+    "components": [
+        {
+            "componentClass": "N10BeerEngine9Component12MeshRendererE",
+            "material": {
+                "albedo": {
+                    "sourceFile": "assets/textures/crate0_diffuse.png"
+                },
+                "bump": {
+                    "sourceFile": "assets/textures/crate0_bump.png"
+                },
+                "normal": {
+                    "sourceFile": "assets/textures/crate0_normal.png"
+                },
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shader": "defaultShader"
+            },
+            "mesh": {
+                "sourceFile": "",
+                "type": "cube"
+            },
+            "pivot": [
+                [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "componentClass": "N10BeerEngine9Component13BoxCollider2DE",
+            "isTrigger": false,
+            "size": [
+                1.0,
+                1.0
+            ]
+        }
+    ],
+    "id": 7,
+    "name": "map block",
+    "transform": {
+        "parent": null,
+        "pivot": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "position": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "rotation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "scale": [
+            1.0,
+            1.0,
+            1.0
+        ]
+    }
+}

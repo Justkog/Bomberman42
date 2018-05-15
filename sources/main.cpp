@@ -14,10 +14,15 @@
 #define MAX_VERTEX_BUFFER 512 * 1024
 #define MAX_ELEMENT_BUFFER 128 * 1024
 
+#include "Core/Core.hpp"
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "Core/BeerEngine.hpp"
 #include "Game/SceneTest.hpp"
 #include "Game/SceneMain.hpp"
 #include "Game/Assets.hpp"
+//#include <nuklear.h>
 
 static int      frameCount = 0;
 static int      FPS = 60;
@@ -30,11 +35,12 @@ void updateThread(BeerEngine::Window *window)
     double  fixedTimer = 0.0;
     double  timer = 0.0;
     int     fixeUpdateNumber = 0;
-    BeerEngine::AScene  *scene;
+    BeerEngine::AScene  *scene = nullptr;
     std::cout << "Thread Update: Started" << std::endl;
     while (!window->isClose())
     {
-        scene = BeerEngine::SceneManager::GetCurrent();
+        scene = BeerEngine::SceneManager::GetCurrent(false);
+
         if (scene != nullptr)
         {
             scene->mutexLock(true);
@@ -56,8 +62,8 @@ void updateThread(BeerEngine::Window *window)
             fixeUpdateNumber++;
             fixedTimer -= fixedUpdateTime;
         }
-        if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
-            window->closeRequest();
+        // if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
+        //     window->closeRequest();
         if (scene != nullptr)
         {
             scene->mutexLock(true);
@@ -78,8 +84,9 @@ void updateThread(BeerEngine::Window *window)
         }
         //  std::this_thread::sleep_for(sleepTime);
 
-		BeerEngine::Input::Update();
+		// BeerEngine::Input::Update();
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		// std::cout << "update thread" << std::endl;
     }
     std::cout << "Thread Update: Finish" << std::endl;
 }
@@ -92,11 +99,21 @@ int main(void)
     // Nuklear
     struct nk_context *ctx;
     ctx = nk_glfw3_init(window->getWindow(), NK_GLFW3_INSTALL_CALLBACKS);
+
+	std::map<std::string, nk_font *> fonts;
     struct nk_font_atlas *atlas;
     nk_glfw3_font_stash_begin(&atlas);
 
-    nk_glfw3_font_stash_end();
+	struct nk_font_config cfg = nk_font_config(13);
+	cfg.pixel_snap = true;
+	fonts["main"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 48, &cfg);
+	fonts["smallMain"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 26, &cfg);
+	fonts["secondary"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/SEASRN__.ttf", 80, &cfg);
 
+	fonts["default"] = nk_font_atlas_add_default(atlas, 13.0f, 0);
+
+    nk_glfw3_font_stash_end();
+	nk_style_set_font(ctx, &fonts["default"]->handle);
     // Audio
     BeerEngine::Audio::AudioListener::init();
     // BeerEngine::Audio::AudioListener audio;
@@ -132,26 +149,27 @@ int main(void)
     // First Scene
     BeerEngine::SceneManager::LoadScene<SceneTest>();
     // BeerEngine::SceneManager::LoadScene<SceneMain>();
-	
+    // BeerEngine::SceneManager::LoadScene("main.scene");
+
     // Thread Update
     std::thread updateLoop (updateThread, window);
     updateLoop.detach();
     // FPS
-    glfwFocusWindow(window->getWindow());
+    // glfwFocusWindow(window->getWindow());
+	glfwShowWindow(window->getWindow());
+
     while (!window->isClose())
     {
         window->update();
-        scene = BeerEngine::SceneManager::GetCurrent();
-        nk_glfw3_new_frame();
 
-        if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-        {
-            std::stringstream ss;
-            ss << "FPS: " << FPS << " / UPS: " << UPS;
-            nk_layout_row_dynamic(ctx, 20, 1);
-            nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-        }
-        nk_end(ctx);
+		// if scene changes, it has to be loaded in this thread
+		// it needs to set a variable to a specific value and wait
+		// so that the other thread detects it and also sets another variable to a specific value and wait
+		// once this value has changed this thread changes the scene and reset the variable
+		// so that the other thread can stop waiting
+        scene = BeerEngine::SceneManager::GetCurrent(true);
+
+        nk_glfw3_new_frame();
 
         // Draw
         glEnable(GL_DEPTH_TEST);
@@ -166,15 +184,27 @@ int main(void)
             scene->mutexLock(true);
             scene->renderUpdate();
             scene->render();
-            scene->startUI(ctx);
+            scene->startUI(ctx, fonts);
             scene->renderUI(ctx);
             scene->destroyGameObjects();
             scene->mutexLock(false);
         }
         glDisable(GL_DEPTH_TEST);
+
+		if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+        {
+            std::stringstream ss;
+            ss << "FPS: " << FPS << " / UPS: " << UPS;
+            nk_layout_row_dynamic(ctx, 20, 1);
+            nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+        }
+        nk_end(ctx);
+
         nk_glfw3_render(NK_ANTI_ALIASING_ON, MAX_VERTEX_BUFFER, MAX_ELEMENT_BUFFER);
+		BeerEngine::Input::Update();
         window->swapBuffer();
         frameCount++;
+		// std::cout << "render thread" << std::endl;
     }
     nk_glfw3_shutdown();
     // srcAudio.Delete();

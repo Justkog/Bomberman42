@@ -24,6 +24,10 @@ namespace BeerEngine
 		std::string     _title; /*!< Titre de la fenetre*/
 		int             _width; /*!< Largeur de la fenetre*/
 		int             _height; /*!< Hauteur de la fenetre*/
+		int				_xPos;
+		int 			_yPos;
+		int 			_windowWidth;
+		int 			_windowHeight;
 		GLFWwindow      *_window; /*!< Context GLFW de la fenetre*/
 		glm::mat4       _perspective; /*!< Matrice de Perspective pour les rendu 3D*/
 		glm::mat4       _ortho; /*!< Matrice Orthographique pour les rendu 2D*/
@@ -50,6 +54,14 @@ namespace BeerEngine
 		*  \return context GLFW
 		*/
 		GLFWwindow      *getWindow(void);
+		int     		*getXPos(void);
+		int     		*getYPos(void);
+		int				getWidth();
+		int				getHeight();
+		int				getWindowedWidth();
+		int				getWindowedHeight();
+		bool			isFullScreen();
+		void			setWindowProperties(int x, int y, int width, int height);
 		/*!
 		*  \brief appel du nettoyage du rendu
 		*  Methode qui permet de nettoyer le rendu de la fenetre
@@ -88,6 +100,9 @@ namespace BeerEngine
 		*  \return true, si la fenetre est femer et false si elle est ouverte
 		*/
 		bool			isClose(void);
+		void			setFullScreen(void);
+		void			setWindowed(void);
+		void			resize(int width, int height);
 		/*!
 		*  \brief creer la fenetre
 		*  Methode qui permet de creer la fenetre et de la recuperer.
@@ -100,6 +115,9 @@ namespace BeerEngine
 		*  \return la fenetre
 		*/
 		static Window	*GetInstance(void);
+
+		static void CallbackResize(GLFWwindow* window, int cx, int cy);
+
 	};
 }
 

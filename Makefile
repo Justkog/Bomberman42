@@ -8,12 +8,7 @@ MAKE = make --no-print-directory
 
 NAME = Bomberman
 LIB_NAME =
-LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3` \
-	`pkg-config --static --libs glew` \
-	`pkg-config --static --libs glm` \
-	`pkg-config --static --libs libpng`\
-	`pkg-config --static --libs openal` \
-	`pkg-config --static --libs sndfile`
+LIBS = -lm -framework OPENGL `pkg-config --static --libs glfw3 glew glm libpng openal sndfile assimp`
 
 SRC = \
 	main.cpp \
@@ -26,6 +21,7 @@ SRC = \
 	Core/Json/Json.cpp \
 	Core/Json/JsonSerializable.cpp \
 	Core/AScene.cpp \
+	Core/GenericScene.cpp \
 	Core/GameObject.cpp \
 	Core/Transform.cpp \
 	Core/Input.cpp \
@@ -41,12 +37,17 @@ SRC = \
 	Core/Component/RigidBody2D.cpp \
 	Core/Component/ParticleBase.cpp \
 	Core/Component/ParticleExplode.cpp \
+	Core/Component/ModelRenderer.cpp \
 	\
 	Core/Graphics/Mesh.cpp \
 	Core/Graphics/MeshBuilder.cpp \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
+	Core/Graphics/Lights/ALight.cpp \
+	Core/Graphics/Lights/AmbiantLight.cpp \
+	Core/Graphics/Lights/DirectionalLight.cpp \
+	Core/Graphics/Cubemap.cpp \
 	Core/Graphics/Texture.cpp \
 	\
 	Core/Physics/Physics.cpp \
@@ -61,8 +62,10 @@ SRC = \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
 	Game/Assets.cpp \
+	Game/Input.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
+	Game/Components/GameManager.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \
 	Game/Components/Player.cpp \
@@ -75,21 +78,27 @@ SRC = \
 	Game/Components/Breakable.cpp \
 	Game/Components/BeerRoutineTester.cpp \
 	Game/Components/MainMenu.cpp \
+	Game/Components/VersusMenu.cpp \
+	Game/Components/SettingsMenu.cpp \
+	Game/Components/InputsMenu.cpp \
+	Game/Components/InGameMenu.cpp \
+	Game/Components/GameOverMenu.cpp \
+	Game/Components/VictoryMenu.cpp \
+	Game/Components/TimeUI.cpp \
+	Game/Components/ItemsUI.cpp \
+	Game/Components/UIThemeManager.cpp \
+	Game/Components/BackgroundDrawer.cpp \
 	Game/CameraTest.cpp
 
 
-DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
+DIR = $(dir $(SRC))
+# Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
 # -g
 # -Ofast -march=native -flto
 CFLAGS = -g -std=c++11 -Wc++11-extensions \
-	`pkg-config glfw3 --cflags-only-I` \
-	`pkg-config glew --cflags-only-I` \
-	`pkg-config glm --cflags-only-I` \
-	`pkg-config libpng --cflags-only-I` \
-	`pkg-config openal --cflags-only-I` \
-	`pkg-config sndfile --cflags-only-I`
+	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 
 
@@ -101,7 +110,7 @@ O_FILE = $(addprefix obj/, $(SRC:.cpp=.o))
 D_FILE = $(addprefix obj/, $(SRC:.cpp=.d))
 CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include \
 	-I tinyobjloader/ -I stb/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME))) \
-	-I nuklear/ -I sources/sigslot/src
+	-I nuklear/ -I sources/
 
 LIB_DIR = $(addprefix lib, $(LIB_NAME))
 LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))
@@ -121,6 +130,7 @@ install:
 	~/.brew/bin/brew install libsndfile
 	~/.brew/bin/brew tap nlohmann/json
 	~/.brew/bin/brew install nlohmann_json
+	~/.brew/bin/brew install assimp
 	sh script.sh
 
 relink:

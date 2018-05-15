@@ -1,8 +1,12 @@
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
+
+#include <Core/Graphics/Lights/AmbiantLight.hpp>
 #include "tiny_obj_loader.h"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Game/Assets.hpp"
 
 namespace BeerEngine
 {
@@ -15,6 +19,15 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::particleShader = nullptr;
 		ShaderProgram	*Graphics::defaultShader = nullptr;
 		AMaterial		*Graphics::defaultMaterial = nullptr;
+		ALight			*Graphics::defaultLight = nullptr;
+		ShaderProgram	*Graphics::skyboxShader = nullptr;
+		Cubemap			*Graphics::defaultCubemap = nullptr;
+
+		ShaderProgram	*Graphics::ambiantShader = nullptr;
+		ShaderProgram	*Graphics::directionalShader = nullptr;
+		ShaderProgram	*Graphics::spotShader = nullptr;
+		ShaderProgram	*Graphics::cubemapShader = nullptr;
+
 
 		static Mesh	*LoadPlane(void)
 		{
@@ -147,31 +160,32 @@ namespace BeerEngine
 
 		static ShaderProgram *loadParticleShader(void)
 		{
-			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
-			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_v.glsl").c_str()
-			);
-			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/particle_f.glsl").c_str()
-			);
-			// shader->load(2, GL_GEOMETRY_SHADER,
-			// 	BeerEngine::IO::FileUtils::LoadFile("shaders/particle_g.glsl").c_str()
-			// );
-			shader->compile();
-			return (shader);
+			return (Assets::GetShaderProgram("shaders/particle_v.glsl", "shaders/particle_f.glsl"));
 		}
 
 		ShaderProgram *Graphics::loadLineShader(void)
 		{
-			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
-			shader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/line_v.glsl").c_str()
-			);
-			shader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/line_f.glsl").c_str()
-			);
-			shader->compile();
-			return (shader);
+			return (Assets::GetShaderProgram("shaders/line_v.glsl", "shaders/line_f.glsl"));
+		}
+
+		ShaderProgram *Graphics::loadAmbiantShader(void)
+		{
+			return (Assets::GetShaderProgram("shaders/lights/ambiant_light_v.glsl", "shaders/lights/ambiant_light_f.glsl"));
+		}
+
+		ShaderProgram *Graphics::loadDirectionalShader(void)
+		{
+			return (Assets::GetShaderProgram("shaders/lights/directional_light_v.glsl", "shaders/lights/directional_light_f.glsl"));
+		}
+
+		ShaderProgram *Graphics::loadSkyboxShader(void)
+		{
+			return (Assets::GetShaderProgram("shaders/skybox_v.glsl", "shaders/skybox_f.glsl"));
+		}
+
+		ShaderProgram *Graphics::loadCubemapShader(void)
+		{
+			return (Assets::GetShaderProgram("shaders/cubemap_v.glsl", "shaders/cubemap_f.glsl"));
 		}
 
 		void Graphics::Load(void)
@@ -184,16 +198,16 @@ namespace BeerEngine
 			whiteTexture = loadWhiteTexture();
 			//Shader Particle;
 			particleShader = loadParticleShader();
-			// Default Material
-			defaultShader = new BeerEngine::Graphics::ShaderProgram(2);
-			defaultShader->load(0, GL_VERTEX_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_v.glsl").c_str()
-			);
-			defaultShader->load(1, GL_FRAGMENT_SHADER,
-				BeerEngine::IO::FileUtils::LoadFile("shaders/basic_f.glsl").c_str()
-			);
-			defaultShader->compile();
+			defaultShader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
+
+			ambiantShader = loadAmbiantShader();
+			directionalShader = loadDirectionalShader();
+			skyboxShader = loadSkyboxShader();
+			cubemapShader = loadCubemapShader();
+			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 128);
+
 			defaultMaterial = new AMaterial(defaultShader);
+			defaultLight = new AmbiantLight(0.2f, glm::vec4(0.6, 0.8, 1.0, 1.0));
 		}
 
 		void Graphics::UnLoad(void)
@@ -204,6 +218,11 @@ namespace BeerEngine
 			delete particleShader;
 			delete defaultShader;
 			delete defaultMaterial;
+			delete defaultLight;
+
+			delete ambiantShader;
+			delete directionalShader;
+			delete cubemapShader;
 		}
 
 		Mesh	*Graphics::OBJLoader(std::string path)
@@ -251,7 +270,7 @@ namespace BeerEngine
 							tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
 							tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
 							tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
-							tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+							tinyobj::real_t ty = 1.0 - attrib.texcoords[2*idx.texcoord_index+1];
 
 						  builder
 							  .addVertice(glm::vec3(vx, vy, vz))
@@ -276,7 +295,7 @@ namespace BeerEngine
 							tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
 							tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
 							tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
-							tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+							tinyobj::real_t ty = 1.0 - attrib.texcoords[2*idx.texcoord_index+1];
 
 							builder
 							  .addVertice(glm::vec3(vx, vy, vz))
@@ -319,6 +338,104 @@ namespace BeerEngine
 			auto mesh = builder.build();
 			mesh->setSourcefile(path);
 			return (mesh);
+		}
+
+		void Graphics::EnableForwardBlend()
+		{
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE);
+			glDepthMask(GL_FALSE);
+			glDepthFunc(GL_EQUAL);
+		}
+
+		void Graphics::DisableForwardBlend()
+		{
+			glDepthFunc(GL_LESS);
+			glDepthMask(GL_TRUE);
+			glDisable(GL_BLEND);
+		}
+
+		/*
+		 *	Model loader using Assimp
+		 */
+
+		Mesh	*Graphics::ModelLoader(std::string path)
+		{
+			Assimp::Importer importer;
+			const aiScene *scene = importer.ReadFile(path.c_str(), 
+										aiProcess_Triangulate |
+										aiProcess_FlipUVs | 
+										aiProcess_JoinIdenticalVertices); 
+			if (!scene)
+			{
+				std::cerr << "Invalid model file !" << std::endl;
+				exit(EXIT_FAILURE);
+			}
+
+			BeerEngine::Graphics::MeshBuilder builder;
+
+			bool useTexCoords = false;
+			for (std::size_t k = 0; k < scene->mNumMeshes; k++)
+			{
+				aiMesh *mesh = scene->mMeshes[k];
+
+				std::vector<glm::vec3>	positions;
+				std::vector<glm::vec3>	normals;
+				std::vector<glm::vec2>	texcoords;
+				
+				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
+				{
+					glm::vec3 position;
+					position.x = mesh->mVertices[i].x;
+					position.y = mesh->mVertices[i].y;
+					position.z = mesh->mVertices[i].z;
+					positions.push_back(position);
+
+					glm::vec3 normal;
+					normal.x = mesh->mNormals[i].x;
+					normal.y = mesh->mNormals[i].y;
+					normal.z = mesh->mNormals[i].z;
+					normals.push_back(normal);
+
+					if(mesh->HasTextureCoords(0))
+					{
+						useTexCoords = true;
+						glm::vec2 texcoord;
+						texcoord.x = mesh->mTextureCoords[0][i].x;
+						texcoord.y = 1.0 - mesh->mTextureCoords[0][i].y;
+						texcoords.push_back(texcoord);
+					}
+				}
+
+				for (std::size_t i = 0; i < mesh->mNumFaces; i++)
+				{
+					aiFace face = mesh->mFaces[i];
+					for (std::size_t j = 0; j < face.mNumIndices; j++)
+					{
+						int index = face.mIndices[j];
+
+						glm::vec3 position = positions[index];
+						builder.addVertice(position);
+
+						glm::vec3 normal = normals[index];
+						builder.addNormal(normal);
+
+						if(mesh->HasTextureCoords(0))
+						{
+							glm::vec2 texcoord = texcoords[index];
+							builder.addUV(texcoord);
+						}
+					}
+				}
+			}
+
+			if (useTexCoords)
+				builder.calculTangent();
+			
+			auto builtMesh = builder.build();
+			builtMesh->setSourcefile(path);
+
+			return (builtMesh);
 		}
 	}
 }

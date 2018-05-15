@@ -5,8 +5,11 @@
  * \brief Compisition des scenes
  * \author mgallo
  */
+#include <Core/Graphics/Cubemap.hpp>
 #include "Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
+
+struct nk_font;
 /*! \namespace BeerEngine
  * 
  * espace de nommage regroupant les fonctionnalité du moteur
@@ -21,11 +24,12 @@ namespace BeerEngine
     private:
         static int                  uniqueID; /*!< Generation d'un id unique pour chaque objet de la scene*/
         std::map<int, GameObject *> _gameObjects; /*!< List des objets de la scne*/
+        std::map<int, Graphics::ALight *>   _lights;
         std::vector<GameObject *>   _toDestroy; /*!< List des objets allant a la destruction*/
         std::vector<GameObject *>   _toStart; /*!< List des objets allant a l'initilisation*/
         std::vector<GameObject *>   _toStartUI; 
         std::mutex                  updateMutex; /*!< Protection pour le traitement de multiple thread*/
-
+		Graphics::Cubemap					*_skyboxCubemap;
         
     public:
         std::string                 filePath; /*!< Chemin du fichier ou la scene est sauvegarder*/
@@ -55,7 +59,7 @@ namespace BeerEngine
 		*  Methode permettant d'initialiser les objets creer.
 		*/
         void    start(void);
-        void    startUI(struct nk_context *ctx);
+        void    startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
         /*!
 		*  \brief update fix des objets
 		*  Methode permettant de mettre a jour les objets de maniere fixe (60 fois pas seconde par defaut).
@@ -76,7 +80,8 @@ namespace BeerEngine
 		*  Methode permettant de rendre l'objet a l'ecran
 		*/
         void    render(void);
-        /*!
+        void    renderForward(void);
+		/*!
 		*  \brief rendu de l'UI
 		*  Methode permettant de rendre UI de l'objet a l'ecran
 		*/
@@ -125,19 +130,36 @@ namespace BeerEngine
 			object->load(prefabPath);
 			return (object);
 		}
+
+        template<typename T, typename std::enable_if<std::is_base_of<Graphics::ALight, T>::value>::type* = nullptr>
+		T	*instantiateLight(void)
+		{
+			std::cout << "Light added : " << uniqueID << std::endl;
+			T *c = new T(uniqueID, *this);
+			_lights.insert(std::pair<int, Graphics::ALight *>(uniqueID, static_cast<Graphics::ALight *>(c)));
+            // _toStart.push_back(c);
+            // _toStartUI.push_back(c);
+            uniqueID++;
+			return (c);
+		}
+
+		void setSkybox(Graphics::Cubemap *cubemap);
+
         void debugTest(void);
-        /*!
+		GameObject *find(std::string name);
+		/*!
 		*  \brief list d'objet
 		*  Methode permettant de retourner la liste des objet
         *  \return list des objets
 		*/
         std::vector<GameObject *> getGameObjects();
+        std::vector<Graphics::ALight *> getLights();
         
         void save(std::string filePath);
         void load(std::string filePath);
 
         virtual nlohmann::json	serialize();
-        virtual void deserialize(const nlohmann::json & j);
+        virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
     };
 }

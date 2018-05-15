@@ -25,6 +25,7 @@ namespace BeerEngine
 		static std::map<std::string, float> axis; /*!< Valeur des axes*/
 
 	public:
+		static std::function<void (int)>	onKeyPushed;
 		static glm::vec2	mousePosition; /*!< Position de la souris*/
 		static glm::vec2	mouseScroll; /*!< roulette de la souris*/
 		/*!
@@ -104,6 +105,9 @@ namespace BeerEngine
 		*  \retrun la valeur floatante de l'axe
 		*/
 		static float		GetAxis(std::string name);
+		
+		static std::function<void (int)> onKeyPushedDefault();
+
 		/*!
 		*  \brief mise a jour des entrer
 		*  Methode appeler pour mettre a jour les entree. appeler une fois par boucle principal.

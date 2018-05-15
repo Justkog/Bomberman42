@@ -17,7 +17,7 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-		class AudioSource : public BeerEngine::Component::Component, 
+		class AudioSource : public BeerEngine::Component::Component,
 							public BeerEngine::Component::IStart,
 							public BeerEngine::Component::IUpdate
 		{
@@ -35,6 +35,7 @@ namespace BeerEngine
 			void		continuePlaying();
 			void	    stop();
 
+			void 			delet();
 			void	    Delete();
 
 			void		setVolume(float);
@@ -45,9 +46,14 @@ namespace BeerEngine
 			void		setBuffer(ALuint);
 			void		setSource(ALuint);
 
+			ALuint	getBuffer();
+
 			virtual void    start(void);
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
+
+			REGISTER_COMPONENT_HPP
+
 
 		private:
 			ALuint		_Buffer;
