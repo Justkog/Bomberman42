@@ -12,9 +12,9 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 26,
+                        "serializationID": 43,
                         "shader": {
-                            "serializationID": 25,
+                            "serializationID": 42,
                             "sourceFileFS": "shaders/line_f.glsl",
                             "sourceFileVS": "shaders/line_v.glsl"
                         }
@@ -45,12 +45,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 24
+                    "serializationID": 41
                 }
             ],
-            "id": 0,
+            "id": 2,
             "name": "lines Holder",
-            "serializationID": 22,
+            "serializationID": 39,
             "transform": {
                 "pivot": [
                     0.0,
@@ -73,7 +73,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 23
+                "serializationID": 40
             }
         },
         {
@@ -81,67 +81,67 @@
                 {
                     "componentClass": "N4Game9Component11GameManagerE",
                     "enabled": true,
-                    "gameOverMenu": 35,
-                    "inGameMenu": 34,
-                    "playerBreakable": 45,
-                    "serializationID": 29,
-                    "victoryMenu": 36
+                    "gameOverMenu": 52,
+                    "inGameMenu": 51,
+                    "playerBreakable": 62,
+                    "serializationID": 46,
+                    "victoryMenu": 53
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 30
+                    "serializationID": 47
                 },
                 {
                     "componentClass": "N4Game9Component16CameraControllerE",
                     "enabled": true,
-                    "serializationID": 31
+                    "serializationID": 48
                 },
                 {
                     "componentClass": "N4Game9Component12MouseRayTestE",
                     "enabled": true,
-                    "linesRenderer": 24,
-                    "serializationID": 32
+                    "linesRenderer": 41,
+                    "serializationID": 49
                 },
                 {
                     "componentClass": "N4Game9Component14UIThemeManagerE",
                     "enabled": true,
-                    "serializationID": 33
+                    "serializationID": 50
                 },
                 {
                     "componentClass": "N4Game9Component10InGameMenuE",
                     "enabled": false,
-                    "serializationID": 34,
-                    "uiManager": 33
+                    "serializationID": 51,
+                    "uiManager": 50
                 },
                 {
                     "componentClass": "N4Game9Component12GameOverMenuE",
                     "enabled": false,
-                    "serializationID": 35,
-                    "uiManager": 33
+                    "serializationID": 52,
+                    "uiManager": 50
                 },
                 {
                     "componentClass": "N4Game9Component11VictoryMenuE",
                     "enabled": false,
-                    "serializationID": 36,
-                    "uiManager": 33
+                    "serializationID": 53,
+                    "uiManager": 50
                 },
                 {
                     "componentClass": "N4Game9Component6TimeUIE",
                     "enabled": true,
-                    "serializationID": 37,
-                    "uiManager": 33
+                    "serializationID": 54,
+                    "uiManager": 50
                 },
                 {
                     "componentClass": "N4Game9Component7ItemsUIE",
                     "enabled": true,
-                    "serializationID": 38,
-                    "uiManager": 33
+                    "serializationID": 55,
+                    "uiManager": 50
                 }
             ],
-            "id": 1,
+            "id": 3,
             "name": "Camera",
-            "serializationID": 27,
+            "serializationID": 44,
             "transform": {
                 "pivot": [
                     0.0,
@@ -164,7 +164,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 28
+                "serializationID": 45
             }
         },
         {
@@ -207,46 +207,46 @@
                     ],
                     "enabled": true,
                     "explosionSize": 1.0,
-                    "map": 56,
-                    "serializationID": 44,
+                    "map": 73,
+                    "serializationID": 61,
                     "speed": 2.0
                 },
                 {
                     "componentClass": "N4Game9Component9BreakableE",
                     "enabled": true,
-                    "serializationID": 45
+                    "serializationID": 62
                 },
                 {
                     "componentClass": "N4Game9Component6PlayerE",
                     "enabled": true,
-                    "itemSrcAudio": 53,
-                    "serializationID": 46,
-                    "srcAudio": 52
+                    "itemSrcAudio": 70,
+                    "serializationID": 63,
+                    "srcAudio": 69
                 },
                 {
                     "componentClass": "Component",
                     "enabled": true,
-                    "serializationID": 47
+                    "serializationID": 64
                 },
                 {
                     "componentClass": "N4Game9Component8SettingsE",
                     "enabled": true,
                     "filePath": "testSettings.json",
-                    "serializationID": 48
+                    "serializationID": 65
                 },
                 {
                     "componentClass": "N10BeerEngine9Component14CircleColliderE",
                     "enabled": true,
                     "isTrigger": false,
                     "radius": 0.30000001192092896,
-                    "serializationID": 49
+                    "serializationID": 66
                 },
                 {
                     "componentClass": "N10BeerEngine9Component11RigidBody2DE",
                     "enabled": true,
                     "kinematic": 2,
                     "mass": 1.0,
-                    "serializationID": 50,
+                    "serializationID": 67,
                     "velocity": [
                         0.0,
                         0.0
@@ -255,22 +255,22 @@
                 {
                     "componentClass": "N10BeerEngine5Audio13AudioListenerE",
                     "enabled": true,
-                    "serializationID": 51
+                    "serializationID": 68
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 52
+                    "serializationID": 69
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 53
+                    "serializationID": 70
                 }
             ],
-            "id": 2,
+            "id": 4,
             "name": "player",
-            "serializationID": 39,
+            "serializationID": 56,
             "transform": {
                 "pivot": [
                     0.0,
@@ -293,7 +293,7 @@
                     0.029999999329447746,
                     0.029999999329447746
                 ],
-                "serializationID": 40
+                "serializationID": 57
             }
         },
         {
@@ -325,12 +325,12 @@
                             1,
                             -1,
                             8,
-                            2,
+                            0,
                             0,
                             0,
                             0,
                             9,
-                            0,
+                            2,
                             2,
                             2,
                             0,
@@ -346,7 +346,7 @@
                             1,
                             2,
                             1,
-                            2,
+                            0,
                             1,
                             2,
                             1,
@@ -354,7 +354,7 @@
                             1,
                             0,
                             1,
-                            0,
+                            2,
                             1,
                             8,
                             1
@@ -362,16 +362,16 @@
                         [
                             1,
                             2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
                             0,
                             2,
                             0,
-                            0,
-                            0,
-                            2,
-                            0,
-                            0,
-                            2,
-                            2,
                             0,
                             0,
                             2,
@@ -382,73 +382,35 @@
                             1,
                             0,
                             1,
-                            0,
-                            1,
                             2,
-                            1,
-                            0,
-                            1,
-                            0,
                             1,
                             0,
                             1,
                             2,
                             1,
                             2,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            0,
                             1
                         ],
                         [
                             1,
                             2,
+                            2,
+                            2,
                             0,
-                            2,
-                            2,
-                            2,
-                            2,
+                            0,
+                            0,
                             9,
-                            0,
-                            2,
-                            0,
-                            0,
-                            2,
-                            2,
-                            2,
-                            2,
-                            1
-                        ],
-                        [
-                            1,
-                            0,
-                            1,
-                            0,
-                            1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            0,
-                            1
-                        ],
-                        [
-                            1,
-                            0,
-                            2,
                             2,
                             2,
                             0,
                             0,
-                            0,
                             2,
-                            0,
-                            0,
-                            2,
-                            0,
                             0,
                             2,
                             2,
@@ -460,7 +422,45 @@
                             1,
                             2,
                             1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
                             2,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1
+                        ],
+                        [
+                            1,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+                            0,
+                            0,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            2,
+                            1
+                        ],
+                        [
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            0,
                             1,
                             2,
                             1,
@@ -483,11 +483,11 @@
                             0,
                             2,
                             2,
-                            0,
-                            2,
                             2,
                             0,
-                            2,
+                            0,
+                            0,
+                            0,
                             0,
                             2,
                             1
@@ -496,17 +496,17 @@
                             1,
                             8,
                             1,
-                            2,
+                            0,
                             1,
                             2,
                             1,
                             0,
                             1,
-                            2,
+                            0,
                             1,
-                            2,
+                            0,
                             1,
-                            2,
+                            0,
                             1,
                             8,
                             1
@@ -517,15 +517,15 @@
                             8,
                             0,
                             2,
-                            2,
-                            2,
-                            2,
-                            2,
                             0,
-                            0,
+                            2,
                             0,
                             2,
                             2,
+                            0,
+                            2,
+                            0,
+                            0,
                             8,
                             -1,
                             1
@@ -550,8 +550,8 @@
                             1
                         ]
                     ],
-                    "player": 46,
-                    "serializationID": 56,
+                    "player": 63,
+                    "serializationID": 73,
                     "shader": {
                         "serializationID": 5,
                         "sourceFileFS": "shaders/basic_f.glsl",
@@ -561,9 +561,9 @@
                     "sizeY": 13
                 }
             ],
-            "id": 3,
+            "id": 5,
             "name": "map",
-            "serializationID": 54,
+            "serializationID": 71,
             "transform": {
                 "pivot": [
                     0.0,
@@ -586,7 +586,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 55
+                "serializationID": 72
             }
         },
         {
@@ -596,7 +596,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 61,
+                            "serializationID": 78,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -605,7 +605,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 62,
+                        "serializationID": 79,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -613,7 +613,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 60,
+                        "serializationID": 77,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -643,12 +643,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 59
+                    "serializationID": 76
                 }
             ],
-            "id": 4,
+            "id": 6,
             "name": "house",
-            "serializationID": 57,
+            "serializationID": 74,
             "transform": {
                 "pivot": [
                     0.0,
@@ -671,7 +671,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 58
+                "serializationID": 75
             }
         },
         {
@@ -681,7 +681,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 67,
+                            "serializationID": 84,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -690,7 +690,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 68,
+                        "serializationID": 85,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -698,7 +698,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 66,
+                        "serializationID": 83,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -728,12 +728,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 65
+                    "serializationID": 82
                 }
             ],
-            "id": 5,
+            "id": 7,
             "name": "house2",
-            "serializationID": 63,
+            "serializationID": 80,
             "transform": {
                 "pivot": [
                     0.0,
@@ -756,7 +756,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 64
+                "serializationID": 81
             }
         },
         {
@@ -766,7 +766,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 73,
+                            "serializationID": 90,
                             "sourceFile": "assets/textures/ground_color.png"
                         },
                         "color": [
@@ -775,7 +775,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 74,
+                        "serializationID": 91,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -813,12 +813,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 72
+                    "serializationID": 89
                 }
             ],
-            "id": 7,
+            "id": 9,
             "name": "",
-            "serializationID": 70,
+            "serializationID": 87,
             "transform": {
                 "pivot": [
                     0.0,
@@ -841,7 +841,7 @@
                     1.0,
                     40.0
                 ],
-                "serializationID": 71
+                "serializationID": 88
             }
         }
     ]

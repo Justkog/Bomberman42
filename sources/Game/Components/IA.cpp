@@ -49,6 +49,9 @@ namespace Game
 
         void    IA::update(void)
         {
+			// _character->_direction = glm::vec2(0, 0);
+			// if (_character->_direction == glm::vec2(0, 0))
+			// 	_character->stopMove();
             if (!_hasObjective)
                 findObjective();
             if (_hasObjective)
@@ -71,6 +74,8 @@ namespace Game
                     _hasObjective = false;
                 }
             }
+			// if (_character->_direction == glm::vec2(0, 0))
+			// 	_character->stopMove();
         }
 
         bool    IA::canMove(glm::vec3 dir)

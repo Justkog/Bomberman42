@@ -47,6 +47,7 @@ namespace Game
 
 			void	translate(glm::vec3 dir);
 			void    move(Direction dir);
+			void    stopMove();
 			void    increaseSpeed(float val);
 			void    addBomb(void);
 			void    increaseMaxBomb(void);
