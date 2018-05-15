@@ -7,11 +7,10 @@
  */
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
+#include "Cubemap.hpp"
 /*! \namespace BeerEngine
  * espace de nommage regroupant les fonctionnalité du moteur
  */
-#include "Cubemap.hpp"
-
 namespace BeerEngine
 {
 	/*! \namespace Graphics

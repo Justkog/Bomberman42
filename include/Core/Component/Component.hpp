@@ -1,17 +1,28 @@
 #ifndef BE_CORE_COMPONENT_HPP
 #define BE_CORE_COMPONENT_HPP 1
-
+/*!
+ * \file Component.hpp
+ * \brief Component de base
+ * \author mgallo
+ */
 #include <sigslot/src/signal.h>
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 #include "Core/GameObject.hpp"
-
+/*! \namespace BeerEngine
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \namespace Component
+	* espace de nommage regroupant les fonctionnalité des Component du moteur
+	*/
 	namespace Component
 	{
 		typedef std::map<std::string, Component*(*)(GameObject *)> add_component_type;
-
+		/*! \class Component
+		* \brief Component de base, c'est la base de tout autre component. elle permet de regrouper variable et fonctionnaliter utilisable par tout component.
+		*/
 		class Component : public JsonSerializable, public SigSlotBase
 		{
 		protected:

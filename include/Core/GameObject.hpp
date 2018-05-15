@@ -1,6 +1,12 @@
 #ifndef BE_CORE_GAMEOBJECT_HPP
 #define BE_CORE_GAMEOBJECT_HPP 1
 
+/*!
+ * \file GameObject.hpp
+ * \brief Entiter du projet
+ * \author mgallo
+ */
+
 #include "Core/Core.hpp"
 #include "Core/AScene.hpp"
 #include "Core/Transform.hpp"
@@ -9,9 +15,15 @@
 #include "Core/Json/JsonSerializable.hpp"
 
 struct nk_font;
-
+/*! \namespace BeerEngine
+ * 
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \class GameObject
+	* \brief classe representant les entiter du projet, cela regroupe les fonctionnalitée de l'entité par le biais de component
+	*/
     class GameObject : public JsonSerializable, public JsonDeserializable
 	{
 	protected:

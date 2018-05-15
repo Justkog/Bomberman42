@@ -1,14 +1,25 @@
 #ifndef BE_CORE_COMPONENT_RIGIDBODY2D_HPP
 #define BE_CORE_COMPONENT_RIGIDBODY2D_HPP 1
-
+/*!
+ * \file RigidBody2D.hpp
+ * \brief Component physique
+ * \author mgallo
+ */
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
-
+/*! \namespace BeerEngine
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \namespace Component
+	* espace de nommage regroupant les fonctionnalité des Component du moteur
+	*/
 	namespace Component
 	{
-
+		/*! \class RigidBody2D
+		* \brief Permet a un objet ayant se component d'avoir une velociter de s'avoir s'il est deplacable celon une collision et ca mass.
+		*/
 		class RigidBody2D : public Component
 		{
 		public:
