@@ -1,7 +1,5 @@
 #version 400 core
 
-#include "light.glsl"
-
 out vec4 outColor;
 
 uniform vec4 color;
@@ -18,9 +16,13 @@ in mat3 TBN;
 in vec3 vTangentViewPos;
 in vec3 vTangentFragPos;
 in vec4 vWeight;
-in vec4 lightPosition;
 
-uniform DirectionalLight light;
+vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
+{
+    float height =  texture(bump, texCoords).r;
+    vec2 p = viewDir.xy / viewDir.z * (height * 1.0);
+    return texCoords - p;
+}
 
 void main()
 {
@@ -30,7 +32,7 @@ void main()
     if (hasBump == 1)
     {
         vec3 viewDir = normalize(vTangentViewPos - vTangentFragPos);
-        vec2 texCoords = ParallaxMapping(bump, vTexture, viewDir);
+        vec2 texCoords = ParallaxMapping(vTexture, viewDir);
         // if(texCoords.x > 1.0 || texCoords.y > 1.0 || texCoords.x < 0.0 || texCoords.y < 0.0)
         //     discard;
     }
@@ -50,20 +52,14 @@ void main()
     {
         tNormal = vNormal;
     }
-
-    vec4 lightIntensity = calcDirectionalLight(light, tNormal);
+    float l = max(dot(tNormal, -lightDir), 0.15f);
     if (hasAlbedo == 1)
     {
-        vec4 texColor = texture(albedo, texCoords);
-        outColor = color * texColor * lightIntensity;
+         vec4 texColor = texture(albedo, texCoords);
+        outColor = (color * texColor) * vec4(l, l, l, 1.0f);
     }
     else
     {
-        outColor = color * light.light.color * lightIntensity;
+        outColor = color * vec4(l, l, l, 1.0f);
     }
-    float roughtness = 4;
-
-    vec4 pbr = calcPBR(outColor, tNormal, roughtness, 1.0);
-
-    outColor = vec4(pbr.rgb, 1.0) * calcShadow(lightPosition);
 }

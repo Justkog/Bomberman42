@@ -5,6 +5,7 @@
 #include "Component.hpp"
 #include "IRenderForward.hpp"
 #include "IUpdate.hpp"
+#include "IRenderShadow.hpp"
 #include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Mathf.hpp"
@@ -14,7 +15,7 @@ namespace BeerEngine
 {
 	namespace Component
 	{
-		class ModelRenderer : public Component, public IRenderForward, public IUpdate
+		class ModelRenderer : public Component, public IRenderForward, public IUpdate, public IRenderShadow
 		{
 		protected:
 			#define NUM_BONES_PER_VEREX 4
@@ -103,10 +104,14 @@ namespace BeerEngine
 			double getAnimationDuration();
 			void setAnimationTime(double time);
 
-			virtual void fixedUpdate(void);
-       		virtual void update(void);
-			virtual void renderUpdate();
-			virtual void render(Graphics::ALight &light);
+			virtual void	fixedUpdate(void);
+       		virtual void	update(void);
+			virtual void	renderUpdate();
+			virtual void	render(Graphics::ALight &light);
+			virtual void    renderShadowUpdate(void);
+			virtual void    renderShadow(void);
+			virtual bool	castShadows(void);
+			virtual bool	receiveShadows(void);
 
 			GLenum renderMode;
 

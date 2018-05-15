@@ -4,6 +4,7 @@
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IRenderAlpha.hpp"
 #include "Core/Component/IRenderForward.hpp"
+#include "Core/Component/IRenderShadow.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IStart.hpp"
@@ -231,6 +232,19 @@ namespace BeerEngine
 				continue;
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->renderAlpha();
+		}
+	}
+
+	void    GameObject::componentRenderShadows(void)
+	{
+		for (Component::Component *c : _components)
+		{
+			if (!c->_isActive)
+				continue;
+			if (Component::IRenderShadow *r = dynamic_cast<Component::IRenderShadow*>(c))
+			{
+				r->renderShadow();
+			}
 		}
 	}
 

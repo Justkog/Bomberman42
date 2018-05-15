@@ -24,6 +24,7 @@ namespace BeerEngine
 			static Texture			*whiteTexture;
 			static ShaderProgram	*particleShader;
 			static ShaderProgram	*defaultShader;
+			static ShaderProgram	*defaultGuiShader;
 			static AMaterial		*defaultMaterial;
 			static ALight			*defaultLight;
 			static ShaderProgram	*skyboxShader;
@@ -33,6 +34,8 @@ namespace BeerEngine
 			static ShaderProgram	*directionalShader;
 			static ShaderProgram	*spotShader;
 			static ShaderProgram	*cubemapShader;
+			static ShaderProgram	*shadowRenderShader;
+			static ShaderProgram	*shadowShader;
 
 			static void Load(void);
 			static void UnLoad(void);
@@ -47,6 +50,8 @@ namespace BeerEngine
 			static ShaderProgram *loadSpotShader();
 			static ShaderProgram *loadSkyboxShader();
 			static ShaderProgram *loadCubemapShader();
+			static ShaderProgram *loadShadowRenderShader();
+			static ShaderProgram *loadShadowShader();
 
 			static Mesh	*OBJLoader(std::string path);
 			static Mesh *ModelLoader(std::string path);

@@ -385,9 +385,42 @@ namespace BeerEngine
 			{
 				glBindVertexArray(_vao[i]);
 				glDrawArrays(GL_TRIANGLES, 0, _drawSize[i]);
-				glBindVertexArray(0);
 			}
+			glBindVertexArray(0);
 		}
+
+		void    ModelRenderer::renderShadowUpdate(void)
+		{
+
+		}
+
+		void    ModelRenderer::renderShadow(void)
+		{
+			Graphics::Graphics::shadowRenderShader->uniformMat("model", _mat);
+			Graphics::Graphics::shadowRenderShader->uniform1i("hasBones", _scene->HasAnimations() ? 1 : 0);
+			for (int i = 0; i < _transforms.size(); i++)
+			{
+				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
+				Graphics::Graphics::shadowRenderShader->uniformMat(uniform, _transforms[i]);
+			}
+			for (int i = 0; i < _numMeshes; i++)
+			{
+				glBindVertexArray(_vao[i]);
+				glDrawArrays(GL_TRIANGLES, 0, _drawSize[i]);
+			}
+			glBindVertexArray(0);
+		}
+
+		bool	ModelRenderer::castShadows(void)
+		{
+			return true;
+		}
+
+		bool	ModelRenderer::receiveShadows(void)
+		{
+			return true;
+		}
+
 
 		static uint findRotation(float animationTime, const aiNodeAnim *node)
 		{

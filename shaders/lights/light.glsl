@@ -7,6 +7,8 @@ uniform float specular_intensity;
 
 uniform samplerCube envMap;
 
+uniform sampler2D shadowMap;
+
 struct Light
 {
     float   intensity;
@@ -42,6 +44,21 @@ vec4 calcLight(Light light, vec3 direction, vec3 normal)
 vec4 calcDirectionalLight(DirectionalLight light, vec3 normal)
 {
     return calcLight(light.light, light.direction, normal);
+}
+
+float calcShadow(vec4 lightPosition)
+{
+    vec3 projCoords = lightPosition.xyz / lightPosition.w * 0.5 + 0.5;
+
+    float closestDepth = texture(shadowMap, projCoords.xy).r;
+    float currentDepth = projCoords.z;
+
+    if (currentDepth > 1.0)
+        return 1;
+
+    if (currentDepth > closestDepth + 0.001)
+        return 0;
+    return 1;
 }
 
 vec2 ParallaxMapping(sampler2D bump, vec2 texCoords, vec3 viewDir)

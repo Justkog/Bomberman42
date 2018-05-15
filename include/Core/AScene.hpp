@@ -39,6 +39,7 @@ namespace BeerEngine
         void    render(void);
         void    renderForward(void);
         void    renderUI(struct nk_context *ctx);
+        void    renderShadows(void);
         void    physicUpdate(void);
 
         void    destroy(GameObject *go);

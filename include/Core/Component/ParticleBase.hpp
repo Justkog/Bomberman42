@@ -69,6 +69,8 @@ namespace BeerEngine
         	void    update(void);
         	void    renderAlphaUpdate(void);
         	void    renderAlpha(void);
+			// bool	castShadows(void);
+			// bool	receiveShadows(void);
 			void	setTexture(Graphics::Texture *t);
 
 			virtual void initParticle(Particle &particle);

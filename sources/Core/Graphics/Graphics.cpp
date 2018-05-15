@@ -18,6 +18,9 @@ namespace BeerEngine
 		Texture 		*Graphics::whiteTexture = nullptr;
 		ShaderProgram	*Graphics::particleShader = nullptr;
 		ShaderProgram	*Graphics::defaultShader = nullptr;
+		ShaderProgram	*Graphics::defaultGuiShader = nullptr;
+		ShaderProgram	*Graphics::shadowShader = nullptr;
+		ShaderProgram	*Graphics::shadowRenderShader = nullptr;
 		AMaterial		*Graphics::defaultMaterial = nullptr;
 		ALight			*Graphics::defaultLight = nullptr;
 		ShaderProgram	*Graphics::skyboxShader = nullptr;
@@ -188,6 +191,16 @@ namespace BeerEngine
 			return (Assets::GetShaderProgram("shaders/cubemap_v.glsl", "shaders/cubemap_f.glsl"));
 		}
 
+		ShaderProgram *Graphics::loadShadowRenderShader(void)
+		{
+			return (Assets::GetShaderProgram("shaders/shadows/shadow_render_v.glsl", "shaders/shadows/shadow_render_f.glsl"));
+		}
+
+		ShaderProgram *Graphics::loadShadowShader(void)
+		{
+			return (Assets::GetShaderProgram("shaders/shadows/shadow_v.glsl", "shaders/shadows/shadow_f.glsl"));
+		}
+
 		void Graphics::Load(void)
 		{
 			// PLANE
@@ -199,11 +212,14 @@ namespace BeerEngine
 			//Shader Particle;
 			particleShader = loadParticleShader();
 			defaultShader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
+			defaultGuiShader = Assets::GetShaderProgram("shaders/basic_gui_v.glsl", "shaders/basic_gui_f.glsl");
 
 			ambiantShader = loadAmbiantShader();
 			directionalShader = loadDirectionalShader();
 			skyboxShader = loadSkyboxShader();
 			cubemapShader = loadCubemapShader();
+			shadowRenderShader = loadShadowRenderShader();
+			shadowShader = loadShadowShader();
 			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 128);
 
 			defaultMaterial = new AMaterial(defaultShader);

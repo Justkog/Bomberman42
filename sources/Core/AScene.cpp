@@ -1,6 +1,8 @@
 #include "Core/AScene.hpp"
 #include "Core/Core.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Window.hpp"
+#include "Core/Camera.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Graphics/Mesh.hpp"
@@ -9,6 +11,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Graphics/Lights/ALight.hpp"
+#include "Core/Graphics/Lights/DirectionalLight.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Json/Json.hpp"
 
@@ -138,15 +141,14 @@ namespace BeerEngine
         // std::cout << "DEBUG: AScene::render" << std::endl;
         if (_skyboxCubemap)
             _skyboxCubemap->render();
+        renderShadows();
+        renderForward();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->render();
             (it->second)->componentRender();
         }
-
-        renderForward();
-
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->componentRenderAlpha();
@@ -173,6 +175,41 @@ namespace BeerEngine
             } 
         }
         Graphics::Graphics::DisableForwardBlend();
+    }
+
+    void    AScene::renderShadows(void)
+    {
+        std::map<int, Graphics::ALight *>::iterator it2;
+        for (it2 = _lights.begin(); it2 != _lights.end(); ++it2)
+        {
+            Graphics::DirectionalLight *light;
+            if ((light = dynamic_cast<Graphics::DirectionalLight *>(it2->second)) == nullptr)
+                continue;
+            light->bindShadowMap();
+            
+            glEnable(GL_DEPTH_TEST);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            Graphics::Graphics::shadowRenderShader->bind();
+            glm::mat4 proj = glm::ortho(-25.0f, 5.0f, -15.0f, 15.0f, -30.0f, 30.0f);
+            // glm::mat4 proj = glm::perspective(glm::radians(60.0f), 1.0f, 20.0f, 40.0f);
+            // Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
+            Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
+            
+            glm::mat4 lookat = glm::lookAt(glm::vec3(0, 0, 0), light->getDirection() * -1, glm::vec3(0, 1, 0));
+            // glm::mat4 lookat = Camera::main->transform.getMat4(true);
+            Graphics::Graphics::shadowRenderShader->uniformMat("view", lookat);
+            std::map<int, GameObject *>::iterator it;
+            for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+            {
+                (it->second)->componentRenderShadows();
+            }
+            Graphics::Graphics::shadowRenderShader->unbind();
+
+            light->unbindShadowMap();
+
+            // light->drawShadowMap();
+        }
     }
 
 	void    AScene::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)

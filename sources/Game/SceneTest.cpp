@@ -252,7 +252,7 @@ void    SceneTest::init(void)
 	// as->play();
 
 	BeerEngine::Graphics::DirectionalLight *light = instantiateLight<BeerEngine::Graphics::DirectionalLight>();
-	light->setDirection(glm::normalize(glm::vec3(1, 1, 0)));
+	light->setDirection(glm::normalize(glm::vec3(1, 1, -1)));
 	light->setColor(glm::vec4(1, 0.9, 0.8, 1));
 	light->setIntensity(1.0f);
 
