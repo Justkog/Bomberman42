@@ -42,6 +42,7 @@ namespace Game
 			itemBombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
 			itemRangeMesh = Assets::GetModel("assets/models/Fire/fire.obj");
 			drawMap();
+			uiInit = true;
 		}
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
@@ -223,7 +224,10 @@ namespace Game
 
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 100, 270, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			auto mapWidth = 270;
+			auto mapHeight = 430;
+			auto rect = nk_rect(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight, mapWidth, mapHeight);
+			if (nk_begin(ctx, "Map", rect, NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
 				nk_layout_row_dynamic(ctx, 20, 1);
 				// if (_player)
@@ -240,10 +244,15 @@ namespace Game
 					for (int col = 0; col < _sizeX; col++)
 						ss << std::setw(2) << _map[row][col];
 					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-
 				}
             }
             nk_end(ctx);
+			if (uiInit)
+			{
+				nk_window_set_position(ctx, "Map", nk_vec2(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight));
+				nk_window_collapse(ctx, "Map", NK_MINIMIZED);
+				uiInit = false;
+			}
 		}
 
 		glm::vec2		Map::worldToMap(glm::vec3 pos)

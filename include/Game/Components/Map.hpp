@@ -67,6 +67,8 @@ namespace Game
 			BeerEngine::Graphics::Mesh		*itemBombMesh;
 			BeerEngine::Graphics::Mesh		*itemRangeMesh;
 
+			bool uiInit;
+
 			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
