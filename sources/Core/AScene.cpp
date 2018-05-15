@@ -8,6 +8,7 @@
 #include "Core/Graphics/ShaderProgram.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Json/Json.hpp"
 
@@ -16,9 +17,8 @@ namespace BeerEngine
     int     AScene::uniqueID = 0;
 
     AScene::AScene(void)
-    {
-        
-    }
+        : _skyboxCubemap(nullptr)
+    {}
 
     AScene::~AScene(void)
     {
@@ -40,6 +40,17 @@ namespace BeerEngine
 
         // populate map somehow
         for(auto it = _gameObjects.begin(); it != _gameObjects.end(); ++it) {
+            res.push_back( it->second );
+        }
+        return (res);
+    }
+
+    std::vector<Graphics::ALight *> AScene::getLights()
+    {
+        std::vector<Graphics::ALight *> res;
+
+        // populate map somehow
+        for(auto it = _lights.begin(); it != _lights.end(); ++it) {
             res.push_back( it->second );
         }
         return (res);
@@ -118,21 +129,50 @@ namespace BeerEngine
             (it->second)->renderUpdate();
             (it->second)->componentRenderUpdate();
         }
+        if (_skyboxCubemap)
+            _skyboxCubemap->renderUpdate();
     }
 
     void    AScene::render(void)
     {
         // std::cout << "DEBUG: AScene::render" << std::endl;
+        if (_skyboxCubemap)
+            _skyboxCubemap->render();
         std::map<int, GameObject *>::iterator it;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->render();
             (it->second)->componentRender();
         }
+
+        renderForward();
+
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->componentRenderAlpha();
         }
+    }
+
+    void    AScene::renderForward(void)
+    {
+        std::map<int, GameObject *>::iterator it;
+        std::map<int, Graphics::ALight *>::iterator it2;
+
+        Graphics::Graphics::defaultLight->bind();
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentRenderForward(*Graphics::Graphics::defaultLight);
+        }
+        Graphics::Graphics::EnableForwardBlend();
+        for (it2 = _lights.begin(); it2 != _lights.end(); ++it2)
+        {
+            it2->second->bind();
+            for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+            {
+                (it->second)->componentRenderForward(*(it2->second));
+            } 
+        }
+        Graphics::Graphics::DisableForwardBlend();
     }
 
 	void    AScene::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
@@ -168,6 +208,11 @@ namespace BeerEngine
         {
             (it->second)->componentPhysicUpdate();
         }
+    }
+
+    void AScene::setSkybox(Graphics::Cubemap *cubemap)
+    {
+        _skyboxCubemap = cubemap;
     }
 
     void    AScene::save(std::string filePath) {

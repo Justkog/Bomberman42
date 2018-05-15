@@ -160,6 +160,7 @@ namespace BeerEngine
 			if (_mesh == nullptr)
 				return ;
 			glEnable(GL_ALPHA_TEST);
+			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			glDepthMask(GL_FALSE);
 			
@@ -176,7 +177,8 @@ namespace BeerEngine
 			texture->bind();
 			_mesh->render(GL_TRIANGLES, true, _particleCount, (int *)divisor, 6);
 			glDepthMask(GL_TRUE);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			glDisable(GL_BLEND);
 		}
 
 

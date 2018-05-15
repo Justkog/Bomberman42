@@ -3,6 +3,7 @@
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRender.hpp"
 #include "Core/Component/IRenderAlpha.hpp"
+#include "Core/Component/IRenderForward.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IStart.hpp"
@@ -190,6 +191,8 @@ namespace BeerEngine
 				continue;
 			if (Component::IRender *r = dynamic_cast<Component::IRender*>(c))
 				r->renderUpdate();
+			if (Component::IRenderForward *r = dynamic_cast<Component::IRenderForward*>(c))
+				r->renderUpdate();
 			if (Component::IRenderAlpha *r = dynamic_cast<Component::IRenderAlpha*>(c))
 				r->renderAlphaUpdate();
 		}
@@ -206,6 +209,19 @@ namespace BeerEngine
 				r->render();
 		}
 	}
+
+	void    GameObject::componentRenderForward(Graphics::ALight &light)
+	{
+        // std::cout << "DEBUG: GameObject::componentRender" << std::endl;
+		for (Component::Component *c : _components)
+		{
+			if (!c->_isActive)
+				continue;
+			if (Component::IRenderForward *r = dynamic_cast<Component::IRenderForward*>(c))
+				r->render(light);
+		}
+	}
+
 	void    GameObject::componentRenderAlpha(void)
 	{
         // std::cout << "DEBUG: GameObject::componentRenderAlpha" << std::endl;

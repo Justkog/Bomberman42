@@ -39,7 +39,6 @@ namespace Game
 			virtual ~Settings( void );
 
 			Settings & operator=( Settings const & rhs );
-			friend std::ostream & operator<<(std::ostream & o, Settings const & i);
 
 			void loadSettings();
 			void saveSettings();
@@ -58,5 +57,6 @@ namespace Game
 	};
 };
 
+std::ostream & operator<<(std::ostream & o, Game::Component::Settings const & i);
 
 #endif

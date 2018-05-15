@@ -1,6 +1,7 @@
 #ifndef BE_CORE_COMPONENT_HPP
 #define BE_CORE_COMPONENT_HPP 1
 
+#include <sigslot/src/signal.h>
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 #include "Core/GameObject.hpp"

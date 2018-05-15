@@ -14,7 +14,7 @@ namespace BeerEngine
 		public:
 			static std::string  LoadFile(std::string const &path);
 			static void WriteFile(std::string const &path, std::string const &content);
-
+			static std::string GetDirectory(std::string const &file);
 		};
 	}
 }

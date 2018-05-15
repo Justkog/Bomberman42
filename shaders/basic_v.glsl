@@ -17,11 +17,14 @@ out vec2 vTexture;
 out mat3 TBN;
 out vec3 vTangentViewPos;
 out vec3 vTangentFragPos;
+out vec3 viewPosition;
+out vec3 viewDirection;
+out vec3 fragPos;
 
 void main()
 {
     gl_Position = projection * view * model * vec4(vertexPosition, 1);
-    vec3 fragPos = vec3(model * vec4(vertexPosition, 1));
+    fragPos = vec3(model * vec4(vertexPosition, 1));
 
     vec3 T = normalize(vec3(model * vec4(vertexTangent, 0.0)));
     vec3 B = normalize(vec3(model * vec4(vertexBitangent, 0.0)));
@@ -32,4 +35,6 @@ void main()
     vTangentFragPos = TBN * fragPos;
 
     vTexture = vertexTexture * vec2(1, -1);
+    viewPosition = viewPos;
+    viewDirection = viewDir;
 }

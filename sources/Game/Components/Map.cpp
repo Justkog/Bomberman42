@@ -28,7 +28,7 @@ namespace Game
 			{
 				delete[] _map[y];
 			}
-			delete[]_map;
+			delete[] _map;
 		}
 
         void    Map::start(void)
@@ -203,7 +203,7 @@ namespace Game
 								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
 							else
 							{
-								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY);
 								playerSpawn = true;
 							}
 							break;
@@ -257,7 +257,12 @@ namespace Game
 				return (true);
 			for (Game::Component::IA *ia : _IAs)
 			{
-				if (worldToMap(ia->_gameObject->transform.position) == pos)
+				if (!ia->_gameObject)
+				{
+					std::cerr << "Potential segfault !" << std::endl;
+					return (false);
+				}
+				if (worldToMap(ia->_gameObject->transform.position) == pos) // *******  Segfault ******* //
 					return (true);
 			}
 			return (false);

@@ -1,6 +1,7 @@
 #ifndef BE_CORE_ASCENE_HPP
 #define BE_CORE_ASCENE_HPP 1
 
+#include <Core/Graphics/Cubemap.hpp>
 #include "Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
@@ -11,13 +12,14 @@ namespace BeerEngine
     class AScene : public JsonSerializable, public JsonDeserializable
     {
     private:
-        static int                  uniqueID;
-        std::map<int, GameObject *> _gameObjects;
-        std::vector<GameObject *>   _toDestroy;
-        std::vector<GameObject *>   _toStart;
-        std::vector<GameObject *>   _toStartUI;
-        std::mutex                  updateMutex;
-
+        static int                          uniqueID;
+        std::map<int, GameObject *>         _gameObjects;
+        std::map<int, Graphics::ALight *>   _lights;
+        std::vector<GameObject *>           _toDestroy;
+        std::vector<GameObject *>           _toStart;
+        std::vector<GameObject *>           _toStartUI;
+        std::mutex                          updateMutex;
+		Graphics::Cubemap					*_skyboxCubemap;
         
     public:
         std::string                 filePath;
@@ -35,6 +37,7 @@ namespace BeerEngine
         void    update(void);
         void    renderUpdate(void);
         void    render(void);
+        void    renderForward(void);
         void    renderUI(struct nk_context *ctx);
         void    physicUpdate(void);
 
@@ -62,10 +65,25 @@ namespace BeerEngine
 			return (object);
 		}
 
+        template<typename T, typename std::enable_if<std::is_base_of<Graphics::ALight, T>::value>::type* = nullptr>
+		T	*instantiateLight(void)
+		{
+			std::cout << "Light added : " << uniqueID << std::endl;
+			T *c = new T(uniqueID, *this);
+			_lights.insert(std::pair<int, Graphics::ALight *>(uniqueID, static_cast<Graphics::ALight *>(c)));
+            // _toStart.push_back(c);
+            // _toStartUI.push_back(c);
+            uniqueID++;
+			return (c);
+		}
+
+		void setSkybox(Graphics::Cubemap *cubemap);
+
         void debugTest(void);
 		GameObject *find(std::string name);
 
         std::vector<GameObject *> getGameObjects();
+        std::vector<Graphics::ALight *> getLights();
         
         void save(std::string filePath);
         void load(std::string filePath);

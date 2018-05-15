@@ -17,6 +17,7 @@ namespace BeerEngine
 			unsigned int	_size;
 			std::string		_sourceFile;
 			std::string		_type;
+
 		public:
 			Mesh(unsigned int nbVBO);
 			~Mesh();

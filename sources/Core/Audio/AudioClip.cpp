@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "Core/Audio/AudioClip.hpp"
 // #include <AL/al.h>
 // #include <AL/alc.h>

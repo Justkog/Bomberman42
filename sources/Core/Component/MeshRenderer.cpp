@@ -1,6 +1,7 @@
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Graphics/Graphics.hpp"
+#include "Core/SceneManager.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
@@ -32,7 +33,6 @@ namespace BeerEngine
 			return setMesh(BeerEngine::Graphics::Graphics::OBJLoader(inputfile));
 		}
 
-
 		Graphics::AMaterial	*MeshRenderer::getMaterial(void)
 		{
 			return (_material);
@@ -49,14 +49,15 @@ namespace BeerEngine
 			_mat = _gameObject->transform.getMat4();
 		}
 
-		void    		MeshRenderer::render(void)
+		void    		MeshRenderer::render(Graphics::ALight &light)
 		{
 			if (_mesh != nullptr)
 			{
 				if (_material != nullptr)
-					_material->bind(_mat);
+					_material->bind(_mat, light);
 				else
-					Graphics::Graphics::defaultMaterial->bind(_mat);
+					Graphics::Graphics::defaultMaterial->bind(_mat, light);
+				light.getShader().uniform1i("hasBones", 0);
 				_mesh->render(renderMode);
 			}
 		}

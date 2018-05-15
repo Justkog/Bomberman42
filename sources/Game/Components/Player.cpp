@@ -46,22 +46,22 @@ namespace Game
 
         void    Player::update(void)
         {
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
             {
 				playStepSound();
 				_character->move(Character::Direction::Up);
 			}
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
 			{
 				playStepSound();
                 _character->move(Character::Direction::Down);
 			}
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
             {
 				playStepSound();
 				_character->move(Character::Direction::Left);
 			}
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6))
+            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::M))
             {
 				playStepSound();
 				_character->move(Character::Direction::Right);
