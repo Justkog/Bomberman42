@@ -34,9 +34,14 @@ namespace Game
         void    Map::start(void)
         {
 			std::cout << "map start" << "\n";
-			drawMap();
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
-			// _player->createCrateSignal.bind(&Map::mapUpdate, this);
+			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+			itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+			itemRangeTex = Assets::GetTexture("assets/textures/ground_color.png");
+			itemSpeedBoostMesh = Assets::GetModel("assets/models/Shoes/Shoes.obj");
+			itemBombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			itemRangeMesh = Assets::GetModel("assets/models/Fire/fire.obj");
+			drawMap();
 		}
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
@@ -63,28 +68,28 @@ namespace Game
 			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
 
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-            BeerEngine::Graphics::Texture *mapBlocTex;
-            BeerEngine::Graphics::AMaterial *mapBlocMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+            BeerEngine::Graphics::Texture *itemTex;
+            BeerEngine::Graphics::AMaterial *itemMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
 			switch (item->_type)
             {
                 case ItemType::SpeedBoost:
-                    meshRenderer->setMesh("assets/models/Shoes/Shoes.obj");
-                    mapBlocTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+                    meshRenderer->setMesh(itemSpeedBoostMesh);
+                    itemTex = itemSpeedBoostTex;
 			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
                     break;
                 case ItemType::AddBomb:
-                    meshRenderer->setMesh("assets/models/Bomb/bomb.obj");
-                    mapBlocTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+                    meshRenderer->setMesh(itemBombMesh);
+                    itemTex = itemBombTex;
 			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
                     break;
                 case ItemType::ExplosionBoost:
-                    meshRenderer->setMesh("assets/models/Fire/fire.obj");
-                    mapBlocTex = Assets::GetTexture("assets/textures/ground_color.png");
+                    meshRenderer->setMesh(itemRangeMesh);
+                    itemTex = itemRangeTex;
 			        itemGO->transform.scale = glm::vec3(1, 1, 1);
                     break;
             }
-			mapBlocMat->setAlbedo(mapBlocTex);
-			meshRenderer->setMaterial(mapBlocMat);
+			itemMat->setAlbedo(itemTex);
+			meshRenderer->setMaterial(itemMat);
 			return (itemGO);
 		}
 
