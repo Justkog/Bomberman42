@@ -1,6 +1,6 @@
 #version 330 core
 #define PI 3.14159265359
-#define SAMPLE_COUNT 1024
+#define SAMPLE_COUNT 128
 
 out vec4 out_color;
 

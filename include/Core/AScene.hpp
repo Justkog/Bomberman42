@@ -37,6 +37,7 @@ namespace BeerEngine
         void    update(void);
         void    renderUpdate(void);
         void    render(void);
+        void    renderForward(void);
         void    renderUI(struct nk_context *ctx);
         void    physicUpdate(void);
 

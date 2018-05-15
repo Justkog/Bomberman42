@@ -49,23 +49,16 @@ namespace BeerEngine
 			_mat = _gameObject->transform.getMat4();
 		}
 
-		void    		MeshRenderer::render(void)
+		void    		MeshRenderer::render(Graphics::ALight &light)
 		{
 			if (_mesh != nullptr)
 			{
-				std::vector<Graphics::ALight*> lights = SceneManager::GetCurrent(true)->getLights();
-				Graphics::AMaterial *mat = Graphics::Graphics::defaultMaterial;
 				if (_material != nullptr)
-					mat = _material;
-				mat->bind(_mat, *Graphics::Graphics::defaultLight);
+					_material->bind(_mat, light);
+				else
+					Graphics::Graphics::defaultMaterial->bind(_mat, light);
+				light.getShader().uniform1i("hasBones", 0);
 				_mesh->render(renderMode);
-				Graphics::Graphics::EnableForwardBlend();
-				for (Graphics::ALight *light : lights)
-				{
-					mat->bind(_mat, *light);
-					_mesh->render(renderMode);
-				}
-				Graphics::Graphics::DisableForwardBlend();
 			}
 		}
 

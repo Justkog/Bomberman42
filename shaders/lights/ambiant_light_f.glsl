@@ -62,11 +62,13 @@ void main()
     }
     float roughtness = 4;
 
-    vec3 reflection = reflect(-normalize(fragPos - viewPosition), tNormal);
-    vec3 env = textureLod(envMap, reflection, roughtness).rgb;
+    // vec3 reflection = reflect(-normalize(fragPos - viewPosition), tNormal);
+    // vec3 env = textureLod(envMap, reflection, roughtness).rgb;
 
+    // float fresnel = calcFresnel(viewPosition, tNormal, 1) * 0.4;
+    // vec3 fresnelReflection = mix(outColor.rgb, env * 0.5, fresnel);
+    
+    vec4 pbr = calcPBR(outColor, tNormal, roughtness, 1.0);
 
-    float fresnel = calcFresnel(viewPosition, tNormal, 1) * 0.4;
-    vec3 fresnelReflection = mix(outColor.rgb, env * 0.5, fresnel);
-    outColor = vec4(fresnelReflection, 1.0);
+    outColor = vec4(pbr.rgb, 1.0);
 }

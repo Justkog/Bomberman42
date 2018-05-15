@@ -108,6 +108,7 @@ namespace BeerEngine
         void    componentUpdate(void);
         void    componentRenderUpdate(void);
         void    componentRender(void);
+		void    componentRenderForward(Graphics::ALight &light);
         void    componentRenderAlpha(void);
         void    componentPhysicUpdate(void);
         void    componentStartUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);

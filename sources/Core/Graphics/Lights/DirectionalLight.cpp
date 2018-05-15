@@ -6,6 +6,8 @@
 #include "Core/Graphics/Lights/DirectionalLight.hpp"
 #include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/ShaderProgram.hpp"
+#include "Core/Window.hpp"
+#include "Core/Camera.hpp"
 
 namespace BeerEngine
 {
@@ -27,6 +29,11 @@ namespace BeerEngine
 
 		void 	DirectionalLight::bind()
 		{
+			_shader->bind();
+			_shader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
+			glm::mat4 view = Camera::main->transform.getMat4(true);
+			_shader->uniformMat(_viewShaderID, view);
+
 			_shader->uniform4f("light.light.color", _color);
 			_shader->uniform1f("light.light.intensity", _intensity);
 			_shader->uniform3f("light.direction", _direction);

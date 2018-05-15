@@ -112,7 +112,7 @@ namespace BeerEngine
 			std::string result = "";
 			std::string dir = BeerEngine::IO::FileUtils::GetDirectory(path);
 			std::cout << "Loading: " << path << "\n";
-			std::ifstream ifs("../" + path);
+			std::ifstream ifs(path);
 			std::regex incMatch("#.*include.*\"(.*)\"");
 			std::smatch match;
 			if (ifs.is_open())

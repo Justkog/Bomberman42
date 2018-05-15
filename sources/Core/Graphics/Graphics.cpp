@@ -25,6 +25,7 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::ambiantShader = nullptr;
 		ShaderProgram	*Graphics::directionalShader = nullptr;
 		ShaderProgram	*Graphics::spotShader = nullptr;
+		ShaderProgram	*Graphics::cubemapShader = nullptr;
 
 
 		static Mesh	*LoadPlane(void)
@@ -236,6 +237,18 @@ namespace BeerEngine
 			shader->compile();
 			return (shader);
 		}
+		ShaderProgram *Graphics::loadCubemapShader()
+		{
+			ShaderProgram *shader = new BeerEngine::Graphics::ShaderProgram(2);
+			shader->load(0, GL_VERTEX_SHADER,
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/cubemap_v.glsl").c_str()
+			);
+			shader->load(1, GL_FRAGMENT_SHADER,
+						 BeerEngine::Graphics::ShaderProgram::LoadShader("shaders/cubemap_f.glsl").c_str()
+			);
+			shader->compile();
+			return (shader);
+		}
 
 		void Graphics::Load(void)
 		{
@@ -260,7 +273,8 @@ namespace BeerEngine
 			ambiantShader = loadAmbiantShader();
 			directionalShader = loadDirectionalShader();
 			skyboxShader = loadSkyboxShader();
-			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 512);
+			cubemapShader = loadCubemapShader();
+			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 128);
 
 			defaultMaterial = new AMaterial(defaultShader);
 			defaultLight = new AmbiantLight(0.2f, glm::vec4(0.8, 0.9, 1.0, 1.0));
@@ -278,6 +292,7 @@ namespace BeerEngine
 
 			delete ambiantShader;
 			delete directionalShader;
+			delete cubemapShader;
 		}
 
 		Mesh	*Graphics::OBJLoader(std::string path)
@@ -325,7 +340,7 @@ namespace BeerEngine
 							tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
 							tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
 							tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
-							tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+							tinyobj::real_t ty = 1.0 - attrib.texcoords[2*idx.texcoord_index+1];
 
 						  builder
 							  .addVertice(glm::vec3(vx, vy, vz))
@@ -350,7 +365,7 @@ namespace BeerEngine
 							tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
 							tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
 							tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
-							tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+							tinyobj::real_t ty = 1.0 - attrib.texcoords[2*idx.texcoord_index+1];
 
 							builder
 							  .addVertice(glm::vec3(vx, vy, vz))

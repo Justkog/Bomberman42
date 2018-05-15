@@ -19,11 +19,11 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 find_package(glm REQUIRED)
 find_package(OpenGL REQUIRED)
-find_package(PNG REQUIRED)
 find_package(OpenAL REQUIRED)
 find_package(LibSndFile REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
 find_package(assimp 4.1.0 REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(PNG REQUIRED)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -196,7 +196,12 @@ set(HEADERS
         shaders/lights/ambiant_light_v.glsl
         shaders/lights/directional_light_f.glsl
         shaders/lights/directional_light_v.glsl
-        sources/Core/Graphics/Lights/AmbiantLight.cpp include/Core/Graphics/Lights/AmbiantLight.hpp include/Core/Graphics/Lights/DirectionalLight.hpp sources/Core/Graphics/Cubemap.cpp include/Core/Graphics/Cubemap.hpp)
+        sources/Core/Graphics/Lights/AmbiantLight.cpp 
+        include/Core/Graphics/Lights/AmbiantLight.hpp 
+        include/Core/Graphics/Lights/DirectionalLight.hpp 
+        sources/Core/Graphics/Cubemap.cpp 
+        include/Core/Graphics/Cubemap.hpp
+        )
 
 add_executable(${NAME} ${SOURCES} ${HEADERS})
 

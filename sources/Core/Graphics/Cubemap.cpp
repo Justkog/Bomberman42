@@ -34,14 +34,7 @@ namespace BeerEngine
 
 		void	Cubemap::generateMipmaps(int size, glm::mat4 views[6])
 		{
-			ShaderProgram *shader = new ShaderProgram(2);
-			shader->load(0, GL_VERTEX_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/cubemap_v.glsl").c_str()
-			);
-			shader->load(1, GL_FRAGMENT_SHADER,
-						 BeerEngine::IO::FileUtils::LoadFile("shaders/cubemap_f.glsl").c_str()
-			);
-			shader->compile();
+			ShaderProgram *shader = Graphics::cubemapShader;
 
 			GLuint fbo;
 			GLuint rbo;

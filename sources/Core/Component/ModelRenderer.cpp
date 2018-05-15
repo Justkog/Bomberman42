@@ -344,13 +344,6 @@ namespace BeerEngine
 		void ModelRenderer::renderUpdate(void)
 		{
 			_mat = _gameObject->transform.getMat4();
-		}
-
-		void ModelRenderer::render(void)
-		{
-			if (_materials.empty())
-				return;
-
 			if (_scene->HasAnimations())
 			{
 				if (_playAnimation)
@@ -364,52 +357,28 @@ namespace BeerEngine
 					lastAnimationTime = _animationTime;
 				}
 			}
+		}
 
-			std::vector<Graphics::ALight*> lights = SceneManager::GetCurrent(true)->getLights();
-			Graphics::AMaterial *mat = Graphics::Graphics::defaultMaterial;
-			if (_materials[0] != nullptr)
-				mat = _materials[0];
+		void ModelRenderer::render(Graphics::ALight &light)
+		{
+			if (_materials.empty())
+				return;
 
-			mat->bind(_mat, *Graphics::Graphics::defaultLight);
-			_materials[0]->bind(_mat);
-			std::string uniform = "hasBones";
-			_materials[0]->getShader().uniform1i(uniform, _scene->HasAnimations() ? 1 : 0);
+			_materials[0]->bind(_mat, light);
+			light.getShader().uniform1i("hasBones", _scene->HasAnimations() ? 1 : 0);
+
 			for (int i = 0; i < _transforms.size(); i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
-				_materials[0]->getShader().uniformMat(uniform, _transforms[i]);
+				light.getShader().uniformMat(uniform, _transforms[i]);
 			}
+
 			for (int i = 0; i < _numMeshes; i++)
 			{
 				glBindVertexArray(_vao[i]);
 				glDrawArrays(GL_TRIANGLES, 0, _drawSize[i]);
 				glBindVertexArray(0);
 			}
-
-
-
-			Graphics::Graphics::EnableForwardBlend();
-			for (Graphics::ALight *light : lights)
-			{
-				mat->bind(_mat, *light);
-
-//				light->getShader().bind(_mat);
-				std::string uniform = "hasBones";
-				mat->getShader().uniform1i(uniform, _scene->HasAnimations() ? 1 : 0);
-				for (int i = 0; i < _transforms.size(); i++)
-				{
-					std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
-					mat->getShader().uniformMat(uniform, _transforms[i]);
-				}
-				for (int i = 0; i < _numMeshes; i++)
-				{
-					glBindVertexArray(_vao[i]);
-					glDrawArrays(GL_TRIANGLES, 0, _drawSize[i]);
-					glBindVertexArray(0);
-				}
-
-			}
-			Graphics::Graphics::DisableForwardBlend();
 		}
 
 		static uint findRotation(float animationTime, const aiNodeAnim *node)

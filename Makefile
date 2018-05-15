@@ -43,7 +43,10 @@ SRC = \
 	Core/Graphics/ShaderProgram.cpp \
 	Core/Graphics/Graphics.cpp \
 	Core/Graphics/AMaterial.cpp \
-	Core/Graphics/ALight.cpp \
+	Core/Graphics/Lights/ALight.cpp \
+	Core/Graphics/Lights/AmbiantLight.cpp \
+	Core/Graphics/Lights/DirectionalLight.cpp \
+	Core/Graphics/Cubemap.cpp \
 	Core/Graphics/Texture.cpp \
 	\
 	Core/Physics/Physics.cpp \
@@ -82,7 +85,8 @@ SRC = \
 	Game/CameraTest.cpp
 
 
-DIR = Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
+DIR = $(dir $(SRC))
+# Core Core/Component Core/Graphics Core/IO Core/Maths Core/Audio \
 	Game Game/Components Core/Json Core/Physics sigslot/src Core/BeerRoutine
 
 # -g
@@ -100,7 +104,7 @@ O_FILE = $(addprefix obj/, $(SRC:.cpp=.o))
 D_FILE = $(addprefix obj/, $(SRC:.cpp=.d))
 CFLAGS += -I include -I ~/.brew/Cellar/nlohmann_json/3.1.2/include \
 	-I tinyobjloader/ -I stb/ $(addprefix -I lib, $(addsuffix /include, $(LIB_NAME))) \
-	-I nuklear/ -I sources/sigslot/src
+	-I nuklear/ -I sources/
 
 LIB_DIR = $(addprefix lib, $(LIB_NAME))
 LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))

@@ -57,3 +57,14 @@ float calcFresnel(vec3 cameraPosition, vec3 normal, float factor)
     float result = dot(-dir, normal) * factor;
     return 1.0 - clamp(result, 0, 1);
 }
+
+vec4 calcPBR(vec4 color, vec3 normal, float roughtness, float metalness)
+{
+    vec3 reflection = reflect(-normalize(fragPos - viewPosition), normal);
+    vec4 env = textureLod(envMap, reflection, roughtness);
+
+    float fresnel = calcFresnel(viewPosition, normal, 1) * 0.4;
+    vec4 fresnelReflection = mix(color, env * 0.5, fresnel);
+
+    return fresnelReflection;
+}

@@ -32,6 +32,7 @@ namespace BeerEngine
 			static ShaderProgram	*ambiantShader;
 			static ShaderProgram	*directionalShader;
 			static ShaderProgram	*spotShader;
+			static ShaderProgram	*cubemapShader;
 
 			static void Load(void);
 			static void UnLoad(void);
@@ -45,6 +46,7 @@ namespace BeerEngine
 			static ShaderProgram *loadDirectionalShader();
 			static ShaderProgram *loadSpotShader();
 			static ShaderProgram *loadSkyboxShader();
+			static ShaderProgram *loadCubemapShader();
 
 			static Mesh	*OBJLoader(std::string path);
 			static Mesh *ModelLoader(std::string path);

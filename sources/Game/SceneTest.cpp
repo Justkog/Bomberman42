@@ -154,11 +154,8 @@ void    SceneTest::init(void)
 	playerGO->name = "player";
 //	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/castle_guard.fbx");
+	modelRenderer->load("assets/models/Run Forward.fbx");
 //	modelRenderer->load("assets/models/test.fbx");
-	modelRenderer->setAnimation(1);
-	modelRenderer->setLoopAnimation(true);
-	modelRenderer->playAnimation();
 //	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
@@ -166,7 +163,7 @@ void    SceneTest::init(void)
 	modelRenderer->addMaterial(0, playerMat);
 //	meshRenderer->setMaterial(playerMat);
 //	playerGO->transform.position = glm::vec3(0, 0, 0);
-	playerGO->transform.scale = glm::vec3(0.006, 0.006, 0.006);
+	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 //	playerGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
@@ -181,7 +178,7 @@ void    SceneTest::init(void)
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;
 	player->itemSrcAudio = itemAs;
-	modelRenderer->setAnimation(0);
+	modelRenderer->setAnimation(1);
 	modelRenderer->setLoopAnimation(true);
 	modelRenderer->playAnimation();
 
@@ -297,17 +294,17 @@ void    SceneTest::init(void)
 	modelRenderer->playAnimation();
 	modelRenderer->setLoopAnimation(true);
 
-	auto Old = instantiate<BeerEngine::GameObject>();
-	Old->name = "old";
-	modelRenderer = Old->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Old_man/muro.obj");
-	auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
-	auto *OldMat = new BeerEngine::Graphics::AMaterial(animShader);
-	OldMat->setAlbedo(OldTex);
-	modelRenderer->addMaterial(0, OldMat);
-	Old->transform.position = glm::vec3(1, 0.5, 10);
-	Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
-	Old->transform.rotation = glm::vec3(0, -3.14, 0);
+	// auto Old = instantiate<BeerEngine::GameObject>();
+	// Old->name = "old";
+	// modelRenderer = Old->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Old_man/muro.obj");
+	// auto *OldTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Old_man/Muro_head_dm.tga");
+	// auto *OldMat = new BeerEngine::Graphics::AMaterial(animShader);
+	// OldMat->setAlbedo(OldTex);
+	// modelRenderer->addMaterial(0, OldMat);
+	// Old->transform.position = glm::vec3(1, 0.5, 10);
+	// Old->transform.scale = glm::vec3(0.012, 0.012, 0.012);
+	// Old->transform.rotation = glm::vec3(0, -3.14, 0);
 
 	// ==================
 	// =/= ANIMATIONS =\=

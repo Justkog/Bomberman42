@@ -91,10 +91,6 @@ namespace BeerEngine
 
 		void	AMaterial::bind(glm::mat4 &model, ALight &light)
 		{
-			light.getShader().bind();
-			light.getShader().uniformMat(light.get_projectionShaderID(), Window::GetInstance()->getProjection3D());
-			glm::mat4 view = Camera::main->transform.getMat4(true);
-			light.getShader().uniformMat(light.get_viewShaderID(), view);
 			light.getShader().uniformMat(light.get_modelShaderID(), model);
 			// View Pos
 			glm::vec3 viewPos = Camera::main->transform.position;
@@ -143,9 +139,6 @@ namespace BeerEngine
 			}
 			else
 				light.getShader().uniform1i(light.get_hasEnvMapID(), 0);
-
-
-			light.bind();
 		}
 
 		AMaterial		&AMaterial::setColor(glm::vec4 color)

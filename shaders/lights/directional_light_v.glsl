@@ -1,4 +1,4 @@
-#version 330 core
+#version 400 core
 #define MAX_BONES 120
 
 layout(location = 0) in vec3 vertexPosition;
@@ -41,7 +41,7 @@ void main()
     }
 
     gl_Position = projection * view * model * boneTransform * vec4(vertexPosition, 1);
-    fragPos = vec3(model * vec4(vertexPosition, 1));
+    fragPos = vec3(model * boneTransform * vec4(vertexPosition, 1));
 
     vec3 T = normalize(vec3(model * boneTransform * vec4(vertexTangent, 0.0)));
     vec3 B = normalize(vec3(model * boneTransform * vec4(vertexBitangent, 0.0)));
@@ -51,7 +51,7 @@ void main()
     vTangentViewPos = TBN * viewPos;
     vTangentFragPos = TBN * fragPos;
 
-    vTexture = vertexTexture * vec2(1, -1);
+    vTexture = vertexTexture * vec2(1, 1);
     viewPosition = viewPos;
     viewDirection = viewDir;
 }

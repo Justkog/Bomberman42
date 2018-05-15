@@ -1,9 +1,10 @@
-#ifndef BE_CORE_COMPONENT_MODELRENDERER2_HPP
-#define BE_CORE_COMPONENT_MODELRENDERER2_HPP 1
+#ifndef BE_CORE_COMPONENT_MODELRENDERER_HPP
+#define BE_CORE_COMPONENT_MODELRENDERER_HPP 1
 
 #include "Core/Core.hpp"
 #include "Component.hpp"
-#include "IRender.hpp"
+#include "IRenderForward.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Mathf.hpp"
 #include "Core/Time.hpp"
@@ -12,7 +13,7 @@ namespace BeerEngine
 {
 	namespace Component
 	{
-		class ModelRenderer : public Component, public IRender
+		class ModelRenderer : public Component, public IRenderForward
 		{
 		protected:
 			#define NUM_BONES_PER_VEREX 4
@@ -102,7 +103,7 @@ namespace BeerEngine
 			void setAnimationTime(double time);
 
 			virtual void renderUpdate();
-			virtual void render();
+			virtual void render(Graphics::ALight &light);
 
 			GLenum renderMode;
 

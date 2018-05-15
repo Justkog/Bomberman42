@@ -8,7 +8,7 @@ namespace BeerEngine
 		{
 			std::string result = "";
 			std::cout << "Loading: " << path << "\n";
-			std::ifstream ifs("../" + path);
+			std::ifstream ifs(path);
 			if (ifs.is_open())
 			{
 				result = std::string((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());

@@ -3,13 +3,14 @@
 
 #include "Core/Core.hpp"
 #include "Component.hpp"
-#include "IRender.hpp"
+#include "IRenderForward.hpp"
+#include "Core/Graphics/Lights/ALight.hpp"
 
 namespace BeerEngine
 {
 	namespace Component
 	{
-		class MeshRenderer : public Component, public IRender
+		class MeshRenderer : public Component, public IRenderForward
 		{
 		protected:
 			Graphics::Mesh		*_mesh;
@@ -24,8 +25,9 @@ namespace BeerEngine
 			MeshRenderer	&setMesh(std::string inputfile);	
 			Graphics::AMaterial	*getMaterial(void);
 			MeshRenderer	&setMaterial(Graphics::AMaterial *material);
+
 			virtual void    renderUpdate(void);
-			virtual void    render(void);
+			virtual void    render(BeerEngine::Graphics::ALight &light);
 
 			GLenum 			renderMode;
 

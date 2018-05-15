@@ -42,7 +42,7 @@ namespace Game
 					rb2d->velocity = glm::vec2(0);
 					if (model)
 					{
-//						model->stopAnimation();
+						model->stopAnimation();
 					}
 				}
                 else
@@ -50,9 +50,9 @@ namespace Game
 					rb2d->velocity = glm::normalize(_direction) * _speed;
 					if (model)
 					{
-//						model->setAnimation(2);
-//						model->setLoopAnimation(true);
-//						model->playAnimation();
+						model->setAnimation(0);
+						model->setLoopAnimation(true);
+						model->playAnimation();
 						_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
 					}
 				}

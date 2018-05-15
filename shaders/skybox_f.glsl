@@ -18,6 +18,6 @@ vec2 sphere_to_uv(vec3 v)
 
 void main(void)
 {
-	vec3 color = textureLod(env_map, normalize(-v_position), 0.8).rgb;
+	vec3 color = textureLod(env_map, normalize(-v_position), 0).rgb;
 	out_color = vec4(color, 1.0);
 }

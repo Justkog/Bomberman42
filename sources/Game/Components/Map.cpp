@@ -146,7 +146,7 @@ namespace Game
 								_IAs.push_back(addIA(shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
 							else
 							{
-								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY);
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY);
 								playerSpawn = true;
 							}
 							break;
