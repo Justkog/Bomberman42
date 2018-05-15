@@ -35,6 +35,8 @@ namespace Game
 			std::vector<glm::vec2> _path;
 			int _val;
 
+			bool uiInit;
+
 			bool    canMove(glm::vec3 dir);
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);
 			bool    avoidAllExplosions(glm::vec2 pos, int offset = 0);

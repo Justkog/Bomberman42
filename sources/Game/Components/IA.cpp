@@ -40,6 +40,7 @@ namespace Game
         void    IA::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
+			uiInit = true;
         }
 
         void    IA::fixedUpdate(void)
@@ -444,6 +445,12 @@ namespace Game
                 }
             }
             nk_end(ctx);
+			if (uiInit)
+			{
+				nk_window_set_position(ctx, winName.str().c_str(), nk_vec2(0, 0));
+				nk_window_collapse(ctx, winName.str().c_str(), NK_MINIMIZED);
+				uiInit = false;
+			}
         }
 
         nlohmann::json	IA::serialize()
