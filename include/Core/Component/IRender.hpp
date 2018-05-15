@@ -11,9 +11,7 @@
 namespace BeerEngine
 {
 	class GameObject;
-	/*! \namespace Component
-	* espace de nommage regroupant les fonctionnalité des Component du moteur
-	*/
+	
 	namespace Component
 	{
 		/*! \class IRender

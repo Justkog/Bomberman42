@@ -15,14 +15,8 @@
 #include "Texture.hpp"
 #include "ShaderProgram.hpp"
 #include "AMaterial.hpp"
-/*! \namespace BeerEngine
- * espace de nommage regroupant les fonctionnalité du moteur
- */
 namespace BeerEngine
 {
-	/*! \namespace Graphics
-	* espace de nommage regroupant les fonctionnalité graphique du moteur
-	*/
 	namespace Graphics
 	{
 		/*! \class Graphics
