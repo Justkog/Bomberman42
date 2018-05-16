@@ -6,6 +6,12 @@
 #ifndef GAMEOVERMENU_HPP
 # define GAMEOVERMENU_HPP
 
+/*!
+ * \file GameOverMenu.hpp
+ * \brief Menu affiché en cas de Game Over.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

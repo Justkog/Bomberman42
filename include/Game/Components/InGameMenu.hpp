@@ -6,6 +6,12 @@
 #ifndef INGAMEMENU_HPP
 # define INGAMEMENU_HPP
 
+/*!
+ * \file InGameMenu.hpp
+ * \brief Menu affiché en cours de partie.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

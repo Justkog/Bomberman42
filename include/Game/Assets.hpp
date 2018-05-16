@@ -3,7 +3,7 @@
 /*!
  * \file Assets.hpp
  * \brief Classe permettant le chargements et sauvegardes les ressources
- * \author mgallo
+ * \author mgallo, jblondea
  */
 #include "Core/Core.hpp"
 

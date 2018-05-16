@@ -3,7 +3,7 @@
 /*!
  * \file AMaterial.hpp
  * \brief Compisition des scenes
- * \author mgallo
+ * \author mgallo, mploux
  */
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"

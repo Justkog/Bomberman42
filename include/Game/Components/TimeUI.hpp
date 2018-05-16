@@ -6,6 +6,12 @@
 #ifndef TIMEUI_HPP
 # define TIMEUI_HPP
 
+/*!
+ * \file TimeUI.hpp
+ * \brief Affichage du temps en cours de partie.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

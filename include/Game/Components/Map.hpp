@@ -26,7 +26,7 @@
 /*!
  * \file Map.hpp
  * \brief Component qui gère toute la zone de jeu
- * \author stmartin
+ * \author stmartin, qhonore, jblondea
  */
 namespace Game
 {

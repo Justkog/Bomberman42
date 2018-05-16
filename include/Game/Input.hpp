@@ -6,6 +6,12 @@
 #ifndef GAME_INPUT_HPP
 # define GAME_INPUT_HPP
 
+/*!
+ * \file Input.hpp
+ * \brief Mise en relation des inputs de jeu avec les inputs de l'engine.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/KeyCode.hpp"
 

@@ -6,6 +6,12 @@
 #ifndef VICTORYMENU_HPP
 # define VICTORYMENU_HPP
 
+/*!
+ * \file VictoryMenu.hpp
+ * \brief Affichage du menu de victoire.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

@@ -6,6 +6,12 @@
 #ifndef SETTINGS_HPP
 # define SETTINGS_HPP
 
+/*!
+ * \file Settings.hpp
+ * \brief Chargeur / Enregistreur des settings
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/Component.hpp"

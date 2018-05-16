@@ -6,6 +6,12 @@
 #ifndef SETTINGSMENU_HPP
 # define SETTINGSMENU_HPP
 
+/*!
+ * \file SettingsMenu.hpp
+ * \brief Menu de gestion des settings.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

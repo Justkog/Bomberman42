@@ -6,6 +6,12 @@
 #ifndef UITHEMEMANAGER_HPP
 # define UITHEMEMANAGER_HPP
 
+/*!
+ * \file UIThemeManager.hpp
+ * \brief Détenteur du thème d'UI, applicable par tous les autres components d'ui.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

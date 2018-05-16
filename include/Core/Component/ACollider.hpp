@@ -3,7 +3,7 @@
 /*!
  * \file ACollider.hpp
  * \brief Component de collision de base
- * \author qhonore
+ * \author qhonore, jblondea
  */
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"

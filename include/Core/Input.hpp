@@ -4,7 +4,7 @@
 /*!
  * \file Input.hpp
  * \brief Gestion des entrees, clavier, souris...
- * \author mgallo
+ * \author mgallo, jblondea
  */
 #include "Core.hpp"
 #include "KeyCode.hpp"

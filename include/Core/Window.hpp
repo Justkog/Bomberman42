@@ -4,7 +4,7 @@
 /*!
  * \file Window.hpp
  * \brief Fenetre unique ou la partie graphique du moteur se deroule
- * \author mgallo
+ * \author mgallo, jblondea
  */
 
 #include "Core.hpp"

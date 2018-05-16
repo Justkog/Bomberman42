@@ -6,6 +6,12 @@
 #ifndef BACKGROUNDDRAWER_HPP
 # define BACKGROUNDDRAWER_HPP
 
+/*!
+ * \file BackgroundDrawer.hpp
+ * \brief Background du menu de lancement
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

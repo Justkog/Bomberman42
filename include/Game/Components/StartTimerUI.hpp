@@ -6,6 +6,12 @@
 #ifndef STARTTIMERUI_HPP
 # define STARTTIMERUI_HPP
 
+/*!
+ * \file StartTimerUI.hpp
+ * \brief Component en charge de l'affichage du timer de lancement de partie.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

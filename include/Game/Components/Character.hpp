@@ -22,7 +22,7 @@
 /*!
  * \file Character.hpp
  * \brief Component character, comportement des personnages (IA/Player)
- * \author qhonore
+ * \author qhonore, mploux
  */
 namespace Game
 {

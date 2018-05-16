@@ -3,7 +3,7 @@
 /*!
  * \file Graphics.hpp
  * \brief Graphics predefini
- * \author mgallo
+ * \author mgallo, mploux, jblondea
  */
 
 #include <assimp/Importer.hpp>

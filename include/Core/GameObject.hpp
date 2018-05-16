@@ -4,7 +4,7 @@
 /*!
  * \file GameObject.hpp
  * \brief Entiter du projet
- * \author mgallo
+ * \author mgallo, jblondea, mploux, qhonore
  */
 
 #include "Core/Core.hpp"

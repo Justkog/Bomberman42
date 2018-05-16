@@ -6,6 +6,12 @@
 #ifndef GAMEMANAGER_HPP
 # define GAMEMANAGER_HPP
 
+/*!
+ * \file GameManager.hpp
+ * \brief Manager qui suit et controle le déroulement d'une partie
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

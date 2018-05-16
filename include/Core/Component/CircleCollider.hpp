@@ -3,7 +3,7 @@
 /*!
  * \file CircleCollider.hpp
  * \brief Component de collision en cercle
- * \author qhonore
+ * \author qhonore, jblondea
  */
 #include "Core/Core.hpp"
 #include "ACollider.hpp"

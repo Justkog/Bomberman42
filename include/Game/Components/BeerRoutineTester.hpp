@@ -6,6 +6,12 @@
 #ifndef BEERROUTINETESTER_HPP
 # define BEERROUTINETESTER_HPP
 
+/*!
+ * \file BeerRoutineTester.hpp
+ * \brief Exemple d'utilisation des routines
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

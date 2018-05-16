@@ -3,7 +3,7 @@
 /*!
  * \file Component.hpp
  * \brief Component de base
- * \author mgallo
+ * \author mgallo, jblondea
  */
 #include <sigslot/src/signal.h>
 #include "Core/Core.hpp"

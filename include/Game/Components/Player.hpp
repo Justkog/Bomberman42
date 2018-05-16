@@ -1,6 +1,12 @@
 #ifndef BE_GAME_COMPONENT_PLAYER_HPP
 #define BE_GAME_COMPONENT_PLAYER_HPP 1
 
+/*!
+ * \file Player.hpp
+ * \brief Component de contrôle du joueur.
+ * \author jblondea, qhonore, stmartin
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"

@@ -3,7 +3,7 @@
 /*!
  * \file AScene.hpp
  * \brief Composition des scenes
- * \author mgallo
+ * \author mgallo, jblondea, mploux, qhonore
  */
 #include <Core/Graphics/Cubemap.hpp>
 #include "Core.hpp"

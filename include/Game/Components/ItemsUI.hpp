@@ -6,6 +6,12 @@
 #ifndef ITEMSUI_HPP
 # define ITEMSUI_HPP
 
+/*!
+ * \file ItemsUI.hpp
+ * \brief Component en charge de l'affiche des items collectés par le joueur.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

@@ -6,6 +6,12 @@
 #ifndef MAINMENU_HPP
 # define MAINMENU_HPP
 
+/*!
+ * \file MainMenu.hpp
+ * \brief Component en charge de l'affichage du menu de départ.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
