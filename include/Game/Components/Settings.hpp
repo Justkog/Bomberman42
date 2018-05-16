@@ -37,7 +37,11 @@ namespace Game
 	namespace Component	{		
 		class Settings : public BeerEngine::Component::Component, public BeerEngine::Component::IStart
 		{
+		private:
+			static Settings * instance;
+
 		public:
+
 
 			// Settings( void );
 			// Settings( Settings const & src );
@@ -54,6 +58,8 @@ namespace Game
 			void start(void);
 
 			static SettingsContainer defaultSettings();
+			static Settings & GetInstance();
+
 
 			REGISTER_COMPONENT_HPP
 
