@@ -11,6 +11,7 @@ uniform sampler2D normal;
 uniform int hasNormal;
 uniform sampler2D bump;
 uniform int hasBump;
+uniform int hasDirectionalLight;
 
 in vec3 vNormal;
 in vec2 vTexture;
@@ -20,7 +21,8 @@ in vec3 vTangentFragPos;
 in vec4 vWeight;
 in vec4 lightPosition;
 
-uniform DirectionalLight light;
+uniform Light light;
+uniform DirectionalLight directionalLight;
 
 void main()
 {
@@ -51,7 +53,10 @@ void main()
         tNormal = vNormal;
     }
 
-    vec4 lightIntensity = calcDirectionalLight(light, tNormal);
+    vec4 dirLight = vec4(0, 0, 0, 0);
+    if (hasDirectionalLight == 1)
+        dirLight = calcDirectionalLight(directionalLight, tNormal) * calcShadow(lightPosition);
+    vec4 lightIntensity = light.color * light.intensity + dirLight;
     if (hasAlbedo == 1)
     {
         vec4 texColor = texture(albedo, texCoords);
@@ -59,11 +64,11 @@ void main()
     }
     else
     {
-        outColor = color * light.light.color * lightIntensity;
+        outColor = color * light.color * lightIntensity;
     }
     float roughtness = 4;
 
     vec4 pbr = calcPBR(outColor, tNormal, roughtness, 1.0);
 
-    outColor = vec4(pbr.rgb, 1.0) * calcShadow(lightPosition);
+    outColor = vec4(pbr.rgb, 1.0);
 }

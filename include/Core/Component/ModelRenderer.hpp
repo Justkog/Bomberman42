@@ -9,6 +9,7 @@
 #include "Component.hpp"
 #include "IRenderForward.hpp"
 #include "IUpdate.hpp"
+#include "IRenderShadow.hpp"
 #include "Core/Graphics/Lights/ALight.hpp"
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/Mathf.hpp"
@@ -21,7 +22,7 @@ namespace BeerEngine
 		/*! \class ModelRenderer
 		* \brief Classe component pour effectuer la mise a jour et le rendu d'une animation 3D
 		*/
-		class ModelRenderer : public Component, public IRenderForward, public IUpdate
+		class ModelRenderer : public Component, public IRenderForward, public IUpdate, public IRenderShadow
 		{
 		protected:
 			#define NUM_BONES_PER_VEREX 4
@@ -126,10 +127,14 @@ namespace BeerEngine
 			void setAnimationTime(double time);
 			void setAnimationSpeed(std::string name, float speed);
 
-			virtual void fixedUpdate(void);
-       		virtual void update(void);
-			virtual void renderUpdate();
-			virtual void render(Graphics::ALight &light);
+			virtual void	fixedUpdate(void);
+       		virtual void	update(void);
+			virtual void	renderUpdate();
+			virtual void	render(Graphics::ALight &light);
+			virtual void    renderShadowUpdate(void);
+			virtual void    renderShadow(void);
+			virtual bool	castShadows(void);
+			virtual bool	receiveShadows(void);
 
 			GLenum renderMode;
 

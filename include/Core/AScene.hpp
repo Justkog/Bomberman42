@@ -86,6 +86,12 @@ namespace BeerEngine
 		*  Methode permettant de rendre UI de l'objet a l'ecran
 		*/
         void    renderUI(struct nk_context *ctx);
+
+		/*!
+		*  \brief Rendu des ombres
+		*  Methode permettant de rendre les objets qui aurons des ombres 
+		*/
+        void    renderShadows(void);
         /*!
 		*  \brief Mise a jour physique
 		*  Methode permettant de mettre a jour la physique des objets (collision ...)

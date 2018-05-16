@@ -12,6 +12,7 @@ layout(location = 6) in vec4 vertexWeights;
 uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 model;
+uniform mat4 lightMatrix;
 
 uniform vec3 viewPos;
 uniform vec3 viewDir;
@@ -27,6 +28,7 @@ out vec3 vTangentFragPos;
 out vec3 viewPosition;
 out vec3 viewDirection;
 out vec3 fragPos;
+out vec4 lightPosition;
 
 void main()
 {
@@ -54,4 +56,6 @@ void main()
     vTexture = vertexTexture * vec2(1, 1);
     viewPosition = viewPos;
     viewDirection = viewDir;
+
+    lightPosition = lightMatrix * (model * boneTransform * vec4(vertexPosition, 1));
 }

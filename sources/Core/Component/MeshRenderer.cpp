@@ -62,6 +62,31 @@ namespace BeerEngine
 			}
 		}
 
+		void    MeshRenderer::renderShadowUpdate(void)
+		{
+
+		}
+
+		void    MeshRenderer::renderShadow(void)
+		{
+			if (_mesh != nullptr)
+			{
+				Graphics::Graphics::shadowRenderShader->uniformMat("model", _mat);
+				Graphics::Graphics::shadowRenderShader->uniform1i("hasBones", 0);
+				_mesh->render(renderMode);
+			}
+		}
+
+		bool	MeshRenderer::castShadows(void)
+		{
+			return true;
+		}
+
+		bool	MeshRenderer::receiveShadows(void)
+		{
+			return true;
+		}
+
 		nlohmann::json	MeshRenderer::serialize()
 		{
 			auto j = Component::serialize();

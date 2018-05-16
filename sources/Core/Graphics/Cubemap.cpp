@@ -60,7 +60,7 @@ namespace BeerEngine
 			shader->uniform1i("env_map", 0);
 			_envMap->bind();
 
-			glm::mat4 persp = glm::perspective(90.0, 1.0, 0.1, 2.0);
+			glm::mat4 persp = glm::perspective(glm::radians(90.0), 1.0, 0.1, 2.0);
 			shader->uniformMat("projection", persp);
 
 			glBindFramebuffer(GL_FRAMEBUFFER, fbo);

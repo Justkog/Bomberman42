@@ -32,14 +32,17 @@ namespace BeerEngine
 			static ShaderProgram	*particleShader; /*!< Shader des particules par defaut*/
 			static ShaderProgram	*defaultShader; /*!< Shader par defaut des model*/
 			static AMaterial		*defaultMaterial; /*!< Material par defaut*/
+			static ShaderProgram	*defaultGuiShader;
 			static ALight			*defaultLight;
 			static ShaderProgram	*skyboxShader;
 			static Cubemap			*defaultCubemap;
 
-			static ShaderProgram	*ambiantShader;
-			static ShaderProgram	*directionalShader;
+			static ShaderProgram	*lightShader;
 			static ShaderProgram	*spotShader;
 			static ShaderProgram	*cubemapShader;
+			static ShaderProgram	*shadowRenderShader;
+			static ShaderProgram	*shadowShader;
+
 			/*!
 			*  \brief Chargement
 			*  Chargement des composents predefini
@@ -56,11 +59,12 @@ namespace BeerEngine
 
 			static ShaderProgram *loadLineShader();
 
-			static ShaderProgram *loadAmbiantShader();
-			static ShaderProgram *loadDirectionalShader();
+			static ShaderProgram *loadLightShader();
 			static ShaderProgram *loadSpotShader();
 			static ShaderProgram *loadSkyboxShader();
 			static ShaderProgram *loadCubemapShader();
+			static ShaderProgram *loadShadowRenderShader();
+			static ShaderProgram *loadShadowShader();
 
 			static Mesh	* LoadPlane(glm::vec2 tiling, glm::vec2 offset);
 			/*!

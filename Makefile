@@ -49,6 +49,7 @@ SRC = \
 	Core/Graphics/Lights/DirectionalLight.cpp \
 	Core/Graphics/Cubemap.cpp \
 	Core/Graphics/Texture.cpp \
+	Core/Graphics/Framebuffer.cpp \
 	\
 	Core/Physics/Physics.cpp \
 	\

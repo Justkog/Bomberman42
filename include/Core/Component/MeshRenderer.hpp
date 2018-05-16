@@ -8,6 +8,7 @@
 #include "Core/Core.hpp"
 #include "Component.hpp"
 #include "IRenderForward.hpp"
+#include "IRenderShadow.hpp"
 #include "Core/Graphics/Lights/ALight.hpp"
 
 /*! \namespace BeerEngine
@@ -23,7 +24,7 @@ namespace BeerEngine
 		/*! \class MeshRenderer
 		* \brief Component d'ajouter et de rendre a l'ecran un mesh
 		*/
-		class MeshRenderer : public Component, public IRenderForward
+		class MeshRenderer : public Component, public IRenderForward, public IRenderShadow
 		{
 		protected:
 			Graphics::Mesh		*_mesh;
@@ -41,6 +42,10 @@ namespace BeerEngine
 
 			virtual void    renderUpdate(void);
 			virtual void    render(BeerEngine::Graphics::ALight &light);
+			virtual void    renderShadowUpdate(void);
+			virtual void    renderShadow(void);
+			virtual bool	castShadows(void);
+			virtual bool	receiveShadows(void);
 
 			GLenum 			renderMode;
 
