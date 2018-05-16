@@ -1,0 +1,5 @@
+<map id="BeerEngine::AScene::instantiate" name="BeerEngine::AScene::instantiate">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_game_object.html#ab88b7ff5e8aab52e54c02f9d103bbfcf" title="BeerEngine::GameObject\l::instantiate" alt="" coords="198,5,372,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_map.html#a860f2c45a23d20303aa5e04261ac462d" title="Game::Component::Map\l::addCrate" alt="" coords="201,68,369,107"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_map.html#ab7d5bd531fc73fa3c4697e6d7fd909f2" title="Game::Component::Map\l::addDestoyableCrate" alt="" coords="201,131,369,169"/>
+</map>

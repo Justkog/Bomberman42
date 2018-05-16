@@ -1,0 +1,10 @@
+<map id="nk_style_edit" name="nk_style_edit">
+<area shape="rect" id="node2" href="$structnk__style__item.html" title="{nk_style_item\n|+ type\l|}" alt="" coords="319,523,422,596"/>
+<area shape="rect" id="node8" href="$structnk__style__scrollbar.html" title="{nk_style_scrollbar\n|+ border\l+ rounding\l+ border_cursor\l+ rounding_cursor\l+ show_buttons\l+ inc_symbol\l+ dec_symbol\l+ draw_begin\l+ draw_end\l|}" alt="" coords="369,1012,498,1192"/>
+<area shape="rect" id="node9" href="$structnk__style__button.html" title="{nk_style_button\n|+ text_alignment\l+ border\l+ rounding\l+ draw_begin\l+ draw_end\l|}" alt="" coords="466,797,585,924"/>
+<area shape="rect" id="node3" href="$unionnk__style__item__data.html" title="{nk_style_item_data\n||}" alt="" coords="225,328,361,401"/>
+<area shape="rect" id="node4" href="$structnk__color.html" title="{nk_color\n|+ r\l+ g\l+ b\l+ a\l|}" alt="" coords="161,153,233,267"/>
+<area shape="rect" id="node5" href="$structnk__image.html" title="{nk_image\n|+ w\l+ h\l+ region\l|}" alt="" coords="404,160,484,260"/>
+<area shape="rect" id="node6" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="480,5,563,92"/>
+<area shape="rect" id="node7" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="750,516,821,603"/>
+</map>

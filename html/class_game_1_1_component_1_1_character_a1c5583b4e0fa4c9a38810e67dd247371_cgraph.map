@@ -1,0 +1,4 @@
+<map id="Game::Component::Character::translate" name="Game::Component::Character::translate">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_transform.html#aaca147072f231beb5a0fe8b32f23b85d" title="deplacer l&#39;objet Methode qui permet de deplacer l&#39;objet grace a un vecteur " alt="" coords="282,5,441,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_time.html#a1901379c4d403e6f742b89ea36bc1208" title="recuperer les delta time Methode qui permet de recuperer le delta time (ecart entre deux cycle de l&#39;u..." alt="" coords="253,68,470,93"/>
+</map>

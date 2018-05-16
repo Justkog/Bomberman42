@@ -81,104 +81,53 @@ namespace Game
 				collider->_exceptions.erase(it);
 		}
 
+		void	Bomb::explodeToward(glm::vec3 dir)
+		{
+			std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
+			float lifeTime = 1.0f / 2.0f;
+			float sizeDeflag = (power + 0.25f) * 2.0f;
+			auto bombDeflag = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
+			int i = 0;
+
+			bombDeflag->setTexture(explosionTexture);
+			bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+			bombDeflag->setAnimate(true, 64, 8, 8);
+			bombDeflag->setLifeTime(lifeTime);
+			if (hits.size() > 1)
+			{
+				if (hits[0].collider->_gameObject == _gameObject)
+					i = 1;
+				auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
+				auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
+				if (destroyable)
+					_gameObject->destroy(hits[i].collider->_gameObject);
+				if (bomb)
+					bomb->timer = 5.0f;
+				int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
+				sizeDeflag = (distance + 0.25f) * 2.0f;
+			}
+			bombDeflag->setSize(2.0f, 1.0f);
+			float timeToSpawnByPower = 90.0f + power * 30.0f;
+			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
+			dir = glm::normalize(dir) * sizeDeflag;
+			bombDeflag->setVelocity(dir);
+		}
+
 		void	Bomb::explode(void)
 		{
 			if (render != nullptr)
 			{
-				BeerEngine::Physics::RaycastHit				hit;
-				std::vector<glm::vec3>						explodeDirs;
-				explodeDirs.push_back(glm::vec3(power, 0.0f, 0.0f));
-				explodeDirs.push_back(glm::vec3(-power, 0.0f, 0.0f));
-				explodeDirs.push_back(glm::vec3(0.0f, 0.0f, power));
-				explodeDirs.push_back(glm::vec3(0.0f, 0.0f, -power));
-
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
-				// playerParticule->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
 				playerParticule->setTexture(explosionTexture);
 				playerParticule->setAnimate(true, 64, 8, 8);
 				playerParticule->setLifeTime(0.5f);
 				playerParticule->setSize(1.0f, 2.0f);
 				playerParticule->setSpawnTime(1.0f / 120.0f);
 
-				float lifeTime = 1.0f / 2.0f;
-				float sizeDeflag = (power + 0.25f) * 2.0f;
-				auto playerDeflag0 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				// playerDeflag0->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-				playerDeflag0->setTexture(explosionTexture);
-				playerDeflag0->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-				playerDeflag0->setAnimate(true, 64, 8, 8);
-				playerDeflag0->setLifeTime(lifeTime);
-
-				glm::vec3 pos(_gameObject->transform.position);
-
-				if (BeerEngine::Physics::Physics::Raycast(glm::vec3(pos.x, pos.y, pos.z), explodeDirs[0], hit, 1))
-				{
-					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
-					if (destroyable)
-						_gameObject->destroy(hit.collider->_gameObject);
-					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
-					sizeDeflag = (distance + 0.25f) * 2.0f;
-				}
-				playerDeflag0->setSize(2.0f, 1.0f);
-				playerDeflag0->setSpawnTime(1.0f / 120.0f);
-				playerDeflag0->setVelocity(glm::vec3(sizeDeflag, 0.0f, 0.0f));
-
-				sizeDeflag = (power + 0.25f) * 2.0f;
-				auto playerDeflag1 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				// playerDeflag1->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-				playerDeflag1->setTexture(explosionTexture);
-				playerDeflag1->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-				playerDeflag1->setAnimate(true, 64, 8, 8);
-				playerDeflag1->setLifeTime(lifeTime);
-				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[1], hit, 1))
-				{
-					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
-					if (destroyable)
-						_gameObject->destroy(hit.collider->_gameObject);
-					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
-					sizeDeflag = (distance + 0.25f) * 2.0f;
-				}
-				playerDeflag1->setSize(2.0f, 1.0f);
-				playerDeflag1->setSpawnTime(1.0f / 120.0f);
-				playerDeflag1->setVelocity(glm::vec3(-sizeDeflag, 0.0f, 0.0f));
-
-				sizeDeflag = (power + 0.25f) * 2.0f;
-				auto playerDeflag2 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				// playerDeflag2->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-				playerDeflag2->setTexture(explosionTexture);
-				playerDeflag2->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-				playerDeflag2->setAnimate(true, 64, 8, 8);
-				playerDeflag2->setLifeTime(lifeTime);
-				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[2], hit, 1))
-				{
-					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
-					if (destroyable)
-						_gameObject->destroy(hit.collider->_gameObject);
-					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
-					sizeDeflag = (distance + 0.25f) * 2.0f;
-				}
-				playerDeflag2->setSize(2.0f, 1.0f);
-				playerDeflag2->setSpawnTime(1.0f / 120.0f);
-				playerDeflag2->setVelocity(glm::vec3(0.0f, 0.0f, sizeDeflag));
-
-				sizeDeflag = (power + 0.25f) * 2.0f;
-				auto playerDeflag3 = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-				// playerDeflag3->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
-				playerDeflag3->setTexture(explosionTexture);
-				playerDeflag3->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-				playerDeflag3->setAnimate(true, 64, 8, 8);
-				playerDeflag3->setLifeTime(lifeTime);
-				if (BeerEngine::Physics::Physics::Raycast(pos, explodeDirs[3], hit, 1))
-				{
-					auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
-					if (destroyable)
-						_gameObject->destroy(hit.collider->_gameObject);
-					int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
-					sizeDeflag = (distance + 0.25f) * 2.0f;
-				}
-				playerDeflag3->setSize(2.0f, 1.0f);
-				playerDeflag3->setSpawnTime(1.0f / 120.0f);
-				playerDeflag3->setVelocity(glm::vec3(0.0f, 0.0f, -sizeDeflag));
+				explodeToward(glm::vec3(power, 0.0f, 0.0f));
+				explodeToward(glm::vec3(-power, 0.0f, 0.0f));
+				explodeToward(glm::vec3(0.0f, 0.0f, power));
+				explodeToward(glm::vec3(0.0f, 0.0f, -power));
 
 				// BeerEngine::Audio::AudioClip   		clip("assets/sounds/Bomb+1.wav");
 				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());

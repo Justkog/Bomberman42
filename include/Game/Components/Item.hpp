@@ -11,11 +11,18 @@
 #include "Core/Component/ITriggerExit.hpp"
 #include "Core/Component/IOnDestroy.hpp"
 
+/*!
+ * \file Item.hpp
+ * \brief Component d'item bonus à ramasser
+ * \author qhonore
+ */
 namespace Game
 {
 	namespace Component
 	{
-
+		/*! \class Item
+		* \brief La classe Item gère les bonus que l'on peut ramasser en jeu (bomb+, explosion+, vitesse...)
+		*/
 		class Item : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,

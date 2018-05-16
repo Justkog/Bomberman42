@@ -1,0 +1,4 @@
+<map id="BeerEngine::Component::IRenderAlpha" name="BeerEngine::Component::IRenderAlpha">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_particle_base.html" title="System de particule de base, traitement de ses derniere avec un composent par defaut, gestion de la vie... Cette classe sert de parent a toute autre particule qui voudrons utiliser un &quot;style de vie&quot; differente. " alt="" coords="5,153,173,533"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_particle_explode.html" title="System de particule qui permet au particule de se generer vers des directions autour d&#39;un point..." alt="" coords="5,581,173,681"/>
+</map>

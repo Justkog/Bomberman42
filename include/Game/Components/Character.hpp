@@ -19,10 +19,18 @@
 #define MAX_BOMBS 10
 #define MAX_EXPLOSION_SIZE 8
 
+/*!
+ * \file Character.hpp
+ * \brief Component character, comportement des personnages (IA/Player)
+ * \author qhonore
+ */
 namespace Game
 {
 	namespace Component
 	{
+		/*! \class Character
+		* \brief La classe Character gère les mouvements, pose de bombes et autre du personnage
+		*/
 		class Character : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,
@@ -47,6 +55,7 @@ namespace Game
 
 			void	translate(glm::vec3 dir);
 			void    move(Direction dir);
+			void    stopMove();
 			void    increaseSpeed(float val);
 			void    addBomb(void);
 			void    increaseMaxBomb(void);

@@ -1,8 +1,18 @@
 #ifndef BE_CORE_KEYCODE_HPP
 #define BE_CORE_KEYCODE_HPP 1
-
+/*!
+ * \file KeyCode.hpp
+ * \brief liste des touches
+ * \author mgallo
+ */
+/*! \namespace BeerEngine
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \enum KeyCode
+	* \brief liste des touches utilisable sur le clavier, ranger par rapport a la table ascii
+	*/
 	enum KeyCode 
 	{
 		UNKNOWN = -1,

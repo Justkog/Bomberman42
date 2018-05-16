@@ -26,13 +26,12 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::skyboxShader = nullptr;
 		Cubemap			*Graphics::defaultCubemap = nullptr;
 
-		ShaderProgram	*Graphics::ambiantShader = nullptr;
-		ShaderProgram	*Graphics::directionalShader = nullptr;
+		ShaderProgram	*Graphics::lightShader = nullptr;
 		ShaderProgram	*Graphics::spotShader = nullptr;
 		ShaderProgram	*Graphics::cubemapShader = nullptr;
 
 
-		static Mesh	*LoadPlane(void)
+		Mesh	*Graphics::LoadPlane(glm::vec2 tiling, glm::vec2 offset)
 		{
 			MeshBuilder builder;
 			builder.addTriangle(
@@ -40,17 +39,17 @@ namespace BeerEngine
 					glm::vec3(-1.0f, 0.0f, 1.0f),
 					glm::vec3(1.0f, 0.0f, 1.0f)
 				).addTriangleUV(
-					glm::vec2(0.0f, 1.0f),
-					glm::vec2(0.0f, 0.0f),
-					glm::vec2(1.0f, 0.0f)
+					glm::vec2(offset[0], offset[1] + tiling[1]),
+					glm::vec2(offset[0], offset[1]),
+					glm::vec2(offset[0] + tiling[0], offset[1])
 				).addTriangle(
 					glm::vec3(1.0f, 0.0f, 1.0f),
 					glm::vec3(1.0f, 0.0f, -1.0f),
 					glm::vec3(-1.0f, 0.0f, -1.0f)
 				).addTriangleUV(
-					glm::vec2(1.0f, 0.0f),
-					glm::vec2(1.0f, 1.0f),
-					glm::vec2(0.0f, 1.0f)
+					glm::vec2(offset[0] + tiling[0], offset[1]),
+					glm::vec2(offset[0] + tiling[0], offset[1] + tiling[1]),
+					glm::vec2(offset[0], offset[1] + tiling[1])
 				).calculTangent()
 			;
 			auto plane = builder.build();
@@ -171,14 +170,9 @@ namespace BeerEngine
 			return (Assets::GetShaderProgram("shaders/line_v.glsl", "shaders/line_f.glsl"));
 		}
 
-		ShaderProgram *Graphics::loadAmbiantShader(void)
+		ShaderProgram *Graphics::loadLightShader(void)
 		{
-			return (Assets::GetShaderProgram("shaders/lights/ambiant_light_v.glsl", "shaders/lights/ambiant_light_f.glsl"));
-		}
-
-		ShaderProgram *Graphics::loadDirectionalShader(void)
-		{
-			return (Assets::GetShaderProgram("shaders/lights/directional_light_v.glsl", "shaders/lights/directional_light_f.glsl"));
+			return (Assets::GetShaderProgram("shaders/lights/lights_v.glsl", "shaders/lights/lights_f.glsl"));
 		}
 
 		ShaderProgram *Graphics::loadSkyboxShader(void)
@@ -204,7 +198,7 @@ namespace BeerEngine
 		void Graphics::Load(void)
 		{
 			// PLANE
-			plane = LoadPlane();
+			plane = Graphics::LoadPlane(glm::vec2(1, 1), glm::vec2(0, 0));
 			// CUBE
 			cube = LoadCube();
 			// Texture White
@@ -214,8 +208,7 @@ namespace BeerEngine
 			defaultShader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
 			defaultGuiShader = Assets::GetShaderProgram("shaders/basic_gui_v.glsl", "shaders/basic_gui_f.glsl");
 
-			ambiantShader = loadAmbiantShader();
-			directionalShader = loadDirectionalShader();
+			lightShader = loadLightShader();
 			skyboxShader = loadSkyboxShader();
 			cubemapShader = loadCubemapShader();
 			shadowRenderShader = loadShadowRenderShader();
@@ -236,8 +229,7 @@ namespace BeerEngine
 			delete defaultMaterial;
 			delete defaultLight;
 
-			delete ambiantShader;
-			delete directionalShader;
+			delete lightShader;
 			delete cubemapShader;
 		}
 

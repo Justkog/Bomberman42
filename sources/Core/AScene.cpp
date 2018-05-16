@@ -161,20 +161,14 @@ namespace BeerEngine
         std::map<int, Graphics::ALight *>::iterator it2;
 
         Graphics::Graphics::defaultLight->bind();
-        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
-        {
-            (it->second)->componentRenderForward(*Graphics::Graphics::defaultLight);
-        }
-        Graphics::Graphics::EnableForwardBlend();
         for (it2 = _lights.begin(); it2 != _lights.end(); ++it2)
         {
             it2->second->bind();
-            for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
-            {
-                (it->second)->componentRenderForward(*(it2->second));
-            } 
         }
-        Graphics::Graphics::DisableForwardBlend();
+        for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
+        {
+            (it->second)->componentRenderForward(*Graphics::Graphics::defaultLight);
+        } 
     }
 
     void    AScene::renderShadows(void)

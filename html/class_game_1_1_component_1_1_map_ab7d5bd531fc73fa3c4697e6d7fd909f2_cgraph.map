@@ -1,0 +1,7 @@
+<map id="Game::Component::Map::addDestoyableCrate" name="Game::Component::Map::addDestoyableCrate">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_a_scene.html#a2bd087ae22796d1e286c867f4f1ecc38" title="instancie un objet Methode permettant de creer un nouvelle objet dans la scene " alt="" coords="243,5,388,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a818276a7fe8703a04bf431a41fa4c907" title="BeerEngine::Component\l::MeshRenderer::setMesh" alt="" coords="228,68,403,107"/>
+<area shape="rect" id="node4" href="$class_assets.html#a1dc713408638d18566ec35221a0ede24" title="Assets::GetTexture" alt="" coords="248,131,382,156"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a9d4408a8c5e670c130394c59eeb5ccf2" title="BeerEngine::Component\l::MeshRenderer::setMaterial" alt="" coords="221,180,410,219"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_map.html#ae1900809e3369230a8dd3678a397ba98" title="Game::Component::Map\l::mapUpdate" alt="" coords="232,243,399,281"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BeerEngine::GameObject::instantiate" name="BeerEngine::GameObject::instantiate">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html#ac2cbd714fb3d9e4fccae9b026dbcd3e5" title="Game::Component::Character\l::dropBomb" alt="" coords="227,37,427,76"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_i_a.html#aed6273e3aa9317d671fd3acdf682b70b" title="Game::Component::IA\l::update" alt="" coords="487,5,641,44"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_player.html#a90fd5207a5c264ec9c3c623e3f2684c9" title="Game::Component::Player\l::update" alt="" coords="475,68,654,107"/>
+</map>

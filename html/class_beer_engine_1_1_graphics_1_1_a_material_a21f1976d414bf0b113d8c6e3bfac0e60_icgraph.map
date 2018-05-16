@@ -1,0 +1,7 @@
+<map id="BeerEngine::Graphics::AMaterial::setColor" name="BeerEngine::Graphics::AMaterial::setColor">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_rays_renderer.html#a0d3637f17a8c0c6e159a52a196834bb6" title="BeerEngine::Component\l::RaysRenderer::RaysRenderer" alt="" coords="205,5,413,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_graphics_1_1_a_material.html#a961d1f21fbdeb02972ff303ab29d2831" title="BeerEngine::Graphics\l::AMaterial::deserialize" alt="" coords="231,68,387,107"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_bomb.html#a1fae40758c4c846e1b9406081d9e5eb8" title="Game::Component::Bomb\l::fixedUpdate" alt="" coords="221,131,397,169"/>
+<area shape="rect" id="node5" href="$class_scene_main.html#a4406dc5cf9807edcf360ba416de928e2" title="SceneMain::init" alt="" coords="253,193,365,219"/>
+<area shape="rect" id="node6" href="$class_scene_test.html#aedded03410798c3705fb3fb028e56ab5" title="SceneTest::init" alt="" coords="255,243,363,268"/>
+</map>

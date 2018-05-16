@@ -1,0 +1,12 @@
+<map id="nk_text_edit" name="nk_text_edit">
+<area shape="rect" id="node2" href="$structnk__text__undo__state.html" title="{nk_text_undo_state\n|+ undo_char\l+ undo_point\l+ redo_point\l+ undo_char_point\l+ redo_char_point\l|}" alt="" coords="12,589,150,716"/>
+<area shape="rect" id="node3" href="$structnk__text__undo__record.html" title="{nk_text_undo_record\n|+ where\l+ insert_length\l+ delete_length\l+ char_storage\l|}" alt="" coords="5,401,152,515"/>
+<area shape="rect" id="node4" href="$structnk__clipboard.html" title="{nk_clipboard\n||}" alt="" coords="124,291,220,364"/>
+<area shape="rect" id="node5" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="137,5,220,92"/>
+<area shape="rect" id="node9" href="$structnk__allocator.html" title="{nk_allocator\n||}" alt="" coords="175,187,268,260"/>
+<area shape="rect" id="node6" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="308,609,379,696"/>
+<area shape="rect" id="node7" href="$structnk__str.html" title="{nk_str\n|+ len\l|}" alt="" coords="227,616,285,689"/>
+<area shape="rect" id="node8" href="$structnk__buffer.html" title="{nk_buffer\n|+ type\l+ grow_factor\l+ allocated\l+ needed\l+ calls\l+ size\l|}" alt="" coords="287,388,390,528"/>
+<area shape="rect" id="node10" href="$structnk__buffer__marker.html" title="{nk_buffer_marker\n|+ active\l+ offset\l|}" alt="" coords="292,180,417,267"/>
+<area shape="rect" id="node11" href="$structnk__memory.html" title="{nk_memory\n|+ ptr\l+ size\l|}" alt="" coords="441,180,532,267"/>
+</map>

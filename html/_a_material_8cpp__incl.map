@@ -1,0 +1,15 @@
+<map id="sources/Core/Graphics/AMaterial.cpp" name="sources/Core/Graphics/AMaterial.cpp">
+<area shape="rect" id="node2" href="$_a_material_8hpp.html" title="Core/Graphics/AMaterial.hpp" alt="" coords="2008,165,2202,191"/>
+<area shape="rect" id="node33" href="$_graphics_8hpp.html" title="Core/Graphics/Graphics.hpp" alt="" coords="1679,92,1870,117"/>
+<area shape="rect" id="node35" href="$_texture_8hpp.html" title="Texture.hpp" alt="" coords="1576,165,1667,191"/>
+<area shape="rect" id="node37" href="$_shader_program_8hpp.html" title="ShaderProgram.hpp" alt="" coords="1410,165,1552,191"/>
+<area shape="rect" id="node38" href="$_window_8hpp.html" title="Fenetre unique ou la partie graphique du moteur se deroule. " alt="" coords="2358,92,2484,117"/>
+<area shape="rect" id="node39" href="$_camera_8hpp.html" title="Core/Camera.hpp" alt="" coords="2207,92,2334,117"/>
+<area shape="rect" id="node41" href="$_json_8hpp.html" title="Core/Json/Json.hpp" alt="" coords="1845,165,1984,191"/>
+<area shape="rect" id="node42" href="$_file_utils_8hpp.html" title="Core/IO/FileUtils.hpp" alt="" coords="2458,239,2603,264"/>
+<area shape="rect" id="node3" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1844,312,1953,337"/>
+<area shape="rect" id="node32" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1865,239,2074,264"/>
+<area shape="rect" id="node28" href="$nuklear_8h.html" title="nuklear.h" alt="" coords="2383,392,2459,417"/>
+<area shape="rect" id="node34" href="$_mesh_8hpp.html" title="Mesh.hpp" alt="" coords="1741,165,1821,191"/>
+<area shape="rect" id="node40" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2226,165,2334,191"/>
+</map>

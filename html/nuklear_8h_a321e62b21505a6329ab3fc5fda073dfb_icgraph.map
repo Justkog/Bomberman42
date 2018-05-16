@@ -1,0 +1,7 @@
+<map id="nk_begin" name="nk_begin">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html#aa047234df2a59f850b469b72ed5aac59" title="Game::Component::IA\l::renderUI" alt="" coords="154,5,308,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_main_menu.html#a1210312521933c7c2492d9393ac04cbf" title="Game::Component::MainMenu\l::renderUI" alt="" coords="129,68,332,107"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_map.html#a3fbb843d8138214039cf320b3af4d9b6" title="Game::Component::Map\l::renderUI" alt="" coords="147,131,314,169"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_player.html#a6ceac2fc95569461fc3f6be5d1be64df" title="Game::Component::Player\l::renderUI" alt="" coords="141,193,320,232"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="205,256,256,281"/>
+</map>

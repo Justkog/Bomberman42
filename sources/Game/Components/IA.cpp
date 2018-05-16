@@ -15,13 +15,21 @@ namespace Game
 {
 	namespace Component
 	{
+		std::vector<std::string> IA::textures = {
+			"assets/textures/ia/black_body.png",
+			"assets/textures/ia/blue_body.png",
+			"assets/textures/ia/gold_body.png",
+			"assets/textures/ia/red_body.png",
+		};
+
         IA::IA(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform),
             _hasObjective(false),
             _pos(0, 0),
 		    _type(ObjectiveType::MoveTo),
-            _val(0)
+            _val(0),
+            _timerRefreshMap(0.2f)
 		{
         }
 
@@ -40,17 +48,22 @@ namespace Game
         void    IA::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
+			uiInit = true;
         }
 
         void    IA::fixedUpdate(void)
         {
-
         }
 
         void    IA::update(void)
         {
-            if (!_hasObjective)
+			_character->stopMove();
+            _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
+            if (!_hasObjective && _timerRefreshMap >= 0.2f)
+            {
                 findObjective();
+                _timerRefreshMap = 0;
+            }
             if (_hasObjective)
             {
                 if (moveToObjective())
@@ -235,13 +248,14 @@ namespace Game
         {
             glm::vec3 dir;
 
+            // _character->_direction = glm::vec2(0, 0);
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
             {
                 _val++;
                 _path.erase(_path.begin());
-                if (_type == ObjectiveType::KillEnemy)
+                if (_type == ObjectiveType::KillEnemy || _type == ObjectiveType::TakeBonus)
                     return (false);
             }
             dir = map->mapToWorld(_path[0]) - _transform.position;
@@ -272,73 +286,91 @@ namespace Game
           //------------------------------------ PATHFINDER -----------------------------------//
          ///////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////
-        bool	IA::checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start)
+        void	IA::markCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck)
         {
             if (cur.y >= 0 && cur.x >= 0 && cur.y < map->_sizeY && cur.x < map->_sizeX
-            && (!mapCopy[cur.y][cur.x] || (mapCopy[cur.y][cur.x] >= 1000 && mapCopy[cur.y][cur.x] > weight)))
+            && (!_pathMap[cur.y][cur.x] || (_pathMap[cur.y][cur.x] >= 1000 && _pathMap[cur.y][cur.x] > weight)))
             {
-                if (glm::vec2(cur.x, cur.y) == start)
-                    return (true);
-                mapCopy[cur.y][cur.x] = weight + 1;
+                _pathMap[cur.y][cur.x] = weight + 1;
                 toCheck.push(glm::vec2(cur.x, cur.y));
             }
-            return (false);
         }
 
-        bool    IA::analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target)
+        void    IA::updatePathMap(void)
+        {
+            glm::vec2 ia = map->worldToMap(_transform.position);
+
+            if (_pathMap.empty())
+                _pathMap.resize(map->_sizeY);
+            for (int y = 0; y < map->_sizeY; ++y)
+            {
+                if (_pathMap[y].empty())
+                    _pathMap[y].resize(map->_sizeX);
+                for (int x = 0; x < map->_sizeX; ++x)
+                {
+                    if (!map->canWalk(glm::vec2(x, y)) && ia != glm::vec2(x, y))
+                        _pathMap[y][x] = -1;
+                    else
+                        _pathMap[y][x] = 0;
+                    if (map->_map[y][x] == B && ia == glm::vec2(x, y))
+                        _pathMap[y][x] = 0;
+                }
+            }
+        }
+
+        void    IA::analyzeMap(glm::vec2 start)
         {
             std::queue<glm::vec2> toCheck;
             glm::vec2 cur;
             int weight;
 
-            mapCopy[target.y][target.x] = 1000;
-            toCheck.push(target);
+            updatePathMap();
+            _pathMap[start.y][start.x] = 1000;
+            toCheck.push(start);
             while (!toCheck.empty())
             {
                 cur = toCheck.front();
-                weight = mapCopy[cur.y][cur.x];
-                if (checkCell(glm::vec2(cur.x, cur.y - 1), mapCopy, weight, toCheck, start)
-                || checkCell(glm::vec2(cur.x, cur.y + 1), mapCopy, weight, toCheck, start)
-                || checkCell(glm::vec2(cur.x + 1, cur.y), mapCopy, weight, toCheck, start)
-                || checkCell(glm::vec2(cur.x - 1, cur.y), mapCopy, weight, toCheck, start))
-                    return (true);
+                weight = _pathMap[cur.y][cur.x];
+                markCell(glm::vec2(cur.x, cur.y - 1), weight, toCheck);
+                markCell(glm::vec2(cur.x, cur.y + 1), weight, toCheck);
+                markCell(glm::vec2(cur.x + 1, cur.y), weight, toCheck);
+                markCell(glm::vec2(cur.x - 1, cur.y), weight, toCheck);
                 toCheck.pop();
             }
-            return (false);
         }
 
-        glm::vec2    IA::getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy)
+        glm::vec2    IA::getPath(glm::vec2 cur)
         {
-            int weight = !mapCopy[cur.y][cur.x] ? 100000 : mapCopy[cur.y][cur.x];
+            int weight = !_pathMap[cur.y][cur.x] ? 100000 : _pathMap[cur.y][cur.x];
             glm::vec2 next;
             glm::vec2 path = cur;
 
             next = glm::vec2(cur.x + 1, cur.y);
             if (next.y >= 0 && next.x >= 0 && next.y < map->_sizeY && next.x < map->_sizeX
-            && mapCopy[next.y][next.x] >= 1000 && mapCopy[next.y][next.x] < weight)
+            && _pathMap[next.y][next.x] >= 1000 && _pathMap[next.y][next.x] < weight)
             {
-                weight = mapCopy[next.y][next.x];
+                weight = _pathMap[next.y][next.x];
                 path = next;
             }
             next = glm::vec2(cur.x - 1, cur.y);
             if (next.y >= 0 && next.x >= 0 && next.y < map->_sizeY && next.x < map->_sizeX
-            && mapCopy[next.y][next.x] >= 1000 && mapCopy[next.y][next.x] < weight)
+            && _pathMap[next.y][next.x] >= 1000 && _pathMap[next.y][next.x] < weight)
             {
-                weight = mapCopy[next.y][next.x];
+                weight = _pathMap[next.y][next.x];
                 path = next;
             }
             next = glm::vec2(cur.x, cur.y - 1);
             if (next.y >= 0 && next.x >= 0 && next.y < map->_sizeY && next.x < map->_sizeX
-            && mapCopy[next.y][next.x] >= 1000 && mapCopy[next.y][next.x] < weight)
+            && _pathMap[next.y][next.x] >= 1000 && _pathMap[next.y][next.x] < weight)
             {
-                weight = mapCopy[next.y][next.x];
+                weight = _pathMap[next.y][next.x];
                 path = next;
             }
             next = glm::vec2(cur.x, cur.y + 1);
             if (next.y >= 0 && next.x >= 0 && next.y < map->_sizeY && next.x < map->_sizeX
-            && mapCopy[next.y][next.x] >= 1000 && mapCopy[next.y][next.x] < weight)
+            && _pathMap[next.y][next.x] >= 1000 && _pathMap[next.y][next.x] < weight)
             {
-                weight = mapCopy[next.y][next.x];
+                weight = _pathMap[next.y][next.x];
                 path = next;
             }
             return (path);
@@ -346,31 +378,17 @@ namespace Game
 
         bool    IA::findPath(glm::vec2 target, std::vector<glm::vec2> *path)
         {
-            std::vector<std::vector<int>> mapCopy;
             glm::vec2 start = map->worldToMap(_transform.position);
 
-            mapCopy.resize(map->_sizeY);
-            for (int y = 0; y < map->_sizeY; ++y)
-            {
-                mapCopy[y].resize(map->_sizeX);
-                for (int x = 0; x < map->_sizeX; ++x)
-                {
-                    if (!map->canWalk(glm::vec2(x, y)) && start != glm::vec2(x, y))
-                        mapCopy[y][x] = -1;
-                    else
-                        mapCopy[y][x] = 0;
-                    if (map->_map[y][x] == B && start == glm::vec2(x, y))
-                        mapCopy[y][x] = 0;
-                }
-            }
-            if (analyzeMap(start, mapCopy, target))
+            analyzeMap(start);
+            if (_pathMap[static_cast<int>(target.y)][static_cast<int>(target.x)] >= 1000)
             {
                 if (path)
                 {
-                    for (glm::vec2 cur(start); cur != target;)
+                    for (glm::vec2 cur(target); _pathMap[static_cast<int>(cur.y)][static_cast<int>(cur.x)] != 1000;)
                     {
-                        cur = getPath(cur, mapCopy);
-                        path->push_back(cur);
+                        path->insert(path->begin(), cur);
+                        cur = getPath(cur);
                     }
                 }
                 return (true);
@@ -390,6 +408,7 @@ namespace Game
 
         void    IA::renderUI(struct nk_context *ctx)
         {
+            /*
             std::stringstream winName;
             winName << "IA " << this;
             if (nk_begin(ctx, winName.str().c_str(), nk_rect(WINDOW_WIDTH - 330, 500, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
@@ -443,6 +462,12 @@ namespace Game
                 }
             }
             nk_end(ctx);
+			if (uiInit)
+			{
+				nk_window_set_position(ctx, winName.str().c_str(), nk_vec2(0, 0));
+				nk_window_collapse(ctx, winName.str().c_str(), NK_MINIMIZED);
+				uiInit = false;
+			}*/
         }
 
         nlohmann::json	IA::serialize()

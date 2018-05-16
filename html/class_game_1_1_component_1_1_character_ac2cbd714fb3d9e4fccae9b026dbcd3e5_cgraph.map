@@ -1,0 +1,11 @@
+<map id="Game::Component::Character::dropBomb" name="Game::Component::Character::dropBomb">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_game_object.html#ab88b7ff5e8aab52e54c02f9d103bbfcf" title="BeerEngine::GameObject\l::instantiate" alt="" coords="261,5,435,44"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_game_object.html#a62e1af180bc3c2cd12c06153ac06aa3a" title="BeerEngine::GameObject\l::AddComponent" alt="" coords="261,68,435,107"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_game_object.html#a70a24bb3e511f2ff0488b80c65e88f9f" title="BeerEngine::GameObject\l::GetComponent" alt="" coords="261,131,435,169"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a71d644125d6eceb95a90ab106db04640" title="BeerEngine::Component\l::MeshRenderer::setMesh" alt="" coords="261,193,435,232"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a1853d2f61ed7e2a60f21ee4992f64684" title="BeerEngine::Component\l::MeshRenderer::setMaterial" alt="" coords="253,256,443,295"/>
+<area shape="rect" id="node9" href="$class_assets.html#a69ba722168ad458cdf84cbd468df13ec" title="Assets::GetInstance" alt="" coords="278,319,418,344"/>
+<area shape="rect" id="node10" href="$class_game_1_1_component_1_1_bomb.html#a3432430350d557ef1b7d9ac0339b659a" title="Game::Component::Bomb\l::setPower" alt="" coords="260,368,436,407"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_a_scene.html#a2bd087ae22796d1e286c867f4f1ecc38" title="BeerEngine::AScene\l::instantiate" alt="" coords="505,5,650,44"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html#a1454d7ec7fc8d98d621ae9be166976e4" title="BeerEngine::GameObject\l::registerComponent" alt="" coords="491,68,664,107"/>
+</map>

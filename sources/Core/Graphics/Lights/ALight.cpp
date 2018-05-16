@@ -72,7 +72,7 @@ namespace BeerEngine
 
 		nlohmann::json	ALight::serialize()
 		{
-
+			return {};
 		}
 
 		void ALight::deserialize(const nlohmann::json & j)

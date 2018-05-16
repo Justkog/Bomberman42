@@ -1,6 +1,10 @@
 #ifndef BE_CORE_COMPONENT_BOXCOLLIDER2D_HPP
 #define BE_CORE_COMPONENT_BOXCOLLIDER2D_HPP 1
-
+/*!
+ * \file BoxCollider2D.hpp
+ * \brief Component de collision en rectangle
+ * \author qhonore
+ */
 #include "Core/Core.hpp"
 #include "ACollider.hpp"
 
@@ -8,6 +12,9 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		/*! \class BoxCollider2D
+		* \brief classe heritante du systeme de base des collision pour effectuer des collisions AABB en 2D (Axis-Aligned Bounding Box)
+		*/
 		class BoxCollider2D : public ACollider
 		{
 		protected:

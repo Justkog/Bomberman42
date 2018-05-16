@@ -1,12 +1,19 @@
 #ifndef BE_CORE_AROUTINE_RUNNER_HPP
 #define BE_CORE_AROUTINE_RUNNER_HPP 1
-
+/*!
+ * \file ARoutineRunner.hpp
+ * \brief 
+ * \author jblondea
+ */
 #include "Core/Core.hpp"
 
 namespace BeerEngine
 {
 	namespace BeerRoutine
 	{
+		/*! \class ARoutineRunner
+		* \brief 
+		*/
 		class ARoutineRunner
 		{
 		public:

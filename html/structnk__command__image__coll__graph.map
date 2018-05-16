@@ -1,0 +1,6 @@
+<map id="nk_command_image" name="nk_command_image">
+<area shape="rect" id="node2" href="$structnk__color.html" title="{nk_color\n|+ r\l+ g\l+ b\l+ a\l|}" alt="" coords="5,153,77,267"/>
+<area shape="rect" id="node3" href="$structnk__image.html" title="{nk_image\n|+ w\l+ h\l+ region\l|}" alt="" coords="102,160,181,260"/>
+<area shape="rect" id="node4" href="$unionnk__handle.html" title="{nk_handle\n|+ ptr\l+ id\l|}" alt="" coords="100,5,183,92"/>
+<area shape="rect" id="node5" href="$structnk__command.html" title="{nk_command\n|+ type\l+ next\l|}" alt="" coords="205,167,307,253"/>
+</map>

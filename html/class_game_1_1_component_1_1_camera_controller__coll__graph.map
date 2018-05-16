@@ -1,0 +1,11 @@
+<map id="Game::Component::CameraController" name="Game::Component::CameraController">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="5,1004,173,1224"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="161,5,356,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="316,569,489,883"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="134,221,292,508"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="439,261,584,468"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="471,45,681,132"/>
+<area shape="rect" id="node11" href="$class_beer_engine_1_1_camera.html" title="classe la camera du projet, ainsi permettant l&#39;acces de la view matrice dans tout le projet ..." alt="" coords="155,907,301,980"/>
+<area shape="rect" id="node9" href="$class_beer_engine_1_1_component_1_1_i_update.html" title="Interface avec les fonctionnalités pour effectuer les updates. " alt="" coords="197,1064,365,1164"/>
+<area shape="rect" id="node10" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="389,1071,557,1157"/>
+</map>

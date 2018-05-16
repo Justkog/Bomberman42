@@ -1,0 +1,12 @@
+<map id="BeerEngine::Component::MeshRenderer::setMaterial" name="BeerEngine::Component::MeshRenderer::setMaterial">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_map.html#a860f2c45a23d20303aa5e04261ac462d" title="Game::Component::Map\l::addCrate" alt="" coords="263,5,431,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_map.html#ab7d5bd531fc73fa3c4697e6d7fd909f2" title="Game::Component::Map\l::addDestoyableCrate" alt="" coords="263,68,431,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a93f18db93dcd97e061a6b166a0ece640" title="BeerEngine::Component\l::MeshRenderer::deserialize" alt="" coords="253,131,441,169"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_rays_renderer.html#a0d3637f17a8c0c6e159a52a196834bb6" title="BeerEngine::Component\l::RaysRenderer::RaysRenderer" alt="" coords="243,193,451,232"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_character.html#ac2cbd714fb3d9e4fccae9b026dbcd3e5" title="Game::Component::Character\l::dropBomb" alt="" coords="247,256,447,295"/>
+<area shape="rect" id="node9" href="$class_scene_main.html#a4406dc5cf9807edcf360ba416de928e2" title="SceneMain::init" alt="" coords="291,319,403,344"/>
+<area shape="rect" id="node10" href="$class_scene_test.html#a985fd01e2238a315f7cce992eb157ba3" title="SceneTest::addCrate" alt="" coords="274,368,420,393"/>
+<area shape="rect" id="node11" href="$class_scene_test.html#aedded03410798c3705fb3fb028e56ab5" title="SceneTest::init" alt="" coords="293,417,401,443"/>
+<area shape="rect" id="node7" href="$class_game_1_1_component_1_1_i_a.html#aed6273e3aa9317d671fd3acdf682b70b" title="Game::Component::IA\l::update" alt="" coords="512,225,666,264"/>
+<area shape="rect" id="node8" href="$class_game_1_1_component_1_1_player.html#a90fd5207a5c264ec9c3c623e3f2684c9" title="Game::Component::Player\l::update" alt="" coords="499,288,678,327"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="sources/Game/Assets.cpp" name="sources/Game/Assets.cpp">
+<area shape="rect" id="node2" href="$_assets_8hpp.html" title="Game/Assets.hpp" alt="" coords="1980,225,2107,251"/>
+<area shape="rect" id="node34" href="$_audio_clip_8hpp.html" title="Core/Audio/AudioClip.hpp" alt="" coords="3239,299,3414,324"/>
+<area shape="rect" id="node37" href="$_texture_8hpp.html" title="Core/Graphics/Texture.hpp" alt="" coords="1798,152,1979,177"/>
+<area shape="rect" id="node40" href="$_graphics_8hpp.html" title="Core/Graphics/Graphics.hpp" alt="" coords="1570,79,1760,104"/>
+<area shape="rect" id="node43" href="$_a_material_8hpp.html" title="AMaterial.hpp" alt="" coords="1670,152,1774,177"/>
+<area shape="rect" id="node3" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1546,299,1655,324"/>
+<area shape="rect" id="node28" href="$nuklear_8h.html" title="nuklear.h" alt="" coords="528,379,604,404"/>
+<area shape="rect" id="node39" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1567,225,1776,251"/>
+<area shape="rect" id="node41" href="$_mesh_8hpp.html" title="Mesh.hpp" alt="" coords="1566,152,1646,177"/>
+<area shape="rect" id="node42" href="$_shader_program_8hpp.html" title="ShaderProgram.hpp" alt="" coords="1351,225,1493,251"/>
+</map>

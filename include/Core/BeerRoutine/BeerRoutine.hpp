@@ -1,12 +1,19 @@
 #ifndef BE_CORE_BEER_ROUTINE_HPP
 #define BE_CORE_BEER_ROUTINE_HPP 1
-
+/*!
+ * \file BeerRoutine.hpp
+ * \brief 
+ * \author jblondea
+ */
 #include "Core/Core.hpp"
 
 namespace BeerEngine
 {
 	namespace BeerRoutine
 	{
+		/*! \class BeerRoutine
+		* \brief 
+		*/
 		class BeerRoutine
 		{
 		private:

@@ -1,6 +1,10 @@
 #ifndef AUDIOCLIP_HPP
 # define AUDIOCLIP_HPP
-
+/*!
+ * \file AudioClip.hpp
+ * \brief Fichier audio
+ * \author stmartin
+ */
 #include <string>
 #include <sndfile.h>
 #include <AL/al.h>
@@ -11,6 +15,9 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
+		/*! \class AudioClip
+		* \brief classe de stockage des sources audio
+		*/
 		class AudioClip
 		{
 

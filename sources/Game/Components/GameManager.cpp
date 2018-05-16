@@ -95,6 +95,11 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 	// srcAudio->Delete();
 	std::cout << "game over" << std::endl;
 	gameOverMenu->setActive(true);
+	if (victoryMenu->_isActive)
+	{
+		victoryMenu->setActive(false);
+		std::cout << "not a victory after all" << std::endl;
+	}	
 }
 
 void GameManager::setVictory()

@@ -46,26 +46,35 @@ namespace Game
 
         void    Player::update(void)
         {
+			bool moving = false;
+			_character->_direction = glm::vec2(0, 0);
+			
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
             {
+				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Up);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
 			{
+				moving = true;
 				playStepSound();
                 _character->move(Character::Direction::Down);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
             {
+				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Left);
 			}
             if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::M))
             {
+				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Right);
 			}
+			if (!moving)
+				_character->stopMove();
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
 				this->destroy();
             if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))

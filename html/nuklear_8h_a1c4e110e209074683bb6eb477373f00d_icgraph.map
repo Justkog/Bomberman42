@@ -1,0 +1,5 @@
+<map id="nk_subimage_id" name="nk_subimage_id">
+<area shape="rect" id="node2" href="$namespace_game_1_1_component.html#a8bccae991359e546683662d97f3c0dd2" title="Game::Component::loadSprite" alt="" coords="172,44,373,69"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_main_menu.html#abcf18bc2f0d9108279ea2530379c27e0" title="Game::Component::MainMenu\l::startUI" alt="" coords="421,5,625,44"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_main_menu.html#a1210312521933c7c2492d9393ac04cbf" title="Game::Component::MainMenu\l::renderUI" alt="" coords="421,68,625,107"/>
+</map>

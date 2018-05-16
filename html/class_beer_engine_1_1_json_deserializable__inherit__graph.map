@@ -1,0 +1,8 @@
+<map id="BeerEngine::JsonDeserializable" name="BeerEngine::JsonDeserializable">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="138,207,283,413"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="322,140,496,480"/>
+<area shape="rect" id="node3" href="$class_generic_scene.html" title="{GenericScene\n||+ init()\l}" alt="" coords="5,541,111,615"/>
+<area shape="rect" id="node4" href="$class_scene_main.html" title="{SceneMain\n||+ init()\l}" alt="" coords="136,541,224,615"/>
+<area shape="rect" id="node5" href="$class_scene_test.html" title="{SceneTest\n||+ init()\l+ addCrate()\l}" alt="" coords="247,535,344,621"/>
+<area shape="rect" id="node7" href="$class_camera_test.html" title="{CameraTest\n||+ CameraTest()\l+ start()\l+ update()\l}" alt="" coords="368,528,482,628"/>
+</map>

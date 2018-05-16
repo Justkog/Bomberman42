@@ -1,6 +1,10 @@
 #ifndef BE_CORE_COMPONENT_MODELRENDERER_HPP
 #define BE_CORE_COMPONENT_MODELRENDERER_HPP 1
-
+/*!
+ * \file ModelRenderer.hpp
+ * \brief Compoment de rendu d'une animation 3D
+ * \author mploux
+ */
 #include "Core/Core.hpp"
 #include "Component.hpp"
 #include "IRenderForward.hpp"
@@ -15,17 +19,25 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		/*! \class ModelRenderer
+		* \brief Classe component pour effectuer la mise a jour et le rendu d'une animation 3D
+		*/
 		class ModelRenderer : public Component, public IRenderForward, public IUpdate, public IRenderShadow
 		{
 		protected:
 			#define NUM_BONES_PER_VEREX 4
 
+			/*! \struct BoneInfo
+			* \brief Structure de stockage des informations d'un bones
+			*/
 			struct BoneInfo
 			{
 				aiMatrix4x4 boneOffset;
 				glm::mat4 finalTransformation;
 			};
-
+			/*! \struct VertexBoneData
+			* \brief Structure de stockage des bones par vertex avec leur poids
+			*/
 			struct VertexBoneData
 			{
 				uint ids[NUM_BONES_PER_VEREX];
@@ -50,17 +62,27 @@ namespace BeerEngine
 					}
 				}
 			};
+			
+			/*! \struct Animation
+			* \brief Structure de stockage des informations d'animation
+			*/
+			struct Animation
+			{
+				int index;
+				float speed;
+			};
 
 			Assimp::Importer 					_importer;
 			const aiScene						*_assimpScene;
 			std::map<int, Graphics::AMaterial*>	_materials;
 			std::map<Graphics::Mesh*, int>		_materialIndices;
 			glm::mat4							_mat;
-			std::map<std::string, int>			_animations;
-			int									_currentAnimation;
+			std::map<std::string, Animation>	_animations;
+			Animation							_currentAnimation;
 			bool 								_playAnimation;
 			bool 								_loopAnimation;
 			float 								_animationTime;
+			float								_animationSpeed;
 
 			const aiScene		*_scene;
 
@@ -103,6 +125,7 @@ namespace BeerEngine
 			void resetAnimation();
 			double getAnimationDuration();
 			void setAnimationTime(double time);
+			void setAnimationSpeed(std::string name, float speed);
 
 			virtual void	fixedUpdate(void);
        		virtual void	update(void);

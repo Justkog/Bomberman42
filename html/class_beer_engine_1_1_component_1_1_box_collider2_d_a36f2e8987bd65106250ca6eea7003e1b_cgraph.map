@@ -1,0 +1,7 @@
+<map id="BeerEngine::Component::BoxCollider2D::collide_AABB2D" name="BeerEngine::Component::BoxCollider2D::collide_AABB2D">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_box_collider2_d.html#ab10c2db9816e643482ed59d35b0cff69" title="BeerEngine::Component\l::BoxCollider2D::response\l_AABB2D" alt="" coords="221,61,397,113"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_a_collider.html#ac0882500e46a05bb646b23394407c769" title="BeerEngine::Component\l::ACollider::response" alt="" coords="445,68,612,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_component_1_1_a_collider.html#a73d2658f7d3a63cddd2babcb32b0456a" title="BeerEngine::Component\l::ACollider::hasException" alt="" coords="660,5,831,44"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_a_collider.html#aee0827674c1f742a1a5ee119f692d7a2" title="BeerEngine::Component\l::ACollider::isKinematic" alt="" coords="662,68,829,107"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_transform.html#aaca147072f231beb5a0fe8b32f23b85d" title="deplacer l&#39;objet Methode qui permet de deplacer l&#39;objet grace a un vecteur " alt="" coords="666,131,825,169"/>
+</map>

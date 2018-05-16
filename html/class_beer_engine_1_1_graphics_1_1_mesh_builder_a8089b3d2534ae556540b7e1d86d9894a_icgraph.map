@@ -1,0 +1,6 @@
+<map id="BeerEngine::Graphics::MeshBuilder::addNormal" name="BeerEngine::Graphics::MeshBuilder::addNormal">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_graphics.html#a1719afbf40ef4b14d5d2162877b922b1" title="BeerEngine::Graphics\l::Graphics::OBJLoader" alt="" coords="244,5,401,44"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_graphics_1_1_mesh_builder.html#a91d88f64eee7cc0ca08b06a9bb0faed6" title="BeerEngine::Graphics\l::MeshBuilder::addTriangle" alt="" coords="232,68,413,107"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_graphics_1_1_mesh_builder.html#a713a27aa93be6fd38be0219c0c4631ba" title="BeerEngine::Graphics\l::MeshBuilder::calculNormal" alt="" coords="229,131,416,169"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_mesh_renderer.html#a8bc9a16ea4222e9aa8f01b76b6a2d3b0" title="BeerEngine::Component\l::MeshRenderer::setMesh" alt="" coords="464,5,639,44"/>
+</map>

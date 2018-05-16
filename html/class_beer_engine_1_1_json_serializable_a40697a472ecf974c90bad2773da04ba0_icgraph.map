@@ -1,0 +1,4 @@
+<map id="BeerEngine::JsonSerializable::toSerializable" name="BeerEngine::JsonSerializable::toSerializable">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_game_object.html#a763278f3ecf7a171590b207d1d6840f8" title="BeerEngine::GameObject\l::serialize" alt="" coords="249,5,422,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_transform.html#a0a306ccfef6d7c28e5632fa9f4784286" title="BeerEngine::Transform\l::serialize" alt="" coords="256,68,415,107"/>
+</map>

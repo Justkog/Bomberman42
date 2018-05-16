@@ -1,0 +1,6 @@
+<map id="Game::Component::Player::onColliderEnter" name="Game::Component::Player::onColliderEnter">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_game_object.html#a70a24bb3e511f2ff0488b80c65e88f9f" title="BeerEngine::GameObject\l::GetComponent" alt="" coords="233,5,406,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_audio_1_1_audio_source.html#a798250da977ddbbcc03ae35273a3386b" title="BeerEngine::Audio::\lAudioSource::play" alt="" coords="249,68,389,107"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_audio_1_1_audio_source.html#a7885411b2161b1b0f4bfbd87a97cd899" title="BeerEngine::Audio::\lAudioSource::stop" alt="" coords="483,36,623,75"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_audio_1_1_audio_source.html#a26d38a9a6e504074b9819416f4c9fa81" title="BeerEngine::Audio::\lAudioSource::continuePlaying" alt="" coords="454,99,653,137"/>
+</map>

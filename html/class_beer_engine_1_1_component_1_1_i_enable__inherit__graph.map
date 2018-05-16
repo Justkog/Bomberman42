@@ -1,0 +1,5 @@
+<map id="BeerEngine::Component::IEnable" name="BeerEngine::Component::IEnable">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_game_over_menu.html" title="{Game::Component::GameOverMenu\n|+ uiManager\l+ backgroundImage\l+ youLoseImage\l|+ GameOverMenu()\l+ ~GameOverMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ enable()\l}" alt="" coords="5,140,245,320"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_in_game_menu.html" title="{Game::Component::InGameMenu\n|+ uiManager\l|+ InGameMenu()\l+ ~InGameMenu()\l+ operator=()\l+ start()\l+ enable()\l+ disable()\l+ startUI()\l+ renderUI()\l+ setUI()\l}" alt="" coords="269,140,491,320"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_victory_menu.html" title="{Game::Component::VictoryMenu\n|+ uiManager\l+ backgroundImage\l+ titleImage\l|+ VictoryMenu()\l+ ~VictoryMenu()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ enable()\l}" alt="" coords="515,140,730,320"/>
+</map>

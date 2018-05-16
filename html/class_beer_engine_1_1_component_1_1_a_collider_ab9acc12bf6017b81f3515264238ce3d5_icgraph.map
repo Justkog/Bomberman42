@@ -1,0 +1,4 @@
+<map id="BeerEngine::Component::ACollider::collide_AABB2D" name="BeerEngine::Component::ACollider::collide_AABB2D">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_box_collider2_d.html#aeaac56770926a57af78e7af0379c30ca" title="BeerEngine::Component\l::BoxCollider2D::checkCollision" alt="" coords="221,5,427,44"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_component_1_1_circle_collider.html#a7443f2cadac6ae282025a6757ad2b3c8" title="BeerEngine::Component\l::CircleCollider::checkCollision" alt="" coords="224,68,424,107"/>
+</map>

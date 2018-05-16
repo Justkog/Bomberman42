@@ -1,6 +1,10 @@
 #ifndef BE_CORE_HPP
 # define BE_CORE_HPP 1
-
+/*!
+ * \file Core.hpp
+ * \brief Class d'include pour tout les fichier important au projet, libs...
+ * \author mgallo, qhonore, jblondea, stmartin, mploux
+ */
 #define BE_DEBUG 1
 
 #define GLEW_STATIC
@@ -47,7 +51,9 @@
 #include <nlohmann/json.hpp>
 
 #include <signal.h>
-
+/*! \namespace BeerEngine
+ * \brief espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
     class AScene;
@@ -55,14 +61,18 @@ namespace BeerEngine
     class Transform;
     class JsonSerializable;
 	class Camera;
-
+	/*! \namespace BeerEngine::Audio
+	* \brief espace de nommage regroupant les fonctionnalité audio du moteur
+	*/
 	namespace Audio
 	{
 		class AudioClip;
 		class AudioListener;
 		class AudioSource;
 	}
-
+	/*! \namespace BeerEngine::Component
+	* \brief espace de nommage regroupant les fonctionnalité des BeerEngine::Component du moteur
+	*/
 	namespace Component
 	{
 		enum RBType {None, Kinematic, Static};
@@ -77,7 +87,9 @@ namespace BeerEngine
 		class ParticleBase;
 		class ParticleExplode;
 	}
-
+	/*! \namespace BeerEngine::Graphics
+	* \brief espace de nommage regroupant les fonctionnalité graphique du moteur
+	*/
     namespace Graphics
 	{
 		class Graphics;
@@ -88,17 +100,27 @@ namespace BeerEngine
 		class Texture;
 		class MeshBuilder;
 	}
-
+	/*! \namespace BeerEngine::Physics
+	* \brief espace de nommage regroupant les fonctionnalité des Physique du moteur
+	*/
 	namespace Physics
 	{
 		struct Ray;
 		class Physics;
 	}
-
+	/*! \namespace BeerEngine::BeerRoutine
+	* \brief espace de nommage regroupant les fonctionnalité des routines du moteur
+	*/
 	namespace BeerRoutine
 	{
 		class BeerRoutine;
 		class ARoutineRunner;
+	}
+	/*! \namespace BeerEngine::IO
+	* \brief espace de nommage regroupant les fonctionnalité des entrées du moteur
+	*/
+    namespace IO
+	{
 	}
 }
 

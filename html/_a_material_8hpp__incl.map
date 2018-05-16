@@ -1,0 +1,8 @@
+<map id="include/Core/Graphics/AMaterial.hpp" name="include/Core/Graphics/AMaterial.hpp">
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,312,2492,337"/>
+<area shape="rect" id="node37" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2404,239,2613,264"/>
+<area shape="rect" id="node38" href="$_cubemap_8hpp.html" title="Cubemap.hpp" alt="" coords="2350,92,2456,117"/>
+<area shape="rect" id="node39" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2206,165,2405,191"/>
+<area shape="rect" id="node40" href="$_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2430,165,2571,191"/>
+<area shape="rect" id="node41" href="$_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2091,165,2182,191"/>
+</map>

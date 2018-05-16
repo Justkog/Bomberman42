@@ -1,0 +1,4 @@
+<map id="Assets" name="Assets">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_a_material.html" title="class de material, pour le rendu " alt="" coords="27,221,179,468"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+</map>

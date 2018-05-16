@@ -1,0 +1,8 @@
+<map id="Game::Component::IA::start" name="Game::Component::IA::start">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html#afb045de0879ac649137bfac7c11e3c52" title="Game::Component::IA\l::checkCell" alt="" coords="207,5,361,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_i_a.html#ace576ddf2bbb22b3a3462db04e99b8df" title="Game::Component::IA\l::analyzeMap" alt="" coords="409,56,563,95"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_i_a.html#aa7027727099c16dc0727459382858631" title="Game::Component::IA\l::findPath" alt="" coords="611,85,765,124"/>
+<area shape="rect" id="node5" href="$class_game_1_1_component_1_1_i_a.html#a01c2575295fff1a6c3c0314d4edc0266" title="Game::Component::IA\l::getObjective" alt="" coords="813,53,967,92"/>
+<area shape="rect" id="node7" href="$class_game_1_1_component_1_1_i_a.html#a18e08cf56c2cd6a6d57aeb7eff48bb4c" title="Game::Component::IA\l::moveToObjective" alt="" coords="813,116,967,155"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_i_a.html#aed6273e3aa9317d671fd3acdf682b70b" title="Game::Component::IA\l::update" alt="" coords="1015,85,1169,124"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BeerEngine::Component::ParticleBase::initParticle" name="BeerEngine::Component::ParticleBase::initParticle">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_transform.html#a2699038279b5b41831ff706c5ccc9348" title="recuperer la position dans le monde Methode qui permet de recuperer le vecteur de position de l&#39;objet..." alt="" coords="226,29,385,68"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_transform.html#a7aaf81b4672307edc39e9b208430ec59" title="effecteur une rotation Methode qui permet d&#39;effecter une rotation sur le vecteur donner par rapport a..." alt="" coords="226,92,385,131"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_transform.html#a9b7d3168270eb800c3e40af55c55fdc5" title="recupere la matrice de l&#39;objet Methode qui permet de recuperer la matrice de l&#39;objet ..." alt="" coords="433,29,591,68"/>
+</map>

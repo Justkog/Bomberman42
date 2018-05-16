@@ -11,6 +11,7 @@
 #include "Core/Json/Json.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/GameManager.hpp"
+#include "Core/Component/ModelRenderer.hpp"
 
 namespace Game
 {
@@ -34,9 +35,15 @@ namespace Game
         void    Map::start(void)
         {
 			std::cout << "map start" << "\n";
-			drawMap();
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
-			// _player->createCrateSignal.bind(&Map::mapUpdate, this);
+			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+			itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+			itemRangeTex = Assets::GetTexture("assets/textures/ground_color.png");
+			itemSpeedBoostMesh = Assets::GetModel("assets/models/Shoes/Shoes.obj");
+			itemBombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			itemRangeMesh = Assets::GetModel("assets/models/Fire/fire.obj");
+			drawMap();
+			uiInit = true;
 		}
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
@@ -63,28 +70,28 @@ namespace Game
 			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
 
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-            BeerEngine::Graphics::Texture *mapBlocTex;
-            BeerEngine::Graphics::AMaterial *mapBlocMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+            BeerEngine::Graphics::Texture *itemTex;
+            BeerEngine::Graphics::AMaterial *itemMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
 			switch (item->_type)
             {
                 case ItemType::SpeedBoost:
-                    meshRenderer->setMesh("assets/models/Shoes/Shoes.obj");
-                    mapBlocTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+                    meshRenderer->setMesh(itemSpeedBoostMesh);
+                    itemTex = itemSpeedBoostTex;
 			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
                     break;
                 case ItemType::AddBomb:
-                    meshRenderer->setMesh("assets/models/Bomb/bomb.obj");
-                    mapBlocTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+                    meshRenderer->setMesh(itemBombMesh);
+                    itemTex = itemBombTex;
 			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
                     break;
                 case ItemType::ExplosionBoost:
-                    meshRenderer->setMesh("assets/models/Fire/fire.obj");
-                    mapBlocTex = Assets::GetTexture("assets/textures/ground_color.png");
+                    meshRenderer->setMesh(itemRangeMesh);
+                    itemTex = itemRangeTex;
 			        itemGO->transform.scale = glm::vec3(1, 1, 1);
                     break;
             }
-			mapBlocMat->setAlbedo(mapBlocTex);
-			meshRenderer->setMaterial(mapBlocMat);
+			itemMat->setAlbedo(itemTex);
+			meshRenderer->setMaterial(itemMat);
 			return (itemGO);
 		}
 
@@ -102,16 +109,30 @@ namespace Game
 			auto iaGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				iaGO->name = "IA";
 				iaGO->transform.position = pos;
-				iaGO->transform.scale = glm::vec3(1, 1, 1);
-				iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+				// iaGO->transform.scale = glm::vec3(1, 1, 1);
+				iaGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
+				auto collider = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+					collider->_radius = 0.5f;
+					collider->colliderType = BeerEngine::Component::ONLY_OTHER;
 				auto breakable = iaGO->AddComponent<Game::Component::Breakable>();
 					GameManager::GetInstance().registerEnemy(breakable);
-				auto meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-					meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-					auto *iaTex = Assets::GetTexture("assets/textures/player2.png");
+				auto modelRenderer = iaGO->AddComponent<BeerEngine::Component::ModelRenderer>();
+					modelRenderer->load("assets/models/bombermanRunTest.fbx");
+					modelRenderer->setAnimationSpeed("idle", 0.25);
+					modelRenderer->setLoopAnimation(true);
+					// modelRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+
+					int texID = rand() % 4;
+					while (std::find(takenIATextures.begin(), takenIATextures.end(), texID) != takenIATextures.end())
+					{
+						texID = (texID + 1) % 4;
+					}
+					auto *iaTex = Assets::GetTexture(Game::Component::IA::textures[texID]);
+					takenIATextures.push_back(texID);
+
 					auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
 						iaMat->setAlbedo(iaTex);
-					meshRenderer->setMaterial(iaMat);
+					modelRenderer->addMaterial(0, iaMat);
 				auto character = iaGO->AddComponent<Game::Component::Character>();
 					character->map = this;
 				auto *ia = iaGO->AddComponent<Game::Component::IA>();
@@ -162,7 +183,7 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			if (_map[y][x] == 2 && value == 0 && !(rand() % 10))
+			if (_map[y][x] == 2 && value == 0 && !(rand() % 3))
 			{
 				_map[y][x] = I;
 				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
@@ -200,7 +221,7 @@ namespace Game
 						case S:
 							spawnIA = (rand() % 4 != 0 || playerSpawn ? true : false);
 							if (spawnIA && _IAs.size() < 3)
-								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
+								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY)));
 							else
 							{
 								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY);
@@ -218,7 +239,10 @@ namespace Game
 
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			if (nk_begin(ctx, "Map", nk_rect(10, 100, 270, 430), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			auto mapWidth = 270;
+			auto mapHeight = 430;
+			auto rect = nk_rect(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight, mapWidth, mapHeight);
+			if (nk_begin(ctx, "Map", rect, NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             {
 				nk_layout_row_dynamic(ctx, 20, 1);
 				// if (_player)
@@ -235,10 +259,15 @@ namespace Game
 					for (int col = 0; col < _sizeX; col++)
 						ss << std::setw(2) << _map[row][col];
 					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-
 				}
             }
             nk_end(ctx);
+			if (uiInit)
+			{
+				nk_window_set_position(ctx, "Map", nk_vec2(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight));
+				nk_window_collapse(ctx, "Map", NK_MINIMIZED);
+				uiInit = false;
+			}
 		}
 
 		glm::vec2		Map::worldToMap(glm::vec3 pos)
@@ -281,7 +310,7 @@ namespace Game
 		{
 			int x = static_cast<int>(pos.x);
 			int y = static_cast<int>(pos.y);
-			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 8 || _map[y][x] == 9) && !hasCharacter(glm::vec2(x, y)))
+			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 8 || _map[y][x] == 9))// && !hasCharacter(glm::vec2(x, y)))
 				return true;
 			return false;
 		}

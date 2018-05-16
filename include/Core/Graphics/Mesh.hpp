@@ -1,13 +1,26 @@
 #ifndef BE_CORE_GRAPHICS_MESH_HPP
 #define BE_CORE_GRAPHICS_MESH_HPP 1
-
+/*!
+ * \file Mesh.hpp
+ * \brief Classe permettant des rendu graphique
+ * \author mgallo
+ */
 #include "../Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
+/*! \namespace BeerEngine
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \namespace Graphics
+	* espace de nommage regroupant les fonctionnalité graphique du moteur
+	*/
 	namespace Graphics
 	{
+		/*! \class Mesh
+		* \brief classe representant les données de rendu
+		*/
 		class Mesh : public JsonSerializable
 		{
 		private:

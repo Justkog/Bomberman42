@@ -1,0 +1,12 @@
+<map id="include/Game/Components/GameManager.hpp" name="include/Game/Components/GameManager.hpp">
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2357,459,2466,484"/>
+<area shape="rect" id="node37" href="$_game_8hpp.html" title="Game/Game.hpp" alt="" coords="2837,92,2960,117"/>
+<area shape="rect" id="node38" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2673,165,2894,191"/>
+<area shape="rect" id="node43" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2955,312,3140,337"/>
+<area shape="rect" id="node44" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="3085,165,3285,191"/>
+<area shape="rect" id="node45" href="$_audio_source_8hpp.html" title="Core/Audio/AudioSource.hpp" alt="" coords="3352,92,3546,117"/>
+<area shape="rect" id="node50" href="$_audio_clip_8hpp.html" title="Core/Audio/AudioClip.hpp" alt="" coords="3740,92,3915,117"/>
+<area shape="rect" id="node40" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2566,385,2775,411"/>
+<area shape="rect" id="node41" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2832,239,2986,264"/>
+<area shape="rect" id="node42" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2755,312,2882,337"/>
+</map>

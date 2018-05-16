@@ -1,0 +1,16 @@
+<map id="include/Game/Components/Player.hpp" name="include/Game/Components/Player.hpp">
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2041,252,2150,277"/>
+<area shape="rect" id="node37" href="$_component_8hpp.html" title="Component de base. " alt="" coords="3498,179,3720,204"/>
+<area shape="rect" id="node39" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="4024,179,4223,204"/>
+<area shape="rect" id="node40" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="4248,179,4432,204"/>
+<area shape="rect" id="node41" href="$_i_trigger_stay_8hpp.html" title="Core/Component/ITriggerStay.hpp" alt="" coords="4148,99,4372,124"/>
+<area shape="rect" id="node42" href="$_i_trigger_enter_8hpp.html" title="Core/Component/ITriggerEnter.hpp" alt="" coords="4396,99,4625,124"/>
+<area shape="rect" id="node43" href="$_i_trigger_exit_8hpp.html" title="Core/Component/ITriggerExit.hpp" alt="" coords="4648,99,4869,124"/>
+<area shape="rect" id="node44" href="$_i_collider_stay_8hpp.html" title="Core/Component/ICollider\lStay.hpp" alt="" coords="4892,92,5068,131"/>
+<area shape="rect" id="node45" href="$_i_collider_enter_8hpp.html" title="Core/Component/ICollider\lEnter.hpp" alt="" coords="5092,92,5268,131"/>
+<area shape="rect" id="node46" href="$_i_collider_exit_8hpp.html" title="Core/Component/ICollider\lExit.hpp" alt="" coords="5292,92,5468,131"/>
+<area shape="rect" id="node47" href="$_i_on_destroy_8hpp.html" title="Core/Component/IOnDestroy.hpp" alt="" coords="5492,99,5711,124"/>
+<area shape="rect" id="node48" href="$_i_u_i_8hpp.html" title="Core/Component/IUI.hpp" alt="" coords="2335,179,2505,204"/>
+<area shape="rect" id="node49" href="$_audio_source_8hpp.html" title="Core/Audio/AudioSource.hpp" alt="" coords="3828,99,4022,124"/>
+<area shape="rect" id="node50" href="$_audio_clip_8hpp.html" title="Core/Audio/AudioClip.hpp" alt="" coords="3672,252,3847,277"/>
+</map>

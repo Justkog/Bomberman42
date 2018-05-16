@@ -1,5 +1,10 @@
 #ifndef AUDIOLISTENER_HPP
 #define AUDIOLISTENER_HPP
+/*!
+ * \file AudioListener.hpp
+ * \brief class d'ecoute audio
+ * \author stmartin
+ */
 
 #include <AL/al.h>
 #include <AL/alc.h>
@@ -13,6 +18,9 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
+		/*! \class AudioListener
+		* \brief classe d'ecoute d'audio par sa localition
+		*/
 		class AudioListener : public BeerEngine::Component::Component, 
 							public BeerEngine::Component::IStart,
 							public BeerEngine::Component::IUpdate

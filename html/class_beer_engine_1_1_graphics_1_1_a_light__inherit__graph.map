@@ -1,0 +1,5 @@
+<map id="BeerEngine::Graphics::ALight" name="BeerEngine::Graphics::ALight">
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_graphics_1_1_ambiant_light.html" title="{BeerEngine::Graphics\l::AmbiantLight\n||+ AmbiantLight()\l+ AmbiantLight()\l+ ~AmbiantLight()\l+ bind()\l+ serialize()\l+ deserialize()\l+ Deserialize()\l}" alt="" coords="5,661,157,828"/>
+<area shape="rect" id="node4" href="$class_beer_engine_1_1_graphics_1_1_directional_light.html" title="{BeerEngine::Graphics\l::DirectionalLight\n||+ DirectionalLight()\l+ DirectionalLight()\l+ ~DirectionalLight()\l+ bind()\l+ setDirection()\l+ getDirection()\l+ serialize()\l+ deserialize()\l+ Deserialize()\l}" alt="" coords="181,648,333,841"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="71,5,267,172"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="BeerEngine::IO::FileUtils::WriteFile" name="BeerEngine::IO::FileUtils::WriteFile">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_a_scene.html#a65e03ade02de4673cd25544d4843c6d8" title="BeerEngine::AScene\l::save" alt="" coords="243,23,388,61"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html#ad30b590f6d7a6556612358e4e14e79df" title="BeerEngine::GameObject\l::save" alt="" coords="229,85,402,124"/>
+<area shape="rect" id="node6" href="$class_game_1_1_component_1_1_settings.html#ad8883dfb4a2ae8a041e293e73c7a6dc5" title="Game::Component::Settings\l::saveSettings" alt="" coords="221,148,410,187"/>
+<area shape="rect" id="node3" href="$class_scene_main.html#a4406dc5cf9807edcf360ba416de928e2" title="SceneMain::init" alt="" coords="458,5,571,31"/>
+<area shape="rect" id="node4" href="$class_scene_test.html#aedded03410798c3705fb3fb028e56ab5" title="SceneTest::init" alt="" coords="460,55,568,80"/>
+</map>

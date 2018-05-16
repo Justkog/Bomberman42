@@ -3,13 +3,13 @@
     "keyBindings": {
         "bomb": 32,
         "move down": 83,
-        "move left": 68,
+        "move left": 65,
         "move right": 68,
-        "move up": 83
+        "move up": 87
     },
     "musicVolume": 50.0,
     "soundVolume": 50.0,
     "unlockedLevels": [],
     "windowHeight": 900,
-    "windowWidth": 1590
+    "windowWidth": 1600
 }

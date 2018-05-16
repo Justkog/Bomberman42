@@ -1,0 +1,5 @@
+<map id="BeerEngine::Input::GetKey" name="BeerEngine::Input::GetKey">
+<area shape="rect" id="node2" href="$class_camera_test.html#a5bacc3399e57aa311e8d5ea39c9865bf" title="CameraTest::update" alt="" coords="241,5,383,31"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_camera_controller.html#afcf6461289c7a58a20f7a91acf8dd17f" title="Game::Component::CameraController\l::update" alt="" coords="189,55,435,93"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_player.html#a90fd5207a5c264ec9c3c623e3f2684c9" title="Game::Component::Player\l::update" alt="" coords="223,117,402,156"/>
+</map>

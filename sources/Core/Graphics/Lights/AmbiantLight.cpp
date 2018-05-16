@@ -16,14 +16,14 @@ namespace BeerEngine
 		AmbiantLight::AmbiantLight(int id, AScene &scene)
 			: ALight(id, scene)
 		{
-			_shader = Graphics::Graphics::ambiantShader;
+			_shader = Graphics::Graphics::lightShader;
 			setupUniformIds();
 		}
 
 		AmbiantLight::AmbiantLight(float intensity, glm::vec4 color)
 			: ALight(intensity, color)
 		{
-			_shader = Graphics::Graphics::ambiantShader;
+			_shader = Graphics::Graphics::lightShader;
 			setupUniformIds();
 		}
 
@@ -35,11 +35,12 @@ namespace BeerEngine
 			_shader->uniformMat(_viewShaderID, view);
 			_shader->uniform4f("light.color", _color);
 			_shader->uniform1f("light.intensity", _intensity);
+			_shader->uniform1i("hasDirectionalLight", 0);
 		}
 
 		nlohmann::json	AmbiantLight::serialize()
 		{
-
+			return {};
 		}
 
 		void AmbiantLight::deserialize(const nlohmann::json & j)
@@ -49,6 +50,7 @@ namespace BeerEngine
 
 		AmbiantLight * AmbiantLight::Deserialize(const nlohmann::json & j)
 		{
+			return nullptr;
 		}
 	}
 }

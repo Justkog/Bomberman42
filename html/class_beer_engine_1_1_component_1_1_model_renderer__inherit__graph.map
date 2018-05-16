@@ -1,0 +1,6 @@
+<map id="BeerEngine::Component::ModelRenderer" name="BeerEngine::Component::ModelRenderer">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="103,220,271,453"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_render_forward.html" title="{BeerEngine::Component\l::IRenderForward\n||+ renderUpdate()\l+ render()\l}" alt="" coords="295,287,463,387"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_update.html" title="Interface avec les fonctionnalités pour effectuer les updates. " alt="" coords="487,287,655,387"/>
+</map>

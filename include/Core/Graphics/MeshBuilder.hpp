@@ -1,14 +1,27 @@
 #ifndef BE_CORE_GRAPHICS_MESHBUILDER_HPP
 #define BE_CORE_GRAPHICS_MESHBUILDER_HPP 1
-
+/*!
+ * \file MeshBuilder.hpp
+ * \brief Classe permettant de construire un rendu graphique
+ * \author mgallo
+ */
 #include <vector>
 #include "../Core.hpp"
 #include "Mesh.hpp"
-
+/*! \namespace BeerEngine
+ * 
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \namespace Graphics
+	* espace de nommage regroupant les fonctionnalité graphique du moteur
+	*/
 	namespace Graphics
 	{
+		/*! \class MeshBuilder
+		* \brief le builder permet de créer des rendu par le biais de mesh, en lui renseignant des vertices ...
+		*/
 		class MeshBuilder
 		{
 		private:

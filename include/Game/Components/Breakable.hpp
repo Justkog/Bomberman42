@@ -16,12 +16,20 @@
 // #include "Core/Component/IColliderExit.hpp"
 // #include "Core/Component/IUI.hpp"
 
+/*!
+ * \file Breakable.hpp
+ * \brief Component breakable, pour les objets destructibles
+ * \author stmartin
+ */
 namespace Game
 {
 	namespace Component
 	{
 		class Map;
 
+		/*! \class Breakable
+		* \brief La classe Breakable gère la destruction des objets et leurs events associés
+		*/
 		class Breakable : public BeerEngine::Component::Component
 						// public BeerEngine::Component::IStart
 						// public BeerEngine::Component::IUpdate,

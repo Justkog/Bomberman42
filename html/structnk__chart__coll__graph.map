@@ -1,0 +1,5 @@
+<map id="nk_chart" name="nk_chart">
+<area shape="rect" id="node2" href="$structnk__chart__slot.html" title="{nk_chart_slot\n|+ type\l+ min\l+ max\l+ range\l+ count\l+ index\l|}" alt="" coords="39,193,140,333"/>
+<area shape="rect" id="node3" href="$structnk__color.html" title="{nk_color\n|+ r\l+ g\l+ b\l+ a\l|}" alt="" coords="5,5,77,119"/>
+<area shape="rect" id="node4" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="102,19,173,105"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="Game::Component::MainMenu::renderUI" name="Game::Component::MainMenu::renderUI">
+<area shape="rect" id="node2" href="$namespace_game_1_1_component.html#a8bccae991359e546683662d97f3c0dd2" title="Game::Component::loadSprite" alt="" coords="258,103,460,128"/>
+<area shape="rect" id="node6" href="$nuklear_8h.html#aedba0cd2ec170c1f95f3396953982bc1" title="nk_rect" alt="" coords="549,153,614,179"/>
+<area shape="rect" id="node8" href="$nuklear_8h.html#a321e62b21505a6329ab3fc5fda073dfb" title="nk_begin" alt="" coords="321,204,397,229"/>
+<area shape="rect" id="node9" href="$nuklear_8h.html#ae0ade48c4c8df72456b9d97ab3d195e3" title="nk_end" alt="" coords="326,253,391,279"/>
+<area shape="rect" id="node10" href="$class_game_1_1_component_1_1_main_menu.html#a48c58d26af82bc24b8930b18f56fdc2f" title="Game::Component::MainMenu\l::setUI" alt="" coords="257,303,461,341"/>
+<area shape="rect" id="node11" href="$nuklear_8h.html#a76e65dc775c0bd5efaa3c8f38f96823f" title="nk_layout_row_dynamic" alt="" coords="277,365,441,391"/>
+<area shape="rect" id="node12" href="$nuklear_8h.html#aea4f6428017e2b92d5028d9448f1e050" title="nk_button_label" alt="" coords="301,415,417,440"/>
+<area shape="rect" id="node13" href="$class_game_1_1_component_1_1_main_menu.html#aab4b543fd346e0f2e5953cc985692f9c" title="Game::Component::MainMenu\l::resetToDefaultUI" alt="" coords="257,464,461,503"/>
+<area shape="rect" id="node3" href="$class_assets.html#a61be9fdfabc9e831899a6f1abaf6240b" title="Assets::GetTexture" alt="" coords="515,5,649,31"/>
+<area shape="rect" id="node5" href="$nuklear_8h.html#a1c4e110e209074683bb6eb477373f00d" title="nk_subimage_id" alt="" coords="523,55,641,80"/>
+<area shape="rect" id="node7" href="$nuklear_8h.html#a1de0362610f6087ea11f0d9a4ada16e4" title="nk_style_item_image" alt="" coords="509,104,655,129"/>
+<area shape="rect" id="node4" href="$class_assets.html#a69ba722168ad458cdf84cbd468df13ec" title="Assets::GetInstance" alt="" coords="703,5,844,31"/>
+</map>

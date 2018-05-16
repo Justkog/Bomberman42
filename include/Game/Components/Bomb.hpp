@@ -10,10 +10,18 @@
 #include "Core/Component/IColliderExit.hpp"
 #include "Core/Component/ACollider.hpp"
 
+/*!
+ * \file Bomb.hpp
+ * \brief Component bomb, ça fait boum quoi
+ * \author mgallo,stmartin,qhonore
+ */
 namespace Game
 {
 	namespace Component
 	{
+		/*! \class Bomb
+		* \brief La classe Bomb gère la range, le timer et l'explosion des bombes...
+		*/
 		class Bomb : public BeerEngine::Component::Component,
 			public BeerEngine::Component::IStart,
 			public BeerEngine::Component::IUpdate,
@@ -31,6 +39,7 @@ namespace Game
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
        		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
+			void			explodeToward(glm::vec3 dir);
 			void			explode(void);
 			
 			void			setPower(float pow);

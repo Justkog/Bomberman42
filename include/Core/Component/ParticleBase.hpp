@@ -1,17 +1,29 @@
 #ifndef BE_CORE_COMPONENT_PARTICLEBASE_HPP
 #define BE_CORE_COMPONENT_PARTICLEBASE_HPP 1
-
+/*!
+ * \file ParticleBase.hpp
+ * \brief Systeme de particule par defaut
+ * \author mgallo
+ */
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/IRenderAlpha.hpp"
 
 #define BE_PARTICLESSYSTEM_MAX 30000
-
+/*! \namespace BeerEngine
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \namespace Component
+	* espace de nommage regroupant les fonctionnalité des Component du moteur
+	*/
 	namespace Component
 	{
+		/*! \struct Particle
+		* \brief Structure des donneées de base d'une particule, position, velociter ...
+		*/
 		struct Particle {
 			glm::vec3 position;
 			glm::vec3 velocity;
@@ -27,7 +39,9 @@ namespace BeerEngine
 				lifeAnimSpeed(0.0f)
 			{}
 		};
-
+		/*! \class ParticleBase
+		* \brief System de particule de base, traitement de ses derniere avec un composent par defaut, gestion de la vie... Cette classe sert de parent a toute autre particule qui voudrons utiliser un "style de vie" differente.
+		*/
 		class ParticleBase : public Component, public IUpdate, public IRenderAlpha
 		{
 		private:

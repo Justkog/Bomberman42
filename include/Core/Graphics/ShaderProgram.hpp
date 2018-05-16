@@ -1,13 +1,26 @@
 #ifndef BE_CORE_GRAPHICS_SHADERPROGRAM_HPP
 #define BE_CORE_GRAPHICS_SHADERPROGRAM_HPP 1
-
+/*!
+ * \file ShaderProgram.hpp
+ * \brief Programme permettant de charger et d'utiliser les scripts glsl
+ * \author mgallo
+ */
 #include "../Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
-
+/*! \namespace BeerEngine
+ * 
+ * espace de nommage regroupant les fonctionnalité du moteur
+ */
 namespace BeerEngine
 {
+	/*! \namespace Graphics
+	* espace de nommage regroupant les fonctionnalité graphique du moteur
+	*/
 	namespace Graphics
 	{
+		/*! \class ShaderProgram
+		* \brief Cette class permet de charger et compiler les scripts pour la carte graphique (glsl), puis de les utiliser pour le traitement des rendus
+		*/
 		class ShaderProgram : public JsonSerializable
 		{
 		private:

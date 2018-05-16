@@ -1,0 +1,19 @@
+<map id="sources/Core/GameObject.cpp" name="sources/Core/GameObject.cpp">
+<area shape="rect" id="node2" href="$_game_object_8hpp.html" title="Core/GameObject.hpp" alt="" coords="1410,239,1565,264"/>
+<area shape="rect" id="node32" href="$_a_scene_8hpp.html" title="Core/AScene.hpp" alt="" coords="1185,312,1311,337"/>
+<area shape="rect" id="node34" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1335,312,1475,337"/>
+<area shape="rect" id="node35" href="$_i_start_8hpp.html" title="Core/Component/IStart.hpp" alt="" coords="1601,312,1785,337"/>
+<area shape="rect" id="node36" href="$_component_8hpp.html" title="Core/Component/Component.hpp" alt="" coords="1910,165,2132,191"/>
+<area shape="rect" id="node37" href="$_i_update_8hpp.html" title="Core/Component/IUpdate.hpp" alt="" coords="1760,85,1959,111"/>
+<area shape="rect" id="node38" href="$_i_render_8hpp.html" title="Core/Component/IRender.hpp" alt="" coords="1983,85,2182,111"/>
+<area shape="rect" id="node39" href="$_i_render_alpha_8hpp.html" title="Core/Component/IRenderAlpha.hpp" alt="" coords="2205,85,2439,111"/>
+<area shape="rect" id="node40" href="$_i_u_i_8hpp.html" title="Core/Component/IUI.hpp" alt="" coords="2670,165,2839,191"/>
+<area shape="rect" id="node41" href="$_i_start_u_i_8hpp.html" title="Core/Component/IStartUI.hpp" alt="" coords="2681,239,2879,264"/>
+<area shape="rect" id="node42" href="$_a_collider_8hpp.html" title="Core/Component/ACollider.hpp" alt="" coords="1530,85,1736,111"/>
+<area shape="rect" id="node43" href="$_rigid_body2_d_8hpp.html" title="Core/Component/RigidBody2\lD.hpp" alt="" coords="2514,79,2709,117"/>
+<area shape="rect" id="node44" href="$_json_8hpp.html" title="Core/Json/Json.hpp" alt="" coords="1961,312,2100,337"/>
+<area shape="rect" id="node45" href="$_file_utils_8hpp.html" title="Core/IO/FileUtils.hpp" alt="" coords="2855,385,3000,411"/>
+<area shape="rect" id="node3" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="1844,459,1953,484"/>
+<area shape="rect" id="node33" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="1589,385,1798,411"/>
+<area shape="rect" id="node28" href="$nuklear_8h.html" title="nuklear.h" alt="" coords="2383,539,2459,564"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="nk_input" name="nk_input">
+<area shape="rect" id="node2" href="$structnk__keyboard.html" title="{nk_keyboard\n|+ text\l+ text_len\l|}" alt="" coords="5,308,103,395"/>
+<area shape="rect" id="node3" href="$structnk__key.html" title="{nk_key\n|+ down\l+ clicked\l|}" alt="" coords="17,153,91,240"/>
+<area shape="rect" id="node4" href="$structnk__mouse.html" title="{nk_mouse\n|+ grab\l+ grabbed\l+ ungrab\l|}" alt="" coords="127,301,210,401"/>
+<area shape="rect" id="node5" href="$structnk__vec2.html" title="{nk_vec2\n|+ x\l+ y\l|}" alt="" coords="140,5,211,92"/>
+<area shape="rect" id="node6" href="$structnk__mouse__button.html" title="{nk_mouse_button\n|+ down\l+ clicked\l|}" alt="" coords="257,153,385,240"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BeerEngine::Audio::AudioSource::play" name="BeerEngine::Audio::AudioSource::play">
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_player.html#a2b8b5cac295f6ab0bf91b0905c6bd440" title="Game::Component::Player\l::onColliderEnter" alt="" coords="193,5,372,44"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_player.html#a87921f894ec75727bb1d83aa660573d1" title="Game::Component::Player\l::playStepSound" alt="" coords="193,68,372,107"/>
+<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_player.html#a90fd5207a5c264ec9c3c623e3f2684c9" title="Game::Component::Player\l::update" alt="" coords="420,68,600,107"/>
+</map>
