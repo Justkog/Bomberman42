@@ -157,10 +157,6 @@ void GameManager::startGame()
 void GameManager::start()
 {
 	std::cout << "GameManager start" << std::endl;
-	// BeerEngine::Audio::AudioClip	clip("assets/sounds/last_night.ogg");
-	// srcAudio->setBuffer(clip.getBuffer());
-	// srcAudio->setVolume(0.5);
-	// srcAudio->play();
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
 	startRoutine(*createStartTimerRoutine());
 }
@@ -183,13 +179,11 @@ void GameManager::setPause(bool state)
 {
 	if (state)
 	{
-		// srcAudio->pause();
 		std::cout << "pausing game" << std::endl;
 		BeerEngine::Time::gameSpeed = 0.0f;
 	}
 	else
 	{
-		// srcAudio->continuePlaying();
 		std::cout << "resuming game" << std::endl;
 		BeerEngine::Time::gameSpeed = 1.0f;
 	}
