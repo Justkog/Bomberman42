@@ -223,7 +223,7 @@ namespace BeerEngine
 			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 128);
 
 			defaultMaterial = new AMaterial(defaultShader);
-			defaultLight = new AmbiantLight(0.2f, glm::vec4(0.6, 0.8, 1.0, 1.0));
+			defaultLight = new AmbiantLight(0.4f, glm::vec4(0.4, 0.7, 1.0, 1.0));
 		}
 
 		void Graphics::UnLoad(void)

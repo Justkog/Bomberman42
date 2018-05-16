@@ -191,7 +191,7 @@ namespace BeerEngine
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             Graphics::Graphics::shadowRenderShader->bind();
-            glm::mat4 proj = glm::ortho(-25.0f, 5.0f, -15.0f, 15.0f, -30.0f, 30.0f);
+            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 18.0f, -5.0f, 25.0f);
             // glm::mat4 proj = glm::perspective(glm::radians(60.0f), 1.0f, 20.0f, 40.0f);
             // Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
             Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
