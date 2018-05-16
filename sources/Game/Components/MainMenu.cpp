@@ -71,6 +71,7 @@ std::ostream &				operator<<(std::ostream & o, MainMenu const & i)
 void MainMenu::start()
 {
 	std::cout << "MainMenu start" << std::endl;
+	// uiInit = true;
 }
 
 void MainMenu::setUI(struct nk_context *ctx)
@@ -102,7 +103,7 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		menuWidth, 
 		menuHeight
 	);
-	if (nk_begin(ctx, "Map", window_rect, NK_WINDOW_NO_SCROLLBAR))
+	if (nk_begin(ctx, "MainMenu", window_rect, NK_WINDOW_NO_SCROLLBAR))
 	{
 		nk_layout_row_dynamic(ctx, 75, 1);
 
@@ -127,7 +128,11 @@ void MainMenu::renderUI(struct nk_context *ctx)
 			BeerEngine::Window::GetInstance()->closeRequest();
 	}
 	nk_end(ctx);
-
+	// if (uiInit)
+	// {
+	// 	nk_window_set_focus(ctx, )
+	// 	uiInit = false;
+	// }
 	uiManager->resetToDefaultUI(ctx);
 }
 
