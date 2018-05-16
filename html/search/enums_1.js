@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['itemtype',['ItemType',['../namespace_game_1_1_component.html#a95e2dc2d86d1c4789cc068f51d59ec29',1,'Game::Component']]]
+  ['direction',['Direction',['../class_game_1_1_component_1_1_character.html#aa1b80f780538b76c7a948e96c54dbe87',1,'Game::Component::Character']]]
 ];

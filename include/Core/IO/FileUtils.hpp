@@ -3,7 +3,7 @@
 /*!
  * \file FileUtils.hpp
  * \brief Classe permettant le chargements et sauvegardes des fichiers
- * \author mgallo
+ * \author mgallo, mploux, jblondea
  */
 #include <fstream>
 #include <iterator>

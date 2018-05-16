@@ -2,7 +2,7 @@
 #define BE_CORE_COMPONENT_IENABLE_HPP 1
 /*!
  * \file IEnable.hpp
- * \brief 
+ * \brief Interface de d'activation du component.
  * \author jblondea
  */
 namespace BeerEngine
@@ -12,7 +12,7 @@ namespace BeerEngine
 	namespace Component
 	{
 		/*! \class IEnable
-		* \brief 
+		* \brief Interface de d'activation du component.
 		*/
 		class IEnable
 		{

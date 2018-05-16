@@ -1,7 +1,8 @@
 <map id="include/Core/Component/ITriggerEnter.hpp" name="include/Core/Component/ITriggerEnter.hpp">
-<area shape="rect" id="node2" href="$_character_8hpp.html" title="include/Game/Components\l/Character.hpp" alt="" coords="5,92,188,131"/>
-<area shape="rect" id="node3" href="$_i_a_8hpp.html" title="include/Game/Components\l/IA.hpp" alt="" coords="212,92,395,131"/>
-<area shape="rect" id="node4" href="$_item_8hpp.html" title="include/Game/Components\l/Item.hpp" alt="" coords="419,92,602,131"/>
-<area shape="rect" id="node6" href="$_player_8hpp.html" title="include/Game/Components\l/Player.hpp" alt="" coords="625,92,808,131"/>
-<area shape="rect" id="node5" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="521,179,704,217"/>
+<area shape="rect" id="node2" href="$_bomb_8hpp.html" title="Component bomb, ça fait boum quoi. " alt="" coords="5,92,188,131"/>
+<area shape="rect" id="node3" href="$_character_8hpp.html" title="Component character, comportement des personnages (IA/Player) " alt="" coords="212,92,395,131"/>
+<area shape="rect" id="node4" href="$_i_a_8hpp.html" title="Component qui gère toute l&#39;IA du jeu. " alt="" coords="419,92,602,131"/>
+<area shape="rect" id="node5" href="$_item_8hpp.html" title="Component d&#39;item bonus à ramasser. " alt="" coords="625,92,808,131"/>
+<area shape="rect" id="node7" href="$_player_8hpp.html" title="Component de contrôle du joueur. " alt="" coords="832,92,1015,131"/>
+<area shape="rect" id="node6" href="$_map_8hpp.html" title="Component qui gère toute la zone de jeu. " alt="" coords="728,179,911,217"/>
 </map>

@@ -6,6 +6,12 @@
 #ifndef VERSUSMENU_HPP
 # define VERSUSMENU_HPP
 
+/*!
+ * \file VersusMenu.hpp
+ * \brief Affichage du menu Versus.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"

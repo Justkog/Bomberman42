@@ -69,12 +69,14 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BeerEngine::BeerRoutine::ARoutineRunner Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestionnaire de routines permettant de demarrer une nouvelle routine ou de stopper une routine en cours.  
+ <a href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_a_routine_runner_8hpp_source.html">ARoutineRunner.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -82,13 +84,16 @@ Inheritance diagram for BeerEngine::BeerRoutine::ARoutineRunner:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner__inherit__graph.png" border="0" usemap="#_beer_engine_1_1_beer_routine_1_1_a_routine_runner_inherit__map" alt="Inheritance graph"/></div>
 <map name="_beer_engine_1_1_beer_routine_1_1_a_routine_runner_inherit__map" id="_beer_engine_1_1_beer_routine_1_1_a_routine_runner_inherit__map">
-<area shape="rect" id="node2" href="class_game_1_1_component_1_1_beer_routine_tester.html" title="{Game::Component::BeerRoutine\lTester\n||+ BeerRoutineTester()\l+ ~BeerRoutineTester()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ testDisplay()\l+ createTestRoutine()\l}" alt="" coords="5,180,221,360"/>
+<area shape="rect" id="node2" href="class_game_1_1_component_1_1_beer_routine_tester.html" title="{Game::Component::BeerRoutine\lTester\n||+ BeerRoutineTester()\l+ ~BeerRoutineTester()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ testDisplay()\l+ createTestRoutine()\l}" alt="" coords="5,267,221,447"/>
+<area shape="rect" id="node3" href="class_game_1_1_component_1_1_game_manager.html" title="{Game::Component::GameManager\n|+ inGameMenu\l+ gameOverMenu\l+ victoryMenu\l+ playerBreakable\l+ timeUI\l+ startTimerUI\l+ enemyBreakables\l+ srcAudio\l+ onGameStart\l|+ GameManager()\l+ ~GameManager()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ startGame()\l+ setPause()\l+ setGameOver()\l+ setVictory()\l+ acknowledgeEnemyDestruction()\l+ registerEnemy()\l+ createStartTimerRoutine()\l+ GetInstance()\l}" alt="" coords="245,180,475,533"/>
 </map>
 </div>
 <div class="dynheader">
 Collaboration diagram for BeerEngine::BeerRoutine::ARoutineRunner:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner__coll__graph.png" border="0" usemap="#_beer_engine_1_1_beer_routine_1_1_a_routine_runner_coll__map" alt="Collaboration graph"/></div>
+<map name="_beer_engine_1_1_beer_routine_1_1_a_routine_runner_coll__map" id="_beer_engine_1_1_beer_routine_1_1_a_routine_runner_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -101,13 +106,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3c4bff92fb1bad462946a3b48e62a44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f8c4cb25ea70365de58a6dfba860d96"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_beer_routine_1_1_beer_routine.html">BeerEngine::BeerRoutine::BeerRoutine</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#a6f8c4cb25ea70365de58a6dfba860d96">getRunningRoutines</a> ()</td></tr>
 <tr class="separator:a6f8c4cb25ea70365de58a6dfba860d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a529596ac2d47cd5a2efb58f93fb40ff4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_beer_routine_1_1_beer_routine.html">BeerEngine::BeerRoutine::BeerRoutine</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#a529596ac2d47cd5a2efb58f93fb40ff4">currentRoutines</a></td></tr>
-<tr class="separator:a529596ac2d47cd5a2efb58f93fb40ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Gestionnaire de routines permettant de demarrer une nouvelle routine ou de stopper une routine en cours. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6f8c4cb25ea70365de58a6dfba860d96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f8c4cb25ea70365de58a6dfba860d96">&#9670;&nbsp;</a></span>getRunningRoutines()</h2>
 
@@ -184,22 +186,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_game_1_1_component_1_1_beer_routine_tester.html#a2f14ce6211722f92a8ec5886dbeabd6c">Game::Component::BeerRoutineTester</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a529596ac2d47cd5a2efb58f93fb40ff4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a529596ac2d47cd5a2efb58f93fb40ff4">&#9670;&nbsp;</a></span>currentRoutines</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_beer_engine_1_1_beer_routine_1_1_beer_routine.html">BeerEngine::BeerRoutine::BeerRoutine</a> *&gt; BeerEngine::BeerRoutine::ARoutineRunner::currentRoutines</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Reimplemented in <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a8acfa92ccc70822a40f0134eddb69dce">Game::Component::GameManager</a>, and <a class="el" href="class_game_1_1_component_1_1_beer_routine_tester.html#a2f14ce6211722f92a8ec5886dbeabd6c">Game::Component::BeerRoutineTester</a>.</p>
 
 </div>
 </div>

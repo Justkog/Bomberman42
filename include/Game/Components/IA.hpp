@@ -45,6 +45,7 @@ namespace Game
 			std::vector<std::vector<int>> _pathMap;
 
 			bool uiInit;
+			bool _gameStarted;
 
 			bool    canMove(glm::vec3 dir);
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);
@@ -71,6 +72,9 @@ namespace Game
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
 			virtual void    renderUI(struct nk_context *ctx);
+
+			void    startGame(void);
+
 
 			REGISTER_COMPONENT_HPP
 

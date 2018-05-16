@@ -24,6 +24,7 @@
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/TimeUI.hpp"
+#include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
 #include "Game/Components/AudioManager.hpp"
 
@@ -112,11 +113,14 @@ void    SceneTest::init(void)
 	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
 	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
+	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
 
 	gameManager->inGameMenu = inGameMenu;
 	gameManager->gameOverMenu = gameOverMenu;
 	gameManager->victoryMenu = victoryMenu;
+	gameManager->timeUI = timeUI;
+	gameManager->startTimerUI = startTimerUI;
 
 // add music in game scene
 	soundManager->play();
@@ -127,6 +131,7 @@ void    SceneTest::init(void)
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
 	victoryMenu->uiManager = uiManager;
+	startTimerUI->uiManager = uiManager;
 
 	inGameMenu->setActive(false);
 	gameOverMenu->setActive(false);

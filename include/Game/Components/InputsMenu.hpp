@@ -6,6 +6,12 @@
 #ifndef INPUTSMENU_HPP
 # define INPUTSMENU_HPP
 
+/*!
+ * \file InputsMenu.hpp
+ * \brief Menu permettant la personnalisation des inputs
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

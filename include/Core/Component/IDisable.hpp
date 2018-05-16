@@ -2,7 +2,7 @@
 #define BE_CORE_COMPONENT_IDISABLE_HPP 1
 /*!
  * \file IDisable.hpp
- * \brief 
+ * \brief Interface de désactivation du component.
  * \author jblondea
  */
 namespace BeerEngine
@@ -12,7 +12,7 @@ namespace BeerEngine
 	namespace Component
 	{
 		/*! \class IDisable
-		* \brief 
+		* \brief Interface de désactivation du component.
 		*/
 		class IDisable
 		{

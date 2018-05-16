@@ -2,6 +2,7 @@
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/GameManager.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 
@@ -29,7 +30,8 @@ namespace Game
             _pos(0, 0),
 		    _type(ObjectiveType::MoveTo),
             _val(0),
-            _timerRefreshMap(0.2f)
+            _timerRefreshMap(0.2f),
+			_gameStarted(false)
 		{
         }
 
@@ -45,10 +47,18 @@ namespace Game
                 _character->map->_IAs.erase(it);
         }
 
+        void    IA::startGame(void)
+		{
+			std::cout << "start game from IA" << std::endl;
+			_gameStarted = true;
+		}
+
         void    IA::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			uiInit = true;
+			GameManager::GetInstance().onGameStart.bind(&IA::startGame, this);
+
         }
 
         void    IA::fixedUpdate(void)
@@ -58,6 +68,9 @@ namespace Game
         void    IA::update(void)
         {
 			_character->stopMove();
+			if (!_gameStarted)
+				return ;
+
             _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
             if (!_hasObjective && _timerRefreshMap >= 0.2f)
             {

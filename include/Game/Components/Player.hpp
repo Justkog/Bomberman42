@@ -1,6 +1,12 @@
 #ifndef BE_GAME_COMPONENT_PLAYER_HPP
 #define BE_GAME_COMPONENT_PLAYER_HPP 1
 
+/*!
+ * \file Player.hpp
+ * \brief Component de contrôle du joueur.
+ * \author jblondea, qhonore, stmartin
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
@@ -32,6 +38,7 @@ namespace Game
 		{
 		protected:
 			BeerEngine::Transform				&_transform;
+			bool								_gameStarted;
 
 		public:
 			Game::Component::Character 			*_character;
@@ -55,6 +62,8 @@ namespace Game
        		// virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 
 			void		playStepSound();
+			void 		startGame(void);
+
 
 			REGISTER_COMPONENT_HPP
 

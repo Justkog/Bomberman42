@@ -1,8 +1,7 @@
 <map id="Game::Component::Breakable" name="Game::Component::Breakable">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="5,944,173,1164"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="106,5,301,172"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="261,569,434,883"/>
-<area shape="rect" id="node7" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="79,221,238,508"/>
-<area shape="rect" id="node8" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="384,261,530,468"/>
-<area shape="rect" id="node6" href="$class_beer_engine_1_1_json_deserializable.html" title="{BeerEngine::JsonDeserializable\n||+ deserialize()\l+ Deserialize()\l}" alt="" coords="416,45,626,132"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="269,944,436,1164"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="316,5,512,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="165,569,338,883"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="5,221,164,508"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="260,261,405,468"/>
 </map>

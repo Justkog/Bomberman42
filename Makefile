@@ -86,6 +86,7 @@ SRC = \
 	Game/Components/GameOverMenu.cpp \
 	Game/Components/VictoryMenu.cpp \
 	Game/Components/TimeUI.cpp \
+	Game/Components/StartTimerUI.cpp \
 	Game/Components/ItemsUI.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \

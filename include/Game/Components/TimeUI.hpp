@@ -6,6 +6,12 @@
 #ifndef TIMEUI_HPP
 # define TIMEUI_HPP
 
+/*!
+ * \file TimeUI.hpp
+ * \brief Affichage du temps en cours de partie.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
@@ -24,6 +30,7 @@ namespace Game
 		{
 		private:
 			double 			_startTimeSinceStartup;
+			bool			_started;
 
 		public:
 			UIThemeManager	*uiManager;
@@ -45,6 +52,8 @@ namespace Game
 			virtual void renderUI(struct nk_context *ctx);
 
 			void setUI(struct nk_context *ctx);
+
+			void startClock();
 	
 			REGISTER_COMPONENT_HPP
 

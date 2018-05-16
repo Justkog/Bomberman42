@@ -3,7 +3,7 @@
 /*!
  * \file ShaderProgram.hpp
  * \brief Programme permettant de charger et d'utiliser les scripts glsl
- * \author mgallo
+ * \author mgallo, mploux, jblondea
  */
 #include "../Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"

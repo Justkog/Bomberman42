@@ -3,7 +3,7 @@
 /*!
  * \file BoxCollider2D.hpp
  * \brief Component de collision en rectangle
- * \author qhonore
+ * \author qhonore, jblondea
  */
 #include "Core/Core.hpp"
 #include "ACollider.hpp"

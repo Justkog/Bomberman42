@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['ambiantshader',['ambiantShader',['../class_beer_engine_1_1_graphics_1_1_graphics.html#a4eb70fee56a131eff75cd48b2ac52ad4',1,'BeerEngine::Graphics::Graphics']]],
   ['anim',['anim',['../class_beer_engine_1_1_component_1_1_particle_base.html#a2a0bf46b0663456a0ceeec6681d924ba',1,'BeerEngine::Component::ParticleBase']]],
   ['animframeheight',['animFrameHeight',['../class_beer_engine_1_1_component_1_1_particle_base.html#ae64df095ec97418da7c807d6d0207565',1,'BeerEngine::Component::ParticleBase']]],
   ['animframewidth',['animFrameWidth',['../class_beer_engine_1_1_component_1_1_particle_base.html#ac776b0ee55b461cafe2e7dea4295dc9d',1,'BeerEngine::Component::ParticleBase']]],

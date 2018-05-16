@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['direction',['Direction',['../class_game_1_1_component_1_1_character.html#aa1b80f780538b76c7a948e96c54dbe87',1,'Game::Component::Character']]]
+  ['collidertype',['ColliderType',['../namespace_beer_engine_1_1_component.html#acbaadbdb780228b47c2dd5ae5937a5ea',1,'BeerEngine::Component']]]
 ];

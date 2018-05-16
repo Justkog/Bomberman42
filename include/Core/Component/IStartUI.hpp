@@ -2,7 +2,7 @@
 #define BE_CORE_COMPONENT_ISTART_UI_HPP 1
 /*!
  * \file IStartUI.hpp
- * \brief 
+ * \brief Interface d'initialisation d'un component d'UI.
  * \author jblondea
  */
 #include "Core/Core.hpp"
@@ -12,7 +12,7 @@ namespace BeerEngine
 	namespace Component
 	{
 		/*! \class IStartUI
-		* \brief 
+		* \brief Interface d'initialisation d'component d'UI.
 		*/
 		class IStartUI
 		{

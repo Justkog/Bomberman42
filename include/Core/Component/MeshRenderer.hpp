@@ -3,7 +3,7 @@
 /*!
  * \file MeshRenderer.hpp
  * \brief Component permettent d'ajouter un rendu au component
- * \author mgallo
+ * \author mgallo, mploux, jblondea
  */
 #include "Core/Core.hpp"
 #include "Component.hpp"
