@@ -2,7 +2,7 @@
 #define BE_CORE_ASCENE_HPP 1
 /*!
  * \file AScene.hpp
- * \brief Compisition des scenes
+ * \brief Composition des scenes
  * \author mgallo
  */
 #include <Core/Graphics/Cubemap.hpp>

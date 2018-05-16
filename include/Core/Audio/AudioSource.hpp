@@ -1,6 +1,10 @@
 #ifndef AUDIOSOURCE_HPP
 # define AUDIOSOURCE_HPP
-
+/*!
+ * \file AudioSource.hpp
+ * \brief class d'emission audio
+ * \author stmartin
+ */
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <iostream>
@@ -17,6 +21,9 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
+		/*! \class AudioSource
+		* \brief classe permettent l'emission d'un AudioClip
+		*/
 		class AudioSource : public BeerEngine::Component::Component,
 							public BeerEngine::Component::IStart,
 							public BeerEngine::Component::IUpdate
