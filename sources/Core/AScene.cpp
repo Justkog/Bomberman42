@@ -249,7 +249,7 @@ namespace BeerEngine
     void    AScene::save(std::string filePath) {
         nlohmann::json j = dynamic_cast<JsonSerializable *>(this);
         std::string content = j.dump(4);
-        BeerEngine::IO::FileUtils::WriteFile(filePath, content);
+        // BeerEngine::IO::FileUtils::WriteFile(filePath, content);
         // std::cout << content << std::endl;
     }
 
