@@ -144,10 +144,10 @@ void    SceneTest::init(void)
 	// auto settings = playerGO->AddComponent<Game::Component::Settings>();
 //	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Run Forward.fbx");
+	modelRenderer->load("assets/models/bombermanRunTest.fbx");
 //	modelRenderer->load("assets/models/test.fbx");
 //	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
+	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/body.png");
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	modelRenderer->addMaterial(0, playerMat);
@@ -171,7 +171,8 @@ void    SceneTest::init(void)
 	player->itemSrcAudio = itemAs;
 	// itemsUI->player = player;
 	gameManager->playerBreakable = breakable;
-	modelRenderer->setAnimation(1);
+	modelRenderer->setAnimation("idle");
+	modelRenderer->setAnimationSpeed("idle", 0.25);
 	modelRenderer->setLoopAnimation(true);
 	modelRenderer->playAnimation();
 
@@ -260,7 +261,7 @@ void    SceneTest::init(void)
 	BeerEngine::GameObject *mapGO;
 	mapGO = instantiate<BeerEngine::GameObject>();
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::plane);
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
 	mapMeshRenderer->setMaterial(material);
 	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
 	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);

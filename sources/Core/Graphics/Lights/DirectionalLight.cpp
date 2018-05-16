@@ -55,7 +55,7 @@ namespace BeerEngine
 
 		nlohmann::json	DirectionalLight::serialize()
 		{
-
+			return {};
 		}
 
 		void DirectionalLight::deserialize(const nlohmann::json & j)
@@ -65,6 +65,7 @@ namespace BeerEngine
 
 		DirectionalLight * DirectionalLight::Deserialize(const nlohmann::json & j)
 		{
+			return nullptr;
 		}
 	}
 }

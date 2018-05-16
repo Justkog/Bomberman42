@@ -11,6 +11,7 @@
 #include "Core/Json/Json.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/GameManager.hpp"
+#include "Core/Component/ModelRenderer.hpp"
 
 namespace Game
 {
@@ -108,16 +109,28 @@ namespace Game
 			auto iaGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				iaGO->name = "IA";
 				iaGO->transform.position = pos;
-				iaGO->transform.scale = glm::vec3(1, 1, 1);
+				// iaGO->transform.scale = glm::vec3(1, 1, 1);
+				iaGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 				iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
 				auto breakable = iaGO->AddComponent<Game::Component::Breakable>();
 					GameManager::GetInstance().registerEnemy(breakable);
-				auto meshRenderer = iaGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-					meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-					auto *iaTex = Assets::GetTexture("assets/textures/player2.png");
+				auto modelRenderer = iaGO->AddComponent<BeerEngine::Component::ModelRenderer>();
+					modelRenderer->load("assets/models/bombermanRunTest.fbx");
+					modelRenderer->setAnimationSpeed("idle", 0.25);
+					modelRenderer->setLoopAnimation(true);
+					// modelRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+
+					int texID = rand() % 4;
+					while (std::find(takenIATextures.begin(), takenIATextures.end(), texID) != takenIATextures.end())
+					{
+						texID = (texID + 1) % 4;
+					}
+					auto *iaTex = Assets::GetTexture(Game::Component::IA::textures[texID]);
+					takenIATextures.push_back(texID);
+
 					auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
 						iaMat->setAlbedo(iaTex);
-					meshRenderer->setMaterial(iaMat);
+					modelRenderer->addMaterial(0, iaMat);
 				auto character = iaGO->AddComponent<Game::Component::Character>();
 					character->map = this;
 				auto *ia = iaGO->AddComponent<Game::Component::IA>();
@@ -168,7 +181,7 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			if (_map[y][x] == 2 && value == 0 && !(rand() % 10))
+			if (_map[y][x] == 2 && value == 0 && !(rand() % 3))
 			{
 				_map[y][x] = I;
 				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));

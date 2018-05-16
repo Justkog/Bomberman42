@@ -128,7 +128,7 @@ namespace BeerEngine
 
 		nlohmann::json	Cubemap::serialize()
 		{
-
+			return {};
 		}
 
 		void Cubemap::deserialize(const nlohmann::json & j)
@@ -138,7 +138,7 @@ namespace BeerEngine
 
 		Cubemap *Cubemap::Deserialize(const nlohmann::json & j)
 		{
-
+			return NULL;
 		}
 	}
 }

@@ -39,7 +39,7 @@ namespace BeerEngine
 
 		nlohmann::json	AmbiantLight::serialize()
 		{
-
+			return {};
 		}
 
 		void AmbiantLight::deserialize(const nlohmann::json & j)
@@ -49,6 +49,7 @@ namespace BeerEngine
 
 		AmbiantLight * AmbiantLight::Deserialize(const nlohmann::json & j)
 		{
+			return nullptr;
 		}
 	}
 }
