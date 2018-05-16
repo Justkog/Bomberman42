@@ -8,6 +8,7 @@
 #include "Game/Assets.hpp"
 #include "Game/Components/Breakable.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/AudioManager.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
 
@@ -117,7 +118,7 @@ namespace Game
 			float timeToSpawnByPower = 90.0f + power * 30.0f;
 			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
 			dir = glm::normalize(dir) * (sizeDeflag + 1.0f);
-			bombDeflag->setVelocity(dir);			
+			bombDeflag->setVelocity(dir);
 		}
 
 		void	Bomb::explode(void)
@@ -125,6 +126,9 @@ namespace Game
 			if (render != nullptr)
 			{
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
+				auto soundManager = _gameObject->AddComponent<Game::Component::AudioManager>();
+				soundManager->setClip("assets/sounds/Bomb+1.wav");
+				
 				playerParticule->setTexture(explosionTexture);
 				playerParticule->setAnimate(true, 64, 8, 8);
 				playerParticule->setLifeTime(0.5f);
