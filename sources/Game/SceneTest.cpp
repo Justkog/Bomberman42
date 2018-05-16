@@ -26,6 +26,7 @@
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
+#include "Game/Components/AudioManager.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -100,9 +101,8 @@ void    SceneTest::init(void)
 	cameraGO->name = "Camera";
 
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
-	auto soundManager = cameraGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	gameManager->srcAudio = soundManager;
-	
+	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
+
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
@@ -119,6 +119,9 @@ void    SceneTest::init(void)
 	gameManager->victoryMenu = victoryMenu;
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
+
+	soundManager->setClip("assets/sounds/clint.ogg");
+
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
@@ -313,6 +316,7 @@ void    SceneTest::init(void)
 	// // ==================
 	// // =/= ANIMATIONS =\=
 	// // ==================
+	// camAudio->srcAudio.play();
 
 	std::cout << "saving scene.." << "\n";
 	this->save("assets/scenes/level1.scene");

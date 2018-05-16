@@ -64,9 +64,9 @@ namespace BeerEngine
 				// if (alGetError() != AL_NO_ERROR)
 				// 	throw std::runtime_error("delete buffer error");
 		    // Destruction de la source
-		    alSourcei(_Source, AL_BUFFER, 0);
-				if (alGetError() != AL_NO_ERROR)
-					throw std::runtime_error("AudioSource delete sourcei error");
+		    // alSourcei(_Source, AL_BUFFER, 0);
+				// if (alGetError() != AL_NO_ERROR)
+				// 	throw std::runtime_error("AudioSource delete sourcei error");
 		    alDeleteSources(1, &_Source);
 				if (alGetError() != AL_NO_ERROR)
 					throw std::runtime_error("AudioSource delete source error");
