@@ -161,6 +161,8 @@ namespace Game
 					{
 						if (hits[0].collider->_gameObject == _gameObject)
 							i = 1;
+						if (i >= hits.size())
+							continue ;
 						auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
 						auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
 						if (destroyable)
