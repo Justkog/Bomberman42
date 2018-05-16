@@ -55,7 +55,7 @@ void    SceneMain::init(void)
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
-	auto audioCom = menuGO->AddComponent<Game::Component::AudioManager>();
+	auto audioManager = menuGO->AddComponent<Game::Component::AudioManager>();
 
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
@@ -71,10 +71,9 @@ void    SceneMain::init(void)
 	inputsMenu->settingsMenu = settingsMenu;
 
 // init musique du menu
-	BeerEngine::Audio::AudioClip	clip("assets/sounds/Feel.ogg");
-	audioCom->srcAudio.setBuffer(clip.getBuffer());
-	audioCom->srcAudio.play();
-	audioCom->srcAudio.setVolume(0.5);
+	audioManager->setClip("assets/sounds/Feel.ogg");
+	audioManager->play();
+// audioMan->setVolume(0.1);
 
 	// mainMenu->setActive(false);
 	versusMenu->setActive(false);

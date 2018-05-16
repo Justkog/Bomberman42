@@ -64,7 +64,6 @@ std::ostream &				operator<<(std::ostream & o, Game::Component::Settings const &
 Game::SettingsContainer Game::Component::Settings::defaultSettings()
 {
 	Game::SettingsContainer settings;
-
 	settings.soundVolume = 50.0f;
 	settings.musicVolume = 50.0f;
 	settings.windowWidth = 1600;

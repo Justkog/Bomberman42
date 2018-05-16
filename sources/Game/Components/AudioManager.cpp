@@ -12,6 +12,22 @@ namespace Game
     AudioManager::~AudioManager()
     { }
 
+    void    AudioManager::play()
+    {
+      srcAudio.play();
+    }
+
+    void    AudioManager::setClip(std::string const &filename)
+    {
+        BeerEngine::Audio::AudioClip	clip(filename);
+        srcAudio.setBuffer(clip.getBuffer());
+    }
+
+    void    AudioManager::setVolume(float volume)
+    {
+      srcAudio.setVolume(volume);
+    }
+
     nlohmann::json	AudioManager::serialize()
     {
       auto j = Component::serialize();

@@ -4,10 +4,12 @@
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
-#include "Core/Component/IStart.hpp"
-#include "Core/Component/IUpdate.hpp"
+// #include "Core/Component/IStart.hpp"
+// #include "Core/Component/IUpdate.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
+
+#include "Game/Components/Settings.hpp"
 
 namespace Game
 {
@@ -27,8 +29,12 @@ namespace Game
       AudioManager(BeerEngine::GameObject *gameObject);
       ~AudioManager(void);
 
-			BeerEngine::Audio::AudioSource      srcAudio;
+      void    play();
+      void    setClip(std::string const &filename);
+      void    setVolume(float volume);
 
+			BeerEngine::Audio::AudioSource      srcAudio;
+      // Game::Component::Settings           *settings;
 			// virtual void start();
 			// virtual void update();
 			// virtual void fixedUpdate();

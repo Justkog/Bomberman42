@@ -30,7 +30,7 @@ namespace Game
 			Breakable					*playerBreakable;
 			std::vector<Breakable *> 	enemyBreakables;
 
-			BeerEngine::Audio::AudioSource      *srcAudio;
+			// BeerEngine::Audio::AudioSource      *srcAudio;
 
 			// GameManager( void );
 			// GameManager( GameManager const & src );

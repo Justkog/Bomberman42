@@ -25,6 +25,7 @@
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
+#include "Game/Components/AudioManager.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -99,9 +100,10 @@ void    SceneTest::init(void)
 	cameraGO->name = "Camera";
 
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
-	auto soundManager = cameraGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	gameManager->srcAudio = soundManager;
-	
+	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
+	soundManager->setClip("assets/sounds/last_night.ogg");
+	// gameManager->srcAudio = soundManager;
+
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
@@ -115,6 +117,12 @@ void    SceneTest::init(void)
 	gameManager->inGameMenu = inGameMenu;
 	gameManager->gameOverMenu = gameOverMenu;
 	gameManager->victoryMenu = victoryMenu;
+
+// add music in game scene
+	soundManager->play();
+	// BeerEngine::Audio::AudioClip	clip("assets/sounds/last_night.ogg");
+	// camAudio->srcAudio.setBuffer(clip.getBuffer());
+	// camAudio->srcAudio.play();
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
@@ -308,6 +316,7 @@ void    SceneTest::init(void)
 	// // ==================
 	// // =/= ANIMATIONS =\=
 	// // ==================
+	// camAudio->srcAudio.play();
 
 	std::cout << "saving scene.." << "\n";
 	this->save("assets/scenes/level1.scene");
