@@ -3,6 +3,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Component/ParticleBase.hpp"
 #include "Core/Component/ParticleExplode.hpp"
+#include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Physics/Physics.hpp"
 #include "Game/Assets.hpp"
 #include "Game/Components/Breakable.hpp"
@@ -23,6 +24,9 @@ namespace Game
 			timer = 0.0f;
 			power = 1.0f;
 			bombs.push_back(this);
+			hitDir = new glm::vec3[4];
+			for (int i = 0; i < 4; i++)
+				hitDir[i] = glm::vec3(_gameObject->transform.position);
         }
 
 		Bomb::~Bomb(void)
@@ -30,6 +34,7 @@ namespace Game
 			auto it = std::find(bombs.begin(), bombs.end(), this);
 			if (it != bombs.end())
 				bombs.erase(it);
+			delete hitDir;
 		}
 
 		void    Bomb::start(void)
@@ -81,8 +86,9 @@ namespace Game
 				collider->_exceptions.erase(it);
 		}
 
-		void	Bomb::explodeToward(glm::vec3 dir)
+		void	Bomb::explodeToward(glm::vec3 dir, int hitIDStorage)
 		{
+			hitDir[hitIDStorage] = _gameObject->transform.position + dir;
 			std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
 			float lifeTime = 1.0f / 2.0f;
 			float sizeDeflag = (power + 0.25f) * 2.0f;
@@ -97,20 +103,21 @@ namespace Game
 			{
 				if (hits[0].collider->_gameObject == _gameObject)
 					i = 1;
-				auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
-				auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
-				if (destroyable)
-					_gameObject->destroy(hits[i].collider->_gameObject);
-				if (bomb)
-					bomb->timer = 5.0f;
+				// auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
+				// auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
+				// if (destroyable)
+				// 	_gameObject->destroy(hits[i].collider->_gameObject);
+				// if (bomb)
+				// 	bomb->timer = 5.0f;
 				int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
+				hitDir[hitIDStorage] = hits[i].transform->position;
 				sizeDeflag = (distance + 0.25f) * 2.0f;
 			}
 			bombDeflag->setSize(2.0f, 1.0f);
 			float timeToSpawnByPower = 90.0f + power * 30.0f;
 			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
-			dir = glm::normalize(dir) * sizeDeflag;
-			bombDeflag->setVelocity(dir);
+			dir = glm::normalize(dir) * (sizeDeflag + 1.0f);
+			bombDeflag->setVelocity(dir);			
 		}
 
 		void	Bomb::explode(void)
@@ -124,10 +131,10 @@ namespace Game
 				playerParticule->setSize(1.0f, 2.0f);
 				playerParticule->setSpawnTime(1.0f / 120.0f);
 
-				explodeToward(glm::vec3(power, 0.0f, 0.0f));
-				explodeToward(glm::vec3(-power, 0.0f, 0.0f));
-				explodeToward(glm::vec3(0.0f, 0.0f, power));
-				explodeToward(glm::vec3(0.0f, 0.0f, -power));
+				explodeToward(glm::vec3(power, 0.0f, 0.0f), 0);
+				explodeToward(glm::vec3(-power, 0.0f, 0.0f), 1);
+				explodeToward(glm::vec3(0.0f, 0.0f, power), 2);
+				explodeToward(glm::vec3(0.0f, 0.0f, -power), 3);
 
 				// BeerEngine::Audio::AudioClip   		clip("assets/sounds/Bomb+1.wav");
 				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
@@ -143,7 +150,28 @@ namespace Game
 				render = nullptr;
 				timer = 5.0f;
 			}
+			else
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					int i = 0;
+					glm::vec3 dir = hitDir[j] - _gameObject->transform.position;
+					std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
+					if (hits.size() >= 1)
+					{
+						if (hits[0].collider->_gameObject == _gameObject)
+							i = 1;
+						auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
+						auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
+						if (destroyable)
+							_gameObject->destroy(hits[i].collider->_gameObject);
+						if (bomb)
+							bomb->timer = 5.0f;
+					}
+				}
+			}
 		}
+
 
 		void    Bomb::update(void)
 		{}

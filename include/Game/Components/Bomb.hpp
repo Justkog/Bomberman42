@@ -8,6 +8,7 @@
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Core/Component/IColliderExit.hpp"
+#include "Core/Component/ITriggerEnter.hpp"
 #include "Core/Component/ACollider.hpp"
 
 /*!
@@ -26,10 +27,13 @@ namespace Game
 			public BeerEngine::Component::IStart,
 			public BeerEngine::Component::IUpdate,
 			public BeerEngine::Component::IColliderExit
+
 		{
 		protected:
 			BeerEngine::Component::MeshRenderer		*render;
 			float	timer;
+
+			glm::vec3	*hitDir;
 
 		public:
             Bomb(BeerEngine::GameObject *gameObject);
@@ -39,9 +43,8 @@ namespace Game
             virtual void    fixedUpdate(void);
        		virtual void    update(void);
        		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
-			void			explodeToward(glm::vec3 dir);
+			void			explodeToward(glm::vec3 dir, int hitIDStorage);
 			void			explode(void);
-			
 			void			setPower(float pow);
 
 			static std::vector<Bomb*> bombs;
