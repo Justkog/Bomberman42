@@ -127,7 +127,7 @@ namespace Game
 					}
 					auto *iaTex = Assets::GetTexture(Game::Component::IA::textures[texID]);
 					takenIATextures.push_back(texID);
-					
+
 					auto *iaMat = new BeerEngine::Graphics::AMaterial(shader);
 						iaMat->setAlbedo(iaTex);
 					modelRenderer->addMaterial(0, iaMat);
@@ -181,7 +181,7 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			if (_map[y][x] == 2 && value == 0 && !(rand() % 10))
+			if (_map[y][x] == 2 && value == 0 && !(rand() % 3))
 			{
 				_map[y][x] = I;
 				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
