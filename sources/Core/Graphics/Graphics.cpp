@@ -29,7 +29,7 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::cubemapShader = nullptr;
 
 
-		static Mesh	*LoadPlane(void)
+		Mesh	*Graphics::LoadPlane(glm::vec2 tiling, glm::vec2 offset)
 		{
 			MeshBuilder builder;
 			builder.addTriangle(
@@ -37,17 +37,17 @@ namespace BeerEngine
 					glm::vec3(-1.0f, 0.0f, 1.0f),
 					glm::vec3(1.0f, 0.0f, 1.0f)
 				).addTriangleUV(
-					glm::vec2(0.0f, 1.0f),
-					glm::vec2(0.0f, 0.0f),
-					glm::vec2(1.0f, 0.0f)
+					glm::vec2(offset[0], offset[1] + tiling[1]),
+					glm::vec2(offset[0], offset[1]),
+					glm::vec2(offset[0] + tiling[0], offset[1])
 				).addTriangle(
 					glm::vec3(1.0f, 0.0f, 1.0f),
 					glm::vec3(1.0f, 0.0f, -1.0f),
 					glm::vec3(-1.0f, 0.0f, -1.0f)
 				).addTriangleUV(
-					glm::vec2(1.0f, 0.0f),
-					glm::vec2(1.0f, 1.0f),
-					glm::vec2(0.0f, 1.0f)
+					glm::vec2(offset[0] + tiling[0], offset[1]),
+					glm::vec2(offset[0] + tiling[0], offset[1] + tiling[1]),
+					glm::vec2(offset[0], offset[1] + tiling[1])
 				).calculTangent()
 			;
 			auto plane = builder.build();
@@ -191,7 +191,7 @@ namespace BeerEngine
 		void Graphics::Load(void)
 		{
 			// PLANE
-			plane = LoadPlane();
+			plane = Graphics::LoadPlane(glm::vec2(1, 1), glm::vec2(0, 0));
 			// CUBE
 			cube = LoadCube();
 			// Texture White

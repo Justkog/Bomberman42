@@ -18,7 +18,6 @@
 #include "Game/Components/Player.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Game/Components/Breakable.hpp"
-#include <vector>
 
 #define S -1 //spawn position
 #define I 9 //Item
@@ -46,7 +45,7 @@ namespace Game
 			void			drawMap();
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
-			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0.5);
+			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0);
 			bool			hasCharacter(glm::vec2 pos);
 			bool			hasBomb(glm::vec3 pos);
 			bool			canWalk(glm::vec2 pos);
@@ -59,6 +58,16 @@ namespace Game
 			Game::Component::Player				*_player;
 			std::vector<Game::Component::IA*>	_IAs;
 			BeerEngine::Graphics::ShaderProgram	*_shader;
+
+			BeerEngine::Graphics::Texture 	*itemSpeedBoostTex;
+			BeerEngine::Graphics::Texture 	*itemBombTex;
+			BeerEngine::Graphics::Texture 	*itemRangeTex;
+			BeerEngine::Graphics::Mesh		*itemSpeedBoostMesh;
+			BeerEngine::Graphics::Mesh		*itemBombMesh;
+			BeerEngine::Graphics::Mesh		*itemRangeMesh;
+
+			bool uiInit;
+			std::vector<int> 				takenIATextures;
 
 			void mapUpdate(glm::vec3 pos, int value);
 

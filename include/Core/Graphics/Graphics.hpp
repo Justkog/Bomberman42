@@ -61,6 +61,8 @@ namespace BeerEngine
 			static ShaderProgram *loadSpotShader();
 			static ShaderProgram *loadSkyboxShader();
 			static ShaderProgram *loadCubemapShader();
+
+			static Mesh	* LoadPlane(glm::vec2 tiling, glm::vec2 offset);
 			/*!
 			*  \brief Chargeur de mdoel
 			*  Chargeur de model format obj

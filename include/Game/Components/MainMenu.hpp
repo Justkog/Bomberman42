@@ -30,6 +30,8 @@ namespace Game
 
 			nk_style_window mWindow;
 
+			// bool uiInit;
+
 			// MainMenu( void );
 			// MainMenu( MainMenu const & src );
 			MainMenu(BeerEngine::GameObject *gameObject);

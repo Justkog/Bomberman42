@@ -138,13 +138,15 @@ void InputsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *
 }
 
 
-void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo)
+void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInfo & inputInfo, InputInfo * prevInput)
 {
 	float labelWidth = (menuWidth - 30 * 2 - 10 * 3) / 2 - 40 * 2;
-	float buttonWidth = 0;
-	if (inputInfo.text_len == 1)
-		buttonWidth = 40;
-	else
+	float buttonWidth = 40;
+	if (inputInfo.text_len == 1 && (!prevInput || prevInput->text_len != 1))
+	{
+		nk_layout_row_begin(ctx, NK_STATIC, 50, 4);
+	}
+	else if(inputInfo.text_len != 1)
 	{
 		buttonWidth = 200;
 		nk_layout_row_begin(ctx, NK_STATIC, 50, 2);
@@ -172,16 +174,12 @@ void InputsMenu::drawInputUI(struct nk_context *ctx, std::string label, InputInf
 	}
 	if (inputInfo.waitingBind)
 		ctx->style.button.normal = normalButton;
-
-	if (inputInfo.text_len != 1)
-		nk_layout_row_begin(ctx, NK_STATIC, 50, 4);
 }
 
 void InputsMenu::drawInputsUI(struct nk_context *ctx)
 {
-	nk_layout_row_begin(ctx, NK_STATIC, 50, 4);
 	for (auto it = inputsList.begin(); it != inputsList.end(); it++)
-		drawInputUI(ctx, *it, inputs[*it]);
+		drawInputUI(ctx, *it, inputs[*it], it == inputsList.begin() ? NULL : &inputs[*(it - 1)]);
 }
 
 // not used anymore after input capture method change

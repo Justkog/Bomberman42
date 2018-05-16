@@ -34,6 +34,10 @@ namespace Game
 			ObjectiveType _type;
 			std::vector<glm::vec2> _path;
 			int _val;
+			float _timerRefreshMap;
+			std::vector<std::vector<int>> _pathMap;
+
+			bool uiInit;
 
 			bool    canMove(glm::vec3 dir);
 			bool    avoidExplosion(glm::vec3 pos, glm::vec3 dir, int offset = 0);
@@ -45,10 +49,11 @@ namespace Game
 			bool    moveToNextCell(void);
 
 			//PATHFINDER
-			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
-			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target);
-			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
-			bool    findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
+			void		markCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck);
+			void    	updatePathMap(void);
+			void    	analyzeMap(glm::vec2 start);
+			glm::vec2   getPath(glm::vec2 cur);
+			bool    	findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
@@ -63,6 +68,7 @@ namespace Game
 			REGISTER_COMPONENT_HPP
 
 			Game::Component::Map *map;
+			static std::vector<std::string> textures;
 		};
 	}
 }

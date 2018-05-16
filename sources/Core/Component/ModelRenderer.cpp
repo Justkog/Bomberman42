@@ -23,7 +23,8 @@ namespace BeerEngine
 			renderMode(GL_TRIANGLES),
 			_assimpScene(nullptr),
 			_animationTime(0),
-			_playAnimation(false)
+			_playAnimation(false),
+			_animationSpeed(1)
 		{}
 
 		ModelRenderer	&ModelRenderer::load(const std::string &file)
@@ -38,7 +39,8 @@ namespace BeerEngine
 
 			for (int i = 0; i < _scene->mNumAnimations; i++)
 			{
-				_animations[_scene->mAnimations[i]->mName.data] = i;
+				_animations[_scene->mAnimations[i]->mName.data].index = i;
+				_animations[_scene->mAnimations[i]->mName.data].speed = 1;
 				std::cout << "Animation: " << _scene->mAnimations[i]->mName.data << std::endl;
 			}
 
@@ -54,7 +56,7 @@ namespace BeerEngine
 			_bbo = new GLuint[_scene->mNumMeshes];
 			_wbo = new GLuint[_scene->mNumMeshes];
 			_drawSize = new int[_scene->mNumMeshes];
-			_currentAnimation = 0;
+			_currentAnimation.index = 0;
 
 			_numBones = 0;
 
@@ -156,11 +158,11 @@ namespace BeerEngine
 		{
 			glm::mat4 identity;
 
-			float ticksPerSecond = _scene->mAnimations[_currentAnimation]->mTicksPerSecond != 0 ? _scene->mAnimations[_currentAnimation]->mTicksPerSecond : 25.0f;
+			float ticksPerSecond = _scene->mAnimations[_currentAnimation.index]->mTicksPerSecond != 0 ? _scene->mAnimations[_currentAnimation.index]->mTicksPerSecond : 25.0f;
 			float timeInTicks = timeInSeconds;
-			float animationTime = timeInTicks >= _scene->mAnimations[_currentAnimation]->mDuration ? _scene->mAnimations[_currentAnimation]->mDuration - 1 : timeInTicks;
+			float animationTime = timeInTicks >= _scene->mAnimations[_currentAnimation.index]->mDuration ? _scene->mAnimations[_currentAnimation.index]->mDuration - 1 : timeInTicks;
 			if (_loopAnimation)
-				animationTime = fmod(timeInTicks, _scene->mAnimations[_currentAnimation]->mDuration);
+				animationTime = fmod(timeInTicks, _scene->mAnimations[_currentAnimation.index]->mDuration);
 			readNodes(animationTime, _scene->mRootNode, identity);
 			transforms.resize(_numBones);
 			for (uint i = 0 ; i < _numBones ; i++)
@@ -182,7 +184,7 @@ namespace BeerEngine
 		{
 			std::string nodeName(node->mName.data);
 
-			const aiAnimation *anim = _scene->mAnimations[_currentAnimation];
+			const aiAnimation *anim = _scene->mAnimations[_currentAnimation.index];
 			const aiNodeAnim *animNode = fineNodeAnim(anim, node->mName.data);
 			glm::mat4 boneTransform = Mathf::assimp_to_glm(node->mTransformation);
 			if (animNode)
@@ -306,7 +308,7 @@ namespace BeerEngine
 		{
 			if (id >= _scene->mNumAnimations)
 				return;
-			_currentAnimation = id;
+			_currentAnimation.index = id;
 		}
 
 		void ModelRenderer::setLoopAnimation(bool loop)
@@ -333,7 +335,12 @@ namespace BeerEngine
 		{
 			if (!_scene->HasAnimations())
 				return 0.0;
-			return _scene->mAnimations[_currentAnimation]->mDuration;
+			return _scene->mAnimations[_currentAnimation.index]->mDuration;
+		}
+
+		void ModelRenderer::setAnimationSpeed(std::string name, float speed)
+		{
+			_animations[name].speed = speed;
 		}
 
 		void ModelRenderer::setAnimationTime(double time)
@@ -348,7 +355,7 @@ namespace BeerEngine
 				static float lastAnimationTime = _animationTime;
 				if (_playAnimation)
 				{
-					_animationTime += 1;
+					_animationTime += 1 * _currentAnimation.speed;
 				}
 				if (_playAnimation || _animationTime != lastAnimationTime)
 				{

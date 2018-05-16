@@ -47,27 +47,25 @@ namespace Game
 				{
 					rb2d->velocity = glm::vec2(0);
 					if (model)
-					{
-						model->stopAnimation();
-					}
+						model->setAnimation("idle");
 				}
                 else
 				{
 					rb2d->velocity = glm::normalize(_direction) * _speed;
 					if (model)
 					{
-						model->setAnimation(0);
+						model->setAnimation("run");
 						model->setLoopAnimation(true);
 						model->playAnimation();
-						_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
 					}
+					_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
 				}
             }
-            _direction = glm::vec2(0, 0);
         }
 
         void    Character::update(void)
         {
+
         }
 
         void    Character::translate(glm::vec3 dir)
@@ -101,6 +99,11 @@ namespace Game
                     break;
             }
         }
+
+		void	Character::stopMove()
+		{
+			_direction = glm::vec2(0, 0);
+		}
 
         void    Character::increaseSpeed(float val)
         {
