@@ -4,7 +4,7 @@
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
-// #include "Core/Component/IStart.hpp"
+#include "Core/Component/IStart.hpp"
 // #include "Core/Component/IUpdate.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
@@ -15,7 +15,8 @@ namespace Game
 {
 	namespace Component
 	{
-		class AudioManager : public BeerEngine::Component::Component
+		class AudioManager : public BeerEngine::Component::Component,
+		public BeerEngine::Component::IStart
 		{
 		// private:
 		// 	static GameManager * instance;
@@ -31,11 +32,11 @@ namespace Game
 
       void    play();
       void    setClip(std::string const &filename);
-      void    setVolume(float volume);
+      void    setVolume();
 
 			BeerEngine::Audio::AudioSource      srcAudio;
       // Game::Component::Settings           *settings;
-			// virtual void start();
+			virtual void start();
 			// virtual void update();
 			// virtual void fixedUpdate();
       //

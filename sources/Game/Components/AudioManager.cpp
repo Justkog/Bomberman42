@@ -1,4 +1,5 @@
 #include "Game/Components/AudioManager.hpp"
+#include "Game/Components/Settings.hpp"
 
 namespace Game
 {
@@ -12,6 +13,12 @@ namespace Game
     AudioManager::~AudioManager()
     { }
 
+		void AudioManager::start()
+		{
+			// setVolume();
+			play();
+		}
+
     void    AudioManager::play()
     {
       srcAudio.play();
@@ -23,9 +30,10 @@ namespace Game
         srcAudio.setBuffer(clip.getBuffer());
     }
 
-    void    AudioManager::setVolume(float volume)
+    void    AudioManager::setVolume()
     {
-      srcAudio.setVolume(volume);
+			// std::cout <<"=============================" << Game::Component::Settings::GetInstance().settingsContainer.musicVolume << std::endl;
+      srcAudio.setVolume(Game::Component::Settings::GetInstance().settingsContainer.musicVolume / 100);
     }
 
     nlohmann::json	AudioManager::serialize()
