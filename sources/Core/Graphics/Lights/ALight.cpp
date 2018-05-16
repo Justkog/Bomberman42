@@ -10,7 +10,7 @@ namespace BeerEngine
 		{}
 
 		ALight::ALight(float intensity, glm::vec4 color)
-			: _intensity(intensity), _color(color), _shader(nullptr), _specularity({5.0f, 1.0f})
+			: _intensity(intensity), _color(color), _shader(nullptr), _specularity({2.0f, 0.5f})
 		{}
 
 		void ALight::setupUniformIds()

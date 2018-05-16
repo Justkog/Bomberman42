@@ -68,7 +68,7 @@ void main()
     }
     float roughtness = 4;
 
-    vec4 pbr = calcPBR(outColor, tNormal, roughtness, 1.0);
+    vec4 pbr = calcPBR(outColor, tNormal, 1.0, 1.0);
 
     outColor = vec4(pbr.rgb, 1.0);
 }

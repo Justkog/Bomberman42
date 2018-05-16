@@ -33,7 +33,7 @@ vec4 calcLight(Light light, vec3 direction, vec3 normal)
     vec3 direction_to_eye = normalize(viewPosition - fragPos);
     vec3 reflection_direction = normalize(reflect(-direction, normal));
 
-    float specular_factor = pow(dot(direction_to_eye, reflection_direction), specular_power) * clamp(0, 1, diffuse_factor);
+    float specular_factor = pow(dot(direction_to_eye, reflection_direction), specular_power) * diffuse_factor;
 
     if (specular_factor > 0)
         specular_color = vec4(light.color.rgb * specular_intensity * specular_factor, 1.0);
@@ -77,11 +77,20 @@ float calcFresnel(vec3 cameraPosition, vec3 normal, float factor)
 
 vec4 calcPBR(vec4 color, vec3 normal, float roughtness, float metalness)
 {
-    vec3 reflection = reflect(-normalize(fragPos - viewPosition), normal);
-    vec4 env = textureLod(envMap, reflection, roughtness);
+    float rFactor = roughtness * 4.0;
+    float mFactor = metalness;
 
-    float fresnel = calcFresnel(viewPosition, normal, 1) * 0.4;
-    vec4 fresnelReflection = mix(color, env * 0.5, fresnel);
+    vec3 reflection = reflect(-normalize(fragPos - viewPosition), normal);
+    vec4 env = textureLod(envMap, reflection, rFactor);
+
+    float fresnel = clamp(calcFresnel(viewPosition, normal, 1.0 + roughtness * 2.0), 0, 1) * 0.8;
+    float fresnelRougthness = mix(fresnel, fresnel * 0.5, roughtness);
+
+    vec4 reflectiveColor = color * (0.5 + roughtness * 0.48) + env * (0.5 - roughtness * 0.48);
+
+    vec4 fresnelReflection = mix(reflectiveColor, env, fresnelRougthness);
+   
+    // vec4 metalic = fresnelReflection * fresnel * 0.5;
 
     return fresnelReflection;
 }

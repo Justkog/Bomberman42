@@ -148,7 +148,7 @@ namespace Game
             // render->setMesh(BeerEngine::Graphics::Graphics::cube);
             // render->setMaterial(Assets::GetInstance()->bombMaterial);
             //PUTAIN DE TRUC QUI SEGFAULT, MES COUILLES SUR TON FRONT DEMERDE TOI MASHALLAH
-			render->setMesh(bombMesh);
+			render->setMesh(BeerEngine::Graphics::Graphics::cube);
             render->setMaterial(bombMaterial);
 
             Bomb *bomb = go->AddComponent<Bomb>();

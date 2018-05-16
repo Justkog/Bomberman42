@@ -19,7 +19,7 @@ namespace BeerEngine
 		{
 		public:
 			/*! \struct Specular
-			* \brief Structure de donner pour pour la lumiere speculaire
+			* \brief Structure de donner pour la lumiere speculaire
 			*/
 			struct Specular
 			{

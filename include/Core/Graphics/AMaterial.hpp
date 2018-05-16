@@ -31,6 +31,7 @@ namespace BeerEngine
 			Texture			*_bump; /*!< Texture de profondeur utiliser sur le material*/
 			Cubemap			*_envMap;
 
+
 			// Shader ID
 			GLint	_colorShaderID; /*!< Identifiant pour bind au shader les divers composents*/
 			GLint	_albedoID; /*!< Identifiant pour bind au shader les divers composents*/
