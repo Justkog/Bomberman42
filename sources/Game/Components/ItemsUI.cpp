@@ -138,7 +138,7 @@ void ItemsUI::update()
 {
 	if (player)
 	{
-		speed = player->_character->_speed;
+		speed = player->_character->_speed * 4;
 		bombs = player->_character->_bombNb;
 		range = player->_character->_explosionSize;
 	}
