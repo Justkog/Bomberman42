@@ -3,6 +3,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
+#include "Game/SceneTest.hpp"
 
 namespace Game
 {
@@ -95,11 +96,18 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 	{
 		nk_layout_row_dynamic(ctx, 75, 1);
 
-		for (auto it = maps.begin(); it != maps.end(); it++)
-		{
-			if (nk_button_label(ctx, it->name.c_str()))
-				BeerEngine::SceneManager::LoadScene(it->scenePath);
-		}
+		// for (auto it = maps.begin(); it != maps.end(); it++)
+		// {
+		// 	if (nk_button_label(ctx, it->name.c_str()))
+		// 		BeerEngine::SceneManager::LoadScene(it->scenePath);
+		// }
+		if (nk_button_label(ctx, "level 1"))
+			BeerEngine::SceneManager::LoadScene<SceneTest>();
+		if (nk_button_label(ctx, "level 2"))
+			BeerEngine::SceneManager::LoadScene<SceneTest>();
+		if (nk_button_label(ctx, "level 3"))
+			BeerEngine::SceneManager::LoadScene<SceneTest>();
+
 		if (nk_button_label(ctx, "Random"))
 		{
 			// TODO

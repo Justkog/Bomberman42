@@ -3,6 +3,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
+#include "Game/SceneTest.hpp"
 
 namespace Game
 {
@@ -134,7 +135,8 @@ void GameOverMenu::renderUI(struct nk_context *ctx)
 			if (nk_button_label(ctx, "Retry"))
 			{
 				GameManager::GetInstance().setPause(false);
-				BeerEngine::SceneManager::LoadScene("assets/scenes/level1.scene");
+				BeerEngine::SceneManager::LoadScene<SceneTest>();
+				// BeerEngine::SceneManager::LoadScene("assets/scenes/level1.scene");
 			}
 			if (nk_button_label(ctx, "Rage Quit"))
 			{
