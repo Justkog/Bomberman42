@@ -35,6 +35,8 @@ namespace Game
 			std::vector<glm::vec2> _path;
 			int _val;
 
+			std::vector<std::vector<int>> _pathMap;
+
 			bool uiInit;
 
 			bool    canMove(glm::vec3 dir);
@@ -47,10 +49,11 @@ namespace Game
 			bool    moveToNextCell(void);
 
 			//PATHFINDER
-			bool	checkCell(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
-			bool    analyzeMap(glm::vec2 start, std::vector<std::vector<int>> &mapCopy, glm::vec2 target);
-			glm::vec2    getPath(glm::vec2 cur, std::vector<std::vector<int>> &mapCopy);
-			bool    findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
+			bool		checkCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
+			bool    	updatePathMap(void);
+			bool    	analyzeMap(glm::vec2 start, glm::vec2 target);
+			glm::vec2   getPath(glm::vec2 cur);
+			bool    	findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
 
 		public:
             IA(BeerEngine::GameObject *gameObject);
