@@ -42,7 +42,6 @@ namespace BeerEngine
 			void		continuePlaying();
 			void	    stop();
 
-			void 			delet();
 			void	    Delete();
 
 			void		setVolume(float);
