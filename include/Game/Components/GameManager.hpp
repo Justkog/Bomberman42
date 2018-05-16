@@ -25,8 +25,8 @@ namespace Game
 {
 	namespace Component
 	{
-		class GameManager : public BeerEngine::Component::Component, 
-							public BeerEngine::Component::IUpdate, 
+		class GameManager : public BeerEngine::Component::Component,
+							public BeerEngine::Component::IUpdate,
 							public BeerEngine::Component::IStart,
 							public BeerEngine::BeerRoutine::ARoutineRunner
 		{
@@ -42,7 +42,6 @@ namespace Game
 			StartTimerUI				*startTimerUI;
 			std::vector<Breakable *> 	enemyBreakables;
 
-			// BeerEngine::Audio::AudioSource      *srcAudio;
 
 			// GameManager( void );
 			// GameManager( GameManager const & src );

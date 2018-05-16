@@ -128,7 +128,8 @@ namespace Game
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
 				auto soundManager = _gameObject->AddComponent<Game::Component::AudioManager>();
 				soundManager->setClip("assets/sounds/Bomb+1.wav");
-				
+				soundManager->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+
 				playerParticule->setTexture(explosionTexture);
 				playerParticule->setAnimate(true, 64, 8, 8);
 				playerParticule->setLifeTime(0.5f);

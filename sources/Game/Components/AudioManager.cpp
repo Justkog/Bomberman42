@@ -24,6 +24,11 @@ namespace Game
       srcAudio.play();
     }
 
+		void 		AudioManager::setPosition(float x, float y, float z)
+		{
+			srcAudio.setPosition(x, y, z);
+		}
+
     void    AudioManager::setClip(std::string const &filename)
     {
         BeerEngine::Audio::AudioClip	clip(filename);
