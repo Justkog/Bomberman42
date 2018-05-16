@@ -112,7 +112,8 @@ namespace Game
 				// iaGO->transform.scale = glm::vec3(1, 1, 1);
 				iaGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 				auto collider = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
-				collider->_radius = 0.5f;
+					collider->_radius = 0.5f;
+					collider->colliderType = BeerEngine::Component::ONLY_OTHER;
 				auto breakable = iaGO->AddComponent<Game::Component::Breakable>();
 					GameManager::GetInstance().registerEnemy(breakable);
 				auto modelRenderer = iaGO->AddComponent<BeerEngine::Component::ModelRenderer>();
@@ -309,7 +310,7 @@ namespace Game
 		{
 			int x = static_cast<int>(pos.x);
 			int y = static_cast<int>(pos.y);
-			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 8 || _map[y][x] == 9) && !hasCharacter(glm::vec2(x, y)))
+			if ((_map[y][x] == 0 || _map[y][x] == -1 || _map[y][x] == 8 || _map[y][x] == 9))// && !hasCharacter(glm::vec2(x, y)))
 				return true;
 			return false;
 		}

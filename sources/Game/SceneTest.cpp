@@ -161,6 +161,7 @@ void    SceneTest::init(void)
 	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerColl->_radius = 0.5;
 	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();

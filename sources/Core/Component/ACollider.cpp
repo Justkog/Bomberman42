@@ -24,6 +24,7 @@ namespace BeerEngine
 			_isTrigger(false)
 		{
 			_colliders.push_back(this);
+			colliderType = ALL;
 		}
 
 		ACollider::~ACollider()
@@ -52,6 +53,24 @@ namespace BeerEngine
 			for (int i = it - _colliders.begin(); i < _colliders.size(); i++)
 			{
 				auto other = _colliders[i];
+				// On check les type de collision entre eux
+				if (colliderType == ALL)
+				{
+					if (other->colliderType == ONLY_THERE)
+						continue;
+				}
+				else if (colliderType == ONLY_OTHER)
+				{
+					if (other->colliderType == ONLY_OTHER
+						|| other->colliderType == ONLY_THERE)
+						continue;
+				}
+				else if (colliderType == ONLY_THERE)
+				{
+					if (other->colliderType != ONLY_THERE)
+						continue;
+				}
+
 				if (checkCollision(other))
 				{
 					if (_isTrigger)

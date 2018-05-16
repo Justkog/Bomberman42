@@ -13,6 +13,15 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		/*! \enum ColliderType
+		* \brief enumerateur des types de collision
+		*/
+		enum ColliderType
+		{
+			ALL, /*!< Type de collision avec tous*/
+			ONLY_OTHER, /*!< Type de Collision avec les autre met pas avec le meme type*/
+			ONLY_THERE /*!< Type de collision que avec se type de collision*/
+		};
 		/*! \class ACollider
 		* \brief classe gerent le system physique du projet
 		*/
@@ -56,6 +65,7 @@ namespace BeerEngine
 			glm::vec2	_offset;
 			bool		_isTrigger;
 			RigidBody2D *rb2d;
+			ColliderType colliderType;
 
 			virtual nlohmann::json	serialize();
 			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
