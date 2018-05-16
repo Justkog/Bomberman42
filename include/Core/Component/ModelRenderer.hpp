@@ -50,16 +50,23 @@ namespace BeerEngine
 				}
 			};
 
+			struct Animation
+			{
+				int index;
+				float speed;
+			};
+
 			Assimp::Importer 					_importer;
 			const aiScene						*_assimpScene;
 			std::map<int, Graphics::AMaterial*>	_materials;
 			std::map<Graphics::Mesh*, int>		_materialIndices;
 			glm::mat4							_mat;
-			std::map<std::string, int>			_animations;
-			int									_currentAnimation;
+			std::map<std::string, Animation>	_animations;
+			Animation							_currentAnimation;
 			bool 								_playAnimation;
 			bool 								_loopAnimation;
 			float 								_animationTime;
+			float								_animationSpeed;
 
 			const aiScene		*_scene;
 
@@ -102,6 +109,7 @@ namespace BeerEngine
 			void resetAnimation();
 			double getAnimationDuration();
 			void setAnimationTime(double time);
+			void setAnimationSpeed(std::string name, float speed);
 
 			virtual void fixedUpdate(void);
        		virtual void update(void);

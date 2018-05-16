@@ -91,7 +91,7 @@ namespace Game
 			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
 			if (model)
 			{
-				model->setAnimation(0);
+				model->setAnimation("run");
 				model->setLoopAnimation(true);
 				model->playAnimation();
 			}
@@ -103,7 +103,7 @@ namespace Game
 			_direction = glm::vec2(0, 0);
 			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
 			if (model)
-				model->stopAnimation();
+				model->setAnimation("idle");
 		}
 
         void    Character::increaseSpeed(float val)
