@@ -121,7 +121,7 @@ void    SceneTest::init(void)
 	gameManager->startTimerUI = startTimerUI;
 
 	soundManager->setClip("assets/sounds/clint.ogg");
-
+	gameManager->audioManager = soundManager;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;

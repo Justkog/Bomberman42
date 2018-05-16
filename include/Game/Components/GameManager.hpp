@@ -20,6 +20,7 @@
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
 #include "Core/BeerRoutine/ARoutineRunner.hpp"
+#include "Game/Components/AudioManager.hpp"
 
 namespace Game
 {
@@ -41,6 +42,7 @@ namespace Game
 			TimeUI						*timeUI;
 			StartTimerUI				*startTimerUI;
 			std::vector<Breakable *> 	enemyBreakables;
+			AudioManager				*audioManager;
 
 
 			// GameManager( void );

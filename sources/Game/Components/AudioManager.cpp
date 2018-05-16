@@ -24,6 +24,16 @@ namespace Game
       srcAudio.play();
     }
 
+		void    AudioManager::pause()
+    {
+      srcAudio.pause();
+    }
+
+		void    AudioManager::continuePlaying()
+		{
+			srcAudio.continuePlaying();
+		}
+
 		void 		AudioManager::setPosition(float x, float y, float z)
 		{
 			srcAudio.setPosition(x, y, z);

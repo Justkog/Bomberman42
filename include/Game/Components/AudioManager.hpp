@@ -24,6 +24,8 @@ namespace Game
       ~AudioManager(void);
 
       void    play();
+			void    pause();
+			void    continuePlaying();
 			void 		setPosition(float x, float y, float z);
       void    setClip(std::string const &filename);
       void    setVolume();
