@@ -36,11 +36,14 @@ namespace Game
         {
 			std::cout << "map start" << "\n";
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
-			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
-			itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
-			itemRangeTex = Assets::GetTexture("assets/textures/ground_color.png");
+			// itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+			// itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+			itemRangeTex = Assets::GetTexture("assets/textures/fire_color.png");
+			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0_small.png");
+			itemBombTex = Assets::GetTexture("assets/textures/bomb_color.png");
+			// itemRangeTex = Assets::GetTexture("assets/textures/button_active.png");
 			itemSpeedBoostMesh = Assets::GetModel("assets/models/Shoes/Shoes.obj");
-			itemBombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			itemBombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");
 			itemRangeMesh = Assets::GetModel("assets/models/Fire/fire.obj");
 			drawMap();
 			uiInit = true;
@@ -61,12 +64,11 @@ namespace Game
 			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 			itemGO->name = "item";
 			itemGO->transform.position = pos;
-			itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
+			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
+			itemColl->_isTrigger = true;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
-			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
-			itemColl->_isTrigger = true;
 			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
 
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -82,7 +84,7 @@ namespace Game
                 case ItemType::AddBomb:
                     meshRenderer->setMesh(itemBombMesh);
                     itemTex = itemBombTex;
-			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+			        itemGO->transform.scale = glm::vec3(0.1, 0.1, 0.1);
                     break;
                 case ItemType::ExplosionBoost:
                     meshRenderer->setMesh(itemRangeMesh);

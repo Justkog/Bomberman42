@@ -54,6 +54,7 @@ void    SceneMain::init(void)
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
+	
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
 	mainMenu->versusMenu = versusMenu;
