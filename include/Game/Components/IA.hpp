@@ -15,11 +15,18 @@
 #include "Core/Component/IOnDestroy.hpp"
 #include "Core/Component/IUI.hpp"
 #include <queue>
-
+/*!
+ * \file IA.hpp
+ * \brief Component qui gère toute l'IA du jeu
+ * \author qhonore
+ */
 namespace Game
 {
 	namespace Component
 	{
+		/*! \class IA
+		* \brief La classe IA gère les actions, déplacements et la gestion d'objectif
+		*/
 		class IA : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUpdate,

@@ -15,8 +15,8 @@ namespace BeerEngine
 {
 	namespace Audio
 	{
-		 /*! \class AudioClip
-		* \brief classe de stoquage des sources audio
+		/*! \class AudioClip
+		* \brief classe de stockage des sources audio
 		*/
 		class AudioClip
 		{

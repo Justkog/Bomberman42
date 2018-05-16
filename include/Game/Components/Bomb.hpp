@@ -10,10 +10,18 @@
 #include "Core/Component/IColliderExit.hpp"
 #include "Core/Component/ACollider.hpp"
 
+/*!
+ * \file Bomb.hpp
+ * \brief Component bomb, ça fait boum quoi
+ * \author mgallo,stmartin,qhonore
+ */
 namespace Game
 {
 	namespace Component
 	{
+		/*! \class Bomb
+		* \brief La classe Bomb gère la range, le timer et l'explosion des bombes...
+		*/
 		class Bomb : public BeerEngine::Component::Component,
 			public BeerEngine::Component::IStart,
 			public BeerEngine::Component::IUpdate,

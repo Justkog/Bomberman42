@@ -23,10 +23,18 @@
 #define I 9 //Item
 #define B 3 //Item
 
+/*!
+ * \file Map.hpp
+ * \brief Component qui gère toute la zone de jeu
+ * \author stmartin
+ */
 namespace Game
 {
 	namespace Component
 	{
+		/*! \class Map
+		* \brief La classe Map gère les GameObjects du niveau, l'apparition des items, etc...
+		*/
 		class Map : public BeerEngine::Component::Component,
 						public BeerEngine::Component::IStart,
 						public BeerEngine::Component::IUI
