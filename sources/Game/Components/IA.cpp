@@ -57,8 +57,12 @@ namespace Game
 
         void    IA::update(void)
         {
-            if (!_hasObjective)
+            _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
+            if (!_hasObjective && _timerRefreshMap >= 0.2f)
+            {
                 findObjective();
+                _timerRefreshMap = 0;
+            }
             if (_hasObjective)
             {
                 if (moveToObjective())
@@ -250,7 +254,7 @@ namespace Game
             {
                 _val++;
                 _path.erase(_path.begin());
-                if (_type == ObjectiveType::KillEnemy)
+                if (_type == ObjectiveType::KillEnemy || _type == ObjectiveType::TakeBonus)
                     return (false);
             }
             dir = map->mapToWorld(_path[0]) - _transform.position;
@@ -319,11 +323,6 @@ namespace Game
             glm::vec2 cur;
             int weight;
 
-            _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
-            if (_timerRefreshMap >= 0.2f)
-                _timerRefreshMap -= 0.2f;
-            else
-                return;
             updatePathMap();
             _pathMap[start.y][start.x] = 1000;
             toCheck.push(start);
