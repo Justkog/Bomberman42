@@ -2,17 +2,26 @@
 #define BE_CORE_PHYSICS_HPP 1
 
 #include "Core/Core.hpp"
-
+/*!
+ * \file Physics.hpp
+ * \brief Fonctionnaliter physique du moteur, raycast...
+ * \author qhonore, jblondea
+ */
 namespace BeerEngine
 {
 	namespace Physics
 	{
+		/*! \struct Ray
+		* \brief Structure des informations du rayon
+		*/
 		struct Ray
 		{
 			glm::vec3 origin;
 			glm::vec3 direction;
 		};
-
+		/*! \struct RaycastHit
+		* \brief Structure des informations des objets qui sont rentrer en collision avec un rayson
+		*/
 		struct RaycastHit
 		{
 			BeerEngine::Component::ACollider *collider;
@@ -27,7 +36,9 @@ namespace BeerEngine
 				return (distance < hit.distance);
 			}
 		};
-
+		/*! \class Physics
+		* \brief Classe static avec toute les fonctions utilisable sur la physique tel le raycast.
+		*/
 		class Physics
 		{
 

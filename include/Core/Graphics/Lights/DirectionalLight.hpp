@@ -4,7 +4,11 @@
 
 #ifndef BE_CORE_GRAPHICS_DIRECTIONALLIGHT_HPP
 #define BE_CORE_GRAPHICS_DIRECTIONALLIGHT_HPP 1
-
+/*!
+ * \file DirectionalLight.hpp
+ * \brief Fonctionnaliter de la lumierer directionnel
+ * \author mploux
+ */
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 #include "ALight.hpp"
@@ -13,6 +17,9 @@ namespace BeerEngine
 {
 	namespace Graphics
 	{
+		/*! \class DirectionalLight
+		* \brief Extension des lumiers basique pour une lumiere directionnel (ex: le soleil)
+		*/
 		class DirectionalLight : public ALight
 		{
 		private:

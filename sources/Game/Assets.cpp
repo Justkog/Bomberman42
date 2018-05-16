@@ -74,10 +74,14 @@ void			Assets::autoload(std::string path)
 
 void			Assets::load(void)
 {
+	static bool isload = false;
+	if (isload)
+		return;
 	// autoload("assets");
 	bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
 	// auto *bombTexture = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
 	// bombMaterial->setAlbedo(bombTexture);
+	isload = true;
 }
 
 void			Assets::unload(void)
