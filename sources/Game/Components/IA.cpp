@@ -57,6 +57,7 @@ namespace Game
 
         void    IA::update(void)
         {
+			_character->stopMove();
             _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
             if (!_hasObjective && _timerRefreshMap >= 0.2f)
             {
@@ -247,7 +248,7 @@ namespace Game
         {
             glm::vec3 dir;
 
-            _character->_direction = glm::vec2(0, 0);
+            // _character->_direction = glm::vec2(0, 0);
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
