@@ -119,8 +119,8 @@ void    SceneTest::init(void)
 	gameManager->victoryMenu = victoryMenu;
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
-	soundManager->setClip("assets/sounds/clint.ogg");
 
+	soundManager->setClip("assets/sounds/clint.ogg");
 
 
 	inGameMenu->uiManager = uiManager;
