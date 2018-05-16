@@ -39,16 +39,26 @@ namespace Game
         void    Character::fixedUpdate(void)
         {
             BeerEngine::Component::RigidBody2D *rb2d = _gameObject->GetComponent<BeerEngine::Component::RigidBody2D>();
+			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
 
 			if (rb2d)
             {
                 if (_direction == glm::vec2(0))
 				{
 					rb2d->velocity = glm::vec2(0);
+					if (model)
+						model->setAnimation("idle");
 				}
                 else
 				{
 					rb2d->velocity = glm::normalize(_direction) * _speed;
+					if (model)
+					{
+						model->setAnimation("run");
+						model->setLoopAnimation(true);
+						model->playAnimation();
+					}
+					_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
 				}
             }
         }
@@ -88,22 +98,11 @@ namespace Game
 					_rotation = 270;
                     break;
             }
-			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
-			if (model)
-			{
-				model->setAnimation("run");
-				model->setLoopAnimation(true);
-				model->playAnimation();
-			}
-			_gameObject->transform.rotation = glm::rotate(glm::quat(), glm::radians(_rotation), glm::vec3(0, 1, 0));
         }
 
 		void	Character::stopMove()
 		{
 			_direction = glm::vec2(0, 0);
-			BeerEngine::Component::ModelRenderer *model = _gameObject->GetComponent<BeerEngine::Component::ModelRenderer>();
-			if (model)
-				model->setAnimation("idle");
 		}
 
         void    Character::increaseSpeed(float val)

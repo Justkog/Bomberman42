@@ -15,6 +15,13 @@ namespace Game
 {
 	namespace Component
 	{
+		std::vector<std::string> IA::textures = {
+			"assets/textures/ia/black_body.png",
+			"assets/textures/ia/blue_body.png",
+			"assets/textures/ia/gold_body.png",
+			"assets/textures/ia/red_body.png",
+		};
+
         IA::IA(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform),

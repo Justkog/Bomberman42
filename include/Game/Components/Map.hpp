@@ -18,7 +18,6 @@
 #include "Game/Components/Player.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 #include "Game/Components/Breakable.hpp"
-#include <vector>
 
 #define S -1 //spawn position
 #define I 9 //Item
@@ -68,6 +67,7 @@ namespace Game
 			BeerEngine::Graphics::Mesh		*itemRangeMesh;
 
 			bool uiInit;
+			std::vector<int> 				takenIATextures;
 
 			void mapUpdate(glm::vec3 pos, int value);
 

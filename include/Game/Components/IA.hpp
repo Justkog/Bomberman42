@@ -65,6 +65,7 @@ namespace Game
 			REGISTER_COMPONENT_HPP
 
 			Game::Component::Map *map;
+			static std::vector<std::string> textures;
 		};
 	}
 }
