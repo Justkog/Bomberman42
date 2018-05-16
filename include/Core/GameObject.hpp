@@ -24,7 +24,7 @@ namespace BeerEngine
 	/*! \class GameObject
 	* \brief classe representant les entiter du projet, cela regroupe les fonctionnalitée de l'entité par le biais de component
 	*/
-    class GameObject : public JsonSerializable, public JsonDeserializable
+    class GameObject : public JsonSerializable
 	{
 	protected:
 		std::vector<Component::Component *> _components;

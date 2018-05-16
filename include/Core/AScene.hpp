@@ -19,7 +19,7 @@ namespace BeerEngine
     /*! \class AScene
 	* \brief classe des scenes, toute scene herite de celle-ci pour le fonctionnement correct des scenes.
 	*/
-    class AScene : public JsonSerializable, public JsonDeserializable
+    class AScene : public JsonSerializable
     {
     private:
         static int                  uniqueID; /*!< Generation d'un id unique pour chaque objet de la scene*/

@@ -33,11 +33,6 @@ namespace BeerEngine
 		loader.serializables[_serializationID] = this;
     }
 
-
-
-
-
-
 	void JsonLoader::executeCallBacks()
 	{
 		// std::cout << "executing jsonLoader callbacks" << std::endl;
@@ -55,21 +50,4 @@ namespace BeerEngine
     		return it->second;
 		return NULL;
 	}
-
-	
-	
-	
-	
-	
-	void JsonDeserializable::deserialize(const nlohmann::json & j)
-    {
-
-    }
-
-
-    void JsonDeserializable::Deserialize(const nlohmann::json & j)
-    {
-        
-    }
-
 }

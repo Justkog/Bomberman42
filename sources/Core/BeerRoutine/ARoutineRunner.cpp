@@ -10,16 +10,16 @@ namespace BeerEngine
 		void ARoutineRunner::startRoutine(BeerEngine::BeerRoutine::BeerRoutine &routine)
 		{
 			// std::cout << "starting routine!" << "\n";
-			currentRoutines.push_back(&routine);
+			_currentRoutines.push_back(&routine);
 		}
 
 		void ARoutineRunner::stopRoutine(BeerEngine::BeerRoutine::BeerRoutine *routine)
 		{
 			if (routine)
 			{
-				auto foundRoutine = std::find(currentRoutines.begin(), currentRoutines.end(), routine);
-				if (foundRoutine != currentRoutines.end())
-					currentRoutines.erase(foundRoutine);
+				auto foundRoutine = std::find(_currentRoutines.begin(), _currentRoutines.end(), routine);
+				if (foundRoutine != _currentRoutines.end())
+					_currentRoutines.erase(foundRoutine);
 				else
 					std::cout << "trying to stop a non running routine!" << "\n";
 			}
@@ -29,19 +29,19 @@ namespace BeerEngine
 
 		std::vector<BeerEngine::BeerRoutine::BeerRoutine *> ARoutineRunner::getRunningRoutines()
 		{
-			return currentRoutines;
+			return _currentRoutines;
 		}
 
 
 		void ARoutineRunner::update()
 		{
-			for (int i = 0; i < currentRoutines.size(); i++)
+			for (int i = 0; i < _currentRoutines.size(); i++)
 			{
-				auto cR = currentRoutines[i];
+				auto cR = _currentRoutines[i];
 				cR->update();
 				if (!cR->hasActionsLeft())
 				{
-					currentRoutines.erase(std::find(currentRoutines.begin(), currentRoutines.end(), cR));
+					_currentRoutines.erase(std::find(_currentRoutines.begin(), _currentRoutines.end(), cR));
 					i--;
 				}
 			}

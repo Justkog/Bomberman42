@@ -18,7 +18,7 @@ namespace BeerEngine
 	namespace Graphics
 	{
 		/*! \class DirectionalLight
-		* \brief Extension des lumiers basique pour une lumiere directionnel (ex: le soleil)
+		* \brief Extension des lumieres basique pour une lumiere directionnel (ex: le soleil)
 		*/
 		class DirectionalLight : public ALight
 		{
