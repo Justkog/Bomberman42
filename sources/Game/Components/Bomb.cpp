@@ -107,7 +107,8 @@ namespace Game
 				sizeDeflag = (distance + 0.25f) * 2.0f;
 			}
 			bombDeflag->setSize(2.0f, 1.0f);
-			bombDeflag->setSpawnTime(1.0f / 120.0f);
+			float timeToSpawnByPower = 90.0f + power * 30.0f;
+			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
 			dir = glm::normalize(dir) * sizeDeflag;
 			bombDeflag->setVelocity(dir);
 		}
