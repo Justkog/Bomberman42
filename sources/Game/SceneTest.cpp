@@ -102,8 +102,6 @@ void    SceneTest::init(void)
 
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-	soundManager->setClip("assets/sounds/clint.ogg");
-	// gameManager->srcAudio = soundManager;
 
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
@@ -121,12 +119,9 @@ void    SceneTest::init(void)
 	gameManager->victoryMenu = victoryMenu;
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
+	soundManager->setClip("assets/sounds/clint.ogg");
 
-// add music in game scene
-	// soundManager->play();
-	// BeerEngine::Audio::AudioClip	clip("assets/sounds/last_night.ogg");
-	// camAudio->srcAudio.setBuffer(clip.getBuffer());
-	// camAudio->srcAudio.play();
+
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
