@@ -83,21 +83,27 @@ namespace Game
 
 		void	Bomb::explodeToward(glm::vec3 dir)
 		{
-			BeerEngine::Physics::RaycastHit				hit;
+			std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
 			float lifeTime = 1.0f / 2.0f;
 			float sizeDeflag = (power + 0.25f) * 2.0f;
 			auto bombDeflag = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
+			int i = 0;
 
 			bombDeflag->setTexture(explosionTexture);
 			bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 			bombDeflag->setAnimate(true, 64, 8, 8);
 			bombDeflag->setLifeTime(lifeTime);
-			if (BeerEngine::Physics::Physics::Raycast(_gameObject->transform.position, dir, hit, 1))
+			if (hits.size() > 1)
 			{
-				auto destroyable = hit.collider->_gameObject->GetComponent<Game::Component::Breakable>();
+				if (hits[0].collider->_gameObject == _gameObject)
+					i = 1;
+				auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
+				auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
 				if (destroyable)
-					_gameObject->destroy(hit.collider->_gameObject);
-				int distance = glm::distance(hit.transform->position, _gameObject->transform.position);
+					_gameObject->destroy(hits[i].collider->_gameObject);
+				if (bomb)
+					bomb->timer = 5.0f;
+				int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
 				sizeDeflag = (distance + 0.25f) * 2.0f;
 			}
 			bombDeflag->setSize(2.0f, 1.0f);
