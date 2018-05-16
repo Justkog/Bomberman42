@@ -162,7 +162,7 @@ void    SceneTest::init(void)
 	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	playerColl->_radius = 0.3;
+	playerColl->_radius = 0.5;
 	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();

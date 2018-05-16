@@ -111,7 +111,8 @@ namespace Game
 				iaGO->transform.position = pos;
 				// iaGO->transform.scale = glm::vec3(1, 1, 1);
 				iaGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
-				iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+				auto collider = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
+				collider->_radius = 0.5f;
 				auto breakable = iaGO->AddComponent<Game::Component::Breakable>();
 					GameManager::GetInstance().registerEnemy(breakable);
 				auto modelRenderer = iaGO->AddComponent<BeerEngine::Component::ModelRenderer>();
@@ -219,7 +220,7 @@ namespace Game
 						case S:
 							spawnIA = (rand() % 4 != 0 || playerSpawn ? true : false);
 							if (spawnIA && _IAs.size() < 3)
-								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY)));
+								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY)));
 							else
 							{
 								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY);
