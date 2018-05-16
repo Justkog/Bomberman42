@@ -1,6 +1,10 @@
 #ifndef BE_HPP
 #define BE_HPP 1
-
+/*!
+ * \file BeerEngine.hpp
+ * \brief Class d'include pour tout les fichier important au jeu
+ * \author mgallo, qhonore, jblondea, stmartin, mploux
+ */
 #include "Window.hpp"
 #include "Time.hpp"
 #include "AScene.hpp"

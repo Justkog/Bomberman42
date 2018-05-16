@@ -4,7 +4,11 @@
 
 #ifndef BE_CORE_GRAPHICS_CUBEMAP_HPP
 #define BE_CORE_GRAPHICS_CUBEMAP_HPP 1
-
+/*!
+ * \file Cubemap.hpp
+ * \brief Le Cube Mapping permet de simuler la réflexion d'un environnement sur un objet
+ * \author mploux
+ */
 #include <Core/Component/IRender.hpp>
 #include "ShaderProgram.hpp"
 #include "Texture.hpp"
@@ -13,6 +17,9 @@ namespace BeerEngine
 {
 	namespace Graphics
 	{
+		/*! \class Cubemap
+		* \brief classe permettant de regrouper les donner de la cubemap pour la simuler la réflexion d'un environnement sur les objets
+		*/
 		class Cubemap : public JsonSerializable, public Component::IRender
 		{
 		private:

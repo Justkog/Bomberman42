@@ -1,6 +1,10 @@
 #ifndef BE_CORE_GRAPHICS_ALIGHT_HPP
 #define BE_CORE_GRAPHICS_ALIGHT_HPP 1
-
+/*!
+ * \file ALight.hpp
+ * \brief Fonctionnaliter de base de la lumierer
+ * \author mploux
+ */
 #include "Core/Core.hpp"
 #include "Core/Json/JsonSerializable.hpp"
 
@@ -8,9 +12,15 @@ namespace BeerEngine
 {
 	namespace Graphics
 	{
+		/*! \class ALight
+		* \brief lumiere de base, shader utiliser ...
+		*/
 		class ALight : public JsonSerializable
 		{
 		public:
+			/*! \struct Specular
+			* \brief Structure de donner pour pour la lumiere speculaire
+			*/
 			struct Specular
 			{
 				float	power;

@@ -1,6 +1,10 @@
 #ifndef BE_CORE_HPP
 # define BE_CORE_HPP 1
-
+/*!
+ * \file Core.hpp
+ * \brief Class d'include pour tout les fichier important au projet, libs...
+ * \author mgallo, qhonore, jblondea, stmartin, mploux
+ */
 #define BE_DEBUG 1
 
 #define GLEW_STATIC

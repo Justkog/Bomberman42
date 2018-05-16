@@ -1,6 +1,10 @@
 #ifndef BE_CORE_COMPONENT_MODELRENDERER_HPP
 #define BE_CORE_COMPONENT_MODELRENDERER_HPP 1
-
+/*!
+ * \file ModelRenderer.hpp
+ * \brief Compoment de rendu d'une animation 3D
+ * \author mploux
+ */
 #include "Core/Core.hpp"
 #include "Component.hpp"
 #include "IRenderForward.hpp"
@@ -14,17 +18,25 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		/*! \class ModelRenderer
+		* \brief Classe component pour effectuer la mise a jour et le rendu d'une animation 3D
+		*/
 		class ModelRenderer : public Component, public IRenderForward, public IUpdate
 		{
 		protected:
 			#define NUM_BONES_PER_VEREX 4
 
+			/*! \struct BoneInfo
+			* \brief Structure de stockage des informations d'un bones
+			*/
 			struct BoneInfo
 			{
 				aiMatrix4x4 boneOffset;
 				glm::mat4 finalTransformation;
 			};
-
+			/*! \struct VertexBoneData
+			* \brief Structure de stockage des bones par vertex avec leur poids
+			*/
 			struct VertexBoneData
 			{
 				uint ids[NUM_BONES_PER_VEREX];
@@ -49,7 +61,10 @@ namespace BeerEngine
 					}
 				}
 			};
-
+			
+			/*! \struct Animation
+			* \brief Structure de stockage des informations d'animation
+			*/
 			struct Animation
 			{
 				int index;
