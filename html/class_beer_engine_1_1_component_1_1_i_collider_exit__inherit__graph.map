@@ -1,4 +1,4 @@
 <map id="BeerEngine::Component::IColliderExit" name="BeerEngine::Component::IColliderExit">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_bomb.html" title="{Game::Component::Bomb\n|+ map\l+ power\l+ onExplode\l+ bombs\l+ explosionTexture\l# render\l# timer\l|+ Bomb()\l+ ~Bomb()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onColliderExit()\l+ explode()\l+ setPower()\l}" alt="" coords="5,180,182,427"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_character.html" title="{Game::Component::Character\n|+ _speed\l+ _bombNb\l+ _maxBomb\l+ _explosionSize\l+ _direction\l+ _rotation\l+ map\l+ bombMesh\l+ bombMaterial\l# _transform\l|+ Character()\l+ start()\l+ fixedUpdate()\l+ update()\l+ translate()\l+ move()\l+ increaseSpeed()\l+ addBomb()\l+ increaseMaxBomb()\l+ increaseExplosionSize()\land 7 more...\l}" alt="" coords="205,140,405,467"/>
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_bomb.html" title="La classe Bomb gère la range, le timer et l&#39;explosion des bombes... " alt="" coords="5,167,182,440"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_character.html" title="La classe Character gère les mouvements, pose de bombes et autre du personnage. " alt="" coords="205,140,405,467"/>
 </map>

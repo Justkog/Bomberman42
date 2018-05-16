@@ -1,4 +1,4 @@
 <map id="include/Core/Graphics/Mesh.hpp" name="include/Core/Graphics/Mesh.hpp">
-<area shape="rect" id="node2" href="$_core_8hpp.html" title="../Core.hpp" alt="" coords="2394,165,2481,191"/>
-<area shape="rect" id="node37" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2404,92,2613,117"/>
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2394,165,2481,191"/>
+<area shape="rect" id="node37" href="$_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="2404,92,2613,117"/>
 </map>

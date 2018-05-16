@@ -1,0 +1,11 @@
+<map id="Game::Component::StartTimerUI" name="Game::Component::StartTimerUI">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="197,944,365,1164"/>
+<area shape="rect" id="node11" href="$class_game_1_1_component_1_1_u_i_theme_manager.html" title="{Game::Component::UITheme\lManager\n|+ defaultWindow\l+ defaultButton\l+ defaultProperty\l+ defaultText\l+ defaultSlider\l+ available_fonts\l+ themeButton\l|+ UIThemeManager()\l+ ~UIThemeManager()\l+ operator=()\l+ start()\l+ startUI()\l+ renderUI()\l+ saveDefaultUI()\l+ setThemeUI()\l+ resetToDefaultUI()\l+ loadSprite()\l}" alt="" coords="268,1213,464,1500"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="223,5,419,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="352,569,525,883"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="322,221,480,508"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="576,261,722,468"/>
+<area shape="rect" id="node8" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="5,1011,173,1097"/>
+<area shape="rect" id="node9" href="$class_beer_engine_1_1_component_1_1_i_start_u_i.html" title="{BeerEngine::Component\l::IStartUI\n||+ startUI()\l}" alt="" coords="605,1011,773,1097"/>
+<area shape="rect" id="node10" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="Interface de rendu de l&#39;UI d&#39;un component. " alt="" coords="389,1017,581,1091"/>
+</map>

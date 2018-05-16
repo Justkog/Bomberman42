@@ -14,6 +14,7 @@ var searchData=
   ['irender',['IRender',['../class_beer_engine_1_1_component_1_1_i_render.html',1,'BeerEngine::Component']]],
   ['irenderalpha',['IRenderAlpha',['../class_beer_engine_1_1_component_1_1_i_render_alpha.html',1,'BeerEngine::Component']]],
   ['irenderforward',['IRenderForward',['../class_beer_engine_1_1_component_1_1_i_render_forward.html',1,'BeerEngine::Component']]],
+  ['irendershadow',['IRenderShadow',['../class_beer_engine_1_1_component_1_1_i_render_shadow.html',1,'BeerEngine::Component']]],
   ['istart',['IStart',['../class_beer_engine_1_1_component_1_1_i_start.html',1,'BeerEngine::Component']]],
   ['istartui',['IStartUI',['../class_beer_engine_1_1_component_1_1_i_start_u_i.html',1,'BeerEngine::Component']]],
   ['item',['Item',['../class_game_1_1_component_1_1_item.html',1,'Game::Component']]],

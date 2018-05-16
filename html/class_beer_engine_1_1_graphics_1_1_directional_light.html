@@ -76,14 +76,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Extension des lumieres basique pour une lumiere directionnel (ex: le soleil)  
+ <a href="class_beer_engine_1_1_graphics_1_1_directional_light.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_directional_light_8hpp_source.html">DirectionalLight.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BeerEngine::Graphics::DirectionalLight:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_graphics_1_1_directional_light__inherit__graph.png" border="0" usemap="#_beer_engine_1_1_graphics_1_1_directional_light_inherit__map" alt="Inheritance graph"/></div>
 <map name="_beer_engine_1_1_graphics_1_1_directional_light_inherit__map" id="_beer_engine_1_1_graphics_1_1_directional_light_inherit__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_graphics_1_1_a_light.html" title="{BeerEngine::Graphics\l::ALight\n|# _shader\l# _intensity\l# _color\l# _specularity\l# _colorShaderID\l# _albedoID\l# _hasAlbedoID\l# _normalID\l# _hasNormalID\l# _bumpID\land 14 more...\l|+ ALight()\l+ ALight()\l+ ~ALight()\l+ bind()\l+ setColor()\l+ setIntensity()\l+ getColor()\l+ getIntensity()\l+ getShader()\l+ get_colorShaderID()\land 21 more...\l+ Deserialize()\l# setupUniformIds()\l}" alt="" coords="27,220,180,600"/>
-<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_graphics_1_1_a_light.html" title="lumiere de base, shader utiliser ... " alt="" coords="27,220,180,600"/>
+<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
 </map>
 </div>
 <div class="dynheader">
@@ -91,10 +94,10 @@ Collaboration diagram for BeerEngine::Graphics::DirectionalLight:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_graphics_1_1_directional_light__coll__graph.png" border="0" usemap="#_beer_engine_1_1_graphics_1_1_directional_light_coll__map" alt="Collaboration graph"/></div>
 <map name="_beer_engine_1_1_graphics_1_1_directional_light_coll__map" id="_beer_engine_1_1_graphics_1_1_directional_light_coll__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_graphics_1_1_a_light.html" title="{BeerEngine::Graphics\l::ALight\n|# _intensity\l# _color\l# _colorShaderID\l# _albedoID\l# _hasAlbedoID\l# _normalID\l# _hasNormalID\l# _bumpID\l# _hasBumpID\l# _projectionShaderID\land 12 more...\l|+ ALight()\l+ ALight()\l+ ~ALight()\l+ bind()\l+ setColor()\l+ setIntensity()\l+ getColor()\l+ getIntensity()\l+ getShader()\l+ get_colorShaderID()\land 21 more...\l+ Deserialize()\l# setupUniformIds()\l}" alt="" coords="126,556,280,936"/>
-<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_graphics_1_1_a_light.html" title="lumiere de base, shader utiliser ... " alt="" coords="126,556,280,936"/>
+<area shape="rect" id="node3" href="class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
 <area shape="rect" id="node5" href="class_beer_engine_1_1_graphics_1_1_shader_program.html" title="Cette class permet de charger et compiler les scripts pour la carte graphique (glsl), puis de les utiliser pour le traitement des rendus. " alt="" coords="124,221,282,495"/>
-<area shape="rect" id="node4" href="struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html" title="{BeerEngine::Graphics\l::ALight::Specular\n|+ power\l+ intensity\l|}" alt="" coords="306,308,458,408"/>
+<area shape="rect" id="node4" href="struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html" title="Structure de donner pour pour la lumiere speculaire. " alt="" coords="306,308,458,408"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -108,11 +111,22 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a935537ed1c337d91473ec7c356da61ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace806006e897f21e0303100c80fb8938"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#ace806006e897f21e0303100c80fb8938">bind</a> ()</td></tr>
 <tr class="separator:ace806006e897f21e0303100c80fb8938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4984a11f94d7b85cce9715ffeb55ce6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#ab4984a11f94d7b85cce9715ffeb55ce6">bindShadowMap</a> ()</td></tr>
+<tr class="separator:ab4984a11f94d7b85cce9715ffeb55ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50b65ad67ef4e1a9a8d5e9a0eedfde61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a50b65ad67ef4e1a9a8d5e9a0eedfde61">unbindShadowMap</a> ()</td></tr>
+<tr class="separator:a50b65ad67ef4e1a9a8d5e9a0eedfde61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fc45862b3be93f12a5674d6c6014d83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html">DirectionalLight</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a1fc45862b3be93f12a5674d6c6014d83">setDirection</a> (const glm::vec3 &amp;dir)</td></tr>
 <tr class="separator:a1fc45862b3be93f12a5674d6c6014d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a966f3a36cc444b558168cca86a3a95b6"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a966f3a36cc444b558168cca86a3a95b6">getDirection</a> () const</td></tr>
 <tr class="separator:a966f3a36cc444b558168cca86a3a95b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b7aa7a8fc0f155cc7147684da55da81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a7b7aa7a8fc0f155cc7147684da55da81">setCastShadows</a> (bool val)</td></tr>
+<tr class="separator:a7b7aa7a8fc0f155cc7147684da55da81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1113a54b9cae244bd22f1710e65ed963"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a1113a54b9cae244bd22f1710e65ed963">isCastShadows</a> ()</td></tr>
+<tr class="separator:a1113a54b9cae244bd22f1710e65ed963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a400804b84f870916877e394f9b3c005d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a400804b84f870916877e394f9b3c005d">drawShadowMap</a> ()</td></tr>
+<tr class="separator:a400804b84f870916877e394f9b3c005d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a450e3153652341450b16a4f1aa7bb79c"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a450e3153652341450b16a4f1aa7bb79c">serialize</a> ()</td></tr>
+<tr class="memdesc:a450e3153652341450b16a4f1aa7bb79c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialisation sur place Sérialisation des champs de la classe, la fonction serialize du parent doit être appelée au début de la fonction.  <a href="#a450e3153652341450b16a4f1aa7bb79c">More...</a><br /></td></tr>
 <tr class="separator:a450e3153652341450b16a4f1aa7bb79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ec7a5ed65327d7609adbd8d5c5546b2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a9ec7a5ed65327d7609adbd8d5c5546b2">deserialize</a> (const nlohmann::json &amp;j)</td></tr>
 <tr class="separator:a9ec7a5ed65327d7609adbd8d5c5546b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,6 +193,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0105aad3ea70324a8327a6a48254a56b">JsonSerializable</a> (int id)</td></tr>
 <tr class="separator:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9d9855209d7fefb985a47e7e1aa7c7d inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ae9d9855209d7fefb985a47e7e1aa7c7d">deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="memdesc:ae9d9855209d7fefb985a47e7e1aa7c7d inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désérialisation sur place Désérialisation des champs de la classe, la fonction deserialize du parent doit être appelée au début de la fonction.  <a href="class_beer_engine_1_1_json_serializable.html#ae9d9855209d7fefb985a47e7e1aa7c7d">More...</a><br /></td></tr>
 <tr class="separator:ae9d9855209d7fefb985a47e7e1aa7c7d inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a80649111ff7da289151d17201f9e1d19">toSerializables</a> (std::vector&lt; <a class="el" href="namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664">T</a> *&gt; items)</td></tr>
@@ -193,6 +208,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a5e43f21c00112cdde18db4970b5984b7 inherit pub_static_methods_class_beer_engine_1_1_graphics_1_1_a_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_class_beer_engine_1_1_json_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_beer_engine_1_1_json_serializable')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_beer_engine_1_1_json_serializable.html">BeerEngine::JsonSerializable</a></td></tr>
 <tr class="memitem:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a3493453acedb5c0668086d2ede8152e0">Deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="memdesc:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désérialisation avec retour d'une instance de la classe.  <a href="class_beer_engine_1_1_json_serializable.html#a3493453acedb5c0668086d2ede8152e0">More...</a><br /></td></tr>
 <tr class="separator:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a48f83f0e913d9a7f4962f30ac8ff450b">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;item)</td></tr>
 <tr class="separator:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -257,7 +273,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a369eeec0da8e3256de151f1f1d7a533b inherit pro_attribs_class_beer_engine_1_1_graphics_1_1_a_light"><td class="memItemLeft" align="right" valign="top">GLint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html#a369eeec0da8e3256de151f1f1d7a533b">_hasEnvMapID</a></td></tr>
 <tr class="separator:a369eeec0da8e3256de151f1f1d7a533b inherit pro_attribs_class_beer_engine_1_1_graphics_1_1_a_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Extension des lumieres basique pour une lumiere directionnel (ex: le soleil) </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a08a29240c539e3a6fb5858b6d4a54269"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08a29240c539e3a6fb5858b6d4a54269">&#9670;&nbsp;</a></span>DirectionalLight() <span class="overload">[1/2]</span></h2>
 
@@ -338,7 +356,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -370,6 +388,23 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html#a2ef845fd6cd473a5efd1a14364cce6d6">BeerEngine::Graphics::ALight</a>.</p>
+
+</div>
+</div>
+<a id="ab4984a11f94d7b85cce9715ffeb55ce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4984a11f94d7b85cce9715ffeb55ce6">&#9670;&nbsp;</a></span>bindShadowMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BeerEngine::Graphics::DirectionalLight::bindShadowMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -427,6 +462,23 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a400804b84f870916877e394f9b3c005d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a400804b84f870916877e394f9b3c005d">&#9670;&nbsp;</a></span>drawShadowMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BeerEngine::Graphics::DirectionalLight::drawShadowMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a966f3a36cc444b558168cca86a3a95b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a966f3a36cc444b558168cca86a3a95b6">&#9670;&nbsp;</a></span>getDirection()</h2>
 
@@ -438,6 +490,23 @@ Additional Inherited Members</h2></td></tr>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1113a54b9cae244bd22f1710e65ed963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1113a54b9cae244bd22f1710e65ed963">&#9670;&nbsp;</a></span>isCastShadows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BeerEngine::Graphics::DirectionalLight::isCastShadows </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -467,7 +536,27 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Serialisation sur place Sérialisation des champs de la classe, la fonction serialize du parent doit être appelée au début de la fonction. </p>
+
 <p>Reimplemented from <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html#ab482f73968bb326c91e875c481e3b5f8">BeerEngine::Graphics::ALight</a>.</p>
+
+</div>
+</div>
+<a id="a7b7aa7a8fc0f155cc7147684da55da81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b7aa7a8fc0f155cc7147684da55da81">&#9670;&nbsp;</a></span>setCastShadows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BeerEngine::Graphics::DirectionalLight::setCastShadows </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -482,6 +571,23 @@ Additional Inherited Members</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const glm::vec3 &amp;&#160;</td>
           <td class="paramname"><em>dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50b65ad67ef4e1a9a8d5e9a0eedfde61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50b65ad67ef4e1a9a8d5e9a0eedfde61">&#9670;&nbsp;</a></span>unbindShadowMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BeerEngine::Graphics::DirectionalLight::unbindShadowMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>

@@ -74,6 +74,9 @@ $(function() {
 <div class="title">ALight.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Fonctionnaliter de base de la lumierer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_core_8hpp_source.html">Core/Core.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_json_serializable_8hpp_source.html">Core/Json/JsonSerializable.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -81,8 +84,8 @@ Include dependency graph for ALight.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="_a_light_8hpp__incl.png" border="0" usemap="#include_2_core_2_graphics_2_lights_2_a_light_8hpp" alt=""/></div>
 <map name="include_2_core_2_graphics_2_lights_2_a_light_8hpp" id="include_2_core_2_graphics_2_lights_2_a_light_8hpp">
-<area shape="rect" id="node2" href="_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,165,2492,191"/>
-<area shape="rect" id="node37" href="_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2404,92,2613,117"/>
+<area shape="rect" id="node2" href="_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2383,165,2492,191"/>
+<area shape="rect" id="node37" href="_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="2404,92,2613,117"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -91,12 +94,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="_a_light_8hpp__dep__incl.png" border="0" usemap="#include_2_core_2_graphics_2_lights_2_a_light_8hppdep" alt=""/></div>
 <map name="include_2_core_2_graphics_2_lights_2_a_light_8hppdep" id="include_2_core_2_graphics_2_lights_2_a_light_8hppdep">
 <area shape="rect" id="node2" href="_mesh_renderer_8hpp.html" title="Component permettent d&#39;ajouter un rendu au component. " alt="" coords="205,92,374,131"/>
-<area shape="rect" id="node6" href="_model_renderer_8hpp.html" title="include/Core/Component\l/ModelRenderer.hpp" alt="" coords="399,92,567,131"/>
-<area shape="rect" id="node7" href="_ambiant_light_8hpp.html" title="include/Core/Graphics\l/Lights/AmbiantLight.hpp" alt="" coords="591,92,759,131"/>
-<area shape="rect" id="node8" href="_directional_light_8hpp.html" title="include/Core/Graphics\l/Lights/DirectionalLight.hpp" alt="" coords="783,92,965,131"/>
-<area shape="rect" id="node3" href="_rays_renderer_8hpp.html" title="include/Core/Component\l/RaysRenderer.hpp" alt="" coords="5,179,174,217"/>
-<area shape="rect" id="node4" href="_bomb_8hpp.html" title="include/Game/Components\l/Bomb.hpp" alt="" coords="198,179,381,217"/>
-<area shape="rect" id="node5" href="_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="405,179,588,217"/>
+<area shape="rect" id="node6" href="_model_renderer_8hpp.html" title="Compoment de rendu d&#39;une animation 3D. " alt="" coords="399,92,567,131"/>
+<area shape="rect" id="node7" href="_ambiant_light_8hpp.html" title="Fonctionnaliter de la lumierer d&#39;ambiance. " alt="" coords="591,92,759,131"/>
+<area shape="rect" id="node8" href="_directional_light_8hpp.html" title="Fonctionnaliter de la lumierer directionnel. " alt="" coords="783,92,965,131"/>
+<area shape="rect" id="node3" href="_rays_renderer_8hpp.html" title="Rendu du Raycast. " alt="" coords="5,179,174,217"/>
+<area shape="rect" id="node4" href="_bomb_8hpp.html" title="Component bomb, ça fait boum quoi. " alt="" coords="198,179,381,217"/>
+<area shape="rect" id="node5" href="_map_8hpp.html" title="Component qui gère toute la zone de jeu. " alt="" coords="405,179,588,217"/>
 </map>
 </div>
 </div>
@@ -105,8 +108,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html">BeerEngine::Graphics::ALight</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">lumiere de base, shader utiliser ...  <a href="class_beer_engine_1_1_graphics_1_1_a_light.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html">BeerEngine::Graphics::ALight::Specular</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de donner pour pour la lumiere speculaire.  <a href="struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -118,7 +123,10 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_beer_engine_1_1_graphics"><td class="mdescLeft">&#160;</td><td class="mdescRight">espace de nommage regroupant les fonctionnalité graphique du moteur <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Fonctionnaliter de base de la lumierer. </p>
+<dl class="section author"><dt>Author</dt><dd>mploux </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -5,9 +5,9 @@ var indexSectionsWithContent =
   2: "bcgi",
   3: "abcdfgijkmprstuvw",
   4: "abcdefghijlmoprstuvw~",
-  5: "_abcdefgiklmnoprstuvwy",
+  5: "_abcdefghiklmnoprstuvwy",
   6: "a",
-  7: "dikor",
+  7: "cdikor",
   8: "abcdefghijklmnopqrstuvwxyz",
   9: "o",
   10: "bdgimnrsw"

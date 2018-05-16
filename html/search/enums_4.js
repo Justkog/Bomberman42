@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rbtype',['RBType',['../namespace_beer_engine_1_1_component.html#a2cfe279cc309b6420e792597940b8a33',1,'BeerEngine::Component']]]
+  ['objectivetype',['ObjectiveType',['../namespace_game_1_1_component.html#a83785a4fc5a35d5cee222b6c4dcb9e18',1,'Game::Component']]]
 ];

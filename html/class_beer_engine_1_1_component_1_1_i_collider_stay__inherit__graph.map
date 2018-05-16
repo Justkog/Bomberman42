@@ -1,3 +1,3 @@
 <map id="BeerEngine::Component::IColliderStay" name="BeerEngine::Component::IColliderStay">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="{Game::Component::Character\n|+ _speed\l+ _bombNb\l+ _maxBomb\l+ _explosionSize\l+ _direction\l+ _rotation\l+ map\l+ bombMesh\l+ bombMaterial\l# _transform\l|+ Character()\l+ start()\l+ fixedUpdate()\l+ update()\l+ translate()\l+ move()\l+ increaseSpeed()\l+ addBomb()\l+ increaseMaxBomb()\l+ increaseExplosionSize()\land 7 more...\l}" alt="" coords="5,140,205,467"/>
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="La classe Character gère les mouvements, pose de bombes et autre du personnage. " alt="" coords="5,140,205,467"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="include/Core/Graphics/Mesh.hpp" name="include/Core/Graphics/Mesh.hpp">
-<area shape="rect" id="node2" href="$_beer_engine_8hpp.html" title="include/Core/BeerEngine.hpp" alt="" coords="5,185,201,211"/>
+<area shape="rect" id="node2" href="$_beer_engine_8hpp.html" title="Class d&#39;include pour tout les fichier important au jeu. " alt="" coords="5,185,201,211"/>
 <area shape="rect" id="node4" href="$_mesh_builder_8hpp.html" title="Classe permettant de construire un rendu graphique. " alt="" coords="218,92,372,131"/>
 <area shape="rect" id="node6" href="$_graphics_8hpp.html" title="Graphics predefini. " alt="" coords="41,92,194,131"/>
-<area shape="rect" id="node3" href="$_map_8hpp.html" title="include/Game/Components\l/Map.hpp" alt="" coords="12,265,195,304"/>
-<area shape="rect" id="node5" href="$_model_renderer_8hpp.html" title="include/Core/Component\l/ModelRenderer.hpp" alt="" coords="225,179,394,217"/>
+<area shape="rect" id="node3" href="$_map_8hpp.html" title="Component qui gère toute la zone de jeu. " alt="" coords="12,265,195,304"/>
+<area shape="rect" id="node5" href="$_model_renderer_8hpp.html" title="Compoment de rendu d&#39;une animation 3D. " alt="" coords="225,179,394,217"/>
 </map>
