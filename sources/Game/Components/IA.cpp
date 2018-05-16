@@ -21,7 +21,8 @@ namespace Game
             _hasObjective(false),
             _pos(0, 0),
 		    _type(ObjectiveType::MoveTo),
-            _val(0)
+            _val(0),
+            _timerRefreshMap(0.2f)
 		{
         }
 
@@ -45,12 +46,10 @@ namespace Game
 
         void    IA::fixedUpdate(void)
         {
-
         }
 
         void    IA::update(void)
         {
-			_character->_direction = glm::vec2(0, 0);
             if (!_hasObjective)
                 findObjective();
             if (_hasObjective)
@@ -237,6 +236,7 @@ namespace Game
         {
             glm::vec3 dir;
 
+            _character->_direction = glm::vec2(0, 0);
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
@@ -274,20 +274,17 @@ namespace Game
           //------------------------------------ PATHFINDER -----------------------------------//
          ///////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////
-        bool	IA::checkCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start)
+        void	IA::markCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck)
         {
             if (cur.y >= 0 && cur.x >= 0 && cur.y < map->_sizeY && cur.x < map->_sizeX
             && (!_pathMap[cur.y][cur.x] || (_pathMap[cur.y][cur.x] >= 1000 && _pathMap[cur.y][cur.x] > weight)))
             {
-                if (glm::vec2(cur.x, cur.y) == start)
-                    return (true);
                 _pathMap[cur.y][cur.x] = weight + 1;
                 toCheck.push(glm::vec2(cur.x, cur.y));
             }
-            return (false);
         }
 
-        bool    IA::updatePathMap(void)
+        void    IA::updatePathMap(void)
         {
             glm::vec2 ia = map->worldToMap(_transform.position);
 
@@ -309,27 +306,30 @@ namespace Game
             }
         }
 
-        bool    IA::analyzeMap(glm::vec2 start, glm::vec2 target)
+        void    IA::analyzeMap(glm::vec2 start)
         {
             std::queue<glm::vec2> toCheck;
             glm::vec2 cur;
             int weight;
 
+            _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
+            if (_timerRefreshMap >= 0.2f)
+                _timerRefreshMap -= 0.2f;
+            else
+                return;
             updatePathMap();
-            _pathMap[target.y][target.x] = 1000;
-            toCheck.push(target);
+            _pathMap[start.y][start.x] = 1000;
+            toCheck.push(start);
             while (!toCheck.empty())
             {
                 cur = toCheck.front();
                 weight = _pathMap[cur.y][cur.x];
-                if (checkCell(glm::vec2(cur.x, cur.y - 1), weight, toCheck, start)
-                || checkCell(glm::vec2(cur.x, cur.y + 1), weight, toCheck, start)
-                || checkCell(glm::vec2(cur.x + 1, cur.y), weight, toCheck, start)
-                || checkCell(glm::vec2(cur.x - 1, cur.y), weight, toCheck, start))
-                    return (true);
+                markCell(glm::vec2(cur.x, cur.y - 1), weight, toCheck);
+                markCell(glm::vec2(cur.x, cur.y + 1), weight, toCheck);
+                markCell(glm::vec2(cur.x + 1, cur.y), weight, toCheck);
+                markCell(glm::vec2(cur.x - 1, cur.y), weight, toCheck);
                 toCheck.pop();
             }
-            return (false);
         }
 
         glm::vec2    IA::getPath(glm::vec2 cur)
@@ -373,14 +373,15 @@ namespace Game
         {
             glm::vec2 start = map->worldToMap(_transform.position);
 
-            if (analyzeMap(start, target))
+            analyzeMap(start);
+            if (_pathMap[static_cast<int>(target.y)][static_cast<int>(target.x)] >= 1000)
             {
                 if (path)
                 {
-                    for (glm::vec2 cur(start); cur != target;)
+                    for (glm::vec2 cur(target); _pathMap[static_cast<int>(cur.y)][static_cast<int>(cur.x)] != 1000;)
                     {
+                        path->insert(path->begin(), cur);
                         cur = getPath(cur);
-                        path->push_back(cur);
                     }
                 }
                 return (true);

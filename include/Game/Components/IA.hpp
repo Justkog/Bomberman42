@@ -34,7 +34,7 @@ namespace Game
 			ObjectiveType _type;
 			std::vector<glm::vec2> _path;
 			int _val;
-
+			float _timerRefreshMap;
 			std::vector<std::vector<int>> _pathMap;
 
 			bool uiInit;
@@ -49,9 +49,9 @@ namespace Game
 			bool    moveToNextCell(void);
 
 			//PATHFINDER
-			bool		checkCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck, glm::vec2 start);
-			bool    	updatePathMap(void);
-			bool    	analyzeMap(glm::vec2 start, glm::vec2 target);
+			void		markCell(glm::vec2 cur, int weight, std::queue<glm::vec2> &toCheck);
+			void    	updatePathMap(void);
+			void    	analyzeMap(glm::vec2 start);
 			glm::vec2   getPath(glm::vec2 cur);
 			bool    	findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
 
