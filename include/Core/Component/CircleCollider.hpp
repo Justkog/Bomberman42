@@ -1,6 +1,10 @@
 #ifndef BE_CORE_COMPONENT_CIRCLECOLLIDER_HPP
 #define BE_CORE_COMPONENT_CIRCLECOLLIDER_HPP 1
-
+/*!
+ * \file CircleCollider.hpp
+ * \brief Component de collision en cercle
+ * \author qhonore
+ */
 #include "Core/Core.hpp"
 #include "ACollider.hpp"
 
@@ -8,6 +12,9 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		/*! \class BoxCollider2D
+		* \brief classe heritante du systeme de base des collision pour effectuer des collisions par des cercles
+		*/
 		class CircleCollider : public ACollider
 		{
 		protected:

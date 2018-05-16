@@ -1,6 +1,10 @@
 #ifndef BE_CORE_COMPONENT_ACOLLIDER_HPP
 #define BE_CORE_COMPONENT_ACOLLIDER_HPP 1
-
+/*!
+ * \file ACollider.hpp
+ * \brief Component de collision de base
+ * \author qhonore
+ */
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
@@ -9,6 +13,9 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		/*! \class ACollider
+		* \brief classe gerent le system physique du projet
+		*/
 		class ACollider : public Component, public IStart
 		{
 		protected:
