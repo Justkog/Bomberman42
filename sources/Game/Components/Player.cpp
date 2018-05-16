@@ -1,5 +1,6 @@
 #include "Game/Components/Player.hpp"
 #include "Game/Components/Character.hpp"
+#include "Game/Components/GameManager.hpp"
 #include "Core/Input.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
@@ -15,7 +16,8 @@ namespace Game
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
 			_transform(gameObject->transform),
-			_character(nullptr)
+			_character(nullptr),
+			_gameStarted(false)
 		{ }
 
 		Player::~Player(void)
@@ -25,6 +27,12 @@ namespace Game
         {
 			_character->map->_player = nullptr;
         }
+
+		void Player::startGame(void)
+		{
+			std::cout << "start game from player" << std::endl;
+			_gameStarted = true;
+		}
 
 		void    Player::start(void)
         {
@@ -37,6 +45,7 @@ namespace Game
 			BeerEngine::Audio::AudioClip	itemClip("assets/sounds/item.wav");
 			itemSrcAudio->setBuffer(itemClip.getBuffer());
 
+			GameManager::GetInstance().onGameStart.bind(&Player::startGame, this);
         }
 
         void    Player::fixedUpdate(void)
@@ -48,6 +57,8 @@ namespace Game
         {
 			bool moving = false;
 			_character->_direction = glm::vec2(0, 0);
+			if (!_gameStarted)
+				return;
 			
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
             {

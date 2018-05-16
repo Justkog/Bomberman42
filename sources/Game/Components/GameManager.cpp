@@ -1,10 +1,13 @@
 #include "Game/Components/GameManager.hpp"
 #include "Core/Input.hpp"
 #include "Core/Time.hpp"
+#include "Core/BeerRoutine/BeerRoutine.hpp"
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
+#include "Game/Components/TimeUI.hpp"
 #include "Game/Components/Breakable.hpp"
+#include "Game/Components/StartTimerUI.hpp"
 
 namespace Game
 {
@@ -108,6 +111,49 @@ void GameManager::setVictory()
 	victoryMenu->setActive(true);
 }
 
+BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
+{
+	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
+	.addAction([this] () {
+		this->startTimerUI->updateDisplay("Ready?");
+		return true;
+	})
+	.addTimer(2.0f)
+	.addAction([&] () {
+		this->startTimerUI->updateDisplay("3");
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([&] () {
+		this->startTimerUI->updateDisplay("2");
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([&] () {
+		this->startTimerUI->updateDisplay("1");
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([this] () {
+		this->startTimerUI->updateDisplay("Go !");
+		this->startGame();
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([this] () {
+		this->startTimerUI->setActive(false);
+		return true;
+	})
+	;
+	return routine;
+}
+
+void GameManager::startGame()
+{
+	timeUI->startClock();
+	onGameStart.emit();
+}
+
 void GameManager::start()
 {
 	std::cout << "GameManager start" << std::endl;
@@ -116,10 +162,12 @@ void GameManager::start()
 	// srcAudio->setVolume(0.5);
 	// srcAudio->play();
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
+	startRoutine(*createStartTimerRoutine());
 }
 
 void GameManager::update()
 {
+	BeerEngine::BeerRoutine::ARoutineRunner::update();
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
 		inGameMenu->setActive(!inGameMenu->_isActive);
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::V))

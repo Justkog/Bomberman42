@@ -3,8 +3,8 @@
 //																//
 // ------------------------------------------------------------	//
 
-#ifndef TIMEUI_HPP
-# define TIMEUI_HPP
+#ifndef STARTTIMERUI_HPP
+# define STARTTIMERUI_HPP
 
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
@@ -17,40 +17,32 @@ namespace Game
 {
 	namespace Component
 	{
-		class TimeUI : public BeerEngine::Component::Component, 
-						public BeerEngine::Component::IStart,
-						public BeerEngine::Component::IStartUI,
+		class StartTimerUI : public BeerEngine::Component::Component, 
+						public BeerEngine::Component::IStart, 
+						public BeerEngine::Component::IStartUI, 
 						public BeerEngine::Component::IUI
 		{
-		private:
-			double 			_startTimeSinceStartup;
-			bool			_started;
-
 		public:
 			UIThemeManager	*uiManager;
-			nk_style_item	backGround;
-			nk_style_item	tvScreen;
-			double timeSinceGameStart;
+			std::string		text;
 
-			// TimeUI( void );
-			// TimeUI( TimeUI const & src );
-			TimeUI(BeerEngine::GameObject *gameObject);
+			// StartTimerUI( void );
+			// StartTimerUI( StartTimerUI const & src );
+			StartTimerUI(BeerEngine::GameObject *gameObject);
 
-			virtual ~TimeUI( void );
+			virtual ~StartTimerUI( void );
 
-			TimeUI & operator=( TimeUI const & rhs );
-			friend std::ostream & operator<<(std::ostream & o, TimeUI const & i);
+			StartTimerUI & operator=( StartTimerUI const & rhs );
+			friend std::ostream & operator<<(std::ostream & o, StartTimerUI const & i);
 
 			virtual void start();
 			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
 
-			void setUI(struct nk_context *ctx);
-
-			void startClock();
-	
+			void	updateDisplay(std::string text);
+			
 			REGISTER_COMPONENT_HPP
-
+	
 		};
 
 	};
