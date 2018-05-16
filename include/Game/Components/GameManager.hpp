@@ -13,12 +13,16 @@
 #include "Core/Component/IUpdate.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
+#include "Core/BeerRoutine/ARoutineRunner.hpp"
 
 namespace Game
 {
 	namespace Component
 	{
-		class GameManager : public BeerEngine::Component::Component, public BeerEngine::Component::IUpdate, public BeerEngine::Component::IStart
+		class GameManager : public BeerEngine::Component::Component, 
+							public BeerEngine::Component::IUpdate, 
+							public BeerEngine::Component::IStart,
+							public BeerEngine::BeerRoutine::ARoutineRunner
 		{
 		private:
 			static GameManager * instance;
@@ -28,6 +32,8 @@ namespace Game
 			GameOverMenu				*gameOverMenu;
 			VictoryMenu					*victoryMenu;
 			Breakable					*playerBreakable;
+			TimeUI						*timeUI;
+			StartTimerUI				*startTimerUI;
 			std::vector<Breakable *> 	enemyBreakables;
 
 			BeerEngine::Audio::AudioSource      *srcAudio;
@@ -45,12 +51,17 @@ namespace Game
 			virtual void update();
 			virtual void fixedUpdate();
 
+			void startGame();
 			void setPause(bool state);
 			void setGameOver(glm::vec3 pos, int value);
 			void setVictory();
 			void acknowledgeEnemyDestruction(Breakable *enemyBreakable);
 
 			void registerEnemy(Breakable *enemyBreakable);
+
+			Signal<> onGameStart;
+
+			BeerEngine::BeerRoutine::BeerRoutine *createStartTimerRoutine();
 
 			static GameManager & GetInstance();
 
