@@ -21,6 +21,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 
 #include "Game/Components/CameraController.hpp"
+#include "Game/Components/AudioManager.hpp"
 #include "Game/Components/MouseRayTest.hpp"
 #include "Game/Components/BeerRoutineTester.hpp"
 #include "Game/CameraTest.hpp"
@@ -54,6 +55,8 @@ void    SceneMain::init(void)
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
+	auto audioCom = menuGO->AddComponent<Game::Component::AudioManager>();
+
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
 	mainMenu->versusMenu = versusMenu;
@@ -66,6 +69,13 @@ void    SceneMain::init(void)
 	settingsMenu->settingsManager = settings;
 	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
+
+// init musique du menu
+	BeerEngine::Audio::AudioClip	clip("assets/sounds/Feel.ogg");
+	audioCom->srcAudio.setBuffer(clip.getBuffer());
+	audioCom->srcAudio.play();
+	audioCom->srcAudio.setVolume(0.5);
+
 	// mainMenu->setActive(false);
 	versusMenu->setActive(false);
 	settingsMenu->setActive(false);

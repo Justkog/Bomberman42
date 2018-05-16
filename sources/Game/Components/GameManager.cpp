@@ -99,7 +99,7 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 	{
 		victoryMenu->setActive(false);
 		std::cout << "not a victory after all" << std::endl;
-	}	
+	}
 }
 
 void GameManager::setVictory()
