@@ -65,12 +65,12 @@ namespace Game
 					if ((int)timer % 2 == 0)
 					{
 						color = glm::lerp(glm::vec4(1.0f), glm::vec4(1.0, 0.0, 0.0, 1.0), t);
-						_gameObject->transform.scale = glm::lerp(glm::vec3(0.5f), glm::vec3(0.7f), t);
+						_gameObject->transform.scale = glm::lerp(glm::vec3(0.15f), glm::vec3(0.25f), t);
 					}
 					else
 					{
 						color = glm::lerp(glm::vec4(1.0, 0.0, 0.0, 1.0), glm::vec4(1.0f), t);
-						_gameObject->transform.scale = glm::lerp(glm::vec3(0.7f), glm::vec3(0.5f), t);
+						_gameObject->transform.scale = glm::lerp(glm::vec3(0.25f), glm::vec3(0.15f), t);
 					}
 					render->getMaterial()->setColor(color);
 				}
