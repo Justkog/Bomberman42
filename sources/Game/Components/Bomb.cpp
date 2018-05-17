@@ -80,69 +80,23 @@ namespace Game
 
 		void	Bomb::explodeTowardUpdateMap(int value)
 		{
-			// glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
-			// for (int j = 0; j < 4; j++)
-			// {
-			// 	glm::vec3 dir = hitDir[j] - _gameObject->transform.position;
-			// 	if (glm::abs(dir.x) > glm::abs(dir.z)) // X
-			// 	{
-			// 		int x = static_cast<int>(dir.x);
-			// 		if (x == 0)
-			// 			continue;
-			// 		int dx = x / std::abs(x);
-			// 		int i = 0;
-			// 		while (i != x)
-			// 		{
-			// 			if (map->hasWall(glm::vec2(mapPos.x + i, mapPos.y)))
-			// 				break;
-			// 			map->mapUpdate(mapPos.x + i, mapPos.y, value);
-			// 			i += dx;
-			// 		}
-			// 	}
-			// 	else // Y
-			// 	{
-			// 		int z = static_cast<int>(dir.z);
-			// 		if (z == 0)
-			// 			continue;
-			// 		int dz = z / std::abs(z);
-			// 		int i = 0;
-			// 		while (i != z)
-			// 		{
-			// 			if (map->hasWall(glm::vec2(mapPos.x, mapPos.y + i)))
-			// 				break;
-			// 			map->mapUpdate(mapPos.x, mapPos.y + i, value);
-			// 			i += dz;
-			// 		}
-			// 	}
-			// }
-			glm::vec3 min(_gameObject->transform.position);
-			glm::vec3 max(_gameObject->transform.position);
+			static glm::vec3 dir[] = {
+				glm::vec3(1, 0, 0),
+				glm::vec3(-1, 0, 0),
+				glm::vec3(0, 0, 1),
+				glm::vec3(0, 0, -1)
+			};
 			for (int j = 0; j < 4; j++)
 			{
-				min = glm::min(min, hitDir[j]);
-				max = glm::max(max, hitDir[j]);
-			}
-			for (int i = static_cast<int>(min.x); i <= static_cast<int>(max.x); i++)
-			{
-				if (min.x + i < 0)
-					continue;
-				if (min.x + i >= map->_sizeX)
-					break;
-				glm::vec2 mapPos = map->worldToMap(glm::vec3(min.x + i, 0, _gameObject->transform.position.z));
-				if (map->hasWall(glm::vec2(mapPos.x, mapPos.y)))
-					continue;
-				map->mapUpdate(mapPos.x, mapPos.y, value);
-			}
-			for (int i = static_cast<int>(min.z); i <= static_cast<int>(max.z); i++)
-			{
-				if (min.z + i < 0)
-					continue;
-				if (min.z + i >= map->_sizeY)
-					break;
-				glm::vec2 mapPos = map->worldToMap(glm::vec3(_gameObject->transform.position.x, 0, min.z + i));
-				if (map->hasWall(glm::vec2(mapPos.x, mapPos.y)))
-					continue;
-				map->mapUpdate(mapPos.x, mapPos.y, value);
+				int d = static_cast<int>(glm::distance(hitDir[j], _gameObject->transform.position));
+				for (int i = 1; i <= d; i++)
+				{
+					glm::vec3 np = (_gameObject->transform.position + (dir[j] * i));
+					glm::vec2 mapPos = map->worldToMap(np);
+					if (map->hasWall(glm::vec2(mapPos.x, mapPos.y)))
+						break;
+					map->mapUpdate(mapPos.x, mapPos.y, value);
+				}
 			}
 		}
 
@@ -191,9 +145,14 @@ namespace Game
 				if (i < hits.size())
 				{
 					int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
-					hitDir[hitIDStorage] = hits[i].transform->position;
+					hitDir[hitIDStorage] = glm::floor(hits[i].transform->position);
+					//power
 					sizeDeflag = (distance + 0.25f) * 2.0f;
 				}
+			}
+			else
+			{
+				hitDir[hitIDStorage] = glm::floor(_gameObject->transform.position + glm::normalize(dir) * power);
 			}
 			bombDeflag->setSize(2.0f, 1.0f);
 			float timeToSpawnByPower = 90.0f + power * 30.0f;
