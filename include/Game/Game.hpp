@@ -31,6 +31,8 @@ namespace Game
 		class TimeUI;
 		class StartTimerUI;
 
+		class AudioManager;
+
 	}
 }
 

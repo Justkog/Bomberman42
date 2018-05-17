@@ -5,6 +5,7 @@
 #include "Game/Components/MainMenu.hpp"
 #include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/UIThemeManager.hpp"
+#include "Game/Components/AudioManager.hpp"
 #include "Core/Window.hpp"
 
 namespace Game
@@ -186,14 +187,18 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 		}
 
 		std::stringstream ssMusic;
+		musicVolume = audioManager->getMusicVolume() * 100;
 		ssMusic << "Music volume: " << musicVolume;
 		nk_label(ctx, ssMusic.str().c_str(), NK_TEXT_LEFT);
 		nk_slider_float(ctx, 0, &musicVolume, 100.0f, 1.0f);
 
 		std::stringstream ssSound;
+		soundVolume = audioManager->getSoundVolume() * 100;
 		ssSound << "Sound volume: " << soundVolume;
 		nk_label(ctx, ssSound.str().c_str(), NK_TEXT_LEFT);
 		nk_slider_float(ctx, 0, &soundVolume, 100.0f, 1.0f);
+
+		audioManager->setVolume(soundVolume / 100, musicVolume / 100);
 
 		uiManager->setThemeUI(ctx);
 		ctx->style.window.spacing = nk_vec2(10, 0);

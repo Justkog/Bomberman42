@@ -3,6 +3,7 @@
 #include "Core/KeyCode.hpp"
 #include "Game/Input.hpp"
 #include "Core/Window.hpp"
+#include "Game/Components/AudioManager.hpp"
 
 namespace Game
 {
@@ -33,7 +34,8 @@ Settings & Settings::GetInstance()
 // }
 
 Settings::Settings (BeerEngine::GameObject *gameObject) :
-	Component(gameObject)
+	Component(gameObject),
+	audioManager(nullptr)
 {
 	this->filePath = "testSettings.json";
 	instance = this;
@@ -97,6 +99,10 @@ void Settings::applyCurrentSettings() {
 		BeerEngine::Window::GetInstance()->setFullScreen();
 	else
 		BeerEngine::Window::GetInstance()->setWindowed();
+	if (audioManager)
+	{
+		this->audioManager->setVolume(this->settingsContainer.soundVolume / 100, this->settingsContainer.musicVolume / 100);
+	}
 }
 
 void Settings::gatherCurrentSettings() {
@@ -105,6 +111,11 @@ void Settings::gatherCurrentSettings() {
 	this->settingsContainer.windowWidth = BeerEngine::Window::GetInstance()->getWindowedWidth();
 	this->settingsContainer.windowHeight = BeerEngine::Window::GetInstance()->getWindowedHeight();
 	this->settingsContainer.fullScreen = BeerEngine::Window::GetInstance()->isFullScreen();
+	if (audioManager)
+	{
+		this->settingsContainer.soundVolume = audioManager->getSoundVolume() * 100;
+		this->settingsContainer.musicVolume = audioManager->getMusicVolume() * 100;
+	}
 }
 
 void Settings::loadSettings() {

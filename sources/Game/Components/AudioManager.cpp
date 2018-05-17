@@ -7,7 +7,8 @@ namespace Game
 	{
     AudioManager::AudioManager(BeerEngine::GameObject *gameObject):
 		Component(gameObject),
-    srcAudio(BeerEngine::Audio::AudioSource(gameObject))
+    	srcAudio(BeerEngine::Audio::AudioSource(gameObject)),
+		audioType(Sound)
     { }
 
     AudioManager::~AudioManager()
@@ -45,11 +46,26 @@ namespace Game
         srcAudio.setBuffer(clip.getBuffer());
     }
 
-    void    AudioManager::setVolume()
+    void    AudioManager::setVolume(float soundVolume, float musicVolume)
     {
+		_musicVolume = musicVolume;
+		_soundVolume = soundVolume;
 			// std::cout <<"=============================" << Game::Component::Settings::GetInstance().settingsContainer.musicVolume << std::endl;
-      srcAudio.setVolume(Game::Component::Settings::GetInstance().settingsContainer.musicVolume / 100);
+		if (audioType == Music)
+			srcAudio.setVolume(musicVolume);
+		else if (audioType ==  Sound)
+			srcAudio.setVolume(soundVolume);
     }
+
+	float		AudioManager::getSoundVolume()
+	{
+		return _soundVolume;
+	}
+
+	float		AudioManager::getMusicVolume()
+	{
+		return _musicVolume;
+	}
 
     nlohmann::json	AudioManager::serialize()
     {

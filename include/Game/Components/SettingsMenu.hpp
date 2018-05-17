@@ -13,6 +13,7 @@
  */
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IUpdate.hpp"
@@ -47,6 +48,8 @@ namespace Game
 			float			soundVolume;
 			int				mode;
 
+			AudioManager	*audioManager;
+
 			MainMenu		*mainMenu;
 			InputsMenu		*inputsMenu;
 			UIThemeManager	*uiManager;
@@ -73,7 +76,6 @@ namespace Game
 
 			void updateScreenResolution();
 
-	
 			REGISTER_COMPONENT_HPP
 		};
 
