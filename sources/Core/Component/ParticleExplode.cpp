@@ -21,7 +21,7 @@ namespace BeerEngine
 			velocity.z = Mathf::Range(-1.0f, 1.0f);
 			velocity = glm::normalize(velocity);
 			particle.life = lifeTime;
-			particle.position = _gameObject->transform.getWorldPosition();
+			particle.position = _gameObject->transform.getWorldPosition() + offset;
 			particle.velocity = _gameObject->transform.getWorldRotate(velocity);
 			particle.lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
 		}

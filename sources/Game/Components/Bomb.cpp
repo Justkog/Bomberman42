@@ -138,6 +138,7 @@ namespace Game
 			bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 			bombDeflag->setAnimate(true, 64, 8, 8);
 			bombDeflag->setLifeTime(lifeTime);
+			bombDeflag->offset = glm::vec3(0, 0.5f, 0);
 			if (hits.size() >= 1)
 			{
 				if (hits[0].collider->_gameObject == _gameObject)
@@ -154,7 +155,7 @@ namespace Game
 			{
 				hitDir[hitIDStorage] = glm::floor(_gameObject->transform.position + glm::normalize(dir) * power);
 			}
-			bombDeflag->setSize(2.0f, 1.0f);
+			bombDeflag->setSize(2.0f);
 			float timeToSpawnByPower = 90.0f + power * 30.0f;
 			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
 			dir = glm::normalize(dir) * sizeDeflag;
@@ -175,7 +176,7 @@ namespace Game
 				playerParticule->setLifeTime(0.5f);
 				playerParticule->setSize(1.0f, 2.0f);
 				playerParticule->setSpawnTime(1.0f / 120.0f);
-
+				playerParticule->offset = glm::vec3(0, 0.5f, 0);
 				explodeToward(glm::vec3(power, 0.0f, 0.0f), 0);
 				explodeToward(glm::vec3(-power, 0.0f, 0.0f), 1);
 				explodeToward(glm::vec3(0.0f, 0.0f, power), 2);

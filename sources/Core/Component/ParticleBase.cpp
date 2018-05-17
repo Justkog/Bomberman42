@@ -34,6 +34,7 @@ namespace BeerEngine
 			animTotalFrame = 1;
 			animFrameWidth = 1;
 			animFrameHeight = 1;
+			offset = glm::vec3();
 		}
 
 		ParticleBase::~ParticleBase()
@@ -190,7 +191,7 @@ namespace BeerEngine
 		void 	ParticleBase::initParticle(Particle &particle)
 		{
 			particle.life = lifeTime;
-			particle.position = _gameObject->transform.getWorldPosition();
+			particle.position = _gameObject->transform.getWorldPosition() + offset;
 			particle.velocity = _gameObject->transform.getWorldRotate(velocity);
 			particle.lifeAnimSpeed = ((float)rand() / RAND_MAX) + 0.9f;
 		}
