@@ -162,8 +162,13 @@ namespace Game
                 }
                 if (character && hit.collider->_gameObject != _gameObject)
                 {
-                    val += 12;
-                    type = ObjectiveType::KillEnemy;
+                    if (map->hasCharacter(map->worldToMap(pos)) && map->worldToMap(_gameObject->transform.position) != map->worldToMap(pos))
+                        val -= 10;
+                    else
+                    {
+                        val += 12;
+                        type = ObjectiveType::KillEnemy;
+                    }
                 }
                 if (item)
                     val -= 15;
@@ -260,7 +265,6 @@ namespace Game
         {
             glm::vec3 dir;
 
-            // _character->_direction = glm::vec2(0, 0);
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
