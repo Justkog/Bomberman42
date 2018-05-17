@@ -55,7 +55,7 @@ void main()
 
     vec4 dirLight = vec4(0, 0, 0, 0);
     if (hasDirectionalLight == 1)
-        dirLight = calcDirectionalLight(directionalLight, tNormal) * calcShadow(lightPosition);
+        dirLight = calcDirectionalLight(directionalLight, tNormal) * calcBlurredShadow(lightPosition, 1);
     vec4 lightIntensity = light.color * light.intensity + dirLight;
     if (hasAlbedo == 1)
     {

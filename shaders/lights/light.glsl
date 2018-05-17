@@ -46,6 +46,33 @@ vec4 calcDirectionalLight(DirectionalLight light, vec3 normal)
     return calcLight(light.light, light.direction, normal);
 }
 
+float calcBlurredShadow(vec4 lightPosition, int size)
+{
+    float result = 0.0;
+
+    vec3 coords = lightPosition.xyz / lightPosition.w * 0.5 + 0.5;
+
+    float currentDepth = coords.z;
+    float texelSize = 1.0 / 2048.0;
+
+    vec3 clipA = coords - size * texelSize;
+    vec3 clipB = coords + size * texelSize;
+    if (clipA.z > 1.0 || clipB.z > 1.0)
+        return 1;
+
+    for (int x = 0; x <= size * 2 + 1; x++)
+    {
+        for (int y = 0; y <= size * 2 + 1; y++)
+        {
+            vec2 offset = vec2(x - size, y - size);
+            float closestDepth = texture(shadowMap, coords.xy + offset * texelSize).r;
+            result += currentDepth - 0.002 < closestDepth ? 1.0 : 0.0;
+        }
+    }
+
+    return result / ((size * 2 + 1) * (size * 2 + 1));
+}
+
 float calcShadow(vec4 lightPosition)
 {
     vec3 projCoords = lightPosition.xyz / lightPosition.w * 0.5 + 0.5;
