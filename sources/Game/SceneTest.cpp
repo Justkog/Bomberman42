@@ -100,6 +100,7 @@ void    SceneTest::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
+	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
 
@@ -121,12 +122,16 @@ void    SceneTest::init(void)
 	gameManager->startTimerUI = startTimerUI;
 
 	soundManager->setClip("assets/sounds/clint.ogg");
+	soundManager->audioType = Game::Component::Music;
+
 	gameManager->audioManager = soundManager;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
 	victoryMenu->uiManager = uiManager;
 	startTimerUI->uiManager = uiManager;
+
+	settings->audioManager = soundManager;
 
 	inGameMenu->setActive(false);
 	gameOverMenu->setActive(false);
@@ -167,7 +172,6 @@ void    SceneTest::init(void)
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
-	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();

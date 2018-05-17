@@ -13,6 +13,7 @@
  */
 
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/Component.hpp"
 
@@ -41,7 +42,7 @@ namespace Game
 			static Settings * instance;
 
 		public:
-
+			AudioManager	*audioManager;
 
 			// Settings( void );
 			// Settings( Settings const & src );
@@ -60,11 +61,11 @@ namespace Game
 			static SettingsContainer defaultSettings();
 			static Settings & GetInstance();
 
-
 			REGISTER_COMPONENT_HPP
 
 			std::string filePath;
 			Game::SettingsContainer settingsContainer;
+
 		};
 	};
 };

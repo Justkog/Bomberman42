@@ -7,8 +7,8 @@
         "move right": 68,
         "move up": 87
     },
-    "musicVolume": 50.0,
-    "soundVolume": 50.0,
+    "musicVolume": 18.0,
+    "soundVolume": 45.0000114440918,
     "unlockedLevels": [],
     "windowHeight": 900,
     "windowWidth": 1600

@@ -67,11 +67,14 @@ void    SceneMain::init(void)
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
 	settingsMenu->settingsManager = settings;
+	settingsMenu->audioManager = audioManager;
 	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
+	settings->audioManager = audioManager;
 
 // init musique du menu
 	audioManager->setClip("assets/sounds/Feel.ogg");
+	audioManager->audioType = Game::Component::Music;
 	// audioManager->play();
 // audioMan->setVolume(0.1);
 
