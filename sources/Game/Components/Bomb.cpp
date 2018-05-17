@@ -8,6 +8,7 @@
 #include "Game/Assets.hpp"
 #include "Game/Components/Breakable.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/IA.hpp"
 #include "Game/Components/AudioManager.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
@@ -43,6 +44,19 @@ namespace Game
 			render = _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>();
 			glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
 			map->mapUpdate(mapPos.x, mapPos.y, B);
+			auto collider = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
+			if (collider)
+			{
+				auto characterCol = map->_player->_gameObject->GetComponent<BeerEngine::Component::ACollider>();
+				if (characterCol && collider->checkCollision(characterCol))
+            		collider->_exceptions.push_back(characterCol);
+				for (Game::Component::IA *ia : map->_IAs)
+				{
+					characterCol = ia->_gameObject->GetComponent<BeerEngine::Component::ACollider>();
+					if (characterCol && collider->checkCollision(characterCol))
+            			collider->_exceptions.push_back(characterCol);
+				}
+			}
 		}
 
 		void    Bomb::fixedUpdate(void)
@@ -182,13 +196,6 @@ namespace Game
 				explodeToward(glm::vec3(0.0f, 0.0f, power), 2);
 				explodeToward(glm::vec3(0.0f, 0.0f, -power), 3);
 
-				// BeerEngine::Audio::AudioClip   		clip("assets/sounds/Bomb+1.wav");
-				// BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-				// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-				// srcAudio.play();
-
-				// glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
-				// map->mapUpdate(mapPos.x, mapPos.y, 0);
 				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);
 				onExplode.emit();

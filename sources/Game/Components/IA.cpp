@@ -107,10 +107,9 @@ namespace Game
             {
                 for (BeerEngine::Physics::RaycastHit hit : hits)
                 {
-                    auto character = hit.collider->_gameObject->GetComponent<Game::Component::Character>();
                     auto bomb = hit.collider->_gameObject->GetComponent<Game::Component::Bomb>();
                     auto myCol = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
-                    if ((character && character != _character) || (bomb && !hit.collider->hasException(myCol)))
+                    if (bomb && !hit.collider->hasException(myCol))
                         return (false);
                 }
             }
