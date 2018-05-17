@@ -73,6 +73,10 @@ namespace Game
             static float time = 0;
             time += 0.8 * BeerEngine::Time::GetDeltaTime();
             _transform.rotation = glm::quat(glm::vec3(0, time, 0));
+            // Pin in map item is present
+            int v = map->getCaseValue(glm::vec2(_gameObject->transform.position.x, _gameObject->transform.position.y));
+            if (v != B && v != I)
+                map->mapUpdate(_gameObject->transform.position, I);
         }
 
         void   Item::onTriggerStay(BeerEngine::Component::ACollider *other)

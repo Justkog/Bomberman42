@@ -17,6 +17,7 @@
 #include "Core/Json/Json.hpp"
 #include "Core/AScene.hpp"
 #include "Core/IO/FileUtils.hpp"
+#include "Core/Time.hpp"
 
 namespace BeerEngine
 {
@@ -24,6 +25,7 @@ namespace BeerEngine
 		_uniqueID(uniqueID),
 		_scene(scene)
 	{
+		immortalTimer = 0.0f;
 	}
 
 	GameObject::~GameObject(void)
@@ -40,6 +42,11 @@ namespace BeerEngine
 		return _uniqueID;
 	}
 
+	bool	GameObject::isImmortal(void)
+	{
+		return (immortalTimer > 0.0f);
+	}
+
 	std::vector<Component::Component *> GameObject::GetComponents(void)
 	{
 		return _components;
@@ -47,7 +54,11 @@ namespace BeerEngine
 
 	void	GameObject::start(void) {}
 	void    GameObject::fixedUpdate(void) {}
-	void    GameObject::update(void) {}
+	void    GameObject::update(void)
+	{
+		if (immortalTimer > 0.0f)
+			immortalTimer -= Time::GetDeltaTime();
+	}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
     void    GameObject::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) {}

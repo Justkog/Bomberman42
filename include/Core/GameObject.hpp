@@ -39,15 +39,16 @@ namespace BeerEngine
 		AScene		&_scene;
 		Transform	transform;
 		std::string	name;
+		float		immortalTimer;
 
 		// GameObject() {}
 		// GameObject(int uniqueID);
 		GameObject(int uniqueID, AScene &scene);
-
 		virtual ~GameObject(void);
 
 		int				getID();
-
+		bool			isImmortal(void);
+		
 		virtual void	start(void);
 		virtual void    fixedUpdate(void);
         virtual void    update(void);

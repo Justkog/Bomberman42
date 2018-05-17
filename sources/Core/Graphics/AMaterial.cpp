@@ -20,21 +20,18 @@ namespace BeerEngine
 			_bump(nullptr),
 			_envMap(Graphics::defaultCubemap)
 		{
-			shader->bind();
-			_projectionShaderID = _shader->getUniformLocation("projection");
-			_viewShaderID = _shader->getUniformLocation("view");
-			_modelShaderID = _shader->getUniformLocation("model");
-
-			_viewPosID = _shader->getUniformLocation("viewPos");
-			_viewDirID = _shader->getUniformLocation("viewDir");
-
-			_colorShaderID = _shader->getUniformLocation("color");
-			_albedoID = _shader->getUniformLocation("albedo");
-			_hasAlbedoID = _shader->getUniformLocation("hasAlbedo");
-			_normalID = _shader->getUniformLocation("normal");
-			_hasNormalID = _shader->getUniformLocation("hasNormal");
-			_bumpID = _shader->getUniformLocation("bump");
-			_hasBumpID = _shader->getUniformLocation("hasBump");
+			_projectionShaderID = 0;
+			_viewShaderID = 0;
+			_modelShaderID = 0;
+			_viewPosID = 0;
+			_viewDirID = 0;
+			_colorShaderID = 0;
+			_albedoID = 0;
+			_hasAlbedoID = 0;
+			_normalID = 0;
+			_hasNormalID = 0;
+			_bumpID = 0;
+			_hasBumpID = 0;
 
 //			_lightPosID = _shader->getUniformLocation("light.position");
 //			_lightDirID = _shader->getUniformLocation("light.direction");
@@ -44,8 +41,25 @@ namespace BeerEngine
 
 		void	AMaterial::bind(glm::mat4 &model)
 		{
-			// static glm::mat4 identity(1.0f);
 			_shader->bind();
+			if (_projectionShaderID == 0)
+			{
+				_projectionShaderID = _shader->getUniformLocation("projection");
+				_viewShaderID = _shader->getUniformLocation("view");
+				_modelShaderID = _shader->getUniformLocation("model");
+				_viewPosID = _shader->getUniformLocation("viewPos");
+				_viewDirID = _shader->getUniformLocation("viewDir");
+				_colorShaderID = _shader->getUniformLocation("color");
+				_albedoID = _shader->getUniformLocation("albedo");
+				_hasAlbedoID = _shader->getUniformLocation("hasAlbedo");
+				_normalID = _shader->getUniformLocation("normal");
+				_hasNormalID = _shader->getUniformLocation("hasNormal");
+				_bumpID = _shader->getUniformLocation("bump");
+				_hasBumpID = _shader->getUniformLocation("hasBump");
+			}
+			
+
+			// static glm::mat4 identity(1.0f);
 			_shader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
 			glm::mat4 view = Camera::main->transform.getMat4(true);
 			_shader->uniformMat(_viewShaderID, view);

@@ -85,7 +85,7 @@ namespace Game
                     {
                         case ObjectiveType::DropBomb:
                         case ObjectiveType::KillEnemy:
-                            _character->dropBomb();
+                            // _character->dropBomb();
                         break;
 
                         case ObjectiveType::MoveTo:

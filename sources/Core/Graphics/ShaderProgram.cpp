@@ -37,6 +37,7 @@ namespace BeerEngine
 			}
 			if (_program)
 				glDeleteProgram(_program);
+			_program = 0;
 		}
 
 		void			ShaderProgram::load(unsigned int shaderIndex, GLenum shaderType, const char *script)

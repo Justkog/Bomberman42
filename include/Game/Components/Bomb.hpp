@@ -45,6 +45,9 @@ namespace Game
        		virtual void    onColliderExit(BeerEngine::Component::ACollider *other);
 			void			explodeToward(glm::vec3 dir, int hitIDStorage);
 			void			explode(void);
+			void			explodeTowardUpdateMap(int value);
+			void			explodeUpdateMap(void);
+			
 			void			setPower(float pow);
 
 			static std::vector<Bomb*> bombs;

@@ -64,6 +64,7 @@ namespace Game
 			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 			itemGO->name = "item";
 			itemGO->transform.position = pos;
+			itemGO->immortalTimer = 1.5f;
 			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
@@ -185,13 +186,22 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			if (_map[y][x] == 2 && value == 0 && !(rand() % 3))
-			{
-				_map[y][x] = I;
+			// SEGFAULT ===> quand je rajoute || value == B
+			// if (_map[y][x] == 2 && (value == 0 || value == B) && !(rand() % 3))
+			// {
+			// 	_map[y][x] = (value == B) ? B : I;
+			// 	addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
+			// }
+			// else
+			// 	_map[y][x] = value;
+
+			// Les Item s'indique tout seul sur la map
+			x = glm::clamp(x, 0, _sizeX - 1);
+			y = glm::clamp(y, 0, _sizeY - 1);	
+			if (_map[y][x] == 2 && (value == 0 || value == B) && !(rand() % 2))
 				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
-			}
-			else
-				_map[y][x] = value;
+			_map[y][x] = value;
+
         }
 
 		void Map::mapUpdate(glm::vec3 pos, int value)
@@ -296,6 +306,22 @@ namespace Game
 				if (worldToMap(ia->_gameObject->transform.position) == pos) // *******  Segfault ******* //
 					return (true);
 			}
+			return (false);
+		}
+
+		int				Map::getCaseValue(glm::vec2 pos)
+		{
+			int x = glm::clamp(static_cast<int>(pos.x), 0, _sizeX - 1);
+			int y = glm::clamp(static_cast<int>(pos.y), 0, _sizeY - 1);			
+			return (_map[y][x]);
+		}
+
+		bool			Map::hasWall(glm::vec2 pos)
+		{
+			int x = glm::clamp(static_cast<int>(pos.x), 0, _sizeX - 1);
+			int y = glm::clamp(static_cast<int>(pos.y), 0, _sizeY - 1);	
+			if (_map[y][x] == 1)
+				return (true);
 			return (false);
 		}
 

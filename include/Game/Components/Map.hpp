@@ -21,7 +21,7 @@
 
 #define S -1 //spawn position
 #define I 9 //Item
-#define B 3 //Item
+#define B 3 //Item Bomb
 
 /*!
  * \file Map.hpp
@@ -55,6 +55,8 @@ namespace Game
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0);
 			bool			hasCharacter(glm::vec2 pos);
+			int				getCaseValue(glm::vec2 pos);
+			bool			hasWall(glm::vec2 pos);
 			bool			hasBomb(glm::vec3 pos);
 			bool			canWalk(glm::vec2 pos);
 			bool			canWalk(glm::vec3 pos);

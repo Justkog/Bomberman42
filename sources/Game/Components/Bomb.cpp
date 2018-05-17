@@ -51,6 +51,7 @@ namespace Game
 
 			if (timer >= 5.0f)
 			{
+				explodeUpdateMap();
 				if (timer >= 6.0f)
 					_gameObject->destroy(_gameObject);
 				else
@@ -77,6 +78,89 @@ namespace Game
 			}
 		}
 
+		void	Bomb::explodeTowardUpdateMap(int value)
+		{
+			// glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+			// for (int j = 0; j < 4; j++)
+			// {
+			// 	glm::vec3 dir = hitDir[j] - _gameObject->transform.position;
+			// 	if (glm::abs(dir.x) > glm::abs(dir.z)) // X
+			// 	{
+			// 		int x = static_cast<int>(dir.x);
+			// 		if (x == 0)
+			// 			continue;
+			// 		int dx = x / std::abs(x);
+			// 		int i = 0;
+			// 		while (i != x)
+			// 		{
+			// 			if (map->hasWall(glm::vec2(mapPos.x + i, mapPos.y)))
+			// 				break;
+			// 			map->mapUpdate(mapPos.x + i, mapPos.y, value);
+			// 			i += dx;
+			// 		}
+			// 	}
+			// 	else // Y
+			// 	{
+			// 		int z = static_cast<int>(dir.z);
+			// 		if (z == 0)
+			// 			continue;
+			// 		int dz = z / std::abs(z);
+			// 		int i = 0;
+			// 		while (i != z)
+			// 		{
+			// 			if (map->hasWall(glm::vec2(mapPos.x, mapPos.y + i)))
+			// 				break;
+			// 			map->mapUpdate(mapPos.x, mapPos.y + i, value);
+			// 			i += dz;
+			// 		}
+			// 	}
+			// }
+			glm::vec3 min(_gameObject->transform.position);
+			glm::vec3 max(_gameObject->transform.position);
+			for (int j = 0; j < 4; j++)
+			{
+				min = glm::min(min, hitDir[j]);
+				max = glm::max(max, hitDir[j]);
+			}
+			for (int i = static_cast<int>(min.x); i <= static_cast<int>(max.x); i++)
+			{
+				if (min.x + i < 0)
+					continue;
+				if (min.x + i >= map->_sizeX)
+					break;
+				glm::vec2 mapPos = map->worldToMap(glm::vec3(min.x + i, 0, _gameObject->transform.position.z));
+				if (map->hasWall(glm::vec2(mapPos.x, mapPos.y)))
+					continue;
+				map->mapUpdate(mapPos.x, mapPos.y, value);
+			}
+			for (int i = static_cast<int>(min.z); i <= static_cast<int>(max.z); i++)
+			{
+				if (min.z + i < 0)
+					continue;
+				if (min.z + i >= map->_sizeY)
+					break;
+				glm::vec2 mapPos = map->worldToMap(glm::vec3(_gameObject->transform.position.x, 0, min.z + i));
+				if (map->hasWall(glm::vec2(mapPos.x, mapPos.y)))
+					continue;
+				map->mapUpdate(mapPos.x, mapPos.y, value);
+			}
+		}
+
+		void	Bomb::explodeUpdateMap(void)
+		{
+			glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+			if (timer >= 6.0f)
+			{
+				map->mapUpdate(mapPos.x, mapPos.y, 0);
+				explodeTowardUpdateMap(0);
+			}
+			else
+			{
+				map->mapUpdate(mapPos.x, mapPos.y, B);
+				explodeTowardUpdateMap(B);
+			}
+		}
+
 		void    Bomb::onColliderExit(BeerEngine::Component::ACollider *other)
 		{
 			BeerEngine::Component::ACollider *collider = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
@@ -100,24 +184,21 @@ namespace Game
 			bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
 			bombDeflag->setAnimate(true, 64, 8, 8);
 			bombDeflag->setLifeTime(lifeTime);
-			if (hits.size() > 1)
+			if (hits.size() >= 1)
 			{
 				if (hits[0].collider->_gameObject == _gameObject)
 					i = 1;
-				// auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
-				// auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
-				// if (destroyable)
-				// 	_gameObject->destroy(hits[i].collider->_gameObject);
-				// if (bomb)
-				// 	bomb->timer = 5.0f;
-				int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
-				hitDir[hitIDStorage] = hits[i].transform->position;
-				sizeDeflag = (distance + 0.25f) * 2.0f;
+				if (i < hits.size())
+				{
+					int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
+					hitDir[hitIDStorage] = hits[i].transform->position;
+					sizeDeflag = (distance + 0.25f) * 2.0f;
+				}
 			}
 			bombDeflag->setSize(2.0f, 1.0f);
 			float timeToSpawnByPower = 90.0f + power * 30.0f;
 			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
-			dir = glm::normalize(dir) * (sizeDeflag + 1.0f);
+			dir = glm::normalize(dir) * sizeDeflag;
 			bombDeflag->setVelocity(dir);
 		}
 
@@ -146,9 +227,8 @@ namespace Game
 				// srcAudio.setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 				// srcAudio.play();
 
-				glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
-				map->mapUpdate(mapPos.x, mapPos.y, 0);
-
+				// glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
+				// map->mapUpdate(mapPos.x, mapPos.y, 0);
 				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);
 				onExplode.emit();
@@ -168,6 +248,8 @@ namespace Game
 							i = 1;
 						if (i >= hits.size())
 							continue ;
+						if (hits[i].collider->_gameObject->isImmortal())
+							continue;
 						auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
 						auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
 						if (destroyable)
