@@ -16,7 +16,6 @@ namespace Game
 
 		void AudioManager::start()
 		{
-			// setVolume();
 			play();
 		}
 

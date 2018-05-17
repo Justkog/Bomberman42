@@ -95,6 +95,8 @@ void GameManager::registerEnemy(Breakable *enemyBreakable)
 
 void GameManager::setGameOver(glm::vec3 pos, int value)
 {
+	if (inGameMenu->_isActive)
+		inGameMenu->setActive(!inGameMenu->_isActive);
 	// srcAudio->Delete();
 	std::cout << "game over" << std::endl;
 	gameOverMenu->setActive(true);
@@ -103,10 +105,15 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 		victoryMenu->setActive(false);
 		std::cout << "not a victory after all" << std::endl;
 	}
+	else
+		onGameEnd.emit();
 }
 
 void GameManager::setVictory()
 {
+	if (inGameMenu->_isActive)
+		inGameMenu->setActive(!inGameMenu->_isActive);
+	onGameEnd.emit();
 	std::cout << "victory" << std::endl;
 	victoryMenu->setActive(true);
 }
@@ -169,7 +176,10 @@ void GameManager::update()
 {
 	BeerEngine::BeerRoutine::ARoutineRunner::update();
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
-		inGameMenu->setActive(!inGameMenu->_isActive);
+	{
+		if (!victoryMenu->_isActive && !gameOverMenu->_isActive)
+			inGameMenu->setActive(!inGameMenu->_isActive);
+	}
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::V))
 		victoryMenu->setActive(true);
 }
@@ -183,12 +193,14 @@ void GameManager::setPause(bool state)
 {
 	if (state)
 	{
+		onGamePause.emit();
 		audioManager->pause();
 		std::cout << "pausing game" << std::endl;
 		BeerEngine::Time::gameSpeed = 0.0f;
 	}
 	else
 	{
+		onGameResume.emit();
 		audioManager->continuePlaying();
 		std::cout << "resuming game" << std::endl;
 		BeerEngine::Time::gameSpeed = 1.0f;

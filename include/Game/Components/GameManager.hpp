@@ -67,6 +67,9 @@ namespace Game
 			void registerEnemy(Breakable *enemyBreakable);
 
 			Signal<> onGameStart;
+			Signal<> onGamePause;
+			Signal<> onGameResume;
+			Signal<> onGameEnd;
 
 			BeerEngine::BeerRoutine::BeerRoutine *createStartTimerRoutine();
 
