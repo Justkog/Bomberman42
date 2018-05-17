@@ -29,7 +29,11 @@ namespace BeerEngine
 			Texture			*_albedo; /*!< Texture afficher sur le material*/
 			Texture			*_normal; /*!< Texture Normal utiliser sur la material*/
 			Texture			*_bump; /*!< Texture de profondeur utiliser sur le material*/
-			Cubemap			*_envMap;
+			Texture			*_rought; /*!< Texture de rugosité utiliser sur le material*/
+			Texture			*_metalic; /*!< Texture de metalique utiliser sur le material*/
+			float			_roughtFactor; /*!< Facteur de rugosité utiliser sur le material*/
+			float			_metalicFactor; /*!< Facteur metalique utiliser sur le material*/
+			Cubemap			*_envMap; /*!< Texture de l'environement utiliser sur le material*/
 
 
 			// Shader ID
@@ -45,13 +49,13 @@ namespace BeerEngine
 			GLint	_modelShaderID; /*!< Identifiant pour bind au shader les divers composents*/
 			GLint	_viewPosID; /*!< Identifiant pour bind au shader les divers composents*/
 			GLint	_viewDirID; /*!< Identifiant pour bind au shader les divers composents*/
-			GLint	_envMapID;
-			GLint	_hasEnvMapID;
+			GLint	_envMapID; /*!< Identifiant pour bind au shader les divers composents*/
+			GLint	_hasEnvMapID; /*!< Identifiant pour bind au shader les divers composents*/
 
-			GLint	_lightPosID;
-			GLint	_lightDirID;
-			GLint	_lightIntensityID;
-			GLint	_lightColorID;
+			GLint	_lightPosID; /*!< Identifiant pour bind au shader les divers composents*/
+			GLint	_lightDirID; /*!< Identifiant pour bind au shader les divers composents*/
+			GLint	_lightIntensityID; /*!< Identifiant pour bind au shader les divers composents*/
+			GLint	_lightColorID; /*!< Identifiant pour bind au shader les divers composents*/
 		
 		public:
 			/*!

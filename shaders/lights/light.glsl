@@ -2,11 +2,10 @@ in vec3 viewPosition;
 in vec3 viewDirection;
 in vec3 fragPos;
 
-uniform float specular_power;
-uniform float specular_intensity;
+float specular_power;
+float specular_intensity;
 
 uniform samplerCube envMap;
-
 uniform sampler2D shadowMap;
 
 struct Light
@@ -53,19 +52,17 @@ float calcBlurredShadow(vec4 lightPosition, int size)
     vec3 coords = lightPosition.xyz / lightPosition.w * 0.5 + 0.5;
 
     float currentDepth = coords.z;
-    float texelSize = 1.0 / 2048.0;
 
-    vec3 clipA = coords - size * texelSize;
-    vec3 clipB = coords + size * texelSize;
-    if (clipA.z > 1.0 || clipB.z > 1.0)
+    if (currentDepth > 1.0)
         return 1;
 
-    for (int x = 0; x <= size * 2 + 1; x++)
+    float texelSize = 1.0 / 2048.0;
+    for (int x = 0; x <= size * 2; x++)
     {
-        for (int y = 0; y <= size * 2 + 1; y++)
+        for (int y = 0; y <= size * 2; y++)
         {
             vec2 offset = vec2(x - size, y - size);
-            float closestDepth = texture(shadowMap, coords.xy + offset * texelSize).r;
+            float closestDepth = texture(shadowMap, coords.xy + offset * texelSize * 0.5).r;
             result += currentDepth - 0.002 < closestDepth ? 1.0 : 0.0;
         }
     }
@@ -102,6 +99,16 @@ float calcFresnel(vec3 cameraPosition, vec3 normal, float factor)
     return 1.0 - clamp(result, 0, 1);
 }
 
+vec3 fresneSchlick(float cosTheta, vec3 F0)
+{
+    return F0 + (1.0 - F0) * pow(1.0 - cosTheta, 5.0);
+}
+
+vec3 fresneSchlickRoughness(float cosTheta, vec3 F0, float roughness)
+{
+    return F0 + (max(vec3(1.0 - roughness), F0) - F0) * pow(1.0 - cosTheta, 5.0);
+}
+
 vec4 calcPBR(vec4 color, vec3 normal, float roughtness, float metalness)
 {
     float rFactor = roughtness * 4.0;
@@ -113,11 +120,15 @@ vec4 calcPBR(vec4 color, vec3 normal, float roughtness, float metalness)
     float fresnel = clamp(calcFresnel(viewPosition, normal, 1.0 + roughtness * 2.0), 0, 1) * 0.8;
     float fresnelRougthness = mix(fresnel, fresnel * 0.5, roughtness);
 
-    vec4 reflectiveColor = color * (0.5 + roughtness * 0.48) + env * (0.5 - roughtness * 0.48);
+    vec4 reflectiveColor = color * (1.0 - mFactor * 0.5) + env * (0.0 + mFactor * 0.5);
 
     vec4 fresnelReflection = mix(reflectiveColor, env, fresnelRougthness);
-   
-    // vec4 metalic = fresnelReflection * fresnel * 0.5;
 
-    return fresnelReflection;
+    vec4 metalCorrectedColor = reflectiveColor;
+    metalCorrectedColor.r = pow(fresnelReflection.r, 1 + mFactor);
+    metalCorrectedColor.g = pow(fresnelReflection.g, 1 + mFactor);
+    metalCorrectedColor.b = pow(fresnelReflection.b, 1 + mFactor);
+
+
+    return metalCorrectedColor;
 }
