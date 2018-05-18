@@ -159,6 +159,12 @@ namespace Game
 					int distance = glm::distance(hits[i].transform->position, _gameObject->transform.position);
 					hitDir[hitIDStorage] = glm::floor(hits[i].transform->position);
 					//power
+					auto destroyable = hits[i].collider->_gameObject->GetComponent<Game::Component::Breakable>();
+					auto bomb = hits[i].collider->_gameObject->GetComponent<Game::Component::Bomb>();
+					if (destroyable)
+						_gameObject->destroy(hits[i].collider->_gameObject);
+					if (bomb)
+						bomb->timer = 5.0f;
 					sizeDeflag = (distance + 0.25f) * 2.0f;
 				}
 			}

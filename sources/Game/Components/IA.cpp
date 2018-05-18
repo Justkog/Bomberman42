@@ -103,6 +103,8 @@ namespace Game
         {
             std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_transform.position, dir);
 
+            if (!map->canWalk(_path[0]))
+                return (false);
             if (hits.size() > 1)
             {
                 for (BeerEngine::Physics::RaycastHit hit : hits)
@@ -163,7 +165,7 @@ namespace Game
                 if (character && hit.collider->_gameObject != _gameObject)
                 {
                     if (map->hasCharacter(map->worldToMap(pos)) && map->worldToMap(_gameObject->transform.position) != map->worldToMap(pos))
-                        val -= 10;
+                        val -= 20;
                     else
                     {
                         val += 12;
