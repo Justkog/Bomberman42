@@ -8,6 +8,7 @@
 #include "Core/Component/ACollider.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
+#include "Game/Components/GameManager.hpp"
 
 namespace Game
 {
@@ -106,6 +107,7 @@ namespace Game
                     case ItemType::Antidote:
                         if (!map->hasBreakable())
                         {
+                            GameManager::GetInstance().setVictory();
                             this->destroy();
                         }
                         break;
