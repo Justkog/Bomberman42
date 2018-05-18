@@ -1,4 +1,4 @@
-CC = g++
+CC = clang++
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 MKDIR = /bin/mkdir -p
@@ -102,7 +102,7 @@ DIR = $(dir $(SRC))
 
 # -g
 # -Ofast -march=native -flto
-CFLAGS = -g -std=c++11 -Wc++11-extensions \
+CFLAGS =  -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 

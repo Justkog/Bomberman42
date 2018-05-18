@@ -46,23 +46,32 @@ set(JSON_INCLUDE_DIRS dependencies/json/single_include)
 set(STB_INCLUDE_DIR dependencies/stb)
 
 set(SOURCES
-        sources/
         dependencies/sigslot/src/signal.cpp
+        sources
+        sources/Game
         sources/Game/SceneMain.cpp
+        sources/Game/Components
+        sources/Game/Components/GameOverMenu.cpp
         sources/Game/Components/CameraController.cpp
+        sources/Game/Components/AudioManager.cpp
         sources/Game/Components/InGameMenu.cpp
         sources/Game/Components/Bomb.cpp
+        sources/Game/Components/VersusMenu.cpp
         sources/Game/Components/InputsMenu.cpp
         sources/Game/Components/Settings.cpp
         sources/Game/Components/MainMenu.cpp
         sources/Game/Components/Character.cpp
         sources/Game/Components/GameManager.cpp
+        sources/Game/Components/TimeUI.cpp
+        sources/Game/Components/ItemsUI.cpp
         sources/Game/Components/Breakable.cpp
         sources/Game/Components/Player.cpp
         sources/Game/Components/Item.cpp
         sources/Game/Components/MouseRayTest.cpp
+        sources/Game/Components/VictoryMenu.cpp
         sources/Game/Components/IA.cpp
         sources/Game/Components/SettingsMenu.cpp
+        sources/Game/Components/StartTimerUI.cpp
         sources/Game/Components/BackgroundDrawer.cpp
         sources/Game/Components/UIThemeManager.cpp
         sources/Game/Components/BeerRoutineTester.cpp
@@ -72,31 +81,45 @@ set(SOURCES
         sources/Game/SceneTest.cpp
         sources/Game/CameraTest.cpp
         sources/main.cpp
+        sources/Core
         sources/Core/Mathf.cpp
         sources/Core/Camera.cpp
+        sources/Core/GenericScene.cpp
         sources/Core/Window.cpp
+        sources/Core/Json
         sources/Core/Json/JsonSerializable.cpp
         sources/Core/Json/Json.cpp
         sources/Core/GameObject.cpp
+        sources/Core/IO
         sources/Core/IO/FileUtils.cpp
+        sources/Core/Audio
         sources/Core/Audio/AudioListener.cpp
         sources/Core/Audio/AudioClip.cpp
         sources/Core/Audio/AudioSource.cpp
+        sources/Core/Graphics
         sources/Core/Graphics/AMaterial.cpp
-        sources/Core/Graphics/Lights/ALight.cpp
+        sources/Core/Graphics/Cubemap.cpp
         sources/Core/Graphics/Texture.cpp
+        sources/Core/Graphics/Lights
+        sources/Core/Graphics/Lights/ALight.cpp
+        sources/Core/Graphics/Lights/AmbiantLight.cpp
+        sources/Core/Graphics/Lights/DirectionalLight.cpp
         sources/Core/Graphics/Graphics.cpp
         sources/Core/Graphics/Mesh.cpp
         sources/Core/Graphics/ShaderProgram.cpp
         sources/Core/Graphics/MeshBuilder.cpp
+        sources/Core/Graphics/Framebuffer.cpp
         sources/Core/Time.cpp
         sources/Core/SceneManager.cpp
         sources/Core/Input.cpp
+        sources/Core/Physics
         sources/Core/Physics/Physics.cpp
+        sources/Core/BeerRoutine
         sources/Core/BeerRoutine/ARoutineRunner.cpp
         sources/Core/BeerRoutine/BeerRoutine.cpp
         sources/Core/AScene.cpp
         sources/Core/Transform.cpp
+        sources/Core/Component
         sources/Core/Component/BoxCollider2D.cpp
         sources/Core/Component/ModelRenderer.cpp
         sources/Core/Component/MeshRenderer.cpp
@@ -107,55 +130,75 @@ set(SOURCES
         sources/Core/Component/RaysRenderer.cpp
         sources/Core/Component/ParticleExplode.cpp
         sources/Core/Component/RigidBody2D.cpp
-        sources/Core/Graphics/Lights/DirectionalLight.cpp)
+        )
 
 set(HEADERS
-        include/
         dependencies/sigslot/src/signal.h
+        include
+        include/Game
+        include/Game/Components
+        include/Game/Components/TimeUI.hpp
         include/Game/Components/BackgroundDrawer.hpp
         include/Game/Components/Item.hpp
+        include/Game/Components/VictoryMenu.hpp
         include/Game/Components/Character.hpp
         include/Game/Components/CameraController.hpp
         include/Game/Components/SettingsMenu.hpp
         include/Game/Components/Breakable.hpp
+        include/Game/Components/ItemsUI.hpp
         include/Game/Components/GameManager.hpp
         include/Game/Components/Settings.hpp
         include/Game/Components/BeerRoutineTester.hpp
         include/Game/Components/Map.hpp
+        include/Game/Components/AudioManager.hpp
         include/Game/Components/MainMenu.hpp
         include/Game/Components/InputsMenu.hpp
         include/Game/Components/IA.hpp
         include/Game/Components/Bomb.hpp
         include/Game/Components/UIThemeManager.hpp
+        include/Game/Components/VersusMenu.hpp
         include/Game/Components/Player.hpp
         include/Game/Components/MouseRayTest.hpp
         include/Game/Components/InGameMenu.hpp
+        include/Game/Components/StartTimerUI.hpp
+        include/Game/Components/GameOverMenu.hpp
         include/Game/SceneTest.hpp
         include/Game/SceneMain.hpp
         include/Game/CameraTest.hpp
         include/Game/Assets.hpp
         include/Game/Input.hpp
         include/Game/Game.hpp
+        include/Core
         include/Core/Camera.hpp
         include/Core/Mathf.hpp
         include/Core/GameObject.hpp
         include/Core/Time.hpp
+        include/Core/Json
         include/Core/Json/Json.hpp
         include/Core/Json/JsonSerializable.hpp
+        include/Core/IO
         include/Core/IO/FileUtils.hpp
         include/Core/Audio
         include/Core/Audio/AudioListener.hpp
         include/Core/Audio/AudioClip.hpp
         include/Core/Audio/AudioSource.hpp
-        include/Core/Graphics/AMaterial.hpp
+        include/Core/Graphics
+        include/Core/Graphics/Cubemap.hpp
+        include/Core/Graphics/Lights
         include/Core/Graphics/Lights/ALight.hpp
+        include/Core/Graphics/Lights/DirectionalLight.hpp
+        include/Core/Graphics/Lights/AmbiantLight.hpp
+        include/Core/Graphics/AMaterial.hpp
         include/Core/Graphics/Texture.hpp
         include/Core/Graphics/ShaderProgram.hpp
+        include/Core/Graphics/Framebuffer.hpp
         include/Core/Graphics/Mesh.hpp
         include/Core/Graphics/Graphics.hpp
         include/Core/Graphics/MeshBuilder.hpp
         include/Core/Window.hpp
+        include/Core/Physics
         include/Core/Physics/Physics.hpp
+        include/Core/BeerRoutine
         include/Core/BeerRoutine/BeerRoutine.hpp
         include/Core/BeerRoutine/ARoutineRunner.hpp
         include/Core/KeyCode.hpp
@@ -164,8 +207,11 @@ set(HEADERS
         include/Core/BeerEngine.hpp
         include/Core/Core.hpp
         include/Core/Transform.hpp
+        include/Core/Component
         include/Core/Component/RigidBody2D.hpp
         include/Core/Component/Component.hpp
+        include/Core/Component/IRenderForward.hpp
+        include/Core/Component/IDisable.hpp
         include/Core/Component/IRender.hpp
         include/Core/Component/IColliderStay.hpp
         include/Core/Component/ITriggerExit.hpp
@@ -179,28 +225,18 @@ set(HEADERS
         include/Core/Component/MeshRenderer.hpp
         include/Core/Component/ITriggerEnter.hpp
         include/Core/Component/ParticleExplode.hpp
+        include/Core/Component/IOnDestroy.hpp
+        include/Core/Component/IRenderShadow.hpp
         include/Core/Component/ModelRenderer.hpp
         include/Core/Component/CircleCollider.hpp
         include/Core/Component/ITriggerStay.hpp
         include/Core/Component/IUpdate.hpp
         include/Core/Component/IStart.hpp
+        include/Core/Component/IEnable.hpp
         include/Core/Component/ParticleBase.hpp
         include/Core/Component/IStartUI.hpp
+        include/Core/GenericScene.hpp
         include/Core/SceneManager.hpp
-
-        shaders/basic_f.glsl
-        shaders/basic_v.glsl
-        shaders/cubemap_f.glsl
-        shaders/cubemap_v.glsl
-        shaders/lights/ambiant_light_f.glsl
-        shaders/lights/ambiant_light_v.glsl
-        shaders/lights/directional_light_f.glsl
-        shaders/lights/directional_light_v.glsl
-        sources/Core/Graphics/Lights/AmbiantLight.cpp 
-        include/Core/Graphics/Lights/AmbiantLight.hpp 
-        include/Core/Graphics/Lights/DirectionalLight.hpp 
-        sources/Core/Graphics/Cubemap.cpp 
-        include/Core/Graphics/Cubemap.hpp
         )
 
 add_executable(${NAME} ${SOURCES} ${HEADERS})
