@@ -53,7 +53,7 @@ float calcBlurredShadow(vec4 lightPosition, int size)
 
     float currentDepth = coords.z;
 
-    if (currentDepth > 1.0)
+    if (currentDepth > 0.68 || currentDepth < 0.0)
         return 1;
 
     float texelSize = 1.0 / 2048.0;

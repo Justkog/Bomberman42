@@ -10,7 +10,7 @@ namespace BeerEngine
 		{}
 
 		ALight::ALight(float intensity, glm::vec4 color)
-			: _intensity(intensity), _color(color), _shader(nullptr), _specularity({2.0f, 0.5f})
+			: _intensity(intensity), _color(color), _shader(nullptr)
 		{}
 
 		void ALight::setupUniformIds()
@@ -38,9 +38,6 @@ namespace BeerEngine
 			_lightDirID = _shader->getUniformLocation("light.direction");
 			_lightIntensityID = _shader->getUniformLocation("light.intensity");
 			_lightColorID = _shader->getUniformLocation("light.color");
-
-			_specularPowerID = _shader->getUniformLocation("specular_power");
-			_specularIntensityID = _shader->getUniformLocation("specular_intensity");
 		}
 
 		ALight			&ALight::setColor(glm::vec4 color)
@@ -139,22 +136,6 @@ namespace BeerEngine
 
 		GLint ALight::get_lightDirID() const {
 			return _lightDirID;
-		}
-
-		GLint ALight::get_lightIntensityID() const {
-			return _lightIntensityID;
-		}
-
-		GLint ALight::get_lightColorID() const {
-			return _lightColorID;
-		}
-
-		GLint ALight::get_specularePowerID() const {
-			return _specularPowerID;
-		}
-
-		GLint ALight::get_speculareIntensityID() const {
-			return _specularIntensityID;
 		}
 
 		GLint ALight::get_envMapID() const {

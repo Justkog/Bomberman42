@@ -106,6 +106,10 @@ namespace BeerEngine
 			*/
 			AMaterial		&setBump(Texture *tex);
 			AMaterial		&setEnvmap(Cubemap *map);
+			AMaterial		&setRougthnessMap(Texture *tex);
+			AMaterial		&setMetalicMap(Texture *tex);
+			AMaterial		&setRougthnessFactor(float val);
+			AMaterial		&setMetalicFactor(float val);
 
 			ShaderProgram	&getShader();
 

@@ -264,7 +264,7 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
 	mapMeshRenderer->setMaterial(material);
-	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
 	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
 	planeMat->setAlbedo(planeTex);
 	mapMeshRenderer->setMaterial(planeMat);

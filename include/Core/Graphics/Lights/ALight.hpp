@@ -17,21 +17,10 @@ namespace BeerEngine
 		*/
 		class ALight : public JsonSerializable
 		{
-		public:
-			/*! \struct Specular
-			* \brief Structure de donner pour la lumiere speculaire
-			*/
-			struct Specular
-			{
-				float	power;
-				float	intensity;
-			};
-
 		protected:
 			ShaderProgram	*_shader;
 			float			_intensity;
 			glm::vec4		_color;
-			Specular		_specularity;
 
 			// Shader ID
 			GLint	_colorShaderID;
@@ -50,8 +39,6 @@ namespace BeerEngine
 			GLint	_lightDirID;
 			GLint	_lightIntensityID;
 			GLint	_lightColorID;
-			GLint	_specularPowerID;
-			GLint	_specularIntensityID;
 			GLint	_envMapID;
 			GLint	_hasEnvMapID;
 
@@ -99,14 +86,6 @@ namespace BeerEngine
 			GLint get_lightPosID() const;
 
 			GLint get_lightDirID() const;
-
-			GLint get_lightIntensityID() const;
-
-			GLint get_lightColorID() const;
-
-			GLint get_specularePowerID() const;
-
-			GLint get_speculareIntensityID() const;
 
 			GLint get_envMapID() const;
 

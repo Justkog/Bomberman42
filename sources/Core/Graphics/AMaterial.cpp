@@ -201,6 +201,30 @@ namespace BeerEngine
 			return (*this);
 		}
 
+		AMaterial		&AMaterial::setRougthnessMap(Texture *tex)
+		{
+			_rought = tex;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setMetalicMap(Texture *tex)
+		{
+			_metalic = tex;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setRougthnessFactor(float val)
+		{
+			_roughtFactor = val;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setMetalicFactor(float val)
+		{
+			_metalicFactor = val;
+			return (*this);
+		}
+
 		ShaderProgram	&AMaterial::getShader()
 		{
 			return (*_shader);

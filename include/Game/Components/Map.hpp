@@ -92,8 +92,8 @@ namespace Game
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
-				auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png");
+				auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png");
 				auto *mapBlocBmp = Assets::GetTexture("assets/textures/wall_bump.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
