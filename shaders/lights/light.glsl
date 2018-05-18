@@ -88,7 +88,7 @@ float calcShadow(vec4 lightPosition)
 vec2 ParallaxMapping(sampler2D bump, vec2 texCoords, vec3 viewDir)
 {
     float height =  texture(bump, texCoords).r;
-    vec2 p = viewDir.xy / viewDir.z * (height * 1.0);
+    vec2 p = viewDir.xy / viewDir.z * (height * 10.0);
     return texCoords - p;
 }
 
@@ -128,7 +128,6 @@ vec4 calcPBR(vec4 color, vec3 normal, float roughtness, float metalness)
     metalCorrectedColor.r = pow(fresnelReflection.r, 1 + mFactor);
     metalCorrectedColor.g = pow(fresnelReflection.g, 1 + mFactor);
     metalCorrectedColor.b = pow(fresnelReflection.b, 1 + mFactor);
-
 
     return metalCorrectedColor;
 }

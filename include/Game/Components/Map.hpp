@@ -91,12 +91,14 @@ namespace Game
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh("assets/models/Crate/crate.obj");
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/stone_color.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
-				auto *mapBlocNrm = Assets::GetTexture("assets/textures/stone_normal.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				auto *mapBlocBmp = Assets::GetTexture("assets/textures/wall_bump.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				mapBlocMat->setNormal(mapBlocNrm);
+				mapBlocMat->setBump(mapBlocBmp);
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
@@ -107,14 +109,12 @@ namespace Game
 					rb2d->kinematic = kinematic;
 					rb2d->mass = 1.0f;
 				}
-
 				return (mapBlocGO);
 			}
 
 			template <typename T>
 			BeerEngine::GameObject *addDestoyableCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 			{
-
 				BeerEngine::Component::MeshRenderer *meshRenderer;
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "destroyable block";

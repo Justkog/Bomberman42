@@ -45,8 +45,8 @@ void main()
     gl_Position = projection * view * model * boneTransform * vec4(vertexPosition, 1);
     fragPos = vec3(model * boneTransform * vec4(vertexPosition, 1));
 
-    vec3 T = normalize(vec3(model * boneTransform * vec4(vertexTangent, 0.0)));
-    vec3 B = normalize(vec3(model * boneTransform * vec4(vertexBitangent, 0.0)));
+    vec3 T = normalize(vec3(model * boneTransform * vec4(-vertexTangent, 0.0)));
+    vec3 B = normalize(vec3(model * boneTransform * vec4(-vertexBitangent, 0.0)));
     vNormal = normalize(vec3(model * boneTransform * vec4(vertexNormal, 0)));
     TBN = mat3(T, B, vNormal);
 
