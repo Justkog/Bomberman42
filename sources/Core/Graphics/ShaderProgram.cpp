@@ -32,7 +32,13 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
+				ShaderProgram::~ShaderProgram();
 
+				_size = val._size;
+				_program = val._program;
+				_shaders = val._shaders;
+				_sourceFileVS = val._sourceFileVS;
+				_sourceFileFS = val._sourceFileFS;
 			}
 			return (*this);
 		}

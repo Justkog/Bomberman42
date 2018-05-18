@@ -42,6 +42,25 @@ namespace BeerEngine
 
 		static Window	*_Instance; /*!< Instance unique de la fenetre*/
 	public:
+
+		/*!
+		*  \brief Constructor
+		*  Default Constructor
+		*/
+		Window();
+
+		/*!
+		*  \brief Copy Constructor
+		*  Default copy constructor
+		*/
+		Window(const Window &val);
+
+		/*!
+		*  \brief Assignment operator
+		*  Default assignment operator
+		*/
+		Window &operator=(const Window &val);
+
 		/*!
 		*  \brief Destructeur
 		*  Destructeur de la classe Window

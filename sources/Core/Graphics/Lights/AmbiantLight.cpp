@@ -27,24 +27,6 @@ namespace BeerEngine
 			setupUniformIds();
 		}
 
-		AmbiantLight::AmbiantLight()
-		{}
-
-		AmbiantLight::AmbiantLight(const AmbiantLight &val)
-		{
-			*this = val;
-		}
-		
-		AmbiantLight &AmbiantLight::operator=(const AmbiantLight &val)
-		{
-			if (this != &val)
-			{
-
-			}
-			return (*this);
-		}
-
-
 		void 	AmbiantLight::bind()
 		{
 			_shader->bind();

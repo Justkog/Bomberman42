@@ -25,9 +25,7 @@ namespace BeerEngine
 		private:
 			ShaderProgram	*_shader;
 			Texture			*_envMap;
-
 			GLuint			_cubeMapID;
-
 			Mesh			*_cube;
 
 			void generateMipmaps(int size, glm::mat4 views[6]);

@@ -34,7 +34,13 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
-
+				Mesh::~Mesh();
+				_nbVBO = val._nbVBO;
+				_vao = val._vao;
+				_vbo = val._vbo;
+				_size = val._size;
+				_sourceFile = val._sourceFile;
+				_type = val._type;
 			}
 			return (*this);
 		}

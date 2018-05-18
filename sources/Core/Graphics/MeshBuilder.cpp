@@ -21,7 +21,16 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
-
+				for (int i = 0; i < val.vertices.size(); i++)
+					vertices.push_back(val.vertices[i]);
+				for (int i = 0; i < val.normals.size(); i++)
+					normals.push_back(val.normals[i]);
+				for (int i = 0; i < val.uvs.size(); i++)
+					uvs.push_back(val.uvs[i]);
+				for (int i = 0; i < val.tangents.size(); i++)
+					tangents.push_back(val.tangents[i]);
+				for (int i = 0; i < val.bitangents.size(); i++)
+					bitangents.push_back(val.bitangents[i]);
 			}
 			return (*this);
 		}

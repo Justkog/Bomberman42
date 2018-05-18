@@ -25,7 +25,27 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
-
+				_shader = val._shader;
+				_intensity = val._intensity;
+				_color = val._color;
+				_colorShaderID = val._colorShaderID;
+				_albedoID = val._albedoID;
+				_hasAlbedoID = val._hasAlbedoID;
+				_normalID = val._normalID;
+				_hasNormalID = val._hasNormalID;
+				_bumpID = val._bumpID;
+				_hasBumpID = val._hasBumpID;
+				_projectionShaderID = val._projectionShaderID;
+				_viewShaderID = val._viewShaderID;
+				_modelShaderID = val._modelShaderID;
+				_viewPosID = val._viewPosID;
+				_viewDirID = val._viewDirID;
+				_lightPosID = val._lightPosID;
+				_lightDirID = val._lightDirID;
+				_lightIntensityID = val._lightIntensityID;
+				_lightColorID = val._lightColorID;
+				_envMapID = val._envMapID;
+				_hasEnvMapID = val._hasEnvMapID;
 			}
 			return (*this);
 		}

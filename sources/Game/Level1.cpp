@@ -153,3 +153,5 @@ void    Level1::init(void)
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level1.scene");
 }
+
+Level1 Level1::instance = Level1();

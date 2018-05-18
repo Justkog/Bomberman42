@@ -34,6 +34,11 @@ namespace BeerEngine
 		*  Constructeur de la classe Transform
 		*/
 		Transform();
+
+		Transform(const Transform &val);
+		Transform &operator=(const Transform &val);
+
+
 		/*!
 		*  \brief deplacer l'objet
 		*  Methode qui permet de deplacer l'objet grace a un vecteur

@@ -44,7 +44,10 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
-
+				_shader = val._shader;
+				_envMap = val._envMap;
+				_cubeMapID = val._cubeMapID;
+				_cube = val._cube;
 			}
 			return (*this);
 		}

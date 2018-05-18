@@ -23,10 +23,6 @@ namespace BeerEngine
 		class AmbiantLight : public ALight
 		{
 		public:
-			AmbiantLight();
-			AmbiantLight(const AmbiantLight &val);
-			AmbiantLight &operator=(const AmbiantLight &val);
-
 			AmbiantLight(int id, AScene &scene);
 			AmbiantLight(float intensity, glm::vec4 color);
 			virtual ~AmbiantLight() {};

@@ -34,7 +34,12 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
-
+				Texture::~Texture();
+				_width = val._width;
+				_height = val._height;
+				_data = val._data;
+				_textureID = val._textureID;
+				_sourceFile = val._sourceFile;
 			}
 			return (*this);
 		}

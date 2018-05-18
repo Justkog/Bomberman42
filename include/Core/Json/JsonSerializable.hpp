@@ -33,6 +33,10 @@ namespace BeerEngine
     public:
 		int			_serializationID;
 
+		JsonSerializable(const JsonSerializable &val);
+		JsonSerializable &operator=(const JsonSerializable &val);
+		virtual ~JsonSerializable() {};
+
 		JsonSerializable();
 		JsonSerializable(int id);
 

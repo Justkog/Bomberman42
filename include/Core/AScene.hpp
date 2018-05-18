@@ -38,6 +38,10 @@ namespace BeerEngine
 		*  Constructeur de la classe AScene
 		*/
         AScene(void);
+
+		AScene(const AScene &val);
+		AScene &operator=(const AScene &val);
+
         /*!
 		*  \brief Destructeur
 		*  Destructeur de la classe AScene
@@ -166,7 +170,6 @@ namespace BeerEngine
 
         virtual nlohmann::json	serialize();
         virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
-
     };
 }
 

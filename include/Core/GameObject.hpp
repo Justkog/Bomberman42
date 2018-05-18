@@ -41,8 +41,10 @@ namespace BeerEngine
 		std::string	name;
 		float		immortalTimer;
 
-		// GameObject() {}
-		// GameObject(int uniqueID);
+		GameObject();
+		GameObject(const GameObject &val);
+		GameObject &operator=(const GameObject &val);
+
 		GameObject(int uniqueID, AScene &scene);
 		virtual ~GameObject(void);
 
