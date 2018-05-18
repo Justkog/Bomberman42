@@ -140,7 +140,8 @@ void VictoryMenu::renderUI(struct nk_context *ctx)
 			if (nk_button_label(ctx, "Quit in peace"))
 			{
 				GameManager::GetInstance().setPause(false);
-				BeerEngine::SceneManager::LoadScene("assets/scenes/main.scene");
+				BeerEngine::SceneManager::LoadScene<SceneMain>();
+				// BeerEngine::SceneManager::LoadScene("assets/scenes/main.scene");
 			}
 			nk_group_end(ctx);
 		}
