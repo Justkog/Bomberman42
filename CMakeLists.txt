@@ -53,6 +53,7 @@ set(SOURCES
         sources/Game/Components
         sources/Game/Components/GameOverMenu.cpp
         sources/Game/Components/CameraController.cpp
+        sources/Game/Components/AudioManager.cpp
         sources/Game/Components/InGameMenu.cpp
         sources/Game/Components/Bomb.cpp
         sources/Game/Components/VersusMenu.cpp
@@ -70,6 +71,7 @@ set(SOURCES
         sources/Game/Components/VictoryMenu.cpp
         sources/Game/Components/IA.cpp
         sources/Game/Components/SettingsMenu.cpp
+        sources/Game/Components/StartTimerUI.cpp
         sources/Game/Components/BackgroundDrawer.cpp
         sources/Game/Components/UIThemeManager.cpp
         sources/Game/Components/BeerRoutineTester.cpp
@@ -148,6 +150,7 @@ set(HEADERS
         include/Game/Components/Settings.hpp
         include/Game/Components/BeerRoutineTester.hpp
         include/Game/Components/Map.hpp
+        include/Game/Components/AudioManager.hpp
         include/Game/Components/MainMenu.hpp
         include/Game/Components/InputsMenu.hpp
         include/Game/Components/IA.hpp
@@ -157,6 +160,7 @@ set(HEADERS
         include/Game/Components/Player.hpp
         include/Game/Components/MouseRayTest.hpp
         include/Game/Components/InGameMenu.hpp
+        include/Game/Components/StartTimerUI.hpp
         include/Game/Components/GameOverMenu.hpp
         include/Game/SceneTest.hpp
         include/Game/SceneMain.hpp

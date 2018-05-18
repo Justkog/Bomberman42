@@ -16,9 +16,9 @@ namespace BeerEngine
 		CircleCollider::~CircleCollider()
 		{}
 
-		bool CircleCollider::checkCollision(ACollider *other)
+		bool CircleCollider::checkCollision(ACollider *other, bool response)
 		{
-			if (other->collide_AABB2D(this))
+			if (other->collide_AABB2D(this, response))
 				return (true);
 			else
 				return (false);
@@ -38,7 +38,7 @@ namespace BeerEngine
 			glm::vec2 u = B - A;
 			glm::vec2 AC = C - A;
 			float numerator = std::abs(u.x * AC.y - u.y * AC.x);
-			float denominator = glm::length(u);//sqrt(u.x * u.x + u.y * u.y);
+			float denominator = glm::length(u);
 			float CI = numerator / denominator;
 
 			return (CI < _radius);
@@ -76,23 +76,23 @@ namespace BeerEngine
 			return (segmentCollision(origin, origin + dir, pos));
 		}
 
-		bool CircleCollider::collide_AABB2D(CircleCollider *other)
+		bool CircleCollider::collide_AABB2D(CircleCollider *other, bool response)
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
 
 			if (glm::distance2(thisPos, otherPos) < (_radius + other->_radius) * (_radius + other->_radius))
 			{
-				if (!_isTrigger && !other->_isTrigger)
+				if (response && !_isTrigger && !other->_isTrigger)
 					response_AABB2D(other, thisPos, otherPos);
 				return (true);
 			}
 			return (false);
 		}
 
-		bool CircleCollider::collide_AABB2D(BoxCollider2D *other)
+		bool CircleCollider::collide_AABB2D(BoxCollider2D *other, bool response)
 		{
-			return (other->collide_AABB2D(this));
+			return (other->collide_AABB2D(this, response));
 		}
 
 		void CircleCollider::response_AABB2D(CircleCollider *other, glm::vec2 &thisPos, glm::vec2 &otherPos)

@@ -1,0 +1,7 @@
+<map id="Game::Component::StartTimerUI" name="Game::Component::StartTimerUI">
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="103,220,271,453"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="295,293,463,380"/>
+<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_start_u_i.html" title="{BeerEngine::Component\l::IStartUI\n||+ startUI()\l}" alt="" coords="487,293,655,380"/>
+<area shape="rect" id="node7" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="Interface de rendu de l&#39;UI d&#39;un component. " alt="" coords="679,300,871,373"/>
+</map>

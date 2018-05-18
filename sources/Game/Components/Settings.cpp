@@ -3,32 +3,45 @@
 #include "Core/KeyCode.hpp"
 #include "Game/Input.hpp"
 #include "Core/Window.hpp"
+#include "Game/Components/AudioManager.hpp"
 
+namespace Game
+{
+	namespace Component
+	{
 // STATIC ########################################################
+
+Settings * Settings::instance = nullptr;
+
+Settings & Settings::GetInstance()
+{
+	return *Settings::instance;
+}
 
 // ###############################################################
 
 // CANONICAL #####################################################
 
-// Game::Component::Settings::Settings ( void )
+// Settings::Settings ( void )
 // {
 // 	return ;
 // }
 
-// Game::Component::Settings::Settings ( Game::Component::Settings const & src )
+// Settings::Settings ( Settings const & src )
 // {
 // 	*this = src;
 // 	return ;
 // }
 
-Game::Component::Settings::Settings (BeerEngine::GameObject *gameObject) :
-	Component(gameObject)
+Settings::Settings (BeerEngine::GameObject *gameObject) :
+	Component(gameObject),
+	audioManager(nullptr)
 {
 	this->filePath = "testSettings.json";
-	return ;
+	instance = this;
 }
 
-Game::Component::Settings &				Game::Component::Settings::operator=( Game::Component::Settings const & rhs )
+Settings &				Settings::operator=( Settings const & rhs )
 {
 	if (this != &rhs)
 	{
@@ -37,9 +50,9 @@ Game::Component::Settings &				Game::Component::Settings::operator=( Game::Compo
 	return (*this);
 }
 
-Game::Component::Settings::~Settings ( void )
+Settings::~Settings ( void )
 {
-	return ;
+
 }
 
 // ###############################################################
@@ -50,7 +63,7 @@ Game::Component::Settings::~Settings ( void )
 
 // OVERLOAD OPERATOR #############################################
 
-std::ostream &				operator<<(std::ostream & o, Game::Component::Settings const & i)
+std::ostream &				operator<<(std::ostream & o, Settings const & i)
 {
 	nlohmann::json j = i.settingsContainer;
 	o << j.dump(4);
@@ -61,10 +74,9 @@ std::ostream &				operator<<(std::ostream & o, Game::Component::Settings const &
 
 // PUBLIC METHOD #################################################
 
-Game::SettingsContainer Game::Component::Settings::defaultSettings()
+Game::SettingsContainer Settings::defaultSettings()
 {
 	Game::SettingsContainer settings;
-
 	settings.soundVolume = 50.0f;
 	settings.musicVolume = 50.0f;
 	settings.windowWidth = 1600;
@@ -79,7 +91,7 @@ Game::SettingsContainer Game::Component::Settings::defaultSettings()
 	return settings;
 }
 
-void Game::Component::Settings::applyCurrentSettings() {
+void Settings::applyCurrentSettings() {
 	for (auto it = this->settingsContainer.keyBindings.begin(); it != this->settingsContainer.keyBindings.end(); it++)
 		Game::Input::keyBindings[it->first] = static_cast<BeerEngine::KeyCode>(this->settingsContainer.keyBindings[it->first]);
 	BeerEngine::Window::GetInstance()->resize(this->settingsContainer.windowWidth, this->settingsContainer.windowHeight);
@@ -87,24 +99,33 @@ void Game::Component::Settings::applyCurrentSettings() {
 		BeerEngine::Window::GetInstance()->setFullScreen();
 	else
 		BeerEngine::Window::GetInstance()->setWindowed();
+	if (audioManager)
+	{
+		this->audioManager->setVolume(this->settingsContainer.soundVolume / 100, this->settingsContainer.musicVolume / 100);
+	}
 }
 
-void Game::Component::Settings::gatherCurrentSettings() {
+void Settings::gatherCurrentSettings() {
 	for (auto it = Game::Input::keyBindings.begin(); it != Game::Input::keyBindings.end(); it++)
 		this->settingsContainer.keyBindings[it->first] = static_cast<BeerEngine::KeyCode>(Game::Input::keyBindings[it->first]);
 	this->settingsContainer.windowWidth = BeerEngine::Window::GetInstance()->getWindowedWidth();
 	this->settingsContainer.windowHeight = BeerEngine::Window::GetInstance()->getWindowedHeight();
 	this->settingsContainer.fullScreen = BeerEngine::Window::GetInstance()->isFullScreen();
+	if (audioManager)
+	{
+		this->settingsContainer.soundVolume = audioManager->getSoundVolume() * 100;
+		this->settingsContainer.musicVolume = audioManager->getMusicVolume() * 100;
+	}
 }
 
-void Game::Component::Settings::loadSettings() {
+void Settings::loadSettings() {
 	std::string content = BeerEngine::IO::FileUtils::LoadFile(this->filePath);
 	auto j = nlohmann::json::parse(content);
 	this->settingsContainer = j;
 	this->applyCurrentSettings();
 }
 
-void Game::Component::Settings::saveSettings() {
+void Settings::saveSettings() {
 	this->gatherCurrentSettings();
 
 	nlohmann::json j = this->settingsContainer;
@@ -113,8 +134,8 @@ void Game::Component::Settings::saveSettings() {
 	// std::cout << content << std::endl;
 }
 
-void Game::Component::Settings::resetSettings() {
-	this->settingsContainer = Game::Component::Settings::defaultSettings();
+void Settings::resetSettings() {
+	this->settingsContainer = Settings::defaultSettings();
 	this->applyCurrentSettings();
 
 	nlohmann::json j = this->settingsContainer;
@@ -122,12 +143,12 @@ void Game::Component::Settings::resetSettings() {
 	BeerEngine::IO::FileUtils::WriteFile(this->filePath, content);
 }
 
-void    Game::Component::Settings::start(void) {
+void    Settings::start(void) {
 	this->loadSettings();
 	// std::cout << "Settings: " << "\n" << *this << "\n";
 }
 
-nlohmann::json	Game::Component::Settings::serialize()
+nlohmann::json	Settings::serialize()
 {
 	auto j = Component::serialize();
 	j.merge_patch({
@@ -137,13 +158,13 @@ nlohmann::json	Game::Component::Settings::serialize()
 	return j;
 }
 
-void Game::Component::Settings::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+void Settings::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
 	Component::deserialize(j, loader);
 	this->filePath = j.at("filePath");
 }
 
-REGISTER_COMPONENT_CPP(Game::Component::Settings)
+REGISTER_COMPONENT_CPP(Settings)
 
 // ###############################################################
 
@@ -165,6 +186,10 @@ REGISTER_COMPONENT_CPP(Game::Component::Settings)
 
 // EXTERNAL ######################################################
 
+// ###############################################################
+	}
+}
+
 namespace Game {
     void to_json(nlohmann::json& j, const Game::SettingsContainer& s) {
         j = nlohmann::json {
@@ -179,7 +204,7 @@ namespace Game {
     }
 
     void from_json(const nlohmann::json& j, Game::SettingsContainer& s) {
-		s = Game::Component::Settings::defaultSettings();
+		s = Component::Settings::defaultSettings();
 		if (j.find("soundVolume") != j.end())
 			s.soundVolume = j.at("soundVolume").get<float>();
 		if (j.find("musicVolume") != j.end())
@@ -199,5 +224,3 @@ namespace Game {
 		// 	std::cout << "loaded key " << it->first << " / " << it->second << std::endl;
     }
 }
-
-// ###############################################################

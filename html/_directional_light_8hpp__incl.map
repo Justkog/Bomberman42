@@ -1,5 +1,6 @@
 <map id="include/Core/Graphics/Lights/DirectionalLight.hpp" name="include/Core/Graphics/Lights/DirectionalLight.hpp">
-<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,239,2492,264"/>
-<area shape="rect" id="node37" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2333,165,2542,191"/>
-<area shape="rect" id="node38" href="$_a_light_8hpp.html" title="ALight.hpp" alt="" coords="2435,92,2520,117"/>
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2383,239,2492,264"/>
+<area shape="rect" id="node37" href="$_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="2404,165,2613,191"/>
+<area shape="rect" id="node38" href="$_a_light_8hpp.html" title="Fonctionnaliter de base de la lumierer. " alt="" coords="2386,92,2471,117"/>
+<area shape="rect" id="node39" href="$_framebuffer_8hpp.html" title="../Framebuffer.hpp" alt="" coords="2573,92,2703,117"/>
 </map>

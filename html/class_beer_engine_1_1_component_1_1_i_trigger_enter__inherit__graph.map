@@ -1,4 +1,4 @@
 <map id="BeerEngine::Component::ITriggerEnter" name="BeerEngine::Component::ITriggerEnter">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="{Game::Component::Character\n|+ _speed\l+ _bombNb\l+ _maxBomb\l+ _explosionSize\l+ _direction\l+ _rotation\l+ map\l+ bombMesh\l+ bombMaterial\l# _transform\l|+ Character()\l+ start()\l+ fixedUpdate()\l+ update()\l+ translate()\l+ move()\l+ increaseSpeed()\l+ addBomb()\l+ increaseMaxBomb()\l+ increaseExplosionSize()\land 7 more...\l}" alt="" coords="5,140,205,467"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html" title="{Game::Component::Item\n|+ _transform\l+ _type\l+ map\l|+ Item()\l+ ~Item()\l+ onDestroy()\l+ start()\l+ fixedUpdate()\l+ update()\l+ onTriggerStay()\l+ onTriggerEnter()\l+ onTriggerExit()\l}" alt="" coords="230,200,397,407"/>
+<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="La classe Character gère les mouvements, pose de bombes et autre du personnage. " alt="" coords="5,140,205,467"/>
+<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html" title="La classe Item gère les bonus que l&#39;on peut ramasser en jeu (bomb+, explosion+, vitesse...) " alt="" coords="230,200,397,407"/>
 </map>

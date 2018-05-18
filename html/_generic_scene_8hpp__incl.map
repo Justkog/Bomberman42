@@ -1,8 +1,8 @@
 <map id="include/Core/GenericScene.hpp" name="include/Core/GenericScene.hpp">
-<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,372,2492,397"/>
-<area shape="rect" id="node37" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2306,79,2433,104"/>
-<area shape="rect" id="node38" href="$_cubemap_8hpp.html" title="Core/Graphics/Cubemap.hpp" alt="" coords="2208,152,2403,177"/>
-<area shape="rect" id="node41" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2167,299,2375,324"/>
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2383,372,2492,397"/>
+<area shape="rect" id="node37" href="$_a_scene_8hpp.html" title="Composition des scenes. " alt="" coords="2306,79,2433,104"/>
+<area shape="rect" id="node38" href="$_cubemap_8hpp.html" title="Le Cube Mapping permet de simuler la réflexion d&#39;un environnement sur un objet. " alt="" coords="2208,152,2403,177"/>
+<area shape="rect" id="node41" href="$_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="2167,299,2375,324"/>
 <area shape="rect" id="node39" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2143,225,2343,251"/>
 <area shape="rect" id="node40" href="$_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2367,225,2508,251"/>
 <area shape="rect" id="node42" href="$_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="1977,225,2068,251"/>

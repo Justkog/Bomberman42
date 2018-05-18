@@ -12,7 +12,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 45,
+                        "serializationID": 1140,
                         "shader": {
                             "serializationID": 44,
                             "sourceFileFS": "shaders/line_f.glsl",
@@ -45,12 +45,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 43
+                    "serializationID": 1139
                 }
             ],
-            "id": 2,
+            "id": 167,
             "name": "lines Holder",
-            "serializationID": 41,
+            "serializationID": 1137,
             "transform": {
                 "pivot": [
                     0.0,
@@ -73,7 +73,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 42
+                "serializationID": 1138
             }
         },
         {
@@ -81,67 +81,67 @@
                 {
                     "componentClass": "N4Game9Component11GameManagerE",
                     "enabled": true,
-                    "gameOverMenu": 54,
-                    "inGameMenu": 53,
-                    "playerBreakable": 64,
-                    "serializationID": 48,
-                    "victoryMenu": 55
+                    "gameOverMenu": 1150,
+                    "inGameMenu": 1149,
+                    "playerBreakable": 1160,
+                    "serializationID": 1143,
+                    "victoryMenu": 1151
                 },
                 {
-                    "componentClass": "N10BeerEngine5Audio11AudioSourceE",
+                    "componentClass": "N4Game9Component12AudioManagerE",
                     "enabled": true,
-                    "serializationID": 49
+                    "serializationID": 1144
                 },
                 {
                     "componentClass": "N4Game9Component16CameraControllerE",
                     "enabled": true,
-                    "serializationID": 50
+                    "serializationID": 1146
                 },
                 {
                     "componentClass": "N4Game9Component12MouseRayTestE",
                     "enabled": true,
-                    "linesRenderer": 43,
-                    "serializationID": 51
+                    "linesRenderer": 1139,
+                    "serializationID": 1147
                 },
                 {
                     "componentClass": "N4Game9Component14UIThemeManagerE",
                     "enabled": true,
-                    "serializationID": 52
+                    "serializationID": 1148
                 },
                 {
                     "componentClass": "N4Game9Component10InGameMenuE",
                     "enabled": false,
-                    "serializationID": 53,
-                    "uiManager": 52
+                    "serializationID": 1149,
+                    "uiManager": 1148
                 },
                 {
                     "componentClass": "N4Game9Component12GameOverMenuE",
                     "enabled": false,
-                    "serializationID": 54,
-                    "uiManager": 52
+                    "serializationID": 1150,
+                    "uiManager": 1148
                 },
                 {
                     "componentClass": "N4Game9Component11VictoryMenuE",
                     "enabled": false,
-                    "serializationID": 55,
-                    "uiManager": 52
+                    "serializationID": 1151,
+                    "uiManager": 1148
                 },
                 {
                     "componentClass": "N4Game9Component6TimeUIE",
                     "enabled": true,
-                    "serializationID": 56,
-                    "uiManager": 52
+                    "serializationID": 1152,
+                    "uiManager": 1148
                 },
                 {
                     "componentClass": "N4Game9Component7ItemsUIE",
                     "enabled": true,
-                    "serializationID": 57,
-                    "uiManager": 52
+                    "serializationID": 1153,
+                    "uiManager": 1148
                 }
             ],
-            "id": 3,
+            "id": 168,
             "name": "Camera",
-            "serializationID": 46,
+            "serializationID": 1141,
             "transform": {
                 "pivot": [
                     0.0,
@@ -164,7 +164,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 47
+                "serializationID": 1142
             }
         },
         {
@@ -207,46 +207,46 @@
                     ],
                     "enabled": true,
                     "explosionSize": 1.0,
-                    "map": 75,
-                    "serializationID": 63,
+                    "map": 1171,
+                    "serializationID": 1159,
                     "speed": 2.0
                 },
                 {
                     "componentClass": "N4Game9Component9BreakableE",
                     "enabled": true,
-                    "serializationID": 64
+                    "serializationID": 1160
                 },
                 {
                     "componentClass": "N4Game9Component6PlayerE",
                     "enabled": true,
-                    "itemSrcAudio": 72,
-                    "serializationID": 65,
-                    "srcAudio": 71
+                    "itemSrcAudio": 1168,
+                    "serializationID": 1161,
+                    "srcAudio": 1167
                 },
                 {
                     "componentClass": "Component",
                     "enabled": true,
-                    "serializationID": 66
+                    "serializationID": 1162
                 },
                 {
                     "componentClass": "N4Game9Component8SettingsE",
                     "enabled": true,
                     "filePath": "testSettings.json",
-                    "serializationID": 67
+                    "serializationID": 1163
                 },
                 {
                     "componentClass": "N10BeerEngine9Component14CircleColliderE",
                     "enabled": true,
                     "isTrigger": false,
                     "radius": 0.5,
-                    "serializationID": 68
+                    "serializationID": 1164
                 },
                 {
                     "componentClass": "N10BeerEngine9Component11RigidBody2DE",
                     "enabled": true,
                     "kinematic": 2,
                     "mass": 1.0,
-                    "serializationID": 69,
+                    "serializationID": 1165,
                     "velocity": [
                         0.0,
                         0.0
@@ -255,22 +255,22 @@
                 {
                     "componentClass": "N10BeerEngine5Audio13AudioListenerE",
                     "enabled": true,
-                    "serializationID": 70
+                    "serializationID": 1166
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 71
+                    "serializationID": 1167
                 },
                 {
                     "componentClass": "N10BeerEngine5Audio11AudioSourceE",
                     "enabled": true,
-                    "serializationID": 72
+                    "serializationID": 1168
                 }
             ],
-            "id": 4,
+            "id": 169,
             "name": "player",
-            "serializationID": 58,
+            "serializationID": 1154,
             "transform": {
                 "pivot": [
                     0.0,
@@ -293,7 +293,7 @@
                     0.029999999329447746,
                     0.029999999329447746
                 ],
-                "serializationID": 59
+                "serializationID": 1155
             }
         },
         {
@@ -331,11 +331,19 @@
                             2,
                             9,
                             2,
+<<<<<<< HEAD
                             2,
                             0,
                             0,
                             2,
                             2,
+=======
+                            0,
+                            2,
+                            0,
+                            2,
+                            0,
+>>>>>>> origin/master
                             8,
                             -1,
                             1
@@ -350,7 +358,7 @@
                             1,
                             2,
                             1,
-                            0,
+                            2,
                             1,
                             0,
                             1,
@@ -362,12 +370,17 @@
                         [
                             1,
                             2,
+                            0,
                             2,
+<<<<<<< HEAD
+=======
+                            0,
+                            0,
+>>>>>>> origin/master
                             2,
                             0,
                             0,
                             0,
-                            2,
                             0,
                             2,
                             2,
@@ -383,6 +396,11 @@
                             2,
                             1,
                             2,
+<<<<<<< HEAD
+=======
+                            1,
+                            0,
+>>>>>>> origin/master
                             1,
                             0,
                             1,
@@ -393,13 +411,17 @@
                             2,
                             1,
                             0,
+<<<<<<< HEAD
                             1,
                             2,
+=======
+>>>>>>> origin/master
                             1
                         ],
                         [
                             1,
                             0,
+<<<<<<< HEAD
                             2,
                             2,
                             2,
@@ -411,6 +433,66 @@
                             0,
                             2,
                             2,
+=======
+                            2,
+                            2,
+                            0,
+                            2,
+                            2,
+                            9,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+>>>>>>> origin/master
+                            0,
+                            2,
+                            2,
+                            1
+                        ],
+                        [
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            0,
+                            1,
+                            2,
+                            1,
+                            2,
+                            1
+                        ],
+                        [
+                            1,
+                            0,
+                            2,
+                            0,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+<<<<<<< HEAD
+                            0,
+                            0,
+                            2,
+                            2,
+                            0,
+                            2,
+=======
+                            0,
+                            0,
+>>>>>>> origin/master
                             0,
                             2,
                             2,
@@ -420,44 +502,6 @@
                             1,
                             0,
                             1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            0,
-                            1,
-                            0,
-                            1,
-                            2,
-                            1,
-                            2,
-                            1,
-                            2,
-                            1
-                        ],
-                        [
-                            1,
-                            0,
-                            2,
-                            2,
-                            2,
-                            2,
-                            2,
-                            2,
-                            0,
-                            0,
-                            2,
-                            2,
-                            0,
-                            2,
-                            0,
-                            2,
-                            1
-                        ],
-                        [
-                            1,
-                            0,
-                            1,
                             0,
                             1,
                             2,
@@ -468,7 +512,11 @@
                             1,
                             2,
                             1,
+<<<<<<< HEAD
                             2,
+=======
+                            0,
+>>>>>>> origin/master
                             1,
                             2,
                             1
@@ -477,37 +525,50 @@
                             1,
                             2,
                             2,
+<<<<<<< HEAD
                             0,
                             2,
                             2,
+=======
+>>>>>>> origin/master
                             2,
                             0,
                             0,
-                            0,
-                            0,
+                            2,
                             2,
                             0,
+                            2,
+                            2,
+                            0,
+<<<<<<< HEAD
                             0,
                             0,
-                            0,
+=======
+                            2,
+>>>>>>> origin/master
                             1
                         ],
                         [
                             1,
                             8,
                             1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+                            0,
+                            1,
+<<<<<<< HEAD
                             2,
                             1,
                             0,
                             1,
-                            0,
-                            1,
-                            0,
-                            1,
-                            2,
-                            1,
-                            0,
-                            1,
+=======
+>>>>>>> origin/master
                             8,
                             1
                         ],
@@ -515,6 +576,7 @@
                             1,
                             -1,
                             8,
+<<<<<<< HEAD
                             0,
                             0,
                             0,
@@ -526,6 +588,19 @@
                             0,
                             0,
                             0,
+=======
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            0,
+                            0,
+                            2,
+                            2,
+                            2,
+                            2,
+>>>>>>> origin/master
                             8,
                             -1,
                             1
@@ -550,8 +625,8 @@
                             1
                         ]
                     ],
-                    "player": 65,
-                    "serializationID": 75,
+                    "player": 1161,
+                    "serializationID": 1171,
                     "shader": {
                         "serializationID": 5,
                         "sourceFileFS": "shaders/basic_f.glsl",
@@ -561,9 +636,9 @@
                     "sizeY": 13
                 }
             ],
-            "id": 5,
+            "id": 170,
             "name": "map",
-            "serializationID": 73,
+            "serializationID": 1169,
             "transform": {
                 "pivot": [
                     0.0,
@@ -586,7 +661,7 @@
                     1.0,
                     1.0
                 ],
-                "serializationID": 74
+                "serializationID": 1170
             }
         },
         {
@@ -596,7 +671,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 80,
+                            "serializationID": 1176,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -605,7 +680,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 81,
+                        "serializationID": 1177,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -613,7 +688,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 79,
+                        "serializationID": 1175,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -643,12 +718,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 78
+                    "serializationID": 1174
                 }
             ],
-            "id": 6,
+            "id": 171,
             "name": "house",
-            "serializationID": 76,
+            "serializationID": 1172,
             "transform": {
                 "pivot": [
                     0.0,
@@ -671,7 +746,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 77
+                "serializationID": 1173
             }
         },
         {
@@ -681,7 +756,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 86,
+                            "serializationID": 1182,
                             "sourceFile": "assets/models/HouseOBJ/DSC_5871_.jpg"
                         },
                         "color": [
@@ -690,7 +765,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 87,
+                        "serializationID": 1183,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -698,7 +773,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 85,
+                        "serializationID": 1181,
                         "sourceFile": "assets/models/HouseOBJ/house_01.obj",
                         "type": ""
                     },
@@ -728,12 +803,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 84
+                    "serializationID": 1180
                 }
             ],
-            "id": 7,
+            "id": 172,
             "name": "house2",
-            "serializationID": 82,
+            "serializationID": 1178,
             "transform": {
                 "pivot": [
                     0.0,
@@ -756,7 +831,7 @@
                     0.05000000074505806,
                     0.05000000074505806
                 ],
-                "serializationID": 83
+                "serializationID": 1179
             }
         },
         {
@@ -766,7 +841,7 @@
                     "enabled": true,
                     "material": {
                         "albedo": {
-                            "serializationID": 94,
+                            "serializationID": 1190,
                             "sourceFile": "assets/textures/ground_color.png"
                         },
                         "color": [
@@ -775,7 +850,7 @@
                             1.0,
                             1.0
                         ],
-                        "serializationID": 95,
+                        "serializationID": 1191,
                         "shader": {
                             "serializationID": 5,
                             "sourceFileFS": "shaders/basic_f.glsl",
@@ -783,7 +858,7 @@
                         }
                     },
                     "mesh": {
-                        "serializationID": 93,
+                        "serializationID": 1189,
                         "sourceFile": "",
                         "type": "plane"
                     },
@@ -813,12 +888,12 @@
                             1.0
                         ]
                     ],
-                    "serializationID": 92
+                    "serializationID": 1188
                 }
             ],
-            "id": 9,
+            "id": 174,
             "name": "",
-            "serializationID": 90,
+            "serializationID": 1186,
             "transform": {
                 "pivot": [
                     0.0,
@@ -841,7 +916,7 @@
                     1.0,
                     40.0
                 ],
-                "serializationID": 91
+                "serializationID": 1187
             }
         }
     ]

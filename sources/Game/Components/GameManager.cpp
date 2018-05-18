@@ -1,10 +1,13 @@
 #include "Game/Components/GameManager.hpp"
 #include "Core/Input.hpp"
 #include "Core/Time.hpp"
+#include "Core/BeerRoutine/BeerRoutine.hpp"
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
+#include "Game/Components/TimeUI.hpp"
 #include "Game/Components/Breakable.hpp"
+#include "Game/Components/StartTimerUI.hpp"
 
 namespace Game
 {
@@ -92,6 +95,8 @@ void GameManager::registerEnemy(Breakable *enemyBreakable)
 
 void GameManager::setGameOver(glm::vec3 pos, int value)
 {
+	if (inGameMenu->_isActive)
+		inGameMenu->setActive(!inGameMenu->_isActive);
 	// srcAudio->Delete();
 	std::cout << "game over" << std::endl;
 	gameOverMenu->setActive(true);
@@ -99,13 +104,61 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 	{
 		victoryMenu->setActive(false);
 		std::cout << "not a victory after all" << std::endl;
-	}	
+	}
+	else
+		onGameEnd.emit();
 }
 
 void GameManager::setVictory()
 {
+	if (inGameMenu->_isActive)
+		inGameMenu->setActive(!inGameMenu->_isActive);
+	onGameEnd.emit();
 	std::cout << "victory" << std::endl;
 	victoryMenu->setActive(true);
+}
+
+BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
+{
+	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
+	.addAction([this] () {
+		this->startTimerUI->updateDisplay("Ready?");
+		return true;
+	})
+	.addTimer(2.0f)
+	.addAction([&] () {
+		this->startTimerUI->updateDisplay("3");
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([&] () {
+		this->startTimerUI->updateDisplay("2");
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([&] () {
+		this->startTimerUI->updateDisplay("1");
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([this] () {
+		this->startTimerUI->updateDisplay("Go !");
+		this->startGame();
+		return true;
+	})
+	.addTimer(1.0f)
+	.addAction([this] () {
+		this->startTimerUI->setActive(false);
+		return true;
+	})
+	;
+	return routine;
+}
+
+void GameManager::startGame()
+{
+	timeUI->startClock();
+	onGameStart.emit();
 }
 
 void GameManager::start()
@@ -116,12 +169,17 @@ void GameManager::start()
 	// srcAudio->setVolume(0.5);
 	// srcAudio->play();
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
+	startRoutine(*createStartTimerRoutine());
 }
 
 void GameManager::update()
 {
+	BeerEngine::BeerRoutine::ARoutineRunner::update();
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
-		inGameMenu->setActive(!inGameMenu->_isActive);
+	{
+		if (!victoryMenu->_isActive && !gameOverMenu->_isActive)
+			inGameMenu->setActive(!inGameMenu->_isActive);
+	}
 	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::V))
 		victoryMenu->setActive(true);
 }
@@ -135,13 +193,15 @@ void GameManager::setPause(bool state)
 {
 	if (state)
 	{
-		// srcAudio->pause();
+		onGamePause.emit();
+		audioManager->pause();
 		std::cout << "pausing game" << std::endl;
 		BeerEngine::Time::gameSpeed = 0.0f;
 	}
 	else
 	{
-		// srcAudio->continuePlaying();
+		onGameResume.emit();
+		audioManager->continuePlaying();
 		std::cout << "resuming game" << std::endl;
 		BeerEngine::Time::gameSpeed = 1.0f;
 	}

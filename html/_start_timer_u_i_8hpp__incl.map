@@ -1,0 +1,16 @@
+<map id="include/Game/Components/StartTimerUI.hpp" name="include/Game/Components/StartTimerUI.hpp">
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2383,532,2492,557"/>
+<area shape="rect" id="node37" href="$_game_8hpp.html" title="Game/Game.hpp" alt="" coords="2916,92,3039,117"/>
+<area shape="rect" id="node38" href="$_component_8hpp.html" title="Component de base. " alt="" coords="1794,92,2015,117"/>
+<area shape="rect" id="node48" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2607,239,2791,264"/>
+<area shape="rect" id="node49" href="$_i_start_u_i_8hpp.html" title="Core/Component/IStartUI.hpp" alt="" coords="2644,312,2842,337"/>
+<area shape="rect" id="node50" href="$_i_u_i_8hpp.html" title="Interface de rendu de l&#39;UI. " alt="" coords="2745,459,2914,484"/>
+<area shape="rect" id="node40" href="$_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="1897,459,2106,484"/>
+<area shape="rect" id="node41" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2027,165,2182,191"/>
+<area shape="rect" id="node42" href="$_a_scene_8hpp.html" title="Composition des scenes. " alt="" coords="2156,239,2282,264"/>
+<area shape="rect" id="node47" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="1773,385,1913,411"/>
+<area shape="rect" id="node43" href="$_cubemap_8hpp.html" title="Le Cube Mapping permet de simuler la réflexion d&#39;un environnement sur un objet. " alt="" coords="2139,312,2334,337"/>
+<area shape="rect" id="node44" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2039,385,2239,411"/>
+<area shape="rect" id="node45" href="$_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2263,385,2404,411"/>
+<area shape="rect" id="node46" href="$_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2428,385,2519,411"/>
+</map>

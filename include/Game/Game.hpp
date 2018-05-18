@@ -28,6 +28,10 @@ namespace Game
 		class InGameMenu;
 		class GameOverMenu;
 		class VictoryMenu;
+		class TimeUI;
+		class StartTimerUI;
+
+		class AudioManager;
 
 	}
 }

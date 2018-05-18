@@ -6,7 +6,14 @@
 #ifndef SETTINGS_HPP
 # define SETTINGS_HPP
 
+/*!
+ * \file Settings.hpp
+ * \brief Chargeur / Enregistreur des settings
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
+#include "Game/Game.hpp"
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/Component.hpp"
 
@@ -31,7 +38,11 @@ namespace Game
 	namespace Component	{		
 		class Settings : public BeerEngine::Component::Component, public BeerEngine::Component::IStart
 		{
+		private:
+			static Settings * instance;
+
 		public:
+			AudioManager	*audioManager;
 
 			// Settings( void );
 			// Settings( Settings const & src );
@@ -48,11 +59,13 @@ namespace Game
 			void start(void);
 
 			static SettingsContainer defaultSettings();
+			static Settings & GetInstance();
 
 			REGISTER_COMPONENT_HPP
 
 			std::string filePath;
 			Game::SettingsContainer settingsContainer;
+
 		};
 	};
 };

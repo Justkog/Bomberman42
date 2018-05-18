@@ -6,6 +6,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/IA.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -31,9 +32,10 @@ namespace Game
 
         void    Character::start(void)
         {
-			bombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			bombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");
 			bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
-			bombMaterial->setAlbedo(Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png"));
+			bombMaterial->setAlbedo(Assets::GetTexture("assets/textures/bomb_color.png"));
+			// bombMaterial->setAlbedo(Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png"));
         }
 
         void    Character::fixedUpdate(void)
@@ -138,19 +140,25 @@ namespace Game
         {
             if (_bombNb <= 0 || map->hasBomb(_gameObject->transform.position))
                 return;
-            BeerEngine::GameObject *go = _gameObject->instantiate<BeerEngine::GameObject>();
+            auto go = _gameObject->instantiate<BeerEngine::GameObject>();
             go->transform.position = glm::round(_gameObject->transform.position);
-            go->transform.position.y = 0.25f;
-            go->transform.scale = glm::vec3(0.5f);
-            auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
-            collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
+            go->transform.position.y = 0.0f;
+			go->transform.scale = glm::vec3(0.15f, 0.15f, 0.15f);
+			go->transform.rotation = glm::vec3(0, glm::radians(180.0), 0);
+            auto collider = go->AddComponent<BeerEngine::Component::CircleCollider>();
+			collider->_radius = 0.3f;
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
+//<<<<<<< HEAD
             // render->setMesh(BeerEngine::Graphics::Graphics::cube);
             // render->setMaterial(Assets::GetInstance()->bombMaterial);
             //PUTAIN DE TRUC QUI SEGFAULT, MES COUILLES SUR TON FRONT DEMERDE TOI MASHALLAH
 			render->setMesh(BeerEngine::Graphics::Graphics::cube);
             render->setMaterial(bombMaterial);
 
+//=======
+//			render->setMesh(bombMesh);
+//    		render->setMaterial(bombMaterial);
+//>>>>>>> origin/master
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;
             bomb->setPower(_explosionSize);

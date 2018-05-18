@@ -105,6 +105,7 @@ $(function() {
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_ambiant_light.html#ad6220e74a1ec23d743dbf012dfa15660">BeerEngine::Graphics::AmbiantLight</a>
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_cubemap.html#a6a633d130d31e1e829b34181570190d1">BeerEngine::Graphics::Cubemap</a>
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a450e3153652341450b16a4f1aa7bb79c">BeerEngine::Graphics::DirectionalLight</a>
+, <a class="el" href="class_beer_engine_1_1_graphics_1_1_framebuffer.html#aeec637f41458f00a9b4b2c7153fcb5f3">BeerEngine::Graphics::Framebuffer</a>
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_mesh.html#a2bdd2912e84c9e2d686bdad2dbf6ec9e">BeerEngine::Graphics::Mesh</a>
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html#a00db13450efc5a70f062570686f288a4">BeerEngine::Graphics::ShaderProgram</a>
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_texture.html#acb81c7ded6c7be42b0e901dd57dc8785">BeerEngine::Graphics::Texture</a>
@@ -123,6 +124,9 @@ $(function() {
 <li>setAnimation()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_model_renderer.html#a2d928cb78dddcbecb74adf1f01776056">BeerEngine::Component::ModelRenderer</a>
 </li>
+<li>setAnimationSpeed()
+: <a class="el" href="class_beer_engine_1_1_component_1_1_model_renderer.html#aa675319c6a09ecc060a7ac1cd2612ea8">BeerEngine::Component::ModelRenderer</a>
+</li>
 <li>setAnimationTime()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_model_renderer.html#a0795f08f7f97c842b7b902b07b964e3f">BeerEngine::Component::ModelRenderer</a>
 </li>
@@ -134,6 +138,9 @@ $(function() {
 </li>
 <li>setBump()
 : <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#a88a94faaf480849b803302a864b30e7e">BeerEngine::Graphics::AMaterial</a>
+</li>
+<li>setCastShadows()
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a7b7aa7a8fc0f155cc7147684da55da81">BeerEngine::Graphics::DirectionalLight</a>
 </li>
 <li>setColor()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html#a9217363eb47c65426dfbee8c03376043">BeerEngine::Component::ParticleBase</a>
@@ -277,6 +284,12 @@ $(function() {
 <li>shaderPrograms
 : <a class="el" href="class_assets.html#a866b93ef6f421311131bbeb09fb6c903">Assets</a>
 </li>
+<li>shadowRenderShader
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_graphics.html#a5042606915bf015f0d14f76436e9cff0">BeerEngine::Graphics::Graphics</a>
+</li>
+<li>shadowShader
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_graphics.html#a6734330245d41f731028e01275f1f81a">BeerEngine::Graphics::Graphics</a>
+</li>
 <li>shoeImage
 : <a class="el" href="class_game_1_1_component_1_1_items_u_i.html#a3f854f580fcf212c86b75b038aedb007">Game::Component::ItemsUI</a>
 </li>
@@ -297,7 +310,8 @@ $(function() {
 : <a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html#a6c29514552d72aaf6824763c76ed029f">BeerEngine::Component::ParticleBase</a>
 </li>
 <li>speed
-: <a class="el" href="class_game_1_1_component_1_1_items_u_i.html#a262e79a877f5b89b43d361a58246e056">Game::Component::ItemsUI</a>
+: <a class="el" href="struct_beer_engine_1_1_component_1_1_model_renderer_1_1_animation.html#aaa31867caeace3886bac99c33e9ef4e5">BeerEngine::Component::ModelRenderer::Animation</a>
+, <a class="el" href="class_game_1_1_component_1_1_items_u_i.html#a262e79a877f5b89b43d361a58246e056">Game::Component::ItemsUI</a>
 </li>
 <li>spotShader
 : <a class="el" href="class_beer_engine_1_1_graphics_1_1_graphics.html#a1636d1b64cf5512eb8c1b494bfe70b23">BeerEngine::Graphics::Graphics</a>
@@ -333,13 +347,28 @@ $(function() {
 , <a class="el" href="class_game_1_1_component_1_1_player.html#a317e5d073713ea27ceffe5de642240a6">Game::Component::Player</a>
 , <a class="el" href="class_game_1_1_component_1_1_settings.html#adc79077ed00bee2d8ed987ea4b86a331">Game::Component::Settings</a>
 , <a class="el" href="class_game_1_1_component_1_1_settings_menu.html#a9cb37e548b251892210d9fc6e6c3585b">Game::Component::SettingsMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_start_timer_u_i.html#aa83744c9ffe47178d322ba1b5b62b781">Game::Component::StartTimerUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_time_u_i.html#aae6e72fca4fdfc8532b1606060e56155">Game::Component::TimeUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_u_i_theme_manager.html#a4482cf5123636bb5add83f6b2e6979a6">Game::Component::UIThemeManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_versus_menu.html#ab46a7bc9ba95ab8e51c45a1f3377c246">Game::Component::VersusMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_victory_menu.html#a48814ee7a1933f8efc5a63362ca39822">Game::Component::VictoryMenu</a>
 </li>
+<li>startClock()
+: <a class="el" href="class_game_1_1_component_1_1_time_u_i.html#a0f6aa191c542c999dcaa29a75d90209b">Game::Component::TimeUI</a>
+</li>
+<li>startGame()
+: <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a289f89fdbc3cfb33434b2e30766542c1">Game::Component::GameManager</a>
+, <a class="el" href="class_game_1_1_component_1_1_i_a.html#aca0e5b962c3cdb7dd6196f8995cfa24c">Game::Component::IA</a>
+, <a class="el" href="class_game_1_1_component_1_1_player.html#a9880b14165251833ef4c339338b29ef5">Game::Component::Player</a>
+</li>
 <li>startRoutine()
 : <a class="el" href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#a39c1caf6c18c8f6e2821dc490226279f">BeerEngine::BeerRoutine::ARoutineRunner</a>
+</li>
+<li>startTimerUI
+: <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a53c7211f5944bcfb2f172797eaf12d07">Game::Component::GameManager</a>
+</li>
+<li>StartTimerUI()
+: <a class="el" href="class_game_1_1_component_1_1_start_timer_u_i.html#a82908857ec4ddee9712518c7ac566090">Game::Component::StartTimerUI</a>
 </li>
 <li>startUI()
 : <a class="el" href="class_beer_engine_1_1_a_scene.html#a130e6fecc7dce5134188c946f9a9d0e9">BeerEngine::AScene</a>
@@ -352,6 +381,7 @@ $(function() {
 , <a class="el" href="class_game_1_1_component_1_1_items_u_i.html#aeeae9fb81ab139e20e55a3844e51e51c">Game::Component::ItemsUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_main_menu.html#adc969f70f2a0cdcf50fbe1bcdb18b45f">Game::Component::MainMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_settings_menu.html#a9b4063f7932c33632ea5f6c67500b3e6">Game::Component::SettingsMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_start_timer_u_i.html#a57c87272971d133d535dd49b5b0a9df4">Game::Component::StartTimerUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_time_u_i.html#a26f9fab3cf7a23b70534bcf69b772a30">Game::Component::TimeUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_u_i_theme_manager.html#a1e8044ae0283b90f29372756538f0d61">Game::Component::UIThemeManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_versus_menu.html#ae5bd06cf30c77672a34528a6abbf220f">Game::Component::VersusMenu</a>
@@ -362,6 +392,9 @@ $(function() {
 </li>
 <li>stopAnimation()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_model_renderer.html#a49f2d86eefd94fee7acab7c3674b1ea0">BeerEngine::Component::ModelRenderer</a>
+</li>
+<li>stopMove()
+: <a class="el" href="class_game_1_1_component_1_1_character.html#a029a169c9c717ab3315b2932c04dbf06">Game::Component::Character</a>
 </li>
 <li>stopRoutine()
 : <a class="el" href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#a3c4bff92fb1bad462946a3b48e62a44e">BeerEngine::BeerRoutine::ARoutineRunner</a>

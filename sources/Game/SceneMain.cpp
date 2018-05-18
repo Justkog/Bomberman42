@@ -21,6 +21,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 
 #include "Game/Components/CameraController.hpp"
+#include "Game/Components/AudioManager.hpp"
 #include "Game/Components/MouseRayTest.hpp"
 #include "Game/Components/BeerRoutineTester.hpp"
 #include "Game/CameraTest.hpp"
@@ -54,6 +55,8 @@ void    SceneMain::init(void)
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
+	auto audioManager = menuGO->AddComponent<Game::Component::AudioManager>();
+
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
 	mainMenu->versusMenu = versusMenu;
@@ -64,8 +67,17 @@ void    SceneMain::init(void)
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
 	settingsMenu->settingsManager = settings;
+	settingsMenu->audioManager = audioManager;
 	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
+	settings->audioManager = audioManager;
+
+// init musique du menu
+	audioManager->setClip("assets/sounds/Feel.ogg");
+	audioManager->audioType = Game::Component::Music;
+	// audioManager->play();
+// audioMan->setVolume(0.1);
+
 	// mainMenu->setActive(false);
 	versusMenu->setActive(false);
 	settingsMenu->setActive(false);

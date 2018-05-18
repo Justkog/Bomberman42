@@ -108,6 +108,7 @@ int main(void)
 	cfg.pixel_snap = true;
 	fonts["main"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 48, &cfg);
 	fonts["smallMain"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 26, &cfg);
+	fonts["bigMain"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/Capture_it.ttf", 128, &cfg);
 	fonts["secondary"] = nk_font_atlas_add_from_file(atlas, "assets/fonts/SEASRN__.ttf", 80, &cfg);
 
 	fonts["default"] = nk_font_atlas_add_default(atlas, 13.0f, 0);

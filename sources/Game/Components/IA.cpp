@@ -2,6 +2,7 @@
 #include "Game/Components/Character.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/GameManager.hpp"
 #include "Core/GameObject.hpp"
 #include "Core/Component/MeshRenderer.hpp"
 
@@ -29,7 +30,8 @@ namespace Game
             _pos(0, 0),
 		    _type(ObjectiveType::MoveTo),
             _val(0),
-            _timerRefreshMap(0.2f)
+            _timerRefreshMap(0.2f),
+			_gameStarted(false)
 		{
         }
 
@@ -45,10 +47,18 @@ namespace Game
                 _character->map->_IAs.erase(it);
         }
 
+        void    IA::startGame(void)
+		{
+			std::cout << "start game from IA" << std::endl;
+			_gameStarted = true;
+		}
+
         void    IA::start(void)
         {
             _character = _gameObject->GetComponent<Game::Component::Character>();
 			uiInit = true;
+			GameManager::GetInstance().onGameStart.bind(&IA::startGame, this);
+
         }
 
         void    IA::fixedUpdate(void)
@@ -58,6 +68,9 @@ namespace Game
         void    IA::update(void)
         {
 			_character->stopMove();
+			if (!_gameStarted)
+				return ;
+
             _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
             if (!_hasObjective && _timerRefreshMap >= 0.2f)
             {
@@ -94,10 +107,9 @@ namespace Game
             {
                 for (BeerEngine::Physics::RaycastHit hit : hits)
                 {
-                    auto character = hit.collider->_gameObject->GetComponent<Game::Component::Character>();
                     auto bomb = hit.collider->_gameObject->GetComponent<Game::Component::Bomb>();
                     auto myCol = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
-                    if ((character && character != _character) || (bomb && !hit.collider->hasException(myCol)))
+                    if (bomb && !hit.collider->hasException(myCol))
                         return (false);
                 }
             }
@@ -150,8 +162,13 @@ namespace Game
                 }
                 if (character && hit.collider->_gameObject != _gameObject)
                 {
-                    val += 12;
-                    type = ObjectiveType::KillEnemy;
+                    if (map->hasCharacter(map->worldToMap(pos)) && map->worldToMap(_gameObject->transform.position) != map->worldToMap(pos))
+                        val -= 10;
+                    else
+                    {
+                        val += 12;
+                        type = ObjectiveType::KillEnemy;
+                    }
                 }
                 if (item)
                     val -= 15;
@@ -246,9 +263,9 @@ namespace Game
 
         bool    IA::moveToNextCell(void)
         {
+            static glm::vec3 lastDir = glm::vec3(0);
             glm::vec3 dir;
 
-            // _character->_direction = glm::vec2(0, 0);
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)

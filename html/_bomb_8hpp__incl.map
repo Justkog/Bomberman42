@@ -1,16 +1,16 @@
 <map id="include/Game/Components/Bomb.hpp" name="include/Game/Components/Bomb.hpp">
-<area shape="rect" id="node2" href="$_core_8hpp.html" title="Core/Core.hpp" alt="" coords="2383,485,2492,511"/>
-<area shape="rect" id="node37" href="$_game_8hpp.html" title="Game/Game.hpp" alt="" coords="3225,99,3349,124"/>
-<area shape="rect" id="node38" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2480,179,2702,204"/>
-<area shape="rect" id="node44" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="2888,332,3073,357"/>
-<area shape="rect" id="node45" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="3373,99,3572,124"/>
-<area shape="rect" id="node46" href="$_mesh_renderer_8hpp.html" title="Component permettent d&#39;ajouter un rendu au component. " alt="" coords="2670,99,2910,124"/>
-<area shape="rect" id="node49" href="$_i_collider_exit_8hpp.html" title="Core/Component/ICollider\lExit.hpp" alt="" coords="3597,92,3772,131"/>
-<area shape="rect" id="node50" href="$_a_collider_8hpp.html" title="Core/Component/ACollider.hpp" alt="" coords="2995,99,3201,124"/>
-<area shape="rect" id="node40" href="$_json_serializable_8hpp.html" title="Core/Json/JsonSerializable.hpp" alt="" coords="2475,412,2683,437"/>
-<area shape="rect" id="node41" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2438,252,2592,277"/>
-<area shape="rect" id="node42" href="$_a_scene_8hpp.html" title="Compisition des scenes. " alt="" coords="2416,332,2542,357"/>
-<area shape="rect" id="node43" href="$_transform_8hpp.html" title="Component de transformation d&#39;un object. " alt="" coords="2252,332,2392,357"/>
-<area shape="rect" id="node47" href="$_i_render_forward_8hpp.html" title="IRenderForward.hpp" alt="" coords="2827,179,2971,204"/>
-<area shape="rect" id="node48" href="$_a_light_8hpp.html" title="Core/Graphics/Lights\l/ALight.hpp" alt="" coords="2667,325,2814,364"/>
+<area shape="rect" id="node2" href="$_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2383,412,2492,437"/>
+<area shape="rect" id="node37" href="$_game_8hpp.html" title="Game/Game.hpp" alt="" coords="2719,99,2842,124"/>
+<area shape="rect" id="node38" href="$_component_8hpp.html" title="Component de base. " alt="" coords="2002,179,2223,204"/>
+<area shape="rect" id="node42" href="$_i_start_8hpp.html" title="Interface pour indiquer qu&#39;on peu initialiser le component. " alt="" coords="1747,339,1931,364"/>
+<area shape="rect" id="node43" href="$_i_update_8hpp.html" title="Interface pour indiquer qu&#39;on peu mettre a jour le component. " alt="" coords="2866,99,3065,124"/>
+<area shape="rect" id="node44" href="$_mesh_renderer_8hpp.html" title="Component permettent d&#39;ajouter un rendu au component. " alt="" coords="2379,99,2619,124"/>
+<area shape="rect" id="node48" href="$_i_collider_exit_8hpp.html" title="Interface de de sortie de collision. " alt="" coords="3090,92,3265,131"/>
+<area shape="rect" id="node49" href="$_i_trigger_enter_8hpp.html" title="Interface de d&#39;entré dans un declancheur. " alt="" coords="3290,99,3519,124"/>
+<area shape="rect" id="node50" href="$_a_collider_8hpp.html" title="Component de collision de base. " alt="" coords="1949,99,2155,124"/>
+<area shape="rect" id="node40" href="$_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="2192,339,2401,364"/>
+<area shape="rect" id="node41" href="$_game_object_8hpp.html" title="Entiter du projet. " alt="" coords="2156,259,2311,284"/>
+<area shape="rect" id="node45" href="$_i_render_forward_8hpp.html" title="IRenderForward.hpp" alt="" coords="2247,179,2391,204"/>
+<area shape="rect" id="node46" href="$_i_render_shadow_8hpp.html" title="IRenderShadow.hpp" alt="" coords="2415,179,2557,204"/>
+<area shape="rect" id="node47" href="$_a_light_8hpp.html" title="Fonctionnaliter de base de la lumierer. " alt="" coords="2460,252,2607,291"/>
 </map>

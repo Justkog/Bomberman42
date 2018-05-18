@@ -44,7 +44,8 @@ TimeUI::~TimeUI ( void )
 // CONSTRUCTOR POLYMORPHISM ######################################
 
 TimeUI::TimeUI(BeerEngine::GameObject *gameObject) :
-Component(gameObject)
+Component(gameObject),
+_started(false)
 {
 	
 }
@@ -63,13 +64,18 @@ std::ostream &				operator<<(std::ostream & o, TimeUI const & i)
 
 // PUBLIC METHOD #################################################
 
+void TimeUI::startClock()
+{
+	_startTimeSinceStartup = BeerEngine::Time::GetTimeSinceStartup();
+	_started = true;
+}
+
 void TimeUI::start()
 {
 	std::cout << "TimeUI start" << std::endl;
 	backGround = uiManager->loadSprite("assets/textures/stone_panel.png");
 	// tvScreen = uiManager->loadSprite("assets/textures/timetvscreen.png");
 	timeSinceGameStart = 0;
-	_startTimeSinceStartup = BeerEngine::Time::GetTimeSinceStartup();
 }
 
 void TimeUI::setUI(struct nk_context *ctx)
@@ -124,9 +130,11 @@ void TimeUI::renderUI(struct nk_context *ctx)
 		}
 		nk_layout_row_push(ctx, 250);
 
-		timeSinceGameStart = BeerEngine::Time::GetTimeSinceStartup() - _startTimeSinceStartup;
+		timeSinceGameStart = 0;
+		if (_started)
+			timeSinceGameStart = BeerEngine::Time::GetTimeSinceStartup() - _startTimeSinceStartup;
 		auto time = formatTime(timeSinceGameStart);
-		nk_label(ctx, time.c_str(), NK_TEXT_LEFT);
+		nk_label(ctx, time.c_str(), NK_TEXT_CENTERED);
 	}
 	nk_end(ctx);
 	// ctx->style.window.fixed_background = tvScreen;

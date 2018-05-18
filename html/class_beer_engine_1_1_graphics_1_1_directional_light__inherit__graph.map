@@ -1,4 +1,4 @@
 <map id="BeerEngine::Graphics::DirectionalLight" name="BeerEngine::Graphics::DirectionalLight">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_a_light.html" title="{BeerEngine::Graphics\l::ALight\n|# _shader\l# _intensity\l# _color\l# _specularity\l# _colorShaderID\l# _albedoID\l# _hasAlbedoID\l# _normalID\l# _hasNormalID\l# _bumpID\land 14 more...\l|+ ALight()\l+ ALight()\l+ ~ALight()\l+ bind()\l+ setColor()\l+ setIntensity()\l+ getColor()\l+ getIntensity()\l+ getShader()\l+ get_colorShaderID()\land 21 more...\l+ Deserialize()\l# setupUniformIds()\l}" alt="" coords="27,220,180,600"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_a_light.html" title="lumiere de base, shader utiliser ... " alt="" coords="27,220,180,600"/>
+<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
 </map>

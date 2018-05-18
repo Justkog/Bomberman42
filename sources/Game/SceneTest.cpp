@@ -24,7 +24,9 @@
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/TimeUI.hpp"
+#include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
+#include "Game/Components/AudioManager.hpp"
 
 #include "Game/Components/CameraController.hpp"
 #include "Game/Components/MouseRayTest.hpp"
@@ -98,10 +100,10 @@ void    SceneTest::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
+	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
-	auto soundManager = cameraGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	gameManager->srcAudio = soundManager;
-	
+	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
+
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
@@ -110,15 +112,26 @@ void    SceneTest::init(void)
 	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
 	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
+	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
 
 	gameManager->inGameMenu = inGameMenu;
 	gameManager->gameOverMenu = gameOverMenu;
 	gameManager->victoryMenu = victoryMenu;
+	gameManager->timeUI = timeUI;
+	gameManager->startTimerUI = startTimerUI;
+
+	soundManager->setClip("assets/sounds/clint.ogg");
+	soundManager->audioType = Game::Component::Music;
+
+	gameManager->audioManager = soundManager;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
 	victoryMenu->uiManager = uiManager;
+	startTimerUI->uiManager = uiManager;
+
+	settings->audioManager = soundManager;
 
 	inGameMenu->setActive(false);
 	gameOverMenu->setActive(false);
@@ -159,7 +172,6 @@ void    SceneTest::init(void)
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
-	auto *settings = playerGO->AddComponent<Game::Component::Settings>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
@@ -308,6 +320,7 @@ void    SceneTest::init(void)
 	// // ==================
 	// // =/= ANIMATIONS =\=
 	// // ==================
+	// camAudio->srcAudio.play();
 
 	std::cout << "saving scene.." << "\n";
 	this->save("assets/scenes/level1.scene");

@@ -3,7 +3,7 @@
 /*!
  * \file ACollider.hpp
  * \brief Component de collision de base
- * \author qhonore
+ * \author qhonore, jblondea
  */
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
@@ -37,10 +37,10 @@ namespace BeerEngine
 			virtual void    physicUpdate(void);
 			virtual bool	hasException(ACollider *other);
 
-			virtual bool 	checkCollision(ACollider *other) = 0;
+			virtual bool 	checkCollision(ACollider *other, bool response = true) = 0;
 
-			virtual bool collide_AABB2D(CircleCollider *other) = 0;
-			virtual bool collide_AABB2D(BoxCollider2D *other) = 0;
+			virtual bool collide_AABB2D(CircleCollider *other, bool response = true) = 0;
+			virtual bool collide_AABB2D(BoxCollider2D *other, bool response = true) = 0;
 			
 			virtual bool contain(glm::vec2 other) = 0;
 			virtual bool intersect(glm::vec2 origin, glm::vec2 dir) = 0;

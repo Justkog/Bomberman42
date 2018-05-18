@@ -4,5 +4,6 @@ var searchData=
   ['enablecomponent',['enableComponent',['../class_beer_engine_1_1_game_object.html#a5731b0e13d28de4f249b9abafb27b564',1,'BeerEngine::GameObject']]],
   ['enableforwardblend',['EnableForwardBlend',['../class_beer_engine_1_1_graphics_1_1_graphics.html#ae2b648872a807242559c4ed165666996',1,'BeerEngine::Graphics::Graphics']]],
   ['executecallbacks',['executeCallBacks',['../struct_beer_engine_1_1_json_loader.html#ac3528a66bbff0a68e9aa1b0e13f131d3',1,'BeerEngine::JsonLoader']]],
-  ['explode',['explode',['../class_game_1_1_component_1_1_bomb.html#aac712a604337a08ce89f88782cae5df9',1,'Game::Component::Bomb']]]
+  ['explode',['explode',['../class_game_1_1_component_1_1_bomb.html#aac712a604337a08ce89f88782cae5df9',1,'Game::Component::Bomb']]],
+  ['explodetoward',['explodeToward',['../class_game_1_1_component_1_1_bomb.html#a2e5c663b68f58227faf74bb40278a900',1,'Game::Component::Bomb']]]
 ];

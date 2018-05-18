@@ -76,13 +76,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>classe permettant de regrouper les donner de la cubemap pour la simuler la réflexion d'un environnement sur les objets  
+ <a href="class_beer_engine_1_1_graphics_1_1_cubemap.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_cubemap_8hpp_source.html">Cubemap.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BeerEngine::Graphics::Cubemap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_graphics_1_1_cubemap__inherit__graph.png" border="0" usemap="#_beer_engine_1_1_graphics_1_1_cubemap_inherit__map" alt="Inheritance graph"/></div>
 <map name="_beer_engine_1_1_graphics_1_1_cubemap_inherit__map" id="_beer_engine_1_1_graphics_1_1_cubemap_inherit__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
 <area shape="rect" id="node3" href="class_beer_engine_1_1_component_1_1_i_render.html" title="Interface avec les fonctionnalités pour effectuer un rendu standard. " alt="" coords="225,39,392,139"/>
 </map>
 </div>
@@ -91,7 +94,7 @@ Collaboration diagram for BeerEngine::Graphics::Cubemap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_beer_engine_1_1_graphics_1_1_cubemap__coll__graph.png" border="0" usemap="#_beer_engine_1_1_graphics_1_1_cubemap_coll__map" alt="Collaboration graph"/></div>
 <map name="_beer_engine_1_1_graphics_1_1_cubemap_coll__map" id="_beer_engine_1_1_graphics_1_1_cubemap_coll__map">
-<area shape="rect" id="node2" href="class_beer_engine_1_1_json_serializable.html" title="{BeerEngine::JsonSerializable\n|+ _serializationID\l|+ JsonSerializable()\l+ JsonSerializable()\l+ serialize()\l+ deserialize()\l+ toSerializables()\l+ Deserialize()\l+ toSerializable()\l+ toSerializable()\l}" alt="" coords="5,5,201,172"/>
+<area shape="rect" id="node2" href="class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
 <area shape="rect" id="node3" href="class_beer_engine_1_1_component_1_1_i_render.html" title="Interface avec les fonctionnalités pour effectuer un rendu standard. " alt="" coords="225,39,392,139"/>
 </map>
 </div>
@@ -111,6 +114,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af75f7e9b35017992e60af62b7e302d28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_cubemap.html#af75f7e9b35017992e60af62b7e302d28">unbind</a> ()</td></tr>
 <tr class="separator:af75f7e9b35017992e60af62b7e302d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a633d130d31e1e829b34181570190d1"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_cubemap.html#a6a633d130d31e1e829b34181570190d1">serialize</a> ()</td></tr>
+<tr class="memdesc:a6a633d130d31e1e829b34181570190d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialisation sur place Sérialisation des champs de la classe, la fonction serialize du parent doit être appelée au début de la fonction.  <a href="#a6a633d130d31e1e829b34181570190d1">More...</a><br /></td></tr>
 <tr class="separator:a6a633d130d31e1e829b34181570190d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9813e1cc9bc48d586f2b6fcf20759881"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_graphics_1_1_cubemap.html#a9813e1cc9bc48d586f2b6fcf20759881">deserialize</a> (const nlohmann::json &amp;j)</td></tr>
 <tr class="separator:a9813e1cc9bc48d586f2b6fcf20759881"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0105aad3ea70324a8327a6a48254a56b">JsonSerializable</a> (int id)</td></tr>
 <tr class="separator:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9d9855209d7fefb985a47e7e1aa7c7d inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ae9d9855209d7fefb985a47e7e1aa7c7d">deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="memdesc:ae9d9855209d7fefb985a47e7e1aa7c7d inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désérialisation sur place Désérialisation des champs de la classe, la fonction deserialize du parent doit être appelée au début de la fonction.  <a href="class_beer_engine_1_1_json_serializable.html#ae9d9855209d7fefb985a47e7e1aa7c7d">More...</a><br /></td></tr>
 <tr class="separator:ae9d9855209d7fefb985a47e7e1aa7c7d inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a80649111ff7da289151d17201f9e1d19 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a80649111ff7da289151d17201f9e1d19">toSerializables</a> (std::vector&lt; <a class="el" href="namespace_beer_engine.html#a94f0b552f6dc910de8cdb44207981f53a8de48e594408f9fc561b2f68ce05f664">T</a> *&gt; items)</td></tr>
@@ -131,6 +136,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a266dbadece9e8004b233920255a3da18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_class_beer_engine_1_1_json_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_beer_engine_1_1_json_serializable')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_beer_engine_1_1_json_serializable.html">BeerEngine::JsonSerializable</a></td></tr>
 <tr class="memitem:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a3493453acedb5c0668086d2ede8152e0">Deserialize</a> (const nlohmann::json &amp;j, <a class="el" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp;loader)</td></tr>
+<tr class="memdesc:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désérialisation avec retour d'une instance de la classe.  <a href="class_beer_engine_1_1_json_serializable.html#a3493453acedb5c0668086d2ede8152e0">More...</a><br /></td></tr>
 <tr class="separator:a3493453acedb5c0668086d2ede8152e0 inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a48f83f0e913d9a7f4962f30ac8ff450b">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;item)</td></tr>
 <tr class="separator:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +149,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:adad8d1ac99922c6c49ef9b92943a15a8 inherit pub_attribs_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#adad8d1ac99922c6c49ef9b92943a15a8">_serializationID</a></td></tr>
 <tr class="separator:adad8d1ac99922c6c49ef9b92943a15a8 inherit pub_attribs_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>classe permettant de regrouper les donner de la cubemap pour la simuler la réflexion d'un environnement sur les objets </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aca1eebe13e8d82afb8de2265cf88071f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aca1eebe13e8d82afb8de2265cf88071f">&#9670;&nbsp;</a></span>Cubemap()</h2>
 
@@ -345,6 +353,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Serialisation sur place Sérialisation des champs de la classe, la fonction serialize du parent doit être appelée au début de la fonction. </p>
 
 <p>Reimplemented from <a class="el" href="class_beer_engine_1_1_json_serializable.html#a441cd7b316d78993e98d7ed89067f1a3">BeerEngine::JsonSerializable</a>.</p>
 

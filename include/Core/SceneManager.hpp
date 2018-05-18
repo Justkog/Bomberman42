@@ -3,7 +3,7 @@
 /*!
  * \file SceneManager.hpp
  * \brief Gestionaire des Scene du projet
- * \author mgallo
+ * \author mgallo, jblondea
  */
 #include "Core.hpp"
 #include "AScene.hpp"

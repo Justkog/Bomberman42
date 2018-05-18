@@ -6,6 +6,12 @@
 #ifndef CAMERACONTROLLER_HPP
 # define CAMERACONTROLLER_HPP
 
+/*!
+ * \file CameraController.hpp
+ * \brief Controleur de la camera
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

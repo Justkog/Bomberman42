@@ -6,6 +6,12 @@
 #ifndef MOUSERAYTEST_HPP
 # define MOUSERAYTEST_HPP
 
+/*!
+ * \file MouseRayTest.hpp
+ * \brief Component d'exemple pour l'utilisation du mouseToWorldRay et du RaysRenderer.
+ * \author jblondea
+ */
+
 #include "Core/Core.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IStart.hpp"

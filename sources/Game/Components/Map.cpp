@@ -36,11 +36,14 @@ namespace Game
         {
 			std::cout << "map start" << "\n";
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
-			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
-			itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
-			itemRangeTex = Assets::GetTexture("assets/textures/ground_color.png");
+			// itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
+			// itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
+			itemRangeTex = Assets::GetTexture("assets/textures/fire_color.png");
+			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0_small.png");
+			itemBombTex = Assets::GetTexture("assets/textures/bomb_color.png");
+			// itemRangeTex = Assets::GetTexture("assets/textures/button_active.png");
 			itemSpeedBoostMesh = Assets::GetModel("assets/models/Shoes/Shoes.obj");
-			itemBombMesh = Assets::GetModel("assets/models/Bomb/bomb.obj");
+			itemBombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");
 			itemRangeMesh = Assets::GetModel("assets/models/Fire/fire.obj");
 			drawMap();
 			uiInit = true;
@@ -61,12 +64,12 @@ namespace Game
 			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 			itemGO->name = "item";
 			itemGO->transform.position = pos;
-			itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
+			itemGO->immortalTimer = 1.5f;
+			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
+			itemColl->_isTrigger = true;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
-			auto itemColl = itemGO->GetComponent<BeerEngine::Component::CircleCollider>();
-			itemColl->_isTrigger = true;
 			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
 
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -82,7 +85,7 @@ namespace Game
                 case ItemType::AddBomb:
                     meshRenderer->setMesh(itemBombMesh);
                     itemTex = itemBombTex;
-			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+			        itemGO->transform.scale = glm::vec3(0.1, 0.1, 0.1);
                     break;
                 case ItemType::ExplosionBoost:
                     meshRenderer->setMesh(itemRangeMesh);
@@ -184,13 +187,22 @@ namespace Game
 
         void    Map::mapUpdate(int x, int y, int value)
         {
-			if (_map[y][x] == 2 && value == 0 && !(rand() % 3))
-			{
-				_map[y][x] = I;
+			// SEGFAULT ===> quand je rajoute || value == B
+			// if (_map[y][x] == 2 && (value == 0 || value == B) && !(rand() % 3))
+			// {
+			// 	_map[y][x] = (value == B) ? B : I;
+			// 	addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
+			// }
+			// else
+			// 	_map[y][x] = value;
+
+			// Les Item s'indique tout seul sur la map
+			x = glm::clamp(x, 0, _sizeX - 1);
+			y = glm::clamp(y, 0, _sizeY - 1);	
+			if (_map[y][x] == 2 && (value == 0 || value == B) && !(rand() % 2))
 				addItem(_shader, glm::vec3(-x + (_sizeX / 2), 0.5, -y + _sizeY));
-			}
-			else
-				_map[y][x] = value;
+			_map[y][x] = value;
+
         }
 
 		void Map::mapUpdate(glm::vec3 pos, int value)
@@ -295,6 +307,22 @@ namespace Game
 				if (worldToMap(ia->_gameObject->transform.position) == pos) // *******  Segfault ******* //
 					return (true);
 			}
+			return (false);
+		}
+
+		int				Map::getCaseValue(glm::vec2 pos)
+		{
+			int x = glm::clamp(static_cast<int>(pos.x), 0, _sizeX - 1);
+			int y = glm::clamp(static_cast<int>(pos.y), 0, _sizeY - 1);			
+			return (_map[y][x]);
+		}
+
+		bool			Map::hasWall(glm::vec2 pos)
+		{
+			int x = glm::clamp(static_cast<int>(pos.x), 0, _sizeX - 1);
+			int y = glm::clamp(static_cast<int>(pos.y), 0, _sizeY - 1);	
+			if (_map[y][x] == 1)
+				return (true);
 			return (false);
 		}
 

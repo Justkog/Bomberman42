@@ -3,7 +3,7 @@
 /*!
  * \file BoxCollider2D.hpp
  * \brief Component de collision en rectangle
- * \author qhonore
+ * \author qhonore, jblondea
  */
 #include "Core/Core.hpp"
 #include "ACollider.hpp"
@@ -22,14 +22,14 @@ namespace BeerEngine
 		public:
 			BoxCollider2D(GameObject *gameObject);
 			virtual ~BoxCollider2D();
-			bool checkCollision(ACollider *other);
+			bool checkCollision(ACollider *other, bool response = true);
 
 			bool contain(glm::vec2 other);
 			bool intersect(glm::vec2 origin, glm::vec2 dir);
 			bool intersect(glm::vec2 origin, glm::vec2 dir, glm::vec2 &outPosition);
 
-			bool collide_AABB2D(BoxCollider2D *other);
-			bool collide_AABB2D(CircleCollider *other);
+			bool collide_AABB2D(BoxCollider2D *other, bool response = true);
+			bool collide_AABB2D(CircleCollider *other, bool response = true);
 
 			void response_AABB2D(BoxCollider2D *other, glm::vec2 &thisPos, glm::vec2 &otherPos);
 			void response_AABB2D(CircleCollider *other, glm::vec2 &nearest, glm::vec2 &otherPos);

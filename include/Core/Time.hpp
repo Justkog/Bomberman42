@@ -4,7 +4,7 @@
 /*!
  * \file Time.hpp
  * \brief gestion du temps
- * \author mgallo
+ * \author mgallo, jblondea
  */
 
 #include "Core.hpp"
