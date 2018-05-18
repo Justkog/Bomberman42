@@ -4,6 +4,7 @@
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
 #include "Game/SceneTest.hpp"
+#include "Game/SceneMain.hpp"
 
 namespace Game
 {
