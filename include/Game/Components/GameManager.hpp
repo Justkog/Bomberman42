@@ -43,6 +43,7 @@ namespace Game
 			StartTimerUI				*startTimerUI;
 			std::vector<Breakable *> 	enemyBreakables;
 			AudioManager				*audioManager;
+			bool						storyMode;
 
 
 			// GameManager( void );

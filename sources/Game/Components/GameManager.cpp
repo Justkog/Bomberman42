@@ -58,7 +58,8 @@ GameManager::~GameManager ( void )
 GameManager::GameManager(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
 gameOverMenu(nullptr),
-victoryMenu(nullptr)
+victoryMenu(nullptr),
+storyMode(false)
 {
 	instance = this;
 }

@@ -10,6 +10,7 @@
 #include "Game/Components/Map.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Components/AudioManager.hpp"
+#include "Game/Components/GameManager.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
 
@@ -201,7 +202,8 @@ namespace Game
 
 				_gameObject->destroy(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
 				_gameObject->destroy(render);
-				onExplode.emit();
+				if (GameManager::GetInstance().storyMode == false)
+					onExplode.emit();
 				render = nullptr;
 				timer = 5.0f;
 			}

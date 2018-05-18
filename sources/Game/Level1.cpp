@@ -65,6 +65,7 @@ void    Level1::init(void)
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
 	gameManager->audioManager = soundManager;
+	gameManager->storyMode = true;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
@@ -91,14 +92,16 @@ void    Level1::init(void)
 	modelRenderer->addMaterial(0, playerMat);
 	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
+		character->_maxBomb = 3;
+		character->_bombNb = 3;
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
+		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
+		playerColl->_radius = 0.5;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	playerColl->_radius = 0.5;
+		playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
 	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
-	playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;
