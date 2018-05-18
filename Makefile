@@ -62,10 +62,12 @@ SRC = \
 	Core/BeerRoutine/BeerRoutine.cpp \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
-	Game/Assets.cpp \
-	Game/Input.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
+	Game/Level1.cpp \
+	\
+	Game/Assets.cpp \
+	Game/Input.cpp \
 	Game/Components/GameManager.cpp \
 	Game/Components/Character.cpp \
 	Game/Components/MouseRayTest.cpp \

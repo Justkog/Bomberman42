@@ -57,7 +57,7 @@ namespace Game
 			return (mapBlocGO);
 		}
 
-		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type)
 		{
 			std::cout << "item start" << std::endl;
 			BeerEngine::Component::MeshRenderer *meshRenderer;
@@ -70,7 +70,10 @@ namespace Game
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
-			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
+			if (type == -1)
+				item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
+			else
+				item->_type = static_cast<Game::Component::ItemType>(type);
 
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
             BeerEngine::Graphics::Texture *itemTex;
@@ -228,7 +231,19 @@ namespace Game
 							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case 2:
+						case E:
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							break;
+						case P:
+							if (!playerSpawn)
+							{
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY);
+								playerSpawn = true;
+							}
+							break;
+						case Q:
+							if (_IAs.size() < 3)
+								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY)));
 							break;
 						case S:
 							spawnIA = (rand() % 4 != 0 || playerSpawn ? true : false);
@@ -242,6 +257,10 @@ namespace Game
 							break;
 						case I:
 							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							break;
+						case J:
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::ExplosionBoost);
+							break;
 							// createItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
 
 					}

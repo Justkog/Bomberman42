@@ -20,8 +20,13 @@
 #include "Game/Components/Breakable.hpp"
 
 #define S -1 //spawn position
+#define E 10 // Empty breakable
 #define I 9 //Item
-#define B 3 //Item Bomb
+#define B 3 //Bomb
+#define P -2 //spawn player
+#define Q -3 //spawn ia
+#define J 11 //Item Boost Explosion
+#define U 20 //Objective (next level)
 
 /*!
  * \file Map.hpp
@@ -82,7 +87,7 @@ namespace Game
 			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
-			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
+			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type = -1);
 			BeerEngine::GameObject *createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 			Game::Component::IA *addIA(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 

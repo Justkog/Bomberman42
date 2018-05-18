@@ -8,6 +8,7 @@
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
 #include "Game/SceneTest.hpp"
+#include "Game/Level1.hpp"
 
 namespace Game
 {
@@ -110,7 +111,7 @@ void MainMenu::renderUI(struct nk_context *ctx)
 		if (nk_button_label(ctx, "Adventure"))
 		{
 			fprintf(stdout, "Adventure pressed\n");
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
+			BeerEngine::SceneManager::LoadScene<Level1>();
 		}
 		if (nk_button_label(ctx, "Versus"))
 		{
