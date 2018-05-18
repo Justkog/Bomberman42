@@ -86,13 +86,13 @@ namespace Game
 			float cam_speed = 1;
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::LEFT_SHIFT))
 				cam_speed = 10;
-			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move up"]))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::W))
 				_gameObject->transform.translate(_gameObject->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move down"]))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::S))
 				_gameObject->transform.translate(-_gameObject->transform.forward() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move left"]))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::A))
 				_gameObject->transform.translate(_gameObject->transform.left() * cam_speed * BeerEngine::Time::GetDeltaTime());
-			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move right"]))
+			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::D))
 				_gameObject->transform.translate(_gameObject->transform.right() * cam_speed * BeerEngine::Time::GetDeltaTime());
 			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::C))
 				_gameObject->transform.translate(_gameObject->transform.top() * BeerEngine::Time::GetDeltaTime());

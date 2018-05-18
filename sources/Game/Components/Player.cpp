@@ -60,25 +60,25 @@ namespace Game
 			if (!_gameStarted)
 				return;
 			
-			if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_8) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
+			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move up"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
             {
 				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Up);
 			}
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_5) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
+            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move down"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
 			{
 				moving = true;
 				playStepSound();
                 _character->move(Character::Direction::Down);
 			}
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_4) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
+            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move left"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
             {
 				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Left);
 			}
-            if (BeerEngine::Input::GetKey(BeerEngine::KeyCode::KP_6) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::M))
+            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move right"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::M))
             {
 				moving = true;
 				playStepSound();
@@ -95,10 +95,10 @@ namespace Game
 			}
             if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
                 _gameObject->destroy(this);
-			if (BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_8) &&
-				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_4) &&
-				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_5) &&
-				BeerEngine::Input::GetKeyUp(BeerEngine::KeyCode::KP_6))
+			if (BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move up"]) &&
+				BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move left"]) &&
+				BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move down"]) &&
+				BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move right"]))
 			{
 				srcAudio->setLooping(false);
 				play = false;

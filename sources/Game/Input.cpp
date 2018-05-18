@@ -5,10 +5,10 @@ namespace Game
 	std::map<std::string, BeerEngine::KeyCode> setDefaultKeyBindings()
 	{
 		std::map<std::string, BeerEngine::KeyCode> defaultBindings;
-		defaultBindings["move up"] = BeerEngine::KeyCode::W;
-		defaultBindings["move down"] = BeerEngine::KeyCode::S;
-		defaultBindings["move left"] = BeerEngine::KeyCode::A;
-		defaultBindings["move right"] = BeerEngine::KeyCode::D;
+		defaultBindings["move up"] = BeerEngine::KeyCode::KP_8;
+		defaultBindings["move down"] = BeerEngine::KeyCode::KP_5;
+		defaultBindings["move left"] = BeerEngine::KeyCode::KP_4;
+		defaultBindings["move right"] = BeerEngine::KeyCode::KP_6;
 		defaultBindings["bomb"] = BeerEngine::KeyCode::SPACE;
 		return defaultBindings;
 	}

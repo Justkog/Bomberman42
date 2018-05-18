@@ -82,10 +82,10 @@ Game::SettingsContainer Settings::defaultSettings()
 	settings.windowWidth = 1600;
 	settings.windowHeight = 900;
 	settings.fullScreen = false;
-	settings.keyBindings["move up"] = BeerEngine::KeyCode::W;
-	settings.keyBindings["move down"] = BeerEngine::KeyCode::S;
-	settings.keyBindings["move left"] = BeerEngine::KeyCode::A;
-	settings.keyBindings["move right"] = BeerEngine::KeyCode::D;
+	settings.keyBindings["move up"] = BeerEngine::KeyCode::KP_8;
+	settings.keyBindings["move down"] = BeerEngine::KeyCode::KP_5;
+	settings.keyBindings["move left"] = BeerEngine::KeyCode::KP_4;
+	settings.keyBindings["move right"] = BeerEngine::KeyCode::KP_6;
 	settings.keyBindings["bomb"] = BeerEngine::KeyCode::SPACE;
 
 	return settings;
