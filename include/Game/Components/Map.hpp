@@ -100,7 +100,7 @@ namespace Game
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				mapBlocMat->setNormal(mapBlocNrm);
-				mapBlocMat->setBump(mapBlocBmp);
+				// mapBlocMat->setBump(mapBlocBmp);
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
