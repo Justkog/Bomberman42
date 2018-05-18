@@ -263,6 +263,7 @@ namespace Game
 
         bool    IA::moveToNextCell(void)
         {
+            static glm::vec3 lastDir = glm::vec3(0);
             glm::vec3 dir;
 
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))

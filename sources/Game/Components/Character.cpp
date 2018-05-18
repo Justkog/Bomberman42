@@ -6,6 +6,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/IA.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
 #include "Core/Json/Json.hpp"
@@ -142,15 +143,13 @@ namespace Game
             auto go = _gameObject->instantiate<BeerEngine::GameObject>();
             go->transform.position = glm::round(_gameObject->transform.position);
             go->transform.position.y = 0.0f;
-            // go->transform.scale = glm::vec3(0.5f);
 			go->transform.scale = glm::vec3(0.15f, 0.15f, 0.15f);
 			go->transform.rotation = glm::vec3(0, glm::radians(180.0), 0);
-            auto collider = go->AddComponent<BeerEngine::Component::BoxCollider2D>();
-            collider->_exceptions.push_back(_gameObject->GetComponent<BeerEngine::Component::ACollider>());
+            auto collider = go->AddComponent<BeerEngine::Component::CircleCollider>();
+			collider->_radius = 0.3f;
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			render->setMesh(bombMesh);
     		render->setMaterial(bombMaterial);
-
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;
             bomb->setPower(_explosionSize);

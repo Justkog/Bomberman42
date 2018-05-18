@@ -44,19 +44,16 @@ namespace Game
 			render = _gameObject->GetComponent<BeerEngine::Component::MeshRenderer>();
 			glm::vec2 mapPos = map->worldToMap(_gameObject->transform.position);
 			map->mapUpdate(mapPos.x, mapPos.y, B);
-			auto collider = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
-			if (collider)
-			{
-				auto characterCol = map->_player->_gameObject->GetComponent<BeerEngine::Component::ACollider>();
-				if (characterCol && collider->checkCollision(characterCol))
-            		collider->_exceptions.push_back(characterCol);
-				for (Game::Component::IA *ia : map->_IAs)
-				{
-					characterCol = ia->_gameObject->GetComponent<BeerEngine::Component::ACollider>();
-					if (characterCol && collider->checkCollision(characterCol))
-            			collider->_exceptions.push_back(characterCol);
-				}
-			}
+			auto collider = _gameObject->GetComponent<BeerEngine::Component::CircleCollider>();
+            auto characterCol = map->_player->_gameObject->GetComponent<BeerEngine::Component::ACollider>();
+            if (characterCol && collider->checkCollision(characterCol, false))
+                collider->_exceptions.push_back(characterCol);
+            for (Game::Component::IA *ia : map->_IAs)
+            {
+                characterCol = ia->_gameObject->GetComponent<BeerEngine::Component::ACollider>();
+                if (characterCol && collider->checkCollision(characterCol, false))
+                    collider->_exceptions.push_back(characterCol);
+            }
 		}
 
 		void    Bomb::fixedUpdate(void)

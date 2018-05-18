@@ -20,9 +20,9 @@ namespace BeerEngine
 		BoxCollider2D::~BoxCollider2D()
 		{}
 
-		bool BoxCollider2D::checkCollision(ACollider *other)
+		bool BoxCollider2D::checkCollision(ACollider *other, bool response)
 		{
-			if (other->collide_AABB2D(this))
+			if (other->collide_AABB2D(this, response))
 				return (true);
 			else
 				return (false);
@@ -89,7 +89,7 @@ namespace BeerEngine
 			return (false);
 		}
 
-		bool BoxCollider2D::collide_AABB2D(BoxCollider2D *other)
+		bool BoxCollider2D::collide_AABB2D(BoxCollider2D *other, bool response)
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
@@ -99,12 +99,12 @@ namespace BeerEngine
 			|| thisPos.y - _size.y / 2 > otherPos.y + other->_size.y / 2
 			|| thisPos.y + _size.y / 2 < otherPos.y - other->_size.y / 2)
 				return (false);
-			if (!_isTrigger && !other->_isTrigger)
+			if (response && !_isTrigger && !other->_isTrigger)
 				response_AABB2D(other, thisPos, otherPos);
 			return (true);
 		}
 
-		bool BoxCollider2D::collide_AABB2D(CircleCollider *other)
+		bool BoxCollider2D::collide_AABB2D(CircleCollider *other, bool response)
 		{
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
@@ -112,7 +112,7 @@ namespace BeerEngine
 
 			if (glm::distance2(nearest, otherPos) < other->_radius * other->_radius)
 			{
-				if (!_isTrigger && !other->_isTrigger)
+				if (response && !_isTrigger && !other->_isTrigger)
 					response_AABB2D(other, nearest, otherPos);
 				return (true);
 			}
@@ -135,29 +135,6 @@ namespace BeerEngine
 				move.x = 0;
 			else
 				move.z = 0;
-
-			// if (rb2d != nullptr)
-			// {
-			// 	rb2d->velocity = glm::vec2(0.0f);
-			// }
-			// if (other->rb2d != nullptr)
-			// {
-			// 	other->rb2d->velocity = glm::vec2(0.0f);
-			// }
-
-			// if (other->isKinematic() && !isKinematic())
-			// {
-			// 	_transform.translate(move);
-			// }
-			// else if (!other->isKinematic() && isKinematic())
-			// {
-			// 	other->_transform.translate(-move);
-			// }
-			// else if (!other->isKinematic() && !isKinematic())
-			// {
-			// 	_transform.translate(move / 2);
-			// 	other->_transform.translate(-move / 2);
-			// }
 			response(other, move);
 		}
 
@@ -168,15 +145,6 @@ namespace BeerEngine
 			dir = glm::normalize(dir);
 
 			response(other, dir * overlap);
-			// if (other->isKinematic() && !isKinematic())
-			// 	_transform.translate(dir * overlap);
-			// else if (!other->isKinematic() && isKinematic())
-			// 	other->_transform.translate(-dir * overlap);
-			// else if (!other->isKinematic() && !isKinematic())
-			// {
-			// 	_transform.translate(dir * (overlap / 2));
-			// 	other->_transform.translate(-dir * (overlap / 2));
-			// }
 		}
 
 		nlohmann::json	BoxCollider2D::serialize()
