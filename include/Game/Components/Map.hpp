@@ -59,6 +59,7 @@ namespace Game
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0);
+			bool			hasBreakable(void);
 			bool			hasCharacter(glm::vec2 pos);
 			int				getCaseValue(glm::vec2 pos);
 			bool			hasWall(glm::vec2 pos);

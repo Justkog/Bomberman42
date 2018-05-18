@@ -67,6 +67,7 @@ namespace Game
 			itemGO->immortalTimer = 1.5f;
 			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
+			itemColl->_radius = 0.35;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
@@ -94,6 +95,11 @@ namespace Game
                     meshRenderer->setMesh(itemRangeMesh);
                     itemTex = itemRangeTex;
 			        itemGO->transform.scale = glm::vec3(1, 1, 1);
+                    break;
+                case ItemType::Antidote:
+                    meshRenderer->setMesh(itemBombMesh);
+                    itemTex = itemRangeTex;
+			        itemGO->transform.scale = glm::vec3(0.2, 0.2, 0.2);
                     break;
             }
 			itemMat->setAlbedo(itemTex);
@@ -174,7 +180,10 @@ namespace Game
 					{
 						if (map[y][x] == 0)
 						{
-							if ((rand() % 2 + 1) == 2)
+							int val = rand() % 100;
+							if (val > 96)
+								map[y][x] = I;
+							else if (val > 25)
 								map[y][x] = 2;
 						// 	// else
 						// 	// 	_map[y][x] = 0;
@@ -261,7 +270,9 @@ namespace Game
 						case J:
 							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::ExplosionBoost);
 							break;
-							// createItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+						case U:
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::Antidote);
+							break;
 
 					}
 				}
@@ -309,6 +320,17 @@ namespace Game
 		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
 		{
 			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);
+		}
+
+		bool			Map::hasBreakable(void)
+		{
+			for (int y = 0; y < _sizeY; y++)
+			{
+				for (int x = 0; x < _sizeX; x++)
+					if (_map[y][x] == 2 || _map[y][x] == E)
+						return (true);
+			}
+			return (false);
 		}
 
 		bool			Map::hasCharacter(glm::vec2 pos)

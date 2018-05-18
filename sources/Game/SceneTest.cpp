@@ -196,11 +196,11 @@ void    SceneTest::init(void)
 	map->_player = player;
 	map->_shader = shader;
 	std::vector<int>  line0{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<int>  line1{1,S,8,0,0,0,0,I,0,0,0,0,0,0,8,S,1};
+	std::vector<int>  line1{1,S,8,0,0,0,0,0,0,0,0,0,0,0,8,S,1};
 	std::vector<int>  line2{1,8,1,0,1,0,1,0,1,0,1,0,1,0,1,8,1};
 	std::vector<int>  line3{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int>  line4{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
-	std::vector<int>  line5{1,0,0,0,0,0,0,I,0,0,0,0,0,0,0,0,1};
+	std::vector<int>  line5{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int>  line6{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
 	std::vector<int>  line7{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int>  line8{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};

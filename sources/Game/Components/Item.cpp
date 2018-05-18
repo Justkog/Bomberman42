@@ -93,15 +93,23 @@ namespace Game
                 {
                     case ItemType::SpeedBoost:
                         character->increaseSpeed(0.25);
+                        this->destroy();
                         break;
                     case ItemType::AddBomb:
                         character->increaseMaxBomb();
+                        this->destroy();
                         break;
                     case ItemType::ExplosionBoost:
                         character->increaseExplosionSize(1);
+                        this->destroy();
+                        break;
+                    case ItemType::Antidote:
+                        if (!map->hasBreakable())
+                        {
+                            this->destroy();
+                        }
                         break;
                 }
-                this->destroy();
             }
         }
 
