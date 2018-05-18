@@ -103,14 +103,15 @@ namespace Game
         {
             std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_transform.position, dir);
 
+            if (!map->canWalk(_path[0]))
+                return (false);
             if (hits.size() > 1)
             {
                 for (BeerEngine::Physics::RaycastHit hit : hits)
                 {
-                    auto character = hit.collider->_gameObject->GetComponent<Game::Component::Character>();
                     auto bomb = hit.collider->_gameObject->GetComponent<Game::Component::Bomb>();
                     auto myCol = _gameObject->GetComponent<BeerEngine::Component::ACollider>();
-                    if ((character && character != _character) || (bomb && !hit.collider->hasException(myCol)))
+                    if (bomb && !hit.collider->hasException(myCol))
                         return (false);
                 }
             }
@@ -163,8 +164,13 @@ namespace Game
                 }
                 if (character && hit.collider->_gameObject != _gameObject)
                 {
-                    val += 12;
-                    type = ObjectiveType::KillEnemy;
+                    if (map->hasCharacter(map->worldToMap(pos)) && map->worldToMap(_gameObject->transform.position) != map->worldToMap(pos))
+                        val -= 20;
+                    else
+                    {
+                        val += 12;
+                        type = ObjectiveType::KillEnemy;
+                    }
                 }
                 if (item)
                     val -= 15;
@@ -259,9 +265,9 @@ namespace Game
 
         bool    IA::moveToNextCell(void)
         {
+            static glm::vec3 lastDir = glm::vec3(0);
             glm::vec3 dir;
 
-            // _character->_direction = glm::vec2(0, 0);
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)

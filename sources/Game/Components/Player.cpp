@@ -132,9 +132,11 @@ namespace Game
 
 		void    Player::onColliderEnter(BeerEngine::Component::ACollider *other)
 		{
-			if (other->_gameObject->GetComponent<Game::Component::Item>())
+			auto item = other->_gameObject->GetComponent<Game::Component::Item>();
+			if (item)
 			{
-				this->itemSrcAudio->play();
+				if (item->_type != ItemType::Antidote || !_character->map->hasBreakable())
+					this->itemSrcAudio->play();
 			}
 		}
 

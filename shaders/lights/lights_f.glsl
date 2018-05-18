@@ -11,6 +11,13 @@ uniform sampler2D normal;
 uniform int hasNormal;
 uniform sampler2D bump;
 uniform int hasBump;
+uniform sampler2D rougth;
+uniform int hasRougth;
+uniform float rougthFactor;
+uniform sampler2D metalic;
+uniform int hasMetalic;
+uniform float metalicFactor;
+
 uniform int hasDirectionalLight;
 
 in vec3 vNormal;
@@ -53,9 +60,20 @@ void main()
         tNormal = vNormal;
     }
 
+    float finalRoughtness = rougthFactor;
+    float finalMetalic = metalicFactor;
+
+    if (hasRougth == 1)
+        finalRoughtness = texture(rougth, texCoords).r;
+    if (hasMetalic == 1)
+        finalMetalic = texture(metalic, texCoords).r;
+
+    specular_power = 100 - finalRoughtness * 100 + finalMetalic;
+    specular_intensity = 2 - finalRoughtness * 2 + finalMetalic;
+
     vec4 dirLight = vec4(0, 0, 0, 0);
     if (hasDirectionalLight == 1)
-        dirLight = calcDirectionalLight(directionalLight, tNormal) * calcShadow(lightPosition);
+        dirLight = calcDirectionalLight(directionalLight, tNormal) * calcBlurredShadow(lightPosition, 2);
     vec4 lightIntensity = light.color * light.intensity + dirLight;
     if (hasAlbedo == 1)
     {
@@ -66,9 +84,7 @@ void main()
     {
         outColor = color * light.color * lightIntensity;
     }
-    float roughtness = 4;
 
-    vec4 pbr = calcPBR(outColor, tNormal, roughtness, 1.0);
-
+    vec4 pbr = calcPBR(outColor, tNormal, finalRoughtness, finalMetalic);
     outColor = vec4(pbr.rgb, 1.0);
 }

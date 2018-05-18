@@ -24,14 +24,14 @@ namespace BeerEngine
 		public:
 			CircleCollider(GameObject *gameObject);
 			virtual ~CircleCollider();
-			bool checkCollision(ACollider *other);
+			bool checkCollision(ACollider *other, bool response = true);
 
 			bool contain(glm::vec2 other);
 			bool intersect(glm::vec2 origin, glm::vec2 dir);
 			bool intersect(glm::vec2 origin, glm::vec2 dir, glm::vec2 &outPosition);
 
-			bool collide_AABB2D(CircleCollider *other);
-			bool collide_AABB2D(BoxCollider2D *other);
+			bool collide_AABB2D(CircleCollider *other, bool response = true);
+			bool collide_AABB2D(BoxCollider2D *other, bool response = true);
 
 			void response_AABB2D(CircleCollider *other, glm::vec2 &thisPos, glm::vec2 &otherPos);
 

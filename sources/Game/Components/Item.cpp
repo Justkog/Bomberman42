@@ -8,6 +8,7 @@
 #include "Core/Component/ACollider.hpp"
 #include "Core/Audio/AudioSource.hpp"
 #include "Core/Audio/AudioClip.hpp"
+#include "Game/Components/GameManager.hpp"
 
 namespace Game
 {
@@ -93,15 +94,24 @@ namespace Game
                 {
                     case ItemType::SpeedBoost:
                         character->increaseSpeed(0.25);
+                        this->destroy();
                         break;
                     case ItemType::AddBomb:
                         character->increaseMaxBomb();
+                        this->destroy();
                         break;
                     case ItemType::ExplosionBoost:
                         character->increaseExplosionSize(1);
+                        this->destroy();
+                        break;
+                    case ItemType::Antidote:
+                        if (!map->hasBreakable())
+                        {
+                            GameManager::GetInstance().setVictory();
+                            this->destroy();
+                        }
                         break;
                 }
-                this->destroy();
             }
         }
 

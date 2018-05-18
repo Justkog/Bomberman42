@@ -20,8 +20,13 @@
 #include "Game/Components/Breakable.hpp"
 
 #define S -1 //spawn position
+#define E 10 // Empty breakable
 #define I 9 //Item
-#define B 3 //Item Bomb
+#define B 3 //Bomb
+#define P -2 //spawn player
+#define Q -3 //spawn ia
+#define J 11 //Item Boost Explosion
+#define U 20 //Objective (next level)
 
 /*!
  * \file Map.hpp
@@ -54,6 +59,7 @@ namespace Game
 			virtual void    renderUI(struct nk_context *ctx);
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0);
+			bool			hasBreakable(void);
 			bool			hasCharacter(glm::vec2 pos);
 			int				getCaseValue(glm::vec2 pos);
 			bool			hasWall(glm::vec2 pos);
@@ -82,7 +88,7 @@ namespace Game
 			void mapUpdate(glm::vec3 pos, int value);
 
 			BeerEngine::GameObject *createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic);
-			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
+			BeerEngine::GameObject *addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type = -1);
 			BeerEngine::GameObject *createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 			Game::Component::IA *addIA(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos);
 
@@ -93,12 +99,14 @@ namespace Game
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-				meshRenderer->setMesh("assets/models/Crate/crate.obj");
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/stone_color.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
-				auto *mapBlocNrm = Assets::GetTexture("assets/textures/stone_normal.png"); //BeerEngine::Graphics::Texture::LoadPNG("assets/textures/crate1_diffuse.png");
+				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
+				auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png");
+				auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png");
+				auto *mapBlocBmp = Assets::GetTexture("assets/textures/wall_bump.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				mapBlocMat->setNormal(mapBlocNrm);
+				// mapBlocMat->setBump(mapBlocBmp);
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
@@ -109,14 +117,12 @@ namespace Game
 					rb2d->kinematic = kinematic;
 					rb2d->mass = 1.0f;
 				}
-
 				return (mapBlocGO);
 			}
 
 			template <typename T>
 			BeerEngine::GameObject *addDestoyableCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 			{
-
 				BeerEngine::Component::MeshRenderer *meshRenderer;
 				auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 				mapBlocGO->name = "destroyable block";

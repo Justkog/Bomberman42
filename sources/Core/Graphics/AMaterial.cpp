@@ -18,6 +18,10 @@ namespace BeerEngine
 			_albedo(nullptr),
 			_normal(nullptr),
 			_bump(nullptr),
+			_rought(nullptr),
+			_metalic(nullptr),
+			_roughtFactor(0.8f),
+			_metalicFactor(0.5f),
 			_envMap(Graphics::defaultCubemap)
 		{
 			_projectionShaderID = 0;
@@ -153,6 +157,32 @@ namespace BeerEngine
 			}
 			else
 				light.getShader().uniform1i(light.get_hasEnvMapID(), 0);
+
+			light.getShader().uniform1i("routgh", 4);
+			glActiveTexture(GL_TEXTURE4);
+			if (_rought != nullptr)
+			{
+				light.getShader().uniform1i("hasRoutgh", 1);
+				_rought->bind();
+			}
+			else
+			{
+				light.getShader().uniform1i("hasRoutgh", 0);
+				light.getShader().uniform1f("rougthFactor", _roughtFactor);
+			}
+
+			light.getShader().uniform1i("metalic", 5);
+			glActiveTexture(GL_TEXTURE5);
+			if (_metalic != nullptr)
+			{
+				light.getShader().uniform1i("hasMetalic", 1);
+				_metalic->bind();
+			}
+			else
+			{
+				light.getShader().uniform1i("hasMetalic", 0);
+				light.getShader().uniform1f("metalicFactor", _metalicFactor);
+			}
 		}
 
 		AMaterial		&AMaterial::setColor(glm::vec4 color)
@@ -182,6 +212,30 @@ namespace BeerEngine
 		AMaterial		&AMaterial::setEnvmap(Cubemap *map)
 		{
 			_envMap = map;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setRougthnessMap(Texture *tex)
+		{
+			_rought = tex;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setMetalicMap(Texture *tex)
+		{
+			_metalic = tex;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setRougthnessFactor(float val)
+		{
+			_roughtFactor = val;
+			return (*this);
+		}
+
+		AMaterial		&AMaterial::setMetalicFactor(float val)
+		{
+			_metalicFactor = val;
 			return (*this);
 		}
 

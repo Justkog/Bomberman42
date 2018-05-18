@@ -57,7 +57,7 @@ namespace Game
 			return (mapBlocGO);
 		}
 
-		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
+		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type)
 		{
 			std::cout << "item start" << std::endl;
 			BeerEngine::Component::MeshRenderer *meshRenderer;
@@ -67,10 +67,14 @@ namespace Game
 			itemGO->immortalTimer = 1.5f;
 			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
+			itemColl->_radius = 0.35;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
-			item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
+			if (type == -1)
+				item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
+			else
+				item->_type = static_cast<Game::Component::ItemType>(type);
 
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
             BeerEngine::Graphics::Texture *itemTex;
@@ -91,6 +95,11 @@ namespace Game
                     meshRenderer->setMesh(itemRangeMesh);
                     itemTex = itemRangeTex;
 			        itemGO->transform.scale = glm::vec3(1, 1, 1);
+                    break;
+                case ItemType::Antidote:
+                    meshRenderer->setMesh(itemBombMesh);
+                    itemTex = itemRangeTex;
+			        itemGO->transform.scale = glm::vec3(0.2, 0.2, 0.2);
                     break;
             }
 			itemMat->setAlbedo(itemTex);
@@ -121,6 +130,7 @@ namespace Game
 					GameManager::GetInstance().registerEnemy(breakable);
 				auto modelRenderer = iaGO->AddComponent<BeerEngine::Component::ModelRenderer>();
 					modelRenderer->load("assets/models/bombermanRunTest.fbx");
+					// modelRenderer->load("assets/models/Rock/rock.obj");
 					modelRenderer->setAnimationSpeed("idle", 0.25);
 					modelRenderer->setLoopAnimation(true);
 					// modelRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
@@ -171,7 +181,10 @@ namespace Game
 					{
 						if (map[y][x] == 0)
 						{
-							if ((rand() % 2 + 1) == 2)
+							int val = rand() % 100;
+							if (val > 96)
+								map[y][x] = I;
+							else if (val > 25)
 								map[y][x] = 2;
 						// 	// else
 						// 	// 	_map[y][x] = 0;
@@ -228,7 +241,19 @@ namespace Game
 							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case 2:
+						case E:
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							break;
+						case P:
+							if (!playerSpawn)
+							{
+								_player->_gameObject->transform.position = glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY);
+								playerSpawn = true;
+							}
+							break;
+						case Q:
+							if (_IAs.size() < 3)
+								_IAs.push_back(addIA(_shader, glm::vec3(-col + (_sizeX / 2), 0, -row + _sizeY)));
 							break;
 						case S:
 							spawnIA = (rand() % 4 != 0 || playerSpawn ? true : false);
@@ -242,7 +267,13 @@ namespace Game
 							break;
 						case I:
 							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
-							// createItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY));
+							break;
+						case J:
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::ExplosionBoost);
+							break;
+						case U:
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::Antidote);
+							break;
 
 					}
 				}
@@ -290,6 +321,17 @@ namespace Game
 		glm::vec3		Map::mapToWorld(glm::vec2 pos, float y)
 		{
 			return glm::vec3(-pos.x + (_sizeX / 2), y, -pos.y + _sizeY);
+		}
+
+		bool			Map::hasBreakable(void)
+		{
+			for (int y = 0; y < _sizeY; y++)
+			{
+				for (int x = 0; x < _sizeX; x++)
+					if (_map[y][x] == 2 || _map[y][x] == E)
+						return (true);
+			}
+			return (false);
 		}
 
 		bool			Map::hasCharacter(glm::vec2 pos)

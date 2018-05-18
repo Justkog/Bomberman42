@@ -130,14 +130,14 @@ namespace BeerEngine
 							virtual nlohmann::json	serialize();\
         					virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
-#define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
-		{\
-			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
-			return (1);\
-		}\
-		\
-		int Class::componentRegisterer = Class::RegisterComponentType();\
-		std::string Class::type = typeid(Class).name();
+//#define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
+//		{\
+//			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
+//			return (1);\
+//		}\
+//		\
+//		int Class::componentRegisterer = Class::RegisterComponentType();\
+//		std::string Class::type = typeid(Class).name();
 
 #define SERIALIZE_BY_ID(Src) !Src ? nlohmann::json(nullptr) : nlohmann::json(Src->_serializationID)
 
@@ -153,33 +153,23 @@ namespace BeerEngine
 		} \
 	)
 
-// /* For some reason on linux those two preprcessor cause a segfault */
-// # ifdef __APPLE__
-// #  define REGISTER_COMPONENT_HPP																						\
-// 		static int RegisterComponentType();																				\
-// 		static 	int componentRegisterer;																				\
-// 		static std::string type;
-
-// #  define REGISTER_COMPONENT_CPP(Class)																					\
-// 		int	Class::RegisterComponentType()																				\
-// 		{																												\
-// 			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;						\
-// 			return (1);																									\
-// 		}																												\
-// 		int Class::componentRegisterer = Class::RegisterComponentType();												\
-// 		std::string Class::type = typeid(Class).name();
-// # else
-// #  define REGISTER_COMPONENT_HPP																						\
-// 		static int RegisterComponentType();																				\
-// 		static 	int componentRegisterer;																				\
-// 		static std::string type;
-
-// #  define REGISTER_COMPONENT_CPP(Class)																					\
-// 		int	Class::RegisterComponentType()																				\
-// 		{																												\
-// 			return (1);																									\
-// 		}																												\
-// 		int Class::componentRegisterer = Class::RegisterComponentType();												\
-// 		std::string Class::type = typeid(Class).name();
-// # endif
+ /* For some reason on linux those two preprcessor cause a segfault */
+ # ifdef __APPLE__
+ #  define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
+		{\
+			Component::typeToAddComponent[typeid(Class).name()] = &Component::addComponent<Class>;\
+			return (1);\
+		}\
+		\
+		int Class::componentRegisterer = Class::RegisterComponentType();\
+		std::string Class::type = typeid(Class).name();
+ # else
+ #  define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
+		{\
+			return (1);\
+		}\
+		\
+		int Class::componentRegisterer = Class::RegisterComponentType();\
+		std::string Class::type = typeid(Class).name();
+ # endif
 #endif

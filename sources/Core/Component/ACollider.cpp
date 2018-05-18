@@ -25,6 +25,7 @@ namespace BeerEngine
 		{
 			_colliders.push_back(this);
 			colliderType = ALL;
+			rb2d = nullptr;
 		}
 
 		ACollider::~ACollider()
