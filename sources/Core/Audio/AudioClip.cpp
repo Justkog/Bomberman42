@@ -49,6 +49,23 @@ namespace BeerEngine
 			_buffer = Buffer;
 		}
 
+		AudioClip::AudioClip()
+		{}
+
+		AudioClip::AudioClip(const AudioClip &val)
+		{
+			*this = val;
+		}
+		
+		AudioClip &AudioClip::operator=(const AudioClip &val)
+		{
+			if (this != &val)
+			{
+				_buffer = val._buffer;
+			}
+			return (*this);
+		}
+
 		AudioClip::~AudioClip()
 		{	}
 

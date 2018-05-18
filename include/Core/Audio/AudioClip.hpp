@@ -22,6 +22,9 @@ namespace BeerEngine
 		{
 
 		public:
+			AudioClip();
+			AudioClip(const AudioClip &val);
+			AudioClip &operator=(const AudioClip &val);
 
 			AudioClip( const std::string& Filename );
 			virtual ~AudioClip();

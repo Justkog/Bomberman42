@@ -75,9 +75,12 @@ namespace BeerEngine
 
 			void	addParticle(void);
 
+			ParticleBase();
+			ParticleBase(const ParticleBase &val);
+			ParticleBase &operator=(const ParticleBase &val);
+
 		public:
 			glm::vec3		offset;
-
 			ParticleBase(GameObject *gameObject);
 			virtual ~ParticleBase();
 

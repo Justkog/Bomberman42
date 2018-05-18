@@ -3,6 +3,8 @@
 
 namespace BeerEngine
 {
+	Transform Transform::basic = Transform();
+
 	Transform::Transform() :
 		parent(nullptr), pivot(0.0f), position(0.0f), rotation(), scale(1.0f)
 	{}

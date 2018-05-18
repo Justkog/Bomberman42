@@ -26,6 +26,9 @@ namespace BeerEngine
 		glm::vec3	position; /*!< Position de l'objet dans l'espace*/
 		glm::quat	rotation; /*!< Rotation de l'objetr*/
 		glm::vec3	scale; /*!< Taille de l'objet*/
+		
+		static Transform basic;
+
 		/*!
 		*  \brief Constructeur
 		*  Constructeur de la classe Transform

@@ -28,8 +28,11 @@ namespace BeerEngine
 		class ACollider : public Component, public IStart
 		{
 		protected:
-
 		public:
+			ACollider();
+			ACollider(const ACollider &val);
+			ACollider &operator=(const ACollider &val);
+
 			ACollider(GameObject *gameObject);
 			virtual ~ACollider();
 			virtual void    start(void);

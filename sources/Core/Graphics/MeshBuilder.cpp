@@ -12,6 +12,20 @@ namespace BeerEngine
 			bitangents()
 		{}
 
+		MeshBuilder::MeshBuilder(const MeshBuilder &val)
+		{
+			*this = val;
+		}
+		
+		MeshBuilder &MeshBuilder::operator=(const MeshBuilder &val)
+		{
+			if (this != &val)
+			{
+
+			}
+			return (*this);
+		}
+
 		MeshBuilder::~MeshBuilder()
 		{
 			clear();

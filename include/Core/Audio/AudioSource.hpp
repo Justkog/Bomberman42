@@ -30,11 +30,14 @@ namespace BeerEngine
 		{
 
 		public:
+			AudioSource();
+			AudioSource(const AudioSource &val);
+			AudioSource &operator=(const AudioSource &val);
 
 			// AudioSource();
 			// AudioSource(ALuint buf);
 			AudioSource(BeerEngine::GameObject *gameObject);
-			~AudioSource( void );
+			virtual ~AudioSource( void );
 
 			void	    play();
 			bool        isPlaying();

@@ -109,8 +109,12 @@ namespace BeerEngine
 			void interpolateNodeScale(aiVector3D &out, float animationTime, const aiNodeAnim *node);
 
 		public:
+			ModelRenderer();
+			ModelRenderer(const ModelRenderer &val);
+			ModelRenderer &operator=(const ModelRenderer &val);
+			virtual ~ModelRenderer();
+
 			ModelRenderer(GameObject *gameObject);
-			~ModelRenderer();
 
 			ModelRenderer	&load(const std::string &file);
 			ModelRenderer	&addMaterial(const int &index, Graphics::AMaterial *material);

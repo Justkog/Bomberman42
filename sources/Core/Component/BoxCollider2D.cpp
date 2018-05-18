@@ -17,6 +17,23 @@ namespace BeerEngine
 			_size(glm::vec2(gameObject->transform.scale.x, gameObject->transform.scale.z))
 		{}
 
+		BoxCollider2D::BoxCollider2D()
+		{}
+
+		BoxCollider2D::BoxCollider2D(const BoxCollider2D &val)
+		{
+			*this = val;
+		}
+		
+		BoxCollider2D &BoxCollider2D::operator=(const BoxCollider2D &val)
+		{
+			if (this != &val)
+			{
+				_size = val._size;
+			}
+			return (*this);
+		}
+
 		BoxCollider2D::~BoxCollider2D()
 		{}
 

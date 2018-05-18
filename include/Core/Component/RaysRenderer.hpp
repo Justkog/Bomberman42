@@ -29,8 +29,8 @@ namespace BeerEngine
 		{
 		public:
 
-			// RaysRenderer( void );
-			// RaysRenderer( RaysRenderer const & src );
+			RaysRenderer( void );
+			RaysRenderer( RaysRenderer const & src );
 			RaysRenderer(BeerEngine::GameObject *gameObject);
 
 			virtual ~RaysRenderer( void );

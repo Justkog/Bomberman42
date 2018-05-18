@@ -13,6 +13,23 @@ namespace BeerEngine
 			: _intensity(intensity), _color(color), _shader(nullptr)
 		{}
 
+		ALight::ALight()
+		{}
+
+		ALight::ALight(const ALight &val)
+		{
+			*this = val;
+		}
+		
+		ALight &ALight::operator=(const ALight &val)
+		{
+			if (this != &val)
+			{
+
+			}
+			return (*this);
+		}
+
 		void ALight::setupUniformIds()
 		{
 			_shader->bind();

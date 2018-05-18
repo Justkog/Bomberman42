@@ -43,6 +43,23 @@ namespace BeerEngine
 //			_lightColorID = _shader->getUniformLocation("light.color");
 		}
 
+		AMaterial::AMaterial()
+		{}
+
+		AMaterial::AMaterial(const AMaterial &val)
+		{
+			*this = val;
+		}
+		
+		AMaterial &AMaterial::operator=(const AMaterial &val)
+		{
+			if (this != &val)
+			{
+
+			}
+			return (*this);
+		}
+
 		void	AMaterial::bind(glm::mat4 &model)
 		{
 			_shader->bind();

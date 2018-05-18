@@ -31,8 +31,14 @@ namespace BeerEngine
 			Graphics::AMaterial	*_material;
 			glm::mat4			_mat;
 			std::string			_sourceFile;
-
+		
 		public:
+			MeshRenderer();
+			MeshRenderer(const MeshRenderer &val);
+			MeshRenderer &operator=(const MeshRenderer &val);
+
+			virtual ~MeshRenderer();
+
 			MeshRenderer(GameObject *gameObject);
 			Graphics::Mesh	*getMesh(void);
 			MeshRenderer	&setMesh(Graphics::Mesh *mesh);

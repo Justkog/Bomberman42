@@ -20,8 +20,12 @@ namespace BeerEngine
 		protected:
 			bool lineCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
 			bool segmentCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
-
+		
 		public:
+			CircleCollider();
+			CircleCollider(const CircleCollider &val);
+			CircleCollider &operator=(const CircleCollider &val);
+
 			CircleCollider(GameObject *gameObject);
 			virtual ~CircleCollider();
 			bool checkCollision(ACollider *other, bool response = true);

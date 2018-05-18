@@ -33,6 +33,10 @@ namespace BeerEngine
 			void generateMipmaps(int size, glm::mat4 views[6]);
 
 		public:
+			Cubemap();
+			Cubemap(const Cubemap &val);
+			Cubemap &operator=(const Cubemap &val);
+
 			Cubemap(const std::string &paths, int size);
 			virtual ~Cubemap() {};
 

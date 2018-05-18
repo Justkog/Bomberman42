@@ -32,6 +32,10 @@ namespace BeerEngine
 			std::string		_type;
 
 		public:
+			Mesh();
+			Mesh(const Mesh &val);
+			Mesh &operator=(const Mesh &val);
+
 			Mesh(unsigned int nbVBO);
 			~Mesh();
 			void	add(unsigned int vboIndex, GLenum type, unsigned int width, void *data, unsigned int dataSize, GLenum usage = GL_STATIC_DRAW);

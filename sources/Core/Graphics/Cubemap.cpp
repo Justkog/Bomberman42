@@ -32,6 +32,23 @@ namespace BeerEngine
 			glEnable(GL_CULL_FACE);
 		}
 
+		Cubemap::Cubemap()
+		{}
+
+		Cubemap::Cubemap(const Cubemap &val)
+		{
+			*this = val;
+		}
+		
+		Cubemap &Cubemap::operator=(const Cubemap &val)
+		{
+			if (this != &val)
+			{
+
+			}
+			return (*this);
+		}
+
 		void	Cubemap::generateMipmaps(int size, glm::mat4 views[6])
 		{
 			ShaderProgram *shader = Graphics::cubemapShader;

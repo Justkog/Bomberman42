@@ -24,6 +24,10 @@ namespace BeerEngine
 			void	createDepthBufferAttachement();
 
 		public:
+			Framebuffer();
+			Framebuffer(const Framebuffer &val);
+			Framebuffer &operator=(const Framebuffer &val);
+
 			Framebuffer(unsigned int width, unsigned int height);
 			~Framebuffer();
 			

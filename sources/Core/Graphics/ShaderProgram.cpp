@@ -20,6 +20,23 @@ namespace BeerEngine
 			}
 		}
 
+		ShaderProgram::ShaderProgram()
+		{}
+
+		ShaderProgram::ShaderProgram(const ShaderProgram &val)
+		{
+			*this = val;
+		}
+		
+		ShaderProgram &ShaderProgram::operator=(const ShaderProgram &val)
+		{
+			if (this != &val)
+			{
+
+			}
+			return (*this);
+		}
+
 		ShaderProgram::~ShaderProgram()
 		{
 			if (_shaders != NULL)

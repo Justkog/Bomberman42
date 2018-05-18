@@ -21,8 +21,10 @@ namespace BeerEngine
 			float	_timer;
 			bool	_loop;
 		public:
-
 			BeerRoutine();
+			virtual ~BeerRoutine();
+			BeerRoutine(const BeerRoutine &val);
+			BeerRoutine &operator=(const BeerRoutine &val);
 
 			/*!
 			*  \brief Ajout d'action
