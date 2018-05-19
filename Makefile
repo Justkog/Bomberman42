@@ -68,6 +68,7 @@ SRC = \
 	Game/Level2.cpp \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
+	Game/Versus1.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
