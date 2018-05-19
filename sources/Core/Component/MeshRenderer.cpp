@@ -42,7 +42,10 @@ namespace BeerEngine
 		}
 
 		MeshRenderer::~MeshRenderer()
-		{}
+		{
+			if (_material != nullptr)
+				delete _material;
+		}
 
 		Graphics::Mesh	*MeshRenderer::getMesh(void)
 		{
@@ -82,8 +85,6 @@ namespace BeerEngine
 			{
 				if (_material != nullptr)
 					_material->bind(_mat, light);
-				else
-					Graphics::Graphics::defaultMaterial->bind(_mat, light);
 				light.getShader().uniform1i("hasBones", 0);
 				_mesh->render(renderMode);
 			}

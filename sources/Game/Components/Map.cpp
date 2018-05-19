@@ -49,6 +49,7 @@ namespace Game
 
 		Map::~Map()
 		{
+			instance = nullptr;
 			for (int y = 0; y < _sizeY; y++)
 			{
 				delete[] _map[y];

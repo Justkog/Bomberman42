@@ -45,7 +45,9 @@ namespace Game
 		}
 
 		Player::~Player(void)
-		{ }
+		{
+			instance = nullptr;
+		}
 
         void    Player::onDestroy(void)
         {
