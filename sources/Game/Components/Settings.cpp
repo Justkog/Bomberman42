@@ -86,6 +86,7 @@ Game::SettingsContainer Settings::defaultSettings()
 	settings.keyBindings["move left"] = BeerEngine::KeyCode::KP_4;
 	settings.keyBindings["move right"] = BeerEngine::KeyCode::KP_6;
 	settings.keyBindings["bomb"] = BeerEngine::KeyCode::SPACE;
+	// settings.unlockedLevels = { "Level1" };
 
 	return settings;
 }
@@ -119,7 +120,11 @@ void Settings::gatherCurrentSettings() {
 
 void Settings::loadSettings() {
 	std::string content = BeerEngine::IO::FileUtils::LoadFile(this->filePath);
-	auto j = nlohmann::json::parse(content);
+	nlohmann::json j;
+	if (content != "")
+		j = nlohmann::json::parse(content);
+	else
+		j = {};	
 	this->settingsContainer = j;
 	this->applyCurrentSettings();
 }
@@ -198,7 +203,7 @@ namespace Game {
 			{"windowHeight", s.windowHeight},
 			{"fullScreen", s.fullScreen},
 			{"keyBindings", s.keyBindings},
-			{"unlockedLevels", s.unlockedLevels},
+			// {"unlockedLevels", s.unlockedLevels},
 		};
     }
 
@@ -216,8 +221,8 @@ namespace Game {
 	        s.fullScreen = j.at("fullScreen").get<bool>();
 		if (j.find("keyBindings") != j.end())
 	        s.keyBindings = j.at("keyBindings").get<std::map<std::string, int>>();
-		if (j.find("unlockedLevels") != j.end())
-	        s.unlockedLevels = j.at("unlockedLevels").get<std::vector<std::string>>();
+		// if (j.find("unlockedLevels") != j.end())
+	    //     s.unlockedLevels = j.at("unlockedLevels").get<std::vector<std::string>>();
 
 		// for (auto it = s.keyBindings.begin(); it != s.keyBindings.end(); it++)
 		// 	std::cout << "loaded key " << it->first << " / " << it->second << std::endl;

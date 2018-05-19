@@ -1,13 +1,9 @@
-#include "Game/Components/VersusMenu.hpp"
+#include "Game/Components/AdventureMenu.hpp"
+#include "Game/Components/AdventureContinueMenu.hpp"
 #include "Game/Components/MainMenu.hpp"
 #include "Game/Components/UIThemeManager.hpp"
+#include "Game/Components/GameProgression.hpp"
 #include "Core/Window.hpp"
-#include "Core/SceneManager.hpp"
-#include "Game/SceneTest.hpp"
-#include "Game/Level1.hpp"
-#include "Game/Level2.hpp"
-#include "Game/Level3.hpp"
-#include "Game/Level4.hpp"
 
 namespace Game
 {
@@ -19,26 +15,27 @@ namespace Game
 
 // CANONICAL #####################################################
 
-VersusMenu::VersusMenu ( void )
+/*AdventureMenu::AdventureMenu ( void )
 {
 	return ;
-}
+}*/
 
-VersusMenu::VersusMenu ( VersusMenu const & src )
+/*AdventureMenu::AdventureMenu ( AdventureMenu const & src )
 {
 	*this = src;
 	return ;
-}
+}*/
 
-VersusMenu &				VersusMenu::operator=( VersusMenu const & rhs )
+AdventureMenu &				AdventureMenu::operator=( AdventureMenu const & rhs )
 {
-	(void) rhs;
 	if (this != &rhs)
-	{}
+	{
+		// make stuff
+	}
 	return (*this);
 }
 
-VersusMenu::~VersusMenu ( void )
+AdventureMenu::~AdventureMenu ( void )
 {
 	return ;
 }
@@ -47,7 +44,7 @@ VersusMenu::~VersusMenu ( void )
 
 // CONSTRUCTOR POLYMORPHISM ######################################
 
-VersusMenu::VersusMenu(BeerEngine::GameObject *gameObject) :
+AdventureMenu::AdventureMenu(BeerEngine::GameObject *gameObject) :
 Component(gameObject)
 {
 	
@@ -57,7 +54,7 @@ Component(gameObject)
 
 // OVERLOAD OPERATOR #############################################
 
-std::ostream &				operator<<(std::ostream & o, VersusMenu const & i)
+std::ostream &				operator<<(std::ostream & o, AdventureMenu const & i)
 {
 	(void)i;
 	return (o);
@@ -67,20 +64,18 @@ std::ostream &				operator<<(std::ostream & o, VersusMenu const & i)
 
 // PUBLIC METHOD #################################################
 
-void VersusMenu::start()
+void AdventureMenu::start()
 {
-	std::cout << "VersusMenu start" << std::endl;
-	maps.push_back({"level 1", "assets/scenes/level1.scene"});
-	maps.push_back({"level 2", "assets/scenes/level2.scene"});
-	maps.push_back({"level 3", "assets/scenes/level3.scene"});
+	std::cout << "AdventureMenu start" << std::endl;
+	sceneLoader.name = "Level1";
 }
 
-void VersusMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
+void AdventureMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
 	
 }
 
-void VersusMenu::renderUI(struct nk_context *ctx)
+void AdventureMenu::renderUI(struct nk_context *ctx)
 {
 	uiManager->setThemeUI(ctx);
 
@@ -95,7 +90,7 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 		menuHeight
 	);
 	ctx->style.window.spacing = nk_vec2(0, 10);
-	if (nk_begin(ctx, "Versus", window_rect, NK_WINDOW_NO_SCROLLBAR))
+	if (nk_begin(ctx, "Adventure Menu", window_rect, NK_WINDOW_NO_SCROLLBAR))
 	{
 		nk_layout_row_dynamic(ctx, 75, 1);
 
@@ -104,17 +99,19 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 		// 	if (nk_button_label(ctx, it->name.c_str()))
 		// 		BeerEngine::SceneManager::LoadScene(it->scenePath);
 		// }
-		if (nk_button_label(ctx, "level 1"))
-			BeerEngine::SceneManager::LoadScene<Level1>();
-		if (nk_button_label(ctx, "level 2"))
-			BeerEngine::SceneManager::LoadScene<Level2>();
-		if (nk_button_label(ctx, "level 3"))
-			BeerEngine::SceneManager::LoadScene<Level3>();
-		if (nk_button_label(ctx, "level 4"))
-			BeerEngine::SceneManager::LoadScene<Level4>();
-
-		if (nk_button_label(ctx, "Random"))
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
+		if (nk_button_label(ctx, "New Game"))
+		{
+			sceneLoader.load();
+		}
+		if (nk_button_label(ctx, "Continue"))
+		{
+			this->setActive(false);
+			continueMenu->setActive(true);
+		}
+		if (nk_button_label(ctx, "Reset"))
+		{
+			gameProgression->resetGameProgression();
+		}
 		if (nk_button_label(ctx, "Back"))
 		{
 			this->setActive(false);
@@ -126,25 +123,21 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 	uiManager->resetToDefaultUI(ctx);
 }
 
-nlohmann::json	VersusMenu::serialize()
+nlohmann::json	AdventureMenu::serialize()
 {
 	auto j = Component::serialize();
 	j.merge_patch({
 		{"componentClass", type},
-		{"mainMenu", SERIALIZE_BY_ID(mainMenu)},
-		{"uiManager", SERIALIZE_BY_ID(uiManager)},
 	});
 	return j;
 }
 
-void VersusMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+void AdventureMenu::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 {
 	Component::deserialize(j, loader);
-	DESERIALIZE_BY_ID(this->mainMenu, MainMenu, "mainMenu", loader);
-	DESERIALIZE_BY_ID(this->uiManager, UIThemeManager, "uiManager", loader);
 }
 
-REGISTER_COMPONENT_CPP(VersusMenu)
+REGISTER_COMPONENT_CPP(AdventureMenu)
 
 // ###############################################################
 

@@ -35,11 +35,11 @@ namespace BeerEngine
 			AudioSource(const AudioSource &val);
 			virtual ~AudioSource( void );
 
-			void	    play();
-			bool        isPlaying();
-			void	    pause();
-			void		continuePlaying();
-			void	    stop();
+			const void	    play();
+			const bool        isPlaying();
+			const void	    pause();
+			const void		continuePlaying();
+			const void	    stop();
 
 			void	    Delete();
 

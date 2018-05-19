@@ -59,6 +59,7 @@ namespace Game
 
         void    Map::start(void)
         {
+			instance = this;
 			std::cout << "map start" << "\n";
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 			// itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
@@ -265,6 +266,9 @@ namespace Game
 							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
+						case V:
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::None);
+							break;
 						case 2:
 						case E:
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
@@ -354,6 +358,17 @@ namespace Game
 			{
 				for (int x = 0; x < _sizeX; x++)
 					if (_map[y][x] == 2 || _map[y][x] == E)
+						return (true);
+			}
+			return (false);
+		}
+
+		bool			Map::hasBlock(int id)
+		{
+			for (int y = 0; y < _sizeY; y++)
+			{
+				for (int x = 0; x < _sizeX; x++)
+					if (_map[y][x] == id)
 						return (true);
 			}
 			return (false);

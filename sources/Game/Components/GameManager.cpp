@@ -8,6 +8,8 @@
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/Breakable.hpp"
 #include "Game/Components/StartTimerUI.hpp"
+#include "Game/Components/GameProgression.hpp"
+#include "Game/Components/CameraController.hpp"
 
 namespace Game
 {
@@ -118,10 +120,25 @@ void GameManager::setVictory()
 	victoryMenu->setActive(true);
 }
 
+void GameManager::save()
+{
+	auto start = gameProgression->gameProgressionContainer.unlockedLevels.begin();
+	auto end = gameProgression->gameProgressionContainer.unlockedLevels.end();
+	auto unlockedLevel = std::find(start, end, victoryMenu->sceneLoader.name);
+	if (unlockedLevel == end)
+	{
+		gameProgression->gameProgressionContainer.unlockedLevels.push_back(victoryMenu->sceneLoader.name);
+		gameProgression->saveGameProgression();
+	}
+}
+
 BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
 {
 	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
 	.addAction([this] () {
+		auto cc = this->_gameObject->GetComponent<CameraController>();
+		if (cc)
+			cc->animationStart();
 		this->startTimerUI->updateDisplay("Ready?");
 		return true;
 	})
