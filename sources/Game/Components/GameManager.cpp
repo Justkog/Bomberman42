@@ -193,8 +193,8 @@ void GameManager::update()
 		if (!victoryMenu->_isActive && !gameOverMenu->_isActive)
 			inGameMenu->setActive(!inGameMenu->_isActive);
 	}
-	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::V))
-		victoryMenu->setActive(true);
+	// if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::V))
+	// 	victoryMenu->setActive(true);
 }
 
 void GameManager::fixedUpdate()
