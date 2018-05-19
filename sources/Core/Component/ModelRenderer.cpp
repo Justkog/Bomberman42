@@ -174,6 +174,10 @@ namespace BeerEngine
 
 		ModelRenderer::~ModelRenderer()
 		{
+			for (std::map<int, Graphics::AMaterial*>::iterator it = _materials.begin(); it != _materials.end(); ++it)
+			{
+				delete it->second;
+			}
 			if (_drawSize != nullptr)
 				delete _drawSize;
 			if (_vao != nullptr)

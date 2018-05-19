@@ -21,7 +21,6 @@ namespace BeerEngine
 		ShaderProgram	*Graphics::defaultGuiShader = nullptr;
 		ShaderProgram	*Graphics::shadowShader = nullptr;
 		ShaderProgram	*Graphics::shadowRenderShader = nullptr;
-		AMaterial		*Graphics::defaultMaterial = nullptr;
 		ALight			*Graphics::defaultLight = nullptr;
 		ShaderProgram	*Graphics::skyboxShader = nullptr;
 		Cubemap			*Graphics::defaultCubemap = nullptr;
@@ -215,7 +214,6 @@ namespace BeerEngine
 			shadowShader = loadShadowShader();
 			defaultCubemap = new Cubemap("assets/skyboxes/pano_1.jpg", 128);
 
-			defaultMaterial = new AMaterial(defaultShader);
 			defaultLight = new AmbiantLight(0.4f, glm::vec4(0.4, 0.7, 1.0, 1.0));
 		}
 
@@ -226,7 +224,6 @@ namespace BeerEngine
 			delete whiteTexture;
 			delete particleShader;
 			delete defaultShader;
-			delete defaultMaterial;
 			delete defaultLight;
 
 			delete lightShader;

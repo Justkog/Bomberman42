@@ -5,6 +5,7 @@
 
 namespace Game
 {
+	class SceneLoader;
 
 	namespace Component
 	{
@@ -21,9 +22,14 @@ namespace Game
 		class Map;
         class Player;
 
+		class Settings;
+		class GameProgression;
+
 		class MainMenu;
 		class UIThemeManager;
 		class VersusMenu;
+		class AdventureMenu;
+		class AdventureContinueMenu;
 		class SettingsMenu;
 		class InGameMenu;
 		class GameOverMenu;
@@ -32,7 +38,6 @@ namespace Game
 		class StartTimerUI;
 
 		class AudioManager;
-
 	}
 }
 

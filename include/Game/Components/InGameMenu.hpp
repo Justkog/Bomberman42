@@ -20,6 +20,7 @@
 #include "Core/Component/IDisable.hpp"
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IUI.hpp"
+#include "Game/SceneLoader.hpp"
 
 namespace Game
 {
@@ -41,6 +42,8 @@ namespace Game
 
 		public:
 			UIThemeManager	*uiManager;
+			Game::SceneLoader		sceneLoader;
+
 
 			InGameMenu(BeerEngine::GameObject *gameObject);
 			virtual ~InGameMenu( void );

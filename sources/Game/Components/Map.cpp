@@ -49,6 +49,7 @@ namespace Game
 
 		Map::~Map()
 		{
+			instance = nullptr;
 			for (int y = 0; y < _sizeY; y++)
 			{
 				delete[] _map[y];
@@ -58,6 +59,7 @@ namespace Game
 
         void    Map::start(void)
         {
+			instance = this;
 			std::cout << "map start" << "\n";
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 			// itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
@@ -356,6 +358,17 @@ namespace Game
 			{
 				for (int x = 0; x < _sizeX; x++)
 					if (_map[y][x] == 2 || _map[y][x] == E)
+						return (true);
+			}
+			return (false);
+		}
+
+		bool			Map::hasBlock(int id)
+		{
+			for (int y = 0; y < _sizeY; y++)
+			{
+				for (int x = 0; x < _sizeX; x++)
+					if (_map[y][x] == id)
 						return (true);
 			}
 			return (false);

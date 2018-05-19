@@ -30,6 +30,9 @@ namespace Game
 			CameraController & operator=( CameraController const & rhs );
 
 		public:
+			bool	startAnimation;
+			float	timeAnimation;
+
 			CameraController(BeerEngine::GameObject *gameObject);
 			virtual ~CameraController( void );
 
@@ -38,6 +41,8 @@ namespace Game
 			virtual void    start(void);
 			virtual void    fixedUpdate(void);
        		virtual void    update(void);
+
+			void			animationStart();
 
 			BeerEngine::Camera	*cam;
 			glm::vec2			lastMousePos;
