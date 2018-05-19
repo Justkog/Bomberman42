@@ -19,11 +19,12 @@ namespace BeerEngine
 		private:
 			std::vector<BeerEngine::BeerRoutine::BeerRoutine *> _currentRoutines;
 
+			ARoutineRunner(const ARoutineRunner &val);
+			ARoutineRunner &operator=(const ARoutineRunner &val);
+
 		public:
 			ARoutineRunner();
 			virtual ~ARoutineRunner();
-			ARoutineRunner(const ARoutineRunner &val);
-			ARoutineRunner &operator=(const ARoutineRunner &val);
 
 			virtual void update();
 

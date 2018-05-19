@@ -35,8 +35,8 @@ namespace Game
 			nk_style_item	backgroundImage;
 			nk_style_item	titleImage;
 
-			// VictoryMenu( void );
-			// VictoryMenu( VictoryMenu const & src );
+			VictoryMenu();
+			VictoryMenu(const VictoryMenu &val);
 			VictoryMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~VictoryMenu( void );

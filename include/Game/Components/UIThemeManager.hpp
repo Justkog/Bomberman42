@@ -40,8 +40,8 @@ namespace Game
 
 			nk_style_button themeButton;
 
-			// UIThemeManager( void );
-			// UIThemeManager( UIThemeManager const & src );
+			UIThemeManager();
+			UIThemeManager(const UIThemeManager &val);
 			UIThemeManager(BeerEngine::GameObject *gameObject);
 
 			virtual ~UIThemeManager( void );

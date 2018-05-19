@@ -13,23 +13,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*UIThemeManager::UIThemeManager ( void )
+UIThemeManager::UIThemeManager ( void )
 {
 	return ;
-}*/
+}
 
-/*UIThemeManager::UIThemeManager ( UIThemeManager const & src )
+UIThemeManager::UIThemeManager ( UIThemeManager const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 UIThemeManager &				UIThemeManager::operator=( UIThemeManager const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

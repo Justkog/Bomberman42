@@ -48,6 +48,10 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 
 		public:
+			Map();
+			Map(const Map &val);
+			Map &operator=(const Map &val);
+
             Map(BeerEngine::GameObject *gameObject);
 			~Map();
 

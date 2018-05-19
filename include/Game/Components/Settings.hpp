@@ -44,8 +44,8 @@ namespace Game
 		public:
 			AudioManager	*audioManager;
 
-			// Settings( void );
-			// Settings( Settings const & src );
+			Settings();
+			Settings(const Settings &val);
 			Settings(BeerEngine::GameObject *gameObject);
 			virtual ~Settings( void );
 

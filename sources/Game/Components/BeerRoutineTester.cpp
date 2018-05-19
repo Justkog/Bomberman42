@@ -13,16 +13,16 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*BeerRoutineTester::BeerRoutineTester ( void )
+BeerRoutineTester::BeerRoutineTester ( void )
 {
 	return ;
-}*/
+}
 
-/*BeerRoutineTester::BeerRoutineTester ( BeerRoutineTester const & src )
+BeerRoutineTester::BeerRoutineTester ( BeerRoutineTester const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 BeerRoutineTester &				BeerRoutineTester::operator=( BeerRoutineTester const & rhs )
 {

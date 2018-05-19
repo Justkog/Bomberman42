@@ -15,23 +15,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*ItemsUI::ItemsUI ( void )
+ItemsUI::ItemsUI ( void )
 {
 	return ;
-}*/
+}
 
-/*ItemsUI::ItemsUI ( ItemsUI const & src )
+ItemsUI::ItemsUI ( ItemsUI const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 ItemsUI &				ItemsUI::operator=( ItemsUI const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

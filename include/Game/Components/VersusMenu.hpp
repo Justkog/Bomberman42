@@ -39,8 +39,8 @@ namespace Game
 			MainMenu				*mainMenu;
 			std::vector<MapInfo> 	maps;
 
-			// VersusMenu( void );
-			// VersusMenu( VersusMenu const & src );
+			VersusMenu();
+			VersusMenu(const VersusMenu &val);
 			VersusMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~VersusMenu( void );

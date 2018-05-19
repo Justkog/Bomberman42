@@ -32,11 +32,11 @@ namespace BeerEngine
 			glm::mat4			_mat;
 			std::string			_sourceFile;
 		
-		public:
 			MeshRenderer();
 			MeshRenderer(const MeshRenderer &val);
 			MeshRenderer &operator=(const MeshRenderer &val);
 
+		public:
 			virtual ~MeshRenderer();
 
 			MeshRenderer(GameObject *gameObject);

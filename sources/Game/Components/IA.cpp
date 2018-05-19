@@ -35,6 +35,27 @@ namespace Game
 		{
         }
 
+		IA::IA ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		IA::IA ( IA const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		IA &				IA::operator=( IA const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
+
         IA::~IA(void)
         {
         }

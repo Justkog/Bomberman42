@@ -37,8 +37,8 @@ namespace Game
 		public:
 			UIThemeManager	*uiManager;
 
-			// InGameMenu( void );
-			// InGameMenu( InGameMenu const & src );
+			InGameMenu();
+			InGameMenu(const InGameMenu &val);
 			InGameMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~InGameMenu( void );

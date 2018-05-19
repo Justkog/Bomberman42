@@ -32,8 +32,8 @@ namespace Game
 			UIThemeManager	*uiManager;
 			std::string		text;
 
-			// StartTimerUI( void );
-			// StartTimerUI( StartTimerUI const & src );
+			StartTimerUI();
+			StartTimerUI(const StartTimerUI &val);
 			StartTimerUI(BeerEngine::GameObject *gameObject);
 
 			virtual ~StartTimerUI( void );

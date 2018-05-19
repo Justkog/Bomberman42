@@ -25,11 +25,12 @@ namespace BeerEngine
 		*/
 		class Component : public JsonSerializable, public SigSlotBase
 		{
-		public:
+		protected:
 			Component();
 			Component(const Component &val);
 			Component &operator=(const Component &val);
 
+		public:
 			Component(GameObject *gameObject);
 			virtual ~Component(void) {}
 

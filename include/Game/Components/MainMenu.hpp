@@ -38,8 +38,8 @@ namespace Game
 
 			// bool uiInit;
 
-			// MainMenu( void );
-			// MainMenu( MainMenu const & src );
+			MainMenu();
+			MainMenu(const MainMenu &val);
 			MainMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~MainMenu( void );

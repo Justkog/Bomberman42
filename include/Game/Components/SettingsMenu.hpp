@@ -57,8 +57,8 @@ namespace Game
 
 			nk_style_window mWindow;
 
-			// SettingsMenu( void );
-			// SettingsMenu( SettingsMenu const & src );
+			SettingsMenu();
+			SettingsMenu(const SettingsMenu &val);
 			SettingsMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~SettingsMenu( void );

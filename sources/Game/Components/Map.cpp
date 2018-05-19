@@ -23,6 +23,27 @@ namespace Game
             _transform(gameObject->transform)
 		{ }
 
+		Map::Map ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Map::Map ( Map const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Map &				Map::operator=( Map const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
+
 		Map::~Map()
 		{
 			for (int y = 0; y < _sizeY; y++)

@@ -35,8 +35,8 @@ namespace Game
 			nk_style_item	backgroundImage;
 			nk_style_item	youLoseImage;
 
-			// GameOverMenu( void );
-			// GameOverMenu( GameOverMenu const & src );
+			GameOverMenu();
+			GameOverMenu(const GameOverMenu &val);
 			GameOverMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~GameOverMenu( void );

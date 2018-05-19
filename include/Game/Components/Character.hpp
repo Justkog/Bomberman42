@@ -45,6 +45,11 @@ namespace Game
 			BeerEngine::Transform &_transform;
 
 		public:
+
+			Character();
+			Character(const Character &val);
+			Character &operator=(const Character &val);
+
 			enum Direction {Up, Down, Left, Right};
 
             Character(BeerEngine::GameObject *gameObject);

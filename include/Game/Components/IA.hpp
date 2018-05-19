@@ -64,6 +64,11 @@ namespace Game
 			bool    	findPath(glm::vec2 target, std::vector<glm::vec2> *path = nullptr);
 
 		public:
+
+			IA();
+			IA(const IA &val);
+			IA &operator=(const IA &val);
+
             IA(BeerEngine::GameObject *gameObject);
 			~IA(void);
 

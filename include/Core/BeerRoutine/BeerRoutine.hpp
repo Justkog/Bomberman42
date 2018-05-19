@@ -20,11 +20,12 @@ namespace BeerEngine
 			std::vector<std::function<bool (void)>> _actions;
 			float	_timer;
 			bool	_loop;
+
+			BeerRoutine(const BeerRoutine &val);
+			BeerRoutine &operator=(const BeerRoutine &val);
 		public:
 			BeerRoutine();
 			virtual ~BeerRoutine();
-			BeerRoutine(const BeerRoutine &val);
-			BeerRoutine &operator=(const BeerRoutine &val);
 
 			/*!
 			*  \brief Ajout d'action

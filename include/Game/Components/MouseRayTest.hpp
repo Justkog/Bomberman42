@@ -27,9 +27,8 @@ namespace Game
 								public BeerEngine::Component::IStart
 		{
 		public:
-
-			// MouseRayTest( void );
-			// MouseRayTest( MouseRayTest const & src );
+			MouseRayTest();
+			MouseRayTest(const MouseRayTest &val);
 			MouseRayTest(BeerEngine::GameObject *gameObject);
 
 			virtual ~MouseRayTest( void );

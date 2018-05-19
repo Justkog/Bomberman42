@@ -22,10 +22,6 @@ namespace BeerEngine
 		{
 
 		public:
-			AudioClip();
-			AudioClip(const AudioClip &val);
-			AudioClip &operator=(const AudioClip &val);
-
 			AudioClip( const std::string& Filename );
 			virtual ~AudioClip();
 
@@ -35,6 +31,9 @@ namespace BeerEngine
 		private:
 			ALuint _buffer;
 
+			AudioClip();
+			AudioClip(const AudioClip &val);
+			AudioClip &operator=(const AudioClip &val);
 		};
 	}
 }

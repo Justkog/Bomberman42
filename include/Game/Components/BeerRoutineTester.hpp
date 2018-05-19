@@ -29,9 +29,8 @@ namespace Game
 									public BeerEngine::BeerRoutine::ARoutineRunner
 		{
 		public:
-
-			// BeerRoutineTester( void );
-			// BeerRoutineTester( BeerRoutineTester const & src );
+			BeerRoutineTester();
+			BeerRoutineTester(const BeerRoutineTester &val);
 			BeerRoutineTester(BeerEngine::GameObject *gameObject);
 
 			virtual ~BeerRoutineTester( void );

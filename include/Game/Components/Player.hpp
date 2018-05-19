@@ -46,6 +46,10 @@ namespace Game
 			BeerEngine::Audio::AudioSource      *itemSrcAudio;
 			bool								play;
 
+			Player();
+			Player(const Player &val);
+			Player &operator=(const Player &val);
+
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);
 

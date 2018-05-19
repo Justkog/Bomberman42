@@ -27,8 +27,8 @@ namespace Game
 
 		public:
 
-			// CameraController( void );
-			// CameraController( CameraController const & src );
+			CameraController();
+			CameraController(const CameraController &val);
 			CameraController(BeerEngine::GameObject *gameObject);
 
 			virtual ~CameraController( void );

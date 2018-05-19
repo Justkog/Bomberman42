@@ -31,8 +31,8 @@ namespace Game
 		{
 		public:
 
-			// BackgroundDrawer( void );
-			// BackgroundDrawer( BackgroundDrawer const & src );
+			BackgroundDrawer();
+			BackgroundDrawer(const BackgroundDrawer &val);
 			BackgroundDrawer(BeerEngine::GameObject *gameObject);
 
 			virtual ~BackgroundDrawer( void );

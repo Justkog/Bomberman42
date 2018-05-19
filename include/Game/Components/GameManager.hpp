@@ -45,9 +45,8 @@ namespace Game
 			AudioManager				*audioManager;
 			bool						storyMode;
 
-
-			// GameManager( void );
-			// GameManager( GameManager const & src );
+			GameManager();
+			GameManager(const GameManager &val);
 			GameManager(BeerEngine::GameObject *gameObject);
 
 			virtual ~GameManager( void );

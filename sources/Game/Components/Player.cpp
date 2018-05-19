@@ -20,6 +20,27 @@ namespace Game
 			_gameStarted(false)
 		{ }
 
+		Player::Player ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Player::Player ( Player const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Player &	Player::operator=( Player const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
+
 		Player::~Player(void)
 		{ }
 

@@ -33,6 +33,7 @@ namespace BeerEngine
 			RigidBody2D();
 			RigidBody2D(const RigidBody2D &val);
 			RigidBody2D &operator=(const RigidBody2D &val);
+			
 		public:
 
 			RigidBody2D(GameObject *gameObject);

@@ -15,23 +15,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*GameOverMenu::GameOverMenu ( void )
+GameOverMenu::GameOverMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*GameOverMenu::GameOverMenu ( GameOverMenu const & src )
+GameOverMenu::GameOverMenu ( GameOverMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 GameOverMenu &				GameOverMenu::operator=( GameOverMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

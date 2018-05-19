@@ -23,7 +23,11 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 
 		public:
-      Breakable(BeerEngine::GameObject *gameObject);
+			Breakable();
+			Breakable(const Breakable &val);
+			Breakable &operator=(const Breakable &val);
+
+      		Breakable(BeerEngine::GameObject *gameObject);
 			~Breakable(void);
 
 			Signal<glm::vec3, int> onDestruction;

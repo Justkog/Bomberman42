@@ -38,8 +38,8 @@ namespace Game
 			nk_style_item	tvScreen;
 			double timeSinceGameStart;
 
-			// TimeUI( void );
-			// TimeUI( TimeUI const & src );
+			TimeUI();
+			TimeUI(const TimeUI &val);
 			TimeUI(BeerEngine::GameObject *gameObject);
 
 			virtual ~TimeUI( void );

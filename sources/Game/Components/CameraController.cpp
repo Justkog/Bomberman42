@@ -14,23 +14,22 @@ namespace Game
 
 		// CANONICAL #####################################################
 
-		// CameraController::CameraController ( void )
-		// {
-		// 	return ;
-		// }
+		CameraController::CameraController ( void )
+		{
+			return ;
+		}
 
-		// CameraController::CameraController ( CameraController const & src )
-		// {
-		// 	*this = src;
-		// 	return ;
-		// }
+		CameraController::CameraController ( CameraController const & src )
+		{
+			*this = src;
+			return ;
+		}
 
 		CameraController &				CameraController::operator=( CameraController const & rhs )
 		{
+			(void) rhs;
 			if (this != &rhs)
-			{
-				// make stuff
-			}
+			{}
 			return (*this);
 		}
 

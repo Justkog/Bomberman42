@@ -59,6 +59,10 @@ namespace BeerEngine
 			GLint	_spriteID;
 			GLint	_spriteUVSizeID;
 
+			ParticleBase();
+			ParticleBase(const ParticleBase &val);
+			ParticleBase &operator=(const ParticleBase &val);
+
 		protected:
 			Graphics::Texture	*texture;
 			GLfloat				spawnTime;
@@ -74,11 +78,6 @@ namespace BeerEngine
 			int					animFrameHeight;
 
 			void	addParticle(void);
-
-			ParticleBase();
-			ParticleBase(const ParticleBase &val);
-			ParticleBase &operator=(const ParticleBase &val);
-
 		public:
 			glm::vec3		offset;
 			ParticleBase(GameObject *gameObject);

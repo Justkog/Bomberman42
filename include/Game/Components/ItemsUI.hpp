@@ -41,8 +41,8 @@ namespace Game
 			int				bombs;
 			int				range;
 
-			// ItemsUI( void );
-			// ItemsUI( ItemsUI const & src );
+			ItemsUI();
+			ItemsUI(const ItemsUI &val);
 			ItemsUI(BeerEngine::GameObject *gameObject);
 
 			virtual ~ItemsUI( void );

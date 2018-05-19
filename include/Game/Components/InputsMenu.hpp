@@ -38,7 +38,6 @@ namespace Game
 								public BeerEngine::Component::IUI
 		{
 		public:
-
 			std::map<std::string, InputInfo> 	inputs;
 			std::vector<std::string> 			inputsList;
 
@@ -48,8 +47,8 @@ namespace Game
 			float 								menuWidth;
 			float 								menuHeight;
 
-			// InputsMenu( void );
-			// InputsMenu( InputsMenu const & src );
+			InputsMenu( void );
+			InputsMenu( InputsMenu const & src );
 			InputsMenu(BeerEngine::GameObject *gameObject);
 
 			virtual ~InputsMenu( void );

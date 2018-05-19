@@ -17,13 +17,12 @@ namespace BeerEngine
 		*/
 		class BoxCollider2D : public ACollider
 		{
-		protected:
-
-		public:
+		private:
 			BoxCollider2D();
 			BoxCollider2D(const BoxCollider2D &val);
 			BoxCollider2D &operator=(const BoxCollider2D &val);
 
+		public:
 			BoxCollider2D(GameObject *gameObject);
 			virtual ~BoxCollider2D();
 			bool checkCollision(ACollider *other, bool response = true);

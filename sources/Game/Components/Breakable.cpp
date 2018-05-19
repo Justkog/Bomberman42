@@ -10,6 +10,24 @@ namespace Game
 		_transform(gameObject->transform)
 		{ }
 
+		Breakable::Breakable(void) :
+            _transform(BeerEngine::Transform::basic)
+		{}
+
+		Breakable::Breakable(const Breakable &val) :
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = val;
+		}
+
+		Breakable &Breakable::operator=(const Breakable &val)
+		{
+			(void) val;
+			if (this != &val)
+			{ }
+			return (*this);
+		}
+
 		Breakable::~Breakable(void)
 		{
 			destroyed();

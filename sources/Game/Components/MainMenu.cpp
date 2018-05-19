@@ -20,23 +20,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*MainMenu::MainMenu ( void )
+MainMenu::MainMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*MainMenu::MainMenu ( MainMenu const & src )
+MainMenu::MainMenu ( MainMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 MainMenu &				MainMenu::operator=( MainMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

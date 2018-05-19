@@ -34,6 +34,10 @@ namespace Game
 		protected:
 
 		public:
+			Item();
+			Item(const Item &val);
+			Item &operator=(const Item &val);
+
             Item(BeerEngine::GameObject *gameObject);
 			~Item();
 			
