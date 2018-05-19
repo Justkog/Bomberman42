@@ -6,14 +6,20 @@ namespace Game
 {
 	namespace Component
 	{
+	AudioManager		*AudioManager::instance = nullptr;
     AudioManager::AudioManager(BeerEngine::GameObject *gameObject):
 		Component(gameObject),
 			audioType(Sound),
     	srcAudio(BeerEngine::Audio::AudioSource(gameObject))
-    { }
+    {
+		if (instance == nullptr)
+			instance = this;
+	}
 
     AudioManager::AudioManager(void)
-    {}
+    {
+		instance = this;
+	}
 
     AudioManager::AudioManager(const AudioManager &val)
     {
