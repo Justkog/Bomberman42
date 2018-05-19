@@ -6,6 +6,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/GameManager.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"

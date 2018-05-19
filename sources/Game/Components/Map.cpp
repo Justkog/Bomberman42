@@ -361,6 +361,17 @@ namespace Game
 			return (false);
 		}
 
+		bool			Map::hasBlock(int id)
+		{
+			for (int y = 0; y < _sizeY; y++)
+			{
+				for (int x = 0; x < _sizeX; x++)
+					if (_map[y][x] == id)
+						return (true);
+			}
+			return (false);
+		}
+
 		bool			Map::hasCharacter(glm::vec2 pos)
 		{
 			if (_player && worldToMap(_player->_gameObject->transform.position) == pos)
