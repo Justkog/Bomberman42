@@ -23,6 +23,31 @@ namespace BeerEngine
         : _skyboxCubemap(nullptr)
     {}
 
+    AScene::AScene(const AScene &val)
+    {
+        *this = val;
+    }
+
+    AScene &AScene::operator=(const AScene &val)
+    {
+        if (this != &val)
+        {
+            AScene::~AScene();
+            for (const std::pair<int, GameObject *> &p : val._gameObjects)
+                _gameObjects[p.first] = p.second;
+            for (const std::pair<int, Graphics::ALight *> &p : val._lights)
+                _lights[p.first] = p.second;
+            for (int i = 0; i < val._toDestroy.size(); i++)
+                _toDestroy.push_back(val._toDestroy[i]);
+            for (int i = 0; i < val._toStart.size(); i++)
+                _toStart.push_back(val._toStart[i]);
+            for (int i = 0; i < val._toStartUI.size(); i++)
+                _toStartUI.push_back(val._toStartUI[i]);
+            _skyboxCubemap = val._skyboxCubemap;
+        }
+        return (*this);
+    }
+
     AScene::~AScene(void)
     {
         std::map<int, GameObject *>::iterator it;

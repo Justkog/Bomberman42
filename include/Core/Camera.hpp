@@ -13,10 +13,10 @@
  */
 namespace BeerEngine
 {
-	/*! \class Camera
-	* \brief classe la camera du projet, ainsi permettant l'acces de la view matrice dans tout le projet
+	/*! \struct Camera
+	* \brief struct de la camera du projet, ainsi permettant l'acces de la view matrice dans tout le projet
 	*/
-	class Camera {
+	struct Camera {
 	public:
 		static Camera	*main; /*!< Instance de la camera principal*/
 

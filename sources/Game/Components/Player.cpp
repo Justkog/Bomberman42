@@ -13,12 +13,36 @@ namespace Game
 {
 	namespace Component
 	{
+		Player						*Player::instance = nullptr;
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
 			_transform(gameObject->transform),
 			_character(nullptr),
 			_gameStarted(false)
-		{ }
+		{
+			instance = this;
+		}
+
+		Player::Player ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Player::Player ( Player const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Player &	Player::operator=( Player const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
 
 		Player::~Player(void)
 		{ }

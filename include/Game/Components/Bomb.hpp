@@ -35,6 +35,11 @@ namespace Game
 
 			glm::vec3	*hitDir;
 
+		private:
+			Bomb();
+			Bomb(const Bomb &val);
+			Bomb &operator=(const Bomb &val);
+
 		public:
             Bomb(BeerEngine::GameObject *gameObject);
 			virtual ~Bomb(void);

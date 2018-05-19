@@ -100,7 +100,7 @@ void    Level1::init(void)
 		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
 		playerColl->_radius = 0.5;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-		playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
+		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
 	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
@@ -165,3 +165,5 @@ void    Level1::init(void)
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level1.scene");
 }
+
+Level1 Level1::instance = Level1();

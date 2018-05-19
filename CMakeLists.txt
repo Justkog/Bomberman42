@@ -49,6 +49,7 @@ set(SOURCES
         dependencies/sigslot/src/signal.cpp
         sources
         sources/Game
+        sources/Game/Level1.cpp
         sources/Game/SceneMain.cpp
         sources/Game/Components
         sources/Game/Components/GameOverMenu.cpp
@@ -136,6 +137,7 @@ set(HEADERS
         dependencies/sigslot/src/signal.h
         include
         include/Game
+        include/Game/Level1.hpp
         include/Game/Components
         include/Game/Components/TimeUI.hpp
         include/Game/Components/BackgroundDrawer.hpp

@@ -10,6 +10,27 @@ namespace BeerEngine
 			_loop = false;
 		}
 
+		BeerRoutine::BeerRoutine(const BeerRoutine &val)
+		{
+			*this = val;
+		}
+		
+		BeerRoutine &BeerRoutine::operator=(const BeerRoutine &val)
+		{
+			if (this != &val)
+			{
+				_actions.clear();
+				for (int i = 0; i < val._actions.size(); i++)
+					_actions.push_back(val._actions[i]);
+				_timer = val._timer;
+				_loop = val._loop;
+			}
+			return (*this);
+		}
+
+		BeerRoutine::~BeerRoutine()
+		{}
+
 		BeerRoutine &BeerRoutine::addAction(std::function<bool (void)> action)
 		{
 			_actions.push_back(action);

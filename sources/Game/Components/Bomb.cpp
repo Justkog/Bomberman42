@@ -32,6 +32,22 @@ namespace Game
 				hitDir[i] = glm::vec3(_gameObject->transform.position);
         }
 
+		Bomb::Bomb(void)
+		{}
+
+		Bomb::Bomb(const Bomb &val)
+		{
+			*this = val;
+		}
+
+		Bomb &Bomb::operator=(const Bomb &val)
+		{
+			(void) val;
+			if (this != &val)
+			{ }
+			return (*this);
+		}
+
 		Bomb::~Bomb(void)
 		{
 			auto it = std::find(bombs.begin(), bombs.end(), this);
@@ -193,7 +209,7 @@ namespace Game
 				explodeParticule->setLifeTime(0.5f);
 				explodeParticule->setSize(1.0f, 2.0f);
 				explodeParticule->setSpawnTime(1.0f / 120.0f);
-				explodeParticule->offset = glm::vec3(0, 0.25f, 0) + glm::normalize(dir) * i;
+				explodeParticule->offset = glm::vec3(0, 0.25f, 0.5f) + glm::normalize(dir) * i;
 			}
 			// bombDeflag->setSize(2.0f);
 			// float timeToSpawnByPower = 90.0f + power * 30.0f;
@@ -216,7 +232,7 @@ namespace Game
 				playerParticule->setLifeTime(0.5f);
 				playerParticule->setSize(1.0f, 2.0f);
 				playerParticule->setSpawnTime(1.0f / 120.0f);
-				playerParticule->offset = glm::vec3(0, 0.5f, 0);
+				playerParticule->offset = glm::vec3(0, 0.5f, 0.5f);
 				explodeToward(glm::vec3(power, 0.0f, 0.0f), 0);
 				explodeToward(glm::vec3(-power, 0.0f, 0.0f), 1);
 				explodeToward(glm::vec3(0.0f, 0.0f, power), 2);

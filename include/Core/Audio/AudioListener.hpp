@@ -27,7 +27,6 @@ namespace BeerEngine
 		{
 
 		public:
-
 			AudioListener(BeerEngine::GameObject *gameObject);
 			virtual ~AudioListener();
 

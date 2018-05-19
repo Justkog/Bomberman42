@@ -20,17 +20,26 @@ namespace BeerEngine
 	*/
     class Transform : public JsonSerializable
 	{
+	private:
+		Transform(const Transform &val);
+
 	public:
 		Transform	*parent; /*!< Transform parent d'un objet*/
 		glm::vec3	pivot; /*!< Offset du point de rotation de l'objet*/
 		glm::vec3	position; /*!< Position de l'objet dans l'espace*/
 		glm::quat	rotation; /*!< Rotation de l'objetr*/
 		glm::vec3	scale; /*!< Taille de l'objet*/
+		
+		static Transform basic;
+
 		/*!
 		*  \brief Constructeur
 		*  Constructeur de la classe Transform
 		*/
 		Transform();
+
+		Transform &operator=(const Transform &val);
+
 		/*!
 		*  \brief deplacer l'objet
 		*  Methode qui permet de deplacer l'objet grace a un vecteur

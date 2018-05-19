@@ -31,6 +31,10 @@ namespace BeerEngine
 			std::string		_sourceFile;
 
 		public:
+			Texture();
+			Texture(const Texture &val);
+			Texture &operator=(const Texture &val);
+
 			Texture(unsigned int width, unsigned int height, unsigned char *data, GLenum format = GL_BGR);
 			~Texture();
 			void	bind(void);

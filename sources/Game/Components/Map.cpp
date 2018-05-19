@@ -18,10 +18,34 @@ namespace Game
 	namespace Component
 	{
 
+		Map		*Map::instance = nullptr;
         Map::Map(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform)
-		{ }
+		{
+			instance = this;
+		}
+
+		Map::Map ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Map::Map ( Map const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Map &				Map::operator=( Map const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
 
 		Map::~Map()
 		{

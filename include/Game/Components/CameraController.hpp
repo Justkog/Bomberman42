@@ -25,15 +25,14 @@ namespace Game
 		private:
 			void syncCam();
 
+			CameraController();
+			CameraController(const CameraController &val);
+			CameraController & operator=( CameraController const & rhs );
+
 		public:
-
-			// CameraController( void );
-			// CameraController( CameraController const & src );
 			CameraController(BeerEngine::GameObject *gameObject);
-
 			virtual ~CameraController( void );
 
-			CameraController & operator=( CameraController const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, CameraController const & i);
 
 			virtual void    start(void);
@@ -42,6 +41,8 @@ namespace Game
 
 			BeerEngine::Camera	*cam;
 			glm::vec2			lastMousePos;
+
+			bool				tpsCamera;
 
 			REGISTER_COMPONENT_HPP
 		};

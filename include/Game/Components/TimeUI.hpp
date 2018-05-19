@@ -32,19 +32,20 @@ namespace Game
 			double 			_startTimeSinceStartup;
 			bool			_started;
 
+			TimeUI();
+			TimeUI(const TimeUI &val);
+			TimeUI & operator=( TimeUI const & rhs );
+
 		public:
 			UIThemeManager	*uiManager;
 			nk_style_item	backGround;
 			nk_style_item	tvScreen;
 			double timeSinceGameStart;
 
-			// TimeUI( void );
-			// TimeUI( TimeUI const & src );
 			TimeUI(BeerEngine::GameObject *gameObject);
 
 			virtual ~TimeUI( void );
 
-			TimeUI & operator=( TimeUI const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, TimeUI const & i);
 
 			virtual void start();

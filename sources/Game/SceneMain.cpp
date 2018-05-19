@@ -24,7 +24,6 @@
 #include "Game/Components/AudioManager.hpp"
 #include "Game/Components/MouseRayTest.hpp"
 #include "Game/Components/BeerRoutineTester.hpp"
-#include "Game/CameraTest.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
 #include "Core/Graphics/Graphics.hpp"

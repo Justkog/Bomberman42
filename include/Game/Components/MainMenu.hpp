@@ -29,6 +29,11 @@ namespace Game
 						public BeerEngine::Component::IUI
 
 		{
+		private:
+			MainMenu();
+			MainMenu(const MainMenu &val);
+			MainMenu & operator=( MainMenu const & rhs );
+
 		public:
 			SettingsMenu	*settingsMenu;
 			VersusMenu	*versusMenu;
@@ -37,14 +42,9 @@ namespace Game
 			nk_style_window mWindow;
 
 			// bool uiInit;
-
-			// MainMenu( void );
-			// MainMenu( MainMenu const & src );
 			MainMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~MainMenu( void );
 
-			MainMenu & operator=( MainMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, MainMenu const & i);
 
 			virtual void start();

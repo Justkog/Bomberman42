@@ -29,15 +29,16 @@ namespace Game
 									public BeerEngine::Component::IStartUI,
 									public BeerEngine::Component::IUI
 		{
+		
+		private:
+			BackgroundDrawer();
+			BackgroundDrawer(const BackgroundDrawer &val);
+			BackgroundDrawer & operator=( BackgroundDrawer const & rhs );
+
 		public:
-
-			// BackgroundDrawer( void );
-			// BackgroundDrawer( BackgroundDrawer const & src );
 			BackgroundDrawer(BeerEngine::GameObject *gameObject);
-
 			virtual ~BackgroundDrawer( void );
 
-			BackgroundDrawer & operator=( BackgroundDrawer const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, BackgroundDrawer const & i);
 
 			virtual void start();

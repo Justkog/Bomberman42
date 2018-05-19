@@ -30,6 +30,27 @@ namespace Game
 
         }
 
+		Character::Character ( void ) :
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Character::Character ( Character const & src ) :
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Character &				Character::operator=( Character const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
+
         void    Character::start(void)
         {
 			bombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");
@@ -78,6 +99,7 @@ namespace Game
 
         void    Character::move(Direction dir)
         {
+            _dir = dir;
             switch (dir)
             {
                 case Direction::Up:

@@ -43,6 +43,50 @@ namespace BeerEngine
 //			_lightColorID = _shader->getUniformLocation("light.color");
 		}
 
+		AMaterial::AMaterial()
+		{}
+
+		AMaterial::AMaterial(const AMaterial &val)
+		{
+			*this = val;
+		}
+		
+		AMaterial &AMaterial::operator=(const AMaterial &val)
+		{
+			if (this != &val)
+			{
+				_shader = val._shader;
+				_color = val._color;
+				_albedo = val._albedo;
+				_normal = val._normal;
+				_bump = val._bump;
+				_rought = val._rought;
+				_metalic = val._metalic;
+				_roughtFactor = val._roughtFactor; 
+				_metalicFactor = val._metalicFactor;
+				_envMap = val._envMap;
+				_colorShaderID = val._colorShaderID;
+				_albedoID = val._albedoID;
+				_hasAlbedoID = val._hasAlbedoID;
+				_normalID = val._normalID;
+				_hasNormalID = val._hasNormalID;
+				_bumpID = val._bumpID;
+				_hasBumpID = val._hasBumpID;
+				_projectionShaderID = val._projectionShaderID;
+				_viewShaderID = val._viewShaderID;
+				_modelShaderID = val._modelShaderID;
+				_viewPosID = val._viewPosID;
+				_viewDirID = val._viewDirID;
+				_lightPosID = val._lightPosID;
+				_lightDirID = val._lightDirID;
+				_lightIntensityID = val._lightIntensityID;
+				_lightColorID = val._lightColorID;
+				_envMapID = val._envMapID;
+				_hasEnvMapID = val._hasEnvMapID;
+			}
+			return (*this);
+		}
+
 		void	AMaterial::bind(glm::mat4 &model)
 		{
 			_shader->bind();

@@ -26,23 +26,22 @@ GameManager & GameManager::GetInstance()
 
 // CANONICAL #####################################################
 
-/*GameManager::GameManager ( void )
+GameManager::GameManager ( void )
 {
 	return ;
-}*/
+}
 
-/*GameManager::GameManager ( GameManager const & src )
+GameManager::GameManager ( GameManager const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 GameManager &				GameManager::operator=( GameManager const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

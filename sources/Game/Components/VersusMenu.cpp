@@ -19,23 +19,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*VersusMenu::VersusMenu ( void )
+VersusMenu::VersusMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*VersusMenu::VersusMenu ( VersusMenu const & src )
+VersusMenu::VersusMenu ( VersusMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 VersusMenu &				VersusMenu::operator=( VersusMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

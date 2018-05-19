@@ -17,6 +17,33 @@ namespace BeerEngine
 			renderMode(GL_TRIANGLES)
 		{}
 
+		MeshRenderer::MeshRenderer() :
+			Component()
+		{}
+
+		MeshRenderer::MeshRenderer(const MeshRenderer &val)
+		{
+			*this = val;
+		}
+		
+		MeshRenderer &MeshRenderer::operator=(const MeshRenderer &val)
+		{
+			if (this != &val)
+			{
+				if (_mesh)
+					delete _mesh;
+				_mesh = val._mesh;
+				_material = val._material;
+				_mat = val._mat;
+				_sourceFile = val._sourceFile;
+				renderMode = val.renderMode;
+			}
+			return (*this);
+		}
+
+		MeshRenderer::~MeshRenderer()
+		{}
+
 		Graphics::Mesh	*MeshRenderer::getMesh(void)
 		{
 			return (_mesh);

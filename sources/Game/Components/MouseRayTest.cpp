@@ -23,23 +23,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*MouseRayTest::MouseRayTest ( void )
+MouseRayTest::MouseRayTest ( void )
 {
 	return ;
-}*/
+}
 
-/*MouseRayTest::MouseRayTest ( MouseRayTest const & src )
+MouseRayTest::MouseRayTest ( MouseRayTest const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 MouseRayTest &				MouseRayTest::operator=( MouseRayTest const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

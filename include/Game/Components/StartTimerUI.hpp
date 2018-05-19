@@ -28,17 +28,18 @@ namespace Game
 						public BeerEngine::Component::IStartUI, 
 						public BeerEngine::Component::IUI
 		{
+		private:
+			StartTimerUI();
+			StartTimerUI(const StartTimerUI &val);
+			StartTimerUI & operator=( StartTimerUI const & rhs );
+
 		public:
 			UIThemeManager	*uiManager;
 			std::string		text;
 
-			// StartTimerUI( void );
-			// StartTimerUI( StartTimerUI const & src );
 			StartTimerUI(BeerEngine::GameObject *gameObject);
-
 			virtual ~StartTimerUI( void );
 
-			StartTimerUI & operator=( StartTimerUI const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, StartTimerUI const & i);
 
 			virtual void start();

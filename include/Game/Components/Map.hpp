@@ -48,7 +48,13 @@ namespace Game
 		protected:
 			BeerEngine::Transform	&_transform;
 
+		private:
+			Map();
+			Map(const Map &val);
+			Map &operator=(const Map &val);
+
 		public:
+			static Map		*instance;
             Map(BeerEngine::GameObject *gameObject);
 			~Map();
 

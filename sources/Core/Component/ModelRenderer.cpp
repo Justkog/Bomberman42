@@ -27,6 +27,60 @@ namespace BeerEngine
 			_animationSpeed(1)
 		{}
 
+		ModelRenderer::ModelRenderer()
+		{}
+
+		ModelRenderer::ModelRenderer(const ModelRenderer &val)
+		{
+			*this = val;
+		}
+		
+		ModelRenderer &ModelRenderer::operator=(const ModelRenderer &val)
+		{
+			if (this != &val)
+			{
+				ModelRenderer::~ModelRenderer();
+
+				_importer = val._importer;
+				_assimpScene = val._assimpScene;
+				for (const std::pair<int, Graphics::AMaterial*> &p : val._materials)
+					_materials[p.first] = p.second;
+				for (const std::pair<Graphics::Mesh*, int> &p : val._materialIndices)
+					_materialIndices[p.first] = p.second;
+				_mat = val._mat;
+				for (const std::pair<std::string, Animation> &p : val._animations)
+					_animations[p.first] = p.second;
+				
+				_currentAnimation = val._currentAnimation;
+				_playAnimation = val._playAnimation;
+				_loopAnimation = val._loopAnimation;
+				_animationTime = val._animationTime;
+				_animationSpeed = val._animationSpeed;
+				_scene = val._scene;
+				_numMeshes = val._numMeshes;
+				_drawSize = val._drawSize;
+				
+				_vao = val._vao; 
+				_vbo = val._vbo; 
+				_ubo = val._ubo; 
+				_nbo = val._nbo; 
+				_wbo = val._wbo; 
+				_bbo = val._bbo;
+
+				for (const std::pair<std:: string, uint> &p : val._boneMapping)
+					_boneMapping[p.first] = p.second;
+				_numBones = val._numBones;
+				for (int i = 0; i < val._boneInfo.size(); i++)
+					_boneInfo.push_back(val._boneInfo[i]);
+				for (int i = 0; i < val._transforms.size(); i++)
+					_transforms.push_back(val._transforms[i]);
+				for (int i = 0; i < val._boneTransforms.size(); i++)
+					_boneTransforms.push_back(val._boneTransforms[i]);
+				_globalInverseTransform = val._globalInverseTransform;
+			}
+			return (*this);
+		}
+
 		ModelRenderer	&ModelRenderer::load(const std::string &file)
 		{
 			_scene = _importer.ReadFile(file.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices | aiProcess_LimitBoneWeights);
@@ -120,12 +174,20 @@ namespace BeerEngine
 
 		ModelRenderer::~ModelRenderer()
 		{
-			delete[] _vao;
-			delete[] _vbo;
-			delete[] _ubo;
-			delete[] _nbo;
-			delete[] _bbo;
-			delete[] _wbo;
+			if (_drawSize != nullptr)
+				delete _drawSize;
+			if (_vao != nullptr)
+				glDeleteVertexArrays(_numMeshes, _vao);
+			if (_vbo != nullptr)
+				glDeleteBuffers(_numMeshes, _vbo);
+			if (_ubo != nullptr)
+				glDeleteBuffers(_numMeshes, _ubo);
+			if (_nbo != nullptr)
+				glDeleteBuffers(_numMeshes, _nbo);
+			if (_wbo != nullptr)
+				glDeleteBuffers(_numMeshes, _wbo);
+			if (_bbo != nullptr)
+				glDeleteBuffers(_numMeshes, _bbo);
 		}
 
 		void ModelRenderer::loadBones(uint meshIndex, const aiMesh* mesh, std::vector<VertexBoneData>& bones)
