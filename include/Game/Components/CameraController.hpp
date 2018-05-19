@@ -30,6 +30,9 @@ namespace Game
 			CameraController & operator=( CameraController const & rhs );
 
 		public:
+			bool	startAnimation;
+			float	timeAnimation;
+			
 			CameraController(BeerEngine::GameObject *gameObject);
 			virtual ~CameraController( void );
 

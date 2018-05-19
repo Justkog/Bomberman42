@@ -8,6 +8,7 @@
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/Breakable.hpp"
 #include "Game/Components/StartTimerUI.hpp"
+#include "Game/Components/CameraController.hpp"
 
 namespace Game
 {
@@ -122,6 +123,9 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
 {
 	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
 	.addAction([this] () {
+		auto cc = this->_gameObject->GetComponent<CameraController>();
+		if (cc)
+			cc->startAnimation = true;
 		this->startTimerUI->updateDisplay("Ready?");
 		return true;
 	})
