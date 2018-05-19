@@ -177,7 +177,7 @@ void    SceneTest::init(void)
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerColl->_radius = 0.5;
 	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
-	playerRB2D->kinematic = BeerEngine::Component::RBType::Static;
+	playerRB2D->kinematic = BeerEngine::Component::RBType::None;
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;

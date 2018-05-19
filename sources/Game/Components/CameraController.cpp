@@ -5,6 +5,7 @@
 #include "Core/Camera.hpp"
 #include "Game/Components/Map.hpp"
 #include "Game/Components/Player.hpp"
+#include "Game/Components/Character.hpp"
 
 namespace Game
 {
@@ -80,7 +81,7 @@ namespace Game
 			}
 			else
 				this->_gameObject->transform.position = glm::vec3(0, 15, 3.0f);
-			this->_gameObject->transform.rotation = this->_gameObject->transform.rotation * glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
+			this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
 			tpsCamera = false;
 			syncCam();
 		}
@@ -95,6 +96,7 @@ namespace Game
 				if (player)
 				{
 					this->_gameObject->transform.position = player->_gameObject->transform.position + glm::vec3(0, 10, -1.5f);
+					this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
 				}
 			}
 			else
@@ -106,6 +108,7 @@ namespace Game
 					if (y < 10)
 						y = 10;
 					this->_gameObject->transform.position = glm::vec3(0, y, map->_sizeY / 3.0f);
+					this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
 					// std::cout << map->_sizeX << ", " << map->_sizeY << std::endl;
 					//_sizeX
 					//_sizeY

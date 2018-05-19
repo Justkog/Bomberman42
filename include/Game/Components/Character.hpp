@@ -73,6 +73,7 @@ namespace Game
 			unsigned int _bombNb;
 			unsigned int _maxBomb;
 			float _explosionSize;
+			Direction _dir;
 			glm::vec2 _direction;
 			float _rotation;
 			Game::Component::Map *map;

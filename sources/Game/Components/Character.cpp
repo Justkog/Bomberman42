@@ -78,6 +78,7 @@ namespace Game
 
         void    Character::move(Direction dir)
         {
+            _dir = dir;
             switch (dir)
             {
                 case Direction::Up:

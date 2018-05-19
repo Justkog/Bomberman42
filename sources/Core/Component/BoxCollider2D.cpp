@@ -94,9 +94,9 @@ namespace BeerEngine
 			glm::vec2 thisPos(_transform.position.x + _offset.x, _transform.position.z + _offset.y);
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
 
-			if (thisPos.x - _size.x / 2 > otherPos.x + other->_size.x / 2
+			if (thisPos.x - _size.x / 2 >= otherPos.x + other->_size.x / 2
 			|| thisPos.x + _size.x / 2 < otherPos.x - other->_size.x / 2
-			|| thisPos.y - _size.y / 2 > otherPos.y + other->_size.y / 2
+			|| thisPos.y - _size.y / 2 >= otherPos.y + other->_size.y / 2
 			|| thisPos.y + _size.y / 2 < otherPos.y - other->_size.y / 2)
 				return (false);
 			if (response && !_isTrigger && !other->_isTrigger)
@@ -110,7 +110,7 @@ namespace BeerEngine
 			glm::vec2 otherPos(other->_transform.position.x + other->_offset.x, other->_transform.position.z + other->_offset.y);
 			glm::vec2 nearest(glm::clamp(otherPos.x, thisPos.x - _size.x / 2, thisPos.x + _size.x / 2), glm::clamp(otherPos.y, thisPos.y - _size.y / 2, thisPos.y + _size.y / 2));
 
-			if (glm::distance2(nearest, otherPos) < other->_radius * other->_radius)
+			if (glm::distance2(nearest, otherPos) <= other->_radius * other->_radius)
 			{
 				if (response && !_isTrigger && !other->_isTrigger)
 					response_AABB2D(other, nearest, otherPos);
