@@ -148,10 +148,10 @@ namespace Game
 				Player	*player = Player::instance;
 				if (map && player)
 				{
+					t = glm::sin(t * glm::radians(90.0f));
 					float y = map->_sizeX;
 					if (y < 10)
 						y = 10;
-					
 					this->_gameObject->transform.position = glm::mix(player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f), glm::vec3(0, y, map->_sizeY / 3.0f), t);
 					this->_gameObject->transform.rotation = glm::mix(
 						glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0)),
