@@ -3,6 +3,7 @@
 #include "Core/Graphics/Texture.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/MainMenu.hpp"
+#include "Game/Components/AdventureMenu.hpp"
 #include "Game/Components/VersusMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Core/Window.hpp"
@@ -110,8 +111,10 @@ void MainMenu::renderUI(struct nk_context *ctx)
 
 		if (nk_button_label(ctx, "Adventure"))
 		{
-			fprintf(stdout, "Adventure pressed\n");
-			BeerEngine::SceneManager::LoadScene<Level1>();
+			this->setActive(false);
+			adventureMenu->setActive(true);
+			// fprintf(stdout, "Adventure pressed\n");
+			// BeerEngine::SceneManager::LoadScene<Level1>();
 		}
 		if (nk_button_label(ctx, "Versus"))
 		{

@@ -86,6 +86,8 @@ SRC = \
 	Game/Components/BeerRoutineTester.cpp \
 	Game/Components/MainMenu.cpp \
 	Game/Components/VersusMenu.cpp \
+	Game/Components/AdventureMenu.cpp \
+	Game/Components/AdventureContinueMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
 	Game/Components/InGameMenu.cpp \

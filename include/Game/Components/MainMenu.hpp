@@ -31,7 +31,8 @@ namespace Game
 		{
 		public:
 			SettingsMenu	*settingsMenu;
-			VersusMenu	*versusMenu;
+			VersusMenu		*versusMenu;
+			AdventureMenu	*adventureMenu;
 			UIThemeManager	*uiManager;
 
 			nk_style_window mWindow;

@@ -5,6 +5,7 @@
 #include "Core/SceneManager.hpp"
 #include "Game/Level1.hpp"
 #include "Game/Level2.hpp"
+#include "Game/Level3.hpp"
 
 namespace Game
 {
@@ -12,6 +13,7 @@ namespace Game
 		{"SceneMain", BeerEngine::SceneManager::LoadScene<SceneMain>},
 		{"Level1", BeerEngine::SceneManager::LoadScene<Level1>},
 		{"Level2", BeerEngine::SceneManager::LoadScene<Level2>},
+		{"Level3", BeerEngine::SceneManager::LoadScene<Level3>},
 	};
 
 	void SceneLoader::loadByName(std::string name)
