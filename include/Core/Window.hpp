@@ -40,15 +40,6 @@ namespace BeerEngine
 		*/
 		Window(std::string title, int width, int height);
 
-		static Window	*_Instance; /*!< Instance unique de la fenetre*/
-	public:
-
-		/*!
-		*  \brief Constructor
-		*  Default Constructor
-		*/
-		Window();
-
 		/*!
 		*  \brief Copy Constructor
 		*  Default copy constructor
@@ -60,6 +51,15 @@ namespace BeerEngine
 		*  Default assignment operator
 		*/
 		Window &operator=(const Window &val);
+
+		static Window	*_Instance; /*!< Instance unique de la fenetre*/
+	public:
+
+		/*!
+		*  \brief Constructor
+		*  Default Constructor
+		*/
+		Window();
 
 		/*!
 		*  \brief Destructeur

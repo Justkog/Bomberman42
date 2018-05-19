@@ -26,12 +26,12 @@ namespace Game
 			float _soundVolume;
 			float _musicVolume;
 
-		public:
-			SoundType audioType;
-
 			AudioManager();
 			AudioManager(const AudioManager &val);
 			AudioManager &operator=(const AudioManager &val);
+
+		public:
+			SoundType audioType;
 
 			AudioManager(BeerEngine::GameObject *gameObject);
 			~AudioManager(void);

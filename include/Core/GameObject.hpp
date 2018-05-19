@@ -34,16 +34,16 @@ namespace BeerEngine
 		std::vector<Component::Component *> _toDisable;
 		std::vector<Component::Component *> _toDestroy;
 
+		GameObject();
+		GameObject(const GameObject &val);
+		GameObject &operator=(const GameObject &val);
+
 	public:
 		int			_uniqueID;
 		AScene		&_scene;
 		Transform	transform;
 		std::string	name;
 		float		immortalTimer;
-
-		GameObject();
-		GameObject(const GameObject &val);
-		GameObject &operator=(const GameObject &val);
 
 		GameObject(int uniqueID, AScene &scene);
 		virtual ~GameObject(void);

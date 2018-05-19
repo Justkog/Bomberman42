@@ -41,15 +41,14 @@ namespace Game
 		private:
 			static Settings * instance;
 
+			Settings();
+			Settings(const Settings &val);
+			Settings & operator=( Settings const & rhs );
 		public:
 			AudioManager	*audioManager;
 
-			Settings();
-			Settings(const Settings &val);
 			Settings(BeerEngine::GameObject *gameObject);
 			virtual ~Settings( void );
-
-			Settings & operator=( Settings const & rhs );
 
 			void loadSettings();
 			void saveSettings();

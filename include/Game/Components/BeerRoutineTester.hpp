@@ -28,14 +28,15 @@ namespace Game
 									public BeerEngine::Component::IStart,
 									public BeerEngine::BeerRoutine::ARoutineRunner
 		{
-		public:
+		private:
 			BeerRoutineTester();
 			BeerRoutineTester(const BeerRoutineTester &val);
-			BeerRoutineTester(BeerEngine::GameObject *gameObject);
+			BeerRoutineTester & operator=( BeerRoutineTester const & rhs );
 
+		public:	
+			BeerRoutineTester(BeerEngine::GameObject *gameObject);
 			virtual ~BeerRoutineTester( void );
 
-			BeerRoutineTester & operator=( BeerRoutineTester const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, BeerRoutineTester const & i);
 
 			virtual void start();

@@ -30,18 +30,19 @@ namespace Game
 						public BeerEngine::Component::IUI,
 						public BeerEngine::Component::IEnable
 		{
+		private:
+			GameOverMenu();
+			GameOverMenu(const GameOverMenu &val);
+			GameOverMenu & operator=( GameOverMenu const & rhs );
+
 		public:
 			UIThemeManager	*uiManager;
 			nk_style_item	backgroundImage;
 			nk_style_item	youLoseImage;
 
-			GameOverMenu();
-			GameOverMenu(const GameOverMenu &val);
 			GameOverMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~GameOverMenu( void );
 
-			GameOverMenu & operator=( GameOverMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, GameOverMenu const & i);
 
 			virtual void start();

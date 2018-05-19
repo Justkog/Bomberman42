@@ -28,6 +28,11 @@ namespace Game
 								public BeerEngine::Component::IStartUI,
 								public BeerEngine::Component::IUI
 		{
+		private:
+			UIThemeManager();
+			UIThemeManager(const UIThemeManager &val);
+			UIThemeManager & operator=( UIThemeManager const & rhs );
+
 		public:
 
 			nk_style_window defaultWindow;
@@ -40,13 +45,9 @@ namespace Game
 
 			nk_style_button themeButton;
 
-			UIThemeManager();
-			UIThemeManager(const UIThemeManager &val);
 			UIThemeManager(BeerEngine::GameObject *gameObject);
-
 			virtual ~UIThemeManager( void );
 
-			UIThemeManager & operator=( UIThemeManager const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, UIThemeManager const & i);
 
 			virtual void start();

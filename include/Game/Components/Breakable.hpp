@@ -22,11 +22,12 @@ namespace Game
 		protected:
 			BeerEngine::Transform	&_transform;
 
-		public:
+		private:
 			Breakable();
 			Breakable(const Breakable &val);
 			Breakable &operator=(const Breakable &val);
 
+		public:
       		Breakable(BeerEngine::GameObject *gameObject);
 			~Breakable(void);
 

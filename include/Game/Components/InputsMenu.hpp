@@ -37,6 +37,12 @@ namespace Game
 								public BeerEngine::Component::IStartUI,
 								public BeerEngine::Component::IUI
 		{
+
+		private:
+			InputsMenu( void );
+			InputsMenu( InputsMenu const & src );
+			InputsMenu & operator=( InputsMenu const & rhs );
+
 		public:
 			std::map<std::string, InputInfo> 	inputs;
 			std::vector<std::string> 			inputsList;
@@ -47,13 +53,9 @@ namespace Game
 			float 								menuWidth;
 			float 								menuHeight;
 
-			InputsMenu( void );
-			InputsMenu( InputsMenu const & src );
 			InputsMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~InputsMenu( void );
 
-			InputsMenu & operator=( InputsMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, InputsMenu const & i);
 
 			virtual void start();

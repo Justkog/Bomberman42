@@ -43,6 +43,10 @@ namespace Game
 			float			targetHeight;
 			float			targetWidth;
 		
+			SettingsMenu();
+			SettingsMenu(const SettingsMenu &val);
+			SettingsMenu & operator=( SettingsMenu const & rhs );
+
 		public:
 			float			musicVolume;
 			float			soundVolume;
@@ -57,13 +61,9 @@ namespace Game
 
 			nk_style_window mWindow;
 
-			SettingsMenu();
-			SettingsMenu(const SettingsMenu &val);
 			SettingsMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~SettingsMenu( void );
 
-			SettingsMenu & operator=( SettingsMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, SettingsMenu const & i);
 
 			virtual void start();

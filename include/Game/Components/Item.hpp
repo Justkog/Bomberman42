@@ -31,13 +31,12 @@ namespace Game
 						public BeerEngine::Component::ITriggerExit,
 						public BeerEngine::Component::IOnDestroy
 		{
-		protected:
-
-		public:
+		private:
 			Item();
 			Item(const Item &val);
 			Item &operator=(const Item &val);
 
+		public:
             Item(BeerEngine::GameObject *gameObject);
 			~Item();
 			

@@ -30,6 +30,11 @@ namespace Game
 						public BeerEngine::Component::IStartUI, 
 						public BeerEngine::Component::IUI
 		{
+		private:
+			ItemsUI();
+			ItemsUI(const ItemsUI &val);
+			ItemsUI & operator=( ItemsUI const & rhs );
+
 		public:
 			UIThemeManager	*uiManager;
 			nk_style_item	shoeImage;
@@ -41,13 +46,9 @@ namespace Game
 			int				bombs;
 			int				range;
 
-			ItemsUI();
-			ItemsUI(const ItemsUI &val);
 			ItemsUI(BeerEngine::GameObject *gameObject);
-
 			virtual ~ItemsUI( void );
 
-			ItemsUI & operator=( ItemsUI const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, ItemsUI const & i);
 
 			virtual void start();

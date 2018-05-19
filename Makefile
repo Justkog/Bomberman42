@@ -92,8 +92,7 @@ SRC = \
 	Game/Components/ItemsUI.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
-	Game/Components/AudioManager.cpp \
-	Game/CameraTest.cpp
+	Game/Components/AudioManager.cpp
 
 
 DIR = $(dir $(SRC))

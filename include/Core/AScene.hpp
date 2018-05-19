@@ -38,7 +38,6 @@ namespace BeerEngine
 		*  Constructeur de la classe AScene
 		*/
         AScene(void);
-
 		AScene(const AScene &val);
 		AScene &operator=(const AScene &val);
 
