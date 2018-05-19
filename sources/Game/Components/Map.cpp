@@ -69,13 +69,13 @@ namespace Game
 			itemColl->_isTrigger = true;
 			itemColl->_radius = 0.35;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
-			itemGO->AddComponent<Game::Component::Breakable>();
 			item->map = this;
 			if (type == -1)
 				item->_type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
 			else
 				item->_type = static_cast<Game::Component::ItemType>(type);
-
+			if (item->_type != ItemType::Antidote)
+				itemGO->AddComponent<Game::Component::Breakable>();
 			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
             BeerEngine::Graphics::Texture *itemTex;
             BeerEngine::Graphics::AMaterial *itemMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);

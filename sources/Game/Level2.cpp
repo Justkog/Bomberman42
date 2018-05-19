@@ -133,9 +133,9 @@ void    Level2::init(void)
 	character->map = map;
 
 	BeerEngine::Graphics::DirectionalLight *light = instantiateLight<BeerEngine::Graphics::DirectionalLight>();
-	light->setDirection(glm::normalize(glm::vec3(1, 1, -1)));
+	light->setDirection(glm::normalize(glm::vec3(1, 2, -1)));
 	light->setColor(glm::vec4(1, 0.9, 0.8, 1));
-	light->setIntensity(1.0f);
+	light->setIntensity(1.5f);
 
 	// Plane
 	BeerEngine::GameObject *mapGO;
@@ -143,12 +143,24 @@ void    Level2::init(void)
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
 	mapMeshRenderer->setMaterial(material);
-	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
 	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
 	planeMat->setAlbedo(planeTex);
 	mapMeshRenderer->setMaterial(planeMat);
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
+
+	// Plane MAP
+	mapGO = instantiate<BeerEngine::GameObject>();
+	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(9, 9), glm::vec2(0)));
+	mapMeshRenderer->setMaterial(material);
+	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	planeMat = new BeerEngine::Graphics::AMaterial(shader);
+	planeMat->setAlbedo(planeTex);
+	mapMeshRenderer->setMaterial(planeMat);
+	mapGO->transform.position = glm::vec3(0, 0.03, 5);
+	mapGO->transform.scale = glm::vec3(4.5, 1, 4.5);
 
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level2.scene");

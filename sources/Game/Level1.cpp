@@ -150,6 +150,18 @@ void    Level1::init(void)
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
 
+	// Plane MAP
+	mapGO = instantiate<BeerEngine::GameObject>();
+	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(7, 9), glm::vec2(0)));
+	mapMeshRenderer->setMaterial(material);
+	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	planeMat = new BeerEngine::Graphics::AMaterial(shader);
+	planeMat->setAlbedo(planeTex);
+	mapMeshRenderer->setMaterial(planeMat);
+	mapGO->transform.position = glm::vec3(0, 0.03, 5);
+	mapGO->transform.scale = glm::vec3(3.5, 1, 4.5);
+
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level1.scene");
 }
