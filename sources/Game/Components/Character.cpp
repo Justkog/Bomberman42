@@ -6,6 +6,7 @@
 #include "Core/Graphics/Graphics.hpp"
 #include "Game/Components/Bomb.hpp"
 #include "Game/Components/Map.hpp"
+#include "Game/Components/GameManager.hpp"
 #include "Game/Components/IA.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Component/RigidBody2D.hpp"
@@ -29,6 +30,27 @@ namespace Game
 		{
 
         }
+
+		Character::Character ( void ) :
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Character::Character ( Character const & src ) :
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Character &				Character::operator=( Character const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
 
         void    Character::start(void)
         {
@@ -78,6 +100,7 @@ namespace Game
 
         void    Character::move(Direction dir)
         {
+            _dir = dir;
             switch (dir)
             {
                 case Direction::Up:
@@ -150,7 +173,8 @@ namespace Game
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			
             render->setMesh(bombMesh);
-   		    render->setMaterial(Assets::GetInstance()->bombMaterial);
+            auto bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+   		    render->setMaterial(bombMaterial);
             
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;

@@ -19,23 +19,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*VictoryMenu::VictoryMenu ( void )
+VictoryMenu::VictoryMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*VictoryMenu::VictoryMenu ( VictoryMenu const & src )
+VictoryMenu::VictoryMenu ( VictoryMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 VictoryMenu &				VictoryMenu::operator=( VictoryMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

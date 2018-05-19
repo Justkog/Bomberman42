@@ -1,16 +1,14 @@
-#ifndef GAME_LEVEL1_HPP
-#define GAME_LEVEL1_HPP 1
+#ifndef GAME_VERSUS1_HPP
+#define GAME_VERSUS1_HPP 1
 
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
 #include "Core/AScene.hpp"
 
-class Level1 : public BeerEngine::AScene
+class Versus1 : public BeerEngine::AScene
 {
 public:
 	void    init(void);
-
-	static Level1 instance;
 };
 
 #endif

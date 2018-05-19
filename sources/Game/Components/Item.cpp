@@ -21,6 +21,27 @@ namespace Game
             _type = static_cast<Game::Component::ItemType>(glm::linearRand(0, static_cast<int>(ItemType::ExplosionBoost)));
         }
 
+		Item::Item ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Item::Item ( Item const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Item &				Item::operator=( Item const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
+
 		Item::~Item()
 		{
 		}

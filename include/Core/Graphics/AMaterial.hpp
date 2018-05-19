@@ -58,6 +58,10 @@ namespace BeerEngine
 			GLint	_lightColorID; /*!< Identifiant pour bind au shader les divers composents*/
 		
 		public:
+			AMaterial();
+			AMaterial(const AMaterial &val);
+			AMaterial &operator=(const AMaterial &val);
+		
 			/*!
 			*  \brief Constructeur
 			*  Constructeur de la classe AMaterial

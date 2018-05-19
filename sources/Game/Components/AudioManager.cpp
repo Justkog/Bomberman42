@@ -11,6 +11,22 @@ namespace Game
 		audioType(Sound)
     { }
 
+    AudioManager::AudioManager(void)
+    {}
+
+    AudioManager::AudioManager(const AudioManager &val)
+    {
+        *this = val;
+    }
+
+    AudioManager &AudioManager::operator=(const AudioManager &val)
+    {
+			(void) val;
+        if (this != &val)
+        { }
+        return (*this);
+    }
+
     AudioManager::~AudioManager()
     { }
 

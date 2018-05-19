@@ -16,23 +16,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*InGameMenu::InGameMenu ( void )
+InGameMenu::InGameMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*InGameMenu::InGameMenu ( InGameMenu const & src )
+InGameMenu::InGameMenu ( InGameMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 InGameMenu &				InGameMenu::operator=( InGameMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

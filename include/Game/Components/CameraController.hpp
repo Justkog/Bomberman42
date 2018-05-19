@@ -25,15 +25,17 @@ namespace Game
 		private:
 			void syncCam();
 
+			CameraController();
+			CameraController(const CameraController &val);
+			CameraController & operator=( CameraController const & rhs );
+
 		public:
-
-			// CameraController( void );
-			// CameraController( CameraController const & src );
+			bool	startAnimation;
+			float	timeAnimation;
+			
 			CameraController(BeerEngine::GameObject *gameObject);
-
 			virtual ~CameraController( void );
 
-			CameraController & operator=( CameraController const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, CameraController const & i);
 
 			virtual void    start(void);

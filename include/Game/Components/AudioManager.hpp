@@ -26,20 +26,24 @@ namespace Game
 			float _soundVolume;
 			float _musicVolume;
 
+			AudioManager();
+			AudioManager(const AudioManager &val);
+			AudioManager &operator=(const AudioManager &val);
+
 		public:
 			SoundType audioType;
 
-      AudioManager(BeerEngine::GameObject *gameObject);
-      ~AudioManager(void);
+			AudioManager(BeerEngine::GameObject *gameObject);
+			~AudioManager(void);
 
-      void    play();
-			void    pause();
-			void    continuePlaying();
-			void 		setPosition(float x, float y, float z);
-      void    setClip(std::string const &filename);
-      void    setVolume(float soundVolume, float musicVolume);
-	  float		getSoundVolume();
-	  float		getMusicVolume();
+			void    play();
+					void    pause();
+					void    continuePlaying();
+					void 		setPosition(float x, float y, float z);
+			void    setClip(std::string const &filename);
+			void    setVolume(float soundVolume, float musicVolume);
+			float		getSoundVolume();
+			float		getMusicVolume();
 
 			BeerEngine::Audio::AudioSource      srcAudio;
 			virtual void start();

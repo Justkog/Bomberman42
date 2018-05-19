@@ -7,6 +7,7 @@
 #include "Game/Level1.hpp"
 #include "Game/Level2.hpp"
 #include "Game/Level3.hpp"
+#include "Game/Level4.hpp"
 
 namespace Game
 {
@@ -18,23 +19,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*VersusMenu::VersusMenu ( void )
+VersusMenu::VersusMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*VersusMenu::VersusMenu ( VersusMenu const & src )
+VersusMenu::VersusMenu ( VersusMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 VersusMenu &				VersusMenu::operator=( VersusMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 
@@ -110,6 +110,8 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 			BeerEngine::SceneManager::LoadScene<Level2>();
 		if (nk_button_label(ctx, "level 3"))
 			BeerEngine::SceneManager::LoadScene<Level3>();
+		if (nk_button_label(ctx, "level 4"))
+			BeerEngine::SceneManager::LoadScene<Level4>();
 
 		if (nk_button_label(ctx, "Random"))
 			BeerEngine::SceneManager::LoadScene<SceneTest>();

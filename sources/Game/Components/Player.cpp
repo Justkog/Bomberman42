@@ -18,13 +18,37 @@ namespace Game
 			Component(gameObject),
 			_transform(gameObject->transform),
 			_character(nullptr),
-			_gameStarted(false)
+			_gameStarted(false),
+			noBombTimer(0)
 		{
 			instance = this;
 		}
 
+		Player::Player ( void ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			return ;
+		}
+
+		Player::Player ( Player const & src ):
+            _transform(BeerEngine::Transform::basic)
+		{
+			*this = src;
+			return ;
+		}
+
+		Player &	Player::operator=( Player const & rhs )
+		{
+			(void) rhs;
+			if (this != &rhs)
+			{}
+			return (*this);
+		}
+
 		Player::~Player(void)
-		{ }
+		{
+			instance = nullptr;
+		}
 
         void    Player::onDestroy(void)
         {
@@ -106,7 +130,13 @@ namespace Game
 				srcAudio->setLooping(false);
 				play = false;
 			}
-
+			if (noBombTimer != 0 && _character->_bombNb > 0)
+				noBombTimer = 0;
+			if (GameManager::GetInstance().storyMode && !_character->_bombNb
+			&& Game::Component::Map::instance->hasBreakable() && !Game::Component::Map::instance->hasBlock(B))
+				noBombTimer += BeerEngine::Time::GetDeltaTime();
+			if (noBombTimer > 5)
+				GameManager::GetInstance().setGameOver(glm::vec3(3, 2, 27), 8);
         }
 
         void            Player::renderUI(struct nk_context *ctx)

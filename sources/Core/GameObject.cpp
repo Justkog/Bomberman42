@@ -1,3 +1,4 @@
+#include <Game/Level1.hpp>
 #include "Core/GameObject.hpp"
 #include "Core/Component/Component.hpp"
 #include "Core/Component/IUpdate.hpp"
@@ -26,6 +27,43 @@ namespace BeerEngine
 		_scene(scene)
 	{
 		immortalTimer = 0.0f;
+	}
+
+	GameObject::GameObject() :
+		_scene(Level1::instance)
+	{}
+
+	GameObject::GameObject(const GameObject &val) :
+		_scene(val._scene)
+	{
+		*this = val;
+	}
+
+	GameObject &GameObject::operator=(const GameObject &val)
+	{
+		if (this != &val)
+		{
+			for (int i = 0; i < val._components.size(); i++)
+				_components.push_back(val._components[i]);
+			for (int i = 0; i < val._toStart.size(); i++)
+				_toStart.push_back(val._toStart[i]);
+			for (int i = 0; i < val._toStartUI.size(); i++)
+				_toStartUI.push_back(val._toStartUI[i]);
+			for (int i = 0; i < val._toEnable.size(); i++)
+				_toEnable.push_back(val._toEnable[i]);
+			for (int i = 0; i < val._toDisable.size(); i++)
+				_toDisable.push_back(val._toDisable[i]);
+			for (int i = 0; i < val._toDestroy.size(); i++)
+				_toDestroy.push_back(val._toDestroy[i]);
+
+			_uniqueID = val._uniqueID;
+			_scene = val._scene;
+			transform = val.transform;
+			name = val.name;
+			immortalTimer = val.immortalTimer;
+
+		}
+		return (*this);
 	}
 
 	GameObject::~GameObject(void)

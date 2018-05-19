@@ -27,15 +27,15 @@ namespace BeerEngine
 		class RaysRenderer : public BeerEngine::Component::MeshRenderer,
 								public BeerEngine::Component::IStart
 		{
+		private:
+			RaysRenderer( void );
+			RaysRenderer( RaysRenderer const & src );
+			RaysRenderer & operator=( RaysRenderer const & rhs );
+
 		public:
-
-			// RaysRenderer( void );
-			// RaysRenderer( RaysRenderer const & src );
 			RaysRenderer(BeerEngine::GameObject *gameObject);
-
 			virtual ~RaysRenderer( void );
 
-			RaysRenderer & operator=( RaysRenderer const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, RaysRenderer const & i);
 
 			virtual void start();

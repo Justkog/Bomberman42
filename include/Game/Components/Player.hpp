@@ -40,12 +40,18 @@ namespace Game
 			BeerEngine::Transform				&_transform;
 			bool								_gameStarted;
 
+		private:
+			Player();
+			Player(const Player &val);
+			Player &operator=(const Player &val);
+
 		public:
 			static Player						*instance;
 			Game::Component::Character 			*_character;
 			BeerEngine::Audio::AudioSource      *srcAudio;
 			BeerEngine::Audio::AudioSource      *itemSrcAudio;
 			bool								play;
+			float								noBombTimer;
 
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);

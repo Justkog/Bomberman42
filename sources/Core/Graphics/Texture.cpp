@@ -22,6 +22,28 @@ namespace BeerEngine
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
 
+		Texture::Texture()
+		{}
+
+		Texture::Texture(const Texture &val)
+		{
+			*this = val;
+		}
+		
+		Texture &Texture::operator=(const Texture &val)
+		{
+			if (this != &val)
+			{
+				Texture::~Texture();
+				_width = val._width;
+				_height = val._height;
+				_data = val._data;
+				_textureID = val._textureID;
+				_sourceFile = val._sourceFile;
+			}
+			return (*this);
+		}
+
 		Texture::~Texture()
 		{
 			delete[] _data;

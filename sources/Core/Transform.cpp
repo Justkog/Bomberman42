@@ -3,9 +3,29 @@
 
 namespace BeerEngine
 {
+	Transform Transform::basic = Transform();
+
 	Transform::Transform() :
 		parent(nullptr), pivot(0.0f), position(0.0f), rotation(), scale(1.0f)
 	{}
+
+	Transform::Transform(const Transform &val)
+	{
+		*this = val;
+	}
+
+	Transform &Transform::operator=(const Transform &val)
+	{
+		if (this != &val)
+		{
+			parent = val.parent;
+			pivot = val.pivot;
+			position = val.position;
+			rotation = val.rotation;
+			scale = val.scale;
+		}
+		return (*this);
+	}
 
 	void		Transform::translate(glm::vec3 pos)
 	{

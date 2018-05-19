@@ -26,15 +26,15 @@ namespace Game
 								public BeerEngine::Component::IUpdate, 
 								public BeerEngine::Component::IStart
 		{
+		private:
+			MouseRayTest();
+			MouseRayTest(const MouseRayTest &val);
+			MouseRayTest & operator=( MouseRayTest const & rhs );
+
 		public:
-
-			// MouseRayTest( void );
-			// MouseRayTest( MouseRayTest const & src );
 			MouseRayTest(BeerEngine::GameObject *gameObject);
-
 			virtual ~MouseRayTest( void );
 
-			MouseRayTest & operator=( MouseRayTest const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, MouseRayTest const & i);
 
 			virtual void start();

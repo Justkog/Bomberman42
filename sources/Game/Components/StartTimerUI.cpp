@@ -13,23 +13,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*StartTimerUI::StartTimerUI ( void )
+StartTimerUI::StartTimerUI ( void )
 {
 	return ;
-}*/
+}
 
-/*StartTimerUI::StartTimerUI ( StartTimerUI const & src )
+StartTimerUI::StartTimerUI ( StartTimerUI const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 StartTimerUI &				StartTimerUI::operator=( StartTimerUI const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

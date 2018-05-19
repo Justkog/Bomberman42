@@ -27,6 +27,7 @@
 #define Q -3 //spawn ia
 #define J 11 //Item Boost Explosion
 #define U 20 //Objective (next level)
+#define V 42 //Movable Crate
 
 /*!
  * \file Map.hpp
@@ -47,6 +48,11 @@ namespace Game
 		protected:
 			BeerEngine::Transform	&_transform;
 
+		private:
+			Map();
+			Map(const Map &val);
+			Map &operator=(const Map &val);
+
 		public:
 			static Map		*instance;
             Map(BeerEngine::GameObject *gameObject);
@@ -61,6 +67,7 @@ namespace Game
 			glm::vec2		worldToMap(glm::vec3 pos);
 			glm::vec3		mapToWorld(glm::vec2 pos, float y = 0);
 			bool			hasBreakable(void);
+			bool			hasBlock(int id);
 			bool			hasCharacter(glm::vec2 pos);
 			int				getCaseValue(glm::vec2 pos);
 			bool			hasWall(glm::vec2 pos);

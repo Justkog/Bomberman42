@@ -22,16 +22,24 @@ Settings & Settings::GetInstance()
 
 // CANONICAL #####################################################
 
-// Settings::Settings ( void )
-// {
-// 	return ;
-// }
+Settings::Settings ( void )
+{
+	return ;
+}
 
-// Settings::Settings ( Settings const & src )
-// {
-// 	*this = src;
-// 	return ;
-// }
+Settings::Settings ( Settings const & src )
+{
+	*this = src;
+	return ;
+}
+
+Settings &	Settings::operator=( Settings const & rhs )
+{
+	(void) rhs;
+	if (this != &rhs)
+	{}
+	return (*this);
+}
 
 Settings::Settings (BeerEngine::GameObject *gameObject) :
 	Component(gameObject),
@@ -39,15 +47,6 @@ Settings::Settings (BeerEngine::GameObject *gameObject) :
 {
 	this->filePath = "testSettings.json";
 	instance = this;
-}
-
-Settings &				Settings::operator=( Settings const & rhs )
-{
-	if (this != &rhs)
-	{
-		// make stuff
-	}
-	return (*this);
 }
 
 Settings::~Settings ( void )

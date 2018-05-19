@@ -9,6 +9,7 @@
 #include "Game/Components/Breakable.hpp"
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/GameProgression.hpp"
+#include "Game/Components/CameraController.hpp"
 
 namespace Game
 {
@@ -27,23 +28,22 @@ GameManager & GameManager::GetInstance()
 
 // CANONICAL #####################################################
 
-/*GameManager::GameManager ( void )
+GameManager::GameManager ( void )
 {
 	return ;
-}*/
+}
 
-/*GameManager::GameManager ( GameManager const & src )
+GameManager::GameManager ( GameManager const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 GameManager &				GameManager::operator=( GameManager const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 
@@ -136,6 +136,9 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
 {
 	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
 	.addAction([this] () {
+		auto cc = this->_gameObject->GetComponent<CameraController>();
+		if (cc)
+			cc->startAnimation = true;
 		this->startTimerUI->updateDisplay("Ready?");
 		return true;
 	})

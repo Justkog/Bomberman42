@@ -34,6 +34,10 @@ namespace Game
 		private:
 			static GameManager * instance;
 
+			GameManager();
+			GameManager(const GameManager &val);
+			GameManager & operator=( GameManager const & rhs );
+
 		public:
 			InGameMenu 					*inGameMenu;
 			GameOverMenu				*gameOverMenu;
@@ -49,10 +53,8 @@ namespace Game
 			// GameManager( void );
 			// GameManager( GameManager const & src );
 			GameManager(BeerEngine::GameObject *gameObject);
-
 			virtual ~GameManager( void );
 
-			GameManager & operator=( GameManager const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, GameManager const & i);
 
 			virtual void start();

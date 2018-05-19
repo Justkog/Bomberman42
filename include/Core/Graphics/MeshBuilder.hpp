@@ -32,6 +32,9 @@ namespace BeerEngine
 			std::vector<glm::vec3> bitangents;
 
 		public:
+			MeshBuilder(const MeshBuilder &val);
+			MeshBuilder &operator=(const MeshBuilder &val);
+
 			MeshBuilder();
 			~MeshBuilder();
 			MeshBuilder		&addVertice(glm::vec3 vertice);

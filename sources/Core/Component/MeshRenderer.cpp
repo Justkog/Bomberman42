@@ -17,6 +17,36 @@ namespace BeerEngine
 			renderMode(GL_TRIANGLES)
 		{}
 
+		MeshRenderer::MeshRenderer() :
+			Component()
+		{}
+
+		MeshRenderer::MeshRenderer(const MeshRenderer &val)
+		{
+			*this = val;
+		}
+		
+		MeshRenderer &MeshRenderer::operator=(const MeshRenderer &val)
+		{
+			if (this != &val)
+			{
+				if (_mesh)
+					delete _mesh;
+				_mesh = val._mesh;
+				_material = val._material;
+				_mat = val._mat;
+				_sourceFile = val._sourceFile;
+				renderMode = val.renderMode;
+			}
+			return (*this);
+		}
+
+		MeshRenderer::~MeshRenderer()
+		{
+			if (_material != nullptr)
+				delete _material;
+		}
+
 		Graphics::Mesh	*MeshRenderer::getMesh(void)
 		{
 			return (_mesh);
@@ -55,8 +85,6 @@ namespace BeerEngine
 			{
 				if (_material != nullptr)
 					_material->bind(_mat, light);
-				else
-					Graphics::Graphics::defaultMaterial->bind(_mat, light);
 				light.getShader().uniform1i("hasBones", 0);
 				_mesh->render(renderMode);
 			}
