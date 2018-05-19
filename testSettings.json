@@ -9,7 +9,10 @@
     },
     "musicVolume": 50.0,
     "soundVolume": 50.0,
-    "unlockedLevels": [],
+    "unlockedLevels": [
+        "Level1",
+        "Level2"
+    ],
     "windowHeight": 900,
     "windowWidth": 1600
 }

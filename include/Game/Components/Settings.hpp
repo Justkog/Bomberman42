@@ -29,7 +29,7 @@ namespace Game
 			int windowHeight;
 			bool fullScreen;
 			std::map<std::string, int>	keyBindings;
-			std::vector<std::string>	unlockedLevels;
+			// std::vector<std::string>	unlockedLevels;
 			// std::string stringSetting;
 			// int intSetting;
 			// std::vector<std::string> listSettings;

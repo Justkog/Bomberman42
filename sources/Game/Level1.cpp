@@ -10,6 +10,7 @@
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
+#include "Game/Components/GameProgression.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
@@ -45,6 +46,7 @@ void    Level1::init(void)
 
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
+	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// UI
@@ -65,6 +67,8 @@ void    Level1::init(void)
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
 	gameManager->audioManager = soundManager;
+	gameManager->audioManager = soundManager;
+	gameManager->gameProgression = gameProgression;
 	gameManager->storyMode = true;
 
 	inGameMenu->uiManager = uiManager;

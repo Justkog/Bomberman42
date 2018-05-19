@@ -108,6 +108,7 @@ namespace Game
                         if (!map->hasBreakable())
                         {
                             GameManager::GetInstance().setVictory();
+							GameManager::GetInstance().save();
                             this->destroy();
                         }
                         break;

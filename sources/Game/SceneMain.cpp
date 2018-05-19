@@ -1,6 +1,7 @@
 #include "Game/SceneTest.hpp"
 #include "Game/SceneMain.hpp"
 #include "Game/Components/Settings.hpp"
+#include "Game/Components/GameProgression.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
@@ -49,6 +50,7 @@ void    SceneMain::init(void)
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto settings = menuGO->AddComponent<Game::Component::Settings>();
+	auto gameProgression = menuGO->AddComponent<Game::Component::GameProgression>();
 	auto uiManager = menuGO->AddComponent<Game::Component::UIThemeManager>();
 	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();

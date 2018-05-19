@@ -77,6 +77,7 @@ SRC = \
 	Game/Components/IA.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
+	Game/Components/GameProgression.cpp \
 	Game/Components/Item.cpp \
 	Game/Components/Bomb.cpp \
 	Game/Components/Map.cpp \

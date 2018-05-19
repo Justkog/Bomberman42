@@ -51,8 +51,6 @@ namespace Game
 			Game::Component::Map	*map;
 
 			REGISTER_COMPONENT_HPP
-
-			// BeerEngine::Audio::AudioSource *as;
 		};
 	}
 }
