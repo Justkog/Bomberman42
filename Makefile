@@ -66,6 +66,7 @@ SRC = \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
 	Game/Level2.cpp \
+	Game/Level3.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
