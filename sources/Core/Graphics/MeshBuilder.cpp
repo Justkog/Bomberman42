@@ -21,15 +21,15 @@ namespace BeerEngine
 		{
 			if (this != &val)
 			{
-				for (int i = 0; i < val.vertices.size(); i++)
+				for (std::size_t i = 0; i < val.vertices.size(); i++)
 					vertices.push_back(val.vertices[i]);
-				for (int i = 0; i < val.normals.size(); i++)
+				for (std::size_t i = 0; i < val.normals.size(); i++)
 					normals.push_back(val.normals[i]);
-				for (int i = 0; i < val.uvs.size(); i++)
+				for (std::size_t i = 0; i < val.uvs.size(); i++)
 					uvs.push_back(val.uvs[i]);
-				for (int i = 0; i < val.tangents.size(); i++)
+				for (std::size_t i = 0; i < val.tangents.size(); i++)
 					tangents.push_back(val.tangents[i]);
-				for (int i = 0; i < val.bitangents.size(); i++)
+				for (std::size_t i = 0; i < val.bitangents.size(); i++)
 					bitangents.push_back(val.bitangents[i]);
 			}
 			return (*this);
@@ -81,7 +81,7 @@ namespace BeerEngine
 
 		MeshBuilder		&MeshBuilder::calculNormal(void)
 		{
-			for (int i = 0; i < vertices.size(); i+=3)
+			for (std::size_t i = 0; i < vertices.size(); i+=3)
 			{
 				glm::vec3 deltaPos1 = vertices[i + 1] - vertices[i];
 				glm::vec3 deltaPos2 = vertices[i + 2] - vertices[i];
@@ -96,7 +96,7 @@ namespace BeerEngine
 
 		MeshBuilder		&MeshBuilder::calculTangent(void)
 		{
-			for (int i = 0; i < vertices.size(); i+=3)
+			for (std::size_t i = 0; i < vertices.size(); i+=3)
 			{
 				// Edges of the triangle : postion delta
 				glm::vec3 deltaPos1 = vertices[i + 1] - vertices[i];

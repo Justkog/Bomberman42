@@ -20,11 +20,11 @@ namespace BeerEngine
 	{
 		ModelRenderer::ModelRenderer(GameObject *gameObject) :
 			Component(gameObject),
-			renderMode(GL_TRIANGLES),
 			_assimpScene(nullptr),
-			_animationTime(0),
 			_playAnimation(false),
-			_animationSpeed(1)
+			_animationTime(0),
+			_animationSpeed(1),
+			renderMode(GL_TRIANGLES)
 		{}
 
 		ModelRenderer::ModelRenderer()
@@ -70,11 +70,11 @@ namespace BeerEngine
 				for (const std::pair<std:: string, uint> &p : val._boneMapping)
 					_boneMapping[p.first] = p.second;
 				_numBones = val._numBones;
-				for (int i = 0; i < val._boneInfo.size(); i++)
+				for (std::size_t i = 0; i < val._boneInfo.size(); i++)
 					_boneInfo.push_back(val._boneInfo[i]);
-				for (int i = 0; i < val._transforms.size(); i++)
+				for (std::size_t i = 0; i < val._transforms.size(); i++)
 					_transforms.push_back(val._transforms[i]);
-				for (int i = 0; i < val._boneTransforms.size(); i++)
+				for (std::size_t i = 0; i < val._boneTransforms.size(); i++)
 					_boneTransforms.push_back(val._boneTransforms[i]);
 				_globalInverseTransform = val._globalInverseTransform;
 			}
@@ -91,7 +91,7 @@ namespace BeerEngine
 				exit(EXIT_FAILURE);
 			}
 
-			for (int i = 0; i < _scene->mNumAnimations; i++)
+			for (uint i = 0; i < _scene->mNumAnimations; i++)
 			{
 				_animations[_scene->mAnimations[i]->mName.data].index = i;
 				_animations[_scene->mAnimations[i]->mName.data].speed = 1;
@@ -129,9 +129,9 @@ namespace BeerEngine
 				bones.resize(mesh->mNumVertices);
 
 				if (_scene->HasAnimations())
-					loadBones(k, mesh, bones);
+					loadBones(mesh, bones);
 
-				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
+				for (uint i = 0; i < mesh->mNumVertices; i++)
 				{
 					positions.push_back(glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z));
 					normals.push_back(glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z));
@@ -144,10 +144,10 @@ namespace BeerEngine
 				std::vector<glm::vec2>	indexedTexcoords;
 				std::vector<VertexBoneData>	indexedBonesData;
 
-				for (std::size_t i = 0; i < mesh->mNumFaces; i++)
+				for (uint i = 0; i < mesh->mNumFaces; i++)
 				{
 					aiFace face = mesh->mFaces[i];
-					for (std::size_t j = 0; j < face.mNumIndices; j++)
+					for (uint j = 0; j < face.mNumIndices; j++)
 					{
 						int index = face.mIndices[j];
 
@@ -190,7 +190,7 @@ namespace BeerEngine
 				glDeleteBuffers(_numMeshes, _bbo);
 		}
 
-		void ModelRenderer::loadBones(uint meshIndex, const aiMesh* mesh, std::vector<VertexBoneData>& bones)
+		void ModelRenderer::loadBones(const aiMesh* mesh, std::vector<VertexBoneData>& bones)
 		{
 			for (uint i = 0 ; i < mesh->mNumBones ; i++)
 			{
@@ -220,7 +220,7 @@ namespace BeerEngine
 		{
 			glm::mat4 identity;
 
-			float ticksPerSecond = _scene->mAnimations[_currentAnimation.index]->mTicksPerSecond != 0 ? _scene->mAnimations[_currentAnimation.index]->mTicksPerSecond : 25.0f;
+			// float ticksPerSecond = _scene->mAnimations[_currentAnimation.index]->mTicksPerSecond != 0 ? _scene->mAnimations[_currentAnimation.index]->mTicksPerSecond : 25.0f;
 			float timeInTicks = timeInSeconds;
 			float animationTime = timeInTicks >= _scene->mAnimations[_currentAnimation.index]->mDuration ? _scene->mAnimations[_currentAnimation.index]->mDuration - 1 : timeInTicks;
 			if (_loopAnimation)
@@ -269,7 +269,7 @@ namespace BeerEngine
 				glm::mat4 trs = _globalInverseTransform * aiFinalBoneTransformation * Mathf::assimp_to_glm(_boneInfo[BoneIndex].boneOffset);
 				_boneInfo[BoneIndex].finalTransformation = trs;
 			}
-			for (std::size_t i = 0; i < node->mNumChildren; i++)
+			for (uint i = 0; i < node->mNumChildren; i++)
 				readNodes(animationTime, node->mChildren[i], aiFinalBoneTransformation);
 		}
 
@@ -368,7 +368,7 @@ namespace BeerEngine
 
 		void ModelRenderer::setAnimation(int id)
 		{
-			if (id >= _scene->mNumAnimations)
+			if (id >= static_cast<int>(_scene->mNumAnimations))
 				return;
 			_currentAnimation.index = id;
 		}
@@ -445,7 +445,7 @@ namespace BeerEngine
 			_materials[0]->bind(_mat, light);
 			light.getShader().uniform1i("hasBones", _scene->HasAnimations() ? 1 : 0);
 
-			for (int i = 0; i < _transforms.size(); i++)
+			for (std::size_t i = 0; i < _transforms.size(); i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
 				light.getShader().uniformMat(uniform, _transforms[i]);
@@ -467,7 +467,7 @@ namespace BeerEngine
 		{
 			Graphics::Graphics::shadowRenderShader->uniformMat("model", _mat);
 			Graphics::Graphics::shadowRenderShader->uniform1i("hasBones", _scene->HasAnimations() ? 1 : 0);
-			for (int i = 0; i < _transforms.size(); i++)
+			for (std::size_t i = 0; i < _transforms.size(); i++)
 			{
 				std::string uniform = "bonesTransforms[" + std::to_string(i) + "]";
 				Graphics::Graphics::shadowRenderShader->uniformMat(uniform, _transforms[i]);
@@ -588,24 +588,16 @@ namespace BeerEngine
 		{
 			return nlohmann::json {
 				{"componentClass", typeid(ModelRenderer).name()},
-				// {"mesh", _mesh},
-				// {"material", _material},
 				{"pivot", _mat},
 			};
 		}
 
 		void ModelRenderer::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-			// std::cout << this->_sourceFile << "\n";
-			// this->_sourceFile = j.at("sourceFile");
-			// if (this->_sourceFile != "")
-			// 	this->setMesh(this->_sourceFile);
-			// this->setMesh(Graphics::Mesh::Deserialize(j.at("mesh")));
-			// this->setMaterial(Graphics::AMaterial::Deserialize(j.at("material")));
-			// this->_mat = j.at("pivot");
+			(void) j;
+			(void) loader;
 		}
 
 		REGISTER_COMPONENT_CPP(ModelRenderer)
-
 	}
 }

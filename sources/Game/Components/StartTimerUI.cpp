@@ -74,7 +74,8 @@ void StartTimerUI::start()
 
 void StartTimerUI::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
-	
+	(void) ctx;
+	(void) fonts;
 }
 
 void StartTimerUI::renderUI(struct nk_context *ctx)

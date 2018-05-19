@@ -37,11 +37,11 @@ namespace BeerEngine
                 _gameObjects[p.first] = p.second;
             for (const std::pair<int, Graphics::ALight *> &p : val._lights)
                 _lights[p.first] = p.second;
-            for (int i = 0; i < val._toDestroy.size(); i++)
+            for (std::size_t i = 0; i < val._toDestroy.size(); i++)
                 _toDestroy.push_back(val._toDestroy[i]);
-            for (int i = 0; i < val._toStart.size(); i++)
+            for (std::size_t i = 0; i < val._toStart.size(); i++)
                 _toStart.push_back(val._toStart[i]);
-            for (int i = 0; i < val._toStartUI.size(); i++)
+            for (std::size_t i = 0; i < val._toStartUI.size(); i++)
                 _toStartUI.push_back(val._toStartUI[i]);
             _skyboxCubemap = val._skyboxCubemap;
         }
@@ -272,6 +272,7 @@ namespace BeerEngine
     }
 
     void    AScene::save(std::string filePath) {
+        (void) filePath;
         nlohmann::json j = dynamic_cast<JsonSerializable *>(this);
         std::string content = j.dump(4);
         // BeerEngine::IO::FileUtils::WriteFile(filePath, content);
@@ -300,7 +301,7 @@ namespace BeerEngine
 		auto gameObjects = j.at("gameObjects");
 		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 			auto goJson = it.value();
-			auto go = GameObject::Deserialize(goJson, loader, *this);
+			GameObject::Deserialize(goJson, loader, *this);
 		}
 	}
 

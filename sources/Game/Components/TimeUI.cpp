@@ -85,6 +85,8 @@ void TimeUI::setUI(struct nk_context *ctx)
 
 void TimeUI::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
+	(void) ctx;
+	(void) fonts;
 	std::cout << "start UI TimeUI" << std::endl;
 }
 

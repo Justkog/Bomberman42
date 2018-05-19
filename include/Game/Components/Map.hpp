@@ -108,11 +108,9 @@ namespace Game
 				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
 				auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png");
 				auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png");
-				auto *mapBlocBmp = Assets::GetTexture("assets/textures/wall_bump.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
 				mapBlocMat->setAlbedo(mapBlocTex);
 				mapBlocMat->setNormal(mapBlocNrm);
-				// mapBlocMat->setBump(mapBlocBmp);
 				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;

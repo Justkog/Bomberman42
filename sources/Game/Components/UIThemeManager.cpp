@@ -102,7 +102,7 @@ void UIThemeManager::startUI(struct nk_context *ctx, std::map<std::string, nk_fo
 
 void UIThemeManager::renderUI(struct nk_context *ctx)
 {
-
+	(void) ctx;
 }
 
 

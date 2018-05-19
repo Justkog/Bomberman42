@@ -20,7 +20,7 @@ namespace BeerEngine
 			if (this != &val)
 			{
 				_actions.clear();
-				for (int i = 0; i < val._actions.size(); i++)
+				for (std::size_t i = 0; i < val._actions.size(); i++)
 					_actions.push_back(val._actions[i]);
 				_timer = val._timer;
 				_loop = val._loop;

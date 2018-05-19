@@ -45,7 +45,7 @@ namespace BeerEngine
 			void RebuildMesh();
 	
 			std::vector<Physics::Ray> rays;
-			int old_size;
+			std::size_t old_size;
 
 			REGISTER_COMPONENT_HPP
 

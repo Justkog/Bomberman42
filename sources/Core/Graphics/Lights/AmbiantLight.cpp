@@ -45,11 +45,12 @@ namespace BeerEngine
 
 		void AmbiantLight::deserialize(const nlohmann::json & j)
 		{
-
+			(void) j;
 		}
 
 		AmbiantLight * AmbiantLight::Deserialize(const nlohmann::json & j)
 		{
+			(void) j;
 			return nullptr;
 		}
 	}

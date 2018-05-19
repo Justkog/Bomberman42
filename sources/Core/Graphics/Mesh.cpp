@@ -126,6 +126,7 @@ namespace BeerEngine
 
 		Mesh * Mesh::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+			(void) loader;
 			if (j.is_null())
 				return NULL;
 			std::string path = j.at("sourceFile");
