@@ -13,12 +13,15 @@ namespace Game
 {
 	namespace Component
 	{
+		Player						*Player::instance = nullptr;
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
 			_transform(gameObject->transform),
 			_character(nullptr),
 			_gameStarted(false)
-		{ }
+		{
+			instance = this;
+		}
 
 		Player::~Player(void)
 		{ }

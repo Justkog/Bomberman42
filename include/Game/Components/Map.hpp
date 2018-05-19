@@ -48,6 +48,7 @@ namespace Game
 			BeerEngine::Transform	&_transform;
 
 		public:
+			static Map		*instance;
             Map(BeerEngine::GameObject *gameObject);
 			~Map();
 

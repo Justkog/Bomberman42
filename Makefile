@@ -67,6 +67,7 @@ SRC = \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
 	Game/Level2.cpp \
+	Game/Level3.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
@@ -105,7 +106,7 @@ DIR = $(dir $(SRC))
 
 # -g
 # -Ofast -march=native -flto
-CFLAGS =  -std=c++11 -Wc++11-extensions \
+CFLAGS = -g -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 

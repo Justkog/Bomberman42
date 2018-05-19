@@ -18,10 +18,13 @@ namespace Game
 	namespace Component
 	{
 
+		Map		*Map::instance = nullptr;
         Map::Map(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
             _transform(gameObject->transform)
-		{ }
+		{
+			instance = this;
+		}
 
 		Map::~Map()
 		{
