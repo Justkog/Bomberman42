@@ -104,13 +104,31 @@ void AdventureContinueMenu::renderUI(struct nk_context *ctx)
 	ctx->style.window.spacing = nk_vec2(0, 10);
 	if (nk_begin(ctx, "Adventure Menu", window_rect, NK_WINDOW_NO_SCROLLBAR))
 	{
-		nk_layout_row_dynamic(ctx, 75, 1);
 
-		for (auto it = availableLevels.begin(); it != availableLevels.end(); it++)
-		{
-			if (nk_button_label(ctx, it->name.c_str()))
-				it->load();
+		struct nk_vec2 oldPadding = ctx->style.window.padding;
+		struct nk_vec2 oldGroupPadding = ctx->style.window.group_padding;
+		ctx->style.window.padding.y = 0;
+		// ctx->style.window.padding = nk_vec2(0, 0);
+		ctx->style.window.group_padding = nk_vec2(0, 0);
+		
+		nk_layout_row_dynamic(ctx, 75 * 4 + 10 * 3, 1);
+		if (nk_group_begin(ctx, "Adventure Levels", 0)) {
+			nk_layout_row_dynamic(ctx, 75, 1);
+			for (auto it = availableLevels.begin(); it != availableLevels.end(); it++)
+			{
+				if (nk_button_label(ctx, it->name.c_str()))
+					it->load();
+			}
+			nk_group_end(ctx);
 		}
+		ctx->style.window.padding = oldPadding;
+		ctx->style.window.group_padding = oldGroupPadding;
+
+		// for (auto it = availableLevels.begin(); it != availableLevels.end(); it++)
+		// {
+		// 	if (nk_button_label(ctx, it->name.c_str()))
+		// 		it->load();
+		// }
 		// if (nk_button_label(ctx, "Level1"))
 		// {
 
@@ -119,6 +137,7 @@ void AdventureContinueMenu::renderUI(struct nk_context *ctx)
 		// {
 
 		// }
+		nk_layout_row_dynamic(ctx, 75, 1);
 		if (nk_button_label(ctx, "Back"))
 		{
 			this->setActive(false);
