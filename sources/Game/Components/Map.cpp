@@ -150,7 +150,7 @@ namespace Game
 				// iaGO->transform.scale = glm::vec3(1, 1, 1);
 				iaGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 				auto collider = iaGO->AddComponent<BeerEngine::Component::CircleCollider>();
-					collider->_radius = 0.5f;
+					collider->_radius = 0.4f;
 					collider->colliderType = BeerEngine::Component::ONLY_OTHER;
 				auto breakable = iaGO->AddComponent<Game::Component::Breakable>();
 					GameManager::GetInstance().registerEnemy(breakable);
