@@ -104,8 +104,8 @@ namespace BeerEngine
 	static void     win_resize_callback(GLFWwindow *window, int width, int height)
 	{
 		// std::cout << "FramebufferSizeCallback" << std::endl;
-		static const float aspect = 16.0f / 9.0f;
-		Window  *win = (Window *)glfwGetWindowUserPointer(window);
+		// static const float aspect = 16.0f / 9.0f;
+		// Window  *win = (Window *)glfwGetWindowUserPointer(window);
 		// if (win)
 		// {
 		// 	float a = (float)width / (float)height;
@@ -136,6 +136,9 @@ namespace BeerEngine
 	static void     win_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		(void)window;
+		(void)scancode;
+		(void)action;
+		(void)mods;
 		// std::cout << "Key: " << key << ", action: " << action << std::endl;
 		Input::SetKey(key, action);
 	}
@@ -156,6 +159,7 @@ namespace BeerEngine
 	static void     win_mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 	{
 		(void)window;
+		(void)mods;
 		// std::cout << "Button: " << button << ", action: " << action << std::endl;
 		Input::SetMouseButton(button, action);
 	}
@@ -169,6 +173,7 @@ namespace BeerEngine
 
 	static void		window_focus_callback(GLFWwindow* window, int focused)
 	{
+		(void) window;
 		if (focused)
 		{
 			std::cout << "The window gained input focus" << std::endl;
@@ -278,6 +283,8 @@ namespace BeerEngine
 	// call back used to force a resize after coming back from full screen mode due to a bug on macos
 	void Window::CallbackResize(GLFWwindow* window, int cx, int cy)
 	{
+		(void) cx;
+		(void) cy;
 		// std::cout << "SetWindowSizeCallback" << std::endl;
 		glfwSetWindowSize(window, GetInstance()->getWidth(), GetInstance()->getHeight());
 		glfwSetWindowPos(window, *GetInstance()->getXPos(), *GetInstance()->getYPos());

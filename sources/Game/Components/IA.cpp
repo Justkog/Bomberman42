@@ -144,10 +144,10 @@ namespace Game
             std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(pos, dir);
             Game::Component::Bomb *bomb;
 
-            if (hits.size() > 0 + offset)
+            if (hits.size() > static_cast<std::size_t>(0 + offset))
             {
                 bomb = hits[0 + offset].collider->_gameObject->GetComponent<Game::Component::Bomb>();
-                if (!bomb && hits[0 + offset].collider->_gameObject->GetComponent<Game::Component::IA>() == this && hits.size() > 1 + offset)
+                if (!bomb && hits[0 + offset].collider->_gameObject->GetComponent<Game::Component::IA>() == this && hits.size() > static_cast<std::size_t>(1 + offset))
                     bomb = hits[1 + offset].collider->_gameObject->GetComponent<Game::Component::Bomb>();
                 if (bomb && bomb->power >= std::abs(pos.z - bomb->_gameObject->transform.position.z) + std::abs(pos.x - bomb->_gameObject->transform.position.x))
                     return (false);
@@ -289,6 +289,7 @@ namespace Game
             static glm::vec3 lastDir = glm::vec3(0);
             glm::vec3 dir;
 
+            (void) lastDir;
             if (!avoidAllExplosions(_path[0]) && avoidAllExplosions(map->worldToMap(_transform.position)))
                 return (true);
             if (glm::distance2(map->mapToWorld(_path[0]), _transform.position) < 0.001)
@@ -448,6 +449,7 @@ namespace Game
 
         void    IA::renderUI(struct nk_context *ctx)
         {
+            (void) ctx;
             /*
             std::stringstream winName;
             winName << "IA " << this;
@@ -519,7 +521,8 @@ namespace Game
 
         void IA::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
     	{
-
+            (void) j;
+            (void) loader;
 		}
 
 		REGISTER_COMPONENT_CPP(IA)

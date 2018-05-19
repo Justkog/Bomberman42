@@ -134,11 +134,12 @@ namespace BeerEngine
 
 		void DirectionalLight::deserialize(const nlohmann::json & j)
 		{
-
+			(void) j;
 		}
 
 		DirectionalLight * DirectionalLight::Deserialize(const nlohmann::json & j)
 		{
+			(void) j;
 			return nullptr;
 		}
 	}

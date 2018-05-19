@@ -8,6 +8,7 @@
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
 #include "Game/Input.hpp"
+#include "Game/Assets.hpp"
 
 namespace Game
 {
@@ -17,8 +18,8 @@ namespace Game
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
 			_transform(gameObject->transform),
-			_character(nullptr),
 			_gameStarted(false),
+			_character(nullptr),
 			noBombTimer(0)
 		{
 			instance = this;
@@ -67,11 +68,11 @@ namespace Game
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 
-			BeerEngine::Audio::AudioClip	clip("assets/sounds/footsteps.wav");
-			srcAudio->setBuffer(clip.getBuffer());
+			BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip("assets/sounds/footsteps.wav");
+			srcAudio->setBuffer(clip->getBuffer());
 
-			BeerEngine::Audio::AudioClip	itemClip("assets/sounds/item.wav");
-			itemSrcAudio->setBuffer(itemClip.getBuffer());
+			BeerEngine::Audio::AudioClip	*itemClip = Assets::GetAudioClip("assets/sounds/item.wav");
+			itemSrcAudio->setBuffer(itemClip->getBuffer());
 
 			GameManager::GetInstance().onGameStart.bind(&Player::startGame, this);
         }
@@ -87,26 +88,26 @@ namespace Game
 			_character->_direction = glm::vec2(0, 0);
 			if (!_gameStarted)
 				return;
-			
-			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move up"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
+
+			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move up"]))
             {
 				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Up);
 			}
-            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move down"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::L))
+            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move down"]))
 			{
 				moving = true;
 				playStepSound();
                 _character->move(Character::Direction::Down);
 			}
-            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move left"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::K))
+            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move left"]))
             {
 				moving = true;
 				playStepSound();
 				_character->move(Character::Direction::Left);
 			}
-            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move right"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::M))
+            if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move right"]))
             {
 				moving = true;
 				playStepSound();
@@ -114,15 +115,15 @@ namespace Game
 			}
 			if (!moving)
 				_character->stopMove();
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
-				this->destroy();
+            // if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_0))
+			// 	this->destroy();
             if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))
 			{
 				std::cout << "drop requested" << std::endl;
                 _character->dropBomb();
 			}
-            if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
-                _gameObject->destroy(this);
+            // if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))
+            //     _gameObject->destroy(this);
 			if (BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move up"]) &&
 				BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move left"]) &&
 				BeerEngine::Input::GetKeyUp(Game::Input::keyBindings["move down"]) &&
@@ -142,6 +143,7 @@ namespace Game
 
         void            Player::renderUI(struct nk_context *ctx)
         {
+			(void) ctx;
             // if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             // {
             //     std::stringstream ss;

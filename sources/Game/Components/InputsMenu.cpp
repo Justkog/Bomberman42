@@ -153,6 +153,8 @@ void InputsMenu::setUI(struct nk_context *ctx)
 
 void InputsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
+	(void) ctx;
+	(void) fonts;
 	std::cout << "start UI inputs menu" << std::endl;
 }
 

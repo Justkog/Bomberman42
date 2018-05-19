@@ -44,9 +44,9 @@ namespace BeerEngine
 			{
 				_currentCollisions.clear();
 				_exceptions.clear();
-				for (int i = 0; i < val._currentCollisions.size(); i++)
+				for (std::size_t i = 0; i < val._currentCollisions.size(); i++)
 					_currentCollisions.push_back(val._currentCollisions[i]);
-				for (int i = 0; i < val._exceptions.size(); i++)
+				for (std::size_t i = 0; i < val._exceptions.size(); i++)
 					_exceptions.push_back(val._exceptions[i]);
 				_transform = val._transform;
 				_offset = val._offset;
@@ -80,7 +80,7 @@ namespace BeerEngine
 		{
 			auto it = std::find(_colliders.begin(), _colliders.end(), this);
 			++it;
-			for (int i = it - _colliders.begin(); i < _colliders.size(); i++)
+			for (std::size_t i = it - _colliders.begin(); i < _colliders.size(); i++)
 			{
 				auto other = _colliders[i];
 				// On check les type de collision entre eux

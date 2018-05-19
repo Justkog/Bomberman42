@@ -30,7 +30,7 @@ namespace BeerEngine
 			void 	bind();
 
 			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
+			void deserialize(const nlohmann::json & j);
 			static AmbiantLight * Deserialize(const nlohmann::json & j);
 		};
 	}

@@ -267,7 +267,7 @@ namespace BeerEngine
 
 					if (normal == false && UV == true)
 					{
-						for (size_t v = 0; v < fv; v++)
+						for (int v = 0; v < fv; v++)
 						{
 							tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
 							// access to vertex
@@ -289,7 +289,7 @@ namespace BeerEngine
 					}
 					else if (normal == true && UV == true)
 					{
-						for (size_t v = 0; v < fv; v++)
+						for (int v = 0; v < fv; v++)
 						{
 							tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
 							// access to vertex
@@ -315,7 +315,7 @@ namespace BeerEngine
 					}
 					else
 					{
-						for (size_t v = 0; v < fv; v++)
+						for (int v = 0; v < fv; v++)
 						{
 							tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
 							// access to vertex
@@ -380,7 +380,7 @@ namespace BeerEngine
 			BeerEngine::Graphics::MeshBuilder builder;
 
 			bool useTexCoords = false;
-			for (std::size_t k = 0; k < scene->mNumMeshes; k++)
+			for (uint k = 0; k < scene->mNumMeshes; k++)
 			{
 				aiMesh *mesh = scene->mMeshes[k];
 
@@ -388,7 +388,7 @@ namespace BeerEngine
 				std::vector<glm::vec3>	normals;
 				std::vector<glm::vec2>	texcoords;
 				
-				for (std::size_t i = 0; i < mesh->mNumVertices; i++)
+				for (uint i = 0; i < mesh->mNumVertices; i++)
 				{
 					glm::vec3 position;
 					position.x = mesh->mVertices[i].x;
@@ -412,10 +412,10 @@ namespace BeerEngine
 					}
 				}
 
-				for (std::size_t i = 0; i < mesh->mNumFaces; i++)
+				for (uint i = 0; i < mesh->mNumFaces; i++)
 				{
 					aiFace face = mesh->mFaces[i];
-					for (std::size_t j = 0; j < face.mNumIndices; j++)
+					for (uint j = 0; j < face.mNumIndices; j++)
 					{
 						int index = face.mIndices[j];
 

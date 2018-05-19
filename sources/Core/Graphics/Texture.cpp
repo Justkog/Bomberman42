@@ -154,6 +154,7 @@ namespace BeerEngine
 
 		Texture * Texture::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+			(void) loader;
 			if (j.is_null())
 				return NULL;
 			std::string path = j.at("sourceFile");

@@ -66,6 +66,8 @@ std::ostream &				operator<<(std::ostream & o, ItemsUI const & i)
 
 void ItemsUI::acknowledgePlayerDeath(glm::vec3 pos, int value)
 {
+	(void) pos;
+	(void) value;
 	player = NULL;
 }
 
@@ -82,7 +84,8 @@ void ItemsUI::start()
 
 void ItemsUI::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
-
+	(void) ctx;
+	(void) fonts;
 }
 
 void ItemsUI::setUI(struct nk_context *ctx)
@@ -157,7 +160,7 @@ void ItemsUI::renderUI(struct nk_context *ctx)
 	setUI(ctx);
 	float panelWidth = 225;
 	float panelHeight = 400;
-	float xOffset = 0;
+	// float xOffset = 0;
 	float yOffset = 0;
 	auto window_rect = nk_rect(
 		BeerEngine::Window::GetInstance()->getWidth() - panelWidth, 

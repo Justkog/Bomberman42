@@ -80,7 +80,7 @@ namespace BeerEngine
 					collisions.push_back(RaycastHit(c, &(c->_transform), glm::distance(origin2D, pos)));
 			}
 			std::sort(collisions.begin(), collisions.end());
-			if (n < collisions.size())
+			if (static_cast<std::size_t>(n) < collisions.size())
 			{
 				hit = collisions[n];
 				return (true);

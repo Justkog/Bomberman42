@@ -98,7 +98,7 @@ namespace BeerEngine
 				spawnTimeRate -= spawnTime;
 			}
 
-			int i = 0;
+			std::size_t i = 0;
 			while (i < _particles.size())
 			{
 				_particles[i].life -= delta;
@@ -152,7 +152,7 @@ namespace BeerEngine
 				return;
 			}
 			_particleCount = 0;
-			for (int i = 0; i < _particles.size(); i++)
+			for (std::size_t i = 0; i < _particles.size(); i++)
 			{
 				float u = 0.0f;
 				float v = 0.0f;

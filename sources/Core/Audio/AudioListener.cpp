@@ -9,18 +9,18 @@ namespace BeerEngine
 	{
         AudioListener::AudioListener(BeerEngine::GameObject *gameObject) :
 			Component(gameObject)
-		{ 
+		{
 
         }
 
         AudioListener::~AudioListener()
-        { 
-			
+        {
+
         }
 
-        void	   AudioListener::init()
+        void	   AudioListener::Load()
         {
-            int Choice = 0;
+            // int Choice = 0;
             // Recuperation des devices disponibles
             std::vector<std::string> Devices;
             // Vidage de la liste
@@ -71,6 +71,12 @@ namespace BeerEngine
 
         void		AudioListener::setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ)
         {
+            (void) x;
+            (void) y;
+            (void) z;
+            (void) dirX;
+            (void) dirY;
+            (void) dirZ;
             // std::cout << "position x = " << x << " y = " << y << " z = " << z << "\n";
             // std::cout << "orientation x = " << dirX << " y = " << dirY << " z = " << dirZ << "\n";
             // ALfloat values[6];
@@ -89,7 +95,7 @@ namespace BeerEngine
             setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z,
                             _gameObject->transform.forward().x, _gameObject->transform.forward().y, _gameObject->transform.forward().z);
 		}
-	
+
 		void		AudioListener::fixedUpdate(void)
 		{
 

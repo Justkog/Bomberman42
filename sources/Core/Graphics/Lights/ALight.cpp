@@ -7,10 +7,13 @@ namespace BeerEngine
 	{
 		ALight::ALight(int id, AScene &scene)
 			: ALight(1.0, glm::vec4(1.0f))
-		{}
+		{
+			(void) id;
+			(void) scene;
+		}
 
 		ALight::ALight(float intensity, glm::vec4 color)
-			: _intensity(intensity), _color(color), _shader(nullptr)
+			: _shader(nullptr), _intensity(intensity), _color(color)
 		{}
 
 		ALight::ALight()
@@ -111,11 +114,12 @@ namespace BeerEngine
 
 		void ALight::deserialize(const nlohmann::json & j)
 		{
-
+			(void) j;
 		}
 
 		ALight * ALight::Deserialize(const nlohmann::json & j)
 		{
+			(void) j;
 			return nullptr;
 		}
 

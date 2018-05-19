@@ -23,7 +23,7 @@ namespace BeerEngine
 		{
 			*this = val;
 		}
-		
+
 		AudioSource &AudioSource::operator=(const AudioSource &val)
 		{
 			if (this != &val)
@@ -40,7 +40,7 @@ namespace BeerEngine
 			Delete();
 		}
 
-		void	   AudioSource::play()
+		const void	   AudioSource::play()
 		{
 		    // arrete un son avant de jouer le suivant
 		    stop();
@@ -49,7 +49,7 @@ namespace BeerEngine
 			continuePlaying();
 		}
 
-		bool       AudioSource::isPlaying()
+		const bool       AudioSource::isPlaying()
 		{
 			alGetSourcei(_Source, AL_SOURCE_STATE, &_Status);
 			if (_Status == AL_PLAYING)
@@ -57,18 +57,18 @@ namespace BeerEngine
 			return false;
 		}
 
-		void	   AudioSource::pause()
+		const void	   AudioSource::pause()
 		{
 		    //mettre un son en pause
 		    alSourcePause(_Source);
 		}
 
-		void	   AudioSource::continuePlaying()
+		const void	   AudioSource::continuePlaying()
 		{
 		    alSourcePlay(_Source);
 		}
 
-		void	   AudioSource::stop()
+		const void	   AudioSource::stop()
 		{
 		    alSourceStop(_Source);
 		}
@@ -76,15 +76,6 @@ namespace BeerEngine
 		void	   AudioSource::Delete()
 		{
 		    stop();
-
-		    // Destruction du tampon
-		    // alDeleteBuffers(1, &_Buffer);
-				// if (alGetError() != AL_NO_ERROR)
-				// 	throw std::runtime_error("delete buffer error");
-		    // Destruction de la source
-		    // alSourcei(_Source, AL_BUFFER, 0);
-				// if (alGetError() != AL_NO_ERROR)
-				// 	throw std::runtime_error("AudioSource delete sourcei error");
 		    alDeleteSources(1, &_Source);
 				if (alGetError() != AL_NO_ERROR)
 					throw std::runtime_error("AudioSource delete source error");

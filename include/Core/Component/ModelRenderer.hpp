@@ -99,7 +99,7 @@ namespace BeerEngine
 			glm::mat4			_globalInverseTransform;
 
 			void build(int id, std::vector<glm::vec3> &positions, std::vector<glm::vec3> &normals, std::vector<glm::vec2> &uvs, std::vector<VertexBoneData> &bones);
-			void loadBones(uint meshIndex, const aiMesh* mesh, std::vector<VertexBoneData>& bones);
+			void loadBones(const aiMesh* mesh, std::vector<VertexBoneData>& bones);
 			void boneTransform(float timeInSeconds, std::vector<glm::mat4> &transforms);
 			const aiNodeAnim *fineNodeAnim(const aiAnimation *anim, const std::string &name);
 			void readNodes(float animationTime, const aiNode *node, glm::mat4 &parent);

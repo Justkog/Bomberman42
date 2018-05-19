@@ -21,7 +21,7 @@ namespace BeerEngine
 		/*! \class AudioListener
 		* \brief classe d'ecoute d'audio par sa localition
 		*/
-		class AudioListener : public BeerEngine::Component::Component, 
+		class AudioListener : public BeerEngine::Component::Component,
 							public BeerEngine::Component::IStart,
 							public BeerEngine::Component::IUpdate
 		{
@@ -30,7 +30,7 @@ namespace BeerEngine
 			AudioListener(BeerEngine::GameObject *gameObject);
 			virtual ~AudioListener();
 
-			void static	init();
+			void static	Load();
 			void static DestroyOpenAL();
 
 			void		setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ);

@@ -24,7 +24,7 @@ namespace BeerEngine
 		class ShaderProgram : public JsonSerializable
 		{
 		private:
-			int				_size;
+			uint			_size;
 			GLuint			_program;
 			GLuint			*_shaders;
 			std::string		_sourceFileVS;
@@ -37,7 +37,7 @@ namespace BeerEngine
 
 			ShaderProgram(int size);
 			~ShaderProgram(void);
-			void			load(unsigned int shaderIndex, GLenum shaderType, const char *script);
+			void			load(uint shaderIndex, GLenum shaderType, const char *script);
 			void			compile(void);
 			void			bind(void);
 			void			unbind(void);

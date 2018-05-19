@@ -78,7 +78,8 @@ void VersusMenu::start()
 
 void VersusMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
-	
+	(void) ctx;
+	(void) fonts;
 }
 
 void VersusMenu::renderUI(struct nk_context *ctx)

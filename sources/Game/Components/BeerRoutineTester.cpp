@@ -92,10 +92,10 @@ void BeerRoutineTester::start()
 void BeerRoutineTester::update()
 {
 	ARoutineRunner::update();
-	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::R))
-		startRoutine(*createTestRoutine());
-	if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::T))
-		stopRoutine(getRunningRoutines()[0]);
+	// if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::R))
+	// 	startRoutine(*createTestRoutine());
+	// if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::T))
+	// 	stopRoutine(getRunningRoutines()[0]);
 }
 
 void BeerRoutineTester::fixedUpdate()
