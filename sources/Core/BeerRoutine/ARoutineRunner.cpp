@@ -31,7 +31,7 @@ namespace BeerEngine
 
 		void ARoutineRunner::startRoutine(BeerEngine::BeerRoutine::BeerRoutine &routine)
 		{
-			// std::cout << "starting routine!" << "\n";
+			std::cout << "starting routine!" << "\n";
 			_currentRoutines.push_back(&routine);
 		}
 
@@ -57,6 +57,7 @@ namespace BeerEngine
 
 		void ARoutineRunner::update()
 		{
+
 			for (int i = 0; i < _currentRoutines.size(); i++)
 			{
 				auto cR = _currentRoutines[i];

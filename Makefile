@@ -98,6 +98,8 @@ SRC = \
 	Game/Components/TimeUI.cpp \
 	Game/Components/StartTimerUI.cpp \
 	Game/Components/ItemsUI.cpp \
+	Game/Components/Message.cpp \
+	Game/Components/LevelInstructions.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
 	Game/Components/AudioManager.cpp
