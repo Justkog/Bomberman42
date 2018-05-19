@@ -80,6 +80,10 @@ void    Versus1::init(void)
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
+	victoryMenu->sceneLoader.name = "Versus2";
+	gameOverMenu->sceneLoader.name = "Versus1";
+	inGameMenu->sceneLoader.name = "Versus1";
+
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";
