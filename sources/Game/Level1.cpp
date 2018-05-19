@@ -106,7 +106,7 @@ void    Level1::init(void)
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-		playerColl->_radius = 0.5;
+		playerColl->_radius = 0.4;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
 	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
