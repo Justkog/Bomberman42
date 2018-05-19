@@ -47,7 +47,7 @@ void    Level3::init(void)
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
 	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// UI
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();

@@ -40,7 +40,7 @@ namespace BeerEngine
 			Delete();
 		}
 
-		const void	   AudioSource::play()
+		void	   AudioSource::play()
 		{
 		    // arrete un son avant de jouer le suivant
 		    stop();
@@ -49,7 +49,7 @@ namespace BeerEngine
 			continuePlaying();
 		}
 
-		const bool       AudioSource::isPlaying()
+		bool       AudioSource::isPlaying()
 		{
 			alGetSourcei(_Source, AL_SOURCE_STATE, &_Status);
 			if (_Status == AL_PLAYING)
@@ -57,18 +57,18 @@ namespace BeerEngine
 			return false;
 		}
 
-		const void	   AudioSource::pause()
+		void	   AudioSource::pause()
 		{
 		    //mettre un son en pause
 		    alSourcePause(_Source);
 		}
 
-		const void	   AudioSource::continuePlaying()
+		void	   AudioSource::continuePlaying()
 		{
 		    alSourcePlay(_Source);
 		}
 
-		const void	   AudioSource::stop()
+		void	   AudioSource::stop()
 		{
 		    alSourceStop(_Source);
 		}
