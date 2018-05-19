@@ -142,15 +142,16 @@ namespace Game
 			hitDir[hitIDStorage] = _gameObject->transform.position + dir;
 			std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
 			float lifeTime = 1.0f / 2.0f;
-			float sizeDeflag = (power + 0.25f) * 2.0f;
-			auto bombDeflag = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
+			// float sizeDeflag = (power + 0.25f) * 2.0f;
+			float sizeDeflag = glm::length(dir);
+			// auto bombDeflag = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
 			int i = 0;
 
-			bombDeflag->setTexture(explosionTexture);
-			bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-			bombDeflag->setAnimate(true, 64, 8, 8);
-			bombDeflag->setLifeTime(lifeTime);
-			bombDeflag->offset = glm::vec3(0, 0.5f, 0);
+			// bombDeflag->setTexture(explosionTexture);
+			// bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+			// bombDeflag->setAnimate(true, 64, 8, 8);
+			// bombDeflag->setLifeTime(lifeTime);
+			// bombDeflag->offset = glm::vec3(0, 0.5f, 0);
 			if (hits.size() >= 1)
 			{
 				if (hits[0].collider->_gameObject == _gameObject)
@@ -166,29 +167,50 @@ namespace Game
 						_gameObject->destroy(hits[i].collider->_gameObject);
 					if (bomb)
 						bomb->timer = 5.0f;
-					sizeDeflag = (distance + 0.25f) * 2.0f;
+					sizeDeflag = distance;
+					if (!destroyable && !bomb)
+						sizeDeflag -= 1.0f;
+					// sizeDeflag = (distance + 0.25f) * 2.0f;
+					// if (sizeDeflag <= 0)
+					// 	sizeDeflag = 0.0f;
+					// else
+					// 	sizeDeflag -= 1.0f;
 				}
 			}
 			else
 			{
 				hitDir[hitIDStorage] = glm::floor(_gameObject->transform.position + glm::normalize(dir) * power);
 			}
-			bombDeflag->setSize(2.0f);
-			float timeToSpawnByPower = 90.0f + power * 30.0f;
-			bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
-			dir = glm::normalize(dir) * sizeDeflag;
-			bombDeflag->setVelocity(dir);
+
+			
+			
+			int size = static_cast<int>(sizeDeflag);
+			for (int i = 1; i <= size; i++)
+			{
+				auto *explodeParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
+				explodeParticule->setTexture(explosionTexture);
+				explodeParticule->setAnimate(true, 64, 8, 8);
+				explodeParticule->setLifeTime(0.5f);
+				explodeParticule->setSize(1.0f, 2.0f);
+				explodeParticule->setSpawnTime(1.0f / 120.0f);
+				explodeParticule->offset = glm::vec3(0, 0.25f, 0) + glm::normalize(dir) * i;
+			}
+			// bombDeflag->setSize(2.0f);
+			// float timeToSpawnByPower = 90.0f + power * 30.0f;
+			// bombDeflag->setSpawnTime(1.0f / timeToSpawnByPower);
+			// dir = glm::normalize(dir) * sizeDeflag;
+			// bombDeflag->setVelocity(dir);
 		}
 
 		void	Bomb::explode(void)
 		{
 			if (render != nullptr)
 			{
-				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
 				auto soundManager = _gameObject->AddComponent<Game::Component::AudioManager>();
 				soundManager->setClip("assets/sounds/Bomb+1.wav");
 				soundManager->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 
+				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
 				playerParticule->setTexture(explosionTexture);
 				playerParticule->setAnimate(true, 64, 8, 8);
 				playerParticule->setLifeTime(0.5f);
