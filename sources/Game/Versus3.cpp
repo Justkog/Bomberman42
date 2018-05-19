@@ -79,6 +79,10 @@ void    Versus3::init(void)
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
+	victoryMenu->sceneLoader.name = "Random";
+	gameOverMenu->sceneLoader.name = "Versus3";
+	inGameMenu->sceneLoader.name = "Versus3";
+
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";

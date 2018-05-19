@@ -139,6 +139,10 @@ void    SceneTest::init(void)
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
+	victoryMenu->sceneLoader.name = "Random";
+	gameOverMenu->sceneLoader.name = "Random";
+	inGameMenu->sceneLoader.name = "Random";
+
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";
