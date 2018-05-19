@@ -9,6 +9,8 @@
 #include "Game/Level3.hpp"
 #include "Game/Level4.hpp"
 #include "Game/Versus1.hpp"
+#include "Game/Versus2.hpp"
+#include "Game/Versus3.hpp"
 
 namespace Game
 {
@@ -106,15 +108,12 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 		// 	if (nk_button_label(ctx, it->name.c_str()))
 		// 		BeerEngine::SceneManager::LoadScene(it->scenePath);
 		// }
-		if (nk_button_label(ctx, "Level 1"))
+		if (nk_button_label(ctx, "Classic"))
 			BeerEngine::SceneManager::LoadScene<Versus1>();
-		if (nk_button_label(ctx, "level 2"))
-			BeerEngine::SceneManager::LoadScene<Level2>();
-		if (nk_button_label(ctx, "level 3"))
-			BeerEngine::SceneManager::LoadScene<Level3>();
-		if (nk_button_label(ctx, "level 4"))
-			BeerEngine::SceneManager::LoadScene<Level4>();
-
+		if (nk_button_label(ctx, "Cross"))
+			BeerEngine::SceneManager::LoadScene<Versus2>();
+		if (nk_button_label(ctx, "Garden"))
+			BeerEngine::SceneManager::LoadScene<Versus3>();
 		if (nk_button_label(ctx, "Random"))
 			BeerEngine::SceneManager::LoadScene<SceneTest>();
 		if (nk_button_label(ctx, "Back"))
