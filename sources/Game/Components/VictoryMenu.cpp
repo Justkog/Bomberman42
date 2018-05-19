@@ -5,7 +5,6 @@
 #include "Core/SceneManager.hpp"
 #include "Game/SceneTest.hpp"
 #include "Game/SceneMain.hpp"
-#include "Core/SceneManager.hpp"
 #include "Game/Level1.hpp"
 #include "Game/Level2.hpp"
 

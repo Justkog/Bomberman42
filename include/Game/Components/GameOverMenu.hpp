@@ -19,6 +19,7 @@
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IEnable.hpp"
+#include "Game/SceneLoader.hpp"
 
 namespace Game
 {
@@ -39,6 +40,7 @@ namespace Game
 			UIThemeManager	*uiManager;
 			nk_style_item	backgroundImage;
 			nk_style_item	youLoseImage;
+			Game::SceneLoader		sceneLoader;
 
 			GameOverMenu(BeerEngine::GameObject *gameObject);
 			virtual ~GameOverMenu( void );
