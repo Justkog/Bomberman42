@@ -60,7 +60,7 @@ namespace BeerEngine
     class GameObject;
     class Transform;
     class JsonSerializable;
-	class Camera;
+	struct Camera;
 	/*! \namespace BeerEngine::Audio
 	* \brief espace de nommage regroupant les fonctionnalité audio du moteur
 	*/
@@ -127,8 +127,8 @@ namespace BeerEngine
 #define REGISTER_COMPONENT_HPP static int RegisterComponentType(); \
 							static 	int componentRegisterer;\
 							static std::string type;\
-							virtual nlohmann::json	serialize();\
-        					virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+							nlohmann::json	serialize();\
+        					void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
 //#define REGISTER_COMPONENT_CPP(Class) int	Class::RegisterComponentType() \
 //		{\

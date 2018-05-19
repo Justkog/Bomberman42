@@ -18,8 +18,8 @@ namespace Game
         Player::Player(BeerEngine::GameObject *gameObject) :
 			Component(gameObject),
 			_transform(gameObject->transform),
-			_character(nullptr),
 			_gameStarted(false),
+			_character(nullptr),
 			noBombTimer(0)
 		{
 			instance = this;
@@ -143,6 +143,7 @@ namespace Game
 
         void            Player::renderUI(struct nk_context *ctx)
         {
+			(void) ctx;
             // if (nk_begin(ctx, "Player", nk_rect(WINDOW_WIDTH - 330, 10, 320, 160), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
             // {
             //     std::stringstream ss;

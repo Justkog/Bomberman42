@@ -157,11 +157,11 @@ namespace Game
 		{
 			hitDir[hitIDStorage] = _gameObject->transform.position + dir;
 			std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
-			float lifeTime = 1.0f / 2.0f;
+			// float lifeTime = 1.0f / 2.0f;
 			// float sizeDeflag = (power + 0.25f) * 2.0f;
 			float sizeDeflag = glm::length(dir);
 			// auto bombDeflag = _gameObject->AddComponent<BeerEngine::Component::ParticleBase>();
-			int i = 0;
+			std::size_t i = 0;
 
 			// bombDeflag->setTexture(explosionTexture);
 			// bombDeflag->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -249,7 +249,7 @@ namespace Game
 			{
 				for (int j = 0; j < 4; j++)
 				{
-					int i = 0;
+					std::size_t i = 0;
 					glm::vec3 dir = hitDir[j] - _gameObject->transform.position;
 					std::vector<BeerEngine::Physics::RaycastHit> hits = BeerEngine::Physics::Physics::RaycastAllOrdered(_gameObject->transform.position, dir);
 					if (hits.size() >= 1)

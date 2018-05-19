@@ -45,7 +45,7 @@ namespace BeerEngine
 			void	unbind();
 
 			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j);
+			void deserialize(const nlohmann::json & j);
 			static Cubemap * Deserialize(const nlohmann::json & j);
 		};
 	}

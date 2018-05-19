@@ -154,11 +154,12 @@ namespace BeerEngine
 
 		void Cubemap::deserialize(const nlohmann::json & j)
 		{
-
+			(void) j;
 		}
 
 		Cubemap *Cubemap::Deserialize(const nlohmann::json & j)
 		{
+			(void) j;
 			return NULL;
 		}
 	}

@@ -48,8 +48,8 @@ SettingsMenu::~SettingsMenu ( void )
 
 SettingsMenu::SettingsMenu(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
-mousePreviousStatus(0),
-settingsReset(false)
+settingsReset(false),
+mousePreviousStatus(0)
 {
 	
 }
@@ -90,6 +90,9 @@ void SettingsMenu::setUI(struct nk_context *ctx)
 
 void SettingsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
+	(void) ctx;
+	(void) fonts;
+
 	std::cout << "start UI settings menu" << std::endl;
 	mWindow = uiManager->defaultWindow;
 

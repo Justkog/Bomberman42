@@ -10,7 +10,7 @@ namespace BeerEngine
 
 	std::function<void (int)> Input::onKeyPushedDefault()
 	{
-		return [] (int i) { };
+		return [] (int i) { (void) i; };
 	}
 
 	std::function<void (int)>	Input::onKeyPushed = Input::onKeyPushedDefault();

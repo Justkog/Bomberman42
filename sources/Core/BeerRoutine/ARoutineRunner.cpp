@@ -20,7 +20,7 @@ namespace BeerEngine
 			if (this != &val)
 			{
 				_currentRoutines.clear();
-				for (int i = 0; i < val._currentRoutines.size(); i++)
+				for (std::size_t i = 0; i < val._currentRoutines.size(); i++)
 					_currentRoutines.push_back(val._currentRoutines[i]);
 			}
 			return (*this);
@@ -57,7 +57,7 @@ namespace BeerEngine
 
 		void ARoutineRunner::update()
 		{
-			for (int i = 0; i < _currentRoutines.size(); i++)
+			for (std::size_t i = 0; i < _currentRoutines.size(); i++)
 			{
 				auto cR = _currentRoutines[i];
 				cR->update();

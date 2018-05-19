@@ -77,6 +77,8 @@ namespace Game
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 		{
+			(void) shader;
+			(void) kinematic;
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("assets/Prefabs/mapCrate.prefab");
 			mapBlocGO->transform.position = pos;
 			mapBlocGO->transform.scale = scale;
@@ -85,6 +87,7 @@ namespace Game
 
 		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type)
 		{
+			(void) shader;
 			std::cout << "item start" << std::endl;
 			BeerEngine::Component::MeshRenderer *meshRenderer;
 			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
@@ -135,6 +138,7 @@ namespace Game
 
 		BeerEngine::GameObject *Map::createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
 		{
+			(void) shader;
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("assets/Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
@@ -186,10 +190,10 @@ namespace Game
 			_sizeX = sizeX;
 			_sizeY = sizeY;
 			_map = new int*[sizeY];
-			for (int y = 0; y < sizeY; y++)
+			for (std::size_t y = 0; y < sizeY; y++)
 			{
 				_map[y] = new int[sizeX];
-				for (int x = 0; x < sizeX; x++)
+				for (std::size_t x = 0; x < sizeX; x++)
 					_map[y][x] = map[y][x];
 			}
 		}
@@ -200,10 +204,10 @@ namespace Game
 			_sizeY = sizeY;
 
 				_map = new int*[sizeY];
-				for (int y = 0; y < sizeY; y++)
+				for (std::size_t y = 0; y < sizeY; y++)
 				{
 					_map[y] = new int[sizeX];
-					for (int x = 0; x < sizeX; x++)
+					for (std::size_t x = 0; x < sizeX; x++)
 					{
 						if (map[y][x] == 0)
 						{

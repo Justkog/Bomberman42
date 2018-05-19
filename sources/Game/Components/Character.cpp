@@ -24,9 +24,9 @@ namespace Game
             _maxBomb(1),
             _explosionSize(1),
             _direction(0, 0),
+			map(nullptr),
 			bombMesh(nullptr),
-			bombMaterial(nullptr),
-			map(nullptr)
+			bombMaterial(nullptr)
 		{
 
         }
@@ -185,26 +185,32 @@ namespace Game
 
         void   Character::onTriggerStay(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         void   Character::onTriggerEnter(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         void   Character::onTriggerExit(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         void   Character::onColliderStay(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         void   Character::onColliderEnter(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         void   Character::onColliderExit(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
 		nlohmann::json	Character::serialize()

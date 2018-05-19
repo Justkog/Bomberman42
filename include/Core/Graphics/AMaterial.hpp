@@ -118,7 +118,7 @@ namespace BeerEngine
 			ShaderProgram	&getShader();
 
 			nlohmann::json	serialize();
-			virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+			void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 			static AMaterial * Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 		};
 	}

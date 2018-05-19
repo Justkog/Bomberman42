@@ -33,7 +33,7 @@ void    Level2::init(void)
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	BeerEngine::Component::MeshRenderer *meshRenderer;
+	// BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
@@ -108,7 +108,7 @@ void    Level2::init(void)
 		playerColl->_radius = 0.5;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;

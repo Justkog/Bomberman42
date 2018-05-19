@@ -97,6 +97,8 @@ void GameManager::registerEnemy(Breakable *enemyBreakable)
 
 void GameManager::setGameOver(glm::vec3 pos, int value)
 {
+	(void) pos;
+	(void) value;
 	if (inGameMenu->_isActive)
 		inGameMenu->setActive(!inGameMenu->_isActive);
 	// srcAudio->Delete();

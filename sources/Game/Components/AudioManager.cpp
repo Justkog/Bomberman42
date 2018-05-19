@@ -8,8 +8,8 @@ namespace Game
 	{
     AudioManager::AudioManager(BeerEngine::GameObject *gameObject):
 		Component(gameObject),
-    	srcAudio(BeerEngine::Audio::AudioSource(gameObject)),
-		audioType(Sound)
+			audioType(Sound),
+    	srcAudio(BeerEngine::Audio::AudioSource(gameObject))
     { }
 
     AudioManager::AudioManager(void)

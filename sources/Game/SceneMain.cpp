@@ -47,7 +47,7 @@ void    SceneMain::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto settings = menuGO->AddComponent<Game::Component::Settings>();

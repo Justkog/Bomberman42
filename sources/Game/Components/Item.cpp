@@ -103,6 +103,7 @@ namespace Game
 
         void   Item::onTriggerStay(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         void   Item::onTriggerEnter(BeerEngine::Component::ACollider *other)
@@ -139,6 +140,7 @@ namespace Game
 
         void   Item::onTriggerExit(BeerEngine::Component::ACollider *other)
         {
+            (void) other;
         }
 
         nlohmann::json	Item::serialize()
@@ -151,6 +153,7 @@ namespace Game
 
 		void Item::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+            (void) loader;
             this->_type = j.at("type");
 		}
 

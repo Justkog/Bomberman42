@@ -15,7 +15,7 @@ namespace BeerEngine
 			if (_size > 0)
 			{
 				_shaders = new GLuint[_size];
-				for (unsigned int i = 0; i < _size; i++)
+				for (uint i = 0; i < _size; i++)
 					_shaders[i] = 0;
 			}
 		}
@@ -47,7 +47,7 @@ namespace BeerEngine
 		{
 			if (_shaders != NULL)
 			{
-				for (unsigned int i = 0; i < _size; i++)
+				for (uint i = 0; i < _size; i++)
 				{
 					if (_shaders[i])
 					{
@@ -63,7 +63,7 @@ namespace BeerEngine
 			_program = 0;
 		}
 
-		void			ShaderProgram::load(unsigned int shaderIndex, GLenum shaderType, const char *script)
+		void			ShaderProgram::load(uint shaderIndex, GLenum shaderType, const char *script)
 		{
 			if (shaderIndex >= _size)
 				return ;
@@ -99,7 +99,7 @@ namespace BeerEngine
 			_program = glCreateProgram();
 			if (!_program)
 				return ;
-			for (unsigned int i = 0; i < _size; i++)
+			for (uint i = 0; i < _size; i++)
 			{
 				if (_shaders[i])
 					glAttachShader(_program, _shaders[i]);
@@ -121,7 +121,7 @@ namespace BeerEngine
 				}
 			}
 			// DELETE LAST
-			for (unsigned int i = 0; i < _size; i++)
+			for (uint i = 0; i < _size; i++)
 			{
 				if (_shaders[i])
 				{
@@ -312,6 +312,7 @@ namespace BeerEngine
 
 		ShaderProgram * ShaderProgram::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
+			(void) loader;
 			if (j.is_null())
 				return NULL;
 			std::string pathVS = j.at("sourceFileVS");
