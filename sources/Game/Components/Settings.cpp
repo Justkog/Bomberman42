@@ -121,7 +121,11 @@ void Settings::gatherCurrentSettings() {
 
 void Settings::loadSettings() {
 	std::string content = BeerEngine::IO::FileUtils::LoadFile(this->filePath);
-	auto j = nlohmann::json::parse(content);
+	nlohmann::json j;
+	if (content != "")
+		j = nlohmann::json::parse(content);
+	else
+		j = {};	
 	this->settingsContainer = j;
 	this->applyCurrentSettings();
 }
