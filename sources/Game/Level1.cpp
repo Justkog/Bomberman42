@@ -12,8 +12,11 @@
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/GameProgression.hpp"
 #include "Game/Components/TimeUI.hpp"
+#include "Game/Components/Message.hpp"
 #include "Game/Components/StartTimerUI.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 #include "Game/Components/ItemsUI.hpp"
+#include "Game/Components/Message.hpp"
 #include "Game/Components/AudioManager.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Core/Graphics/AMaterial.hpp"
@@ -57,6 +60,8 @@ void    Level1::init(void)
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
 	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
+	auto message = cameraGO->AddComponent<Game::Component::Message>();
+	auto levelInstructions = cameraGO->AddComponent<Game::Component::LevelInstructions>();
 
 	soundManager->setClip("assets/sounds/clint.ogg");
 	soundManager->audioType = Game::Component::Music;
@@ -69,25 +74,33 @@ void    Level1::init(void)
 	gameManager->audioManager = soundManager;
 	gameManager->audioManager = soundManager;
 	gameManager->gameProgression = gameProgression;
+	gameManager->levelInstructions = levelInstructions;
 	gameManager->storyMode = true;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
 	victoryMenu->uiManager = uiManager;
 	startTimerUI->uiManager = uiManager;
+	message->uiManager = uiManager;
+	timeUI->uiManager = uiManager;
+	itemsUI->uiManager = uiManager;
 
 	settings->audioManager = soundManager;
+
+	levelInstructions->message = message;
 
 	inGameMenu->setActive(false);
 	gameOverMenu->setActive(false);
 	victoryMenu->setActive(false);
-
-	timeUI->uiManager = uiManager;
-	itemsUI->uiManager = uiManager;
+	message->setActive(false);
 
 	victoryMenu->sceneLoader.name = "Level2";
 	gameOverMenu->sceneLoader.name = "Level1";
 	inGameMenu->sceneLoader.name = "Level1";
+
+	levelInstructions->setInstructions({
+		{"test instr 1", 2.0}
+	});
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
