@@ -185,7 +185,7 @@ namespace BeerEngine
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             Graphics::Graphics::shadowRenderShader->bind();
-            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 18.0f, -5.0f, 25.0f);
+            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 22.0f, -5.0f, 25.0f);
             // glm::mat4 proj = glm::perspective(glm::radians(60.0f), 1.0f, 20.0f, 40.0f);
             // Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
             Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
@@ -202,7 +202,7 @@ namespace BeerEngine
 
             light->unbindShadowMap();
 
-            // light->drawShadowMap();
+//            light->drawShadowMap();
         }
     }
 
@@ -259,7 +259,6 @@ namespace BeerEngine
         auto j = nlohmann::json::parse(content);
 		BeerEngine::JsonLoader loader;
         this->deserialize(j, loader);
-		// JsonSerializable::ExecuteCallBacks();
 		loader.executeCallBacks();
     }
 
@@ -277,7 +276,6 @@ namespace BeerEngine
 		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 			auto goJson = it.value();
 			auto go = GameObject::Deserialize(goJson, loader, *this);
-			// this->_gameObjects.insert(std::pair<int, GameObject *>(go->getID(), go));
 		}
 	}
 

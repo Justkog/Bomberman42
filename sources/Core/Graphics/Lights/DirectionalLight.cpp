@@ -43,7 +43,7 @@ namespace BeerEngine
 			glm::mat4 view = Camera::main->transform.getMat4(true);
 			// _shader->uniformMat(_viewShaderID, view);
 
-            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 18.0f, -5.0f, 25.0f);
+            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 22.0f, -5.0f, 25.0f);
             view = glm::lookAt(glm::vec3(0, 0, 0), _direction * -1, glm::vec3(0, 1, 0));
 			_lightMatrix = proj * view;
 			_shader->uniformMat("lightMatrix", _lightMatrix);
@@ -53,9 +53,6 @@ namespace BeerEngine
 			_shader->uniform3f("directionalLight.direction", _direction);
 			_shader->uniform1i("hasDirectionalLight", 1);
 
-			_shader->uniform1f(_specularPowerID, _specularity.power);
-			_shader->uniform1f(_specularIntensityID, _specularity.intensity);
-		
 			if (_castShadows && _shadowMap)
 			{
 				_shader->uniform1i("shadowMap", 10);

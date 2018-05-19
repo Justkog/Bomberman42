@@ -148,8 +148,10 @@ namespace Game
             auto collider = go->AddComponent<BeerEngine::Component::CircleCollider>();
 			collider->_radius = 0.3f;
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
-			render->setMesh(bombMesh);
-    		render->setMaterial(bombMaterial);
+			
+            render->setMesh(bombMesh);
+   		    render->setMaterial(Assets::GetInstance()->bombMaterial);
+            
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;
             bomb->setPower(_explosionSize);

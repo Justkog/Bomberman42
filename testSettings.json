@@ -2,13 +2,13 @@
     "fullScreen": false,
     "keyBindings": {
         "bomb": 32,
-        "move down": 83,
-        "move left": 65,
-        "move right": 68,
-        "move up": 87
+        "move down": 325,
+        "move left": 324,
+        "move right": 326,
+        "move up": 328
     },
-    "musicVolume": 5.000006675720215,
-    "soundVolume": 100.0,
+    "musicVolume": 50.0,
+    "soundVolume": 50.0,
     "unlockedLevels": [],
     "windowHeight": 900,
     "windowWidth": 1600

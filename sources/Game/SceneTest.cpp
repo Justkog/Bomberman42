@@ -266,9 +266,9 @@ void    SceneTest::init(void)
 	// as->play();
 
 	BeerEngine::Graphics::DirectionalLight *light = instantiateLight<BeerEngine::Graphics::DirectionalLight>();
-	light->setDirection(glm::normalize(glm::vec3(1, 1, -1)));
+	light->setDirection(glm::normalize(glm::vec3(1, 2, -1)));
 	light->setColor(glm::vec4(1, 0.9, 0.8, 1));
-	light->setIntensity(1.0f);
+	light->setIntensity(1.5f);
 
 	// plane
 	BeerEngine::GameObject *mapGO;
@@ -276,7 +276,7 @@ void    SceneTest::init(void)
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
 	mapMeshRenderer->setMaterial(material);
-	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
 	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
 	planeMat->setAlbedo(planeTex);
 	mapMeshRenderer->setMaterial(planeMat);

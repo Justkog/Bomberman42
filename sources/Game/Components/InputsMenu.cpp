@@ -83,6 +83,26 @@ void keyToText(InputInfo & input, int key)
 		fillInputText(input, "up");
 	else if (key == static_cast<int>(BeerEngine::KeyCode::DOWN))
 		fillInputText(input, "down");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_0))
+		fillInputText(input, "KP 0");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_1))
+		fillInputText(input, "KP 1");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_2))
+		fillInputText(input, "KP 2");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_3))
+		fillInputText(input, "KP 3");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_4))
+		fillInputText(input, "KP 4");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_5))
+		fillInputText(input, "KP 5");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_6))
+		fillInputText(input, "KP 6");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_7))
+		fillInputText(input, "KP 7");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_8))
+		fillInputText(input, "KP 8");
+	else if (key == static_cast<int>(BeerEngine::KeyCode::KP_9))
+		fillInputText(input, "KP 9");
 	else
 	{
 		input.text[0] = key;

@@ -130,6 +130,7 @@ namespace Game
 					GameManager::GetInstance().registerEnemy(breakable);
 				auto modelRenderer = iaGO->AddComponent<BeerEngine::Component::ModelRenderer>();
 					modelRenderer->load("assets/models/bombermanRunTest.fbx");
+					// modelRenderer->load("assets/models/Rock/rock.obj");
 					modelRenderer->setAnimationSpeed("idle", 0.25);
 					modelRenderer->setLoopAnimation(true);
 					// modelRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
