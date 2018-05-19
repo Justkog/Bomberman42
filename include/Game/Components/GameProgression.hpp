@@ -56,6 +56,7 @@ namespace Game
 			std::string filePath;
 			Game::GameProgressionContainer gameProgressionContainer;
 
+			Signal<> onChange;
 		};
 	};
 };

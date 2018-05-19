@@ -84,7 +84,7 @@ Game::GameProgressionContainer GameProgression::defaultGameProgression()
 }
 
 void GameProgression::applyCurrentGameProgression() {
-	
+	onChange.emit();
 }
 
 void GameProgression::gatherCurrentGameProgression() {

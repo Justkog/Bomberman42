@@ -28,6 +28,8 @@ namespace Game
 		class MainMenu;
 		class UIThemeManager;
 		class VersusMenu;
+		class AdventureMenu;
+		class AdventureContinueMenu;
 		class SettingsMenu;
 		class InGameMenu;
 		class GameOverMenu;
