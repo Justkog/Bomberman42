@@ -240,6 +240,9 @@ namespace Game
 							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
+						case V:
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::None);
+							break;
 						case 2:
 						case E:
 							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);

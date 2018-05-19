@@ -27,6 +27,7 @@
 #define Q -3 //spawn ia
 #define J 11 //Item Boost Explosion
 #define U 20 //Objective (next level)
+#define V 42 //Movable Crate
 
 /*!
  * \file Map.hpp
