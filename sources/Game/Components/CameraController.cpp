@@ -70,23 +70,32 @@ namespace Game
 			std::cout << "cam start" << "\n";
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
-			Map	*map = Map::instance;
-			if (map)
+			Player		*player = Player::instance;
+			startAnimation = false;
+			timeAnimation = 0.0f;
+			if (player)
 			{
-				float y = map->_sizeX;
-				if (y < 10)
-					y = 10;
-				this->_gameObject->transform.position = glm::vec3(0, y, map->_sizeY / 3.0f);
+				this->_gameObject->transform.position = player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f);
 			}
-			else
-				this->_gameObject->transform.position = glm::vec3(0, 15, 3.0f);
-			this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
+			// Map	*map = Map::instance;
+			// if (map)
+			// {
+			// 	float y = map->_sizeX;
+			// 	if (y < 10)
+			// 		y = 10;
+			// 	this->_gameObject->transform.position = glm::vec3(0, y, map->_sizeY / 3.0f);
+			// }
+			// else
+			// 	this->_gameObject->transform.position = glm::vec3(0, 15, 3.0f);
+			// this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
 			tpsCamera = false;
 			syncCam();
 		}
 
 		void    CameraController::fixedUpdate(void)
 		{
+			if (startAnimation)
+				return;
 			if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::W))
 				tpsCamera = !tpsCamera;
 			if (tpsCamera)
@@ -117,6 +126,31 @@ namespace Game
 
 		void    CameraController::update(void)
 		{
+			if (startAnimation)
+			{
+				if (timeAnimation >= 5.0f)
+					startAnimation = false;
+
+				float t = timeAnimation / 5.0f;
+				Map		*map = Map::instance;
+				Player	*player = Player::instance;
+				if (map && player)
+				{
+					float y = map->_sizeX;
+					if (y < 10)
+						y = 10;
+					
+					this->_gameObject->transform.position = glm::mix(player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f), glm::vec3(0, y, map->_sizeY / 3.0f), t);
+					this->_gameObject->transform.rotation = glm::mix(
+						glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0)),
+						glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0)),
+						t
+					);
+				}
+				timeAnimation += BeerEngine::Time::GetDeltaTime();
+				if (timeAnimation > 5.0f)
+					timeAnimation = 5.0f;
+			}
 			// float rotation_y = 0;
 			// float rotation_x = 0;
 			// float cam_speed = 1;
