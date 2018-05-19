@@ -59,6 +59,7 @@ namespace Game
 
         void    Map::start(void)
         {
+			instance = this;
 			std::cout << "map start" << "\n";
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 			// itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");

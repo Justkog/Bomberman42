@@ -63,6 +63,7 @@ namespace Game
 
 		void    Player::start(void)
         {
+			instance = this;
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 
