@@ -4,6 +4,8 @@
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
 #include "Game/SceneTest.hpp"
+#include "Game/Level1.hpp"
+#include "Game/Level2.hpp"
 
 namespace Game
 {
@@ -102,16 +104,14 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 		// 		BeerEngine::SceneManager::LoadScene(it->scenePath);
 		// }
 		if (nk_button_label(ctx, "level 1"))
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
+			BeerEngine::SceneManager::LoadScene<Level1>();
 		if (nk_button_label(ctx, "level 2"))
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
+			BeerEngine::SceneManager::LoadScene<Level2>();
 		if (nk_button_label(ctx, "level 3"))
 			BeerEngine::SceneManager::LoadScene<SceneTest>();
 
 		if (nk_button_label(ctx, "Random"))
-		{
-			// TODO
-		}
+			BeerEngine::SceneManager::LoadScene<SceneTest>();
 		if (nk_button_label(ctx, "Back"))
 		{
 			this->setActive(false);

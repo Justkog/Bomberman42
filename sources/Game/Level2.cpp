@@ -1,4 +1,4 @@
-#include "Game/Level1.hpp"
+#include "Game/Level2.hpp"
 #include <Core/Graphics/Lights/DirectionalLight.hpp>
 #include "Core/Component/ModelRenderer.hpp"
 #include "Core/GameObject.hpp"
@@ -19,9 +19,9 @@
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
 
-void    Level1::init(void)
+void    Level2::init(void)
 {
-	std::cout << "init level1 scene" << std::endl;
+	std::cout << "init level2 scene" << std::endl;
 
 	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/pano_1.jpg", 512);
 	setSkybox(skyboxCubemap);
@@ -92,7 +92,7 @@ void    Level1::init(void)
 	modelRenderer->addMaterial(0, playerMat);
 	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
-		character->_maxBomb = 3;
+		character->_maxBomb = 5;
 		character->_bombNb = character->_maxBomb;
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
@@ -118,15 +118,15 @@ void    Level1::init(void)
 	auto map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
 	map->_shader = shader;
-	std::vector<int> line0{1,1,1,1,1,1,1};
-	std::vector<int> line1{1,0,1,U,1,0,1};
-	std::vector<int> line2{1,0,1,E,1,0,1};
-	std::vector<int> line3{1,0,1,E,1,0,1};
-	std::vector<int> line4{1,0,E,J,E,0,1};
-	std::vector<int> line5{1,0,1,E,1,0,1};
-	std::vector<int> line6{1,0,0,E,0,0,1};
-	std::vector<int> line7{1,0,0,P,0,0,1};
-	std::vector<int> line8{1,1,1,1,1,1,1};
+	std::vector<int> line0{1,1,1,1,1,1,1,1,1};
+	std::vector<int> line1{1,0,0,E,U,E,0,0,1};
+	std::vector<int> line2{1,0,0,1,E,1,0,0,1};
+	std::vector<int> line3{1,0,0,0,J,0,0,0,1};
+	std::vector<int> line4{1,0,E,1,0,1,E,0,1};
+	std::vector<int> line5{1,E,E,0,P,0,E,E,1};
+	std::vector<int> line6{1,1,1,1,E,1,1,1,1};
+	std::vector<int> line7{1,E,0,0,J,0,0,E,1};
+	std::vector<int> line8{1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8};
 	map->setMap(tab, line0.size(), tab.size());
 
@@ -151,5 +151,5 @@ void    Level1::init(void)
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
 
 	std::cout << "saving scene.." << std::endl;
-	this->save("assets/scenes/Level1.scene");
+	this->save("assets/scenes/Level2.scene");
 }

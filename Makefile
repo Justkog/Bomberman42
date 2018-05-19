@@ -65,6 +65,7 @@ SRC = \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
+	Game/Level2.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
