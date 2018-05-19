@@ -70,9 +70,11 @@ namespace Game
 
 			BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip("assets/sounds/footsteps.wav");
 			srcAudio->setBuffer(clip->getBuffer());
+			// srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
 
 			BeerEngine::Audio::AudioClip	*itemClip = Assets::GetAudioClip("assets/sounds/item.wav");
 			itemSrcAudio->setBuffer(itemClip->getBuffer());
+			// itemSrcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
 
 			GameManager::GetInstance().onGameStart.bind(&Player::startGame, this);
         }
@@ -137,7 +139,7 @@ namespace Game
 			if (GameManager::GetInstance().storyMode && !_character->_bombNb
 			&& Game::Component::Map::instance->hasBreakable() && !Game::Component::Map::instance->hasBlock(B))
 				noBombTimer += BeerEngine::Time::GetDeltaTime();
-			if (noBombTimer > 5)
+			if (noBombTimer > 3)
 				GameManager::GetInstance().setGameOver(glm::vec3(3, 2, 27), 8);
         }
 
