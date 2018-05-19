@@ -139,7 +139,11 @@ install:
 	~/.brew/bin/brew install nlohmann_json
 	~/.brew/bin/brew install assimp
 	sh script.sh
-
+	git clone https://github.com/mimusangel/Bomberman42Asset.git Bomberman42Asset
+	mv Bomberman42Asset/assets .
+	mv Bomberman42Asset/html .
+	rm -rf Bomberman42Asset
+	
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)
