@@ -32,6 +32,7 @@ namespace Game
 
 		public:
 			SoundType audioType;
+			static AudioManager * instance;
 
 			AudioManager(BeerEngine::GameObject *gameObject);
 			~AudioManager(void);
