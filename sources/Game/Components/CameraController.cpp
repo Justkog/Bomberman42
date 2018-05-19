@@ -92,6 +92,18 @@ namespace Game
 			syncCam();
 		}
 
+		void			CameraController::animationStart()
+		{
+			Player		*player = Player::instance;
+			startAnimation = true;
+			timeAnimation = 0.0f;
+			if (player)
+			{
+				this->_gameObject->transform.position = player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f);
+				this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0));
+			}
+		}
+
 		void    CameraController::fixedUpdate(void)
 		{
 			if (startAnimation)

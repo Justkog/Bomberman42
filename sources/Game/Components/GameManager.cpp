@@ -125,7 +125,7 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
 	.addAction([this] () {
 		auto cc = this->_gameObject->GetComponent<CameraController>();
 		if (cc)
-			cc->startAnimation = true;
+			cc->animationStart();
 		this->startTimerUI->updateDisplay("Ready?");
 		return true;
 	})
