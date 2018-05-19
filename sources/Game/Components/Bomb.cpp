@@ -222,8 +222,14 @@ namespace Game
 		{
 			if (render != nullptr)
 			{
+				// BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip("assets/sounds/Bomb+1.wav");
+				// BeerEngine::Audio::AudioSource	*srcAudio;
+				// srcAudio->setBuffer(clip->getBuffer());
+				// srcAudio->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
+				// srcAudio->setVolume();
 				auto soundManager = _gameObject->AddComponent<Game::Component::AudioManager>();
 				soundManager->setClip("assets/sounds/Bomb+1.wav");
+				// soundManager->setVolume()
 				soundManager->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();

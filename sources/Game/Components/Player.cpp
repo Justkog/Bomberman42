@@ -70,7 +70,6 @@ namespace Game
 
 			BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip("assets/sounds/footsteps.wav");
 			srcAudio->setBuffer(clip->getBuffer());
-
 			BeerEngine::Audio::AudioClip	*itemClip = Assets::GetAudioClip("assets/sounds/item.wav");
 			itemSrcAudio->setBuffer(itemClip->getBuffer());
 

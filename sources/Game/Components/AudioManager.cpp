@@ -13,7 +13,7 @@ namespace Game
     { }
 
     AudioManager::AudioManager(void)
-    {}
+    { }
 
     AudioManager::AudioManager(const AudioManager &val)
     {
