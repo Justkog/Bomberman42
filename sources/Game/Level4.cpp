@@ -10,6 +10,7 @@
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
+#include "Game/Components/GameProgression.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
@@ -45,6 +46,7 @@ void    Level4::init(void)
 
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
+	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
 	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// UI
@@ -65,6 +67,7 @@ void    Level4::init(void)
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
 	gameManager->audioManager = soundManager;
+	gameManager->gameProgression = gameProgression;
 	gameManager->storyMode = true;
 
 	inGameMenu->uiManager = uiManager;
@@ -80,6 +83,10 @@ void    Level4::init(void)
 
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
+
+	victoryMenu->sceneLoader.name = "Level5";
+	gameOverMenu->sceneLoader.name = "Level4";
+	inGameMenu->sceneLoader.name = "Level4";
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
