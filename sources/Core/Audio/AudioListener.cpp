@@ -9,16 +9,16 @@ namespace BeerEngine
 	{
         AudioListener::AudioListener(BeerEngine::GameObject *gameObject) :
 			Component(gameObject)
-		{ 
+		{
 
         }
 
         AudioListener::~AudioListener()
-        { 
-			
+        {
+
         }
 
-        void	   AudioListener::init()
+        void	   AudioListener::Load()
         {
             int Choice = 0;
             // Recuperation des devices disponibles
@@ -89,7 +89,7 @@ namespace BeerEngine
             setListenerData(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z,
                             _gameObject->transform.forward().x, _gameObject->transform.forward().y, _gameObject->transform.forward().z);
 		}
-	
+
 		void		AudioListener::fixedUpdate(void)
 		{
 

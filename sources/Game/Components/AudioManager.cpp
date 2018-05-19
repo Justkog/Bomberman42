@@ -1,5 +1,6 @@
 #include "Game/Components/AudioManager.hpp"
 #include "Game/Components/Settings.hpp"
+#include "Game/Assets.hpp"
 
 namespace Game
 {
@@ -57,8 +58,8 @@ namespace Game
 
     void    AudioManager::setClip(std::string const &filename)
     {
-        BeerEngine::Audio::AudioClip	clip(filename);
-        srcAudio.setBuffer(clip.getBuffer());
+        BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip(filename);
+        srcAudio.setBuffer(clip->getBuffer());
     }
 
     void    AudioManager::setVolume(float soundVolume, float musicVolume)

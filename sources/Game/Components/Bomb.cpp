@@ -198,8 +198,8 @@ namespace Game
 				hitDir[hitIDStorage] = glm::floor(_gameObject->transform.position + glm::normalize(dir) * power);
 			}
 
-			
-			
+
+
 			int size = static_cast<int>(sizeDeflag);
 			for (int i = 1; i <= size; i++)
 			{

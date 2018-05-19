@@ -116,33 +116,7 @@ int main(void)
     nk_glfw3_font_stash_end();
 	nk_style_set_font(ctx, &fonts["default"]->handle);
     // Audio
-    BeerEngine::Audio::AudioListener::init();
-    // BeerEngine::Audio::AudioListener audio;
-
-    // audio.setListenerData(0, 0, 0);
-
-    // BeerEngine::Audio::AudioClip   clip("assets/sounds/castle_wav.wav");
-    // BeerEngine::Audio::AudioClip   clip2("assets/sounds/ds_brush_snaremono.wav");
-
-    // BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-    // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
-
-    // srcAudio.setVolume(1);
-    // srcAudio.setPitch(1);
-    // srcAudio2.setPitch(2);
-    // srcAudio.setLooping(true);
-    // srcAudio.play();
-    // float x = 0;
-    // srcAudio.setPosition(x, 0, 0);
-    //
-    // BeerEngine::Audio::AudioSource      srcAudio(clip.getBuffer());
-    // // BeerEngine::Audio::AudioSource      srcAudio2(clip2.getBuffer());
-    //
-    // srcAudio.setVolume(1);
-    // srcAudio.setPitch(1);
-    // // srcAudio2.setPitch(2);
-    // srcAudio.setLooping(true);
-    // srcAudio.play();
+    BeerEngine::Audio::AudioListener::Load();
     // Graphics
     BeerEngine::Graphics::Graphics::Load();
     // Game Assets

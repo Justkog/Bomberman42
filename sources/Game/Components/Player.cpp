@@ -8,6 +8,7 @@
 #include "Game/Components/Item.hpp"
 #include "Game/Components/Map.hpp"
 #include "Game/Input.hpp"
+#include "Game/Assets.hpp"
 
 namespace Game
 {
@@ -65,11 +66,11 @@ namespace Game
 			play = false;
             _character = _gameObject->GetComponent<Game::Component::Character>();
 
-			BeerEngine::Audio::AudioClip	clip("assets/sounds/footsteps.wav");
-			srcAudio->setBuffer(clip.getBuffer());
+			BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip("assets/sounds/footsteps.wav");
+			srcAudio->setBuffer(clip->getBuffer());
 
-			BeerEngine::Audio::AudioClip	itemClip("assets/sounds/item.wav");
-			itemSrcAudio->setBuffer(itemClip.getBuffer());
+			BeerEngine::Audio::AudioClip	*itemClip = Assets::GetAudioClip("assets/sounds/item.wav");
+			itemSrcAudio->setBuffer(itemClip->getBuffer());
 
 			GameManager::GetInstance().onGameStart.bind(&Player::startGame, this);
         }
@@ -85,7 +86,7 @@ namespace Game
 			_character->_direction = glm::vec2(0, 0);
 			if (!_gameStarted)
 				return;
-			
+
 			if (BeerEngine::Input::GetKey(Game::Input::keyBindings["move up"]) || BeerEngine::Input::GetKey(BeerEngine::KeyCode::O))
             {
 				moving = true;

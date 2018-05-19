@@ -164,10 +164,6 @@ void GameManager::startGame()
 void GameManager::start()
 {
 	std::cout << "GameManager start" << std::endl;
-	// BeerEngine::Audio::AudioClip	clip("assets/sounds/last_night.ogg");
-	// srcAudio->setBuffer(clip.getBuffer());
-	// srcAudio->setVolume(0.5);
-	// srcAudio->play();
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
 	startRoutine(*createStartTimerRoutine());
 }
