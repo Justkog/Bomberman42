@@ -62,12 +62,14 @@ SRC = \
 	Core/BeerRoutine/BeerRoutine.cpp \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
+	Game/SceneLoader.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
 	Game/Level2.cpp \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
+	Game/Versus1.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
@@ -78,6 +80,7 @@ SRC = \
 	Game/Components/IA.cpp \
 	Game/Components/CameraController.cpp \
 	Game/Components/Settings.cpp \
+	Game/Components/GameProgression.cpp \
 	Game/Components/Item.cpp \
 	Game/Components/Bomb.cpp \
 	Game/Components/Map.cpp \
@@ -85,6 +88,8 @@ SRC = \
 	Game/Components/BeerRoutineTester.cpp \
 	Game/Components/MainMenu.cpp \
 	Game/Components/VersusMenu.cpp \
+	Game/Components/AdventureMenu.cpp \
+	Game/Components/AdventureContinueMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
 	Game/Components/InGameMenu.cpp \

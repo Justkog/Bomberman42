@@ -1,6 +1,7 @@
 #include "Game/SceneTest.hpp"
 #include "Game/SceneMain.hpp"
 #include "Game/Components/Settings.hpp"
+#include "Game/Components/GameProgression.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Component/BoxCollider2D.hpp"
 #include "Core/Component/CircleCollider.hpp"
@@ -15,6 +16,8 @@
 #include "Game/Components/Map.hpp"
 #include "Game/Components/MainMenu.hpp"
 #include "Game/Components/VersusMenu.hpp"
+#include "Game/Components/AdventureMenu.hpp"
+#include "Game/Components/AdventureContinueMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Game/Components/InputsMenu.hpp"
 #include "Game/Components/BackgroundDrawer.hpp"
@@ -48,9 +51,12 @@ void    SceneMain::init(void)
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto settings = menuGO->AddComponent<Game::Component::Settings>();
+	auto gameProgression = menuGO->AddComponent<Game::Component::GameProgression>();
 	auto uiManager = menuGO->AddComponent<Game::Component::UIThemeManager>();
 	auto bgDrawer = menuGO->AddComponent<Game::Component::BackgroundDrawer>();
 	auto mainMenu = menuGO->AddComponent<Game::Component::MainMenu>();
+	auto adventureMenu = menuGO->AddComponent<Game::Component::AdventureMenu>();
+	auto adventureContinueMenu = menuGO->AddComponent<Game::Component::AdventureContinueMenu>();
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
@@ -58,10 +64,18 @@ void    SceneMain::init(void)
 
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
+	mainMenu->adventureMenu = adventureMenu;
 	mainMenu->versusMenu = versusMenu;
 	mainMenu->settingsMenu = settingsMenu;
 	versusMenu->uiManager = uiManager;
 	versusMenu->mainMenu = mainMenu;
+	adventureMenu->uiManager = uiManager;
+	adventureMenu->mainMenu = mainMenu;
+	adventureMenu->continueMenu = adventureContinueMenu;
+	adventureMenu->gameProgression = gameProgression;
+	adventureContinueMenu->adventureMenu = adventureMenu;
+	adventureContinueMenu->uiManager = uiManager;
+	adventureContinueMenu->gameProgression = gameProgression;
 	settingsMenu->uiManager = uiManager;
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
@@ -81,6 +95,8 @@ void    SceneMain::init(void)
 	versusMenu->setActive(false);
 	settingsMenu->setActive(false);
 	inputsMenu->setActive(false);
+	adventureMenu->setActive(false);
+	adventureContinueMenu->setActive(false);
 
 	this->save("assets/scenes/main.scene");
 	std::cout << "init end" << "\n";

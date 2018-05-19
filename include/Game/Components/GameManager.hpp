@@ -47,8 +47,11 @@ namespace Game
 			StartTimerUI				*startTimerUI;
 			std::vector<Breakable *> 	enemyBreakables;
 			AudioManager				*audioManager;
+			GameProgression				*gameProgression;
 			bool						storyMode;
 
+			// GameManager( void );
+			// GameManager( GameManager const & src );
 			GameManager(BeerEngine::GameObject *gameObject);
 			virtual ~GameManager( void );
 
@@ -62,6 +65,7 @@ namespace Game
 			void setPause(bool state);
 			void setGameOver(glm::vec3 pos, int value);
 			void setVictory();
+			void save();
 			void acknowledgeEnemyDestruction(Breakable *enemyBreakable);
 
 			void registerEnemy(Breakable *enemyBreakable);

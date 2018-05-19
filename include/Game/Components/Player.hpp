@@ -51,7 +51,7 @@ namespace Game
 			BeerEngine::Audio::AudioSource      *srcAudio;
 			BeerEngine::Audio::AudioSource      *itemSrcAudio;
 			bool								play;
-			float								noBombTimer = -1;
+			float								noBombTimer;
 
             Player(BeerEngine::GameObject *gameObject);
 			virtual ~Player(void);

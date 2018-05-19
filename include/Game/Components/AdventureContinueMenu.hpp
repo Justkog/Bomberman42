@@ -3,14 +3,8 @@
 //																//
 // ------------------------------------------------------------	//
 
-#ifndef VICTORYMENU_HPP
-# define VICTORYMENU_HPP
-
-/*!
- * \file VictoryMenu.hpp
- * \brief Affichage du menu de victoire.
- * \author jblondea
- */
+#ifndef ADVENTURECONTINUEMENU_HPP
+# define ADVENTURECONTINUEMENU_HPP
 
 #include "Core/Core.hpp"
 #include "Game/Game.hpp"
@@ -18,41 +12,38 @@
 #include "Core/Component/IStart.hpp"
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IUI.hpp"
-#include "Core/Component/IEnable.hpp"
 #include "Game/SceneLoader.hpp"
 
 namespace Game
 {
 	namespace Component
 	{
-		class VictoryMenu : public BeerEngine::Component::Component, 
+		class AdventureContinueMenu : public BeerEngine::Component::Component, 
 						public BeerEngine::Component::IStart, 
 						public BeerEngine::Component::IStartUI, 
-						public BeerEngine::Component::IUI,
-						public BeerEngine::Component::IEnable
+						public BeerEngine::Component::IUI
 		{
-
-		private:
-			VictoryMenu();
-			VictoryMenu(const VictoryMenu &val);
-			VictoryMenu & operator=( VictoryMenu const & rhs );
-
 		public:
-			UIThemeManager	*uiManager;
-			nk_style_item	backgroundImage;
-			nk_style_item	titleImage;
-			Game::SceneLoader		sceneLoader;
+			UIThemeManager					*uiManager;
+			AdventureMenu					*adventureMenu;
+			GameProgression					*gameProgression;
+			std::vector<Game::SceneLoader>	availableLevels;
 
-			VictoryMenu(BeerEngine::GameObject *gameObject);
-			virtual ~VictoryMenu( void );
+			// AdventureContinueMenu( void );
+			// AdventureContinueMenu( AdventureContinueMenu const & src );
+			AdventureContinueMenu(BeerEngine::GameObject *gameObject);
 
-			friend std::ostream & operator<<(std::ostream & o, VictoryMenu const & i);
+			virtual ~AdventureContinueMenu( void );
+
+			AdventureContinueMenu & operator=( AdventureContinueMenu const & rhs );
+			friend std::ostream & operator<<(std::ostream & o, AdventureContinueMenu const & i);
 
 			virtual void start();
 			virtual void startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts);
 			virtual void renderUI(struct nk_context *ctx);
-			virtual void enable();
 
+			void updateAvailableLevels();
+			
 			REGISTER_COMPONENT_HPP
 	
 		};
