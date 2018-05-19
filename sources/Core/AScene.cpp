@@ -211,12 +211,8 @@ namespace BeerEngine
 
             Graphics::Graphics::shadowRenderShader->bind();
             glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 22.0f, -5.0f, 25.0f);
-            // glm::mat4 proj = glm::perspective(glm::radians(60.0f), 1.0f, 20.0f, 40.0f);
-            // Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
             Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
-            
             glm::mat4 lookat = glm::lookAt(glm::vec3(0, 0, 0), light->getDirection() * -1, glm::vec3(0, 1, 0));
-            // glm::mat4 lookat = Camera::main->transform.getMat4(true);
             Graphics::Graphics::shadowRenderShader->uniformMat("view", lookat);
             std::map<int, GameObject *>::iterator it;
             for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
@@ -226,8 +222,6 @@ namespace BeerEngine
             Graphics::Graphics::shadowRenderShader->unbind();
 
             light->unbindShadowMap();
-
-//            light->drawShadowMap();
         }
     }
 

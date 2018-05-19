@@ -84,7 +84,8 @@ void AdventureContinueMenu::start()
 
 void AdventureContinueMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
-	
+	(void) ctx;
+	(void) fonts;
 }
 
 void AdventureContinueMenu::renderUI(struct nk_context *ctx)

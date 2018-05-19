@@ -47,9 +47,9 @@ void    Level2::init(void)
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
 	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 
-	// UI
+	// UInoBombTimer(0)
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
 	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
 	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
