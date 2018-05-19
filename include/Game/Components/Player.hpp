@@ -41,6 +41,7 @@ namespace Game
 			bool								_gameStarted;
 
 		public:
+			static Player						*instance;
 			Game::Component::Character 			*_character;
 			BeerEngine::Audio::AudioSource      *srcAudio;
 			BeerEngine::Audio::AudioSource      *itemSrcAudio;

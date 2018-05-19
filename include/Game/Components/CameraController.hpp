@@ -43,6 +43,8 @@ namespace Game
 			BeerEngine::Camera	*cam;
 			glm::vec2			lastMousePos;
 
+			bool				tpsCamera;
+
 			REGISTER_COMPONENT_HPP
 		};
 
