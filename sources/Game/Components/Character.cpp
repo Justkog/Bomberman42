@@ -173,7 +173,8 @@ namespace Game
             auto render = go->AddComponent<BeerEngine::Component::MeshRenderer>();
 			
             render->setMesh(bombMesh);
-   		    render->setMaterial(Assets::GetInstance()->bombMaterial);
+            auto bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+   		    render->setMaterial(bombMaterial);
             
             Bomb *bomb = go->AddComponent<Bomb>();
             bomb->map = map;

@@ -31,7 +31,6 @@ namespace BeerEngine
 			static Texture			*whiteTexture; /*!< texture completement blanche*/
 			static ShaderProgram	*particleShader; /*!< Shader des particules par defaut*/
 			static ShaderProgram	*defaultShader; /*!< Shader par defaut des model*/
-			static AMaterial		*defaultMaterial; /*!< Material par defaut*/
 			static ShaderProgram	*defaultGuiShader;
 			static ALight			*defaultLight;
 			static ShaderProgram	*skyboxShader;
