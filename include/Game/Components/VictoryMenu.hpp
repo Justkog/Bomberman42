@@ -19,6 +19,7 @@
 #include "Core/Component/IStartUI.hpp"
 #include "Core/Component/IUI.hpp"
 #include "Core/Component/IEnable.hpp"
+#include "Game/SceneLoader.hpp"
 
 namespace Game
 {
@@ -34,6 +35,7 @@ namespace Game
 			UIThemeManager	*uiManager;
 			nk_style_item	backgroundImage;
 			nk_style_item	titleImage;
+			Game::SceneLoader		sceneLoader;
 
 			// VictoryMenu( void );
 			// VictoryMenu( VictoryMenu const & src );

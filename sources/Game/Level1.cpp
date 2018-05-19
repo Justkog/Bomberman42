@@ -81,6 +81,8 @@ void    Level1::init(void)
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
+	victoryMenu->sceneLoader.name = "Level2";
+
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";

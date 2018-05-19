@@ -5,6 +5,7 @@
 
 namespace Game
 {
+	class SceneLoader;
 
 	namespace Component
 	{
@@ -32,7 +33,6 @@ namespace Game
 		class StartTimerUI;
 
 		class AudioManager;
-
 	}
 }
 
