@@ -31,6 +31,10 @@ namespace BeerEngine
 			std::string		_sourceFileFS;
 
 		public:
+			ShaderProgram();
+			ShaderProgram(const ShaderProgram &val);
+			ShaderProgram &operator=(const ShaderProgram &val);
+
 			ShaderProgram(int size);
 			~ShaderProgram(void);
 			void			load(unsigned int shaderIndex, GLenum shaderType, const char *script);

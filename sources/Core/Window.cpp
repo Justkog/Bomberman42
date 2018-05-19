@@ -13,6 +13,33 @@ namespace BeerEngine
 		_close = false;
 	}
 
+	Window::Window()
+	{}
+
+	Window::Window(const Window &val)
+	{
+		*this = val;
+	}
+
+	Window &Window::operator=(const Window &val)
+	{
+		if (this != &val)
+		{
+			_title = val._title;
+			_width = val._width;
+			_height = val._height;
+			_xPos = val._xPos;
+			_yPos = val._yPos;
+			_windowWidth = val._windowWidth;
+			_windowHeight = val._windowHeight;
+			_window = val._window;
+			_perspective = val._perspective;
+			_ortho = val._ortho;
+			_close = val._close;
+		}
+		return (*this);
+	}
+
 	Window::~Window()
 	{
 		if (_window != NULL)

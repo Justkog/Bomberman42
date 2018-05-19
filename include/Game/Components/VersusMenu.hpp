@@ -34,18 +34,19 @@ namespace Game
 						public BeerEngine::Component::IStartUI, 
 						public BeerEngine::Component::IUI
 		{
+		private:
+			VersusMenu();
+			VersusMenu(const VersusMenu &val);
+			VersusMenu & operator=( VersusMenu const & rhs );
+
 		public:
 			UIThemeManager			*uiManager;
 			MainMenu				*mainMenu;
 			std::vector<MapInfo> 	maps;
 
-			// VersusMenu( void );
-			// VersusMenu( VersusMenu const & src );
 			VersusMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~VersusMenu( void );
 
-			VersusMenu & operator=( VersusMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, VersusMenu const & i);
 
 			virtual void start();

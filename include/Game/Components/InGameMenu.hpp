@@ -34,16 +34,17 @@ namespace Game
 						public BeerEngine::Component::IUI
 
 		{
+		private:
+			InGameMenu();
+			InGameMenu(const InGameMenu &val);
+			InGameMenu & operator=( InGameMenu const & rhs );
+
 		public:
 			UIThemeManager	*uiManager;
 
-			// InGameMenu( void );
-			// InGameMenu( InGameMenu const & src );
 			InGameMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~InGameMenu( void );
 
-			InGameMenu & operator=( InGameMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, InGameMenu const & i);
 
 			virtual void start();

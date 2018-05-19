@@ -32,6 +32,22 @@ namespace Game
 				hitDir[i] = glm::vec3(_gameObject->transform.position);
         }
 
+		Bomb::Bomb(void)
+		{}
+
+		Bomb::Bomb(const Bomb &val)
+		{
+			*this = val;
+		}
+
+		Bomb &Bomb::operator=(const Bomb &val)
+		{
+			(void) val;
+			if (this != &val)
+			{ }
+			return (*this);
+		}
+
 		Bomb::~Bomb(void)
 		{
 			auto it = std::find(bombs.begin(), bombs.end(), this);

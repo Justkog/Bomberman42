@@ -14,16 +14,16 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*BackgroundDrawer::BackgroundDrawer ( void )
+BackgroundDrawer::BackgroundDrawer ( void )
 {
 	return ;
-}*/
+}
 
-/*BackgroundDrawer::BackgroundDrawer ( BackgroundDrawer const & src )
+BackgroundDrawer::BackgroundDrawer ( BackgroundDrawer const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 BackgroundDrawer &				BackgroundDrawer::operator=( BackgroundDrawer const & rhs )
 {

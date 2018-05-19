@@ -22,6 +22,29 @@ namespace BeerEngine
 			}
 		}
 
+		Mesh::Mesh()
+		{}
+
+		Mesh::Mesh(const Mesh &val)
+		{
+			*this = val;
+		}
+		
+		Mesh &Mesh::operator=(const Mesh &val)
+		{
+			if (this != &val)
+			{
+				Mesh::~Mesh();
+				_nbVBO = val._nbVBO;
+				_vao = val._vao;
+				_vbo = val._vbo;
+				_size = val._size;
+				_sourceFile = val._sourceFile;
+				_type = val._type;
+			}
+			return (*this);
+		}
+
 		Mesh::~Mesh()
 		{
 			if (_nbVBO > 0)

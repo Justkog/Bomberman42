@@ -17,10 +17,15 @@ namespace BeerEngine
 		*/
 		class CircleCollider : public ACollider
 		{
+		private:
+			CircleCollider();
+			CircleCollider(const CircleCollider &val);
+			CircleCollider &operator=(const CircleCollider &val);
+
 		protected:
 			bool lineCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
 			bool segmentCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);
-
+		
 		public:
 			CircleCollider(GameObject *gameObject);
 			virtual ~CircleCollider();

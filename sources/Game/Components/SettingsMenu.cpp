@@ -18,23 +18,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*SettingsMenu::SettingsMenu ( void )
+SettingsMenu::SettingsMenu ( void )
 {
 	return ;
-}*/
+}
 
-/*SettingsMenu::SettingsMenu ( SettingsMenu const & src )
+SettingsMenu::SettingsMenu ( SettingsMenu const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 SettingsMenu &				SettingsMenu::operator=( SettingsMenu const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

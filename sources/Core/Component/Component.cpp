@@ -6,6 +6,24 @@ namespace BeerEngine
 {
 	namespace Component
 	{
+		Component::Component()
+		{}
+
+		Component::Component(const Component &val)
+		{
+			*this = val;
+		}
+		
+		Component &Component::operator=(const Component &val)
+		{
+			if (this != &val)
+			{
+				_gameObject = val._gameObject;
+				_isActive = val._isActive;
+			}
+			return (*this);
+		}
+
 		add_component_type Component::createAddMap()
 		{
 			add_component_type typeToAddComponent;

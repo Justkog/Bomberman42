@@ -30,18 +30,20 @@ namespace Game
 						public BeerEngine::Component::IUI,
 						public BeerEngine::Component::IEnable
 		{
+
+		private:
+			VictoryMenu();
+			VictoryMenu(const VictoryMenu &val);
+			VictoryMenu & operator=( VictoryMenu const & rhs );
+
 		public:
 			UIThemeManager	*uiManager;
 			nk_style_item	backgroundImage;
 			nk_style_item	titleImage;
 
-			// VictoryMenu( void );
-			// VictoryMenu( VictoryMenu const & src );
 			VictoryMenu(BeerEngine::GameObject *gameObject);
-
 			virtual ~VictoryMenu( void );
 
-			VictoryMenu & operator=( VictoryMenu const & rhs );
 			friend std::ostream & operator<<(std::ostream & o, VictoryMenu const & i);
 
 			virtual void start();

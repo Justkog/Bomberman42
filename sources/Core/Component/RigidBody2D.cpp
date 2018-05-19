@@ -13,6 +13,23 @@ namespace BeerEngine
 			mass(1.0f)
 		{}
 
+		RigidBody2D::RigidBody2D()
+		{}
+
+		RigidBody2D::RigidBody2D(const RigidBody2D &val)
+		{
+			*this = val;
+		}
+		
+		RigidBody2D &RigidBody2D::operator=(const RigidBody2D &val)
+		{
+			if (this != &val)
+			{
+
+			}
+			return (*this);
+		}
+
 		void    RigidBody2D::physicUpdate(void)
 		{
 			float dist = glm::length(velocity);

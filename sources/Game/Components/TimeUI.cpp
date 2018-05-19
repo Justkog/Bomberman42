@@ -14,23 +14,22 @@ namespace Game
 
 // CANONICAL #####################################################
 
-/*TimeUI::TimeUI ( void )
+TimeUI::TimeUI ( void )
 {
 	return ;
-}*/
+}
 
-/*TimeUI::TimeUI ( TimeUI const & src )
+TimeUI::TimeUI ( TimeUI const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 TimeUI &				TimeUI::operator=( TimeUI const & rhs )
 {
+	(void) rhs;
 	if (this != &rhs)
-	{
-		// make stuff
-	}
+	{}
 	return (*this);
 }
 

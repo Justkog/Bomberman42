@@ -10,7 +10,21 @@ namespace BeerEngine
 		// std::cout << "json serializable created with id " << _serializationID << std::endl;
 	}
 
-    JsonSerializable &JsonSerializable::toSerializable(JsonSerializable & item)
+	JsonSerializable::JsonSerializable(const JsonSerializable &val)
+	{
+		*this = val;
+	}
+
+	JsonSerializable &JsonSerializable::operator=(const JsonSerializable &val)
+	{
+		if (this == &val)
+		{
+			_serializationID = val._serializationID;
+		}
+		return (*this);
+	}
+
+	JsonSerializable &JsonSerializable::toSerializable(JsonSerializable & item)
     {
         return item;
     }

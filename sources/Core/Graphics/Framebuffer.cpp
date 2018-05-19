@@ -21,6 +21,28 @@ namespace BeerEngine
 			unbind();
 		}
 
+		Framebuffer::Framebuffer()
+		{}
+
+		Framebuffer::Framebuffer(const Framebuffer &val)
+		{
+			*this = val;
+		}
+		
+		Framebuffer &Framebuffer::operator=(const Framebuffer &val)
+		{
+			if (this != &val)
+			{
+				_width = val._width;
+				_height = val._height;
+				_fboID = val._fboID;
+				_depthID = val._depthID;
+				_textureID = val._textureID;
+				_depthTextureID = val._depthTextureID;
+			}
+			return (*this);
+		}
+
 		Framebuffer::~Framebuffer()
 		{
 			glDeleteFramebuffers(1, &_fboID);

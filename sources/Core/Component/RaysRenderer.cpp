@@ -20,22 +20,25 @@ namespace BeerEngine
 
 // CANONICAL #####################################################
 
-/*RaysRenderer::RaysRenderer ( void )
+RaysRenderer::RaysRenderer ( void )
 {
 	return ;
-}*/
+}
 
-/*RaysRenderer::RaysRenderer ( RaysRenderer const & src )
+RaysRenderer::RaysRenderer ( RaysRenderer const & src )
 {
 	*this = src;
 	return ;
-}*/
+}
 
 RaysRenderer &				RaysRenderer::operator=( RaysRenderer const & rhs )
 {
 	if (this != &rhs)
 	{
-		// make stuff
+		rays.clear();
+		for (int i = 0; i < rhs.rays.size(); i++)
+			rays.push_back(rhs.rays[i]);
+		old_size = rhs.old_size;
 	}
 	return (*this);
 }

@@ -37,6 +37,33 @@ namespace BeerEngine
 			offset = glm::vec3();
 		}
 
+		ParticleBase::ParticleBase()
+		{}
+
+		ParticleBase::ParticleBase(const ParticleBase &val)
+		{
+			*this = val;
+		}
+		
+		ParticleBase &ParticleBase::operator=(const ParticleBase &val)
+		{
+			if (this != &val)
+			{
+				_mesh = val._mesh;
+				_particlePositionBuffer = val._particlePositionBuffer;
+				_particleUVBuffer = val._particleUVBuffer;
+				_particleColorBuffer = val._particleColorBuffer;
+				_particleSizeBuffer = val._particleSizeBuffer;
+				_particleCount = val._particleCount;
+				_projectionShaderID = val._projectionShaderID;
+				_viewShaderID = val._viewShaderID;
+				_modelShaderID = val._modelShaderID;
+				_spriteID = val._spriteID;
+				_spriteUVSizeID = val._spriteUVSizeID;
+			}
+			return (*this);
+		}
+
 		ParticleBase::~ParticleBase()
 		{
 			_particles.clear();

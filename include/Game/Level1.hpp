@@ -9,6 +9,8 @@ class Level1 : public BeerEngine::AScene
 {
 public:
 	void    init(void);
+
+	static Level1 instance;
 };
 
 #endif

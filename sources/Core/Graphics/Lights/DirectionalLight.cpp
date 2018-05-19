@@ -31,9 +31,31 @@ namespace BeerEngine
 			setupUniformIds();
 		}
 
+		DirectionalLight::DirectionalLight()
+		{}
+
+		DirectionalLight::DirectionalLight(const DirectionalLight &val)
+		{
+			*this = val;
+		}
+
+		DirectionalLight &DirectionalLight::operator=(const DirectionalLight &val)
+		{
+			if (this != &val)
+			{
+				DirectionalLight::~DirectionalLight();
+				_direction = val._direction;
+				_castShadows = val._castShadows;
+				_shadowMap = val._shadowMap;
+				_lightMatrix = val._lightMatrix;
+			}
+			return (*this);
+		}
+
 		DirectionalLight::~DirectionalLight()
 		{
-			delete _shadowMap;	
+			if (_shadowMap)
+				delete _shadowMap;
 		}
 
 		void 	DirectionalLight::bind()

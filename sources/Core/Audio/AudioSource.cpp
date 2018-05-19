@@ -16,6 +16,24 @@ namespace BeerEngine
 			alSourcef(_Source, AL_MAX_DISTANCE, 300);
         }
 
+		AudioSource::AudioSource()
+		{}
+
+		AudioSource::AudioSource(const AudioSource &val)
+		{
+			*this = val;
+		}
+		
+		AudioSource &AudioSource::operator=(const AudioSource &val)
+		{
+			if (this != &val)
+			{
+				_Buffer = val._Buffer;
+				_Source = val._Source;
+				_Status = val._Status;
+			}
+			return (*this);
+		}
 
 		AudioSource::~AudioSource()
 		{
