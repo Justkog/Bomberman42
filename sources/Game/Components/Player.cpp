@@ -137,7 +137,7 @@ namespace Game
 			if (GameManager::GetInstance().storyMode && !_character->_bombNb
 			&& Game::Component::Map::instance->hasBreakable() && !Game::Component::Map::instance->hasBlock(B))
 				noBombTimer += BeerEngine::Time::GetDeltaTime();
-			if (noBombTimer > 5)
+			if (noBombTimer > 3)
 				GameManager::GetInstance().setGameOver(glm::vec3(3, 2, 27), 8);
         }
 
