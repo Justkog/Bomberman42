@@ -111,7 +111,7 @@ DIR = $(dir $(SRC))
 
 # -g
 # -Ofast -march=native -flto
-CFLAGS = -g -Wall -Wextra -Werror -std=c++11 -Wc++11-extensions \
+CFLAGS = -g -Wall -Wextra -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 
