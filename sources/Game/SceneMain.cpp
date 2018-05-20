@@ -86,7 +86,7 @@ void    SceneMain::init(void)
 	settings->audioManager = audioManager;
 
 // init musique du menu
-	audioManager->setClip("assets/sounds/Feel.ogg");
+	audioManager->setClip("assets/sounds/september.ogg");
 	audioManager->audioType = Game::Component::Music;
 
 	// mainMenu->setActive(false);

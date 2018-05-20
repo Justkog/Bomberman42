@@ -39,7 +39,7 @@ void    Versus2::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-	soundManager->setClip("assets/sounds/clint.ogg");
+	soundManager->setClip("assets/sounds/wiggle.ogg");
 	soundManager->audioType = Game::Component::Music;
 
 	Game::SceneBasics::CreateCameraBasics(cameraGO);
@@ -69,7 +69,7 @@ void    Versus2::init(void)
 	MapGO->name = "map";
 	auto map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
-	map->_shader = shader;  // S : Spawn, I : Item, 2 : Break, 1 : Wall 
+	map->_shader = shader;  // S : Spawn, I : Item, 2 : Break, 1 : Wall
 	std::vector<int>  line0{0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0};
 	std::vector<int>  line1{0,0,0,0,1,2,2,2,2,2,2,2,1,0,0,0,0};
 	std::vector<int>  line2{0,0,0,0,1,2,2,0,1,0,2,2,1,0,0,0,0};

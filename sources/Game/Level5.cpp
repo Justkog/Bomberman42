@@ -58,7 +58,7 @@ void    Level5::init(void)
 	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
 
-	soundManager->setClip("assets/sounds/clint.ogg");
+	soundManager->setClip("assets/sounds/dmx.ogg");
 	soundManager->audioType = Game::Component::Music;
 
 	gameManager->inGameMenu = inGameMenu;

@@ -8,8 +8,8 @@
         "move right": 326,
         "move up": 328
     },
-    "musicVolume": 42.0000114440918,
-    "soundVolume": 100.0,
+    "musicVolume": 42.00000762939453,
+    "soundVolume": 33.0,
     "windowHeight": 770,
     "windowWidth": 1366
 }
