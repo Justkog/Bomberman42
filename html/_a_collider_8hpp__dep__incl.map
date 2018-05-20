@@ -1,6 +1,0 @@
-<map id="include/Core/Component/ACollider.hpp" name="include/Core/Component/ACollider.hpp">
-<area shape="rect" id="node2" href="$_box_collider2_d_8hpp.html" title="Component de collision en rectangle. " alt="" coords="5,92,174,131"/>
-<area shape="rect" id="node3" href="$_circle_collider_8hpp.html" title="Component de collision en cercle. " alt="" coords="199,92,367,131"/>
-<area shape="rect" id="node5" href="$_bomb_8hpp.html" title="Component bomb, ça fait boum quoi. " alt="" coords="392,92,575,131"/>
-<area shape="rect" id="node4" href="$_map_8hpp.html" title="Component qui gère toute la zone de jeu. " alt="" coords="192,179,375,217"/>
-</map>

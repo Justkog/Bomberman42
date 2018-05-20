@@ -3,6 +3,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/GameProgression.hpp"
 #include "Core/Window.hpp"
+#include "Core/Input.hpp"
 
 namespace Game
 {
@@ -139,7 +140,7 @@ void AdventureContinueMenu::renderUI(struct nk_context *ctx)
 
 		// }
 		nk_layout_row_dynamic(ctx, 75, 1);
-		if (nk_button_label(ctx, "Back"))
+		if (nk_button_label(ctx, "Back") || BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
 		{
 			this->setActive(false);
 			adventureMenu->setActive(true);

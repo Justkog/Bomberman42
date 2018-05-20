@@ -37,7 +37,7 @@ void    Level4::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-	soundManager->setClip("assets/sounds/clint.ogg");
+	soundManager->setClip("assets/sounds/nice.ogg");
 	soundManager->audioType = Game::Component::Music;
 
 	Game::SceneBasics::CreateCameraBasics(cameraGO);

@@ -55,7 +55,7 @@ namespace BeerEngine
 			void	drawShadowMap();
 
 			nlohmann::json	serialize();
-			void deserialize(const nlohmann::json & j);
+			void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 			static DirectionalLight * Deserialize(const nlohmann::json & j);
 		};
 	}

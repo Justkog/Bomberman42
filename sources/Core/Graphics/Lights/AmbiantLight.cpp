@@ -43,9 +43,10 @@ namespace BeerEngine
 			return {};
 		}
 
-		void AmbiantLight::deserialize(const nlohmann::json & j)
+		void AmbiantLight::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			(void) j;
+			(void) loader;
 		}
 
 		AmbiantLight * AmbiantLight::Deserialize(const nlohmann::json & j)

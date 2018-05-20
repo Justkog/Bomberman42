@@ -64,13 +64,14 @@ SRC = \
 	\
 	Game/SceneLoader.cpp \
 	Game/SceneBasics.cpp \
-	Game/SceneTest.cpp \
+	Game/SceneRandom.cpp \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
 	Game/Level2.cpp \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
 	Game/Level5.cpp \
+	Game/Level6.cpp \
 	Game/Versus1.cpp \
 	Game/Versus2.cpp \
 	Game/Versus3.cpp \
@@ -96,6 +97,7 @@ SRC = \
 	Game/Components/AdventureContinueMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
+	Game/Components/Credits.cpp \
 	Game/Components/InGameMenu.cpp \
 	Game/Components/GameOverMenu.cpp \
 	Game/Components/VictoryMenu.cpp \
@@ -137,7 +139,7 @@ LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))
 all: dircreate $(join $(addsuffix /, $(LIB_DIR)), $(addsuffix .a, $(LIB_DIR)))
 	$(MAKE) $(NAME)
 
-install:
+install: installAssets
 	~/.brew/bin/brew update
 	~/.brew/bin/brew install pkg-config
 	~/.brew/bin/brew install glm
@@ -150,11 +152,13 @@ install:
 	~/.brew/bin/brew install nlohmann_json
 	~/.brew/bin/brew install assimp
 	sh script.sh
-	git clone https://github.com/mimusangel/Bomberman42Asset.git Bomberman42Asset
-	mv Bomberman42Asset/assets .
-	mv Bomberman42Asset/html .
-	rm -rf Bomberman42Asset
-	
+
+installAssets:
+	git clone https://github.com/mimusangel/Bomberman42Asset.git /tmp/Bomberman42Asset
+	rsync -av /tmp/Bomberman42Asset/assets/ assets/
+	rsync -av /tmp/Bomberman42Asset/html/ html/
+	rm -rf /tmp/Bomberman42Asset
+
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)

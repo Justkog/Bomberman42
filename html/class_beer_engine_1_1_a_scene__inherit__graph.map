@@ -1,6 +1,0 @@
-<map id="BeerEngine::AScene" name="BeerEngine::AScene">
-<area shape="rect" id="node3" href="$class_generic_scene.html" title="Classe d&#39;ine scene generique. " alt="" coords="5,481,111,555"/>
-<area shape="rect" id="node4" href="$class_scene_main.html" title="{SceneMain\n||+ init()\l}" alt="" coords="136,481,224,555"/>
-<area shape="rect" id="node5" href="$class_scene_test.html" title="{SceneTest\n||+ init()\l+ addCrate()\l}" alt="" coords="247,475,344,561"/>
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="82,5,277,172"/>
-</map>

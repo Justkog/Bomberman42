@@ -1,4 +1,0 @@
-<map id="BeerEngine::Component::IColliderEnter" name="BeerEngine::Component::IColliderEnter">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="La classe Character gère les mouvements, pose de bombes et autre du personnage. " alt="" coords="5,140,205,467"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_player.html" title="{Game::Component::Player\n|+ _character\l+ srcAudio\l+ itemSrcAudio\l+ play\l+ createCrateSignal\l# _transform\l# _gameStarted\l|+ Player()\l+ ~Player()\l+ onDestroy()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUI()\l+ onColliderEnter()\l+ playStepSound()\l+ startGame()\l}" alt="" coords="229,167,408,440"/>
-</map>

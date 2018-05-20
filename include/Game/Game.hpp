@@ -31,6 +31,7 @@ namespace Game
 		class AdventureMenu;
 		class AdventureContinueMenu;
 		class SettingsMenu;
+		class Credits;
 		class InGameMenu;
 		class GameOverMenu;
 		class VictoryMenu;

@@ -44,13 +44,13 @@ namespace BeerEngine
 		*  \brief Serialisation sur place
 		*  Sérialisation des champs de la classe, la fonction serialize du parent doit être appelée au début de la fonction
 		*/
-        nlohmann::json	serialize();
+        virtual nlohmann::json	serialize();
 
 		/*!
 		*  \brief Désérialisation sur place
 		*  Désérialisation des champs de la classe, la fonction deserialize du parent doit être appelée au début de la fonction
 		*/
-		void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
+		virtual void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 
 		/*!
 		*  \brief Désérialisation avec retour d'une instance de la classe

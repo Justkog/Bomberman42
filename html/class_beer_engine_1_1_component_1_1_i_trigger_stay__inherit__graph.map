@@ -1,4 +1,0 @@
-<map id="BeerEngine::Component::ITriggerStay" name="BeerEngine::Component::ITriggerStay">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_character.html" title="La classe Character gère les mouvements, pose de bombes et autre du personnage. " alt="" coords="5,140,205,467"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html" title="La classe Item gère les bonus que l&#39;on peut ramasser en jeu (bomb+, explosion+, vitesse...) " alt="" coords="230,200,397,407"/>
-</map>

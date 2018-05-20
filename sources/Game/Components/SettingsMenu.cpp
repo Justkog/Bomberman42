@@ -7,6 +7,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Game/Components/AudioManager.hpp"
 #include "Core/Window.hpp"
+#include "Core/Input.hpp"
 
 namespace Game
 {
@@ -216,7 +217,7 @@ void SettingsMenu::renderUI(struct nk_context *ctx)
 			this->resetSettings();
 			settingsReset = true;
 		}
-		if (nk_button_label(ctx, "Back"))
+		if (nk_button_label(ctx, "Back") || BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
 		{
 			saveSettings();
 			this->setActive(false);

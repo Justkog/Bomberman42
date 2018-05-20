@@ -140,9 +140,10 @@ namespace BeerEngine
 			return {};
 		}
 
-		void DirectionalLight::deserialize(const nlohmann::json & j)
+		void DirectionalLight::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			(void) j;
+			(void) loader;
 		}
 
 		DirectionalLight * DirectionalLight::Deserialize(const nlohmann::json & j)

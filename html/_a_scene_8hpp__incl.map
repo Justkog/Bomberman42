@@ -1,8 +1,0 @@
-<map id="include/Core/AScene.hpp" name="include/Core/AScene.hpp">
-<area shape="rect" id="node2" href="$_cubemap_8hpp.html" title="Le Cube Mapping permet de simuler la réflexion d&#39;un environnement sur un objet. " alt="" coords="2331,79,2526,104"/>
-<area shape="rect" id="node5" href="$_core_8hpp.html" title="Class d&#39;include pour tout les fichier important au projet, libs... " alt="" coords="2394,299,2481,324"/>
-<area shape="rect" id="node40" href="$_json_serializable_8hpp.html" title="Classes gérant la sérialisation. " alt="" coords="2263,225,2471,251"/>
-<area shape="rect" id="node3" href="$_i_render_8hpp.html" title="Interface pour indiquer qu&#39;il y a un rendu standard. " alt="" coords="2497,152,2696,177"/>
-<area shape="rect" id="node4" href="$_shader_program_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les scripts glsl. " alt="" coords="2331,152,2472,177"/>
-<area shape="rect" id="node41" href="$_texture_8hpp.html" title="Programme permettant de charger et d&#39;utiliser les images/textures. " alt="" coords="2165,152,2256,177"/>
-</map>

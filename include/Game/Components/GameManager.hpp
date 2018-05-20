@@ -66,6 +66,7 @@ namespace Game
 			void setPause(bool state);
 			void setGameOver(glm::vec3 pos, int value);
 			void setVictory();
+			void startVictory();
 			void save();
 			void acknowledgeEnemyDestruction(Breakable *enemyBreakable);
 
@@ -77,6 +78,10 @@ namespace Game
 			Signal<> onGameEnd;
 
 			BeerEngine::BeerRoutine::BeerRoutine *createStartTimerRoutine();
+			BeerEngine::BeerRoutine::BeerRoutine *createVictoryRoutine();
+			BeerEngine::BeerRoutine::BeerRoutine *victoryRoutine;
+			bool isVictorious;
+			float gameSpeed;
 
 			static GameManager & GetInstance();
 

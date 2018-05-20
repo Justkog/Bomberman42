@@ -96,7 +96,7 @@ namespace BeerEngine
 			GLint get_hasEnvMapID() const;
 
 			nlohmann::json	serialize();
-			void deserialize(const nlohmann::json & j);
+			void deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader);
 			static ALight * Deserialize(const nlohmann::json & j);
 		};
 	}

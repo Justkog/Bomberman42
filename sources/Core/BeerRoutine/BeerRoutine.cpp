@@ -68,7 +68,7 @@ namespace BeerEngine
 
 		void	BeerRoutine::update()
 		{
-			this->_timer += Time::GetDeltaTime();
+			this->_timer += Time::GetRealDeltaTime();
 			
 			bool res = true;
 			while (res)
