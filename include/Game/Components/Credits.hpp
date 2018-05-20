@@ -23,6 +23,11 @@ namespace Game
 						public BeerEngine::Component::IUI
 		{
 		public:
+			UIThemeManager	*uiManager;
+			MainMenu		*mainMenu;
+			nk_style_item	fortyTwoImage;
+			nk_style_item	bgImage;
+
 
 			// Credits( void );
 			// Credits( Credits const & src );

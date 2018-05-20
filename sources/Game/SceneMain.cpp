@@ -66,26 +66,30 @@ void    SceneMain::init(void)
 
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
+	versusMenu->uiManager = uiManager;
+	adventureMenu->uiManager = uiManager;
+	adventureContinueMenu->uiManager = uiManager;
+	settingsMenu->uiManager = uiManager;
+	inputsMenu->uiManager = uiManager;
+	credits->uiManager = uiManager;
+
 	mainMenu->adventureMenu = adventureMenu;
 	mainMenu->versusMenu = versusMenu;
 	mainMenu->settingsMenu = settingsMenu;
 	mainMenu->credits = credits;
-	versusMenu->uiManager = uiManager;
 	versusMenu->mainMenu = mainMenu;
-	adventureMenu->uiManager = uiManager;
 	adventureMenu->mainMenu = mainMenu;
 	adventureMenu->continueMenu = adventureContinueMenu;
 	adventureMenu->gameProgression = gameProgression;
 	adventureContinueMenu->adventureMenu = adventureMenu;
-	adventureContinueMenu->uiManager = uiManager;
 	adventureContinueMenu->gameProgression = gameProgression;
-	settingsMenu->uiManager = uiManager;
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
 	settingsMenu->settingsManager = settings;
 	settingsMenu->audioManager = audioManager;
-	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
+	credits->mainMenu = mainMenu;
+	
 	settings->audioManager = audioManager;
 
 // init musique du menu
