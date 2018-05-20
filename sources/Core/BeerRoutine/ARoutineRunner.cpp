@@ -31,7 +31,7 @@ namespace BeerEngine
 
 		void ARoutineRunner::startRoutine(BeerEngine::BeerRoutine::BeerRoutine &routine)
 		{
-			// std::cout << "starting routine!" << "\n";
+			std::cout << "starting routine!" << "\n";
 			_currentRoutines.push_back(&routine);
 		}
 

@@ -108,7 +108,7 @@ namespace Game
 		{
 			if (startAnimation)
 				return;
-			if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::W))
+			if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["change view"]))
 				tpsCamera = !tpsCamera;
 			if (tpsCamera)
 			{

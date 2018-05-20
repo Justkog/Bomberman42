@@ -63,13 +63,17 @@ SRC = \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
 	Game/SceneLoader.cpp \
+	Game/SceneBasics.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
 	Game/Level2.cpp \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
+	Game/Level5.cpp \
 	Game/Versus1.cpp \
+	Game/Versus2.cpp \
+	Game/Versus3.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
@@ -98,6 +102,8 @@ SRC = \
 	Game/Components/TimeUI.cpp \
 	Game/Components/StartTimerUI.cpp \
 	Game/Components/ItemsUI.cpp \
+	Game/Components/Message.cpp \
+	Game/Components/LevelInstructions.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
 	Game/Components/AudioManager.cpp

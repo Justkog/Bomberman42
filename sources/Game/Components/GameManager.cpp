@@ -10,6 +10,7 @@
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/GameProgression.hpp"
 #include "Game/Components/CameraController.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 
 namespace Game
 {
@@ -60,6 +61,7 @@ GameManager::GameManager(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
 gameOverMenu(nullptr),
 victoryMenu(nullptr),
+levelInstructions(nullptr),
 storyMode(false)
 {
 	instance = this;
@@ -168,6 +170,8 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
 	.addTimer(1.0f)
 	.addAction([this] () {
 		this->startTimerUI->setActive(false);
+		if (levelInstructions)
+			levelInstructions->startInstructions();
 		return true;
 	})
 	;

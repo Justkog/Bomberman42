@@ -96,7 +96,7 @@ namespace Game
 			itemGO->immortalTimer = 1.5f;
 			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
-			itemColl->_radius = 0.35;
+			itemColl->_radius = 0.3;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			item->map = this;
 			if (type == -1)
@@ -267,15 +267,14 @@ namespace Game
 					switch (type)
 					{
 						case 1:
-							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
-							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case V:
-							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::None);
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(0.9), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::None);
 							break;
 						case 2:
 						case E:
-							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case P:
 							if (!playerSpawn)
