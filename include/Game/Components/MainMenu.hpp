@@ -38,6 +38,7 @@ namespace Game
 			SettingsMenu	*settingsMenu;
 			VersusMenu		*versusMenu;
 			AdventureMenu	*adventureMenu;
+			Credits			*credits;
 			UIThemeManager	*uiManager;
 
 			nk_style_window mWindow;

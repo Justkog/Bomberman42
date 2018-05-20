@@ -19,6 +19,7 @@
 #include "Game/Components/AdventureContinueMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Game/Components/InputsMenu.hpp"
+#include "Game/Components/Credits.hpp"
 #include "Game/Components/BackgroundDrawer.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 
@@ -59,29 +60,35 @@ void    SceneMain::init(void)
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
+	auto credits = menuGO->AddComponent<Game::Component::Credits>();
 	auto audioManager = menuGO->AddComponent<Game::Component::AudioManager>();
 
 	bgDrawer->uiManager = uiManager;
 	mainMenu->uiManager = uiManager;
+	versusMenu->uiManager = uiManager;
+	adventureMenu->uiManager = uiManager;
+	adventureContinueMenu->uiManager = uiManager;
+	settingsMenu->uiManager = uiManager;
+	inputsMenu->uiManager = uiManager;
+	credits->uiManager = uiManager;
+
 	mainMenu->adventureMenu = adventureMenu;
 	mainMenu->versusMenu = versusMenu;
 	mainMenu->settingsMenu = settingsMenu;
-	versusMenu->uiManager = uiManager;
+	mainMenu->credits = credits;
 	versusMenu->mainMenu = mainMenu;
-	adventureMenu->uiManager = uiManager;
 	adventureMenu->mainMenu = mainMenu;
 	adventureMenu->continueMenu = adventureContinueMenu;
 	adventureMenu->gameProgression = gameProgression;
 	adventureContinueMenu->adventureMenu = adventureMenu;
-	adventureContinueMenu->uiManager = uiManager;
 	adventureContinueMenu->gameProgression = gameProgression;
-	settingsMenu->uiManager = uiManager;
 	settingsMenu->mainMenu = mainMenu;
 	settingsMenu->inputsMenu = inputsMenu;
 	settingsMenu->settingsManager = settings;
 	settingsMenu->audioManager = audioManager;
-	inputsMenu->uiManager = uiManager;
 	inputsMenu->settingsMenu = settingsMenu;
+	credits->mainMenu = mainMenu;
+	
 	settings->audioManager = audioManager;
 
 // init musique du menu
@@ -94,6 +101,7 @@ void    SceneMain::init(void)
 	inputsMenu->setActive(false);
 	adventureMenu->setActive(false);
 	adventureContinueMenu->setActive(false);
+	credits->setActive(false);
 
 	this->save("assets/scenes/main.scene");
 	std::cout << "init end" << "\n";
