@@ -126,15 +126,15 @@ void    Level6::init(void)
 	map->_player = player;
 	map->_shader = shader; // E eclater, U Objectif, J boost, V Movable, P player
 	std::vector<int> line0 {1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<int> line1 {1,E,1,0,0,0,0,1,E,0,1,1};
-	std::vector<int> line2 {1,0,1,0,1,1,0,0,0,0,0,1};
-	std::vector<int> line3 {1,0,0,E,E,1,0,E,E,0,E,1};
-	std::vector<int> line4 {1,0,1,V,1,1,0,E,0,V,0,1};
-	std::vector<int> line5 {1,E,1,J,1,1,0,0,1,U,1,1};
-	std::vector<int> line6 {1,1,1,V,1,1,1,0,0,V,0,1};
-	std::vector<int> line7 {1,0,0,0,1,1,E,0,0,0,0,1};
-	std::vector<int> line8 {1,P,0,1,0,V,0,0,0,1,0,1};
-	std::vector<int> line9 {1,0,0,V,0,0,0,E,J,0,0,1};
+	std::vector<int> line1 {1,0,0,0,0,0,0,1,E,0,1,1};
+	std::vector<int> line2 {1,E,1,E,1,1,0,0,0,0,0,1};
+	std::vector<int> line3 {1,V,0,0,0,E,0,E,E,0,E,1};
+	std::vector<int> line4 {1,V,1,E,1,1,0,E,0,V,0,1};
+	std::vector<int> line5 {1,0,1,1,1,1,0,0,1,U,1,1};
+	std::vector<int> line6 {1,V,1,0,0,1,1,0,0,V,0,1};
+	std::vector<int> line7 {1,V,J,1,1,1,E,0,0,0,0,1};
+	std::vector<int> line8 {1,V,1,0,0,0,0,0,0,1,0,1};
+	std::vector<int> line9 {1,P,0,0,0,0,0,E,J,0,0,1};
 	std::vector<int> line10{1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10};
 	map->setMap(tab, line0.size(), tab.size());
