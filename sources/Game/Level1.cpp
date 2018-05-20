@@ -170,6 +170,115 @@ void    Level1::init(void)
 	mapGO->transform.position = glm::vec3(0, 0.03, 5);
 	mapGO->transform.scale = glm::vec3(3.5, 1, 4.5);
 
+	// Decorative objects
+	auto objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree1";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	auto objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	auto objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(6, 0, 3);
+	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree2";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/Tree/Models/grassland_tree_free.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(-6, 0, 3);
+	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree3";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/Tree/Models/grassland_tree_free.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(6, 0, 7.5);
+	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree4";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(-6, 0, 7.5);
+	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree5";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(3, 0, 12);
+	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree6";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(-3, 0, 12);
+	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree7";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/trees/Models/rock.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/rock.png");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(-6, 0, 6);
+	objet->transform.scale = glm::vec3(1.5, 1.5, 1.5);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree8";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/trees/Models/fence.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/fence.png");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(6, 0, 6);
+	objet->transform.scale = glm::vec3(0.5, 0.5, 0.5);
+	objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	objet = instantiate<BeerEngine::GameObject>();
+	objet->name = "tree9";
+	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	modelRenderer->load("assets/models/Decoration/trees/Models/fence.fbx");
+	objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/fence.png");
+	objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	objetMat->setAlbedo(objetTex);
+	modelRenderer->addMaterial(0, objetMat);
+	objet->transform.position = glm::vec3(6, 0, 5);
+	objet->transform.scale = glm::vec3(0.5, 0.5, 0.5);
+	objet->transform.rotation = glm::vec3(0, 2, 0);
+
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level1.scene");
 }

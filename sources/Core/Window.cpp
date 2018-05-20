@@ -219,7 +219,7 @@ namespace BeerEngine
 				glfwSetScrollCallback(win->getWindow(), win_scroll_callback);
 				glfwGetWindowPos(win->getWindow(), win->getXPos(), win->getYPos());
 				glfwSetWindowFocusCallback(win->getWindow(), window_focus_callback);
-				glfwSwapInterval(0);
+				glfwSwapInterval(1);
 				glewExperimental = true;
 				if (glewInit() != GLEW_OK)
 				{
