@@ -97,6 +97,7 @@ SRC = \
 	Game/Components/AdventureContinueMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
+	Game/Components/Credits.cpp \
 	Game/Components/InGameMenu.cpp \
 	Game/Components/GameOverMenu.cpp \
 	Game/Components/VictoryMenu.cpp \
@@ -151,10 +152,13 @@ install:
 	~/.brew/bin/brew install nlohmann_json
 	~/.brew/bin/brew install assimp
 	sh script.sh
-	git clone https://github.com/mimusangel/Bomberman42Asset.git Bomberman42Asset
-	mv Bomberman42Asset/assets .
-	mv Bomberman42Asset/html .
-	rm -rf Bomberman42Asset
+	installAssets
+
+installAssets:
+	git clone https://github.com/mimusangel/Bomberman42Asset.git /tmp/Bomberman42Asset
+	rsync -av /tmp/Bomberman42Asset/assets/ assets/
+	rsync -av /tmp/Bomberman42Asset/html/ html/
+	rm -rf /tmp/Bomberman42Asset
 
 relink:
 %.a: relink
