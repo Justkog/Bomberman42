@@ -2,13 +2,14 @@
     "fullScreen": false,
     "keyBindings": {
         "bomb": 32,
+        "change view": 87,
         "move down": 325,
         "move left": 324,
         "move right": 326,
         "move up": 328
     },
-    "musicVolume": 7.000003814697266,
-    "soundVolume": 52.000003814697266,
+    "musicVolume": 50.0,
+    "soundVolume": 50.0,
     "windowHeight": 900,
     "windowWidth": 1600
 }
