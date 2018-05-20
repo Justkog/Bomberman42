@@ -3,7 +3,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
-#include "Game/SceneTest.hpp"
+#include "Game/SceneRandom.hpp"
 #include "Game/SceneMain.hpp"
 #include "Game/Level1.hpp"
 #include "Game/Level2.hpp"
@@ -138,7 +138,7 @@ void VictoryMenu::renderUI(struct nk_context *ctx)
 			{
 				GameManager::GetInstance().setPause(false);
 				sceneLoader.load();
-				// BeerEngine::SceneManager::LoadScene<SceneTest>();
+				// BeerEngine::SceneManager::LoadScene<SceneRandom>();
 				// BeerEngine::SceneManager::LoadScene("assets/scenes/level2.scene");
 			}
 			if (nk_button_label(ctx, "Quit in peace"))

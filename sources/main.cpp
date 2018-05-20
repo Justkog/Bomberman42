@@ -19,7 +19,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Core/BeerEngine.hpp"
-#include "Game/SceneTest.hpp"
 #include "Game/SceneMain.hpp"
 #include "Game/Assets.hpp"
 //#include <nuklear.h>
@@ -121,7 +120,7 @@ int main(void)
     // Game Assets
     Assets::GetInstance()->load();
     // First Scene
-    // BeerEngine::SceneManager::LoadScene<SceneTest>();
+    // BeerEngine::SceneManager::LoadScene<SceneRandom>();
     BeerEngine::SceneManager::LoadScene<SceneMain>();
     // BeerEngine::SceneManager::LoadScene("main.scene");
 

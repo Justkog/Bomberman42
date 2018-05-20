@@ -1,5 +1,0 @@
-<map id="BeerEngine::Graphics::ALight" name="BeerEngine::Graphics::ALight">
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_graphics_1_1_ambiant_light.html" title="Extension des lumiers basique pour une lumiere d&#39;ambiance. " alt="" coords="5,695,157,861"/>
-<area shape="rect" id="node4" href="$class_beer_engine_1_1_graphics_1_1_directional_light.html" title="Extension des lumieres basique pour une lumiere directionnel (ex: le soleil) " alt="" coords="181,648,336,908"/>
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="71,5,267,172"/>
-</map>

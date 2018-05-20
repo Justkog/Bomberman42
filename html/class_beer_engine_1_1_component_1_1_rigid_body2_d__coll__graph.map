@@ -1,7 +1,0 @@
-<map id="BeerEngine::Component::RigidBody2D" name="BeerEngine::Component::RigidBody2D">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="98,944,265,1164"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_game_object.html" title="classe representant les entiter du projet, cela regroupe les fonctionnalitée de l&#39;entité par le biais..." alt="" coords="95,569,268,883"/>
-<area shape="rect" id="node6" href="$class_beer_engine_1_1_transform.html" title="classe representant la transformation d&#39;un object, position, rotation... " alt="" coords="125,221,284,508"/>
-<area shape="rect" id="node7" href="$class_beer_engine_1_1_a_scene.html" title="classe des scenes, toute scene herite de celle&#45;ci pour le fonctionnement correct des scenes..." alt="" coords="380,261,525,468"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="BeerEngine::GameObject" name="BeerEngine::GameObject">
-<area shape="rect" id="node3" href="$class_camera_test.html" title="{CameraTest\n||+ CameraTest()\l+ start()\l+ update()\l}" alt="" coords="46,608,160,708"/>
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
-</map>

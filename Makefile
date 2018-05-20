@@ -64,13 +64,14 @@ SRC = \
 	\
 	Game/SceneLoader.cpp \
 	Game/SceneBasics.cpp \
-	Game/SceneTest.cpp \
+	Game/SceneRandom.cpp \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \
 	Game/Level2.cpp \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
 	Game/Level5.cpp \
+	Game/Level6.cpp \
 	Game/Versus1.cpp \
 	Game/Versus2.cpp \
 	Game/Versus3.cpp \
@@ -154,7 +155,7 @@ install:
 	mv Bomberman42Asset/assets .
 	mv Bomberman42Asset/html .
 	rm -rf Bomberman42Asset
-	
+
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)

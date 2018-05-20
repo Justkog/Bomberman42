@@ -1,4 +1,0 @@
-<map id="BeerEngine::BeerRoutine::ARoutineRunner" name="BeerEngine::BeerRoutine::ARoutineRunner">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_beer_routine_tester.html" title="{Game::Component::BeerRoutine\lTester\n||+ BeerRoutineTester()\l+ ~BeerRoutineTester()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ testDisplay()\l+ createTestRoutine()\l}" alt="" coords="5,267,221,447"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_game_manager.html" title="{Game::Component::GameManager\n|+ inGameMenu\l+ gameOverMenu\l+ victoryMenu\l+ playerBreakable\l+ timeUI\l+ startTimerUI\l+ enemyBreakables\l+ srcAudio\l+ onGameStart\l|+ GameManager()\l+ ~GameManager()\l+ operator=()\l+ start()\l+ update()\l+ fixedUpdate()\l+ startGame()\l+ setPause()\l+ setGameOver()\l+ setVictory()\l+ acknowledgeEnemyDestruction()\l+ registerEnemy()\l+ createStartTimerRoutine()\l+ GetInstance()\l}" alt="" coords="245,180,475,533"/>
-</map>

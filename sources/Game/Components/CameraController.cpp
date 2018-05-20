@@ -77,17 +77,7 @@ namespace Game
 			{
 				this->_gameObject->transform.position = player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f);
 			}
-			// Map	*map = Map::instance;
-			// if (map)
-			// {
-			// 	float y = map->_sizeX;
-			// 	if (y < 10)
-			// 		y = 10;
-			// 	this->_gameObject->transform.position = glm::vec3(0, y, map->_sizeY / 3.0f);
-			// }
-			// else
-			// 	this->_gameObject->transform.position = glm::vec3(0, 15, 3.0f);
-			// this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
+			this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0));
 			tpsCamera = false;
 			syncCam();
 		}

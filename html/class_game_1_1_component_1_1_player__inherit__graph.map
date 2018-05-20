@@ -1,9 +1,0 @@
-<map id="Game::Component::Player" name="Game::Component::Player">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_component_1_1_component.html" title="Component de base, c&#39;est la base de tout autre component. elle permet de regrouper variable et foncti..." alt="" coords="103,220,271,453"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
-<area shape="rect" id="node5" href="$class_beer_engine_1_1_component_1_1_i_start.html" title="Interface avec la fonctionnalité d&#39;initialiser le component. " alt="" coords="295,293,463,380"/>
-<area shape="rect" id="node6" href="$class_beer_engine_1_1_component_1_1_i_update.html" title="Interface avec les fonctionnalités pour effectuer les updates. " alt="" coords="487,287,655,387"/>
-<area shape="rect" id="node7" href="$class_beer_engine_1_1_component_1_1_i_u_i.html" title="Interface de rendu de l&#39;UI d&#39;un component. " alt="" coords="679,300,871,373"/>
-<area shape="rect" id="node8" href="$class_beer_engine_1_1_component_1_1_i_collider_enter.html" title="Interface quand une collision est appeler en sont depart. " alt="" coords="895,293,1063,380"/>
-<area shape="rect" id="node9" href="$class_beer_engine_1_1_component_1_1_i_on_destroy.html" title="Interface permettant d&#39;effectuer des actions avant la destruction. " alt="" coords="1087,293,1255,380"/>
-</map>

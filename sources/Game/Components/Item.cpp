@@ -129,7 +129,7 @@ namespace Game
                     case ItemType::Antidote:
                         if (!map->hasBreakable())
                         {
-                            GameManager::GetInstance().setVictory();
+                            GameManager::GetInstance().startVictory();
 							GameManager::GetInstance().save();
                             this->destroy();
                         }

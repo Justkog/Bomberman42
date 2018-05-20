@@ -3,7 +3,7 @@
 #include "Game/Components/UIThemeManager.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
-#include "Game/SceneTest.hpp"
+#include "Game/SceneRandom.hpp"
 #include "Game/Level1.hpp"
 #include "Game/Level2.hpp"
 #include "Game/Level3.hpp"
@@ -115,7 +115,7 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 		if (nk_button_label(ctx, "Garden"))
 			BeerEngine::SceneManager::LoadScene<Versus3>();
 		if (nk_button_label(ctx, "Random"))
-			BeerEngine::SceneManager::LoadScene<SceneTest>();
+			BeerEngine::SceneManager::LoadScene<SceneRandom>();
 		if (nk_button_label(ctx, "Back"))
 		{
 			this->setActive(false);

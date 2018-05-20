@@ -8,7 +8,7 @@
 #include "Game/Components/SettingsMenu.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
-#include "Game/SceneTest.hpp"
+#include "Game/SceneRandom.hpp"
 #include "Game/Level1.hpp"
 
 namespace Game

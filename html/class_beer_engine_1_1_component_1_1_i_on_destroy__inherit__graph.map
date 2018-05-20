@@ -1,5 +1,0 @@
-<map id="BeerEngine::Component::IOnDestroy" name="BeerEngine::Component::IOnDestroy">
-<area shape="rect" id="node2" href="$class_game_1_1_component_1_1_i_a.html" title="La classe IA gère les actions, déplacements et la gestion d&#39;objectif. " alt="" coords="5,140,170,640"/>
-<area shape="rect" id="node3" href="$class_game_1_1_component_1_1_item.html" title="La classe Item gère les bonus que l&#39;on peut ramasser en jeu (bomb+, explosion+, vitesse...) " alt="" coords="193,287,361,493"/>
-<area shape="rect" id="node4" href="$class_game_1_1_component_1_1_player.html" title="{Game::Component::Player\n|+ _character\l+ srcAudio\l+ itemSrcAudio\l+ play\l+ createCrateSignal\l# _transform\l# _gameStarted\l|+ Player()\l+ ~Player()\l+ onDestroy()\l+ start()\l+ fixedUpdate()\l+ update()\l+ renderUI()\l+ onColliderEnter()\l+ playStepSound()\l+ startGame()\l}" alt="" coords="385,253,564,527"/>
-</map>

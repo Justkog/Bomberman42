@@ -1,6 +1,0 @@
-<map id="include/Core/Component/IColliderStay.hpp" name="include/Core/Component/IColliderStay.hpp">
-<area shape="rect" id="node2" href="$_character_8hpp.html" title="Component character, comportement des personnages (IA/Player) " alt="" coords="5,92,188,131"/>
-<area shape="rect" id="node3" href="$_i_a_8hpp.html" title="Component qui gère toute l&#39;IA du jeu. " alt="" coords="212,92,395,131"/>
-<area shape="rect" id="node4" href="$_player_8hpp.html" title="Component de contrôle du joueur. " alt="" coords="419,92,602,131"/>
-<area shape="rect" id="node5" href="$_map_8hpp.html" title="Component qui gère toute la zone de jeu. " alt="" coords="419,179,602,217"/>
-</map>

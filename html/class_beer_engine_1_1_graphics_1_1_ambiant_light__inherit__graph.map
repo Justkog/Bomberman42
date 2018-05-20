@@ -1,4 +1,0 @@
-<map id="BeerEngine::Graphics::AmbiantLight" name="BeerEngine::Graphics::AmbiantLight">
-<area shape="rect" id="node2" href="$class_beer_engine_1_1_graphics_1_1_a_light.html" title="lumiere de base, shader utiliser ... " alt="" coords="27,220,180,600"/>
-<area shape="rect" id="node3" href="$class_beer_engine_1_1_json_serializable.html" title="Classe de base gérant la sérialisation et désérialisation des classes qui en héritent. " alt="" coords="5,5,201,172"/>
-</map>
