@@ -11,6 +11,7 @@
 #include "Game/Versus1.hpp"
 #include "Game/Versus2.hpp"
 #include "Game/Versus3.hpp"
+#include "Core/Input.hpp"
 
 namespace Game
 {
@@ -116,7 +117,7 @@ void VersusMenu::renderUI(struct nk_context *ctx)
 			BeerEngine::SceneManager::LoadScene<Versus3>();
 		if (nk_button_label(ctx, "Random"))
 			BeerEngine::SceneManager::LoadScene<SceneRandom>();
-		if (nk_button_label(ctx, "Back"))
+		if (nk_button_label(ctx, "Back") || BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
 		{
 			this->setActive(false);
 			mainMenu->setActive(true);
