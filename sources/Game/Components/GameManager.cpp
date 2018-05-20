@@ -62,7 +62,9 @@ Component(gameObject),
 gameOverMenu(nullptr),
 victoryMenu(nullptr),
 levelInstructions(nullptr),
-storyMode(false)
+storyMode(false),
+victoryRoutine(nullptr),
+isVictorious(false)
 {
 	instance = this;
 }
@@ -88,7 +90,9 @@ void GameManager::acknowledgeEnemyDestruction(Breakable *enemyBreakable)
 	if (it != enemyBreakables.end())
 		enemyBreakables.erase(it);
 	if (enemyBreakables.size() == 0)
-		setVictory();
+	{
+		startVictory();
+	}
 }
 
 void GameManager::registerEnemy(Breakable *enemyBreakable)
@@ -101,9 +105,12 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 {
 	(void) pos;
 	(void) value;
+	if (isVictorious)
+		return;
+	if (victoryRoutine)
+		stopRoutine(victoryRoutine);
 	if (inGameMenu->_isActive)
 		inGameMenu->setActive(!inGameMenu->_isActive);
-	// srcAudio->Delete();
 	std::cout << "game over" << std::endl;
 	gameOverMenu->setActive(true);
 	if (victoryMenu->_isActive)
@@ -115,12 +122,18 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 		onGameEnd.emit();
 }
 
+void GameManager::startVictory()
+{
+	std::cout << "victory" << std::endl;
+	victoryRoutine = createVictoryRoutine();
+	startRoutine(*victoryRoutine);
+}
+
 void GameManager::setVictory()
 {
 	if (inGameMenu->_isActive)
 		inGameMenu->setActive(!inGameMenu->_isActive);
 	onGameEnd.emit();
-	std::cout << "victory" << std::endl;
 	victoryMenu->setActive(true);
 }
 
@@ -178,6 +191,27 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createStartTimerRoutine()
 	return routine;
 }
 
+BeerEngine::BeerRoutine::BeerRoutine *GameManager::createVictoryRoutine()
+{
+	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
+	.addAction([this] () {
+		if (this->gameSpeed < 1.0f)
+			this->isVictorious = true;
+		this->gameSpeed -= 0.5f * (BeerEngine::Time::GetRealDeltaTime() + BeerEngine::Time::GetDeltaTime()) / 2;
+		if (this->gameSpeed < 0)
+		{
+			this->gameSpeed = 0;
+			setVictory();
+			return true;
+		}
+		BeerEngine::Time::gameSpeed = this->gameSpeed;
+		return false;
+	})
+	;
+	return routine;
+}
+
+
 void GameManager::startGame()
 {
 	timeUI->startClock();
@@ -189,6 +223,7 @@ void GameManager::start()
 	std::cout << "GameManager start" << std::endl;
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
 	startRoutine(*createStartTimerRoutine());
+	this->gameSpeed = 1.0f;
 }
 
 void GameManager::update()
@@ -200,7 +235,9 @@ void GameManager::update()
 			inGameMenu->setActive(!inGameMenu->_isActive);
 	}
 	// if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::V))
-	// 	victoryMenu->setActive(true);
+	// {
+	// 	startRoutine(*createVictoryRoutine());
+	// }
 }
 
 void GameManager::fixedUpdate()

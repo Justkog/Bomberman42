@@ -152,9 +152,10 @@ namespace BeerEngine
 			return {};
 		}
 
-		void Cubemap::deserialize(const nlohmann::json & j)
+		void Cubemap::deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			(void) j;
+			(void) loader;
 		}
 
 		Cubemap *Cubemap::Deserialize(const nlohmann::json & j)

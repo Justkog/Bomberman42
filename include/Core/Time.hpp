@@ -22,6 +22,7 @@ namespace BeerEngine
     private:
         static double   _LastTime; /*!< Dernier temps sauvegarder*/
         static double   _DeltaTime; /*!< Delta time enregistrer au dernier tour de boucle*/
+		static double	_RealDeltaTime;
         static double   _TimeSinceStartup;
     
     public:
@@ -37,6 +38,7 @@ namespace BeerEngine
 		*  \return delta time
 		*/
         static double   GetDeltaTime(void);
+        static double   GetRealDeltaTime(void);
 		static double   GetTimeSinceStartup(void);
 
     };
