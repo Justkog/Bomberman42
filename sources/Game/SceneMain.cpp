@@ -88,8 +88,6 @@ void    SceneMain::init(void)
 // init musique du menu
 	audioManager->setClip("assets/sounds/Feel.ogg");
 	audioManager->audioType = Game::Component::Music;
-	// audioManager->play();
-// audioMan->setVolume(0.1);
 
 	// mainMenu->setActive(false);
 	versusMenu->setActive(false);
