@@ -62,7 +62,9 @@ Component(gameObject),
 gameOverMenu(nullptr),
 victoryMenu(nullptr),
 levelInstructions(nullptr),
-storyMode(false)
+storyMode(false),
+victoryRoutine(nullptr),
+isVictorious(false)
 {
 	instance = this;
 }
@@ -89,8 +91,7 @@ void GameManager::acknowledgeEnemyDestruction(Breakable *enemyBreakable)
 		enemyBreakables.erase(it);
 	if (enemyBreakables.size() == 0)
 	{
-		startRoutine(*createStartTimerRoutine());
-		// setVictory();
+		startVictory();
 	}
 }
 
@@ -104,6 +105,10 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 {
 	(void) pos;
 	(void) value;
+	if (isVictorious)
+		return;
+	if (victoryRoutine)
+		stopRoutine(victoryRoutine);
 	if (inGameMenu->_isActive)
 		inGameMenu->setActive(!inGameMenu->_isActive);
 	std::cout << "game over" << std::endl;
@@ -115,6 +120,12 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 	}
 	else
 		onGameEnd.emit();
+}
+
+void GameManager::startVictory()
+{
+	victoryRoutine = createVictoryRoutine();
+	startRoutine(*victoryRoutine);
 }
 
 void GameManager::setVictory()
@@ -184,8 +195,9 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createVictoryRoutine()
 {
 	auto routine = &BeerEngine::BeerRoutine::BeerRoutine::CreateRoutine()
 	.addAction([this] () {
+		if (this->gameSpeed < 1.0f)
+			this->isVictorious = true;
 		this->gameSpeed -= 0.5f * (BeerEngine::Time::GetRealDeltaTime() + BeerEngine::Time::GetDeltaTime()) / 2;
-		std::cout << "new game speed " << this->gameSpeed << std::endl;
 		if (this->gameSpeed < 0)
 		{
 			this->gameSpeed = 0;
