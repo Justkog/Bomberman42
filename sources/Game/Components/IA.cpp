@@ -181,7 +181,8 @@ namespace Game
                 if (breakable && hit.collider->_gameObject != _gameObject)
                 {
                     val += 6;
-                    type = ObjectiveType::DropBomb;
+                    if (type != ObjectiveType::KillEnemy)
+                        type = ObjectiveType::DropBomb;
                 }
                 if (character && hit.collider->_gameObject != _gameObject)
                 {
@@ -208,6 +209,8 @@ namespace Game
             val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(-_character->_explosionSize, 0, 0), type);
             val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(0, 0, _character->_explosionSize), type);
             val += checkExplosionRay(map->mapToWorld(pos), glm::vec3(0, 0, -_character->_explosionSize), type);
+            if (type == ObjectiveType::KillEnemy)
+                val = 20;
             return (val);
         }
 
@@ -264,7 +267,8 @@ namespace Game
 
         bool    IA::moveToObjective(void)
         {
-            if (glm::distance2(map->mapToWorld(_pos), _transform.position) < 0.001)
+            if (glm::distance2(map->mapToWorld(_pos), _transform.position) < 0.001
+            || ((_type == ObjectiveType::KillEnemy || _type == ObjectiveType::DropBomb) && map->worldToMap(_transform.position) == _pos))
                 return (true);
             if (_path.empty())
             {
@@ -302,17 +306,17 @@ namespace Game
             dir = map->mapToWorld(_path[0]) - _transform.position;
             if (!canMove(dir))
                 return (false);
-            if (std::abs(dir.z) <= 0.015)
+            if (std::abs(dir.z) <= 0.05)
                 _transform.position.z = map->mapToWorld(_path[0]).z;
-            else if (dir.z > 0.015)
+            else if (dir.z > 0.05)
                     _character->move(Character::Direction::Up);
-            else if (dir.z < -0.015)
+            else if (dir.z < -0.05)
                     _character->move(Character::Direction::Down);
-            if (std::abs(dir.x) <= 0.015)
+            if (std::abs(dir.x) <= 0.05)
                 _transform.position.x = map->mapToWorld(_path[0]).x;
-            else if (dir.x > 0.015)
+            else if (dir.x > 0.05)
                     _character->move(Character::Direction::Left);
-            else if (dir.x < -0.015)
+            else if (dir.x < -0.05)
                     _character->move(Character::Direction::Right);
             return (true);
         }
