@@ -73,9 +73,9 @@ void Message::buildLines(std::string text)
         iss >> word;
 		words.push_back(word);
     }
-	int lettersByLine = 40;
+	size_t lettersByLine = 40;
 
-	int lineLetters = 0;
+	// int lineLetters = 0;
 	lines.clear();
 	lines.push_back("");
 	
@@ -116,6 +116,8 @@ void Message::start()
 
 void Message::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
+	(void)ctx;
+	(void)fonts;
 	backGround = uiManager->loadSprite("assets/textures/inputsBackground.png");
 }
 
