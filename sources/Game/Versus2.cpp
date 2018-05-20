@@ -1,4 +1,4 @@
-#include "Game/Level4.hpp"
+#include "Game/Versus2.hpp"
 #include <Core/Graphics/Lights/DirectionalLight.hpp>
 #include "Core/Component/ModelRenderer.hpp"
 #include "Core/GameObject.hpp"
@@ -10,7 +10,6 @@
 #include "Game/Components/InGameMenu.hpp"
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
-#include "Game/Components/GameProgression.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
@@ -20,9 +19,9 @@
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
 
-void    Level4::init(void)
+void    Versus2::init(void)
 {
-	std::cout << "init level4 scene" << std::endl;
+	std::cout << "init Versus2 scene" << std::endl;
 
 	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/pano_1.jpg", 512);
 	setSkybox(skyboxCubemap);
@@ -33,7 +32,6 @@ void    Level4::init(void)
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	// BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
@@ -46,7 +44,6 @@ void    Level4::init(void)
 
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
-	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
 	cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// UI
@@ -67,8 +64,6 @@ void    Level4::init(void)
 	gameManager->timeUI = timeUI;
 	gameManager->startTimerUI = startTimerUI;
 	gameManager->audioManager = soundManager;
-	gameManager->gameProgression = gameProgression;
-	gameManager->storyMode = true;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
@@ -84,10 +79,6 @@ void    Level4::init(void)
 	timeUI->uiManager = uiManager;
 	itemsUI->uiManager = uiManager;
 
-	victoryMenu->sceneLoader.name = "Level5";
-	gameOverMenu->sceneLoader.name = "Level4";
-	inGameMenu->sceneLoader.name = "Level4";
-
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
 	playerGO->name = "player";
@@ -99,8 +90,6 @@ void    Level4::init(void)
 	modelRenderer->addMaterial(0, playerMat);
 	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
-		character->_maxBomb = 5;
-		character->_bombNb = character->_maxBomb;
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
@@ -124,19 +113,21 @@ void    Level4::init(void)
 	MapGO->name = "map";
 	auto map = MapGO->AddComponent<Game::Component::Map>();
 	map->_player = player;
-	map->_shader = shader;
-	std::vector<int> line0 {1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<int> line1 {1,1,1,0,1,E,1,0,1,1,1,1};
-	std::vector<int> line2 {1,1,0,0,1,E,1,0,E,1,1,1};
-	std::vector<int> line3 {1,0,E,0,0,0,E,0,0,1,U,1};
-	std::vector<int> line4 {1,0,0,0,1,E,1,1,0,0,0,1};
-	std::vector<int> line5 {1,1,E,1,E,J,E,1,0,1,1,1};
-	std::vector<int> line6 {1,0,0,0,V,0,V,0,0,0,E,1};
-	std::vector<int> line7 {1,1,0,1,1,V,1,E,0,0,1,1};
-	std::vector<int> line8 {1,1,E,0,1,P,1,1,0,J,1,1};
-	std::vector<int> line9 {1,1,1,J,1,E,1,1,E,1,1,1};
-	std::vector<int> line10{1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10};
+	map->_shader = shader;  // S : Spawn, I : Item, 2 : Break, 1 : Wall 
+	std::vector<int>  line0{0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0};
+	std::vector<int>  line1{0,0,0,0,1,2,2,2,2,2,2,2,1,0,0,0,0};
+	std::vector<int>  line2{0,0,0,0,1,2,2,0,1,0,2,2,1,0,0,0,0};
+	std::vector<int>  line3{0,0,0,0,1,0,1,0,1,0,1,0,1,0,0,0,0};
+	std::vector<int>  line4{1,1,1,1,1,2,1,S,1,S,1,2,1,1,1,1,1};
+	std::vector<int>  line5{1,0,2,2,2,0,0,1,1,1,0,0,2,2,2,0,1};
+	std::vector<int>  line6{1,2,1,I,1,1,2,2,I,2,2,1,1,I,1,2,1};
+	std::vector<int>  line7{1,0,2,2,2,0,0,1,1,1,0,0,2,2,2,0,1};
+	std::vector<int>  line8{1,1,1,1,1,2,1,S,1,S,1,2,1,1,1,1,1};
+	std::vector<int>  line9{0,0,0,0,1,0,1,0,1,0,1,0,1,0,0,0,0};
+	std::vector<int> line10{0,0,0,0,1,2,2,0,1,0,2,2,1,0,0,0,0};
+	std::vector<int> line11{0,0,0,0,1,2,2,2,2,2,2,2,1,0,0,0,0};
+	std::vector<int> line12{0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0};
+	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12};
 	map->setMap(tab, line0.size(), tab.size());
 
 	character->map = map;
@@ -162,15 +153,37 @@ void    Level4::init(void)
 	// Plane MAP
 	mapGO = instantiate<BeerEngine::GameObject>();
 	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(12, 11), glm::vec2(0.5, 0)));
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(9, 13), glm::vec2(0, 0)));
 	mapMeshRenderer->setMaterial(material);
 	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
 	planeMat = new BeerEngine::Graphics::AMaterial(shader);
 	planeMat->setAlbedo(planeTex);
 	mapMeshRenderer->setMaterial(planeMat);
-	mapGO->transform.position = glm::vec3(0, 0.03, 5);
-	mapGO->transform.scale = glm::vec3(6, 1, 5.5);
+	mapGO->transform.position = glm::vec3(0, 0.03, 7);
+	mapGO->transform.scale = glm::vec3(4.5, 1, 6.5);
+
+	mapGO = instantiate<BeerEngine::GameObject>();
+	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(4, 4), glm::vec2(0, 0)));
+	mapMeshRenderer->setMaterial(material);
+	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	planeMat = new BeerEngine::Graphics::AMaterial(shader);
+	planeMat->setAlbedo(planeTex);
+	mapMeshRenderer->setMaterial(planeMat);
+	mapGO->transform.position = glm::vec3(6.5, 0.03, 6.5);
+	mapGO->transform.scale = glm::vec3(2, 1, 2);
+
+	mapGO = instantiate<BeerEngine::GameObject>();
+	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(4, 4), glm::vec2(0, 0)));
+	mapMeshRenderer->setMaterial(material);
+	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	planeMat = new BeerEngine::Graphics::AMaterial(shader);
+	planeMat->setAlbedo(planeTex);
+	mapMeshRenderer->setMaterial(planeMat);
+	mapGO->transform.position = glm::vec3(-6.5, 0.03, 6.5);
+	mapGO->transform.scale = glm::vec3(2, 1, 2);
 
 	std::cout << "saving scene.." << std::endl;
-	this->save("assets/scenes/Level4.scene");
+	this->save("assets/scenes/Versus2.scene");
 }

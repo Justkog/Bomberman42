@@ -137,12 +137,14 @@ namespace BeerEngine
 
 		nlohmann::json	Framebuffer::serialize()
 		{
-
+			return nlohmann::json {};
 		}
 
 		Framebuffer * Framebuffer::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
-
+			(void) j;
+			(void) loader;
+			return (nullptr);
 		}
 	}
 }

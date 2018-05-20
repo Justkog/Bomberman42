@@ -37,11 +37,11 @@ namespace BeerEngine
                 _gameObjects[p.first] = p.second;
             for (const std::pair<int, Graphics::ALight *> &p : val._lights)
                 _lights[p.first] = p.second;
-            for (int i = 0; i < val._toDestroy.size(); i++)
+            for (std::size_t i = 0; i < val._toDestroy.size(); i++)
                 _toDestroy.push_back(val._toDestroy[i]);
-            for (int i = 0; i < val._toStart.size(); i++)
+            for (std::size_t i = 0; i < val._toStart.size(); i++)
                 _toStart.push_back(val._toStart[i]);
-            for (int i = 0; i < val._toStartUI.size(); i++)
+            for (std::size_t i = 0; i < val._toStartUI.size(); i++)
                 _toStartUI.push_back(val._toStartUI[i]);
             _skyboxCubemap = val._skyboxCubemap;
         }
@@ -211,12 +211,8 @@ namespace BeerEngine
 
             Graphics::Graphics::shadowRenderShader->bind();
             glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 22.0f, -5.0f, 25.0f);
-            // glm::mat4 proj = glm::perspective(glm::radians(60.0f), 1.0f, 20.0f, 40.0f);
-            // Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
             Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
-            
             glm::mat4 lookat = glm::lookAt(glm::vec3(0, 0, 0), light->getDirection() * -1, glm::vec3(0, 1, 0));
-            // glm::mat4 lookat = Camera::main->transform.getMat4(true);
             Graphics::Graphics::shadowRenderShader->uniformMat("view", lookat);
             std::map<int, GameObject *>::iterator it;
             for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
@@ -226,8 +222,6 @@ namespace BeerEngine
             Graphics::Graphics::shadowRenderShader->unbind();
 
             light->unbindShadowMap();
-
-//            light->drawShadowMap();
         }
     }
 
@@ -272,6 +266,7 @@ namespace BeerEngine
     }
 
     void    AScene::save(std::string filePath) {
+        (void) filePath;
         nlohmann::json j = dynamic_cast<JsonSerializable *>(this);
         std::string content = j.dump(4);
         // BeerEngine::IO::FileUtils::WriteFile(filePath, content);
@@ -300,7 +295,7 @@ namespace BeerEngine
 		auto gameObjects = j.at("gameObjects");
 		for (nlohmann::json::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 			auto goJson = it.value();
-			auto go = GameObject::Deserialize(goJson, loader, *this);
+			GameObject::Deserialize(goJson, loader, *this);
 		}
 	}
 

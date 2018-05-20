@@ -47,7 +47,7 @@ void    SceneMain::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 	cameraGO->name = "Camera";
 
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 
 	auto menuGO = instantiate<BeerEngine::GameObject>();
 	auto settings = menuGO->AddComponent<Game::Component::Settings>();
@@ -88,8 +88,6 @@ void    SceneMain::init(void)
 // init musique du menu
 	audioManager->setClip("assets/sounds/Feel.ogg");
 	audioManager->audioType = Game::Component::Music;
-	// audioManager->play();
-// audioMan->setVolume(0.1);
 
 	// mainMenu->setActive(false);
 	versusMenu->setActive(false);

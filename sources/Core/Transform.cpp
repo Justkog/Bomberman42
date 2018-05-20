@@ -124,6 +124,8 @@ namespace BeerEngine
 	// Not implemented
 	Transform * Transform::DeserializePtr(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 	{
+		(void) j;
+		(void) loader;
 		return NULL;
 	}
 

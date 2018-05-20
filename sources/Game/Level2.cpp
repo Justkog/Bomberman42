@@ -33,7 +33,7 @@ void    Level2::init(void)
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	BeerEngine::Component::MeshRenderer *meshRenderer;
+	// BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
@@ -47,9 +47,9 @@ void    Level2::init(void)
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
 	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 
-	// UI
+	// UInoBombTimer(0)
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
 	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
 	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
@@ -105,10 +105,10 @@ void    Level2::init(void)
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-		playerColl->_radius = 0.5;
+		playerColl->_radius = 0.4;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;

@@ -45,6 +45,7 @@ namespace Game
 			Breakable					*playerBreakable;
 			TimeUI						*timeUI;
 			StartTimerUI				*startTimerUI;
+			LevelInstructions			*levelInstructions;
 			std::vector<Breakable *> 	enemyBreakables;
 			AudioManager				*audioManager;
 			GameProgression				*gameProgression;

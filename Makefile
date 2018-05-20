@@ -70,6 +70,8 @@ SRC = \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
 	Game/Versus1.cpp \
+	Game/Versus2.cpp \
+	Game/Versus3.cpp \
 	\
 	Game/Assets.cpp \
 	Game/Input.cpp \
@@ -98,6 +100,8 @@ SRC = \
 	Game/Components/TimeUI.cpp \
 	Game/Components/StartTimerUI.cpp \
 	Game/Components/ItemsUI.cpp \
+	Game/Components/Message.cpp \
+	Game/Components/LevelInstructions.cpp \
 	Game/Components/UIThemeManager.cpp \
 	Game/Components/BackgroundDrawer.cpp \
 	Game/Components/AudioManager.cpp
@@ -109,7 +113,7 @@ DIR = $(dir $(SRC))
 
 # -g
 # -Ofast -march=native -flto
-CFLAGS = -g -std=c++11 -Wc++11-extensions \
+CFLAGS = -g -Wall -Wextra -std=c++11 -Wc++11-extensions \
 	`pkg-config --cflags-only-I glfw3 glew glm libpng openal sndfile assimp`
 
 

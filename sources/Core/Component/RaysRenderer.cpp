@@ -36,7 +36,7 @@ RaysRenderer &				RaysRenderer::operator=( RaysRenderer const & rhs )
 	if (this != &rhs)
 	{
 		rays.clear();
-		for (int i = 0; i < rhs.rays.size(); i++)
+		for (std::size_t i = 0; i < rhs.rays.size(); i++)
 			rays.push_back(rhs.rays[i]);
 		old_size = rhs.old_size;
 	}
@@ -84,7 +84,7 @@ void RaysRenderer::start()
 void RaysRenderer::RebuildMesh()
 {
 	BeerEngine::Graphics::MeshBuilder builder;
-	for (int i = 0; i < rays.size(); i++)
+	for (std::size_t i = 0; i < rays.size(); i++)
 	{
 		auto rayEndPos = rays[i].origin + rays[i].direction;
 		builder

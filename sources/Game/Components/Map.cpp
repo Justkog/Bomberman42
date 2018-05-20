@@ -77,6 +77,8 @@ namespace Game
 
 		BeerEngine::GameObject *Map::createCrate(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 scale, glm::vec3 pos, BeerEngine::Component::RBType kinematic)
 		{
+			(void) shader;
+			(void) kinematic;
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("assets/Prefabs/mapCrate.prefab");
 			mapBlocGO->transform.position = pos;
 			mapBlocGO->transform.scale = scale;
@@ -85,6 +87,7 @@ namespace Game
 
 		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type)
 		{
+			(void) shader;
 			std::cout << "item start" << std::endl;
 			BeerEngine::Component::MeshRenderer *meshRenderer;
 			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
@@ -93,7 +96,7 @@ namespace Game
 			itemGO->immortalTimer = 1.5f;
 			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 			itemColl->_isTrigger = true;
-			itemColl->_radius = 0.35;
+			itemColl->_radius = 0.3;
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			item->map = this;
 			if (type == -1)
@@ -135,6 +138,7 @@ namespace Game
 
 		BeerEngine::GameObject *Map::createItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos)
 		{
+			(void) shader;
 			auto mapBlocGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>("assets/Prefabs/item.prefab");
 			mapBlocGO->transform.position = pos;
 			// mapBlocGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
@@ -186,10 +190,10 @@ namespace Game
 			_sizeX = sizeX;
 			_sizeY = sizeY;
 			_map = new int*[sizeY];
-			for (int y = 0; y < sizeY; y++)
+			for (std::size_t y = 0; y < sizeY; y++)
 			{
 				_map[y] = new int[sizeX];
-				for (int x = 0; x < sizeX; x++)
+				for (std::size_t x = 0; x < sizeX; x++)
 					_map[y][x] = map[y][x];
 			}
 		}
@@ -200,10 +204,10 @@ namespace Game
 			_sizeY = sizeY;
 
 				_map = new int*[sizeY];
-				for (int y = 0; y < sizeY; y++)
+				for (std::size_t y = 0; y < sizeY; y++)
 				{
 					_map[y] = new int[sizeX];
-					for (int x = 0; x < sizeX; x++)
+					for (std::size_t x = 0; x < sizeX; x++)
 					{
 						if (map[y][x] == 0)
 						{
@@ -263,15 +267,14 @@ namespace Game
 					switch (type)
 					{
 						case 1:
-							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
-							// createCrate(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case V:
-							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::None);
+							addCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(0.9), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::None);
 							break;
 						case 2:
 						case E:
-							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1, 1, 1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
+							addDestoyableCrate<BeerEngine::Component::BoxCollider2D>(_shader, glm::vec3(1), glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), BeerEngine::Component::RBType::Kinematic);
 							break;
 						case P:
 							if (!playerSpawn)

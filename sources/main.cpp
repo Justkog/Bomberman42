@@ -31,7 +31,6 @@ static int      UPS = 60;
 void updateThread(BeerEngine::Window *window)
 {
     static const double fixedUpdateTime = 1.0 / 60.0;
-    static const double sleepTime = fixedUpdateTime / 2.0;
     double  fixedTimer = 0.0;
     double  timer = 0.0;
     int     fixeUpdateNumber = 0;

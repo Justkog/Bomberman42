@@ -43,17 +43,17 @@ namespace BeerEngine
 	{
 		if (this != &val)
 		{
-			for (int i = 0; i < val._components.size(); i++)
+			for (std::size_t i = 0; i < val._components.size(); i++)
 				_components.push_back(val._components[i]);
-			for (int i = 0; i < val._toStart.size(); i++)
+			for (std::size_t i = 0; i < val._toStart.size(); i++)
 				_toStart.push_back(val._toStart[i]);
-			for (int i = 0; i < val._toStartUI.size(); i++)
+			for (std::size_t i = 0; i < val._toStartUI.size(); i++)
 				_toStartUI.push_back(val._toStartUI[i]);
-			for (int i = 0; i < val._toEnable.size(); i++)
+			for (std::size_t i = 0; i < val._toEnable.size(); i++)
 				_toEnable.push_back(val._toEnable[i]);
-			for (int i = 0; i < val._toDisable.size(); i++)
+			for (std::size_t i = 0; i < val._toDisable.size(); i++)
 				_toDisable.push_back(val._toDisable[i]);
-			for (int i = 0; i < val._toDestroy.size(); i++)
+			for (std::size_t i = 0; i < val._toDestroy.size(); i++)
 				_toDestroy.push_back(val._toDestroy[i]);
 
 			_uniqueID = val._uniqueID;
@@ -99,8 +99,8 @@ namespace BeerEngine
 	}
 	void    GameObject::renderUpdate(void) {}
 	void    GameObject::render(void) {}
-    void    GameObject::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) {}
-    void    GameObject::renderUI(struct nk_context *ctx) {}
+    void    GameObject::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts) { (void) ctx;  (void) fonts; }
+    void    GameObject::renderUI(struct nk_context *ctx) { (void) ctx; }
 
 	void     GameObject::destroy(Component::Component *comp)
 	{
@@ -116,7 +116,7 @@ namespace BeerEngine
 		}
 		for (Component::Component *comp : _toDestroy)
 		{
-			for (int i = 0; i <_components.size(); i++)
+			for (std::size_t i = 0; i <_components.size(); i++)
 			{
 				if (_components[i] == comp)
 				{
@@ -369,7 +369,7 @@ namespace BeerEngine
 		this->transform = Transform::Deserialize(j.at("transform"), loader);
 		auto components = j.at("components");
         for (nlohmann::json::iterator it = components.begin(); it != components.end(); ++it) {
-			auto comp = Component::Component::Deserialize(it.value(), loader, this);
+			Component::Component::Deserialize(it.value(), loader, this);
 		}
     }
 

@@ -12,8 +12,11 @@
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/GameProgression.hpp"
 #include "Game/Components/TimeUI.hpp"
+#include "Game/Components/Message.hpp"
 #include "Game/Components/StartTimerUI.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 #include "Game/Components/ItemsUI.hpp"
+#include "Game/Components/Message.hpp"
 #include "Game/Components/AudioManager.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Core/Graphics/AMaterial.hpp"
@@ -33,7 +36,7 @@ void    Level1::init(void)
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	BeerEngine::Component::MeshRenderer *meshRenderer;
+	// BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
@@ -47,7 +50,7 @@ void    Level1::init(void)
 	// Misc
 	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
 	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 
 	// UI
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
@@ -57,6 +60,8 @@ void    Level1::init(void)
 	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
 	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
+	auto message = cameraGO->AddComponent<Game::Component::Message>();
+	auto levelInstructions = cameraGO->AddComponent<Game::Component::LevelInstructions>();
 
 	soundManager->setClip("assets/sounds/clint.ogg");
 	soundManager->audioType = Game::Component::Music;
@@ -69,25 +74,33 @@ void    Level1::init(void)
 	gameManager->audioManager = soundManager;
 	gameManager->audioManager = soundManager;
 	gameManager->gameProgression = gameProgression;
+	gameManager->levelInstructions = levelInstructions;
 	gameManager->storyMode = true;
 
 	inGameMenu->uiManager = uiManager;
 	gameOverMenu->uiManager = uiManager;
 	victoryMenu->uiManager = uiManager;
 	startTimerUI->uiManager = uiManager;
+	message->uiManager = uiManager;
+	timeUI->uiManager = uiManager;
+	itemsUI->uiManager = uiManager;
 
 	settings->audioManager = soundManager;
+
+	levelInstructions->message = message;
 
 	inGameMenu->setActive(false);
 	gameOverMenu->setActive(false);
 	victoryMenu->setActive(false);
-
-	timeUI->uiManager = uiManager;
-	itemsUI->uiManager = uiManager;
+	message->setActive(false);
 
 	victoryMenu->sceneLoader.name = "Level2";
 	gameOverMenu->sceneLoader.name = "Level1";
 	inGameMenu->sceneLoader.name = "Level1";
+
+	levelInstructions->setInstructions({
+		{"test instr 1", 2.0}
+	});
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
@@ -106,10 +119,10 @@ void    Level1::init(void)
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-		playerColl->_radius = 0.5;
+		playerColl->_radius = 0.4;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	player->srcAudio = as2;

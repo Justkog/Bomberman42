@@ -87,7 +87,7 @@ void    SceneTest::init(void)
 
 	// GameObject
 	//
-	BeerEngine::GameObject *gameObject;
+	// BeerEngine::GameObject *gameObject;
 	BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
 
@@ -103,7 +103,7 @@ void    SceneTest::init(void)
 	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
 
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
+	cameraGO->AddComponent<Game::Component::CameraController>();
 	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
 	mouseRay->linesRenderer = linesRenderer;
 	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
@@ -170,12 +170,12 @@ void    SceneTest::init(void)
 	auto *character = playerGO->AddComponent<Game::Component::Character>();
 	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
 	auto *player = playerGO->AddComponent<Game::Component::Player>();
-	auto *routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
+	playerGO->AddComponent<Game::Component::BeerRoutineTester>();
 	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
 	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
 	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
 	playerColl->_radius = 0.5;
-	auto listener = playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
 	playerRB2D->kinematic = BeerEngine::Component::RBType::None;
 	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
 	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();

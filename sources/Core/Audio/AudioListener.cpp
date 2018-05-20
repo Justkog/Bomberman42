@@ -20,7 +20,7 @@ namespace BeerEngine
 
         void	   AudioListener::Load()
         {
-            int Choice = 0;
+            // int Choice = 0;
             // Recuperation des devices disponibles
             std::vector<std::string> Devices;
             // Vidage de la liste
@@ -71,6 +71,12 @@ namespace BeerEngine
 
         void		AudioListener::setListenerData(float x, float y, float z, float dirX, float dirY, float dirZ)
         {
+            (void) x;
+            (void) y;
+            (void) z;
+            (void) dirX;
+            (void) dirY;
+            (void) dirZ;
             // std::cout << "position x = " << x << " y = " << y << " z = " << z << "\n";
             // std::cout << "orientation x = " << dirX << " y = " << dirY << " z = " << dirZ << "\n";
             // ALfloat values[6];
