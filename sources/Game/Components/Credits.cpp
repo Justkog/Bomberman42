@@ -71,6 +71,9 @@ void Credits::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> f
 
 void Credits::renderUI(struct nk_context *ctx)
 {
+	// Game created by jblondea, mgallo, mploux, qhonore and stmartin
+	// School 42 Project
+
 	
 }
 
