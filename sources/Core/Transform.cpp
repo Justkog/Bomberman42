@@ -9,6 +9,10 @@ namespace BeerEngine
 		parent(nullptr), pivot(0.0f), position(0.0f), rotation(), scale(1.0f)
 	{}
 
+	Transform::Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale) :
+		parent(nullptr), pivot(0.0f), position(position), rotation(rotation), scale(scale)
+	{}
+
 	Transform::Transform(const Transform &val)
 	{
 		*this = val;

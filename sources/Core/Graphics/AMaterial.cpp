@@ -36,11 +36,6 @@ namespace BeerEngine
 			_hasNormalID = 0;
 			_bumpID = 0;
 			_hasBumpID = 0;
-
-//			_lightPosID = _shader->getUniformLocation("light.position");
-//			_lightDirID = _shader->getUniformLocation("light.direction");
-//			_lightIntensityID = _shader->getUniformLocation("light.intensity");
-//			_lightColorID = _shader->getUniformLocation("light.color");
 		}
 
 		AMaterial::AMaterial()

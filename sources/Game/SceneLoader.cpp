@@ -7,6 +7,10 @@
 #include "Game/Level2.hpp"
 #include "Game/Level3.hpp"
 #include "Game/Level4.hpp"
+#include "Game/Level5.hpp"
+#include "Game/Versus1.hpp"
+#include "Game/Versus2.hpp"
+#include "Game/Versus3.hpp"
 
 namespace Game
 {
@@ -16,6 +20,11 @@ namespace Game
 		{"Level2", BeerEngine::SceneManager::LoadScene<Level2>},
 		{"Level3", BeerEngine::SceneManager::LoadScene<Level3>},
 		{"Level4", BeerEngine::SceneManager::LoadScene<Level4>},
+		{"Level5", BeerEngine::SceneManager::LoadScene<Level5>},
+		{"Versus1", BeerEngine::SceneManager::LoadScene<Versus1>},
+		{"Versus2", BeerEngine::SceneManager::LoadScene<Versus2>},
+		{"Versus3", BeerEngine::SceneManager::LoadScene<Versus3>},
+		{"Random", BeerEngine::SceneManager::LoadScene<SceneTest>},
 	};
 
 	void SceneLoader::loadByName(std::string name)

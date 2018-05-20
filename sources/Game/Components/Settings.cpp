@@ -86,6 +86,7 @@ Game::SettingsContainer Settings::defaultSettings()
 	settings.keyBindings["move left"] = BeerEngine::KeyCode::KP_4;
 	settings.keyBindings["move right"] = BeerEngine::KeyCode::KP_6;
 	settings.keyBindings["bomb"] = BeerEngine::KeyCode::SPACE;
+	settings.keyBindings["change view"] = BeerEngine::KeyCode::W;
 	// settings.unlockedLevels = { "Level1" };
 
 	return settings;

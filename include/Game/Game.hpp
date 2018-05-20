@@ -36,6 +36,8 @@ namespace Game
 		class VictoryMenu;
 		class TimeUI;
 		class StartTimerUI;
+		class Message;
+		class LevelInstructions;
 
 		class AudioManager;
 	}

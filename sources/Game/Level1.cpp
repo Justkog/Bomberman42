@@ -12,13 +12,18 @@
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/GameProgression.hpp"
 #include "Game/Components/TimeUI.hpp"
+#include "Game/Components/Message.hpp"
 #include "Game/Components/StartTimerUI.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 #include "Game/Components/ItemsUI.hpp"
+#include "Game/Components/Message.hpp"
 #include "Game/Components/AudioManager.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
+#include "Game/SceneBasics.hpp"
+
 
 void    Level1::init(void)
 {
@@ -32,93 +37,34 @@ void    Level1::init(void)
 	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
-	// GameObject
-	// BeerEngine::Component::MeshRenderer *meshRenderer;
-	BeerEngine::Component::ModelRenderer *modelRenderer;
-
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
-	cameraGO->name = "Camera";
 
-	// Managers
-	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-
-	// Misc
-	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
-	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
-	cameraGO->AddComponent<Game::Component::CameraController>();
-
-	// UI
-	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
-	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
-	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
-	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
-	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
-	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
-	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
-
 	soundManager->setClip("assets/sounds/clint.ogg");
 	soundManager->audioType = Game::Component::Music;
 
-	gameManager->inGameMenu = inGameMenu;
-	gameManager->gameOverMenu = gameOverMenu;
-	gameManager->victoryMenu = victoryMenu;
-	gameManager->timeUI = timeUI;
-	gameManager->startTimerUI = startTimerUI;
+	Game::SceneBasics::CreateCameraBasics(cameraGO);
+
+	auto gameManager = cameraGO->GetComponent<Game::Component::GameManager>();
+	cameraGO->GetComponent<Game::Component::Settings>()->audioManager = soundManager;
 	gameManager->audioManager = soundManager;
-	gameManager->audioManager = soundManager;
-	gameManager->gameProgression = gameProgression;
+
 	gameManager->storyMode = true;
 
-	inGameMenu->uiManager = uiManager;
-	gameOverMenu->uiManager = uiManager;
-	victoryMenu->uiManager = uiManager;
-	startTimerUI->uiManager = uiManager;
+	cameraGO->GetComponent<Game::Component::VictoryMenu>()->sceneLoader.name = "Level2";
+	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Level1";
+	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Level1";
 
-	settings->audioManager = soundManager;
-
-	inGameMenu->setActive(false);
-	gameOverMenu->setActive(false);
-	victoryMenu->setActive(false);
-
-	timeUI->uiManager = uiManager;
-	itemsUI->uiManager = uiManager;
-
-	victoryMenu->sceneLoader.name = "Level2";
-	gameOverMenu->sceneLoader.name = "Level1";
-	inGameMenu->sceneLoader.name = "Level1";
+	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
+		{"test instr 1", 2.0}
+	});
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
-	playerGO->name = "player";
-	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/bombermanRunTest.fbx");
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/body.png");
-	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	playerMat->setAlbedo(playerTex);
-	modelRenderer->addMaterial(0, playerMat);
-	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
-	auto *character = playerGO->AddComponent<Game::Component::Character>();
-		character->_maxBomb = 3;
-		character->_bombNb = character->_maxBomb;
-	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
-	auto *player = playerGO->AddComponent<Game::Component::Player>();
-	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-		playerColl->_radius = 0.4;
-	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
-	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	player->srcAudio = as2;
-	player->itemSrcAudio = itemAs;
-	gameManager->playerBreakable = breakable;
-	modelRenderer->setAnimation("idle");
-	modelRenderer->setAnimationSpeed("idle", 0.25);
-	modelRenderer->setLoopAnimation(true);
-	modelRenderer->playAnimation();
+	Game::SceneBasics::CreatePlayerBasics(playerGO, gameManager, 3);
+	auto player = playerGO->GetComponent<Game::Component::Player>();
+	auto character = playerGO->GetComponent<Game::Component::Character>();
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -170,114 +116,151 @@ void    Level1::init(void)
 	mapGO->transform.position = glm::vec3(0, 0.03, 5);
 	mapGO->transform.scale = glm::vec3(3.5, 1, 4.5);
 
-	// Decorative objects
-	auto objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree1";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
-	auto objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
-	auto objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(6, 0, 3);
-	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree2";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/Tree/Models/grassland_tree_free.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(-6, 0, 3);
-	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(15, 15), glm::vec2(-15, 0), glm::vec2(5, 10), glm::vec2(-5, 0), 100);
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree3";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/Tree/Models/grassland_tree_free.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(6, 0, 7.5);
-	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	// auto objet = instantiate<BeerEngine::GameObject>();
+	// Game::SceneBasics::CreateModelBasics(
+	// 	objet,
+	// 	"assets/models/Decoration/pineTree/Models/pine_tree_free.fbx",
+	// 	"assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga",
+	// 	BeerEngine::Transform(
+	// 		glm::vec3(5, 0, 5),
+	// 		glm::vec3(0, 0, 0),
+	// 		glm::vec3(0.005, 0.005, 0.005)
+	// 	)
+	// );
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree4";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(-6, 0, 7.5);
-	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	// objet = instantiate<BeerEngine::GameObject>();
+	// Game::SceneBasics::CreateModelBasics(
+	// 	objet,
+	// 	"assets/models/Decoration/Tree/Models/grassland_tree_free.fbx",
+	// 	"assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga",
+	// 	BeerEngine::Transform(
+	// 		glm::vec3(-5, 0, 5),
+	// 		glm::vec3(0, 0, 0),
+	// 		glm::vec3(0.005, 0.005, 0.005)
+	// 	)
+	// );
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree5";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(3, 0, 12);
-	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	// objet = instantiate<BeerEngine::GameObject>();
+	// Game::SceneBasics::CreateModelBasics(
+	// 	objet,
+	// 	"assets/models/Decoration/trees/Models/rock.fbx",
+	// 	"assets/models/Decoration/trees/Textures/rock.png",
+	// 	BeerEngine::Transform(
+	// 		glm::vec3(5, 0, 7),
+	// 		glm::vec3(0, 0, 0),
+	// 		glm::vec3(1.5, 1.5, 1.5)
+	// 	)
+	// );
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree6";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(-3, 0, 12);
-	objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	// objet->name = "tree1";
+	// auto modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	// auto objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	// auto objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(6, 0, 3);
+	// objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree7";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/trees/Models/rock.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/rock.png");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(-6, 0, 6);
-	objet->transform.scale = glm::vec3(1.5, 1.5, 1.5);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree2";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/Tree/Models/grassland_tree_free.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(-6, 0, 3);
+	// objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree8";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/trees/Models/fence.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/fence.png");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(6, 0, 6);
-	objet->transform.scale = glm::vec3(0.5, 0.5, 0.5);
-	objet->transform.rotation = glm::vec3(0, 0, 0);
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree3";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/Tree/Models/grassland_tree_free.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(6, 0, 7.5);
+	// objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
 
-	objet = instantiate<BeerEngine::GameObject>();
-	objet->name = "tree9";
-	modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/Decoration/trees/Models/fence.fbx");
-	objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/fence.png");
-	objetMat = new BeerEngine::Graphics::AMaterial(shader);
-	objetMat->setAlbedo(objetTex);
-	modelRenderer->addMaterial(0, objetMat);
-	objet->transform.position = glm::vec3(6, 0, 5);
-	objet->transform.scale = glm::vec3(0.5, 0.5, 0.5);
-	objet->transform.rotation = glm::vec3(0, 2, 0);
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree4";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(-6, 0, 7.5);
+	// objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree5";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(3, 0, 12);
+	// objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree6";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/pineTree/Models/pine_tree_free.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadTGA("assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(-3, 0, 12);
+	// objet->transform.scale = glm::vec3(0.005, 0.005, 0.005);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree7";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/trees/Models/rock.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/rock.png");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(-6, 0, 6);
+	// objet->transform.scale = glm::vec3(1.5, 1.5, 1.5);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree8";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/trees/Models/fence.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/fence.png");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(6, 0, 6);
+	// objet->transform.scale = glm::vec3(0.5, 0.5, 0.5);
+	// objet->transform.rotation = glm::vec3(0, 0, 0);
+
+	// objet = instantiate<BeerEngine::GameObject>();
+	// objet->name = "tree9";
+	// modelRenderer = objet->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/Decoration/trees/Models/fence.fbx");
+	// objetTex = BeerEngine::Graphics::Texture::LoadPNG("assets/models/Decoration/trees/Textures/fence.png");
+	// objetMat = new BeerEngine::Graphics::AMaterial(shader);
+	// objetMat->setAlbedo(objetTex);
+	// modelRenderer->addMaterial(0, objetMat);
+	// objet->transform.position = glm::vec3(6, 0, 5);
+	// objet->transform.scale = glm::vec3(0.5, 0.5, 0.5);
+	// objet->transform.rotation = glm::vec3(0, 2, 0);
 
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level1.scene");
