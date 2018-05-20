@@ -8,5 +8,5 @@ var searchData=
   ['player',['player',['../class_game_1_1_component_1_1_items_u_i.html#aa894c79f827b4d2e886a17ed1945ad2b',1,'Game::Component::ItemsUI']]],
   ['playerbreakable',['playerBreakable',['../class_game_1_1_component_1_1_game_manager.html#a6e4c0b18813ea94a58c3f66ca61d20a2',1,'Game::Component::GameManager']]],
   ['position',['position',['../struct_beer_engine_1_1_component_1_1_particle.html#a23d67ee03aeae7d36af443d4a5073fc9',1,'BeerEngine::Component::Particle::position()'],['../class_beer_engine_1_1_transform.html#ab5d559938ee0d636faaf10750733d974',1,'BeerEngine::Transform::position()']]],
-  ['power',['power',['../struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html#a6fe8e1ecf04de78e253b61f19bda9465',1,'BeerEngine::Graphics::ALight::Specular::power()'],['../class_game_1_1_component_1_1_bomb.html#a0e4068ea1fe8146c412c76f472db7087',1,'Game::Component::Bomb::power()']]]
+  ['power',['power',['../class_game_1_1_component_1_1_bomb.html#a0e4068ea1fe8146c412c76f472db7087',1,'Game::Component::Bomb']]]
 ];

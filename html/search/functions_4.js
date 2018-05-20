@@ -5,5 +5,7 @@ var searchData=
   ['enableforwardblend',['EnableForwardBlend',['../class_beer_engine_1_1_graphics_1_1_graphics.html#ae2b648872a807242559c4ed165666996',1,'BeerEngine::Graphics::Graphics']]],
   ['executecallbacks',['executeCallBacks',['../struct_beer_engine_1_1_json_loader.html#ac3528a66bbff0a68e9aa1b0e13f131d3',1,'BeerEngine::JsonLoader']]],
   ['explode',['explode',['../class_game_1_1_component_1_1_bomb.html#aac712a604337a08ce89f88782cae5df9',1,'Game::Component::Bomb']]],
-  ['explodetoward',['explodeToward',['../class_game_1_1_component_1_1_bomb.html#a2e5c663b68f58227faf74bb40278a900',1,'Game::Component::Bomb']]]
+  ['explodetoward',['explodeToward',['../class_game_1_1_component_1_1_bomb.html#a2e5c663b68f58227faf74bb40278a900',1,'Game::Component::Bomb']]],
+  ['explodetowardupdatemap',['explodeTowardUpdateMap',['../class_game_1_1_component_1_1_bomb.html#a55b109368d5a27e8a53e46e733766d09',1,'Game::Component::Bomb']]],
+  ['explodeupdatemap',['explodeUpdateMap',['../class_game_1_1_component_1_1_bomb.html#ab721b1ee69f9a952c76bd443226850b1',1,'Game::Component::Bomb']]]
 ];

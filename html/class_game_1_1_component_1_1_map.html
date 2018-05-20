@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_game_1_1_component_1_1_map-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -144,8 +145,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0d11f1fd95d17f380ffdc65e7ef9dec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43f0e52c56940960a45f287007fe2c12"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a43f0e52c56940960a45f287007fe2c12">mapToWorld</a> (glm::vec2 pos, float y=0)</td></tr>
 <tr class="separator:a43f0e52c56940960a45f287007fe2c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81845e141bc688e5c2be47a160afd624"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a81845e141bc688e5c2be47a160afd624">hasBreakable</a> (void)</td></tr>
+<tr class="separator:a81845e141bc688e5c2be47a160afd624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc8f1a0c89634cc3702cb04215a21cf0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#afc8f1a0c89634cc3702cb04215a21cf0">hasBlock</a> (int id)</td></tr>
+<tr class="separator:afc8f1a0c89634cc3702cb04215a21cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d6733cf76fdff6d66c5154f43c688ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a9d6733cf76fdff6d66c5154f43c688ea">hasCharacter</a> (glm::vec2 pos)</td></tr>
 <tr class="separator:a9d6733cf76fdff6d66c5154f43c688ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6c0b1bc0b17caa2e05bda15e542559"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a0e6c0b1bc0b17caa2e05bda15e542559">getCaseValue</a> (glm::vec2 pos)</td></tr>
+<tr class="separator:a0e6c0b1bc0b17caa2e05bda15e542559"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e4e817f77fe59598410db7dcb393c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#ae1e4e817f77fe59598410db7dcb393c6">hasWall</a> (glm::vec2 pos)</td></tr>
+<tr class="separator:ae1e4e817f77fe59598410db7dcb393c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0e98473333fa6cc7d153802b7669b34"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#ad0e98473333fa6cc7d153802b7669b34">hasBomb</a> (glm::vec3 pos)</td></tr>
 <tr class="separator:ad0e98473333fa6cc7d153802b7669b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58dde006ce5b554a6ac63dc59bb480e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a58dde006ce5b554a6ac63dc59bb480e1">canWalk</a> (glm::vec2 pos)</td></tr>
@@ -156,8 +165,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa62669035c53c17e1a7b680d28514575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9630a4fd7c1ba8e2d463bb4f8f1ce4e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_game_object.html">BeerEngine::GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a9630a4fd7c1ba8e2d463bb4f8f1ce4e9">createCrate</a> (<a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *shader, glm::vec3 scale, glm::vec3 pos, <a class="el" href="namespace_beer_engine_1_1_component.html#a2cfe279cc309b6420e792597940b8a33">BeerEngine::Component::RBType</a> kinematic)</td></tr>
 <tr class="separator:a9630a4fd7c1ba8e2d463bb4f8f1ce4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace1a6fc80c32206aea8ffc382a30e879"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_game_object.html">BeerEngine::GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#ace1a6fc80c32206aea8ffc382a30e879">addItem</a> (<a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *shader, glm::vec3 pos)</td></tr>
-<tr class="separator:ace1a6fc80c32206aea8ffc382a30e879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8217b0932116f2e2ad2e8fed3c5eb782"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_game_object.html">BeerEngine::GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a8217b0932116f2e2ad2e8fed3c5eb782">addItem</a> (<a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *shader, glm::vec3 pos, int type=-1)</td></tr>
+<tr class="separator:a8217b0932116f2e2ad2e8fed3c5eb782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89581e53a7780b1ee3edffc15f5880cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_game_object.html">BeerEngine::GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a89581e53a7780b1ee3edffc15f5880cd">createItem</a> (<a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *shader, glm::vec3 pos)</td></tr>
 <tr class="separator:a89581e53a7780b1ee3edffc15f5880cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ebc4bc98e4bcc516af447fedfb76264"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_1_1_component_1_1_i_a.html">Game::Component::IA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a8ebc4bc98e4bcc516af447fedfb76264">addIA</a> (<a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html">BeerEngine::Graphics::ShaderProgram</a> *shader, glm::vec3 pos)</td></tr>
@@ -184,6 +193,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae3c7bf0d00f5e7bda2d0ae92477d3edd inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désérialisation sur place Désérialisation des champs de la classe, la fonction deserialize du parent doit être appelée au début de la fonction.  <a href="class_beer_engine_1_1_component_1_1_component.html#ae3c7bf0d00f5e7bda2d0ae92477d3edd">More...</a><br /></td></tr>
 <tr class="separator:ae3c7bf0d00f5e7bda2d0ae92477d3edd inherit pub_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_beer_engine_1_1_json_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_beer_engine_1_1_json_serializable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_beer_engine_1_1_json_serializable.html">BeerEngine::JsonSerializable</a></td></tr>
+<tr class="memitem:a5807285fbd093e1f0213a6f140329e13 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a5807285fbd093e1f0213a6f140329e13">JsonSerializable</a> (const <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;val)</td></tr>
+<tr class="separator:a5807285fbd093e1f0213a6f140329e13 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab85e8b21cb9266c7d9e5208ae07a5394 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ab85e8b21cb9266c7d9e5208ae07a5394">operator=</a> (const <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> &amp;val)</td></tr>
+<tr class="separator:ab85e8b21cb9266c7d9e5208ae07a5394 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac737a40cb0b4853c6fc55d80d0bad4c0 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ac737a40cb0b4853c6fc55d80d0bad4c0">~JsonSerializable</a> ()</td></tr>
+<tr class="separator:ac737a40cb0b4853c6fc55d80d0bad4c0 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0459f9f3600be9a429e3530361bf2d84 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0459f9f3600be9a429e3530361bf2d84">JsonSerializable</a> ()</td></tr>
 <tr class="separator:a0459f9f3600be9a429e3530361bf2d84 inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0105aad3ea70324a8327a6a48254a56b inherit pub_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#a0105aad3ea70324a8327a6a48254a56b">JsonSerializable</a> (int id)</td></tr>
@@ -231,6 +246,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adad8d1ac99922c6c49ef9b92943a15a8 inherit pub_attribs_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#adad8d1ac99922c6c49ef9b92943a15a8">_serializationID</a></td></tr>
 <tr class="separator:adad8d1ac99922c6c49ef9b92943a15a8 inherit pub_attribs_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ae7a0747e1bbe5d93b3b34f469cfc6943"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_1_1_component_1_1_map.html">Map</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#ae7a0747e1bbe5d93b3b34f469cfc6943">instance</a></td></tr>
+<tr class="separator:ae7a0747e1bbe5d93b3b34f469cfc6943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_beer_engine_1_1_component_1_1_component')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">BeerEngine::Component::Component</a></td></tr>
+<tr class="memitem:ae2a965d0f01f9bca16e5159f00a4f76e inherit pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_beer_engine_1_1_component.html#a58109916ff3e951c90c1dcd5ebba359b">add_component_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#ae2a965d0f01f9bca16e5159f00a4f76e">typeToAddComponent</a></td></tr>
+<tr class="separator:ae2a965d0f01f9bca16e5159f00a4f76e inherit pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a6e39d4388ddedb36803dd483ec22acda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_transform.html">BeerEngine::Transform</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_component_1_1_map.html#a6e39d4388ddedb36803dd483ec22acda">_transform</a></td></tr>
@@ -257,9 +280,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a48f83f0e913d9a7f4962f30ac8ff450b inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae56f6be872da47edbb9a1f25a2eccc0e inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_json_serializable.html#ae56f6be872da47edbb9a1f25a2eccc0e">toSerializable</a> (<a class="el" href="class_beer_engine_1_1_json_serializable.html">JsonSerializable</a> *item)</td></tr>
 <tr class="separator:ae56f6be872da47edbb9a1f25a2eccc0e inherit pub_static_methods_class_beer_engine_1_1_json_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_beer_engine_1_1_component_1_1_component')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">BeerEngine::Component::Component</a></td></tr>
-<tr class="memitem:ae2a965d0f01f9bca16e5159f00a4f76e inherit pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_beer_engine_1_1_component.html#a58109916ff3e951c90c1dcd5ebba359b">add_component_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#ae2a965d0f01f9bca16e5159f00a4f76e">typeToAddComponent</a></td></tr>
-<tr class="separator:ae2a965d0f01f9bca16e5159f00a4f76e inherit pub_static_attribs_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_beer_engine_1_1_component_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_beer_engine_1_1_component_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">BeerEngine::Component::Component</a></td></tr>
+<tr class="memitem:a1d071e5ccf64f8de2a420bf57e8c212e inherit pro_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a1d071e5ccf64f8de2a420bf57e8c212e">Component</a> ()</td></tr>
+<tr class="separator:a1d071e5ccf64f8de2a420bf57e8c212e inherit pro_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2087c0d74fa82c784814aeb07655eb18 inherit pro_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a2087c0d74fa82c784814aeb07655eb18">Component</a> (const <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">Component</a> &amp;val)</td></tr>
+<tr class="separator:a2087c0d74fa82c784814aeb07655eb18 inherit pro_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60259a9d163a7a1bf84aaa5c570248b3 inherit pro_methods_class_beer_engine_1_1_component_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_beer_engine_1_1_component_1_1_component.html#a60259a9d163a7a1bf84aaa5c570248b3">operator=</a> (const <a class="el" href="class_beer_engine_1_1_component_1_1_component.html">Component</a> &amp;val)</td></tr>
+<tr class="separator:a60259a9d163a7a1bf84aaa5c570248b3 inherit pro_methods_class_beer_engine_1_1_component_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>La classe <a class="el" href="class_game_1_1_component_1_1_map.html" title="La classe Map gère les GameObjects du niveau, l&#39;apparition des items, etc... ">Map</a> gère les GameObjects du niveau, l'apparition des items, etc... </p>
@@ -451,8 +478,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ace1a6fc80c32206aea8ffc382a30e879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace1a6fc80c32206aea8ffc382a30e879">&#9670;&nbsp;</a></span>addItem()</h2>
+<a id="a8217b0932116f2e2ad2e8fed3c5eb782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8217b0932116f2e2ad2e8fed3c5eb782">&#9670;&nbsp;</a></span>addItem()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -467,7 +494,13 @@ Here is the call graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">glm::vec3&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em> = <code>-1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -600,6 +633,42 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a0e6c0b1bc0b17caa2e05bda15e542559"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e6c0b1bc0b17caa2e05bda15e542559">&#9670;&nbsp;</a></span>getCaseValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Game::Component::Map::getCaseValue </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc8f1a0c89634cc3702cb04215a21cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc8f1a0c89634cc3702cb04215a21cf0">&#9670;&nbsp;</a></span>hasBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::Component::Map::hasBlock </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad0e98473333fa6cc7d153802b7669b34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad0e98473333fa6cc7d153802b7669b34">&#9670;&nbsp;</a></span>hasBomb()</h2>
 
@@ -618,6 +687,24 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a81845e141bc688e5c2be47a160afd624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81845e141bc688e5c2be47a160afd624">&#9670;&nbsp;</a></span>hasBreakable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::Component::Map::hasBreakable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a9d6733cf76fdff6d66c5154f43c688ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d6733cf76fdff6d66c5154f43c688ea">&#9670;&nbsp;</a></span>hasCharacter()</h2>
 
@@ -626,6 +713,24 @@ Here is the call graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">bool Game::Component::Map::hasCharacter </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1e4e817f77fe59598410db7dcb393c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e4e817f77fe59598410db7dcb393c6">&#9670;&nbsp;</a></span>hasWall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::Component::Map::hasWall </td>
           <td>(</td>
           <td class="paramtype">glm::vec2&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
@@ -985,6 +1090,28 @@ Here is the caller graph for this function:</div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7a0747e1bbe5d93b3b34f469cfc6943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a0747e1bbe5d93b3b34f469cfc6943">&#9670;&nbsp;</a></span>instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_1_1_component_1_1_map.html">Map</a>* Game::Component::Map::instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

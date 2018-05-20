@@ -1,6 +1,7 @@
 var searchData=
 [
   ['scale',['scale',['../class_beer_engine_1_1_transform.html#aec3b8b1a22e1b01b36f483cf7684d721',1,'BeerEngine::Transform']]],
+  ['sceneloader',['sceneLoader',['../class_game_1_1_component_1_1_adventure_menu.html#a9fde6703acd5488bd8a00ec2fd4416ff',1,'Game::Component::AdventureMenu::sceneLoader()'],['../class_game_1_1_component_1_1_game_over_menu.html#a82f829c147ae6686e19f36dfed1a668b',1,'Game::Component::GameOverMenu::sceneLoader()'],['../class_game_1_1_component_1_1_in_game_menu.html#aa0dd6822a7263153cc093fc127bc664a',1,'Game::Component::InGameMenu::sceneLoader()'],['../class_game_1_1_component_1_1_victory_menu.html#ab9bdbb8682f92a637ebf562ef22721bf',1,'Game::Component::VictoryMenu::sceneLoader()']]],
   ['scenepath',['scenePath',['../struct_game_1_1_component_1_1_map_info.html#acb996a61861b5ddd524a55b9ad2e5d35',1,'Game::Component::MapInfo']]],
   ['serializables',['serializables',['../struct_beer_engine_1_1_json_loader.html#a18ee7e7c1c0846b110c70ccf814c429e',1,'BeerEngine::JsonLoader']]],
   ['serializationcallbacks',['serializationCallBacks',['../struct_beer_engine_1_1_json_loader.html#a9e602af8d885ad1e3e67d5f2711a8b4d',1,'BeerEngine::JsonLoader']]],
@@ -18,6 +19,8 @@ var searchData=
   ['spawntime',['spawnTime',['../class_beer_engine_1_1_component_1_1_particle_base.html#a6c29514552d72aaf6824763c76ed029f',1,'BeerEngine::Component::ParticleBase']]],
   ['speed',['speed',['../struct_beer_engine_1_1_component_1_1_model_renderer_1_1_animation.html#aaa31867caeace3886bac99c33e9ef4e5',1,'BeerEngine::Component::ModelRenderer::Animation::speed()'],['../class_game_1_1_component_1_1_items_u_i.html#a262e79a877f5b89b43d361a58246e056',1,'Game::Component::ItemsUI::speed()']]],
   ['spotshader',['spotShader',['../class_beer_engine_1_1_graphics_1_1_graphics.html#a1636d1b64cf5512eb8c1b494bfe70b23',1,'BeerEngine::Graphics::Graphics']]],
-  ['srcaudio',['srcAudio',['../class_game_1_1_component_1_1_game_manager.html#a4ca152ab25d6079c82c8e8baeb1f180f',1,'Game::Component::GameManager::srcAudio()'],['../class_game_1_1_component_1_1_player.html#aa488f4fe911f9532edfb35f72b926f9e',1,'Game::Component::Player::srcAudio()']]],
-  ['starttimerui',['startTimerUI',['../class_game_1_1_component_1_1_game_manager.html#a53c7211f5944bcfb2f172797eaf12d07',1,'Game::Component::GameManager']]]
+  ['srcaudio',['srcAudio',['../class_game_1_1_component_1_1_audio_manager.html#a2044b13ebfaf202288f73f302851c70a',1,'Game::Component::AudioManager::srcAudio()'],['../class_game_1_1_component_1_1_player.html#aa488f4fe911f9532edfb35f72b926f9e',1,'Game::Component::Player::srcAudio()']]],
+  ['startanimation',['startAnimation',['../class_game_1_1_component_1_1_camera_controller.html#aa4dcbec45fc1064cc3d2aa6370cec6c0',1,'Game::Component::CameraController']]],
+  ['starttimerui',['startTimerUI',['../class_game_1_1_component_1_1_game_manager.html#a53c7211f5944bcfb2f172797eaf12d07',1,'Game::Component::GameManager']]],
+  ['storymode',['storyMode',['../class_game_1_1_component_1_1_game_manager.html#a8b852e69bd3c5ef0980d847d2480f4bc',1,'Game::Component::GameManager']]]
 ];

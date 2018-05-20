@@ -72,6 +72,9 @@ $(function() {
 <li>ids
 : <a class="el" href="struct_beer_engine_1_1_component_1_1_model_renderer_1_1_vertex_bone_data.html#ae9af708d6081702767614afae1118b87">BeerEngine::Component::ModelRenderer::VertexBoneData</a>
 </li>
+<li>immortalTimer
+: <a class="el" href="class_beer_engine_1_1_game_object.html#a4f8eb4e942d2a27449fb6f26e7c46352">BeerEngine::GameObject</a>
+</li>
 <li>increaseExplosionSize()
 : <a class="el" href="class_game_1_1_component_1_1_character.html#ae65f3f38e0efa49a21374e0e6b9dd5c7">Game::Component::Character</a>
 </li>
@@ -92,11 +95,19 @@ $(function() {
 </li>
 <li>init()
 : <a class="el" href="class_beer_engine_1_1_a_scene.html#a7a55b4e506ae618e6596ae812ad48db0">BeerEngine::AScene</a>
-, <a class="el" href="class_beer_engine_1_1_audio_1_1_audio_listener.html#ab5d881529114f89d6d01a043f84fc14e">BeerEngine::Audio::AudioListener</a>
 , <a class="el" href="struct_beer_engine_1_1_component_1_1_model_renderer_1_1_vertex_bone_data.html#a7ef0eb817262af7f5a831441009a606f">BeerEngine::Component::ModelRenderer::VertexBoneData</a>
 , <a class="el" href="class_generic_scene.html#aa5d7d6355177961ee6a8785749edbcb1">GenericScene</a>
+, <a class="el" href="class_level1.html#a159cc4d495b2eaa5dc3331291fbbbf49">Level1</a>
+, <a class="el" href="class_level2.html#a05e4ab7d54a25e7cc39322bf6e6e8544">Level2</a>
+, <a class="el" href="class_level3.html#ae678b97a48aa72061a857ca3b8d31d35">Level3</a>
+, <a class="el" href="class_level4.html#ad6507f38c422248d927b3925f0e8bd1b">Level4</a>
+, <a class="el" href="class_level5.html#a95bacb9ac6802e603e8bce5ead901367">Level5</a>
+, <a class="el" href="class_level6.html#a83d12d25ec6fcb9be8b7295d3cf765cb">Level6</a>
 , <a class="el" href="class_scene_main.html#a4406dc5cf9807edcf360ba416de928e2">SceneMain</a>
 , <a class="el" href="class_scene_test.html#aedded03410798c3705fb3fb028e56ab5">SceneTest</a>
+, <a class="el" href="class_versus1.html#a0299125dc9ddbf51e4d7ab4471504b96">Versus1</a>
+, <a class="el" href="class_versus2.html#a50ff4d5774cadf0d36041c7a121f9299">Versus2</a>
+, <a class="el" href="class_versus3.html#a0db766b2afab53c87b28898970e799dd">Versus3</a>
 </li>
 <li>initParticle()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html#a8d42fe68ec7c27aed419cde949ac278a">BeerEngine::Component::ParticleBase</a>
@@ -117,15 +128,18 @@ $(function() {
 <li>inputsMenu
 : <a class="el" href="class_game_1_1_component_1_1_settings_menu.html#ac0d1152c612a564a8d676dbfed9e849e">Game::Component::SettingsMenu</a>
 </li>
+<li>instance
+: <a class="el" href="class_game_1_1_component_1_1_audio_manager.html#aa1a02b0d1c4f9d9234920228ff35e68d">Game::Component::AudioManager</a>
+, <a class="el" href="class_game_1_1_component_1_1_map.html#ae7a0747e1bbe5d93b3b34f469cfc6943">Game::Component::Map</a>
+, <a class="el" href="class_game_1_1_component_1_1_player.html#a10bd3c2adf143ee472e1680fb92ddbac">Game::Component::Player</a>
+, <a class="el" href="class_level1.html#a708fb352216c9019c19a7c664dca1d19">Level1</a>
+</li>
 <li>instantiate()
 : <a class="el" href="class_beer_engine_1_1_a_scene.html#a2bd087ae22796d1e286c867f4f1ecc38">BeerEngine::AScene</a>
 , <a class="el" href="class_beer_engine_1_1_game_object.html#ab88b7ff5e8aab52e54c02f9d103bbfcf">BeerEngine::GameObject</a>
 </li>
 <li>instantiateLight()
 : <a class="el" href="class_beer_engine_1_1_a_scene.html#a7de5b03fc63f21b1a15fda6f6321842a">BeerEngine::AScene</a>
-</li>
-<li>intensity
-: <a class="el" href="struct_beer_engine_1_1_graphics_1_1_a_light_1_1_specular.html#a0286ac3ef84097dc9bd7595db22df777">BeerEngine::Graphics::ALight::Specular</a>
 </li>
 <li>interpolateNodePosition()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_model_renderer.html#ad9d75693fd4d000d8c46ec4596883f7a">BeerEngine::Component::ModelRenderer</a>
@@ -138,8 +152,8 @@ $(function() {
 </li>
 <li>intersect()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_a_collider.html#a84f924f6c0631f5f17b4e1852495a505">BeerEngine::Component::ACollider</a>
-, <a class="el" href="class_beer_engine_1_1_component_1_1_box_collider2_d.html#a41f84de78c4441ec2c74a0d3609f2c09">BeerEngine::Component::BoxCollider2D</a>
-, <a class="el" href="class_beer_engine_1_1_component_1_1_circle_collider.html#a0402e8e6605a5c2c7aefa9befdcd15e5">BeerEngine::Component::CircleCollider</a>
+, <a class="el" href="class_beer_engine_1_1_component_1_1_box_collider2_d.html#a6ebe330aba3bb7f8f7a84686b0717e5d">BeerEngine::Component::BoxCollider2D</a>
+, <a class="el" href="class_beer_engine_1_1_component_1_1_circle_collider.html#a60737b2c9898672d28aa09b56c7fa07c">BeerEngine::Component::CircleCollider</a>
 </li>
 <li>isCastShadows()
 : <a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a1113a54b9cae244bd22f1710e65ed963">BeerEngine::Graphics::DirectionalLight</a>
@@ -150,11 +164,17 @@ $(function() {
 <li>isFullScreen()
 : <a class="el" href="class_beer_engine_1_1_window.html#a62b1069af68940b690881b745c6b2370">BeerEngine::Window</a>
 </li>
+<li>isImmortal()
+: <a class="el" href="class_beer_engine_1_1_game_object.html#acbbcb3172ea1796913c07fb8ce78f08b">BeerEngine::GameObject</a>
+</li>
 <li>isKinematic()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_a_collider.html#aee0827674c1f742a1a5ee119f692d7a2">BeerEngine::Component::ACollider</a>
 </li>
 <li>isPlaying()
 : <a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#af7acd0b50d499e9eb13ac649f5305acf">BeerEngine::Audio::AudioSource</a>
+</li>
+<li>isVictorious
+: <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a1cc0407e550dd2cb74c339e243f66e73">Game::Component::GameManager</a>
 </li>
 <li>Item()
 : <a class="el" href="class_game_1_1_component_1_1_item.html#a55d47753d2ea3338e02453a2aeab78ff">Game::Component::Item</a>

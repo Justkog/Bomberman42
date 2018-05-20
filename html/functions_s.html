@@ -69,9 +69,13 @@ $(function() {
 <li>save()
 : <a class="el" href="class_beer_engine_1_1_a_scene.html#a65e03ade02de4673cd25544d4843c6d8">BeerEngine::AScene</a>
 , <a class="el" href="class_beer_engine_1_1_game_object.html#ad30b590f6d7a6556612358e4e14e79df">BeerEngine::GameObject</a>
+, <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a18b17c6c3d291370f919533e86d93cb7">Game::Component::GameManager</a>
 </li>
 <li>saveDefaultUI()
 : <a class="el" href="class_game_1_1_component_1_1_u_i_theme_manager.html#a215f4158f0f4f646a4bc7f3abef7ef97">Game::Component::UIThemeManager</a>
+</li>
+<li>saveGameProgression()
+: <a class="el" href="class_game_1_1_component_1_1_game_progression.html#a49e3199652a026706380c7c35f0410dd">Game::Component::GameProgression</a>
 </li>
 <li>saveSettings()
 : <a class="el" href="class_game_1_1_component_1_1_settings.html#ad8883dfb4a2ae8a041e293e73c7a6dc5">Game::Component::Settings</a>
@@ -79,6 +83,12 @@ $(function() {
 </li>
 <li>scale
 : <a class="el" href="class_beer_engine_1_1_transform.html#aec3b8b1a22e1b01b36f483cf7684d721">BeerEngine::Transform</a>
+</li>
+<li>sceneLoader
+: <a class="el" href="class_game_1_1_component_1_1_adventure_menu.html#a9fde6703acd5488bd8a00ec2fd4416ff">Game::Component::AdventureMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_game_over_menu.html#a82f829c147ae6686e19f36dfed1a668b">Game::Component::GameOverMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_in_game_menu.html#aa0dd6822a7263153cc093fc127bc664a">Game::Component::InGameMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_victory_menu.html#ab9bdbb8682f92a637ebf562ef22721bf">Game::Component::VictoryMenu</a>
 </li>
 <li>scenePath
 : <a class="el" href="struct_game_1_1_component_1_1_map_info.html#acb996a61861b5ddd524a55b9ad2e5d35">Game::Component::MapInfo</a>
@@ -142,6 +152,9 @@ $(function() {
 <li>setCastShadows()
 : <a class="el" href="class_beer_engine_1_1_graphics_1_1_directional_light.html#a7b7aa7a8fc0f155cc7147684da55da81">BeerEngine::Graphics::DirectionalLight</a>
 </li>
+<li>setClip()
+: <a class="el" href="class_game_1_1_component_1_1_audio_manager.html#ace26ae501cfcc9ed2f0dac90f27dd6e8">Game::Component::AudioManager</a>
+</li>
 <li>setColor()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html#a9217363eb47c65426dfbee8c03376043">BeerEngine::Component::ParticleBase</a>
 , <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html#a15ca97daab007bf474951213e010bc91">BeerEngine::Graphics::ALight</a>
@@ -158,6 +171,9 @@ $(function() {
 </li>
 <li>setGameOver()
 : <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a0b892cad5e5e468b5026d97490b15682">Game::Component::GameManager</a>
+</li>
+<li>setInstructions()
+: <a class="el" href="class_game_1_1_component_1_1_level_instructions.html#a3963cf24678559f8c4e3d766a6a03cc7">Game::Component::LevelInstructions</a>
 </li>
 <li>setIntensity()
 : <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_light.html#a6667a68dbe87f568f87312f62ec46b28">BeerEngine::Graphics::ALight</a>
@@ -187,7 +203,13 @@ $(function() {
 : <a class="el" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html#a9d4408a8c5e670c130394c59eeb5ccf2">BeerEngine::Component::MeshRenderer</a>
 </li>
 <li>setMesh()
-: <a class="el" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html#a818276a7fe8703a04bf431a41fa4c907">BeerEngine::Component::MeshRenderer</a>
+: <a class="el" href="class_beer_engine_1_1_component_1_1_mesh_renderer.html#a0bc2f51937864cfb8a470cd9a19321e6">BeerEngine::Component::MeshRenderer</a>
+</li>
+<li>setMetalicFactor()
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#aa1ac2d6c54838885eec7ba5866ee7db1">BeerEngine::Graphics::AMaterial</a>
+</li>
+<li>setMetalicMap()
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#a596b0cb49224bfc08b181d0d957d6493">BeerEngine::Graphics::AMaterial</a>
 </li>
 <li>SetMouseButton()
 : <a class="el" href="class_beer_engine_1_1_input.html#a8761deb95726518ed5871a38aca6451d">BeerEngine::Input</a>
@@ -203,12 +225,19 @@ $(function() {
 </li>
 <li>setPosition()
 : <a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a54f71bf26922c72815c892b7dc9c24b6">BeerEngine::Audio::AudioSource</a>
+, <a class="el" href="class_game_1_1_component_1_1_audio_manager.html#a3c2127fab53b59416cd6f65e5893f00b">Game::Component::AudioManager</a>
 </li>
 <li>setPower()
 : <a class="el" href="class_game_1_1_component_1_1_bomb.html#a3432430350d557ef1b7d9ac0339b659a">Game::Component::Bomb</a>
 </li>
 <li>setRandomMap()
 : <a class="el" href="class_game_1_1_component_1_1_map.html#afbe3b9678a60eda17971cab16e80df58">Game::Component::Map</a>
+</li>
+<li>setRougthnessFactor()
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#a89a8b675185b4282cd511ff3c9d701fd">BeerEngine::Graphics::AMaterial</a>
+</li>
+<li>setRougthnessMap()
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_a_material.html#a77d05969148c8671cc65688ffce844b0">BeerEngine::Graphics::AMaterial</a>
 </li>
 <li>setSize()
 : <a class="el" href="class_beer_engine_1_1_component_1_1_particle_base.html#a69899aa53162738931a1e3ef5b56fc79">BeerEngine::Component::ParticleBase</a>
@@ -271,6 +300,7 @@ $(function() {
 </li>
 <li>setVolume()
 : <a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a0a31f1aaf01219860cc6aeb7a3fe1619">BeerEngine::Audio::AudioSource</a>
+, <a class="el" href="class_game_1_1_component_1_1_audio_manager.html#a585897e38a3d480c3fa46bda43f9190b">Game::Component::AudioManager</a>
 </li>
 <li>setWindowed()
 : <a class="el" href="class_beer_engine_1_1_window.html#a7ec09b9ce3243543e31d70d13bfa650c">BeerEngine::Window</a>
@@ -279,7 +309,7 @@ $(function() {
 : <a class="el" href="class_beer_engine_1_1_window.html#ab3a2ce8c0a847026e99e1ad8324f21b7">BeerEngine::Window</a>
 </li>
 <li>ShaderProgram()
-: <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html#aee2fd393bbe665f1d6d1d4389242490e">BeerEngine::Graphics::ShaderProgram</a>
+: <a class="el" href="class_beer_engine_1_1_graphics_1_1_shader_program.html#ac7c72b0519e45eea6e315f22509b6dee">BeerEngine::Graphics::ShaderProgram</a>
 </li>
 <li>shaderPrograms
 : <a class="el" href="class_assets.html#a866b93ef6f421311131bbeb09fb6c903">Assets</a>
@@ -317,7 +347,7 @@ $(function() {
 : <a class="el" href="class_beer_engine_1_1_graphics_1_1_graphics.html#a1636d1b64cf5512eb8c1b494bfe70b23">BeerEngine::Graphics::Graphics</a>
 </li>
 <li>srcAudio
-: <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a4ca152ab25d6079c82c8e8baeb1f180f">Game::Component::GameManager</a>
+: <a class="el" href="class_game_1_1_component_1_1_audio_manager.html#a2044b13ebfaf202288f73f302851c70a">Game::Component::AudioManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_player.html#aa488f4fe911f9532edfb35f72b926f9e">Game::Component::Player</a>
 </li>
 <li>start()
@@ -328,7 +358,9 @@ $(function() {
 , <a class="el" href="class_beer_engine_1_1_component_1_1_i_start.html#aa3e25e86e20c46cdaefc6f6d7f21e495">BeerEngine::Component::IStart</a>
 , <a class="el" href="class_beer_engine_1_1_component_1_1_rays_renderer.html#a309d7940148feada1c9497e2444a6548">BeerEngine::Component::RaysRenderer</a>
 , <a class="el" href="class_beer_engine_1_1_game_object.html#a2caa6e6105c6766fdac3688ff1e74f00">BeerEngine::GameObject</a>
-, <a class="el" href="class_camera_test.html#a33618b16d2906b67b68e55ad15a8a33b">CameraTest</a>
+, <a class="el" href="class_game_1_1_component_1_1_adventure_continue_menu.html#a50019425732d0f7bffd8eb92e4cfb82f">Game::Component::AdventureContinueMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_adventure_menu.html#a5cd5defd6e21a9c2456ca5957acd4bcd">Game::Component::AdventureMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_audio_manager.html#a63f3eb322dbf7c5f4efeb14b34e48d92">Game::Component::AudioManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_background_drawer.html#a1ceabe4620c454b001cbafcace9e357a">Game::Component::BackgroundDrawer</a>
 , <a class="el" href="class_game_1_1_component_1_1_beer_routine_tester.html#a7c721d466c33fd0a34e65707f55272a2">Game::Component::BeerRoutineTester</a>
 , <a class="el" href="class_game_1_1_component_1_1_bomb.html#a74e5f8e628a9d434f0faf91273f33990">Game::Component::Bomb</a>
@@ -336,13 +368,16 @@ $(function() {
 , <a class="el" href="class_game_1_1_component_1_1_character.html#ab5ffa080b89ab20becf30a27a881d4d4">Game::Component::Character</a>
 , <a class="el" href="class_game_1_1_component_1_1_game_manager.html#af5c8428e13468c070be3e0afe5a30415">Game::Component::GameManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_game_over_menu.html#a1ce5ed58c3acb78c55c89f19ec967658">Game::Component::GameOverMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_game_progression.html#a7594963ac2722a6be3ca11a83d06131e">Game::Component::GameProgression</a>
 , <a class="el" href="class_game_1_1_component_1_1_i_a.html#ab440dc76a8837e291f6545e0dd15c819">Game::Component::IA</a>
 , <a class="el" href="class_game_1_1_component_1_1_in_game_menu.html#a5e468c487e51ee0d230b247aec64ecb2">Game::Component::InGameMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_inputs_menu.html#a001fe2e4a41d6d949649109e94195423">Game::Component::InputsMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_item.html#a69276f0e6bbd44144a5618cfe89f526a">Game::Component::Item</a>
 , <a class="el" href="class_game_1_1_component_1_1_items_u_i.html#af676e3b0216eabfb5caaa012492538d1">Game::Component::ItemsUI</a>
+, <a class="el" href="class_game_1_1_component_1_1_level_instructions.html#a0372a492fa2c9f3e9090e7beb6b993d2">Game::Component::LevelInstructions</a>
 , <a class="el" href="class_game_1_1_component_1_1_main_menu.html#a9043ca6c0ead0ef5fc048ac84171b597">Game::Component::MainMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_map.html#a76e2153b5f69646ba7cf77b6cd0f5096">Game::Component::Map</a>
+, <a class="el" href="class_game_1_1_component_1_1_message.html#a9dd9971bdeabb804e264e87f50a53e9a">Game::Component::Message</a>
 , <a class="el" href="class_game_1_1_component_1_1_mouse_ray_test.html#ae0d25b167dd28084ddd677b0593a54f3">Game::Component::MouseRayTest</a>
 , <a class="el" href="class_game_1_1_component_1_1_player.html#a317e5d073713ea27ceffe5de642240a6">Game::Component::Player</a>
 , <a class="el" href="class_game_1_1_component_1_1_settings.html#adc79077ed00bee2d8ed987ea4b86a331">Game::Component::Settings</a>
@@ -353,6 +388,9 @@ $(function() {
 , <a class="el" href="class_game_1_1_component_1_1_versus_menu.html#ab46a7bc9ba95ab8e51c45a1f3377c246">Game::Component::VersusMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_victory_menu.html#a48814ee7a1933f8efc5a63362ca39822">Game::Component::VictoryMenu</a>
 </li>
+<li>startAnimation
+: <a class="el" href="class_game_1_1_component_1_1_camera_controller.html#aa4dcbec45fc1064cc3d2aa6370cec6c0">Game::Component::CameraController</a>
+</li>
 <li>startClock()
 : <a class="el" href="class_game_1_1_component_1_1_time_u_i.html#a0f6aa191c542c999dcaa29a75d90209b">Game::Component::TimeUI</a>
 </li>
@@ -360,6 +398,9 @@ $(function() {
 : <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a289f89fdbc3cfb33434b2e30766542c1">Game::Component::GameManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_i_a.html#aca0e5b962c3cdb7dd6196f8995cfa24c">Game::Component::IA</a>
 , <a class="el" href="class_game_1_1_component_1_1_player.html#a9880b14165251833ef4c339338b29ef5">Game::Component::Player</a>
+</li>
+<li>startInstructions()
+: <a class="el" href="class_game_1_1_component_1_1_level_instructions.html#a8166b1f4a64c2f896bb92feb8a7f67b8">Game::Component::LevelInstructions</a>
 </li>
 <li>startRoutine()
 : <a class="el" href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#a39c1caf6c18c8f6e2821dc490226279f">BeerEngine::BeerRoutine::ARoutineRunner</a>
@@ -374,18 +415,24 @@ $(function() {
 : <a class="el" href="class_beer_engine_1_1_a_scene.html#a130e6fecc7dce5134188c946f9a9d0e9">BeerEngine::AScene</a>
 , <a class="el" href="class_beer_engine_1_1_component_1_1_i_start_u_i.html#ab72ebddba14358079deef06f924f3606">BeerEngine::Component::IStartUI</a>
 , <a class="el" href="class_beer_engine_1_1_game_object.html#a9b7f219498fe79f2b37e49b672e7c135">BeerEngine::GameObject</a>
+, <a class="el" href="class_game_1_1_component_1_1_adventure_continue_menu.html#a815dd8b5f2fa369e7d59e7306862a67b">Game::Component::AdventureContinueMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_adventure_menu.html#adc082e428526e18045df3052a71e4795">Game::Component::AdventureMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_background_drawer.html#a43ce3b9a10c892475832ee00d842868e">Game::Component::BackgroundDrawer</a>
 , <a class="el" href="class_game_1_1_component_1_1_game_over_menu.html#a47de7fcf5a5403c97ed5b60e97e9f439">Game::Component::GameOverMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_in_game_menu.html#adea7875bed072a422869b15378978aae">Game::Component::InGameMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_inputs_menu.html#aff701e81cc43ea6a95c1294cdf8c49d4">Game::Component::InputsMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_items_u_i.html#aeeae9fb81ab139e20e55a3844e51e51c">Game::Component::ItemsUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_main_menu.html#adc969f70f2a0cdcf50fbe1bcdb18b45f">Game::Component::MainMenu</a>
+, <a class="el" href="class_game_1_1_component_1_1_message.html#a1a9217fadbf3c4f654514a3e7340b7eb">Game::Component::Message</a>
 , <a class="el" href="class_game_1_1_component_1_1_settings_menu.html#a9b4063f7932c33632ea5f6c67500b3e6">Game::Component::SettingsMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_start_timer_u_i.html#a57c87272971d133d535dd49b5b0a9df4">Game::Component::StartTimerUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_time_u_i.html#a26f9fab3cf7a23b70534bcf69b772a30">Game::Component::TimeUI</a>
 , <a class="el" href="class_game_1_1_component_1_1_u_i_theme_manager.html#a1e8044ae0283b90f29372756538f0d61">Game::Component::UIThemeManager</a>
 , <a class="el" href="class_game_1_1_component_1_1_versus_menu.html#ae5bd06cf30c77672a34528a6abbf220f">Game::Component::VersusMenu</a>
 , <a class="el" href="class_game_1_1_component_1_1_victory_menu.html#a5094d796a7e307aec061bdfa649b2a19">Game::Component::VictoryMenu</a>
+</li>
+<li>startVictory()
+: <a class="el" href="class_game_1_1_component_1_1_game_manager.html#afa12597a66b6e4179b5a0480804557e1">Game::Component::GameManager</a>
 </li>
 <li>stop()
 : <a class="el" href="class_beer_engine_1_1_audio_1_1_audio_source.html#a7885411b2161b1b0f4bfbd87a97cd899">BeerEngine::Audio::AudioSource</a>
@@ -398,6 +445,9 @@ $(function() {
 </li>
 <li>stopRoutine()
 : <a class="el" href="class_beer_engine_1_1_beer_routine_1_1_a_routine_runner.html#a3c4bff92fb1bad462946a3b48e62a44e">BeerEngine::BeerRoutine::ARoutineRunner</a>
+</li>
+<li>storyMode
+: <a class="el" href="class_game_1_1_component_1_1_game_manager.html#a8b852e69bd3c5ef0980d847d2480f4bc">Game::Component::GameManager</a>
 </li>
 <li>swapBuffer()
 : <a class="el" href="class_beer_engine_1_1_window.html#a3b2c31a149ed0b90ac292d88f87fd369">BeerEngine::Window</a>

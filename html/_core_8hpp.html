@@ -156,12 +156,12 @@ Macros</h2></td></tr>
 <tr class="separator:a5473cf64fa979b48335079c99532e243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a895cfc16b36b6c309f80b98ded63df4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_core_8hpp.html#a895cfc16b36b6c309f80b98ded63df4f">REGISTER_COMPONENT_HPP</a></td></tr>
 <tr class="separator:a895cfc16b36b6c309f80b98ded63df4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a244603647ab0995b4a9f190cfa9c195a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_core_8hpp.html#a244603647ab0995b4a9f190cfa9c195a">REGISTER_COMPONENT_CPP</a>(Class)</td></tr>
-<tr class="separator:a244603647ab0995b4a9f190cfa9c195a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55b18c60f835f1af40afb28b1779a9b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_core_8hpp.html#a55b18c60f835f1af40afb28b1779a9b3">SERIALIZE_BY_ID</a>(Src)&#160;&#160;&#160;!Src ? nlohmann::json(nullptr) : nlohmann::json(Src-&gt;_serializationID)</td></tr>
 <tr class="separator:a55b18c60f835f1af40afb28b1779a9b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ce94279df7d4c896bbdce020140a507"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_core_8hpp.html#a8ce94279df7d4c896bbdce020140a507">DESERIALIZE_BY_ID</a>(Dest,  Class,  Key,  Loader)</td></tr>
 <tr class="separator:a8ce94279df7d4c896bbdce020140a507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a244603647ab0995b4a9f190cfa9c195a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_core_8hpp.html#a244603647ab0995b4a9f190cfa9c195a">REGISTER_COMPONENT_CPP</a>(Class)</td></tr>
+<tr class="separator:a244603647ab0995b4a9f190cfa9c195a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -258,7 +258,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">int</span> Class::RegisterComponentType() \</div><div class="line">        {\</div><div class="line">            Component::typeToAddComponent[<span class="keyword">typeid</span>(Class).name()] = &amp;Component::addComponent&lt;Class&gt;;\</div><div class="line">            return (1);\</div><div class="line">        }\</div><div class="line">        \</div><div class="line">        int Class::componentRegisterer = Class::RegisterComponentType();\</div><div class="line">        std::string Class::type = <span class="keyword">typeid</span>(Class).name();</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">int</span> Class::RegisterComponentType() \</div><div class="line">        {\</div><div class="line">            return (1);\</div><div class="line">        }\</div><div class="line">        \</div><div class="line">        int Class::componentRegisterer = Class::RegisterComponentType();\</div><div class="line">        std::string Class::type = <span class="keyword">typeid</span>(Class).name();</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a895cfc16b36b6c309f80b98ded63df4f"></a>
@@ -272,7 +272,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> RegisterComponentType(); \</div><div class="line">                            static  <span class="keywordtype">int</span> componentRegisterer;\</div><div class="line">                            static std::string type;\</div><div class="line">                            virtual nlohmann::json  serialize();\</div><div class="line">                            virtual <span class="keywordtype">void</span> deserialize(<span class="keyword">const</span> nlohmann::json &amp; j, <a class="code" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp; loader);</div><div class="ttc" id="struct_beer_engine_1_1_json_loader_html"><div class="ttname"><a href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a></div><div class="ttdoc">Structure utilisée lors de la désérialisation d&amp;#39;une scène ou d&amp;#39;un prefab afin de maintenir une liste ...</div><div class="ttdef"><b>Definition:</b> JsonSerializable.hpp:16</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> RegisterComponentType(); \</div><div class="line">                            static  <span class="keywordtype">int</span> componentRegisterer;\</div><div class="line">                            static std::string type;\</div><div class="line">                            nlohmann::json  serialize();\</div><div class="line">                            void deserialize(<span class="keyword">const</span> nlohmann::json &amp; j, <a class="code" href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a> &amp; loader);</div><div class="ttc" id="struct_beer_engine_1_1_json_loader_html"><div class="ttname"><a href="struct_beer_engine_1_1_json_loader.html">BeerEngine::JsonLoader</a></div><div class="ttdoc">Structure utilisée lors de la désérialisation d&amp;#39;une scène ou d&amp;#39;un prefab afin de maintenir une liste ...</div><div class="ttdef"><b>Definition:</b> JsonSerializable.hpp:16</div></div>
 </div><!-- fragment -->
 </div>
 </div>
