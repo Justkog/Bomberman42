@@ -71,6 +71,7 @@ SRC = \
 	Game/Level3.cpp \
 	Game/Level4.cpp \
 	Game/Level5.cpp \
+	Game/Level6.cpp \
 	Game/Versus1.cpp \
 	Game/Versus2.cpp \
 	Game/Versus3.cpp \
@@ -154,7 +155,7 @@ install:
 	mv Bomberman42Asset/assets .
 	mv Bomberman42Asset/html .
 	rm -rf Bomberman42Asset
-	
+
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)

@@ -1,4 +1,4 @@
-#include "Game/Level5.hpp"
+#include "Game/Level6.hpp"
 #include <Core/Graphics/Lights/DirectionalLight.hpp>
 #include "Core/Component/ModelRenderer.hpp"
 #include "Core/GameObject.hpp"
@@ -20,9 +20,9 @@
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
 
-void    Level5::init(void)
+void    Level6::init(void)
 {
-	std::cout << "init level5 scene" << std::endl;
+	std::cout << "init level6 scene" << std::endl;
 
 	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/pano_1.jpg", 512);
 	setSkybox(skyboxCubemap);
@@ -58,7 +58,7 @@ void    Level5::init(void)
 	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
 	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
 
-	soundManager->setClip("assets/sounds/hyp.ogg");
+	soundManager->setClip("assets/sounds/dmx.ogg");
 	soundManager->audioType = Game::Component::Music;
 
 	gameManager->inGameMenu = inGameMenu;
@@ -85,8 +85,8 @@ void    Level5::init(void)
 	itemsUI->uiManager = uiManager;
 
 	victoryMenu->sceneLoader.name = "Level6";
-	gameOverMenu->sceneLoader.name = "Level5";
-	inGameMenu->sceneLoader.name = "Level5";
+	gameOverMenu->sceneLoader.name = "Level6";
+	inGameMenu->sceneLoader.name = "Level6";
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
@@ -118,10 +118,6 @@ void    Level5::init(void)
 	modelRenderer->setAnimationSpeed("idle", 0.25);
 	modelRenderer->setLoopAnimation(true);
 	modelRenderer->playAnimation();
-
-	cameraGO->GetComponent<Game::Component::VictoryMenu>()->sceneLoader.name = "Level6";
-	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Level5";
-	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Level5";
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -176,5 +172,5 @@ void    Level5::init(void)
 	mapGO->transform.scale = glm::vec3(6, 1, 5.5);
 
 	std::cout << "saving scene.." << std::endl;
-	this->save("assets/scenes/Level5.scene");
+	this->save("assets/scenes/Level6.scene");
 }
