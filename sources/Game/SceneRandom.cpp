@@ -205,6 +205,8 @@ void    SceneRandom::init(void)
 	mapGO->transform.position = glm::vec3(-3, 0, 6);
 	mapGO->transform.scale = glm::vec3(40, 1, 40);
 
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(20, 15), glm::vec2(-20, 0), glm::vec2(10, 20), glm::vec2(-10, 0));
+
 	// loaded here because it cannot be loaded in the start of a later instantiated object
 	// Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 

@@ -28,34 +28,34 @@ namespace BeerEngine
 			rb2d = nullptr;
 		}
 
-		ACollider::ACollider() :
-		 	 _transform(Transform::basic)
-		{}
+		// ACollider::ACollider() :
+		//  	 _transform(Transform::basic)
+		// {}
 
-		ACollider::ACollider(const ACollider &val) :
-			_transform(val._transform)
-		{
-			*this = val;
-		}
+		// ACollider::ACollider(const ACollider &val) :
+		// 	_transform(val._transform)
+		// {
+		// 	*this = val;
+		// }
 		
-		ACollider &ACollider::operator=(const ACollider &val)
-		{
-			if (this != &val)
-			{
-				_currentCollisions.clear();
-				_exceptions.clear();
-				for (std::size_t i = 0; i < val._currentCollisions.size(); i++)
-					_currentCollisions.push_back(val._currentCollisions[i]);
-				for (std::size_t i = 0; i < val._exceptions.size(); i++)
-					_exceptions.push_back(val._exceptions[i]);
-				_transform = val._transform;
-				_offset = val._offset;
-				_isTrigger = val._isTrigger;
-				rb2d = val.rb2d;
-				colliderType = val.colliderType;
-			}
-			return (*this);
-		}
+		// ACollider &ACollider::operator=(const ACollider &val)
+		// {
+		// 	if (this != &val)
+		// 	{
+		// 		_currentCollisions.clear();
+		// 		_exceptions.clear();
+		// 		for (std::size_t i = 0; i < val._currentCollisions.size(); i++)
+		// 			_currentCollisions.push_back(val._currentCollisions[i]);
+		// 		for (std::size_t i = 0; i < val._exceptions.size(); i++)
+		// 			_exceptions.push_back(val._exceptions[i]);
+		// 		_transform = val._transform;
+		// 		_offset = val._offset;
+		// 		_isTrigger = val._isTrigger;
+		// 		rb2d = val.rb2d;
+		// 		colliderType = val.colliderType;
+		// 	}
+		// 	return (*this);
+		// }
 
 		ACollider::~ACollider()
 		{
