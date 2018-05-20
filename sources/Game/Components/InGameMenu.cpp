@@ -113,9 +113,13 @@ void InGameMenu::renderUI(struct nk_context *ctx)
 
 		if (nk_button_label(ctx, "Resume"))
 			this->setActive(false);
-		if (nk_button_label(ctx, "Back to Main Menu"))
+		if (nk_button_label(ctx, "Retry"))
 		{
 			GameManager::GetInstance().setPause(false);
+			sceneLoader.load();
+		}
+		if (nk_button_label(ctx, "Back to Main Menu"))
+		{
 			BeerEngine::SceneManager::LoadScene<SceneMain>();
 		}
 	}
