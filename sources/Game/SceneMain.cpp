@@ -20,6 +20,7 @@
 #include "Game/Components/AdventureContinueMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
 #include "Game/Components/InputsMenu.hpp"
+#include "Game/Components/Credits.hpp"
 #include "Game/Components/BackgroundDrawer.hpp"
 #include "Game/Components/UIThemeManager.hpp"
 
@@ -60,6 +61,7 @@ void    SceneMain::init(void)
 	auto versusMenu = menuGO->AddComponent<Game::Component::VersusMenu>();
 	auto settingsMenu = menuGO->AddComponent<Game::Component::SettingsMenu>();
 	auto inputsMenu = menuGO->AddComponent<Game::Component::InputsMenu>();
+	auto credits = menuGO->AddComponent<Game::Component::Credits>();
 	auto audioManager = menuGO->AddComponent<Game::Component::AudioManager>();
 
 	bgDrawer->uiManager = uiManager;
@@ -67,6 +69,7 @@ void    SceneMain::init(void)
 	mainMenu->adventureMenu = adventureMenu;
 	mainMenu->versusMenu = versusMenu;
 	mainMenu->settingsMenu = settingsMenu;
+	mainMenu->credits = credits;
 	versusMenu->uiManager = uiManager;
 	versusMenu->mainMenu = mainMenu;
 	adventureMenu->uiManager = uiManager;
@@ -95,6 +98,7 @@ void    SceneMain::init(void)
 	inputsMenu->setActive(false);
 	adventureMenu->setActive(false);
 	adventureContinueMenu->setActive(false);
+	credits->setActive(false);
 
 	this->save("assets/scenes/main.scene");
 	std::cout << "init end" << "\n";

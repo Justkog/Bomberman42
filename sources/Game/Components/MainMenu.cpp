@@ -6,6 +6,7 @@
 #include "Game/Components/AdventureMenu.hpp"
 #include "Game/Components/VersusMenu.hpp"
 #include "Game/Components/SettingsMenu.hpp"
+#include "Game/Components/Credits.hpp"
 #include "Core/Window.hpp"
 #include "Core/SceneManager.hpp"
 #include "Game/SceneTest.hpp"
@@ -128,7 +129,10 @@ void MainMenu::renderUI(struct nk_context *ctx)
 			settingsMenu->setActive(true);
 		}
 		if (nk_button_label(ctx, "Credits"))
-			fprintf(stdout, "Credits pressed\n");
+		{
+			this->setActive(false);
+			credits->setActive(true);
+		}
 		if (nk_button_label(ctx, "Exit"))
 			BeerEngine::Window::GetInstance()->closeRequest();
 	}
