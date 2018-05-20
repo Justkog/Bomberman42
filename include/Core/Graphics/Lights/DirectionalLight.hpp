@@ -27,6 +27,7 @@ namespace BeerEngine
 			glm::vec3		_direction;
 			bool			_castShadows;
 			Framebuffer		*_shadowMap;
+			glm::mat4		_lightProjection;
 			glm::mat4		_lightMatrix;
 
 		public:
@@ -45,6 +46,8 @@ namespace BeerEngine
 
 			DirectionalLight	&setDirection(const glm::vec3 &dir);
 			const glm::vec3		&getDirection() const;
+			const glm::mat4		&getLightProjection() const;
+			const glm::mat4		&getLightMatrix() const;
 
 			void	setCastShadows(bool val);
 			bool	isCastShadows();

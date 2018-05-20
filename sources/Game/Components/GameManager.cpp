@@ -59,6 +59,7 @@ GameManager::~GameManager ( void )
 
 GameManager::GameManager(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
+_gameStarted(false),
 gameOverMenu(nullptr),
 victoryMenu(nullptr),
 levelInstructions(nullptr),
@@ -105,13 +106,13 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 {
 	(void) pos;
 	(void) value;
-	if (isVictorious)
+	if (isVictorious || !_gameStarted)
 		return;
 	if (victoryRoutine)
 		stopRoutine(victoryRoutine);
 	if (inGameMenu->_isActive)
 		inGameMenu->setActive(!inGameMenu->_isActive);
-	std::cout << "game over" << std::endl;
+	// std::cout << "game over" << std::endl;
 	gameOverMenu->setActive(true);
 	if (victoryMenu->_isActive)
 	{
@@ -214,6 +215,7 @@ BeerEngine::BeerRoutine::BeerRoutine *GameManager::createVictoryRoutine()
 
 void GameManager::startGame()
 {
+	_gameStarted = true;
 	timeUI->startClock();
 	onGameStart.emit();
 }
@@ -221,6 +223,8 @@ void GameManager::startGame()
 void GameManager::start()
 {
 	std::cout << "GameManager start" << std::endl;
+	// playerDeathBinding = Binding::create(playerBreakable, this);
+	// playerBreakable->add_binding(playerDeathBinding);
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);
 	startRoutine(*createStartTimerRoutine());
 	this->gameSpeed = 1.0f;

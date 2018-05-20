@@ -19,6 +19,7 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
+#include "Game/SceneBasics.hpp"
 
 void    Level6::init(void)
 {
@@ -33,7 +34,6 @@ void    Level6::init(void)
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	// BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
@@ -170,6 +170,8 @@ void    Level6::init(void)
 	mapMeshRenderer->setMaterial(planeMat);
 	mapGO->transform.position = glm::vec3(0, 0.03, 5);
 	mapGO->transform.scale = glm::vec3(6, 1, 5.5);
+
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(7, 11), glm::vec2(-7, 0));
 
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level6.scene");

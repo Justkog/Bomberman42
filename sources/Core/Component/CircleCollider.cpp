@@ -13,22 +13,22 @@ namespace BeerEngine
 			_radius((gameObject->transform.scale.x + gameObject->transform.scale.z) / 4)
 		{}
 
-		CircleCollider::CircleCollider()
-		{}
+		// CircleCollider::CircleCollider()
+		// {}
 
-		CircleCollider::CircleCollider(const CircleCollider &val)
-		{
-			*this = val;
-		}
+		// CircleCollider::CircleCollider(const CircleCollider &val)
+		// {
+		// 	*this = val;
+		// }
 		
-		CircleCollider &CircleCollider::operator=(const CircleCollider &val)
-		{
-			if (this != &val)
-			{
-				_radius = val._radius;
-			}
-			return (*this);
-		}
+		// CircleCollider &CircleCollider::operator=(const CircleCollider &val)
+		// {
+		// 	if (this != &val)
+		// 	{
+		// 		_radius = val._radius;
+		// 	}
+		// 	return (*this);
+		// }
 
 		CircleCollider::~CircleCollider()
 		{}

@@ -37,6 +37,7 @@ namespace BeerEngine
 		*  Constructeur de la classe Transform
 		*/
 		Transform();
+		Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
 
 		Transform &operator=(const Transform &val);
 

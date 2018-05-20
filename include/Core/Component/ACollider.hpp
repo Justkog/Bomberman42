@@ -28,9 +28,9 @@ namespace BeerEngine
 		class ACollider : public Component, public IStart
 		{
 		protected:
-			ACollider();
-			ACollider(const ACollider &val);
-			ACollider &operator=(const ACollider &val);
+			// ACollider();
+			// ACollider(const ACollider &val);
+			// ACollider &operator=(const ACollider &val);
 
 		public:
 			ACollider(GameObject *gameObject);

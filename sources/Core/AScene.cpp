@@ -210,7 +210,7 @@ namespace BeerEngine
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             Graphics::Graphics::shadowRenderShader->bind();
-            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 22.0f, -5.0f, 25.0f);
+            glm::mat4 proj = light->getLightProjection();
             Graphics::Graphics::shadowRenderShader->uniformMat("projection", proj);
             glm::mat4 lookat = glm::lookAt(glm::vec3(0, 0, 0), light->getDirection() * -1, glm::vec3(0, 1, 0));
             Graphics::Graphics::shadowRenderShader->uniformMat("view", lookat);
@@ -222,6 +222,8 @@ namespace BeerEngine
             Graphics::Graphics::shadowRenderShader->unbind();
 
             light->unbindShadowMap();
+
+            // light->drawShadowMap();
         }
     }
 

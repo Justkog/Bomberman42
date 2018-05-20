@@ -33,6 +33,7 @@ namespace Game
 		{
 		private:
 			static GameManager * instance;
+			bool				_gameStarted;
 
 			GameManager();
 			GameManager(const GameManager &val);
@@ -82,6 +83,8 @@ namespace Game
 			BeerEngine::BeerRoutine::BeerRoutine *victoryRoutine;
 			bool isVictorious;
 			float gameSpeed;
+
+			std::shared_ptr<Binding> playerDeathBinding;
 
 			static GameManager & GetInstance();
 

@@ -18,9 +18,9 @@ namespace BeerEngine
 		class CircleCollider : public ACollider
 		{
 		private:
-			CircleCollider();
-			CircleCollider(const CircleCollider &val);
-			CircleCollider &operator=(const CircleCollider &val);
+			// CircleCollider();
+			// CircleCollider(const CircleCollider &val);
+			// CircleCollider &operator=(const CircleCollider &val);
 
 		protected:
 			bool lineCollision(glm::vec2 A, glm::vec2 B, glm::vec2 C);

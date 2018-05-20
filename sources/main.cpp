@@ -180,8 +180,6 @@ int main(void)
 		// std::cout << "render thread" << std::endl;
     }
     nk_glfw3_shutdown();
-    // srcAudio.Delete();
-    // srcAudio2.Delete();
     BeerEngine::Audio::AudioListener::DestroyOpenAL();
     delete BeerEngine::Camera::main;
     Assets::GetInstance()->unload();
