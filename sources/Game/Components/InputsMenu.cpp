@@ -257,7 +257,7 @@ void InputsMenu::renderUI(struct nk_context *ctx)
 	{
 		nk_layout_row_dynamic(ctx, 75, 1);
 
-		if (nk_button_label(ctx, "Back"))
+		if (nk_button_label(ctx, "Back") || BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
 		{
 			// updateKeyBindings();
 			this->setActive(false);
