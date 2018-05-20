@@ -12,8 +12,7 @@ namespace Game
 			audioType(Sound),
     	srcAudio(BeerEngine::Audio::AudioSource(gameObject))
     {
-		if (instance == nullptr)
-			instance = this;
+		instance = this;
 	}
 
     AudioManager::AudioManager(void)
@@ -72,7 +71,6 @@ namespace Game
     {
 		_musicVolume = musicVolume;
 		_soundVolume = soundVolume;
-			// std::cout <<"=============================" << Game::Component::Settings::GetInstance().settingsContainer.musicVolume << std::endl;
 		if (audioType == Music)
 			srcAudio.setVolume(musicVolume);
 		else if (audioType ==  Sound)

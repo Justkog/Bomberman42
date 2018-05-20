@@ -71,10 +71,12 @@ namespace Game
 			BeerEngine::Audio::AudioClip	*clip = Assets::GetAudioClip("assets/sounds/footsteps.wav");
 			srcAudio->setBuffer(clip->getBuffer());
 			srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
+
 			BeerEngine::Audio::AudioClip	*itemClip = Assets::GetAudioClip("assets/sounds/item.wav");
 			itemSrcAudio->setBuffer(itemClip->getBuffer());
 			itemSrcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
-			std::cout << "===============item volume =============" << Game::Component::AudioManager::instance->getSoundVolume() << std::endl;
+			// std::cout << "===============item volume =============" << Game::Component::AudioManager::instance->getSoundVolume() << std::endl;
+
 			GameManager::GetInstance().onGameStart.bind(&Player::startGame, this);
         }
 

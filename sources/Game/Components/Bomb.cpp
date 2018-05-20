@@ -226,7 +226,7 @@ namespace Game
 				auto	*srcAudio = new BeerEngine::Audio::AudioSource(_gameObject);
 				srcAudio->setBuffer(clip->getBuffer());
 				// srcAudio->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-				// srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
+				srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
 				// std::cout << "======================================" << Game::Component::AudioManager::instance->getSoundVolume() << std::endl;
 				// std::cout << "======================================" << Game::Component::AudioManager::instance->getMusicVolume() << std::endl;
 
