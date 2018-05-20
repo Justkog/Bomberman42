@@ -77,6 +77,8 @@ namespace Game
 			Signal<> onGameEnd;
 
 			BeerEngine::BeerRoutine::BeerRoutine *createStartTimerRoutine();
+			BeerEngine::BeerRoutine::BeerRoutine *createVictoryRoutine();
+			float gameSpeed;
 
 			static GameManager & GetInstance();
 
