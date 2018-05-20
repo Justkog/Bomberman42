@@ -124,6 +124,7 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 
 void GameManager::startVictory()
 {
+	std::cout << "victory" << std::endl;
 	victoryRoutine = createVictoryRoutine();
 	startRoutine(*victoryRoutine);
 }
@@ -133,7 +134,6 @@ void GameManager::setVictory()
 	if (inGameMenu->_isActive)
 		inGameMenu->setActive(!inGameMenu->_isActive);
 	onGameEnd.emit();
-	std::cout << "victory" << std::endl;
 	victoryMenu->setActive(true);
 }
 
