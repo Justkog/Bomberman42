@@ -139,7 +139,7 @@ LIBS += $(addprefix -L , $(LIB_DIR)) $(addprefix -l, $(LIB_NAME))
 all: dircreate $(join $(addsuffix /, $(LIB_DIR)), $(addsuffix .a, $(LIB_DIR)))
 	$(MAKE) $(NAME)
 
-install:
+install: installAssets
 	~/.brew/bin/brew update
 	~/.brew/bin/brew install pkg-config
 	~/.brew/bin/brew install glm
@@ -152,7 +152,6 @@ install:
 	~/.brew/bin/brew install nlohmann_json
 	~/.brew/bin/brew install assimp
 	sh script.sh
-	installAssets
 
 installAssets:
 	git clone https://github.com/mimusangel/Bomberman42Asset.git /tmp/Bomberman42Asset
