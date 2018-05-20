@@ -59,13 +59,13 @@ GameManager::~GameManager ( void )
 
 GameManager::GameManager(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
+_gameStarted(false),
 gameOverMenu(nullptr),
 victoryMenu(nullptr),
 levelInstructions(nullptr),
 storyMode(false),
 victoryRoutine(nullptr),
-isVictorious(false),
-_gameStarted(false)
+isVictorious(false)
 {
 	instance = this;
 }
