@@ -112,6 +112,8 @@ void    Level2::init(void)
 	mapGO->transform.position = glm::vec3(0, 0.03, 5);
 	mapGO->transform.scale = glm::vec3(4.5, 1, 4.5);
 
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(5, 10), glm::vec2(-5, 0));
+
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level2.scene");
 }

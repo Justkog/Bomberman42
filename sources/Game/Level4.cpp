@@ -114,6 +114,8 @@ void    Level4::init(void)
 	mapGO->transform.position = glm::vec3(0, 0.03, 5);
 	mapGO->transform.scale = glm::vec3(6, 1, 5.5);
 
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(7, 11), glm::vec2(-7, 0));
+
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level4.scene");
 }

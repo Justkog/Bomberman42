@@ -125,56 +125,55 @@ namespace Game
 		modelID++;
 	}
 
-	void SceneBasics::GenerateDecorations(BeerEngine::AScene *scene, glm::vec2 max, glm::vec2 min, glm::vec2 mapA, glm::vec2 mapB, int count)
+	void SceneBasics::GenerateDecorations(BeerEngine::AScene *scene, glm::vec2 max, glm::vec2 min, glm::vec2 mapA, glm::vec2 mapB)
     {
 		static std::vector<std::string> models = {
 			"assets/models/Decoration/trees/Models/rock.fbx",
-			"assets/models/Decoration/trees/Models/fence.fbx"
+			"assets/models/Decoration/pineTree/Models/pine_tree_free.fbx",
+			"assets/models/Decoration/Tree/Models/grassland_tree_free.fbx",
+			"assets/models/Decoration/trees/Models/tree1.fbx",
+			"assets/models/Decoration/trees/Models/tree2.fbx"
 		};
 		static std::vector<std::string> textures = {
 			"assets/models/Decoration/trees/Textures/rock.png",
-			"assets/models/Decoration/trees/Textures/fence.png"
+			"assets/models/Decoration/pineTree/Textures/pine_tree_red_SC.tga",
+			"assets/models/Decoration/Tree/Textures/trees_autumn_SC.tga",
+			"assets/models/Decoration/trees/Textures/colors.png",
+			"assets/models/Decoration/trees/Textures/colors.png"
 		};
 
 		std::vector<std::string> used;
 
-		for (int i = 0; i < count; i++)
+		for (int x = 0; x < max.x - min.x + 1; x++)
 		{
-			int x, y;
-			bool insideMap;
-			bool containsPos;
-			do
+			for (int y = 0; y < max.y - min.x + 1; y++)
 			{
-				x = (int)(((float)rand() / RAND_MAX) * (max.x - min.x) + min.x); 
-				y = (int)(((float)rand() / RAND_MAX) * (max.y - min.y) + min.y);
-				insideMap = x < mapA.x && x > mapB.x && y < mapA.y && y > mapB.y;
-				containsPos = false;
-				for (std::size_t j = 0; j < used.size(); j++)
-				{
-					if (used[j].compare(std::string(std::to_string(x) + "_" + std::to_string(y))) == 0)
-					{
-						containsPos = true;
-						break;
-					}
-				}
-			}
-			while (containsPos);
-			
-			used.push_back(std::string(std::to_string(x) + "_" + std::to_string(y)));
+				if (x % 2 == 0)
+					continue;
+				if (y % 2 == 0)
+					continue;
+				if (rand() % 20 > 12)
+					continue;
+				int xx = x + min.x;
+				int yy = y + min.y;
 
-			int index = rand() % models.size();
+				if (xx < mapA.x && xx > mapB.x && yy < mapA.y && yy > mapB.y)
+					continue;
 
-			auto objet = scene->instantiate<BeerEngine::GameObject>();
-			Game::SceneBasics::CreateModelBasics(
-				objet,
-				models[index],
-				textures[index],
-				BeerEngine::Transform(
-					glm::vec3(x, 0, y),
-					glm::vec3(0, 0, 0),//glm::radians((float) (rand() % 360)), 0),
-					glm::vec3(1.5, 1.5, 1.5)
-				)
-			);
+				int index = rand() % models.size();
+
+				auto objet = scene->instantiate<BeerEngine::GameObject>();
+				Game::SceneBasics::CreateModelBasics(
+					objet,
+					models[index],
+					textures[index],
+					BeerEngine::Transform(
+						glm::vec3(xx, 0, yy),
+						glm::vec3(0, glm::radians((float) (rand() % 360)), 0),
+						glm::vec3(1.5, 1.5, 1.5)
+					)
+				);
+			}	
 		}
     }
 }

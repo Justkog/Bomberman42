@@ -140,6 +140,8 @@ void    Versus2::init(void)
 	mapGO->transform.position = glm::vec3(-6.5, 0.03, 6.5);
 	mapGO->transform.scale = glm::vec3(2, 1, 2);
 
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(20, 15), glm::vec2(-20, 0), glm::vec2(10, 14), glm::vec2(-10, 0));
+
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Versus2.scene");
 }

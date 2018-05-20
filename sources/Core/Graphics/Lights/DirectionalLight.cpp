@@ -19,6 +19,7 @@ namespace BeerEngine
 			_shader = Graphics::Graphics::lightShader;
 			_castShadows = true;
 			_shadowMap = new Framebuffer(2048, 2048);
+			_lightProjection = glm::ortho(-25.0f, 12.0f, -10.0f, 28.0f, -15.0f, 25.0f);
 			setupUniformIds();
 		}
 
@@ -28,6 +29,7 @@ namespace BeerEngine
 			_shader = Graphics::Graphics::lightShader;
 			_castShadows = true;
 			_shadowMap = new Framebuffer(2048, 2048);
+			_lightProjection = glm::ortho(-25.0f, 12.0f, -10.0f, 28.0f, -15.0f, 25.0f);
 			setupUniformIds();
 		}
 
@@ -60,14 +62,10 @@ namespace BeerEngine
 
 		void 	DirectionalLight::bind()
 		{
-			// _shader->bind();
-			// _shader->uniformMat(_projectionShaderID, Window::GetInstance()->getProjection3D());
 			glm::mat4 view = Camera::main->transform.getMat4(true);
-			// _shader->uniformMat(_viewShaderID, view);
 
-            glm::mat4 proj = glm::ortho(-20.0f, 8.0f, -5.0f, 22.0f, -5.0f, 25.0f);
             view = glm::lookAt(glm::vec3(0, 0, 0), _direction * -1, glm::vec3(0, 1, 0));
-			_lightMatrix = proj * view;
+			_lightMatrix = _lightProjection * view;
 			_shader->uniformMat("lightMatrix", _lightMatrix);
 
 			_shader->uniform4f("directionalLight.light.color", _color);
@@ -125,6 +123,16 @@ namespace BeerEngine
 			Graphics::Graphics::cube->render();
 			glBindTexture(GL_TEXTURE_2D, 0);
 			Graphics::Graphics::defaultGuiShader->unbind();
+		}
+
+		const glm::mat4		&DirectionalLight::getLightProjection() const
+		{
+			return _lightProjection;
+		}
+
+		const glm::mat4		&DirectionalLight::getLightMatrix() const
+		{
+			return _lightMatrix;
 		}
 
 		nlohmann::json	DirectionalLight::serialize()
