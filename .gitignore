@@ -54,5 +54,5 @@ Bomberman.dSYM/
 .idea/
 /nuklear
 /Prefabs
-/assets
-/html
+assets/
+html/
