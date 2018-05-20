@@ -226,12 +226,9 @@ namespace Game
 				auto	*srcAudio = new BeerEngine::Audio::AudioSource(_gameObject);
 				srcAudio->setBuffer(clip->getBuffer());
 				srcAudio->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
-				// srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
-				std::cout << "======================================" << Game::Component::AudioManager::instance->getSoundVolume() << std::endl;
+				srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
+
 				srcAudio->play();
-				// auto soundManager = _gameObject->AddComponent<Game::Component::AudioManager>();
-				// soundManager->setClip("assets/sounds/Bomb+1.wav");
-				// soundManager->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 
 				auto *playerParticule = _gameObject->AddComponent<BeerEngine::Component::ParticleExplode>();
 				playerParticule->setTexture(explosionTexture);
