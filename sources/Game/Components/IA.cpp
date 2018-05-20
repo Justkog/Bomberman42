@@ -222,9 +222,9 @@ namespace Game
             glm::vec2 mapPos(map->worldToMap(_gameObject->transform.position));
             int val = avoidAllExplosions(mapPos) ? 0 : -1000;
 
-            for (int y = 0; y < map->_sizeY; ++y)
+            for (int y = 1; y < map->_sizeY - 1; ++y)
             {
-                for (int x = 0; x < map->_sizeX; ++x)
+                for (int x = 1; x < map->_sizeX - 1; ++x)
                 {
                     int tmpVal = 0;
                     ObjectiveType tmpObj = ObjectiveType::MoveTo;
