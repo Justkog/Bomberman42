@@ -84,20 +84,21 @@ namespace Game
 
         void    IA::fixedUpdate(void)
         {
-        }
-
-        void    IA::update(void)
-        {
-			_character->stopMove();
-			if (!_gameStarted)
-				return ;
-
-            _timerRefreshMap += BeerEngine::Time::GetDeltaTime();
+            _timerRefreshMap += 1.0f / 60.0f;
             if (!_hasObjective && _timerRefreshMap >= 0.2f)
             {
                 findObjective();
                 _timerRefreshMap = 0;
             }
+        }
+
+        void    IA::update(void)
+        {
+            _character->stopMove();
+			if (!_gameStarted)
+				return ;
+
+            
             if (_hasObjective)
             {
                 if (moveToObjective())
@@ -118,6 +119,7 @@ namespace Game
                     _hasObjective = false;
                 }
             }
+			
         }
 
         bool    IA::canMove(glm::vec3 dir)

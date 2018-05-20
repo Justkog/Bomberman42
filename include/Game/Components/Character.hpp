@@ -83,7 +83,6 @@ namespace Game
 			Game::Component::Map *map;
 
 			BeerEngine::Graphics::Mesh	*bombMesh;
-			BeerEngine::Graphics::AMaterial	*bombMaterial;
 
 			REGISTER_COMPONENT_HPP
 		};

@@ -39,41 +39,35 @@ void updateThread(BeerEngine::Window *window)
     {
         scene = BeerEngine::SceneManager::GetCurrent(false);
 
+        BeerEngine::Time::Update();
+        fixedTimer += BeerEngine::Time::GetDeltaTime();
+        timer += BeerEngine::Time::GetDeltaTime();
         if (scene != nullptr)
         {
             scene->mutexLock(true);
             scene->start();
-            scene->mutexLock(false);
-        }
-        BeerEngine::Time::Update();
-        fixedTimer += BeerEngine::Time::GetDeltaTime();
-        timer += BeerEngine::Time::GetDeltaTime();
-        while (fixedTimer >= fixedUpdateTime)
-        {
-            if (scene != nullptr)
+            while (fixedTimer >= fixedUpdateTime)
             {
-                scene->mutexLock(true);
                 scene->fixedUpdate();
                 scene->physicUpdate();
-                scene->mutexLock(false);
+                fixeUpdateNumber++;
+                fixedTimer -= fixedUpdateTime;
             }
-            fixeUpdateNumber++;
-            fixedTimer -= fixedUpdateTime;
-        }
-        // if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::ESCAPE))
-        //     window->closeRequest();
-        if (scene != nullptr)
-        {
-            scene->mutexLock(true);
             scene->update();
             scene->mutexLock(false);
+        }
+        else
+        {
+            while (fixedTimer >= fixedUpdateTime)
+            {
+                fixeUpdateNumber++;
+                fixedTimer -= fixedUpdateTime;
+            }
+		    std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
 
         if (timer >= 1.0)
         {
-// #ifdef BE_DEBUG
-//             std::cout << "FPS: " << frameCount << " - UPS: " << fixeUpdateNumber << std::endl;
-// #endif
             FPS = frameCount;
             UPS = fixeUpdateNumber;
             fixeUpdateNumber = 0;
@@ -83,7 +77,6 @@ void updateThread(BeerEngine::Window *window)
         //  std::this_thread::sleep_for(sleepTime);
 
 		// BeerEngine::Input::Update();
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		// std::cout << "update thread" << std::endl;
     }
     std::cout << "Thread Update: Finish" << std::endl;

@@ -117,7 +117,6 @@ namespace BeerEngine
 			float overlap = (_radius + other->_radius) - glm::distance(thisPos, otherPos);
 			glm::vec3 dir(thisPos.x - otherPos.x, 0, thisPos.y - otherPos.y);
 			dir = glm::normalize(dir);
-			
 			response(other, dir * overlap);
 		}
 

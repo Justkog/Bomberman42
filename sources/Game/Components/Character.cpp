@@ -25,8 +25,7 @@ namespace Game
             _explosionSize(1),
             _direction(0, 0),
 			map(nullptr),
-			bombMesh(nullptr),
-			bombMaterial(nullptr)
+			bombMesh(nullptr)
 		{
 
         }
@@ -55,8 +54,6 @@ namespace Game
         void    Character::start(void)
         {
 			bombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");
-			bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
-			bombMaterial->setAlbedo(Assets::GetTexture("assets/textures/bomb_color.png"));
 			// bombMaterial->setAlbedo(Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png"));
         }
 
@@ -224,7 +221,6 @@ namespace Game
 				{"direction", _direction},
 				{"map", SERIALIZE_BY_ID(map)},
 				{"bombMesh", bombMesh},
-				{"bombMaterial", bombMaterial},
 			});
 			return j;
 		}
@@ -239,8 +235,6 @@ namespace Game
 			DESERIALIZE_BY_ID(this->map, Map, "map", loader);
 			if (j.find("bombMesh") != j.end())
 				this->bombMesh = BeerEngine::Graphics::Mesh::Deserialize(j.at("bombMesh"), loader);
-			if (j.find("bombMaterial") != j.end())
-				this->bombMaterial = BeerEngine::Graphics::AMaterial::Deserialize(j.at("bombMaterial"), loader);
 		}
 
 		REGISTER_COMPONENT_CPP(Character)
