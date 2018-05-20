@@ -102,6 +102,7 @@ void Settings::applyCurrentSettings() {
 		BeerEngine::Window::GetInstance()->setWindowed();
 	if (audioManager)
 	{
+		std::cout << "================================applying sound settings" << std::endl;
 		this->audioManager->setVolume(this->settingsContainer.soundVolume / 100, this->settingsContainer.musicVolume / 100);
 	}
 }
