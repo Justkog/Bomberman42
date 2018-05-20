@@ -18,6 +18,7 @@
 #include "Core/Graphics/AMaterial.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
+#include "Game/SceneBasics.hpp"
 
 void    Versus3::init(void)
 {
@@ -36,77 +37,32 @@ void    Versus3::init(void)
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
-	cameraGO->name = "Camera";
 
-	// Managers
-	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-
-	// Misc
-	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
-	cameraGO->AddComponent<Game::Component::CameraController>();
-
-	// UI
-	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
-	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
-	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
-	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
-	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
-	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
-	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
-
 	soundManager->setClip("assets/sounds/clint.ogg");
 	soundManager->audioType = Game::Component::Music;
 
-	gameManager->inGameMenu = inGameMenu;
-	gameManager->gameOverMenu = gameOverMenu;
-	gameManager->victoryMenu = victoryMenu;
-	gameManager->timeUI = timeUI;
-	gameManager->startTimerUI = startTimerUI;
+	Game::SceneBasics::CreateCameraBasics(cameraGO);
+
+	auto gameManager = cameraGO->GetComponent<Game::Component::GameManager>();
+	cameraGO->GetComponent<Game::Component::Settings>()->audioManager = soundManager;
 	gameManager->audioManager = soundManager;
 
-	inGameMenu->uiManager = uiManager;
-	gameOverMenu->uiManager = uiManager;
-	victoryMenu->uiManager = uiManager;
-	startTimerUI->uiManager = uiManager;
+	gameManager->storyMode = false;
 
-	settings->audioManager = soundManager;
+	cameraGO->GetComponent<Game::Component::VictoryMenu>()->sceneLoader.name = "Random";
+	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Versus3";
+	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Versus3";
 
-	inGameMenu->setActive(false);
-	gameOverMenu->setActive(false);
-	victoryMenu->setActive(false);
-
-	timeUI->uiManager = uiManager;
-	itemsUI->uiManager = uiManager;
+	// cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
+	// 	{"test instr 1", 2.0}
+	// });
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
-	playerGO->name = "player";
-	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/bombermanRunTest.fbx");
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/body.png");
-	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	playerMat->setAlbedo(playerTex);
-	modelRenderer->addMaterial(0, playerMat);
-	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
-	auto *character = playerGO->AddComponent<Game::Component::Character>();
-	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
-	auto *player = playerGO->AddComponent<Game::Component::Player>();
-	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-		playerColl->_radius = 0.4;
-	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
-	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	player->srcAudio = as2;
-	player->itemSrcAudio = itemAs;
-	gameManager->playerBreakable = breakable;
-	modelRenderer->setAnimation("idle");
-	modelRenderer->setAnimationSpeed("idle", 0.25);
-	modelRenderer->setLoopAnimation(true);
-	modelRenderer->playAnimation();
+	Game::SceneBasics::CreatePlayerBasics(playerGO, gameManager, 1);
+	auto player = playerGO->GetComponent<Game::Component::Player>();
+	auto character = playerGO->GetComponent<Game::Component::Character>();
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();

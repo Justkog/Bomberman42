@@ -61,8 +61,8 @@ GameManager::GameManager(BeerEngine::GameObject *gameObject) :
 Component(gameObject),
 gameOverMenu(nullptr),
 victoryMenu(nullptr),
-storyMode(false),
-levelInstructions(nullptr)
+levelInstructions(nullptr),
+storyMode(false)
 {
 	instance = this;
 }

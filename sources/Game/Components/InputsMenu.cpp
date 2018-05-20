@@ -131,6 +131,7 @@ void InputsMenu::start()
 	setMapKey("move left");
 	setMapKey("move right");
 	setMapKey("bomb");
+	setMapKey("change view");
 }
 
 void InputsMenu::setUI(struct nk_context *ctx)
