@@ -11,6 +11,7 @@
 #include "Game/Components/GameOverMenu.hpp"
 #include "Game/Components/VictoryMenu.hpp"
 #include "Game/Components/GameProgression.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 #include "Game/Components/TimeUI.hpp"
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
@@ -44,9 +45,15 @@ void    Level4::init(void)
 
 	auto gameManager = cameraGO->GetComponent<Game::Component::GameManager>();
 	cameraGO->GetComponent<Game::Component::Settings>()->audioManager = soundManager;
+	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
+		{"Exploser tous les bloques.", 3.0},
+		{"Recupere la bombe d'or!", 3.0},
+		{"Des bloques sont déplacable", 3.0}
+	});
 	gameManager->audioManager = soundManager;
 
 	gameManager->storyMode = true;
+	
 
 	cameraGO->GetComponent<Game::Component::VictoryMenu>()->sceneLoader.name = "Level5";
 	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Level4";
