@@ -97,6 +97,7 @@ SRC = \
 	Game/Components/AdventureContinueMenu.cpp \
 	Game/Components/SettingsMenu.cpp \
 	Game/Components/InputsMenu.cpp \
+	Game/Components/Credits.cpp \
 	Game/Components/InGameMenu.cpp \
 	Game/Components/GameOverMenu.cpp \
 	Game/Components/VictoryMenu.cpp \
