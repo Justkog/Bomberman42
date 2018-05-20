@@ -63,6 +63,7 @@ SRC = \
 	Core/BeerRoutine/ARoutineRunner.cpp \
 	\
 	Game/SceneLoader.cpp \
+	Game/SceneBasics.cpp \
 	Game/SceneTest.cpp \
 	Game/SceneMain.cpp \
 	Game/Level1.cpp \

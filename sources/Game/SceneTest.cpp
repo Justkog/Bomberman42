@@ -37,6 +37,7 @@
 #include "Core/Graphics/ShaderProgram.hpp"
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
+#include "Game/SceneBasics.hpp"
 
 void    SceneTest::init(void)
 {
@@ -76,121 +77,39 @@ void    SceneTest::init(void)
 	materialA->setAlbedo(crate);
 	materialA->setNormal(crate_normal);
 	materialA->setBump(crate_bump);
-	// BeerEngine::Graphics::AMaterial *materialB = new BeerEngine::Graphics::AMaterial(shader);
-	// materialB->setAlbedo(crate);
-	// materialB->setNormal(crate_normal);
-	// BeerEngine::Graphics::AMaterial *materialC = new BeerEngine::Graphics::AMaterial(shader);
-	// materialC->setAlbedo(crate);
-	// BeerEngine::Graphics::AMaterial *material2 = new BeerEngine::Graphics::AMaterial(shader);
-	// material2->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
-	// material2->setAlbedo(crate);
 
-	// GameObject
-	//
-	// BeerEngine::GameObject *gameObject;
-	BeerEngine::Component::MeshRenderer *meshRenderer;
-	BeerEngine::Component::ModelRenderer *modelRenderer;
-
-	auto linesGO = instantiate<BeerEngine::GameObject>();
-	auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
-	linesGO->name = "lines Holder";
+	// auto linesGO = instantiate<BeerEngine::GameObject>();
+	// auto linesRenderer = linesGO->AddComponent<BeerEngine::Component::RaysRenderer>();
+	// linesGO->name = "lines Holder";
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
-	cameraGO->name = "Camera";
 
-	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
-	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-
-	cameraGO->AddComponent<Game::Component::CameraController>();
-	auto mouseRay = cameraGO->AddComponent<Game::Component::MouseRayTest>();
-	mouseRay->linesRenderer = linesRenderer;
-	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
-	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
-	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
-	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
-	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
-	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
-	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
-
-	gameManager->inGameMenu = inGameMenu;
-	gameManager->gameOverMenu = gameOverMenu;
-	gameManager->victoryMenu = victoryMenu;
-	gameManager->timeUI = timeUI;
-	gameManager->startTimerUI = startTimerUI;
-
 	soundManager->setClip("assets/sounds/clint.ogg");
 	soundManager->audioType = Game::Component::Music;
 
+	Game::SceneBasics::CreateCameraBasics(cameraGO);
+
+	auto gameManager = cameraGO->GetComponent<Game::Component::GameManager>();
+	cameraGO->GetComponent<Game::Component::Settings>()->audioManager = soundManager;
 	gameManager->audioManager = soundManager;
 
-	inGameMenu->uiManager = uiManager;
-	gameOverMenu->uiManager = uiManager;
-	victoryMenu->uiManager = uiManager;
-	startTimerUI->uiManager = uiManager;
+	gameManager->storyMode = false;
 
-	settings->audioManager = soundManager;
+	cameraGO->GetComponent<Game::Component::VictoryMenu>()->sceneLoader.name = "Random";
+	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Random";
+	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Random";
 
-	inGameMenu->setActive(false);
-	gameOverMenu->setActive(false);
-	victoryMenu->setActive(false);
-
-	timeUI->uiManager = uiManager;
-	itemsUI->uiManager = uiManager;
-
-	victoryMenu->sceneLoader.name = "Random";
-	gameOverMenu->sceneLoader.name = "Random";
-	inGameMenu->sceneLoader.name = "Random";
+	// cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
+	// 	{"test instr 1", 2.0}
+	// });
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
-	playerGO->name = "player";
-	// auto meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	// meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	// auto playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/player2.png");
-	// auto playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	// playerMat->setAlbedo(playerTex);
-	// meshRenderer->setMaterial(playerMat);
-	// playerGO->transform.scale = glm::vec3(1, 1, 1);
-	// auto character = playerGO->AddComponent<Game::Component::Character>();
-	// auto playerBreakable = playerGO->AddComponent<Game::Component::Breakable>();
-	// auto player = playerGO->AddComponent<Game::Component::Player>();
-	// auto routineTester = playerGO->AddComponent<Game::Component::BeerRoutineTester>();
-	// auto settings = playerGO->AddComponent<Game::Component::Settings>();
-//	meshRenderer = playerGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/bombermanRunTest.fbx");
-//	modelRenderer->load("assets/models/test.fbx");
-//	meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/body.png");
-	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	playerMat->setAlbedo(playerTex);
-	modelRenderer->addMaterial(0, playerMat);
-//	meshRenderer->setMaterial(playerMat);
-//	playerGO->transform.position = glm::vec3(0, 0, 0);
-	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
-//	playerGO->transform.scale = glm::vec3(0.5, 0.5, 0.5);
-	auto *character = playerGO->AddComponent<Game::Component::Character>();
-	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
-	auto *player = playerGO->AddComponent<Game::Component::Player>();
-	playerGO->AddComponent<Game::Component::BeerRoutineTester>();
-	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-	playerColl->_radius = 0.5;
-	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
-	playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	player->srcAudio = as2;
-	player->itemSrcAudio = itemAs;
-	// itemsUI->player = player;
-	gameManager->playerBreakable = breakable;
-	modelRenderer->setAnimation("idle");
-	modelRenderer->setAnimationSpeed("idle", 0.25);
-	modelRenderer->setLoopAnimation(true);
-	modelRenderer->playAnimation();
+	Game::SceneBasics::CreatePlayerBasics(playerGO, gameManager, 1);
+	auto player = playerGO->GetComponent<Game::Component::Player>();
+	auto character = playerGO->GetComponent<Game::Component::Character>();
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();
@@ -224,7 +143,7 @@ void    SceneTest::init(void)
 	//test obj house
 	auto objet = instantiate<BeerEngine::GameObject>();
 	objet->name = "house";
-	meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
+	auto meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
 	meshRenderer->setMesh("assets/models/HouseOBJ/house_01.obj");
 	auto objetTex = BeerEngine::Graphics::Texture::LoadJPG("assets/models/HouseOBJ/DSC_5871_.jpg");
 	auto objetMat = new BeerEngine::Graphics::AMaterial(shader);
