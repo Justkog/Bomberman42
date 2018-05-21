@@ -124,7 +124,7 @@ namespace BeerEngine
 			this->JsonSerializable::deserialize(j, loader);
 		}
 
-		Mesh * Mesh::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
+		Mesh *Mesh::Deserialize(const nlohmann::json & j, BeerEngine::JsonLoader & loader)
 		{
 			(void) loader;
 			if (j.is_null())
@@ -134,7 +134,7 @@ namespace BeerEngine
 				return (Assets::GetModel(path));
 			std::string type = j.at("type");
 			if (type != "")
-				return (BeerEngine::Graphics::Graphics::typeToMesh[type]);
+				return (NULL);
 			else
 				return NULL;
 		}
