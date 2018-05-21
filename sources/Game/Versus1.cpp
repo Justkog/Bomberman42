@@ -95,29 +95,24 @@ void    Versus1::init(void)
 	light->setIntensity(1.5f);
 
 	// Plane
-	BeerEngine::GameObject *mapGO;
-	mapGO = instantiate<BeerEngine::GameObject>();
-	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
-	mapMeshRenderer->setMaterial(material);
-	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
-	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
-	planeMat->setAlbedo(planeTex);
-	mapMeshRenderer->setMaterial(planeMat);
-	mapGO->transform.position = glm::vec3(-3, 0, 6);
-	mapGO->transform.scale = glm::vec3(40, 1, 40);
+	Game::SceneBasics::GeneratePlane(
+		this,
+		"assets/textures/grass.png", 
+		glm::vec2(80, 80), 
+		glm::vec2(0.5, 0.5), 
+		glm::vec3(-3, 0, 6), 
+		glm::vec3(40, 1, 40)
+	);
 
 	// Plane MAP
-	mapGO = instantiate<BeerEngine::GameObject>();
-	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(17, 13), glm::vec2(0, 0)));
-	mapMeshRenderer->setMaterial(material);
-	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
-	planeMat = new BeerEngine::Graphics::AMaterial(shader);
-	planeMat->setAlbedo(planeTex);
-	mapMeshRenderer->setMaterial(planeMat);
-	mapGO->transform.position = glm::vec3(0, 0.03, 7);
-	mapGO->transform.scale = glm::vec3(8.5, 1, 6.5);
+	Game::SceneBasics::GeneratePlane(
+		this,
+		"assets/textures/ground_color.png", 
+		glm::vec2(17, 13), 
+		glm::vec2(0, 0), 
+		glm::vec3(0, 0.03, 7), 
+		glm::vec3(8.5, 1, 6.5)
+	);
 
 	Game::SceneBasics::GenerateDecorations(this, glm::vec2(20, 15), glm::vec2(-20, 0), glm::vec2(10, 14), glm::vec2(-10, 0));
 

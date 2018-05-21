@@ -1,5 +1,3 @@
-
-#include <cstring>
 #include "Core/Audio/AudioListener.hpp"
 #include "Core/Audio/AudioSource.hpp"
 
@@ -20,7 +18,6 @@ namespace BeerEngine
 
         void	   AudioListener::Load()
         {
-            // int Choice = 0;
             // Recuperation des devices disponibles
             std::vector<std::string> Devices;
             // Vidage de la liste

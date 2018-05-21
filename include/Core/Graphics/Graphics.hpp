@@ -25,7 +25,7 @@ namespace BeerEngine
 		class Graphics
 		{
 		public:
-			static std::map<std::string, Mesh *> typeToMesh; /*!< */
+			static std::vector<Mesh *> meshList;
 			static Mesh				*plane; /*!< Model de plane predefini*/
 			static Mesh				*cube; /*!< Model de cube predefini*/
 			static Texture			*whiteTexture; /*!< texture completement blanche*/
@@ -42,6 +42,8 @@ namespace BeerEngine
 			static ShaderProgram	*shadowRenderShader;
 			static ShaderProgram	*shadowShader;
 
+
+			static void	deleteMesh(Mesh *mesh);
 			/*!
 			*  \brief Chargement
 			*  Chargement des composents predefini

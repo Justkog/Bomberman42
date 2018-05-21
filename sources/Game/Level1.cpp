@@ -55,7 +55,7 @@ void    Level1::init(void)
 	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Level1";
 
 	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
-		{"Exploser tous les bloques.", 3.0},
+		{"Exploser tous les blocs.", 3.0},
 		{"Recupere la bombe d'or!", 3.0}
 	});
 
@@ -91,28 +91,24 @@ void    Level1::init(void)
 	light->setIntensity(1.5f);
 
 	// Plane
-	BeerEngine::GameObject *mapGO;
-	mapGO = instantiate<BeerEngine::GameObject>();
-	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
-	// auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
-	auto planeTex = Assets::GetTexture("assets/textures/grass.png");
-	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
-	planeMat->setAlbedo(planeTex);
-	mapMeshRenderer->setMaterial(planeMat);
-	mapGO->transform.position = glm::vec3(-3, 0, 6);
-	mapGO->transform.scale = glm::vec3(40, 1, 40);
+	Game::SceneBasics::GeneratePlane(
+		this,
+		"assets/textures/grass.png", 
+		glm::vec2(80, 80), 
+		glm::vec2(0.5, 0.5), 
+		glm::vec3(-3, 0, 6), 
+		glm::vec3(40, 1, 40)
+	);
 
 	// Plane MAP
-	mapGO = instantiate<BeerEngine::GameObject>();
-	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(7, 9), glm::vec2(0)));
-	planeTex = Assets::GetTexture("assets/textures/ground_color.png");
-	planeMat = new BeerEngine::Graphics::AMaterial(shader);
-	planeMat->setAlbedo(planeTex);
-	mapMeshRenderer->setMaterial(planeMat);
-	mapGO->transform.position = glm::vec3(0, 0.03, 5);
-	mapGO->transform.scale = glm::vec3(3.5, 1, 4.5);
+	Game::SceneBasics::GeneratePlane(
+		this,
+		"assets/textures/ground_color.png", 
+		glm::vec2(7, 9), 
+		glm::vec2(0), 
+		glm::vec3(0, 0.03, 5), 
+		glm::vec3(3.5, 1, 4.5)
+	);
 
 	// Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(5, 10), glm::vec2(-5, 0));
 

@@ -174,4 +174,41 @@ namespace Game
 			}	
 		}
     }
+
+	void SceneBasics::GeneratePlane(BeerEngine::AScene *scene, 
+		std::string texturePath, 
+		glm::vec2 tiling, glm::vec2 offset, 
+		glm::vec3 position, glm::vec3 scale)
+	{
+		auto mapGO = scene->instantiate<BeerEngine::GameObject>();
+		BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+		mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(tiling, offset));
+		auto planeTex = Assets::GetTexture(texturePath);
+		auto planeMat = new BeerEngine::Graphics::AMaterial(Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl"));
+		planeMat->setAlbedo(planeTex);
+		mapMeshRenderer->setMaterial(planeMat);
+		mapGO->transform.position = position;
+		mapGO->transform.scale = scale;
+	}
+
+	void SceneBasics::GenerateModel(BeerEngine::AScene *scene,
+		std::string name,
+		std::string meshPath,
+		std::string albedoPath,
+		glm::vec3 position,
+		glm::vec3 rotation,
+		glm::vec3 scale)
+	{
+		auto objet = scene->instantiate<BeerEngine::GameObject>();
+		objet->name = name;
+		auto meshRenderer = objet->AddComponent<BeerEngine::Component::MeshRenderer>();
+		meshRenderer->setMesh(meshPath);
+		auto objetTex = Assets::GetTexture(albedoPath);
+		auto objetMat = new BeerEngine::Graphics::AMaterial(Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl"));
+		objetMat->setAlbedo(objetTex);
+		meshRenderer->setMaterial(objetMat);
+		objet->transform.position = position;
+		objet->transform.scale = scale;
+		objet->transform.rotation = rotation;
+	}
 }
