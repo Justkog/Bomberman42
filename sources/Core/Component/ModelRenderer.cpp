@@ -13,6 +13,7 @@
 #include "Core/Json/Json.hpp"
 #include "Core/Mathf.hpp"
 #include "Core/Graphics/Lights/ALight.hpp"
+#include "Core/Audio/AudioListener.hpp"
 
 namespace BeerEngine
 {
@@ -88,6 +89,7 @@ namespace BeerEngine
 			if (!_scene)
 			{
 				std::cerr << "Invalid ModelRenderer file !" << std::endl;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
 				exit(EXIT_FAILURE);
 			}
 
