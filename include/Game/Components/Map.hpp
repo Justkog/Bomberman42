@@ -110,12 +110,27 @@ namespace Game
 				mapBlocGO->name = "map block";
 				meshRenderer = mapBlocGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 				meshRenderer->setMesh(BeerEngine::Graphics::Graphics::cube);
-				auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png");
-				auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png");
 				auto *mapBlocMat = new BeerEngine::Graphics::AMaterial(shader);
-				mapBlocMat->setAlbedo(mapBlocTex);
-				mapBlocMat->setNormal(mapBlocNrm);
-				meshRenderer->setMaterial(mapBlocMat);
+				
+				if (kinematic != BeerEngine::Component::RBType::Kinematic)
+				{
+					auto *mapBlocTex = Assets::GetTexture("assets/models/metal_crate/crate.jpg");
+					auto *mapBlocNrm = Assets::GetTexture("assets/models/metal_crate/crate_normal.png");
+					auto *mapBlocMtl = Assets::GetTexture("assets/models/metal_crate/crate_metal.jpg");
+					auto *mapBlocRgt = Assets::GetTexture("assets/models/metal_crate/crate_rougth.png");
+					mapBlocMat->setAlbedo(mapBlocTex);
+					mapBlocMat->setNormal(mapBlocNrm);
+					mapBlocMat->setMetalicMap(mapBlocMtl);
+					mapBlocMat->setRougthnessMap(mapBlocRgt);
+				}
+				else
+				{
+					auto *mapBlocTex = Assets::GetTexture("assets/textures/wall.png");
+					auto *mapBlocNrm = Assets::GetTexture("assets/textures/wall_normal.png");
+					mapBlocMat->setAlbedo(mapBlocTex);
+					mapBlocMat->setNormal(mapBlocNrm);
+				}
+				
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
 				mapBlocGO->AddComponent<T>();
