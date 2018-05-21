@@ -30,9 +30,7 @@ void    Level5::init(void)
 
 	// Shader
 	auto shader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
-	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
-	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
-
+	
 	// GameObject
 	// BeerEngine::Component::MeshRenderer *meshRenderer;
 	BeerEngine::Component::ModelRenderer *modelRenderer;

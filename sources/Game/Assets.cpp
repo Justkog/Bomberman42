@@ -78,7 +78,7 @@ void			Assets::load(void)
 	if (isload)
 		return;
 	// autoload("assets");
-	bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+	// bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
 	// auto *bombTexture = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
 	// bombMaterial->setAlbedo(bombTexture);
 	isload = true;
