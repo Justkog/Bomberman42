@@ -192,18 +192,15 @@ void    SceneRandom::init(void)
 	light->setColor(glm::vec4(1, 0.9, 0.8, 1));
 	light->setIntensity(1.5f);
 
-	// plane
-	BeerEngine::GameObject *mapGO;
-	mapGO = instantiate<BeerEngine::GameObject>();
-	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
-	mapMeshRenderer->setMaterial(material);
-	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
-	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
-	planeMat->setAlbedo(planeTex);
-	mapMeshRenderer->setMaterial(planeMat);
-	mapGO->transform.position = glm::vec3(-3, 0, 6);
-	mapGO->transform.scale = glm::vec3(40, 1, 40);
+	// Plane
+	Game::SceneBasics::GeneratePlane(
+		this,
+		"assets/textures/grass.png", 
+		glm::vec2(80, 80), 
+		glm::vec2(0.5, 0.5), 
+		glm::vec3(-3, 0, 6), 
+		glm::vec3(40, 1, 40)
+	);
 
 	Game::SceneBasics::GenerateDecorations(this, glm::vec2(20, 15), glm::vec2(-20, 0), glm::vec2(10, 20), glm::vec2(-10, 0));
 
