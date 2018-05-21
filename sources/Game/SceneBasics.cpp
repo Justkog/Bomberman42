@@ -142,8 +142,6 @@ namespace Game
 			"assets/models/Decoration/trees/Textures/colors.png"
 		};
 
-		std::vector<std::string> used;
-
 		for (int x = 0; x < max.x - min.x + 1; x++)
 		{
 			for (int y = 0; y < max.y - min.x + 1; y++)

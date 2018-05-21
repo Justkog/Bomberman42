@@ -57,7 +57,9 @@ namespace BeerEngine
 		DirectionalLight::~DirectionalLight()
 		{
 			if (_shadowMap)
+			{
 				delete _shadowMap;
+			}
 		}
 
 		void 	DirectionalLight::bind()
