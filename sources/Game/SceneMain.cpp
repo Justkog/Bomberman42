@@ -87,11 +87,12 @@ void    SceneMain::init(void)
 	settingsMenu->audioManager = audioManager;
 	inputsMenu->settingsMenu = settingsMenu;
 	credits->mainMenu = mainMenu;
-	
+
 	settings->audioManager = audioManager;
 
 // init musique du menu
 	audioManager->setClip("assets/sounds/september.ogg");
+	audioManager->setLooping(true);
 	audioManager->audioType = Game::Component::Music;
 
 	// mainMenu->setActive(false);

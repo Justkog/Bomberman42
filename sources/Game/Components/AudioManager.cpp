@@ -77,6 +77,10 @@ namespace Game
 			srcAudio.setVolume(soundVolume);
     }
 
+	void 	AudioManager::setLooping(bool b)
+	{
+		srcAudio.setLooping(b);
+	}
 	float		AudioManager::getSoundVolume()
 	{
 		return _soundVolume;

@@ -38,6 +38,7 @@ void    Versus2::init(void)
 
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
 	soundManager->setClip("assets/sounds/wiggle.ogg");
+	soundManager->setLooping(true);
 	soundManager->audioType = Game::Component::Music;
 
 	Game::SceneBasics::CreateCameraBasics(cameraGO);
@@ -94,38 +95,38 @@ void    Versus2::init(void)
 	// Plane
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/grass.png", 
-		glm::vec2(80, 80), 
-		glm::vec2(0.5, 0.5), 
-		glm::vec3(-3, 0, 6), 
+		"assets/textures/grass.png",
+		glm::vec2(80, 80),
+		glm::vec2(0.5, 0.5),
+		glm::vec3(-3, 0, 6),
 		glm::vec3(40, 1, 40)
 	);
 
 	// Plane MAP
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/ground_color.png", 
-		glm::vec2(9, 13), 
-		glm::vec2(0, 0), 
-		glm::vec3(0, 0.03, 7), 
+		"assets/textures/ground_color.png",
+		glm::vec2(9, 13),
+		glm::vec2(0, 0),
+		glm::vec3(0, 0.03, 7),
 		glm::vec3(4.5, 1, 6.5)
 	);
 
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/ground_color.png", 
-		glm::vec2(4, 4), 
-		glm::vec2(0, 0), 
-		glm::vec3(6.5, 0.03, 6.5), 
+		"assets/textures/ground_color.png",
+		glm::vec2(4, 4),
+		glm::vec2(0, 0),
+		glm::vec3(6.5, 0.03, 6.5),
 		glm::vec3(2, 1, 2)
 	);
 
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/ground_color.png", 
-		glm::vec2(4, 4), 
-		glm::vec2(0, 0), 
-		glm::vec3(-6.5, 0.03, 6.5), 
+		"assets/textures/ground_color.png",
+		glm::vec2(4, 4),
+		glm::vec2(0, 0),
+		glm::vec3(-6.5, 0.03, 6.5),
 		glm::vec3(2, 1, 2)
 	);
 

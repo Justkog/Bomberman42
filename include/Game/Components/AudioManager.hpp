@@ -43,6 +43,7 @@ namespace Game
 					void 		setPosition(float x, float y, float z);
 			void    setClip(std::string const &filename);
 			void    setVolume(float soundVolume, float musicVolume);
+			void 	setLooping(bool b);
 			float		getSoundVolume();
 			float		getMusicVolume();
 

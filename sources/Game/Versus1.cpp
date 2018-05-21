@@ -39,6 +39,7 @@ void    Versus1::init(void)
 
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
 	soundManager->setClip("assets/sounds/vai.ogg");
+	soundManager->setLooping(true);
 	soundManager->audioType = Game::Component::Music;
 
 	Game::SceneBasics::CreateCameraBasics(cameraGO);
@@ -95,20 +96,20 @@ void    Versus1::init(void)
 	// Plane
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/grass.png", 
-		glm::vec2(80, 80), 
-		glm::vec2(0.5, 0.5), 
-		glm::vec3(-3, 0, 6), 
+		"assets/textures/grass.png",
+		glm::vec2(80, 80),
+		glm::vec2(0.5, 0.5),
+		glm::vec3(-3, 0, 6),
 		glm::vec3(40, 1, 40)
 	);
 
 	// Plane MAP
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/ground_color.png", 
-		glm::vec2(17, 13), 
-		glm::vec2(0, 0), 
-		glm::vec3(0, 0.03, 7), 
+		"assets/textures/ground_color.png",
+		glm::vec2(17, 13),
+		glm::vec2(0, 0),
+		glm::vec3(0, 0.03, 7),
 		glm::vec3(8.5, 1, 6.5)
 	);
 

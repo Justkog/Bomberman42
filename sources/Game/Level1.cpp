@@ -40,6 +40,7 @@ void    Level1::init(void)
 
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
 	soundManager->setClip("assets/sounds/clint.ogg");
+	soundManager->setLooping(true);
 	soundManager->audioType = Game::Component::Music;
 
 	Game::SceneBasics::CreateCameraBasics(cameraGO);
@@ -93,20 +94,20 @@ void    Level1::init(void)
 	// Plane
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/grass.png", 
-		glm::vec2(80, 80), 
-		glm::vec2(0.5, 0.5), 
-		glm::vec3(-3, 0, 6), 
+		"assets/textures/grass.png",
+		glm::vec2(80, 80),
+		glm::vec2(0.5, 0.5),
+		glm::vec3(-3, 0, 6),
 		glm::vec3(40, 1, 40)
 	);
 
 	// Plane MAP
 	Game::SceneBasics::GeneratePlane(
 		this,
-		"assets/textures/ground_color.png", 
-		glm::vec2(7, 9), 
-		glm::vec2(0), 
-		glm::vec3(0, 0.03, 5), 
+		"assets/textures/ground_color.png",
+		glm::vec2(7, 9),
+		glm::vec2(0),
+		glm::vec3(0, 0.03, 5),
 		glm::vec3(3.5, 1, 4.5)
 	);
 
