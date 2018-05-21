@@ -27,7 +27,12 @@ namespace BeerEngine
 		}
 
 		ARoutineRunner::~ARoutineRunner()
-		{}
+		{
+			for (size_t i = 0; i < _currentRoutines.size(); i++)
+			{
+				delete _currentRoutines[i];
+			}	
+		}
 
 		void ARoutineRunner::startRoutine(BeerEngine::BeerRoutine::BeerRoutine &routine)
 		{
@@ -64,6 +69,7 @@ namespace BeerEngine
 				if (!cR->hasActionsLeft())
 				{
 					_currentRoutines.erase(std::find(_currentRoutines.begin(), _currentRoutines.end(), cR));
+					delete cR;
 					i--;
 				}
 			}

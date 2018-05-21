@@ -29,7 +29,9 @@ namespace BeerEngine
 		}
 
 		BeerRoutine::~BeerRoutine()
-		{}
+		{
+			
+		}
 
 		BeerRoutine &BeerRoutine::addAction(std::function<bool (void)> action)
 		{

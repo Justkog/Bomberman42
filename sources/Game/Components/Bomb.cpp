@@ -222,8 +222,9 @@ namespace Game
 		{
 			if (render != nullptr)
 			{
-				auto	*clip = Assets::GetAudioClip("assets/sounds/Bomb+1.wav");
-				auto	*srcAudio = new BeerEngine::Audio::AudioSource(_gameObject);
+				auto clip = Assets::GetAudioClip("assets/sounds/Bomb+1.wav");
+				auto srcAudio = _gameObject->AddComponent<BeerEngine::Audio::AudioSource>();
+				
 				srcAudio->setBuffer(clip->getBuffer());
 				srcAudio->setPosition(_gameObject->transform.position.x, _gameObject->transform.position.y, _gameObject->transform.position.z);
 				srcAudio->setVolume(Game::Component::AudioManager::instance->getSoundVolume());
