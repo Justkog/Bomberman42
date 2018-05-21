@@ -2,6 +2,7 @@
 #include "Core/IO/FileUtils.hpp"
 #include "Game/Assets.hpp"
 #include <regex>
+#include "Core/Audio/AudioListener.hpp"
 
 namespace BeerEngine
 {
@@ -91,6 +92,8 @@ namespace BeerEngine
 					std::cerr << "Other Shader:" << std::endl;
 				std::cerr << log;
 				delete[] log;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
 			}
 		}
 
@@ -154,6 +157,8 @@ namespace BeerEngine
 			else
 			{
 				std::cerr << "Failed to load: " << path << "\n";
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
 			}
 			return result;
 		}

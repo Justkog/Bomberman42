@@ -98,7 +98,7 @@ namespace BeerEngine
 
 			data = stbi_load(path, &width, &height, &n, 4);
 			if (!data)
-				std::logic_error(std::string("[Texture PNG] File could not be load ") + path);
+				throw std::logic_error(std::string("[Texture PNG] File could not be load ") + path);
 			auto texture = new Texture(width, height, data, GL_RGBA);
 			texture->_sourceFile = path;
 			return (texture);
@@ -113,7 +113,7 @@ namespace BeerEngine
 
 			data = stbi_load(path, &width, &height, &n, 4);
 			if (!data)
-				std::logic_error(std::string("[Texture JPG] File could not be load ") + path);
+				throw std::logic_error(std::string("[Texture JPG] File could not be load ") + path);
 			auto texture = new Texture(width, height, data, GL_RGBA);
 			texture->_sourceFile = path;
 			return (texture);
@@ -128,7 +128,7 @@ namespace BeerEngine
 
 			data = stbi_load(path, &width, &height, &n, 4);
 			if (!data)
-				std::logic_error(std::string("[Texture JPG] File could not be load ") + path);
+				throw std::logic_error(std::string("[Texture JPG] File could not be load ") + path);
 			auto texture = new Texture(width, height, data, GL_RGBA);
 			texture->_sourceFile = path;
 			return (texture);

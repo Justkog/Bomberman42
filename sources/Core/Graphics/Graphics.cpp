@@ -7,6 +7,7 @@
 #include "Core/Graphics/MeshBuilder.hpp"
 #include "Core/IO/FileUtils.hpp"
 #include "Game/Assets.hpp"
+#include "Core/Audio/AudioListener.hpp"
 
 namespace BeerEngine
 {
@@ -254,7 +255,10 @@ namespace BeerEngine
 			  std::cerr << err << std::endl;
 
 			if (!ret)
-			  exit(1);
+			{
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
+			}
 
 			// Loop over shapes
 			for (size_t s = 0; s < shapes.size(); s++)

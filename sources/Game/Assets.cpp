@@ -5,6 +5,7 @@
 #include "Core/Graphics/Texture.hpp"
 #include "Core/Graphics/Graphics.hpp"
 #include "Core/Graphics/AMaterial.hpp"
+#include "Core/Audio/AudioListener.hpp"
 
 Assets	*Assets::_Instance = nullptr;
 
@@ -111,7 +112,18 @@ BeerEngine::Audio::AudioClip		*Assets::GetAudioClip(std::string path)
 	else
 	{
 		std::cout << "[SOUND] " << name << std::endl;
-		return Assets::GetInstance()->audioclips[name] = new BeerEngine::Audio::AudioClip(name);
+		BeerEngine::Audio::AudioClip *clip;
+		try
+		{
+			clip = new BeerEngine::Audio::AudioClip(name);
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+			BeerEngine::Audio::AudioListener::DestroyOpenAL();
+			exit(EXIT_FAILURE);
+		}
+		return Assets::GetInstance()->audioclips[name] = clip;
 	}
 }
 
@@ -125,25 +137,69 @@ BeerEngine::Graphics::Texture		*Assets::GetTexture(std::string path)
 		return (Assets::GetInstance()->textures[name]);
 	else
 	{
+		BeerEngine::Graphics::Texture *tex = NULL;
+		std::cout << "[TEXTURE] " << name << std::endl;
 		if (has_suffix(name, ".png"))
 		{
-			std::cout << "[TEXTURE] " << name << std::endl;
-			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadPNG(name.c_str());
+			try
+			{
+				tex = BeerEngine::Graphics::Texture::LoadPNG(name.c_str());
+			}
+			catch (const std::exception& e)
+			{
+				std::cerr << e.what() << std::endl;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
+			}
+			return Assets::GetInstance()->textures[name] = tex;
 		}
 		else if (has_suffix(name, ".bmp"))
 		{
-			std::cout << "[TEXTURE] " << name << std::endl;
-			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadBMP(name.c_str());
+			// std::cout << "[TEXTURE] " << name << std::endl;
+			try
+			{
+				tex = BeerEngine::Graphics::Texture::LoadBMP(name.c_str());
+			}
+			catch (const std::exception& e)
+			{
+				std::cerr << e.what() << std::endl;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
+			}
+			return Assets::GetInstance()->textures[name] = tex;
+			// return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadBMP(name.c_str());
 		}
 		else if (has_suffix(name, ".tga"))
 		{
-			std::cout << "[TEXTURE] " << name << std::endl;
-			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadTGA(name.c_str());
+			// std::cout << "[TEXTURE] " << name << std::endl;
+			try
+			{
+				tex = BeerEngine::Graphics::Texture::LoadTGA(name.c_str());
+			}
+			catch (const std::exception& e)
+			{
+				std::cerr << e.what() << std::endl;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
+			}
+			return Assets::GetInstance()->textures[name] = tex;
+			// return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadTGA(name.c_str());
 		}
 		else if (has_suffix(name, ".jpg") || has_suffix(name, ".jpeg"))
 		{
-			std::cout << "[TEXTURE] " << name << std::endl;
-			return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadJPG(name.c_str());
+			// std::cout << "[TEXTURE] " << name << std::endl;
+			try
+			{
+				tex = BeerEngine::Graphics::Texture::LoadJPG(name.c_str());
+			}
+			catch (const std::exception& e)
+			{
+				std::cerr << e.what() << std::endl;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
+				exit(EXIT_FAILURE);
+			}
+			return Assets::GetInstance()->textures[name] = tex;
+			// return Assets::GetInstance()->textures[name] = BeerEngine::Graphics::Texture::LoadJPG(name.c_str());
 		}
 		else
 			return NULL;
