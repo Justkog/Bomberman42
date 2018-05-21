@@ -124,7 +124,16 @@ void Settings::loadSettings() {
 	std::string content = BeerEngine::IO::FileUtils::LoadFile(this->filePath);
 	nlohmann::json j;
 	if (content != "")
-		j = nlohmann::json::parse(content);
+	{
+		try
+		{
+			j = nlohmann::json::parse(content);
+		}
+		catch(const std::exception& e)
+		{
+			j = {};
+		}
+	}
 	else
 		j = {};	
 	this->settingsContainer = j;
