@@ -255,14 +255,14 @@ void GameManager::setPause(bool state)
 	{
 		onGamePause.emit();
 		audioManager->pause();
-		std::cout << "pausing game" << std::endl;
+		// std::cout << "pausing game" << std::endl;
 		BeerEngine::Time::gameSpeed = 0.0f;
 	}
 	else
 	{
 		onGameResume.emit();
 		audioManager->continuePlaying();
-		std::cout << "resuming game" << std::endl;
+		// std::cout << "resuming game" << std::endl;
 		BeerEngine::Time::gameSpeed = 1.0f;
 	}
 }

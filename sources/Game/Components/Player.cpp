@@ -122,7 +122,7 @@ namespace Game
 			// 	this->destroy();
             if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["bomb"]))
 			{
-				std::cout << "drop requested" << std::endl;
+				// std::cout << "drop requested" << std::endl;
                 _character->dropBomb();
 			}
             // if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::KP_1))

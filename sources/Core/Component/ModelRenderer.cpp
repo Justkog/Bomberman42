@@ -95,7 +95,7 @@ namespace BeerEngine
 			{
 				_animations[_scene->mAnimations[i]->mName.data].index = i;
 				_animations[_scene->mAnimations[i]->mName.data].speed = 1;
-				std::cout << "Animation: " << _scene->mAnimations[i]->mName.data << std::endl;
+				// std::cout << "Animation: " << _scene->mAnimations[i]->mName.data << std::endl;
 			}
 
 			aiMatrix4x4 globalInverseTransform = _scene->mRootNode->mTransformation;

@@ -250,8 +250,8 @@ namespace BeerEngine
 			std::string err;
 			bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, path.c_str());
 
-			if (!err.empty()) // `err` may contain warning message.
-			  std::cerr << err << std::endl;
+			// if (!err.empty()) // `err` may contain warning message.
+			//   std::cerr << err << std::endl;
 
 			if (!ret)
 			  exit(1);
