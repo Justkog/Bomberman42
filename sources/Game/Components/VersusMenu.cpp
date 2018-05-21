@@ -73,7 +73,7 @@ std::ostream &				operator<<(std::ostream & o, VersusMenu const & i)
 
 void VersusMenu::start()
 {
-	std::cout << "VersusMenu start" << std::endl;
+	// std::cout << "VersusMenu start" << std::endl;
 	maps.push_back({"level 1", "assets/scenes/level1.scene"});
 	maps.push_back({"level 2", "assets/scenes/level2.scene"});
 	maps.push_back({"level 3", "assets/scenes/level3.scene"});

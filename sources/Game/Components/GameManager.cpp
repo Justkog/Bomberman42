@@ -222,7 +222,7 @@ void GameManager::startGame()
 
 void GameManager::start()
 {
-	std::cout << "GameManager start" << std::endl;
+	// std::cout << "GameManager start" << std::endl;
 	// playerDeathBinding = Binding::create(playerBreakable, this);
 	// playerBreakable->add_binding(playerDeathBinding);
 	playerBreakable->onDestruction.bind(&GameManager::setGameOver, this);

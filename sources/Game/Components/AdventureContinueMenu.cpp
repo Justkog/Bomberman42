@@ -78,7 +78,7 @@ void AdventureContinueMenu::updateAvailableLevels()
 
 void AdventureContinueMenu::start()
 {
-	std::cout << "AdventureContinueMenu start" << std::endl;
+	// std::cout << "AdventureContinueMenu start" << std::endl;
 	updateAvailableLevels();
 	gameProgression->onChange.bind(&AdventureContinueMenu::updateAvailableLevels, this);
 }

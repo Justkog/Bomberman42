@@ -66,7 +66,7 @@ std::ostream &				operator<<(std::ostream & o, GameOverMenu const & i)
 
 void GameOverMenu::start()
 {
-	std::cout << "GameOverMenu start" << std::endl;
+	// std::cout << "GameOverMenu start" << std::endl;
 	backgroundImage = uiManager->loadSprite("assets/textures/gameOverBackground.png");
 	youLoseImage = uiManager->loadSprite("assets/textures/You-lose.png");
 }

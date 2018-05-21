@@ -153,7 +153,7 @@ namespace BeerEngine
 		auto it = std::find(_toEnable.begin(), _toEnable.end(), comp);
 		if (it != _toEnable.end())
 		{
-			std::cout << "comp was about to be enabled" << std::endl;
+			// std::cout << "comp was about to be enabled" << std::endl;
 			comp->_isActive = false;
 			_toEnable.erase(it);
 			return;

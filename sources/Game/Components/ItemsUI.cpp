@@ -73,7 +73,7 @@ void ItemsUI::acknowledgePlayerDeath(glm::vec3 pos, int value)
 
 void ItemsUI::start()
 {
-	std::cout << "ItemsUI start" << std::endl;
+	// std::cout << "ItemsUI start" << std::endl;
 	shoeImage = uiManager->loadSprite("assets/textures/shoe.png");
 	bombImage = uiManager->loadSprite("assets/textures/bomb.png");
 	rangeImage = uiManager->loadSprite("assets/textures/range.png");

@@ -65,7 +65,7 @@ std::ostream &				operator<<(std::ostream & o, Credits const & i)
 
 void Credits::start()
 {
-	std::cout << "Credits start" << std::endl;
+	// std::cout << "Credits start" << std::endl;
 }
 
 void Credits::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)

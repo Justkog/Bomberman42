@@ -2,5 +2,5 @@
 
 void    GenericScene::init(void)
 {
-	std::cout << "init end" << "\n";
+	// std::cout << "init end" << "\n";
 }

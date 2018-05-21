@@ -65,14 +65,14 @@ std::ostream &				operator<<(std::ostream & o, BackgroundDrawer const & i)
 
 void BackgroundDrawer::start()
 {
-	std::cout << "BackgroundDrawer start" << std::endl;
+	// std::cout << "BackgroundDrawer start" << std::endl;
 }
 
 void BackgroundDrawer::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
 	(void) ctx;
 	(void) fonts;
-	std::cout << "start UI background drawer" << std::endl;
+	// std::cout << "start UI background drawer" << std::endl;
 }
 
 void BackgroundDrawer::renderUI(struct nk_context *ctx)

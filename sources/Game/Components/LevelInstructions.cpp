@@ -75,7 +75,7 @@ void LevelInstructions::setInstructions(std::vector<GameInstruction> instruction
 
 void LevelInstructions::start()
 {
-	std::cout << "LevelInstructions start" << std::endl;
+	// std::cout << "LevelInstructions start" << std::endl;
 }
 
 void LevelInstructions::update()

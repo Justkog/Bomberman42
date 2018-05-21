@@ -66,7 +66,7 @@ std::ostream &				operator<<(std::ostream & o, InGameMenu const & i)
 
 void InGameMenu::start()
 {
-	std::cout << "InGameMenu start" << std::endl;
+	// std::cout << "InGameMenu start" << std::endl;
 }
 
 void InGameMenu::enable()
@@ -90,7 +90,7 @@ void InGameMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *
 {
 	(void) ctx;
 	(void) fonts;
-	std::cout << "start UI main menu" << std::endl;
+	// std::cout << "start UI main menu" << std::endl;
 }
 
 void InGameMenu::renderUI(struct nk_context *ctx)

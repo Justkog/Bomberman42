@@ -25,7 +25,7 @@
 
 void    LevelEnd::init(void)
 {
-	std::cout << "init level6 scene" << std::endl;
+	// std::cout << "init level6 scene" << std::endl;
 
 	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/raregardener-cartoonskybox-04-blue.jpg", 512);
 	setSkybox(skyboxCubemap);

@@ -73,7 +73,7 @@ std::ostream &				operator<<(std::ostream & o, MouseRayTest const & i)
 
 void MouseRayTest::start()
 {
-	std::cout << "MouseRayTest start" << std::endl;
+	// std::cout << "MouseRayTest start" << std::endl;
 	clicking = false;
 }
 

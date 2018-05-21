@@ -63,7 +63,7 @@ std::ostream &				operator<<(std::ostream & o, UIThemeManager const & i)
 
 void UIThemeManager::start()
 {
-	std::cout << "UIThemeManager start" << std::endl;
+	// std::cout << "UIThemeManager start" << std::endl;
 }
 
 void UIThemeManager::saveDefaultUI(struct nk_context *ctx)
@@ -87,7 +87,7 @@ void UIThemeManager::resetToDefaultUI(struct nk_context *ctx)
 
 void UIThemeManager::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)
 {
-	std::cout << "start UI theme manager" << std::endl;
+	// std::cout << "start UI theme manager" << std::endl;
 	saveDefaultUI(ctx);
 	available_fonts = fonts;
 

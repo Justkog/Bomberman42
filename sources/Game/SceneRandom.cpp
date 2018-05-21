@@ -47,7 +47,7 @@ void    SceneRandom::init(void)
 
 	// return;
 
-	std::cout << "init test scene" << "\n";
+	// std::cout << "init test scene" << "\n";
 
 	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/pano_1.jpg", 512);
 	setSkybox(skyboxCubemap);
