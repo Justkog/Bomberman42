@@ -117,7 +117,7 @@ namespace Game
 					auto *mapBlocTex = Assets::GetTexture("assets/models/metal_crate/crate.jpg");
 					auto *mapBlocNrm = Assets::GetTexture("assets/models/metal_crate/crate_normal.png");
 					auto *mapBlocMtl = Assets::GetTexture("assets/models/metal_crate/crate_metal.jpg");
-					auto *mapBlocRgt = Assets::GetTexture("assets/models/metal_crate/crate_rougth.png");
+					auto *mapBlocRgt = Assets::GetTexture("assets/models/metal_crate/crate_rougth.jpg");
 					mapBlocMat->setAlbedo(mapBlocTex);
 					mapBlocMat->setNormal(mapBlocNrm);
 					mapBlocMat->setMetalicMap(mapBlocMtl);
@@ -131,6 +131,7 @@ namespace Game
 					mapBlocMat->setNormal(mapBlocNrm);
 				}
 				
+				meshRenderer->setMaterial(mapBlocMat);
 				mapBlocGO->transform.position = pos;
 				mapBlocGO->transform.scale = scale;
 				mapBlocGO->AddComponent<T>();
