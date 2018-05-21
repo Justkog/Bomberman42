@@ -125,7 +125,7 @@ void InputsMenu::updateDisplayedInputKeys()
 
 void InputsMenu::start()
 {
-	std::cout << "InputsMenu start" << std::endl;
+	// std::cout << "InputsMenu start" << std::endl;
 	setMapKey("move up");
 	setMapKey("move down");
 	setMapKey("move left");
@@ -156,7 +156,7 @@ void InputsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *
 {
 	(void) ctx;
 	(void) fonts;
-	std::cout << "start UI inputs menu" << std::endl;
+	// std::cout << "start UI inputs menu" << std::endl;
 }
 
 

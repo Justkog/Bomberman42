@@ -24,7 +24,7 @@
 
 void    Level5::init(void)
 {
-	std::cout << "init level5 scene" << std::endl;
+	// std::cout << "init level5 scene" << std::endl;
 
 	BeerEngine::Graphics::Cubemap *skyboxCubemap = new BeerEngine::Graphics::Cubemap("assets/skyboxes/pano_1.jpg", 512);
 	setSkybox(skyboxCubemap);

@@ -110,7 +110,7 @@ void Message::updateDisplay(std::string text)
 
 void Message::start()
 {
-	std::cout << "Message start" << std::endl;
+	// std::cout << "Message start" << std::endl;
 	// display("Test Message Test Message Test Message Test Message Test Message Test Message");
 }
 

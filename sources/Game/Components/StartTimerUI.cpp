@@ -69,7 +69,7 @@ void StartTimerUI::updateDisplay(std::string text)
 
 void StartTimerUI::start()
 {
-	std::cout << "StartTimerUI start" << std::endl;
+	// std::cout << "StartTimerUI start" << std::endl;
 }
 
 void StartTimerUI::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fonts)

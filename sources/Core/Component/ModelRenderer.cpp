@@ -601,7 +601,7 @@ namespace BeerEngine
 
 		ModelRenderer	&ModelRenderer::addMaterial(const int &index, Graphics::AMaterial *material)
 		{
-			std::cout << "Adding: " << material << std::endl;
+			// std::cout << "Adding: " << material << std::endl;
 			_materials[index] = material;
 			return (*this);
 		}

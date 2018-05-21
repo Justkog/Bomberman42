@@ -71,7 +71,7 @@ void TimeUI::startClock()
 
 void TimeUI::start()
 {
-	std::cout << "TimeUI start" << std::endl;
+	// std::cout << "TimeUI start" << std::endl;
 	backGround = uiManager->loadSprite("assets/textures/stone_panel.png");
 	// tvScreen = uiManager->loadSprite("assets/textures/timetvscreen.png");
 	timeSinceGameStart = 0;
@@ -87,7 +87,7 @@ void TimeUI::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> fo
 {
 	(void) ctx;
 	(void) fonts;
-	std::cout << "start UI TimeUI" << std::endl;
+	// std::cout << "start UI TimeUI" << std::endl;
 }
 
 std::string	formatTime(double time)

@@ -68,7 +68,7 @@ std::ostream &				operator<<(std::ostream & o, VictoryMenu const & i)
 
 void VictoryMenu::start()
 {
-	std::cout << "VictoryMenu start" << std::endl;
+	// std::cout << "VictoryMenu start" << std::endl;
 	backgroundImage = uiManager->loadSprite("assets/textures/victoryBackground.png");
 	titleImage = uiManager->loadSprite("assets/textures/You-win.png");
 }

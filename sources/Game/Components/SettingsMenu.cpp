@@ -71,7 +71,7 @@ std::ostream &				operator<<(std::ostream & o, SettingsMenu const & i)
 
 void SettingsMenu::start()
 {
-	std::cout << "SettingsMenu start" << std::endl;
+	// std::cout << "SettingsMenu start" << std::endl;
 	musicVolume = 50.0f;
 	soundVolume = 50.0f;
 }
@@ -94,7 +94,7 @@ void SettingsMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font
 	(void) ctx;
 	(void) fonts;
 
-	std::cout << "start UI settings menu" << std::endl;
+	// std::cout << "start UI settings menu" << std::endl;
 	mWindow = uiManager->defaultWindow;
 
 	mWindow.fixed_background = nk_style_item_hide();

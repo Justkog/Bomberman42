@@ -67,7 +67,7 @@ namespace Game
 
 		void    CameraController::start(void)
 		{
-			std::cout << "cam start" << "\n";
+			// std::cout << "cam start" << "\n";
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
 			startAnimation = false;

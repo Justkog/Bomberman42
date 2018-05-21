@@ -67,7 +67,7 @@ std::ostream &				operator<<(std::ostream & o, AdventureMenu const & i)
 
 void AdventureMenu::start()
 {
-	std::cout << "AdventureMenu start" << std::endl;
+	// std::cout << "AdventureMenu start" << std::endl;
 	sceneLoader.name = "Level1";
 }
 

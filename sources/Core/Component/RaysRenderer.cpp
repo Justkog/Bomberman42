@@ -77,7 +77,7 @@ std::ostream &				operator<<(std::ostream & o, RaysRenderer const & i)
 
 void RaysRenderer::start()
 {
-	std::cout << "RaysRenderer start" << std::endl;
+	// std::cout << "RaysRenderer start" << std::endl;
 	old_size = 0;
 }
 

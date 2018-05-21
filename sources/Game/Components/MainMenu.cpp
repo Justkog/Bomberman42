@@ -72,7 +72,7 @@ std::ostream &				operator<<(std::ostream & o, MainMenu const & i)
 
 void MainMenu::start()
 {
-	std::cout << "MainMenu start" << std::endl;
+	// std::cout << "MainMenu start" << std::endl;
 	// uiInit = true;
 }
 
@@ -85,7 +85,7 @@ void MainMenu::startUI(struct nk_context *ctx, std::map<std::string, nk_font *> 
 {
 	(void) ctx;
 	(void) fonts;
-	std::cout << "start UI main menu" << std::endl;
+	// std::cout << "start UI main menu" << std::endl;
 	mWindow = uiManager->defaultWindow;
 
 	mWindow.fixed_background = nk_style_item_hide();

@@ -40,7 +40,7 @@ void    SceneMain::init(void)
 
 	// return;
 
-	std::cout << "init main scene" << "\n";
+	// std::cout << "init main scene" << "\n";
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
@@ -103,5 +103,5 @@ void    SceneMain::init(void)
 	credits->setActive(false);
 
 	this->save("assets/scenes/main.scene");
-	std::cout << "init end" << "\n";
+	// std::cout << "init end" << "\n";
 }

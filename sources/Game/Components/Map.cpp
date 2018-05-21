@@ -62,7 +62,7 @@ namespace Game
         void    Map::start(void)
         {
 			instance = this;
-			std::cout << "map start" << "\n";
+			// std::cout << "map start" << "\n";
 			Game::Component::Bomb::explosionTexture = Assets::GetTexture("assets/textures/ParticleAtlas.png");
 			// itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0.png");
 			// itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
@@ -90,7 +90,7 @@ namespace Game
 		BeerEngine::GameObject *Map::addItem(BeerEngine::Graphics::ShaderProgram *shader, glm::vec3 pos, int type)
 		{
 			(void) shader;
-			std::cout << "item start" << std::endl;
+			// std::cout << "item start" << std::endl;
 			BeerEngine::Component::MeshRenderer *meshRenderer;
 			auto itemGO = _gameObject->_scene.instantiate<BeerEngine::GameObject>();
 			itemGO->name = "item";
