@@ -347,35 +347,36 @@ namespace Game
 
 		void    Map::renderUI(struct nk_context *ctx)
 		{
-			auto mapWidth = 270;
-			auto mapHeight = 430;
-			auto rect = nk_rect(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight, mapWidth, mapHeight);
-			if (nk_begin(ctx, "Map", rect, NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-            {
-				nk_layout_row_dynamic(ctx, 20, 1);
-				// if (_player)
-				// {
-	            //     nk_label(ctx, "position", NK_TEXT_LEFT);
-				// 	nk_layout_row_dynamic(ctx, 20, 1);
-	            //     nk_label(ctx, glm::to_string(worldToMap(_player->_gameObject->transform.position)).c_str(), NK_TEXT_LEFT);
-				// }
-				nk_layout_row_dynamic(ctx, 20, 1);
-                nk_label(ctx, "map", NK_TEXT_LEFT);
-				for (int row = 0; row < _sizeY; row++)
-				{
-					std::stringstream ss;
-					for (int col = 0; col < _sizeX; col++)
-						ss << std::setw(2) << _map[row][col];
-					nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-				}
-            }
-            nk_end(ctx);
-			if (uiInit)
-			{
-				nk_window_set_position(ctx, "Map", nk_vec2(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight));
-				nk_window_collapse(ctx, "Map", NK_MINIMIZED);
-				uiInit = false;
-			}
+			(void)ctx;
+			// auto mapWidth = 270;
+			// auto mapHeight = 430;
+			// auto rect = nk_rect(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight, mapWidth, mapHeight);
+			// if (nk_begin(ctx, "Map", rect, NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+            // {
+			// 	nk_layout_row_dynamic(ctx, 20, 1);
+			// 	// if (_player)
+			// 	// {
+	        //     //     nk_label(ctx, "position", NK_TEXT_LEFT);
+			// 	// 	nk_layout_row_dynamic(ctx, 20, 1);
+	        //     //     nk_label(ctx, glm::to_string(worldToMap(_player->_gameObject->transform.position)).c_str(), NK_TEXT_LEFT);
+			// 	// }
+			// 	nk_layout_row_dynamic(ctx, 20, 1);
+            //     nk_label(ctx, "map", NK_TEXT_LEFT);
+			// 	for (int row = 0; row < _sizeY; row++)
+			// 	{
+			// 		std::stringstream ss;
+			// 		for (int col = 0; col < _sizeX; col++)
+			// 			ss << std::setw(2) << _map[row][col];
+			// 		nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+			// 	}
+            // }
+            // nk_end(ctx);
+			// if (uiInit)
+			// {
+			// 	nk_window_set_position(ctx, "Map", nk_vec2(0, BeerEngine::Window::GetInstance()->getHeight() - mapHeight));
+			// 	nk_window_collapse(ctx, "Map", NK_MINIMIZED);
+			// 	uiInit = false;
+			// }
 		}
 
 		glm::vec2		Map::worldToMap(glm::vec3 pos)

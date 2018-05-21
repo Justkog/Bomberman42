@@ -131,6 +131,8 @@ int main(void)
     // glfwFocusWindow(window->getWindow());
 	glfwShowWindow(window->getWindow());
 
+
+	bool showDebug = false;
     while (!window->isClose())
     {
         window->update();
@@ -164,14 +166,19 @@ int main(void)
         }
         glDisable(GL_DEPTH_TEST);
 
-		if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
-        {
-            std::stringstream ss;
-            ss << "FPS: " << FPS << " / UPS: " << UPS;
-            nk_layout_row_dynamic(ctx, 20, 1);
-            nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
-        }
-        nk_end(ctx);
+		if (BeerEngine::Input::GetKeyDown(BeerEngine::KeyCode::D))
+			showDebug = !showDebug;
+		if (showDebug)
+		{
+			if (nk_begin(ctx, "Debug Info", nk_rect(10, 10, 220, 80), NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE | NK_WINDOW_CLOSABLE))
+			{
+				std::stringstream ss;
+				ss << "FPS: " << FPS << " / UPS: " << UPS;
+				nk_layout_row_dynamic(ctx, 20, 1);
+				nk_label(ctx, ss.str().c_str(), NK_TEXT_LEFT);
+			}
+			nk_end(ctx);
+		}
 
         nk_glfw3_render(NK_ANTI_ALIASING_ON, MAX_VERTEX_BUFFER, MAX_ELEMENT_BUFFER);
 		BeerEngine::Input::Update();
