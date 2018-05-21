@@ -176,4 +176,20 @@ namespace Game
 			}	
 		}
     }
+
+	void SceneBasics::GeneratePlane(BeerEngine::AScene *scene, 
+		std::string texturePath, 
+		glm::vec2 tiling, glm::vec2 offset, 
+		glm::vec3 position, glm::vec3 scale)
+	{
+		auto mapGO = scene->instantiate<BeerEngine::GameObject>();
+		BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+		mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(tiling, offset));
+		auto planeTex = Assets::GetTexture(texturePath);
+		auto planeMat = new BeerEngine::Graphics::AMaterial(Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl"));
+		planeMat->setAlbedo(planeTex);
+		mapMeshRenderer->setMaterial(planeMat);
+		mapGO->transform.position = position;
+		mapGO->transform.scale = scale;
+	}
 }
