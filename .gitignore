@@ -29,6 +29,7 @@
 *.exe
 *.out
 *.app
+*.pkg
 
 # Project
 Bomberman

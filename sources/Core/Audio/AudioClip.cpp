@@ -1,8 +1,4 @@
-#include <stdexcept>
 #include "Core/Audio/AudioClip.hpp"
-// #include <AL/al.h>
-// #include <AL/alc.h>
-#include <iostream>
 
 namespace BeerEngine
 {
@@ -56,7 +52,7 @@ namespace BeerEngine
 		{
 			*this = val;
 		}
-		
+
 		AudioClip &AudioClip::operator=(const AudioClip &val)
 		{
 			if (this != &val)
