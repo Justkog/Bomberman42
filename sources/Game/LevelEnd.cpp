@@ -32,35 +32,32 @@ void    LevelEnd::init(void)
 
 	// Shader
 	auto shader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
-	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
-	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
+	// BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
+	// material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	BeerEngine::Component::ModelRenderer *modelRenderer;
+	// BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
-	cameraGO->name = "Camera";
 
-	// Managers
-	auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
+	soundManager->setClip("assets/sounds/portal.ogg");
+	soundManager->audioType = Game::Component::Music;
 
-	// Misc
-	auto settings = cameraGO->AddComponent<Game::Component::Settings>();
-	auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
-	auto cameraController = cameraGO->AddComponent<Game::Component::CameraController>();
-	cameraController->setEndingCamera(13, 11);
+	Game::SceneBasics::CreateCameraBasics(cameraGO);
 
-	// UI
-	auto uiManager = cameraGO->AddComponent<Game::Component::UIThemeManager>();
-	auto inGameMenu = cameraGO->AddComponent<Game::Component::InGameMenu>();
-	auto gameOverMenu = cameraGO->AddComponent<Game::Component::GameOverMenu>();
-	auto victoryMenu = cameraGO->AddComponent<Game::Component::VictoryMenu>();
-	auto timeUI = cameraGO->AddComponent<Game::Component::TimeUI>();
-	auto startTimerUI = cameraGO->AddComponent<Game::Component::StartTimerUI>();
-	auto itemsUI = cameraGO->AddComponent<Game::Component::ItemsUI>();
+	auto gameManager = cameraGO->GetComponent<Game::Component::GameManager>();
+	cameraGO->GetComponent<Game::Component::Settings>()->audioManager = soundManager;
+	gameManager->audioManager = soundManager;
 
+	gameManager->storyMode = true;
+
+	cameraGO->GetComponent<Game::Component::VictoryMenu>()->sceneLoader.name = "SceneMain";
+	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "SceneMain";
+	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "SceneMain";
+	
+	cameraGO->GetComponent<Game::Component::CameraController>()->setEndingCamera(13, 11);
 
 	auto winText = instantiate<BeerEngine::GameObject>();
 	auto winTextRender = winText->AddComponent<BeerEngine::Component::MeshRenderer>();
@@ -72,66 +69,42 @@ void    LevelEnd::init(void)
 	winText->transform.scale = glm::vec3(5, 5, 5);
 	winText->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0));
 
-	soundManager->setClip("assets/sounds/portal.ogg");
-	soundManager->audioType = Game::Component::Music;
-
-	gameManager->inGameMenu = inGameMenu;
-	gameManager->gameOverMenu = gameOverMenu;
-	gameManager->victoryMenu = victoryMenu;
-	gameManager->timeUI = timeUI;
-	gameManager->startTimerUI = startTimerUI;
-	gameManager->audioManager = soundManager;
-	gameManager->gameProgression = gameProgression;
-	gameManager->storyMode = true;
-
-	inGameMenu->uiManager = uiManager;
-	gameOverMenu->uiManager = uiManager;
-	victoryMenu->uiManager = uiManager;
-	startTimerUI->uiManager = uiManager;
-
-	settings->audioManager = soundManager;
-
-	inGameMenu->setActive(false);
-	gameOverMenu->setActive(false);
-	victoryMenu->setActive(false);
-
-	timeUI->uiManager = uiManager;
-	itemsUI->uiManager = uiManager;
-
-	victoryMenu->sceneLoader.name = "SceneMain";
-	gameOverMenu->sceneLoader.name = "SceneMain";
-	inGameMenu->sceneLoader.name = "SceneMain";
-
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
-	playerGO->name = "player";
-	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
-	modelRenderer->load("assets/models/bombermanRunTest.fbx");
-	auto *playerTex = Assets::GetTexture("assets/textures/body.png");
-	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
-	playerMat->setAlbedo(playerTex);
-	modelRenderer->addMaterial(0, playerMat);
-	playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
-	auto *character = playerGO->AddComponent<Game::Component::Character>();
-		character->_maxBomb = 0;
-		character->_bombNb = character->_maxBomb;
-	auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
-	auto *player = playerGO->AddComponent<Game::Component::Player>();
-	auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
-		playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
-		playerColl->_radius = 0.4;
-	auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
-		playerRB2D->kinematic = BeerEngine::Component::RBType::None;
-	playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
-	auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
-	player->srcAudio = as2;
-	player->itemSrcAudio = itemAs;
-	gameManager->playerBreakable = breakable;
-	modelRenderer->setAnimation("idle");
-	modelRenderer->setAnimationSpeed("idle", 0.25);
-	modelRenderer->setLoopAnimation(true);
-	modelRenderer->playAnimation();
+	Game::SceneBasics::CreatePlayerBasics(playerGO, gameManager, 0);
+	auto player = playerGO->GetComponent<Game::Component::Player>();
+	auto character = playerGO->GetComponent<Game::Component::Character>();
+
+	// // Player
+	// auto playerGO = instantiate<BeerEngine::GameObject>();
+	// playerGO->name = "player";
+	// modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
+	// modelRenderer->load("assets/models/bombermanRunTest.fbx");
+	// auto *playerTex = Assets::GetTexture("assets/textures/body.png");
+	// auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
+	// playerMat->setAlbedo(playerTex);
+	// modelRenderer->addMaterial(0, playerMat);
+	// playerGO->transform.scale = glm::vec3(0.03, 0.03, 0.03);
+	// auto *character = playerGO->AddComponent<Game::Component::Character>();
+	// 	character->_maxBomb = 0;
+	// 	character->_bombNb = character->_maxBomb;
+	// auto *breakable = playerGO->AddComponent<Game::Component::Breakable>();
+	// auto *player = playerGO->AddComponent<Game::Component::Player>();
+	// auto playerColl = playerGO->AddComponent<BeerEngine::Component::CircleCollider>();
+	// 	playerColl->colliderType = BeerEngine::Component::ONLY_OTHER;
+	// 	playerColl->_radius = 0.4;
+	// auto playerRB2D = playerGO->AddComponent<BeerEngine::Component::RigidBody2D>();
+	// 	playerRB2D->kinematic = BeerEngine::Component::RBType::None;
+	// playerGO->AddComponent<BeerEngine::Audio::AudioListener>();
+	// auto as2 = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	// auto itemAs = playerGO->AddComponent<BeerEngine::Audio::AudioSource>();
+	// player->srcAudio = as2;
+	// player->itemSrcAudio = itemAs;
+	// gameManager->playerBreakable = breakable;
+	// modelRenderer->setAnimation("idle");
+	// modelRenderer->setAnimationSpeed("idle", 0.25);
+	// modelRenderer->setLoopAnimation(true);
+	// modelRenderer->playAnimation();
 
 	//instantiate map
 	auto MapGO = instantiate<BeerEngine::GameObject>();

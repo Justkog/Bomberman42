@@ -39,7 +39,7 @@ void    Level6::init(void)
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 
 	auto soundManager = cameraGO->AddComponent<Game::Component::AudioManager>();
-	soundManager->setClip("assets/sounds/hyp.ogg");
+	soundManager->setClip("assets/sounds/dmx.ogg");
 	soundManager->audioType = Game::Component::Music;
 
 	Game::SceneBasics::CreateCameraBasics(cameraGO);
