@@ -214,27 +214,30 @@ namespace Game {
 			{"windowHeight", s.windowHeight},
 			{"fullScreen", s.fullScreen},
 			{"keyBindings", s.keyBindings},
-			// {"unlockedLevels", s.unlockedLevels},
 		};
     }
 
     void from_json(const nlohmann::json& j, Game::SettingsContainer& s) {
 		s = Component::Settings::defaultSettings();
-		if (j.find("soundVolume") != j.end())
-			s.soundVolume = j.at("soundVolume").get<float>();
-		if (j.find("musicVolume") != j.end())
-	        s.musicVolume = j.at("musicVolume").get<float>();
-		if (j.find("windowWidth") != j.end())
-	        s.windowWidth = j.at("windowWidth").get<int>();
-		if (j.find("windowHeight") != j.end())
-			s.windowHeight = j.at("windowHeight").get<int>();
-		if (j.find("fullScreen") != j.end())
-	        s.fullScreen = j.at("fullScreen").get<bool>();
-		if (j.find("keyBindings") != j.end())
-	        s.keyBindings = j.at("keyBindings").get<std::map<std::string, int>>();
-		// if (j.find("unlockedLevels") != j.end())
-	    //     s.unlockedLevels = j.at("unlockedLevels").get<std::vector<std::string>>();
+		try
+		{
+			if (j.find("soundVolume") != j.end())
+				s.soundVolume = j.at("soundVolume").get<float>();
+			if (j.find("musicVolume") != j.end())
+				s.musicVolume = j.at("musicVolume").get<float>();
+			if (j.find("windowWidth") != j.end())
+				s.windowWidth = j.at("windowWidth").get<int>();
+			if (j.find("windowHeight") != j.end())
+				s.windowHeight = j.at("windowHeight").get<int>();
+			if (j.find("fullScreen") != j.end())
+				s.fullScreen = j.at("fullScreen").get<bool>();
+			if (j.find("keyBindings") != j.end())
+				s.keyBindings = j.at("keyBindings").get<std::map<std::string, int>>();
+		}
+		catch (const std::exception& e)
+		{
 
+		}
 		// for (auto it = s.keyBindings.begin(); it != s.keyBindings.end(); it++)
 		// 	std::cout << "loaded key " << it->first << " / " << it->second << std::endl;
     }

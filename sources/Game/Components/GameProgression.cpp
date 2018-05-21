@@ -185,9 +185,15 @@ namespace Game {
 
     void from_json(const nlohmann::json& j, Game::GameProgressionContainer& s) {
 		s = Component::GameProgression::defaultGameProgression();
-		if (j.find("unlockedLevels") != j.end())
-	        s.unlockedLevels = j.at("unlockedLevels").get<std::vector<std::string>>();
+		try
+		{
+			if (j.find("unlockedLevels") != j.end())
+				s.unlockedLevels = j.at("unlockedLevels").get<std::vector<std::string>>();
+		}
+		catch (const std::exception& e)
+		{
 
+		}
 		// for (auto it = s.keyBindings.begin(); it != s.keyBindings.end(); it++)
 		// 	std::cout << "loaded key " << it->first << " / " << it->second << std::endl;
     }
