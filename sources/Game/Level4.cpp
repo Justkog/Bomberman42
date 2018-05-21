@@ -31,9 +31,7 @@ void    Level4::init(void)
 
 	// Shader
 	auto shader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
-	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
-	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
-
+	
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
 
@@ -116,7 +114,7 @@ void    Level4::init(void)
 		glm::vec3(6, 1, 5.5)
 	);
 
-	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(7, 11), glm::vec2(-7, 0));
+	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(7, 12), glm::vec2(-7, 0));
 
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level4.scene");

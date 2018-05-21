@@ -55,8 +55,8 @@ namespace Game
         void    Character::start(void)
         {
 			bombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");
-			bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
-			bombMaterial->setAlbedo(Assets::GetTexture("assets/textures/bomb_color.png"));
+			// bombMaterial = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+			// bombMaterial->setAlbedo(Assets::GetTexture("assets/textures/bomb_color.png"));
 			// bombMaterial->setAlbedo(Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png"));
         }
 
