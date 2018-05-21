@@ -86,7 +86,7 @@ std::ostream &				operator<<(std::ostream & o, GameManager const & i)
 
 void GameManager::acknowledgeEnemyDestruction(Breakable *enemyBreakable)
 {
-	std::cout << "enemy destroyed!" << std::endl;
+	// std::cout << "enemy destroyed!" << std::endl;
 	auto it = std::find(enemyBreakables.begin(), enemyBreakables.end(), enemyBreakable);
 	if (it != enemyBreakables.end())
 		enemyBreakables.erase(it);
@@ -125,7 +125,7 @@ void GameManager::setGameOver(glm::vec3 pos, int value)
 
 void GameManager::startVictory()
 {
-	std::cout << "victory" << std::endl;
+	// std::cout << "victory" << std::endl;
 	victoryRoutine = createVictoryRoutine();
 	startRoutine(*victoryRoutine);
 }
