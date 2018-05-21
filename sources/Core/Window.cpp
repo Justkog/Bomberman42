@@ -176,11 +176,11 @@ namespace BeerEngine
 		(void) window;
 		if (focused)
 		{
-			std::cout << "The window gained input focus" << std::endl;
+			// std::cout << "The window gained input focus" << std::endl;
 		}
 		else
 		{
-			std::cout << "The window lost input focus" << std::endl;
+			// std::cout << "The window lost input focus" << std::endl;
 		}
 	}
 
