@@ -6,7 +6,8 @@ namespace BeerEngine
 	{
 
 		AudioSource::AudioSource(BeerEngine::GameObject *gameObject) :
-			Component(gameObject)
+			Component(gameObject),
+			_Buffer(0)
 		{
 			// Création d'une source
 			alGenSources(1, &_Source);
@@ -78,8 +79,8 @@ namespace BeerEngine
 			if (alIsSource(_Source))
 			{
 		    	alDeleteSources(1, &_Source);
-					if (alGetError() != AL_NO_ERROR)
-						throw std::runtime_error("AudioSource delete source error");
+				if (alGetError() != AL_NO_ERROR)
+					throw std::runtime_error("AudioSource delete source error");
 			}
 		}
 
