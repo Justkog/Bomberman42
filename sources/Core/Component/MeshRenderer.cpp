@@ -46,6 +46,8 @@ namespace BeerEngine
 		{
 			if (_material != nullptr)
 				delete _material;
+			if (_mesh != nullptr)
+				Graphics::Graphics::deleteMesh(_mesh);
 		}
 
 		Graphics::Mesh	*MeshRenderer::getMesh(void)

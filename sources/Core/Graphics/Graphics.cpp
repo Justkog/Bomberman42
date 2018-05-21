@@ -12,7 +12,7 @@ namespace BeerEngine
 {
 	namespace Graphics
 	{
-		std::map<std::string, Mesh *> Graphics::typeToMesh;
+		std::vector<Mesh *> Graphics::meshList;
 		Mesh			*Graphics::plane = nullptr;
 		Mesh			*Graphics::cube = nullptr;
 		Texture 		*Graphics::whiteTexture = nullptr;
@@ -53,8 +53,18 @@ namespace BeerEngine
 			;
 			auto plane = builder.build();
 			plane->setType("plane");
-			Graphics::typeToMesh["plane"] = plane;
+			meshList.push_back(plane);
 			return (plane);
+		}
+
+		void	Graphics::deleteMesh(Mesh *mesh)
+		{
+			auto it = std::find(meshList.begin(), meshList.end(), mesh);
+			if (it != meshList.end())
+			{
+				delete *it;
+				meshList.erase(it);
+			}
 		}
 
 		static Mesh	*LoadCube(void)
@@ -146,7 +156,6 @@ namespace BeerEngine
 			;
 			auto cube = builder.build();
 			cube->setType("cube");
-			Graphics::typeToMesh["cube"] = cube;
 			return (cube);
 		}
 
