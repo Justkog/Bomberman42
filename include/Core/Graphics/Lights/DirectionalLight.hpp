@@ -30,11 +30,11 @@ namespace BeerEngine
 			glm::mat4		_lightProjection;
 			glm::mat4		_lightMatrix;
 
-		public:
 			DirectionalLight();
 			DirectionalLight(const DirectionalLight &val);
 			DirectionalLight &operator=(const DirectionalLight &val);
 
+		public:
 			DirectionalLight(int id, AScene &scene);
 			DirectionalLight(glm::vec3 direction, float intensity, glm::vec4 color);
 			virtual ~DirectionalLight();

@@ -51,6 +51,7 @@ namespace BeerEngine
     AScene::~AScene(void)
     {
         std::map<int, GameObject *>::iterator it;
+        std::map<int, Graphics::ALight *>::iterator it2;
         for (it = _gameObjects.begin(); it != _gameObjects.end(); ++it)
         {
             (it->second)->componentOnDestroy();
@@ -59,7 +60,14 @@ namespace BeerEngine
         {
             delete (it->second);
         }
+        for (it2 = _lights.begin(); it2 != _lights.end(); ++it2)
+        {
+            delete (it2->second);
+        }
         _gameObjects.clear();
+        _lights.clear();
+        if (_skyboxCubemap)
+            delete _skyboxCubemap;
     }
 
     std::vector<GameObject *> AScene::getGameObjects()

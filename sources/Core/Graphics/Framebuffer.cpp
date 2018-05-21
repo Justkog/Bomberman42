@@ -46,9 +46,13 @@ namespace BeerEngine
 		Framebuffer::~Framebuffer()
 		{
 			glDeleteFramebuffers(1, &_fboID);
-			glDeleteFramebuffers(1, &_depthID);
+			_fboID = 0;
+			glDeleteRenderbuffers(1, &_depthID);
+			_depthID = 0;
 			glDeleteTextures(1, &_textureID);
+			_textureID = 0;
 			glDeleteTextures(1, &_depthTextureID);
+			_depthTextureID = 0;
 		}
 		
 		void Framebuffer::createColorTextureAttachement()

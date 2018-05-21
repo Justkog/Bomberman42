@@ -44,11 +44,11 @@ namespace BeerEngine
 
 			void setupUniformIds();
 
-		public:
 			ALight();
 			ALight(const ALight &val);
 			ALight &operator=(const ALight &val);
 
+		public:
 			ALight(int id, AScene &scene);
 			ALight(float intensity, glm::vec4 color);
 			virtual ~ALight() {};

@@ -33,7 +33,9 @@ namespace BeerEngine
 		}
 
 		Cubemap::Cubemap()
-		{}
+		{
+
+		}
 
 		Cubemap::Cubemap(const Cubemap &val)
 		{
@@ -102,6 +104,9 @@ namespace BeerEngine
 				}
 			}
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+			glDeleteFramebuffers(1, &fbo);
+			glDeleteRenderbuffers(1, &rbo);
 		}
 
 		void    Cubemap::renderUpdate(void)

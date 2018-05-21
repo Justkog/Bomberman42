@@ -179,19 +179,37 @@ namespace BeerEngine
 				delete it->second;
 			}
 			if (_drawSize != nullptr)
-				delete _drawSize;
+				delete[] _drawSize;
 			if (_vao != nullptr)
+			{
 				glDeleteVertexArrays(_numMeshes, _vao);
+				delete[] _vao;
+			}
 			if (_vbo != nullptr)
+			{
 				glDeleteBuffers(_numMeshes, _vbo);
+				delete[] _vbo;
+			}
 			if (_ubo != nullptr)
+			{
 				glDeleteBuffers(_numMeshes, _ubo);
+				delete[] _ubo;
+			}
 			if (_nbo != nullptr)
+			{
 				glDeleteBuffers(_numMeshes, _nbo);
+				delete[] _nbo;
+			}
 			if (_wbo != nullptr)
+			{
 				glDeleteBuffers(_numMeshes, _wbo);
+				delete[] _wbo;
+			}
 			if (_bbo != nullptr)
+			{
 				glDeleteBuffers(_numMeshes, _bbo);
+				delete[] _bbo;
+			}
 		}
 
 		void ModelRenderer::loadBones(const aiMesh* mesh, std::vector<VertexBoneData>& bones)
