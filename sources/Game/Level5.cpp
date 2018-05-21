@@ -15,6 +15,7 @@
 #include "Game/Components/StartTimerUI.hpp"
 #include "Game/Components/ItemsUI.hpp"
 #include "Game/Components/AudioManager.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 #include "Game/Components/CameraController.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Game/Assets.hpp"
@@ -54,9 +55,11 @@ void    Level5::init(void)
 	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Level5";
 	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Level5";
 
-	// cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
-	// 	{"test instr 1", 2.0}
-	// });
+	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
+		{"La logique vous mènera de A à B.", 3.0},
+		{"L imagination vous mènera partout.", 3.0},
+		{"Albert Einstein", 3.0}
+	});
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();

@@ -46,7 +46,10 @@ namespace BeerEngine
 			{
 				auto foundRoutine = std::find(_currentRoutines.begin(), _currentRoutines.end(), routine);
 				if (foundRoutine != _currentRoutines.end())
+				{
 					_currentRoutines.erase(foundRoutine);
+					delete *foundRoutine;
+				}
 				else
 					std::cout << "trying to stop a non running routine!" << "\n";
 			}
