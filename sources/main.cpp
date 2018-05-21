@@ -34,7 +34,7 @@ void updateThread(BeerEngine::Window *window)
     double  timer = 0.0;
     int     fixeUpdateNumber = 0;
     BeerEngine::AScene  *scene = nullptr;
-    std::cout << "Thread Update: Started" << std::endl;
+    // std::cout << "Thread Update: Started" << std::endl;
     while (!window->isClose())
     {
         scene = BeerEngine::SceneManager::GetCurrent(false);
@@ -86,7 +86,7 @@ void updateThread(BeerEngine::Window *window)
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		// std::cout << "update thread" << std::endl;
     }
-    std::cout << "Thread Update: Finish" << std::endl;
+    // std::cout << "Thread Update: Finish" << std::endl;
 }
 
 int main(void)

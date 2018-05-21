@@ -7,7 +7,7 @@ namespace BeerEngine
 		std::string  FileUtils::LoadFile(std::string const &path)
 		{
 			std::string result = "";
-			std::cout << "Loading: " << path << "\n";
+			std::cout << "[CONFIG] " << path << "\n";
 			std::ifstream ifs(path);
 			if (ifs.is_open())
 			{

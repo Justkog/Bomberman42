@@ -71,13 +71,13 @@ void InGameMenu::start()
 
 void InGameMenu::enable()
 {
-	std::cout << "game menu enabled" << std::endl;
+	// std::cout << "game menu enabled" << std::endl;
 	GameManager::GetInstance().setPause(true);
 }
 
 void InGameMenu::disable()
 {
-	std::cout << "game menu disabled" << std::endl;
+	// std::cout << "game menu disabled" << std::endl;
 	GameManager::GetInstance().setPause(false);
 }
 
