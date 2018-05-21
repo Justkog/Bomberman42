@@ -93,7 +93,7 @@ void    Level6::init(void)
 	playerGO->name = "player";
 	modelRenderer = playerGO->AddComponent<BeerEngine::Component::ModelRenderer>();
 	modelRenderer->load("assets/models/bombermanRunTest.fbx");
-	auto *playerTex = BeerEngine::Graphics::Texture::LoadPNG("assets/textures/body.png");
+	auto *playerTex = Assets::GetTexture("assets/textures/body.png");
 	auto *playerMat = new BeerEngine::Graphics::AMaterial(shader);
 	playerMat->setAlbedo(playerTex);
 	modelRenderer->addMaterial(0, playerMat);

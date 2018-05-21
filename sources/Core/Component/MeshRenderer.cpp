@@ -5,6 +5,7 @@
 #include "Core/GameObject.hpp"
 #include "Core/Graphics/AMaterial.hpp"
 #include "Core/Json/Json.hpp"
+#include "Game/Assets.hpp"
 
 namespace BeerEngine
 {
@@ -60,7 +61,8 @@ namespace BeerEngine
 
 		MeshRenderer		&MeshRenderer::setMesh(std::string inputfile)
 		{
-			return setMesh(BeerEngine::Graphics::Graphics::OBJLoader(inputfile));
+			// return setMesh(BeerEngine::Graphics::Graphics::OBJLoader(inputfile));
+			return setMesh(Assets::GetModel(inputfile));
 		}
 
 		Graphics::AMaterial	*MeshRenderer::getMaterial(void)

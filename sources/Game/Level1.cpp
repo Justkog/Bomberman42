@@ -34,8 +34,6 @@ void    Level1::init(void)
 
 	// Shader
 	auto shader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
-	BeerEngine::Graphics::AMaterial *material = new BeerEngine::Graphics::AMaterial(shader);
-	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
@@ -96,8 +94,8 @@ void    Level1::init(void)
 	mapGO = instantiate<BeerEngine::GameObject>();
 	BeerEngine::Component::MeshRenderer *mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(80, 80), glm::vec2(0.5, 0.5)));
-	mapMeshRenderer->setMaterial(material);
-	auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
+	// auto planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/grass.png");
+	auto planeTex = Assets::GetTexture("assets/textures/grass.png");
 	auto planeMat = new BeerEngine::Graphics::AMaterial(shader);
 	planeMat->setAlbedo(planeTex);
 	mapMeshRenderer->setMaterial(planeMat);
@@ -108,15 +106,14 @@ void    Level1::init(void)
 	mapGO = instantiate<BeerEngine::GameObject>();
 	mapMeshRenderer = mapGO->AddComponent<BeerEngine::Component::MeshRenderer>();
 	mapMeshRenderer->setMesh(BeerEngine::Graphics::Graphics::LoadPlane(glm::vec2(7, 9), glm::vec2(0)));
-	mapMeshRenderer->setMaterial(material);
-	planeTex = BeerEngine::Graphics::Texture::LoadJPG("assets/textures/ground_color.png");
+	planeTex = Assets::GetTexture("assets/textures/ground_color.png");
 	planeMat = new BeerEngine::Graphics::AMaterial(shader);
 	planeMat->setAlbedo(planeTex);
 	mapMeshRenderer->setMaterial(planeMat);
 	mapGO->transform.position = glm::vec3(0, 0.03, 5);
 	mapGO->transform.scale = glm::vec3(3.5, 1, 4.5);
 
-	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(5, 10), glm::vec2(-5, 0));
+	// Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(5, 10), glm::vec2(-5, 0));
 
 	std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level1.scene");
