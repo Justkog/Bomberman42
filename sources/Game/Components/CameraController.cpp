@@ -48,7 +48,7 @@ namespace Game
 		CameraController::CameraController(BeerEngine::GameObject *gameObject) :
 					Component(gameObject)
 		{
-
+			endingCamera = false;
 		}
 
 		// ###############################################################
@@ -70,20 +70,16 @@ namespace Game
 			std::cout << "cam start" << "\n";
 			this->cam = BeerEngine::Camera::main;
 			this->lastMousePos = BeerEngine::Input::mousePosition;
-			Player		*player = Player::instance;
 			startAnimation = false;
 			timeAnimation = 0.0f;
-			if (player)
-			{
-				this->_gameObject->transform.position = player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f);
-			}
-			this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0));
 			tpsCamera = false;
 			syncCam();
 		}
 
 		void			CameraController::animationStart()
 		{
+			if (endingCamera)
+				return;
 			Player		*player = Player::instance;
 			startAnimation = true;
 			timeAnimation = 0.0f;
@@ -96,7 +92,7 @@ namespace Game
 
 		void    CameraController::fixedUpdate(void)
 		{
-			if (startAnimation)
+			if (startAnimation || endingCamera)
 				return;
 			if (BeerEngine::Input::GetKeyDown(Game::Input::keyBindings["change view"]))
 				tpsCamera = !tpsCamera;
@@ -126,32 +122,69 @@ namespace Game
 			}
 		}
 
+		void	CameraController::setEndingCamera(int sizeX, int sizeY)
+		{
+			if (sizeX < 10)
+				sizeX = 10;
+			this->_gameObject->transform.position = glm::vec3(0, sizeX, sizeY / 3.0f);
+			this->_gameObject->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
+			endingCamera = true;
+		}
+
 		void    CameraController::update(void)
 		{
-			if (startAnimation)
+			if (endingCamera)
 			{
-				if (timeAnimation >= 5.0f)
-					startAnimation = false;
-
-				float t = timeAnimation / 5.0f;
-				Map		*map = Map::instance;
-				Player	*player = Player::instance;
-				if (map && player)
-				{
-					t = glm::sin(t * glm::radians(90.0f));
-					float y = map->_sizeX;
-					if (y < 10)
-						y = 10;
-					this->_gameObject->transform.position = glm::mix(player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f), glm::vec3(0, y, map->_sizeY / 3.0f), t);
-					this->_gameObject->transform.rotation = glm::mix(
-						glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0)),
-						glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0)),
-						t
-					);
-				}
 				timeAnimation += BeerEngine::Time::GetDeltaTime();
-				if (timeAnimation > 5.0f)
-					timeAnimation = 5.0f;
+				if (timeAnimation >= 5.0f)
+				{
+					float t = (timeAnimation - 5.0f) / 20.0f;
+					if (t > 1.0f)
+						t = 1.0f;
+					t = glm::sin(t * glm::radians(90.0f));
+					Map		*map = Map::instance;
+					if (map)
+					{
+						float y = map->_sizeX;
+						if (y < 10)
+							y = 10;
+						glm::vec3 originPos = glm::vec3(0, y, map->_sizeY / 3.0f);
+						glm::quat originRot = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0));
+						glm::vec3 targetPos = glm::vec3(0, 4.0f, -map->_sizeY / 3.0f);
+						glm::quat targetRot = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0));
+
+						this->_gameObject->transform.position = glm::mix(originPos, targetPos, t);
+						this->_gameObject->transform.rotation = glm::mix(originRot, targetRot, t);
+					}
+				}
+			}
+			else
+			{
+				if (startAnimation)
+				{
+					if (timeAnimation >= 5.0f)
+						startAnimation = false;
+
+					float t = timeAnimation / 5.0f;
+					Map		*map = Map::instance;
+					Player	*player = Player::instance;
+					if (map && player)
+					{
+						t = glm::sin(t * glm::radians(90.0f));
+						float y = map->_sizeX;
+						if (y < 10)
+							y = 10;
+						this->_gameObject->transform.position = glm::mix(player->_gameObject->transform.position + glm::vec3(0, 1.0f, 0.0f), glm::vec3(0, y, map->_sizeY / 3.0f), t);
+						this->_gameObject->transform.rotation = glm::mix(
+							glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.57f, glm::vec3(1, 0, 0)),
+							glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0)) * glm::angleAxis((float)-1.3f, glm::vec3(1, 0, 0)),
+							t
+						);
+					}
+					timeAnimation += BeerEngine::Time::GetDeltaTime();
+					if (timeAnimation > 5.0f)
+						timeAnimation = 5.0f;
+				}
 			}
 			// float rotation_y = 0;
 			// float rotation_x = 0;

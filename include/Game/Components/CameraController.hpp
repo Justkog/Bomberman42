@@ -30,6 +30,7 @@ namespace Game
 			CameraController & operator=( CameraController const & rhs );
 
 		public:
+			bool	endingCamera;
 			bool	startAnimation;
 			float	timeAnimation;
 
@@ -38,6 +39,7 @@ namespace Game
 
 			friend std::ostream & operator<<(std::ostream & o, CameraController const & i);
 
+			void			setEndingCamera(int sizeX, int sizeY);
 			virtual void    start(void);
 			virtual void    fixedUpdate(void);
        		virtual void    update(void);

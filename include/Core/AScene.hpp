@@ -118,7 +118,7 @@ namespace BeerEngine
         template<typename T, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
 		T	*instantiate(void)
 		{
-			std::cout << "GameObject added : " << uniqueID << std::endl;
+			// std::cout << "GameObject added : " << uniqueID << std::endl;
 			T *c = new T(uniqueID, *this);
 			_gameObjects.insert(std::pair<int, GameObject *>(uniqueID, c));
             _toStart.push_back(c);
