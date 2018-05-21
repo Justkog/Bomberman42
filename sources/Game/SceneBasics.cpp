@@ -36,7 +36,7 @@ namespace Game
 		auto gameManager = cameraGO->AddComponent<Game::Component::GameManager>();
 
 		// Misc
-		auto settings = cameraGO->AddComponent<Game::Component::Settings>();
+		cameraGO->AddComponent<Game::Component::Settings>();
 		auto gameProgression = cameraGO->AddComponent<Game::Component::GameProgression>();
 
 		// UI

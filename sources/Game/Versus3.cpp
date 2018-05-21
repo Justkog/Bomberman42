@@ -31,7 +31,7 @@ void    Versus3::init(void)
 	auto shader = Assets::GetShaderProgram("shaders/basic_v.glsl", "shaders/basic_f.glsl");
 
 	// GameObject
-	BeerEngine::Component::ModelRenderer *modelRenderer;
+	// BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
