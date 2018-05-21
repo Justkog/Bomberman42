@@ -9,6 +9,7 @@
 #include "Game/Level4.hpp"
 #include "Game/Level5.hpp"
 #include "Game/Level6.hpp"
+#include "Game/LevelEnd.hpp"
 #include "Game/Versus1.hpp"
 #include "Game/Versus2.hpp"
 #include "Game/Versus3.hpp"
@@ -23,6 +24,7 @@ namespace Game
 		{"Level4", BeerEngine::SceneManager::LoadScene<Level4>},
 		{"Level5", BeerEngine::SceneManager::LoadScene<Level5>},
 		{"Level6", BeerEngine::SceneManager::LoadScene<Level6>},
+		{"LevelEnd", BeerEngine::SceneManager::LoadScene<LevelEnd>},
 		{"Versus1", BeerEngine::SceneManager::LoadScene<Versus1>},
 		{"Versus2", BeerEngine::SceneManager::LoadScene<Versus2>},
 		{"Versus3", BeerEngine::SceneManager::LoadScene<Versus3>},

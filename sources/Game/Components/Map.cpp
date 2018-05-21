@@ -94,9 +94,12 @@ namespace Game
 			itemGO->name = "item";
 			itemGO->transform.position = pos;
 			itemGO->immortalTimer = 1.5f;
-			auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
-			itemColl->_isTrigger = true;
-			itemColl->_radius = 0.3;
+			if (type != ItemType::AntidoteDeco)
+			{
+				auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
+				itemColl->_isTrigger = true;
+				itemColl->_radius = 0.3;
+			}
 			auto item = itemGO->AddComponent<Game::Component::Item>();
 			item->map = this;
 			if (type == -1)
@@ -125,6 +128,7 @@ namespace Game
                     itemTex = itemRangeTex;
 			        itemGO->transform.scale = glm::vec3(1, 1, 1);
                     break;
+				case ItemType::AntidoteDeco:
                 case ItemType::Antidote:
                     meshRenderer->setMesh(itemBombMesh);
                     itemTex = itemRangeTex;
@@ -305,6 +309,9 @@ namespace Game
 							break;
 						case U:
 							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::Antidote);
+							break;
+						case H:
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::AntidoteDeco);
 							break;
 
 					}

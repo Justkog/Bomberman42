@@ -134,6 +134,8 @@ namespace Game
                             this->destroy();
                         }
                         break;
+                    case ItemType::AntidoteDeco:
+                        break;
                 }
             }
         }
