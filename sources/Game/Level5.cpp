@@ -35,7 +35,7 @@ void    Level5::init(void)
 
 	// GameObject
 	// BeerEngine::Component::MeshRenderer *meshRenderer;
-	BeerEngine::Component::ModelRenderer *modelRenderer;
+	// BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();

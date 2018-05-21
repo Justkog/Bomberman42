@@ -33,7 +33,7 @@ void    Versus2::init(void)
 	material->setColor(glm::vec4(0.5f, 0.0f, 0.0f, 1.0f));
 
 	// GameObject
-	BeerEngine::Component::ModelRenderer *modelRenderer;
+	// BeerEngine::Component::ModelRenderer *modelRenderer;
 
 	// Camera
 	auto cameraGO = instantiate<BeerEngine::GameObject>();
