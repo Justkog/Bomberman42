@@ -70,7 +70,7 @@ namespace Game
 
         void    IA::startGame(void)
 		{
-			std::cout << "start game from IA" << std::endl;
+			// std::cout << "start game from IA" << std::endl;
 			_gameStarted = true;
 		}
 

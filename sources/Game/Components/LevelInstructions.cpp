@@ -63,7 +63,7 @@ std::ostream &				operator<<(std::ostream & o, LevelInstructions const & i)
 
 void LevelInstructions::startInstructions()
 {
-	std::cout << "starting instructions" << std::endl;
+	// std::cout << "starting instructions" << std::endl;
 	this->message->setActive(true);
 	startRoutine(*createInstructionsRoutine());
 }

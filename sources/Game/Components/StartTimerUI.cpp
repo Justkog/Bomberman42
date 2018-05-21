@@ -63,7 +63,7 @@ std::ostream &				operator<<(std::ostream & o, StartTimerUI const & i)
 
 void StartTimerUI::updateDisplay(std::string text)
 {
-	std::cout << "display update " << text << std::endl;
+	// std::cout << "display update " << text << std::endl;
 	this->text = text;
 }
 

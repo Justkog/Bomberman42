@@ -99,7 +99,7 @@ void Message::buildLines(std::string text)
 
 void Message::updateDisplay(std::string text)
 {
-	std::cout << "update message display" << std::endl;
+	// std::cout << "update message display" << std::endl;
 	buildLines(text);
 
 	// for (auto it = lines.begin(); it != lines.end(); it++)

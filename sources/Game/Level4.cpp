@@ -115,6 +115,6 @@ void    Level4::init(void)
 
 	Game::SceneBasics::GenerateDecorations(this, glm::vec2(12, 15), glm::vec2(-12, 0), glm::vec2(7, 12), glm::vec2(-7, 0));
 
-	std::cout << "saving scene.." << std::endl;
+	// std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Level4.scene");
 }

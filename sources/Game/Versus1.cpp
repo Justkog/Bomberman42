@@ -114,6 +114,6 @@ void    Versus1::init(void)
 
 	Game::SceneBasics::GenerateDecorations(this, glm::vec2(20, 15), glm::vec2(-20, 0), glm::vec2(10, 14), glm::vec2(-10, 0));
 
-	std::cout << "saving scene.." << std::endl;
+	// std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/Versus1.scene");
 }

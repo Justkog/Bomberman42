@@ -58,7 +58,7 @@ namespace Game
 
 		void Player::startGame(void)
 		{
-			std::cout << "start game from player" << std::endl;
+			// std::cout << "start game from player" << std::endl;
 			_gameStarted = true;
 		}
 

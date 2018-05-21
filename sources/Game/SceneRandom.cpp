@@ -185,6 +185,6 @@ void    SceneRandom::init(void)
 
 	Game::SceneBasics::GenerateDecorations(this, glm::vec2(20, 15), glm::vec2(-20, 0), glm::vec2(10, 20), glm::vec2(-10, 0));
 
-	std::cout << "saving scene.." << "\n";
+	// std::cout << "saving scene.." << "\n";
 	this->save("assets/scenes/random.scene");
 }

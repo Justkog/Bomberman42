@@ -155,6 +155,6 @@ void    LevelEnd::init(void)
 
 	Game::SceneBasics::GenerateDecorations(this, glm::vec2(24, 15), glm::vec2(-24, 0), glm::vec2(7, 12), glm::vec2(-7, 0));
 
-	std::cout << "saving scene.." << std::endl;
+	// std::cout << "saving scene.." << std::endl;
 	this->save("assets/scenes/LevelEnd.scene");
 }
