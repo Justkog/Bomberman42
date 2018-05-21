@@ -68,7 +68,7 @@ namespace Game
 			// itemBombTex = Assets::GetTexture("assets/models/Bomb/bombbody_BaseColor.png");
 			itemRangeTex = Assets::GetTexture("assets/textures/fire_color.png");
 			itemSpeedBoostTex = Assets::GetTexture("assets/models/Shoes/botafinal2-TM_u0_v0_small.png");
-			itemBombTex = Assets::GetTexture("assets/textures/bomb_color.png");
+			itemBombTex = Assets::GetTexture("assets/textures/Bomb/bomb_color.png");
 			// itemRangeTex = Assets::GetTexture("assets/textures/button_active.png");
 			itemSpeedBoostMesh = Assets::GetModel("assets/models/Shoes/Shoes.obj");
 			itemBombMesh = Assets::GetModel("assets/models/Bomb/modified_bomb.obj");

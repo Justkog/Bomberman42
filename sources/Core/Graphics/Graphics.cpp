@@ -387,6 +387,7 @@ namespace BeerEngine
 			if (!scene)
 			{
 				std::cerr << "Invalid model file !" << std::endl;
+				BeerEngine::Audio::AudioListener::DestroyOpenAL();
 				exit(EXIT_FAILURE);
 			}
 
