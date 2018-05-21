@@ -4,7 +4,9 @@
 // #include "Game/Components/Breakable.hpp"
 
 #include "Core/Component/BoxCollider2D.hpp"
+#include "Core/Component/ParticleBase.hpp"
 #include "Core/GameObject.hpp"
+#include "Core/Mathf.hpp"
 #include <sstream>
 #include "Core/IO/FileUtils.hpp"
 #include "Core/Audio/AudioSource.hpp"
@@ -94,7 +96,7 @@ namespace Game
 			itemGO->name = "item";
 			itemGO->transform.position = pos;
 			itemGO->immortalTimer = 1.5f;
-			if (type != ItemType::AntidoteDeco)
+			if (type != ItemType::AntidoteDeco && type != ItemType::FireDeco)
 			{
 				auto itemColl = itemGO->AddComponent<BeerEngine::Component::CircleCollider>();
 				itemColl->_isTrigger = true;
@@ -108,35 +110,56 @@ namespace Game
 				item->_type = static_cast<Game::Component::ItemType>(type);
 			if (item->_type != ItemType::Antidote)
 				itemGO->AddComponent<Game::Component::Breakable>();
-			meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
-            BeerEngine::Graphics::Texture *itemTex;
-            BeerEngine::Graphics::AMaterial *itemMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
-			switch (item->_type)
-            {
-                case ItemType::SpeedBoost:
-                    meshRenderer->setMesh(itemSpeedBoostMesh);
-                    itemTex = itemSpeedBoostTex;
-			        itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
-                    break;
-                case ItemType::AddBomb:
-                    meshRenderer->setMesh(itemBombMesh);
-                    itemTex = itemBombTex;
-			        itemGO->transform.scale = glm::vec3(0.1, 0.1, 0.1);
-                    break;
-                case ItemType::ExplosionBoost:
-                    meshRenderer->setMesh(itemRangeMesh);
-                    itemTex = itemRangeTex;
-			        itemGO->transform.scale = glm::vec3(1, 1, 1);
-                    break;
-				case ItemType::AntidoteDeco:
-                case ItemType::Antidote:
-                    meshRenderer->setMesh(itemBombMesh);
-                    itemTex = itemRangeTex;
-			        itemGO->transform.scale = glm::vec3(0.2, 0.2, 0.2);
-                    break;
-            }
-			itemMat->setAlbedo(itemTex);
-			meshRenderer->setMaterial(itemMat);
+			if (type != ItemType::FireDeco)
+			{
+				meshRenderer = itemGO->AddComponent<BeerEngine::Component::MeshRenderer>();
+				BeerEngine::Graphics::Texture *itemTex = nullptr;
+				BeerEngine::Graphics::AMaterial *itemMat = new BeerEngine::Graphics::AMaterial(BeerEngine::Graphics::Graphics::defaultShader);
+				switch (item->_type)
+				{
+					case ItemType::SpeedBoost:
+						meshRenderer->setMesh(itemSpeedBoostMesh);
+						itemTex = itemSpeedBoostTex;
+						itemGO->transform.scale = glm::vec3(0.3, 0.3, 0.3);
+						break;
+					case ItemType::AddBomb:
+						meshRenderer->setMesh(itemBombMesh);
+						itemTex = itemBombTex;
+						itemGO->transform.scale = glm::vec3(0.1, 0.1, 0.1);
+						break;
+					case ItemType::ExplosionBoost:
+						meshRenderer->setMesh(itemRangeMesh);
+						itemTex = itemRangeTex;
+						itemGO->transform.scale = glm::vec3(1, 1, 1);
+						break;
+					case ItemType::AntidoteDeco:
+					case ItemType::Antidote:
+						meshRenderer->setMesh(itemBombMesh);
+						itemTex = itemRangeTex;
+						itemGO->transform.scale = glm::vec3(0.2, 0.2, 0.2);
+						break;
+					case ItemType::FireDeco:
+						break;
+				}
+				itemMat->setAlbedo(itemTex);
+				meshRenderer->setMaterial(itemMat);
+			}
+			else
+			{
+				auto particle = itemGO->AddComponent<BeerEngine::Component::ParticleBase>();
+				particle->setTexture(Assets::GetTexture("assets/textures/ParticleAtlas.png"));
+				particle->setColor(glm::vec4(1.0f), glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+				particle->setAnimate(true, 64, 8, 8);
+				particle->setLifeTime(3.0f);
+				particle->setSize(2.0f, 1.0f);
+				particle->setSpawnTime(1.0f / 60.0f);
+				particle->setVelocity(glm::vec3(0, 1, 0));
+				glm::vec4 c1(BeerEngine::Mathf::Range(0.25f, 1.0f), BeerEngine::Mathf::Range(0.25f, 1.0f), BeerEngine::Mathf::Range(0.25f, 1.0f), 1.0f);
+				glm::vec4 c2(BeerEngine::Mathf::Range(0.25f, 1.0f), BeerEngine::Mathf::Range(0.25f, 1.0f), BeerEngine::Mathf::Range(0.25f, 1.0f), 1.0f);
+				particle->setColor(c1, c2);
+				particle->offset = glm::vec3(0, 0, 0.25f);
+			}
+			
 			return (itemGO);
 		}
 
@@ -312,6 +335,9 @@ namespace Game
 							break;
 						case H:
 							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::AntidoteDeco);
+							break;
+						case F:
+							addItem(_shader, glm::vec3(-col + (_sizeX / 2), 0.5, -row + _sizeY), ItemType::FireDeco);
 							break;
 
 					}

@@ -135,6 +135,7 @@ namespace Game
                         }
                         break;
                     case ItemType::AntidoteDeco:
+                    case ItemType::FireDeco:
                         break;
                 }
             }

@@ -9,7 +9,7 @@ namespace Game
 
 	namespace Component
 	{
-		enum ItemType {SpeedBoost, AddBomb, ExplosionBoost, Antidote, AntidoteDeco};
+		enum ItemType {SpeedBoost, AddBomb, ExplosionBoost, Antidote, AntidoteDeco, FireDeco};
 		enum ObjectiveType {MoveTo, DropBomb, TakeBonus, KillEnemy};
 
 		class GameManager;

@@ -72,7 +72,7 @@ void    LevelEnd::init(void)
 	winText->transform.scale = glm::vec3(5, 5, 5);
 	winText->transform.rotation = glm::angleAxis((float)3.14f, glm::vec3(0, 1, 0));
 
-	soundManager->setClip("assets/sounds/dmx.ogg");
+	soundManager->setClip("assets/sounds/portal.ogg");
 	soundManager->audioType = Game::Component::Music;
 
 	gameManager->inGameMenu = inGameMenu;
@@ -140,7 +140,7 @@ void    LevelEnd::init(void)
 	map->_player = player;
 	map->_shader = shader; // E eclater, U Objectif, J boost, V Movable, P player
 	std::vector<int> line0 {1,1,1,1,1,1,1,1,1,1,1,1,1};
-	std::vector<int> line1 {1,0,0,0,H,0,0,0,H,0,0,0,1};
+	std::vector<int> line1 {1,F,0,0,H,0,0,0,H,0,0,F,1};
 	std::vector<int> line2 {1,0,H,0,0,0,0,0,0,0,H,0,1};
 	std::vector<int> line3 {1,0,0,0,0,0,P,0,0,0,0,0,1};
 	std::vector<int> line4 {1,H,0,0,0,0,0,0,0,0,0,H,1};
@@ -148,7 +148,7 @@ void    LevelEnd::init(void)
 	std::vector<int> line6 {1,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int> line7 {1,0,0,0,0,0,0,0,0,0,0,0,1};
 	std::vector<int> line8 {1,0,0,0,0,0,0,0,0,0,0,0,1};
-	std::vector<int> line9 {1,0,0,0,0,0,0,0,0,0,0,0,1};
+	std::vector<int> line9 {1,F,0,0,0,0,0,0,0,0,0,F,1};
 	std::vector<int> line10{1,1,1,1,1,1,1,1,1,1,1,1,1};
 	std::vector<std::vector<int>> tab{line0,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10};
 	map->setMap(tab, line0.size(), tab.size());

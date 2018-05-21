@@ -28,6 +28,7 @@
 #define J 11 //Item Boost Explosion
 #define U 20 //Objective (next level)
 #define H 21 //Objective Deco
+#define F 22 //Objective Deco
 #define V 42 //Movable Crate
 
 /*!

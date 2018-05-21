@@ -123,7 +123,9 @@ namespace Game
 					glm::vec2 mapPos = map->worldToMap(np);
 					if (map->hasWall(glm::vec2(mapPos.x, mapPos.y)))
 						break;
-					map->mapUpdate(mapPos.x, mapPos.y, value);
+					int type = map->getCaseValue(glm::vec2(mapPos.x, mapPos.y));
+					if (type != 2 && type != E)
+						map->mapUpdate(mapPos.x, mapPos.y, value);
 				}
 			}
 		}
