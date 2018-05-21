@@ -55,7 +55,7 @@ void    Level1::init(void)
 	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Level1";
 
 	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
-		{"Exploser tous les blocs.", 3.0},
+		{"Explose tous les blocs.", 3.0},
 		{"Recupere la bombe d'or!", 3.0}
 	});
 

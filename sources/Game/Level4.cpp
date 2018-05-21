@@ -44,9 +44,8 @@ void    Level4::init(void)
 	auto gameManager = cameraGO->GetComponent<Game::Component::GameManager>();
 	cameraGO->GetComponent<Game::Component::Settings>()->audioManager = soundManager;
 	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
-		{"Exploser tous les blocs.", 3.0},
-		{"Recupere la bombe d'or!", 3.0},
-		{"Des bloques sont déplacable", 3.0}
+		{"Les blocs sont déplacables", 3.0},
+		{"Bonne chance!", 3.0}
 	});
 	gameManager->audioManager = soundManager;
 

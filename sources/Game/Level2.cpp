@@ -20,6 +20,7 @@
 #include "Game/Assets.hpp"
 #include "Core/Graphics/Cubemap.hpp"
 #include "Game/SceneBasics.hpp"
+#include "Game/Components/LevelInstructions.hpp"
 
 void    Level2::init(void)
 {
@@ -50,9 +51,9 @@ void    Level2::init(void)
 	cameraGO->GetComponent<Game::Component::GameOverMenu>()->sceneLoader.name = "Level2";
 	cameraGO->GetComponent<Game::Component::InGameMenu>()->sceneLoader.name = "Level2";
 
-	// cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
-	// 	{"test instr 1", 2.0}
-	// });
+	cameraGO->GetComponent<Game::Component::LevelInstructions>()->setInstructions({
+		{"C'est reparti!", 3.0}
+	});
 
 	// Player
 	auto playerGO = instantiate<BeerEngine::GameObject>();
