@@ -95,11 +95,11 @@ Game::SettingsContainer Settings::defaultSettings()
 void Settings::applyCurrentSettings() {
 	for (auto it = this->settingsContainer.keyBindings.begin(); it != this->settingsContainer.keyBindings.end(); it++)
 		Game::Input::keyBindings[it->first] = static_cast<BeerEngine::KeyCode>(this->settingsContainer.keyBindings[it->first]);
-	BeerEngine::Window::GetInstance()->resize(this->settingsContainer.windowWidth, this->settingsContainer.windowHeight);
 	if (this->settingsContainer.fullScreen)
 		BeerEngine::Window::GetInstance()->setFullScreen();
 	else
 		BeerEngine::Window::GetInstance()->setWindowed();
+	BeerEngine::Window::GetInstance()->resize(this->settingsContainer.windowWidth, this->settingsContainer.windowHeight);
 	if (audioManager)
 	{
 		// std::cout << "================================applying sound settings" << std::endl;

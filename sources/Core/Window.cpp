@@ -193,7 +193,7 @@ namespace BeerEngine
 			std::cout << "Failed to initialize GLFW\n";
 		else
 		{
-			glfwWindowHint(GLFW_SAMPLES, 4);
+			glfwWindowHint(GLFW_SAMPLES, 2);
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 			glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -201,6 +201,7 @@ namespace BeerEngine
 			glfwWindowHint(GLFW_DEPTH_BITS, 32);
 			// glfwWindowHint(GLFW_FOCUSED, GLFW_TRUE);
 			glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+			glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 			win = new Window(title, width, height);
 			if (win->getWindow() == NULL)
 			{
@@ -298,7 +299,7 @@ namespace BeerEngine
 		glfwSetWindowSizeCallback(_window, Window::CallbackResize);
 		_width = _windowWidth;
 		_height = _windowHeight;
-		// std::cout << "setting windowed x = " << _xPos << " / y = " << _yPos << " / width = " << WINDOW_WIDTH << std::endl;
+		// std::cout << "setting windowed x = " << _xPos << " / y = " << _yPos << " / width = " << _width << std::endl;
 		glfwSetWindowMonitor(_window, NULL, _xPos, _yPos, _width, _height, videoMode->refreshRate);
 	}
 
