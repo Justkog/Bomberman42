@@ -159,6 +159,9 @@ installAssets:
 	rsync -av /tmp/Bomberman42Asset/html/ html/
 	rm -rf /tmp/Bomberman42Asset
 
+osxinstaller:
+	pkgbuild --root ../Bomberman42 --identifier beer.compagny --version 1.0 Bomberman.pkg
+
 relink:
 %.a: relink
 	$(MAKE) -C $(dir $@)
